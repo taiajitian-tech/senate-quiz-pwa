@@ -1,11 +1,29 @@
 [
   {
     "id": 1,
-    "name": "サンプル議員",
+    "name": "議員名をここに入れる",
     "images": [
-      "https://source.unsplash.com/480x480/?portrait,face&sig=1",
-      "https://source.unsplash.com/480x480/?person,face&sig=101",
-      "https://source.unsplash.com/480x480/?headshot&sig=201"
+      "画像URL1",
+      "画像URL2",
+      "画像URL3"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "議員名をここに入れる",
+    "images": [
+      "画像URL1",
+      "画像URL2",
+      "画像URL3"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "議員名をここに入れる",
+    "images": [
+      "画像URL1",
+      "画像URL2",
+      "画像URL3"
     ]
   }
 ]
