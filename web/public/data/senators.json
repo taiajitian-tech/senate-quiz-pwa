@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "サンプル議員",
+    "images": [
+      "https://source.unsplash.com/480x480/?portrait,face&sig=1",
+      "https://source.unsplash.com/480x480/?person,face&sig=101",
+      "https://source.unsplash.com/480x480/?headshot&sig=201"
+    ]
+  }
+]
