@@ -1,29 +1,9 @@
 [
   {
     "id": 1,
-    "name": "議員名をここに入れる",
+    "name": "岸田文雄",
     "images": [
-      "画像URL1",
-      "画像URL2",
-      "画像URL3"
-    ]
-  },
-  {
-    "id": 2,
-    "name": "議員名をここに入れる",
-    "images": [
-      "画像URL1",
-      "画像URL2",
-      "画像URL3"
-    ]
-  },
-  {
-    "id": 3,
-    "name": "議員名をここに入れる",
-    "images": [
-      "画像URL1",
-      "画像URL2",
-      "画像URL3"
+      "https://upload.wikimedia.org/wikipedia/commons/3/32/Fumio_Kishida_20211005.jpg"
     ]
   }
 ]
