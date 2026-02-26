@@ -1,5 +1,8 @@
 name: update-senators
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "0 3 * * *"
