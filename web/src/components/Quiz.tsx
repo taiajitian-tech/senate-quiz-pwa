@@ -12,7 +12,7 @@ export default function Quiz() {
   const [imgTry, setImgTry] = useState(0);
 
   useEffect(() => {
-    fetch("/data/senators.json")
+    fetch(import.meta.env.BASE_URL + "data/senators.json")
       .then((res) => res.json())
       .then((data: Senator[]) => setSenators(data));
   }, []);
