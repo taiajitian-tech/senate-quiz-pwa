@@ -10,17 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+  - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-- run: ls -la web/scripts
-      - run: node web/scripts/fetchSenators.mjs
+  - uses: actions/setup-node@v4
+    with:
+      node-version: 20
 
-      - run: |
-          git config user.name github-actions
-          git config user.email actions@github.com
-          git add .
-          git commit -m "auto update senators" || echo "no changes"
-          git push
+  - run: ls -la web/scripts
+
+  - run: node web/scripts/fetchSenators.mjs
+
+  - run: |
+      git config user.name github-actions
+      git config user.email actions@github.com
+      git add .
+      git commit -m "auto update senators" || echo "no changes"
+      git push
