@@ -15,8 +15,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-- run: ls -la web/scripts
-      - run: node scripts/fetchSenators.mjs
+
+      - run: ls -la web/scripts
+
+      - run: node web/scripts/fetchSenators.mjs
 
       - run: |
           git config user.name github-actions
