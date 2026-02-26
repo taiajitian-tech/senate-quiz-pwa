@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: node web/scripts/fetchSenators.mjs
+      - run: node scripts/fetchSenators.mjs
 
       - run: |
           git config user.name github-actions
