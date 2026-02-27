@@ -1,9 +1,7 @@
-[
-  {
-    "id": 1,
-    "name": "岸田文雄",
-    "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Fumio_Kishida_20211005.jpg"
-    ]
-  }
-]
+{
+  "id": 1,
+  "name": "岸田文雄",
+  "images": [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Fumio_Kishida_20211005_%28cropped_3%29.jpg"
+  ]
+}
