@@ -6,14 +6,17 @@ import * as cheerio from "cheerio";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 参議院公式「現職参議院議員名簿」
+/**
+ * 参議院公式サイト「議員一覧（50音順）」から現職データを取得します。
+ * 取得元（公式）：https://www.sangiin.go.jp/
+ */
 const LIST_URL =
-  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/giin.htm";
+  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
 // 出力先（GitHub Pages で配信される静的JSON）
 const OUT_PATH = path.resolve(__dirname, "..", "public", "data", "senators.json");
 
-// 会派（正式表記）→ 略称
+// 会派（正式表記）→ 略称（UI表示用）
 const GROUP_ABBR = [
   [/自由民主党/, "自民"],
   [/立憲民主党/, "立憲"],
@@ -28,15 +31,6 @@ const GROUP_ABBR = [
   [/無所属/, "無所属"],
 ];
 
-function toAbsUrl(u) {
-  if (!u) return "";
-  try {
-    return new URL(u, LIST_URL).toString();
-  } catch {
-    return u;
-  }
-}
-
 function normalizeText(s) {
   return (s ?? "").replace(/\s+/g, " ").trim();
 }
@@ -48,38 +42,15 @@ function toGroupAbbr(raw) {
     if (re.test(s)) return abbr;
   }
   // 想定外の表記は短くして返す（暴れ防止）
-  return s.length > 8 ? s.slice(0, 8) : s;
+  return s.length > 12 ? s.slice(0, 12) : s;
 }
 
-// プロフィールページから顔写真URLを抽出（取れない場合は空文字）
-async function fetchProfileImage(profileUrl) {
-  if (!profileUrl) return "";
+function absUrl(u, base) {
+  if (!u) return "";
   try {
-    const res = await fetch(profileUrl, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; senate-quiz-pwa/1.0; +https://github.com/taiajitian-tech/senate-quiz-pwa)",
-      },
-    });
-    if (!res.ok) return "";
-    const html = await res.text();
-    const $ = cheerio.load(html);
-
-    // 参議院サイトのプロフィールは画像が1枚あるケースが多い想定。
-    // なるべく一般化：最初の<img>のsrcを採用（相対は絶対化）
-    const src =
-      $("img").first().attr("src") ||
-      $("img").first().attr("data-src") ||
-      "";
-    if (!src) return "";
-
-    try {
-      return new URL(src, profileUrl).toString();
-    } catch {
-      return src;
-    }
+    return new URL(u, base).toString();
   } catch {
-    return "";
+    return u;
   }
 }
 
@@ -97,62 +68,131 @@ async function mapWithConcurrency(items, limit, fn) {
   return results;
 }
 
-async function main() {
-  const res = await fetch(LIST_URL, {
+async function fetchHtml(url) {
+  const res = await fetch(url, {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (compatible; senate-quiz-pwa/1.0; +https://github.com/taiajitian-tech/senate-quiz-pwa)",
     },
+    redirect: "follow",
   });
-  if (!res.ok) {
-    throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
-  }
+  if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${res.statusText} (${url})`);
   const html = await res.text();
-  const $ = cheerio.load(html);
+  return { html, finalUrl: res.url || url };
+}
 
-  // 名簿ページの構造差分に備え、プロフィールリンク（profile/*.htm）を起点に抽出
+function extractProfileLinks(listHtml, listFinalUrl) {
+  const $ = cheerio.load(listHtml);
   const raw = [];
+
   $("a").each((_, a) => {
     const href = $(a).attr("href") || "";
-    if (!/profile\/\d+\.htm/i.test(href)) return;
+    // profile/7007006.htm のようなリンクが正。
+    if (!/\/profile\/\d+\.htm/i.test(href) && !/profile\/\d+\.htm/i.test(href)) return;
 
     const name = normalizeText($(a).text()).replace(/\s/g, "");
     if (!name) return;
 
-    const profileUrl = toAbsUrl(href);
-
-    // 行（tr）/近傍から会派らしき文字列を拾う
-    const $row = $(a).closest("tr");
-    const rowText = normalizeText($row.text());
-    const group = toGroupAbbr(rowText);
-
-    raw.push({ name, group, profileUrl });
+    const profileUrl = absUrl(href, listFinalUrl);
+    raw.push({ name, profileUrl });
   });
 
-  // 重複除去（同名優先）
+  // 同名は最初を採用（重複除去）
   const uniq = new Map();
   for (const r of raw) {
     if (!uniq.has(r.name)) uniq.set(r.name, r);
   }
-  const baseList = Array.from(uniq.values());
+  return Array.from(uniq.values());
+}
 
-  // 顔写真取得（失敗しても空のまま）
-  const withImages = await mapWithConcurrency(baseList, 5, async (r) => {
-    const img = await fetchProfileImage(r.profileUrl);
+function parseProfilePage(profileHtml, profileUrl) {
+  const $ = cheerio.load(profileHtml);
+
+  // 名前
+  const name =
+    normalizeText($("h1").first().text()).replace(/\s/g, "") ||
+    normalizeText($("title").text()).split("：")[0].replace(/\s/g, "");
+
+  // 会派（「所属会派」の右側/次要素から拾う）
+  let groupRaw = "";
+
+  // table(th/td) パターン
+  const th = $("th").filter((_, el) => normalizeText($(el).text()) === "所属会派").first();
+  if (th.length) groupRaw = normalizeText(th.next("td").text());
+
+  // dl(dt/dd) パターン
+  if (!groupRaw) {
+    const dt = $("dt").filter((_, el) => normalizeText($(el).text()) === "所属会派").first();
+    if (dt.length) groupRaw = normalizeText(dt.next("dd").text());
+  }
+
+  // テキストのみページの保険（「所属会派」行の次行）
+  if (!groupRaw) {
+    const bodyText = $("body").text();
+    const m = bodyText.match(/所属会派\s*([\s\S]{0,40})/);
+    if (m) groupRaw = normalizeText(m[1]).split(/\r?\n/)[0];
+  }
+
+  const group = toGroupAbbr(groupRaw);
+
+  // 顔写真URL
+  let imgSrc =
+    $("img[alt*='顔写真']").first().attr("src") ||
+    $("img[alt*='議員の顔写真']").first().attr("src") ||
+    "";
+
+  if (!imgSrc) {
+    // なるべく「本文」側の画像に寄せる（ヘッダーロゴ回避）
+    imgSrc = $("#contents img").first().attr("src") || $("#main img").first().attr("src") || "";
+  }
+  if (!imgSrc) {
+    // 最終手段
+    imgSrc = $("img").last().attr("src") || $("img").first().attr("src") || "";
+  }
+
+  const img = imgSrc ? absUrl(imgSrc, profileUrl) : "";
+
+  return { name, group, img };
+}
+
+async function fetchAndParseProfile(profileUrl) {
+  try {
+    const { html } = await fetchHtml(profileUrl);
+    return parseProfilePage(html, profileUrl);
+  } catch (e) {
+    console.error(`[profile] failed: ${profileUrl}`);
+    console.error(e);
+    return { name: "", group: "", img: "" };
+  }
+}
+
+async function main() {
+  const { html: listHtml, finalUrl: listFinalUrl } = await fetchHtml(LIST_URL);
+  const baseList = extractProfileLinks(listHtml, listFinalUrl);
+
+  if (baseList.length < 50) {
+    console.warn(`Warning: small list size (${baseList.length}). List page structure may have changed.`);
+  }
+
+  const profiles = await mapWithConcurrency(baseList, 6, async (r) => {
+    const p = await fetchAndParseProfile(r.profileUrl);
     return {
-      ...r,
-      img,
+      profileUrl: r.profileUrl,
+      name: p.name || r.name,
+      group: p.group || "",
+      img: p.img || "",
     };
   });
 
-  const out = withImages
-    .map((r, idx) => ({
+  const out = profiles
+    .filter((p) => p.name)
+    .map((p, idx) => ({
       id: idx + 1,
-      name: r.name,
-      group: r.group ?? "",
-      images: r.img ? [r.img] : [],
-    }))
-    .filter((x) => x.name.length > 0);
+      name: p.name,
+      group: p.group,
+      images: p.img ? [p.img] : [],
+      source: p.profileUrl,
+    }));
 
   await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
   await fs.writeFile(OUT_PATH, JSON.stringify(out, null, 2), "utf-8");
