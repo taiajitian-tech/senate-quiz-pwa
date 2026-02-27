@@ -2,7 +2,6 @@ name: update-senators
 
 on:
   schedule:
-    # 毎日 03:00 (UTC) = 日本時間 12:00
     - cron: "0 3 * * *"
   workflow_dispatch:
 
@@ -15,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
