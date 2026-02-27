@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const LIST_URL =
-  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/index.htm";
+  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/ichiran.htm";
 
 const OUT_PATH = path.resolve(
   __dirname,
