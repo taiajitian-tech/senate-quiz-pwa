@@ -1,16 +1,17 @@
 name: update-senators
 
-permissions:
-  contents: write
-
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 3 * * *"
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +25,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: web
-        run: npm ci
+        run: npm install
 
       - name: Generate senators data
         working-directory: web
@@ -33,9 +34,10 @@ jobs:
       - name: Commit and push if changed
         run: |
           git config user.name github-actions
-          git config user.email actions@github.com
-          git pull --rebase
-          git add web/public/senators.json
-          git diff --cached --quiet && echo "no changes" && exit 0
-          git commit -m "auto update senators"
-          git push
+          git config user.email github-actions@users.noreply.github.com
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add web/public/data/senators.json
+            git commit -m "chore: update senators.json"
+            git push
+          fi
