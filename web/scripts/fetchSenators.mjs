@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // 参議院公式「現職参議院議員名簿」
 const LIST_URL =
-  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/giin.htm";
+  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
 // 出力先（GitHub Pages で配信される静的JSON）
 const OUT_PATH = path.resolve(__dirname, "..", "public", "data", "senators.json");
