@@ -111,9 +111,22 @@ export default function Quiz() {
     return senatorsById.get(reviewCurrentId) ?? null;
   }, [mode, normalOrder, normalPos, reviewCurrentId, senatorsById, senators.length]);
 
-  // 選択肢（4択）
+  // 選択肢（最大4択）
   const choices = useMemo(() => {
-    if (!current || senators.length < 4) return [];
+    if (!current || senators.length === 0) return [];
+
+    // データが4件未満でもUIが空にならないように、存在する分だけ表示する
+    const uniqueNames = Array.from(new Set(senators.map((s) => s.name))).filter(Boolean);
+
+    if (uniqueNames.length <= 4) {
+      // current.name が含まれていないケースにも念のため対応
+      const base = uniqueNames.includes(current.name)
+        ? uniqueNames
+        : [current.name, ...uniqueNames];
+
+      return shuffle(base).slice(0, Math.min(4, base.length));
+    }
+
     const others = senators.filter((s) => s.id !== current.id);
     const wrong = pickN(others, 3).map((s) => s.name);
     return shuffle([current.name, ...wrong]);
@@ -365,6 +378,12 @@ export default function Quiz() {
 
         <div style={styles.group}>{current.group ?? ""}</div>
 
+        {senators.length > 0 && senators.length < 4 ? (
+          <div style={styles.notice}>
+            データが{senators.length}件のため、選択肢が{Math.min(4, senators.length)}件表示されています。
+          </div>
+        ) : null}
+
         <div style={styles.choices}>
           {choices.map((name) => {
             const isPicked = selected === name;
@@ -516,6 +535,13 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 700,
     color: "#555",
     marginTop: "2px",
+  },
+  notice: {
+    width: "100%",
+    fontSize: "12px",
+    color: "#666",
+    textAlign: "center",
+    padding: "4px 0",
   },
   choices: {
     width: "100%",
