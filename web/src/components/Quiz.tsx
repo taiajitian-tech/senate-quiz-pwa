@@ -435,12 +435,12 @@ export default function Quiz() {
 
             return (
               <button
-                key={name}
+                key={label}
                 type="button"
                 style={{ ...styles.choiceBtn, border, background }}
                 onClick={() => onSelect(id)}
               >
-                {name}
+                {label}
               </button>
             );
           })}
