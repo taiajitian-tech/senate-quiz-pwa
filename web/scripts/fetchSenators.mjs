@@ -45,36 +45,50 @@ function stripTags(s) {
 */
 function extractList(html, baseUrl) {
   const items = [];
-  // <a href="...">氏名</a> の後に、読み方・会派が続くテーブル構造を前提に拾う
-  const rowRe =
-    /<tr[^>]*>\s*<td[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>\s*<\/td>\s*<td[^>]*>\s*([^<]*)<\/td>\s*<td[^>]*>\s*([^<]*)<\/td>/g;
 
-  let m;
-  while ((m = rowRe.exec(html)) !== null) {
-    const href = m[1]?.trim();
-    const nameRaw = stripTags(m[2] || "");
-    const groupRaw = stripTags(m[4] || ""); // 3列目=会派
+  // 一覧ページ内のテーブルを全部拾い、profileリンクを含むテーブルを対象にする
+  const tables = html.match(/<table[\s\S]*?<\/table>/gi) || [];
+  const targetTable = tables.find((t) => /\/profile\/\d+\.htm/.test(t)) || html;
 
-    if (!href || !nameRaw) continue;
-
-    // 氏名の末尾に「：参議院」等が紛れた場合の保険
-    const name = nameRaw.replace(/：\s*参議院\s*$/g, "").trim();
-    const group = groupRaw.replace(/：\s*参議院\s*$/g, "").trim();
-
-    // 例: https://www.sangiin.go.jp/japanese/joho1/kousei/giin/profile/....
-    const profileUrl = new URL(href, baseUrl).href;
-
-    items.push({ name, group, profileUrl });
+  // ヘッダ行（th）から「会派」列の位置を決める
+  let groupIdx = -1;
+  const headerTr = targetTable.match(/<tr[^>]*>[\s\S]*?<th[\s\S]*?<\/tr>/i);
+  if (headerTr) {
+    const ths = [...headerTr[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)].map((m) =>
+      stripTags(m[1] || "")
+    );
+    groupIdx = ths.findIndex((t) => t.includes("会派"));
   }
 
-  // 取りこぼしがある場合に備え、別パターン（表構造が崩れた時）も拾う
-  if (items.length === 0) {
-    const aRe = /<a[^>]*href="([^"]+\/profile\/[^"]+\.htm)"[^>]*>([^<]+)<\/a>/g;
-    while ((m = aRe.exec(html)) !== null) {
-      const profileUrl = new URL(m[1], baseUrl).href;
-      const name = stripTags(m[2] || "").replace(/：\s*参議院\s*$/g, "").trim();
-      if (name) items.push({ name, group: "", profileUrl });
+  // 行ごとに td を取り出す
+  const trs = targetTable.match(/<tr[^>]*>[\s\S]*?<\/tr>/gi) || [];
+  for (const tr of trs) {
+    // data行のみ（tdがない行はスキップ）
+    if (!/<td/i.test(tr)) continue;
+
+    const tds = [...tr.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map((m) => m[1] || "");
+    if (tds.length === 0) continue;
+
+    // 氏名とプロフィールURL（profileリンク）を行から取得
+    const a = tr.match(/<a[^>]*href="([^"]+\/profile\/[^"]+\.htm)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!a) continue;
+
+    const profileUrl = new URL(a[1], baseUrl).href;
+    const nameRaw = stripTags(a[2] || "");
+    const name = nameRaw.replace(/：\s*参議院\s*$/g, "").trim();
+
+    // 会派列（ヘッダから見つからない場合は最後の列を保険で見る）
+    let groupRaw = "";
+    if (groupIdx >= 0 && groupIdx < tds.length) {
+      groupRaw = stripTags(tds[groupIdx] || "");
+    } else if (tds.length >= 1) {
+      // 保険：末尾列に会派が入っているケースが多い
+      groupRaw = stripTags(tds[tds.length - 1] || "");
     }
+    const group = groupRaw.replace(/：\s*参議院\s*$/g, "").trim();
+
+    if (!name) continue;
+    items.push({ name, group, profileUrl });
   }
 
   // 重複除去（profileUrl優先）
