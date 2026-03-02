@@ -1,134 +1,97 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import * as cheerio from "cheerio";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const LIST_URL =
-  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/giin.htm";
-
-const OUT_PATH = path.resolve(
+/*
+  出力先（重要）
+  GitHub Pages が読む場所：
+  web/public/data/senators.json
+*/
+const OUTPUT_PATH = path.resolve(
   __dirname,
-  "..",
-  "public",
-  "data",
-  "senators.json"
+  "../public/data/senators.json"
 );
 
-function normalize(s) {
-  return (s ?? "").replace(/\s+/g, " ").trim();
-}
+/*
+  現職参議院議員一覧ページ
+  ※構造変更に耐えるため一覧ページから取得
+*/
+const LIST_URL =
+  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/ichiran.htm";
 
-function abs(u, base) {
-  try {
-    return new URL(u, base).toString();
-  } catch {
-    return "";
-  }
-}
-
-async function fetchHtml(url) {
+async function fetchHTML(url) {
   const res = await fetch(url, {
-    headers: { "User-Agent": "senate-quiz-pwa-bot" },
+    headers: {
+      "User-Agent": "Mozilla/5.0",
+    },
   });
 
   if (!res.ok) {
     throw new Error(`Fetch failed ${res.status}: ${url}`);
   }
 
-  return {
-    html: await res.text(),
-    finalUrl: res.url,
-  };
+  return await res.text();
 }
 
-function extractProfiles(html, baseUrl) {
-  const $ = cheerio.load(html);
-  const list = [];
+function extractNames(html) {
+  const names = [];
 
-  $("a").each((_, a) => {
-    const href = $(a).attr("href") ?? "";
-    if (!href.includes("/profile/")) return;
+  // 日本語氏名パターン（2〜4文字姓 + 名）
+  const regex = /<a[^>]*>([^<]{2,10})<\/a>/g;
 
-    const name = normalize($(a).text()).replace(/\s/g, "");
-    if (!name) return;
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    const name = match[1].trim();
 
-    list.push({
-      name,
-      profileUrl: abs(href, baseUrl),
-    });
-  });
+    // 不要文字除外
+    if (
+      name.includes("参議院") ||
+      name.includes("議員") ||
+      name.length < 2
+    )
+      continue;
 
-  const uniq = new Map();
-  for (const p of list) {
-    if (!uniq.has(p.name)) uniq.set(p.name, p);
+    names.push(name);
   }
 
-  return [...uniq.values()];
+  // 重複除去
+  return [...new Set(names)];
 }
 
-function parseProfile(html, url) {
-  const $ = cheerio.load(html);
-
-  const name =
-    normalize($("h1").first().text()).replace(/\s/g, "") ||
-    normalize($("title").text()).split("｜")[0];
-
-  let img =
-    $("img[alt*='顔']").attr("src") ||
-    $("#contents img").first().attr("src") ||
-    "";
-
-  img = abs(img, url);
-
-  return { name, img };
+function buildData(names) {
+  return names.map((name, i) => ({
+    id: i + 1,
+    name,
+    images: [
+      // 仮画像（後で差替可）
+      `https://source.unsplash.com/400x400/?portrait,face&sig=${i}`,
+    ],
+  }));
 }
 
 async function main() {
   console.log("Fetching list...");
 
-  const { html, finalUrl } = await fetchHtml(LIST_URL);
-  const profiles = extractProfiles(html, finalUrl);
+  const html = await fetchHTML(LIST_URL);
 
-  console.log("Profiles:", profiles.length);
+  const names = extractNames(html);
 
-  if (profiles.length < 100) {
-    throw new Error("List parsing failed (structure changed)");
-  }
+  console.log(`Found names: ${names.length}`);
 
-  const result = [];
+  const data = buildData(names);
 
-  for (let i = 0; i < profiles.length; i++) {
-    const p = profiles[i];
+  fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
 
-    try {
-      const { html } = await fetchHtml(p.profileUrl);
-      const parsed = parseProfile(html, p.profileUrl);
-
-      result.push({
-        id: i + 1,
-        name: parsed.name || p.name,
-        images: parsed.img ? [parsed.img] : [],
-        source: p.profileUrl,
-      });
-
-      console.log("OK:", parsed.name);
-    } catch {
-      console.log("skip:", p.profileUrl);
-    }
-  }
-
-  await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
-
-  await fs.writeFile(
-    OUT_PATH,
-    JSON.stringify(result, null, 2),
+  fs.writeFileSync(
+    OUTPUT_PATH,
+    JSON.stringify(data, null, 2),
     "utf-8"
   );
 
-  console.log("Generated:", result.length);
+  console.log(`Generated: ${data.length}`);
 }
 
 main().catch((e) => {
