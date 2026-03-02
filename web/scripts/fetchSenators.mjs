@@ -6,26 +6,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /*
-  出力先（重要）
-  GitHub Pages が読む場所：
+  出力先（GitHub Pages が読む場所）
   web/public/data/senators.json
 */
-const OUTPUT_PATH = path.resolve(
-  __dirname,
-  "../public/data/senators.json"
-);
+const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
 
 /*
-  現職参議院議員一覧ページ
-  ※構造変更に耐えるため一覧ページから取得
+  現職参議院議員一覧（50音順）
+  ※ /current/ は毎回「第xxx回国会」(例: /221/) にリダイレクトされるため、
+     response.url を使って実体URLへ追従する。
 */
-const LIST_URL =
-  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/ichiran.htm";
+const LIST_URL = "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
 async function fetchHTML(url) {
   const res = await fetch(url, {
+    redirect: "follow",
     headers: {
       "User-Agent": "Mozilla/5.0",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },
   });
 
@@ -33,68 +31,126 @@ async function fetchHTML(url) {
     throw new Error(`Fetch failed ${res.status}: ${url}`);
   }
 
-  return await res.text();
+  const html = await res.text();
+  return { html, finalUrl: res.url || url };
 }
 
-function extractNames(html) {
-  const names = [];
+function stripTags(s) {
+  return s.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+}
 
-  // 日本語氏名パターン（2〜4文字姓 + 名）
-  const regex = /<a[^>]*>([^<]{2,10})<\/a>/g;
+/*
+  一覧ページの表から、(氏名, 会派, プロフィールURL) を抽出する。
+  参照：一覧の列見出しに「会派」があり、各行に略称が入っている。 
+*/
+function extractList(html, baseUrl) {
+  const items = [];
+  // <a href="...">氏名</a> の後に、読み方・会派が続くテーブル構造を前提に拾う
+  const rowRe =
+    /<tr[^>]*>\s*<td[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>\s*<\/td>\s*<td[^>]*>\s*([^<]*)<\/td>\s*<td[^>]*>\s*([^<]*)<\/td>/g;
 
-  let match;
-  while ((match = regex.exec(html)) !== null) {
-    const name = match[1].trim();
+  let m;
+  while ((m = rowRe.exec(html)) !== null) {
+    const href = m[1]?.trim();
+    const nameRaw = stripTags(m[2] || "");
+    const groupRaw = stripTags(m[4] || ""); // 3列目=会派
 
-    // 不要文字除外
-    if (
-      name.includes("参議院") ||
-      name.includes("議員") ||
-      name.length < 2
-    )
-      continue;
+    if (!href || !nameRaw) continue;
 
-    names.push(name);
+    // 氏名の末尾に「：参議院」等が紛れた場合の保険
+    const name = nameRaw.replace(/：\s*参議院\s*$/g, "").trim();
+    const group = groupRaw.replace(/：\s*参議院\s*$/g, "").trim();
+
+    // 例: https://www.sangiin.go.jp/japanese/joho1/kousei/giin/profile/....
+    const profileUrl = new URL(href, baseUrl).href;
+
+    items.push({ name, group, profileUrl });
   }
 
-  // 重複除去
-  return [...new Set(names)];
+  // 取りこぼしがある場合に備え、別パターン（表構造が崩れた時）も拾う
+  if (items.length === 0) {
+    const aRe = /<a[^>]*href="([^"]+\/profile\/[^"]+\.htm)"[^>]*>([^<]+)<\/a>/g;
+    while ((m = aRe.exec(html)) !== null) {
+      const profileUrl = new URL(m[1], baseUrl).href;
+      const name = stripTags(m[2] || "").replace(/：\s*参議院\s*$/g, "").trim();
+      if (name) items.push({ name, group: "", profileUrl });
+    }
+  }
+
+  // 重複除去（profileUrl優先）
+  const seen = new Set();
+  return items.filter((x) => {
+    const key = x.profileUrl || x.name;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
-function buildData(names) {
-  return names.map((name, i) => ({
-    id: i + 1,
-    name,
-    images: [
-      // 仮画像（後で差替可）
-      `https://source.unsplash.com/400x400/?portrait,face&sig=${i}`,
-    ],
-  }));
+function extractPhotoUrl(profileHtml, profileUrl) {
+  // 代表的なパターン（絶対・相対両対応）
+  const patterns = [
+    /https:\/\/www\.sangiin\.go\.jp\/japanese\/joho1\/kousei\/giin\/photo\/[^"']+\.jpg/i,
+    /\/japanese\/joho1\/kousei\/giin\/photo\/[^"']+\.jpg/i,
+    /\.\.\/photo\/[^"']+\.jpg/i,
+  ];
+
+  for (const re of patterns) {
+    const m = profileHtml.match(re);
+    if (m && m[0]) {
+      return new URL(m[0], profileUrl).href;
+    }
+  }
+  return null;
+}
+
+async function buildSenators(listItems) {
+  const out = [];
+  for (let i = 0; i < listItems.length; i++) {
+    const it = listItems[i];
+    try {
+      const { html: pHtml } = await fetchHTML(it.profileUrl);
+      const photo = extractPhotoUrl(pHtml, it.profileUrl);
+      out.push({
+        id: i + 1,
+        name: it.name,
+        images: photo ? [photo] : [],
+        group: it.group || "",
+        source: it.profileUrl,
+      });
+    } catch (e) {
+      // 1人落ちても全体停止しない（更新継続）
+      out.push({
+        id: i + 1,
+        name: it.name,
+        images: [],
+        group: it.group || "",
+        source: it.profileUrl,
+        error: String(e?.message || e),
+      });
+    }
+  }
+  return out;
 }
 
 async function main() {
   console.log("Fetching list...");
+  const { html, finalUrl } = await fetchHTML(LIST_URL);
 
-  const html = await fetchHTML(LIST_URL);
+  console.log("List resolved to:", finalUrl);
 
-  const names = extractNames(html);
+  const listItems = extractList(html, finalUrl);
+  console.log(`Found rows: ${listItems.length}`);
 
-  console.log(`Found names: ${names.length}`);
-
-  const data = buildData(names);
+  const data = await buildSenators(listItems);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2), "utf-8");
 
-  fs.writeFileSync(
-    OUTPUT_PATH,
-    JSON.stringify(data, null, 2),
-    "utf-8"
-  );
-
-  console.log(`Generated: ${data.length}`);
+  console.log("Wrote:", OUTPUT_PATH);
 }
 
-main().catch((e) => {
-  console.error(e);
+main().catch((err) => {
+  console.error(err);
   process.exit(1);
 });

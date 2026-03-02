@@ -58,7 +58,7 @@ export default function Quiz() {
   const [reviewCurrentId, setReviewCurrentId] = useState<number | null>(null);
 
   const [imgError, setImgError] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<number | null>(null);
 
   // GitHub Pages 配下対応（BASE_URL）
   const baseUrl = import.meta.env.BASE_URL ?? "/";
@@ -122,30 +122,25 @@ export default function Quiz() {
     return senatorsById.get(reviewCurrentId) ?? null;
   }, [mode, normalOrder, normalPos, reviewCurrentId, senatorsById, senators.length]);
 
-  // 選択肢（最大4択）
+  // 選択肢（最大4択）: id で扱う（同姓同名対策）
   const choices = useMemo(() => {
     if (!current || senators.length === 0) return [];
 
-    // データが4件未満でもUIが空にならないように、存在する分だけ表示する
-    const uniqueNames = Array.from(new Set(senators.map((s) => s.name))).filter(Boolean);
+    const uniqueIds = Array.from(new Set(senators.map((s) => s.id)));
 
-    if (uniqueNames.length <= 4) {
-      // current.name が含まれていないケースにも念のため対応
-      const base = uniqueNames.includes(current.name)
-        ? uniqueNames
-        : [current.name, ...uniqueNames];
-
+    if (uniqueIds.length <= 4) {
+      const base = uniqueIds.includes(current.id) ? uniqueIds : [current.id, ...uniqueIds];
       return shuffle(base).slice(0, Math.min(4, base.length));
     }
 
     const others = senators.filter((s) => s.id !== current.id);
-    const wrong = pickN(others, 3).map((s) => s.name);
-    return shuffle([current.name, ...wrong]);
+    const wrong = pickN(others, 3).map((s) => s.id);
+    return shuffle([current.id, ...wrong]);
   }, [current, senators]);
 
   const imgUrl = current?.images?.[0] ?? "";
   const isAnswered = selected != null;
-  const isCorrect = isAnswered && current ? selected === current.name : false;
+  const isCorrect = isAnswered && current ? selected === current.id : false;
 
   // normalの進捗
   const normalTotal = Math.min(20, senators.length);
@@ -193,9 +188,9 @@ export default function Quiz() {
     startNormal20();
   };
 
-  const onSelect = (name: string) => {
+  const onSelect = (id: number) => {
     if (selected != null) return;
-    setSelected(name);
+    setSelected(id);
   };
 
   const onNext = () => {
@@ -203,7 +198,7 @@ export default function Quiz() {
 
     // 間違い記録（normal/review共通）
     if (current) {
-      const wrongNow = selected !== current.name;
+      const wrongNow = selected !== current.id;
       if (wrongNow) {
         const nextIds = new Set<number>(loadWrongIds());
         nextIds.add(current.id);
@@ -415,18 +410,21 @@ export default function Quiz() {
         ) : null}
 
         <div style={styles.choices}>
-          {choices.map((name) => {
-            const isPicked = selected === name;
-            const correctName = current.name;
+          {choices.map((id) => {
+            const s = senatorsById.get(id);
+            if (!s) return null;
+            const label = s.group ? `${s.name}（${s.group}）` : s.name;
+            const isPicked = selected === id;
+            const correctId = current.id;
 
             let border = "1px solid #999";
             let background = "#fff";
 
             if (selected != null) {
-              if (name === correctName) {
+              if (id === correctId) {
                 border = "2px solid #1a7f37";
                 background = "#eafff0";
-              } else if (isPicked && name !== correctName) {
+              } else if (isPicked && id !== correctId) {
                 border = "2px solid #cf222e";
                 background = "#fff0f0";
               }
@@ -440,7 +438,7 @@ export default function Quiz() {
                 key={name}
                 type="button"
                 style={{ ...styles.choiceBtn, border, background }}
-                onClick={() => onSelect(name)}
+                onClick={() => onSelect(id)}
               >
                 {name}
               </button>
