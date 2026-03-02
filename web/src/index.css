@@ -1,0 +1,45 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #213547;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+
+  /* 画面中央寄せ（左右ズレをここで止める） */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 端末幅で変に寄らないように */
+  width: 100%;
+  min-height: 100vh;
+
+  /* 背景 */
+  background: #ffffff;
+}
+
+/* Reactの描画領域を中央固定にする */
+#root {
+  width: 100%;
+  max-width: 520px; /* 好みで 420〜600 の範囲で調整可 */
+  padding: 24px;
+}
