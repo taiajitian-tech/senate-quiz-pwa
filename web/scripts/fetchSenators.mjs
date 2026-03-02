@@ -118,10 +118,44 @@ function extractName(profileHtml) {
 }
 
 function extractGroup(profileHtml) {
-  const m = profileHtml.match(
+  // 1) 典型：<th>会派</th><td>...</td>
+  const m1 = profileHtml.match(
+    /<th[^>]*>\s*会派\s*<\/th>\s*<td[^>]*>([\s\S]*?)<\/td>/i
+  );
+  if (m1?.[1]) {
+    const v = stripTags(m1[1]);
+    if (looksLikeGroup(v)) return v;
+  }
+
+  // 2) 典型：<dt>会派</dt><dd>...</dd>
+  const m2 = profileHtml.match(
+    /<dt[^>]*>\s*会派\s*<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/i
+  );
+  if (m2?.[1]) {
+    const v = stripTags(m2[1]);
+    if (looksLikeGroup(v)) return v;
+  }
+
+  // 3) 最後の保険：ただし値が「会派っぽい」ものだけ通す
+  const m3 = profileHtml.match(
     /会派[\s\S]{0,80}?(?:<\/th>\s*<td[^>]*>|：|:\s*|<\/[^>]+>\s*)([\s\S]{1,160}?)(?:<\/td>|<br|<\/tr>|<\/p>|<\/li>|\n|\r)/i
   );
-  return m ? stripTags(m[1]) : "";
+  const v3 = m3?.[1] ? stripTags(m3[1]) : "";
+  return looksLikeGroup(v3) ? v3 : "";
+}
+
+// 会派名らしい文字列だけ採用（県名・短すぎる文字列を弾く）
+function looksLikeGroup(v) {
+  if (!v) return false;
+
+  // 県名・選挙区っぽい短い文字（岐阜/石川 など）を弾く
+  if (v.length <= 4 && !/[党会]/.test(v)) return false;
+
+  // 会派にありがちな語
+  if (/(党|無所属|会|クラブ|連合|公明|立憲|自民|維新|国民|共産|れいわ|社民)/.test(v)) return true;
+
+  // 上に引っかからない場合は保守的に不採用
+  return false;
 }
 
 function extractPhoto(profileHtml, profileUrl) {
