@@ -1,170 +1,208 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/*
-  出力先（GitHub Pages が読む場所）
-  web/public/data/senators.json
-*/
+// 出力先（GitHub Pages が読む場所）
 const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
 
-/*
-  現職参議院議員一覧（50音順）
-  ※ /current/ は毎回「第xxx回国会」(例: /221/) にリダイレクトされるため、
-     response.url を使って実体URLへ追従する。
-*/
-const LIST_URL = "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
+// 固定入口（実体URL番号は変動するため current を使用）
+const ENTRY_URL =
+  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
-async function fetchHTML(url) {
+const UA =
+  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122 Safari/537.36";
+
+async function fetchText(url) {
   const res = await fetch(url, {
     redirect: "follow",
     headers: {
-      "User-Agent": "Mozilla/5.0",
-      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "User-Agent": UA,
+      Accept: "text/html,application/xhtml+xml",
     },
   });
-
-  if (!res.ok) {
-    throw new Error(`Fetch failed ${res.status}: ${url}`);
-  }
-
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   const html = await res.text();
   return { html, finalUrl: res.url || url };
 }
 
+function absUrl(base, href) {
+  try {
+    return new URL(href, base).toString();
+  } catch {
+    return null;
+  }
+}
+
 function stripTags(s) {
-  return s.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+  return s
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<\/p>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-/*
-  一覧ページの表から、(氏名, 会派, プロフィールURL) を抽出する。
-  参照：一覧の列見出しに「会派」があり、各行に略称が入っている。 
-*/
-function extractList(html, baseUrl) {
-  const items = [];
+// current/giin.htm が「中継HTML」を返す場合に、HTML内から実体URLを抽出して追従する
+function extractRealListUrl(entryHtml, entryUrl) {
+  // 1) 直書きパス（相対/絶対）
+  const m1 =
+    entryHtml.match(/https?:\/\/www\.sangiin\.go\.jp\/japanese\/joho1\/kousei\/giin\/\d+\/giin\.htm/i) ||
+    entryHtml.match(/\/japanese\/joho1\/kousei\/giin\/\d+\/giin\.htm/i) ||
+    entryHtml.match(/\/kousei\/giin\/\d+\/giin\.htm/i) ||
+    entryHtml.match(/giin\/\d+\/giin\.htm/i);
 
-  // 一覧ページ内のテーブルを全部拾い、profileリンクを含むテーブルを対象にする
-  const tables = html.match(/<table[\s\S]*?<\/table>/gi) || [];
-  const targetTable = tables.find((t) => /\/profile\/\d+\.htm/.test(t)) || html;
+  if (m1?.[0]) return absUrl(entryUrl, m1[0]);
 
-  // ヘッダ行（th）から「会派」列の位置を決める
-  let groupIdx = -1;
-  const headerTr = targetTable.match(/<tr[^>]*>[\s\S]*?<th[\s\S]*?<\/tr>/i);
-  if (headerTr) {
-    const ths = [...headerTr[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)].map((m) =>
-      stripTags(m[1] || "")
-    );
-    groupIdx = ths.findIndex((t) => t.includes("会派"));
-  }
+  // 2) meta refresh: content="0;URL=..."
+  const m2 = entryHtml.match(/http-equiv\s*=\s*["']refresh["'][^>]*content\s*=\s*["'][^"']*url=([^"']+)["']/i);
+  if (m2?.[1]) return absUrl(entryUrl, m2[1]);
 
-  // 行ごとに td を取り出す
-  const trs = targetTable.match(/<tr[^>]*>[\s\S]*?<\/tr>/gi) || [];
-  for (const tr of trs) {
-    // data行のみ（tdがない行はスキップ）
-    if (!/<td/i.test(tr)) continue;
+  // 3) JS: location.href='...'
+  const m3 = entryHtml.match(/location(?:\.href)?\s*=\s*["']([^"']+giin\/\d+\/giin\.htm[^"']*)["']/i);
+  if (m3?.[1]) return absUrl(entryUrl, m3[1]);
 
-    const tds = [...tr.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map((m) => m[1] || "");
-    if (tds.length === 0) continue;
-
-    // 氏名とプロフィールURL（profileリンク）を行から取得
-    const a = tr.match(/<a[^>]*href="([^"]+\/profile\/[^"]+\.htm)"[^>]*>([\s\S]*?)<\/a>/i);
-    if (!a) continue;
-
-    const profileUrl = new URL(a[1], baseUrl).href;
-    const nameRaw = stripTags(a[2] || "");
-    const name = nameRaw.replace(/：\s*参議院\s*$/g, "").trim();
-
-    // 会派列（ヘッダから見つからない場合は最後の列を保険で見る）
-    let groupRaw = "";
-    if (groupIdx >= 0 && groupIdx < tds.length) {
-      groupRaw = stripTags(tds[groupIdx] || "");
-    } else if (tds.length >= 1) {
-      // 保険：末尾列に会派が入っているケースが多い
-      groupRaw = stripTags(tds[tds.length - 1] || "");
-    }
-    const group = groupRaw.replace(/：\s*参議院\s*$/g, "").trim();
-
-    if (!name) continue;
-    items.push({ name, group, profileUrl });
-  }
-
-  // 重複除去（profileUrl優先）
-  const seen = new Set();
-  return items.filter((x) => {
-    const key = x.profileUrl || x.name;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
-
-function extractPhotoUrl(profileHtml, profileUrl) {
-  // 代表的なパターン（絶対・相対両対応）
-  const patterns = [
-    /https:\/\/www\.sangiin\.go\.jp\/japanese\/joho1\/kousei\/giin\/photo\/[^"']+\.jpg/i,
-    /\/japanese\/joho1\/kousei\/giin\/photo\/[^"']+\.jpg/i,
-    /\.\.\/photo\/[^"']+\.jpg/i,
-  ];
-
-  for (const re of patterns) {
-    const m = profileHtml.match(re);
-    if (m && m[0]) {
-      return new URL(m[0], profileUrl).href;
-    }
-  }
   return null;
 }
 
-async function buildSenators(listItems) {
-  const out = [];
-  for (let i = 0; i < listItems.length; i++) {
-    const it = listItems[i];
-    try {
-      const { html: pHtml } = await fetchHTML(it.profileUrl);
-      const photo = extractPhotoUrl(pHtml, it.profileUrl);
-      out.push({
-        id: i + 1,
-        name: it.name,
-        images: photo ? [photo] : [],
-        group: it.group || "",
-        source: it.profileUrl,
-      });
-    } catch (e) {
-      // 1人落ちても全体停止しない（更新継続）
-      out.push({
-        id: i + 1,
-        name: it.name,
-        images: [],
-        group: it.group || "",
-        source: it.profileUrl,
-        error: String(e?.message || e),
-      });
-    }
+// 一覧HTMLから profile リンク（/profile/xxxx.htm）だけ収集（table構造には依存しない）
+function extractProfileLinks(listHtml, baseUrl) {
+  const links = new Set();
+
+  const re = /href\s*=\s*["']([^"']*profile\/\d+\.htm[^"']*)["']/gi;
+
+  let m;
+  while ((m = re.exec(listHtml)) !== null) {
+    const href = m[1];
+    const u = absUrl(baseUrl, href);
+    if (!u) continue;
+    if (!u.startsWith("https://www.sangiin.go.jp/")) continue;
+    links.add(u.replace(/\?.*$/, ""));
   }
-  return out;
+  return Array.from(links);
+}
+
+function extractIdFromProfileUrl(profileUrl) {
+  const m = profileUrl.match(/\/profile\/(\d+)\.htm$/);
+  return m ? Number(m[1]) : NaN;
+}
+
+function extractName(profileHtml) {
+  const h1 = profileHtml.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  const name = h1 ? stripTags(h1[1]) : "";
+  return name.replace(/^参議院議員\s*/g, "").trim();
+}
+
+function extractGroup(profileHtml) {
+  const m = profileHtml.match(
+    /会派[\s\S]{0,80}?(?:<\/th>\s*<td[^>]*>|：|:\s*|<\/[^>]+>\s*)([\s\S]{1,160}?)(?:<\/td>|<br|<\/tr>|<\/p>|<\/li>|\n|\r)/i
+  );
+  return m ? stripTags(m[1]) : "";
+}
+
+function extractPhoto(profileHtml, profileUrl) {
+  // まず /photo/ を優先的に拾う
+  const p1 = profileHtml.match(/\/japanese\/joho1\/kousei\/giin\/photo\/[^"']+\.jpg/i);
+  if (p1?.[0]) return absUrl(profileUrl, p1[0]);
+
+  // 次にimg src から jpg を拾う
+  const imgs = [...profileHtml.matchAll(/<img[^>]+src\s*=\s*["']([^"']+)["'][^>]*>/gi)].map(
+    (x) => x[1]
+  );
+  for (const src of imgs) {
+    if (!src) continue;
+    if (!/\.jpe?g(\?|$)/i.test(src)) continue;
+    const u = absUrl(profileUrl, src);
+    if (!u) continue;
+    if (!u.startsWith("https://www.sangiin.go.jp/")) continue;
+    return u.replace(/\?.*$/, "");
+  }
+
+  return "";
 }
 
 async function main() {
-  console.log("Fetching list...");
-  const { html, finalUrl } = await fetchHTML(LIST_URL);
+  console.log("ENTRY_URL:", ENTRY_URL);
 
-  console.log("List resolved to:", finalUrl);
+  const { html: entryHtml, finalUrl: entryFinal } = await fetchText(ENTRY_URL);
 
-  const listItems = extractList(html, finalUrl);
-  console.log(`Found rows: ${listItems.length}`);
+  const realListUrl = extractRealListUrl(entryHtml, entryFinal || ENTRY_URL);
+  const listUrl = realListUrl || (entryFinal || ENTRY_URL);
 
-  const data = await buildSenators(listItems);
+  if (realListUrl) console.log("FOLLOW_REAL_LIST_URL:", realListUrl);
+
+  const { html: listHtml, finalUrl: listFinal } = realListUrl
+    ? await fetchText(realListUrl)
+    : { html: entryHtml, finalUrl: listUrl };
+
+  console.log("LIST_URL_FINAL:", listFinal || listUrl);
+  console.log("LIST_HTML_LENGTH:", listHtml.length);
+
+  const profileLinks = extractProfileLinks(listHtml, listFinal || listUrl);
+  console.log("profile links extracted:", profileLinks.length);
+
+  if (profileLinks.length === 0) {
+    throw new Error("Error: profile links are empty (0).");
+  }
+
+  // 並列制限
+  const CONCURRENCY = 6;
+  let idx = 0;
+  const out = [];
+  const seenIds = new Set();
+
+  async function worker() {
+    while (idx < profileLinks.length) {
+      const my = idx++;
+      const url = profileLinks[my];
+
+      try {
+        const { html: pHtml } = await fetchText(url);
+
+        const id = extractIdFromProfileUrl(url);
+        const name = extractName(pHtml);
+        const group = extractGroup(pHtml);
+        const photo = extractPhoto(pHtml, url);
+
+        if (!Number.isFinite(id) || !name) {
+          console.log("SKIP:", url, "(missing id/name)");
+          continue;
+        }
+        if (seenIds.has(id)) continue;
+        seenIds.add(id);
+
+        out.push({
+          id,
+          name,
+          group: group || "",
+          images: photo ? [photo] : [],
+        });
+
+        console.log("OK:", id, name, group || "(no-group)", photo ? "(photo)" : "(no-photo)");
+      } catch (e) {
+        console.log("FAIL:", url, String(e?.message || e));
+      }
+    }
+  }
+
+  await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
+
+  if (out.length === 0) {
+    throw new Error("Error: parsed senators are empty (0).");
+  }
+
+  // id昇順
+  out.sort((a, b) => a.id - b.id);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2), "utf-8");
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(out, null, 2), "utf-8");
 
-  console.log("Wrote:", OUTPUT_PATH);
+  console.log("WROTE:", OUTPUT_PATH, "count:", out.length);
 }
 
-main().catch((err) => {
-  console.error(err);
+main().catch((e) => {
+  console.error(e);
   process.exit(1);
 });
