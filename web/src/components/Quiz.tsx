@@ -58,7 +58,7 @@ export default function Quiz() {
   const [reviewCurrentId, setReviewCurrentId] = useState<number | null>(null);
 
   const [imgError, setImgError] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   // GitHub Pages 配下対応（BASE_URL）
   const baseUrl = import.meta.env.BASE_URL ?? "/";
@@ -89,7 +89,7 @@ export default function Quiz() {
         // reviewの現在問題は未設定（必要時にセット）
         setReviewCurrentId(null);
 
-        setSelected(null);
+        setSelectedId(null);
         setImgError(false);
         setMode("normal");
       } catch (e) {
@@ -126,26 +126,22 @@ export default function Quiz() {
   const choices = useMemo(() => {
     if (!current || senators.length === 0) return [];
 
-    // データが4件未満でもUIが空にならないように、存在する分だけ表示する
-    const uniqueNames = Array.from(new Set(senators.map((s) => s.name))).filter(Boolean);
-
-    if (uniqueNames.length <= 4) {
-      // current.name が含まれていないケースにも念のため対応
-      const base = uniqueNames.includes(current.name)
-        ? uniqueNames
-        : [current.name, ...uniqueNames];
-
-      return shuffle(base).slice(0, Math.min(4, base.length));
+    if (senators.length <= 4) {
+      const base = senators.some((s) => s.id === current.id) ? [...senators] : [current, ...senators];
+      // idで重複除去
+      const byId = new Map<number, Senator>();
+      for (const s of base) byId.set(s.id, s);
+      return shuffle(Array.from(byId.values())).slice(0, Math.min(4, byId.size));
     }
 
     const others = senators.filter((s) => s.id !== current.id);
-    const wrong = pickN(others, 3).map((s) => s.name);
-    return shuffle([current.name, ...wrong]);
+    const wrong = pickN(others, 3);
+    return shuffle([current, ...wrong]);
   }, [current, senators]);
 
   const imgUrl = current?.images?.[0] ?? "";
-  const isAnswered = selected != null;
-  const isCorrect = isAnswered && current ? selected === current.name : false;
+  const isAnswered = selectedId != null;
+  const isCorrect = isAnswered && current ? selectedId === current.id : false;
 
   // normalの進捗
   const normalTotal = Math.min(20, senators.length);
@@ -173,7 +169,7 @@ export default function Quiz() {
     setMode("normal");
     setNormalOrder(ids);
     setNormalPos(0);
-    setSelected(null);
+    setSelectedId(null);
     setImgError(false);
   };
 
@@ -181,7 +177,7 @@ export default function Quiz() {
     const setTo = new Set(loadWrongIds());
     setReviewWrongSet(setTo);
     setMode("review");
-    setSelected(null);
+    setSelectedId(null);
     setImgError(false);
     setTimeout(() => ensureReviewCurrent(setTo), 0);
   };
@@ -193,9 +189,9 @@ export default function Quiz() {
     startNormal20();
   };
 
-  const onSelect = (name: string) => {
-    if (selected != null) return;
-    setSelected(name);
+  const onSelect = (id: number) => {
+    if (selectedId != null) return;
+    setSelectedId(id);
   };
 
   const onNext = () => {
@@ -203,7 +199,7 @@ export default function Quiz() {
 
     // 間違い記録（normal/review共通）
     if (current) {
-      const wrongNow = selected !== current.name;
+      const wrongNow = selectedId !== current.id;
       if (wrongNow) {
         const nextIds = new Set<number>(loadWrongIds());
         nextIds.add(current.id);
@@ -219,7 +215,7 @@ export default function Quiz() {
         const nextSet = new Set(arr);
         setReviewWrongSet(nextSet);
         // 次の問題を決定
-        setSelected(null);
+        setSelectedId(null);
         setImgError(false);
         setTimeout(() => ensureReviewCurrent(nextSet), 0);
         return;
@@ -228,7 +224,7 @@ export default function Quiz() {
 
     if (mode === "normal") {
       const nextPos = normalPos + 1;
-      setSelected(null);
+      setSelectedId(null);
       setImgError(false);
       setNormalPos(nextPos);
       return;
@@ -236,7 +232,7 @@ export default function Quiz() {
 
     // reviewで不正解の場合：同じ集合から別の問題へ（正解するまで繰り返し）
     if (mode === "review") {
-      setSelected(null);
+      setSelectedId(null);
       setImgError(false);
       const setTo = new Set(loadWrongIds());
       setReviewWrongSet(setTo);
@@ -415,18 +411,18 @@ export default function Quiz() {
         ) : null}
 
         <div style={styles.choices}>
-          {choices.map((name) => {
-            const isPicked = selected === name;
-            const correctName = current.name;
+          {choices.map((s) => {
+            const isPicked = selectedId === s.id;
+            const correctId = current.id;
 
             let border = "1px solid #999";
             let background = "#fff";
 
-            if (selected != null) {
-              if (name === correctName) {
+            if (selectedId != null) {
+              if (s.id === correctId) {
                 border = "2px solid #1a7f37";
                 background = "#eafff0";
-              } else if (isPicked && name !== correctName) {
+              } else if (isPicked && s.id !== correctId) {
                 border = "2px solid #cf222e";
                 background = "#fff0f0";
               }
@@ -435,14 +431,16 @@ export default function Quiz() {
               background = "#eef6ff";
             }
 
+            const label = s.group ? `${s.name}（${s.group}）` : s.name;
+
             return (
               <button
-                key={name}
+                key={s.id}
                 type="button"
                 style={{ ...styles.choiceBtn, border, background }}
-                onClick={() => onSelect(name)}
+                onClick={() => onSelect(s.id)}
               >
-                {name}
+                {label}
               </button>
             );
           })}
@@ -456,7 +454,7 @@ export default function Quiz() {
               <span style={{ color: "#1a7f37" }}>正解</span>
             ) : (
               <span style={{ color: "#cf222e" }}>
-                不正解（正解：{current.name}）
+                不正解（正解：{current.group ? `${current.name}（${current.group}）` : current.name}）
               </span>
             )}
           </div>
