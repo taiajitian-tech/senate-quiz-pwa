@@ -431,7 +431,8 @@ export default function Quiz() {
               background = "#eef6ff";
             }
 
-            const label = s.group ? `${s.name}（${s.group}）` : s.name;
+            const cleanName = s.name.replace(/[:：]\s*参議院\s*$/u, "").trim();
+            const label = s.group ? `${cleanName}（${s.group}）` : cleanName;
 
             return (
               <button

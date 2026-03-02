@@ -13,12 +13,36 @@ const __dirname = path.dirname(__filename);
 const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
 
 /*
-  現職参議院議員一覧ページ
+  現職参議院議員一覧ページ（入口）
+  ※「current/giin.htm」から、実際の国会回次（例: /221/giin.htm）へ誘導される
 */
-const LIST_URL =
-  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/ichiran.htm";
+const LIST_LANDING_URL =
+  "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
 const UA = "Mozilla/5.0 (GitHub Actions)";
+
+
+let LIST_URL = LIST_LANDING_URL;
+
+function resolveActualListUrl(html) {
+  // current/giin.htm は「こちら」リンクで実URLへ誘導される
+  const m = html.match(/\/giin\/(\d+)\/giin\.htm/i);
+  if (m) {
+    return new URL(m[0], LIST_LANDING_URL).toString();
+  }
+  // まれに meta refresh / JS の場合もあるので href から拾う
+  const m2 = html.match(/href="([^"]*\/giin\/(\d+)\/giin\.htm)"/i);
+  if (m2) {
+    return new URL(m2[1], LIST_LANDING_URL).toString();
+  }
+  return LIST_LANDING_URL;
+}
+
+async function getListUrl() {
+  const landingHtml = await fetchHTML(LIST_LANDING_URL);
+  const actual = resolveActualListUrl(landingHtml);
+  return actual;
+}
 
 async function fetchHTML(url) {
   const res = await fetch(url, {
@@ -44,7 +68,7 @@ function stripTags(s) {
  * - プロフィールは /profile/xxxx.htm
  * - 取得した名前から末尾の「：参議院」等が混入していれば削除
  */
-function extractList(html) {
+function extractList(html, baseUrl) {
   const items = [];
   const reA =
     /<a[^>]+href="([^"]*\/profile\/\d+\.htm)"[^>]*>([\s\S]*?)<\/a>/gi;
@@ -59,7 +83,7 @@ function extractList(html) {
     const name = rawText.replace(/[:：]\s*参議院\s*$/u, "").trim();
     if (!name) continue;
 
-    const url = new URL(href, LIST_URL).toString();
+    const url = new URL(href, baseUrl).toString();
     items.push({ name, url });
   }
 
@@ -104,9 +128,10 @@ function extractFromProfile(profileHtml, profileUrl) {
 
 async function main() {
   console.log("Fetching list...");
+  LIST_URL = await getListUrl();
   const listHtml = await fetchHTML(LIST_URL);
 
-  const list = extractList(listHtml);
+  const list = extractList(listHtml, LIST_URL);
   console.log(`Found profiles: ${list.length}`);
 
   const data = [];
