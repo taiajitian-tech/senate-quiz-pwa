@@ -58,7 +58,7 @@ export default function Quiz() {
   const [reviewCurrentId, setReviewCurrentId] = useState<number | null>(null);
 
   const [imgError, setImgError] = useState(false);
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
 
   // GitHub Pages 配下対応（BASE_URL）
   const baseUrl = import.meta.env.BASE_URL ?? "/";
@@ -89,7 +89,7 @@ export default function Quiz() {
         // reviewの現在問題は未設定（必要時にセット）
         setReviewCurrentId(null);
 
-        setSelectedId(null);
+        setSelected(null);
         setImgError(false);
         setMode("normal");
       } catch (e) {
@@ -127,25 +127,25 @@ export default function Quiz() {
     if (!current || senators.length === 0) return [];
 
     // データが4件未満でもUIが空にならないように、存在する分だけ表示する
-    const uniqueIds = Array.from(new Set(senators.map((s) => s.id)));
+    const uniqueNames = Array.from(new Set(senators.map((s) => s.name))).filter(Boolean);
 
-    // currentが含まれないケースも吸収
-    if (!uniqueIds.includes(current.id)) uniqueIds.unshift(current.id);
+    if (uniqueNames.length <= 4) {
+      // current.name が含まれていないケースにも念のため対応
+      const base = uniqueNames.includes(current.name)
+        ? uniqueNames
+        : [current.name, ...uniqueNames];
 
-    // 4件未満なら存在分だけ
-    if (uniqueIds.length <= 4) {
-      return shuffle(uniqueIds).slice(0, uniqueIds.length);
+      return shuffle(base).slice(0, Math.min(4, base.length));
     }
 
     const others = senators.filter((s) => s.id !== current.id);
-    const wrongIds = shuffle(others).slice(0, 3).map((s) => s.id);
-
-    return shuffle([current.id, ...wrongIds]);
+    const wrong = pickN(others, 3).map((s) => s.name);
+    return shuffle([current.name, ...wrong]);
   }, [current, senators]);
 
   const imgUrl = current?.images?.[0] ?? "";
-  const isAnswered = selectedId != null;
-  const isCorrect = isAnswered && current ? selectedId === current.id : false;
+  const isAnswered = selected != null;
+  const isCorrect = isAnswered && current ? selected === current.name : false;
 
   // normalの進捗
   const normalTotal = Math.min(20, senators.length);
@@ -173,7 +173,7 @@ export default function Quiz() {
     setMode("normal");
     setNormalOrder(ids);
     setNormalPos(0);
-    setSelectedId(null);
+    setSelected(null);
     setImgError(false);
   };
 
@@ -181,7 +181,7 @@ export default function Quiz() {
     const setTo = new Set(loadWrongIds());
     setReviewWrongSet(setTo);
     setMode("review");
-    setSelectedId(null);
+    setSelected(null);
     setImgError(false);
     setTimeout(() => ensureReviewCurrent(setTo), 0);
   };
@@ -193,9 +193,9 @@ export default function Quiz() {
     startNormal20();
   };
 
-  const onSelect = (id: number) => {
-    if (selectedId != null) return;
-    setSelectedId(id);
+  const onSelect = (name: string) => {
+    if (selected != null) return;
+    setSelected(name);
   };
 
   const onNext = () => {
@@ -203,7 +203,7 @@ export default function Quiz() {
 
     // 間違い記録（normal/review共通）
     if (current) {
-      const wrongNow = selectedId !== current.id;
+      const wrongNow = selected !== current.name;
       if (wrongNow) {
         const nextIds = new Set<number>(loadWrongIds());
         nextIds.add(current.id);
@@ -219,7 +219,7 @@ export default function Quiz() {
         const nextSet = new Set(arr);
         setReviewWrongSet(nextSet);
         // 次の問題を決定
-        setSelectedId(null);
+        setSelected(null);
         setImgError(false);
         setTimeout(() => ensureReviewCurrent(nextSet), 0);
         return;
@@ -228,7 +228,7 @@ export default function Quiz() {
 
     if (mode === "normal") {
       const nextPos = normalPos + 1;
-      setSelectedId(null);
+      setSelected(null);
       setImgError(false);
       setNormalPos(nextPos);
       return;
@@ -236,7 +236,7 @@ export default function Quiz() {
 
     // reviewで不正解の場合：同じ集合から別の問題へ（正解するまで繰り返し）
     if (mode === "review") {
-      setSelectedId(null);
+      setSelected(null);
       setImgError(false);
       const setTo = new Set(loadWrongIds());
       setReviewWrongSet(setTo);
@@ -415,35 +415,34 @@ export default function Quiz() {
         ) : null}
 
         <div style={styles.choices}>
-          {choices.map((id) => {
-            const s = senators.find((x) => x.id === id);
-            const label = s
-              ? `${s.name}${s.group ? `（${s.group}）` : ""}`
-              : String(id);
+          {choices.map((name) => {
+            const isPicked = selected === name;
+            const correctName = current.name;
+
+            let border = "1px solid #999";
+            let background = "#fff";
+
+            if (selected != null) {
+              if (name === correctName) {
+                border = "2px solid #1a7f37";
+                background = "#eafff0";
+              } else if (isPicked && name !== correctName) {
+                border = "2px solid #cf222e";
+                background = "#fff0f0";
+              }
+            } else if (isPicked) {
+              border = "2px solid #0969da";
+              background = "#eef6ff";
+            }
 
             return (
               <button
-                key={id}
-                onClick={() => onSelect(id)}
-                disabled={selectedId !== null}
-                style={{
-                  width: "100%",
-                  padding: "14px 12px",
-                  borderRadius: 10,
-                  border: "1px solid #ddd",
-                  background:
-                    selectedId === null
-                      ? "#fff"
-                      : selectedId === id
-                      ? isCorrect
-                        ? "#e6ffed"
-                        : "#ffe6e6"
-                      : "#f7f7f7",
-                  cursor: selectedId === null ? "pointer" : "default",
-                  fontSize: 16,
-                }}
+                key={name}
+                type="button"
+                style={{ ...styles.choiceBtn, border, background }}
+                onClick={() => onSelect(name)}
               >
-                {label}
+                {name}
               </button>
             );
           })}
