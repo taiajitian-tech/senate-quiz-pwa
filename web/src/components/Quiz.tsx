@@ -126,17 +126,17 @@ export default function Quiz() {
   const choices = useMemo(() => {
     if (!current || senators.length === 0) return [];
 
-    if (senators.length <= 4) {
-      const base = senators.some((s) => s.id === current.id) ? [...senators] : [current, ...senators];
-      // idで重複除去
-      const byId = new Map<number, Senator>();
-      for (const s of base) byId.set(s.id, s);
-      return shuffle(Array.from(byId.values())).slice(0, Math.min(4, byId.size));
-    }
-
+    // current を必ず含めつつ、最大4件をランダムに選ぶ（idでユニークにする）
     const others = senators.filter((s) => s.id !== current.id);
-    const wrong = pickN(others, 3);
-    return shuffle([current, ...wrong]);
+    const picked = pickN(others, Math.min(3, others.length));
+
+    const base = [current, ...picked];
+
+    // 万一同一idが混ざっても崩れないようにユニーク化
+    const uniq = new Map<number, Senator>();
+    for (const s of base) uniq.set(s.id, s);
+
+    return shuffle([...uniq.values()]).slice(0, Math.min(4, uniq.size));
   }, [current, senators]);
 
   const imgUrl = current?.images?.[0] ?? "";
@@ -413,16 +413,16 @@ export default function Quiz() {
         <div style={styles.choices}>
           {choices.map((s) => {
             const isPicked = selectedId === s.id;
-            const correctId = current.id;
+            const correctName = current.name;
 
             let border = "1px solid #999";
             let background = "#fff";
 
             if (selectedId != null) {
-              if (s.id === correctId) {
+              if (name === correctName) {
                 border = "2px solid #1a7f37";
                 background = "#eafff0";
-              } else if (isPicked && s.id !== correctId) {
+              } else if (isPicked && name !== correctName) {
                 border = "2px solid #cf222e";
                 background = "#fff0f0";
               }
@@ -431,9 +431,6 @@ export default function Quiz() {
               background = "#eef6ff";
             }
 
-            const cleanName = s.name.replace(/[:：]\s*参議院\s*$/u, "").trim();
-            const label = s.group ? `${cleanName}（${s.group}）` : cleanName;
-
             return (
               <button
                 key={s.id}
@@ -441,7 +438,7 @@ export default function Quiz() {
                 style={{ ...styles.choiceBtn, border, background }}
                 onClick={() => onSelect(s.id)}
               >
-                {label}
+                {s.name}{s.group ? `（${s.group}）` : ""}
               </button>
             );
           })}
@@ -455,7 +452,7 @@ export default function Quiz() {
               <span style={{ color: "#1a7f37" }}>正解</span>
             ) : (
               <span style={{ color: "#cf222e" }}>
-                不正解（正解：{current.group ? `${current.name}（${current.group}）` : current.name}）
+                不正解（正解：{current.name}{current.group ? `（${current.group}）` : ""}）
               </span>
             )}
           </div>
