@@ -148,13 +148,35 @@ async function buildSenators(listItems) {
 }
 
 async function main() {
-  console.log("Fetching list...");
-  const { html, finalUrl } = await fetchHTML(LIST_URL);
+  console.log("Fetching entry (current)...");
+  const { html: entryHtml } = await fetchHTML(LIST_URL);
+
+  // current/giin.htm が中継HTMLを返す場合があるため、HTML内から実体URL（/kousei/giin/数字/giin.htm）を抜いて追従する
+  const realMatch =
+    entryHtml.match(/\/japanese\/joho1\/kousei\/giin\/\d+\/giin\.htm/i) ||
+    entryHtml.match(/\/kousei\/giin\/\d+\/giin\.htm/i);
+
+  const resolvedListUrl = realMatch ? new URL(realMatch[0], LIST_URL).href : LIST_URL;
+
+  if (realMatch) {
+    console.log("FOLLOW_REAL_LIST_URL:", resolvedListUrl);
+  } else {
+    console.log("FOLLOW_REAL_LIST_URL: (not found) using LIST_URL as-is");
+  }
+
+  const { html, finalUrl } = resolvedListUrl === LIST_URL
+    ? { html: entryHtml, finalUrl: LIST_URL }
+    : await fetchHTML(resolvedListUrl);
 
   console.log("List resolved to:", finalUrl);
+  console.log("ENTRY_HTML_LENGTH:", html.length);
 
   const listItems = extractList(html, finalUrl);
-  console.log(`Found rows: ${listItems.length}`);
+  console.log(`list extracted: ${listItems.length}`);
+
+  if (listItems.length === 0) {
+    throw new Error("Error: list is empty (0). parsing failed.");
+  }
 
   const data = await buildSenators(listItems);
 
