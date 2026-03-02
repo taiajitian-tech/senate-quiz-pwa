@@ -44,6 +44,8 @@ const saveWrongIds = (ids: number[]) => {
 
 export default function Quiz() {
   const [senators, setSenators] = useState<Senator[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const [mode, setMode] = useState<Mode>("normal");
 
@@ -56,7 +58,7 @@ export default function Quiz() {
   const [reviewCurrentId, setReviewCurrentId] = useState<number | null>(null);
 
   const [imgError, setImgError] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   // GitHub Pages 配下対応（BASE_URL）
   const baseUrl = import.meta.env.BASE_URL ?? "/";
@@ -65,30 +67,39 @@ export default function Quiz() {
   // 初期ロード
   useEffect(() => {
     (async () => {
-      const res = await fetch(dataUrl, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-      const json = (await res.json()) as Senator[];
-      const arr = Array.isArray(json) ? json : [];
-      setSenators(arr);
+      setLoading(true);
+      setLoadError(null);
 
-      // 永続の間違いリストを復元
-      const wrongIds = loadWrongIds();
-      setReviewWrongSet(new Set(wrongIds));
+      try {
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+        const json = (await res.json()) as unknown;
+        const arr = Array.isArray(json) ? (json as Senator[]) : [];
+        setSenators(arr);
 
-      // normal 20問を生成
-      const ids = shuffle(arr.map((s) => s.id)).slice(0, Math.min(20, arr.length));
-      setNormalOrder(ids);
-      setNormalPos(0);
+        // 永続の間違いリストを復元
+        const wrongIds = loadWrongIds();
+        setReviewWrongSet(new Set(wrongIds));
 
-      // reviewの現在問題は未設定（必要時にセット）
-      setReviewCurrentId(null);
+        // normal 20問を生成
+        const ids = shuffle(arr.map((s) => s.id)).slice(0, Math.min(20, arr.length));
+        setNormalOrder(ids);
+        setNormalPos(0);
 
-      setSelected(null);
-      setImgError(false);
-      setMode("normal");
-    })().catch(() => {
-      setSenators([]);
-    });
+        // reviewの現在問題は未設定（必要時にセット）
+        setReviewCurrentId(null);
+
+        setSelectedId(null);
+        setImgError(false);
+        setMode("normal");
+      } catch (e) {
+        console.error(e);
+        setSenators([]);
+        setLoadError(String(e));
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [dataUrl]);
 
   const senatorsById = useMemo(() => {
@@ -116,25 +127,25 @@ export default function Quiz() {
     if (!current || senators.length === 0) return [];
 
     // データが4件未満でもUIが空にならないように、存在する分だけ表示する
-    const uniqueNames = Array.from(new Set(senators.map((s) => s.name))).filter(Boolean);
+    const uniqueIds = Array.from(new Set(senators.map((s) => s.id)));
 
-    if (uniqueNames.length <= 4) {
-      // current.name が含まれていないケースにも念のため対応
-      const base = uniqueNames.includes(current.name)
-        ? uniqueNames
-        : [current.name, ...uniqueNames];
+    // currentが含まれないケースも吸収
+    if (!uniqueIds.includes(current.id)) uniqueIds.unshift(current.id);
 
-      return shuffle(base).slice(0, Math.min(4, base.length));
+    // 4件未満なら存在分だけ
+    if (uniqueIds.length <= 4) {
+      return shuffle(uniqueIds).slice(0, uniqueIds.length);
     }
 
     const others = senators.filter((s) => s.id !== current.id);
-    const wrong = pickN(others, 3).map((s) => s.name);
-    return shuffle([current.name, ...wrong]);
+    const wrongIds = shuffle(others).slice(0, 3).map((s) => s.id);
+
+    return shuffle([current.id, ...wrongIds]);
   }, [current, senators]);
 
   const imgUrl = current?.images?.[0] ?? "";
-  const isAnswered = selected != null;
-  const isCorrect = isAnswered && current ? selected === current.name : false;
+  const isAnswered = selectedId != null;
+  const isCorrect = isAnswered && current ? selectedId === current.id : false;
 
   // normalの進捗
   const normalTotal = Math.min(20, senators.length);
@@ -162,7 +173,7 @@ export default function Quiz() {
     setMode("normal");
     setNormalOrder(ids);
     setNormalPos(0);
-    setSelected(null);
+    setSelectedId(null);
     setImgError(false);
   };
 
@@ -170,7 +181,7 @@ export default function Quiz() {
     const setTo = new Set(loadWrongIds());
     setReviewWrongSet(setTo);
     setMode("review");
-    setSelected(null);
+    setSelectedId(null);
     setImgError(false);
     setTimeout(() => ensureReviewCurrent(setTo), 0);
   };
@@ -182,9 +193,9 @@ export default function Quiz() {
     startNormal20();
   };
 
-  const onSelect = (name: string) => {
-    if (selected != null) return;
-    setSelected(name);
+  const onSelect = (id: number) => {
+    if (selectedId != null) return;
+    setSelectedId(id);
   };
 
   const onNext = () => {
@@ -192,7 +203,7 @@ export default function Quiz() {
 
     // 間違い記録（normal/review共通）
     if (current) {
-      const wrongNow = selected !== current.name;
+      const wrongNow = selectedId !== current.id;
       if (wrongNow) {
         const nextIds = new Set<number>(loadWrongIds());
         nextIds.add(current.id);
@@ -208,7 +219,7 @@ export default function Quiz() {
         const nextSet = new Set(arr);
         setReviewWrongSet(nextSet);
         // 次の問題を決定
-        setSelected(null);
+        setSelectedId(null);
         setImgError(false);
         setTimeout(() => ensureReviewCurrent(nextSet), 0);
         return;
@@ -217,7 +228,7 @@ export default function Quiz() {
 
     if (mode === "normal") {
       const nextPos = normalPos + 1;
-      setSelected(null);
+      setSelectedId(null);
       setImgError(false);
       setNormalPos(nextPos);
       return;
@@ -225,7 +236,7 @@ export default function Quiz() {
 
     // reviewで不正解の場合：同じ集合から別の問題へ（正解するまで繰り返し）
     if (mode === "review") {
-      setSelected(null);
+      setSelectedId(null);
       setImgError(false);
       const setTo = new Set(loadWrongIds());
       setReviewWrongSet(setTo);
@@ -242,12 +253,31 @@ export default function Quiz() {
     }
   };
 
-  if (senators.length === 0) {
+  if (loading) {
     return (
       <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>読み込み中</div>
           <div style={styles.sub}>senators.json を確認</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (loadError || senators.length === 0) {
+    return (
+      <div style={styles.wrap}>
+        <div style={styles.card}>
+          <div style={styles.title}>データを読み込めませんでした</div>
+          <div style={styles.sub}>{loadError ? loadError : "senators.json が 0 件です"}</div>
+          <div style={{ ...styles.sub, wordBreak: "break-all", marginTop: 12 }}>
+            <a href={dataUrl} target="_blank" rel="noreferrer">
+              {dataUrl}
+            </a>
+          </div>
+          <button style={{ ...styles.btn, marginTop: 16 }} onClick={() => location.reload()}>
+            再読み込み
+          </button>
         </div>
       </div>
     );
@@ -385,34 +415,35 @@ export default function Quiz() {
         ) : null}
 
         <div style={styles.choices}>
-          {choices.map((name) => {
-            const isPicked = selected === name;
-            const correctName = current.name;
-
-            let border = "1px solid #999";
-            let background = "#fff";
-
-            if (selected != null) {
-              if (name === correctName) {
-                border = "2px solid #1a7f37";
-                background = "#eafff0";
-              } else if (isPicked && name !== correctName) {
-                border = "2px solid #cf222e";
-                background = "#fff0f0";
-              }
-            } else if (isPicked) {
-              border = "2px solid #0969da";
-              background = "#eef6ff";
-            }
+          {choices.map((id) => {
+            const s = senators.find((x) => x.id === id);
+            const label = s
+              ? `${s.name}${s.group ? `（${s.group}）` : ""}`
+              : String(id);
 
             return (
               <button
-                key={name}
-                type="button"
-                style={{ ...styles.choiceBtn, border, background }}
-                onClick={() => onSelect(name)}
+                key={id}
+                onClick={() => onSelect(id)}
+                disabled={selectedId !== null}
+                style={{
+                  width: "100%",
+                  padding: "14px 12px",
+                  borderRadius: 10,
+                  border: "1px solid #ddd",
+                  background:
+                    selectedId === null
+                      ? "#fff"
+                      : selectedId === id
+                      ? isCorrect
+                        ? "#e6ffed"
+                        : "#ffe6e6"
+                      : "#f7f7f7",
+                  cursor: selectedId === null ? "pointer" : "default",
+                  fontSize: 16,
+                }}
               >
-                {name}
+                {label}
               </button>
             );
           })}
