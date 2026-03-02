@@ -44,6 +44,8 @@ const saveWrongIds = (ids: number[]) => {
 
 export default function Quiz() {
   const [senators, setSenators] = useState<Senator[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const [mode, setMode] = useState<Mode>("normal");
 
@@ -65,30 +67,39 @@ export default function Quiz() {
   // 初期ロード
   useEffect(() => {
     (async () => {
-      const res = await fetch(dataUrl, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-      const json = (await res.json()) as Senator[];
-      const arr = Array.isArray(json) ? json : [];
-      setSenators(arr);
+      setLoading(true);
+      setLoadError(null);
 
-      // 永続の間違いリストを復元
-      const wrongIds = loadWrongIds();
-      setReviewWrongSet(new Set(wrongIds));
+      try {
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+        const json = (await res.json()) as unknown;
+        const arr = Array.isArray(json) ? (json as Senator[]) : [];
+        setSenators(arr);
 
-      // normal 20問を生成
-      const ids = shuffle(arr.map((s) => s.id)).slice(0, Math.min(20, arr.length));
-      setNormalOrder(ids);
-      setNormalPos(0);
+        // 永続の間違いリストを復元
+        const wrongIds = loadWrongIds();
+        setReviewWrongSet(new Set(wrongIds));
 
-      // reviewの現在問題は未設定（必要時にセット）
-      setReviewCurrentId(null);
+        // normal 20問を生成
+        const ids = shuffle(arr.map((s) => s.id)).slice(0, Math.min(20, arr.length));
+        setNormalOrder(ids);
+        setNormalPos(0);
 
-      setSelected(null);
-      setImgError(false);
-      setMode("normal");
-    })().catch(() => {
-      setSenators([]);
-    });
+        // reviewの現在問題は未設定（必要時にセット）
+        setReviewCurrentId(null);
+
+        setSelected(null);
+        setImgError(false);
+        setMode("normal");
+      } catch (e) {
+        console.error(e);
+        setSenators([]);
+        setLoadError(String(e));
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [dataUrl]);
 
   const senatorsById = useMemo(() => {
@@ -242,12 +253,31 @@ export default function Quiz() {
     }
   };
 
-  if (senators.length === 0) {
+  if (loading) {
     return (
       <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>読み込み中</div>
           <div style={styles.sub}>senators.json を確認</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (loadError || senators.length === 0) {
+    return (
+      <div style={styles.wrap}>
+        <div style={styles.card}>
+          <div style={styles.title}>データを読み込めませんでした</div>
+          <div style={styles.sub}>{loadError ? loadError : "senators.json が 0 件です"}</div>
+          <div style={{ ...styles.sub, wordBreak: "break-all", marginTop: 12 }}>
+            <a href={dataUrl} target="_blank" rel="noreferrer">
+              {dataUrl}
+            </a>
+          </div>
+          <button style={{ ...styles.btn, marginTop: 16 }} onClick={() => location.reload()}>
+            再読み込み
+          </button>
         </div>
       </div>
     );
