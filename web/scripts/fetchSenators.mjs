@@ -48,86 +48,112 @@ async function fetchText(url) {
   return await res.text();
 }
 
+function extractCellsFromTr(trHtml) {
+  const cells = [];
+
+  // th
+  const ths = [...trHtml.matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)].map((m) =>
+    stripTags(m[1] || "")
+  );
+  // td
+  const tds = [...trHtml.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map((m) =>
+    stripTags(m[1] || "")
+  );
+
+  if (ths.length > 0) return ths;
+  if (tds.length > 0) return tds;
+  return cells;
+}
+
 /**
  * 一覧ページ(giin.htm)のHTMLから
- * - name, yomi, group, profileUrl を抽出
- * テーブルのthから「会派」列を特定して読む（列ずれ対策）
+ * - id, name, yomi, group, profileUrl を抽出
+ *
+ * 重要：テーブルを特定できない場合があるため、
+ * ページ全体の <tr> を走査し、profileリンクを含む行を拾う。
+ * ヘッダ行は「会派」「氏名/名前」等を含む行から推定して列Indexを決める。
  */
 function extractList(html, baseUrl) {
   const items = [];
 
-  // tableを全取得し、profileリンクを含むtableをターゲットに
-  const tables = html.match(/<table[\s\S]*?<\/table>/gi) || [];
-  const targetTable =
-    tables.find((t) => /\/profile\/\d+\.htm/i.test(t)) || "";
+  const trs = html.match(/<tr[^>]*>[\s\S]*?<\/tr>/gi) || [];
 
-  if (!targetTable) return items;
-
-  // ヘッダ(th)から列Indexを決める
+  // ヘッダ行を推定（thが無い場合もあるので td 行も対象）
   let idxName = -1;
   let idxYomi = -1;
   let idxGroup = -1;
 
-  const headerTrMatch = targetTable.match(
-    /<tr[^>]*>[\s\S]*?<th[\s\S]*?<\/tr>/i
-  );
-  if (headerTrMatch) {
-    const ths = [...headerTrMatch[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)]
-      .map((m) => stripTags(m[1] || ""))
-      .map((t) => t.replace(/\s+/g, ""));
+  const headerTr =
+    trs.find((tr) => {
+      const cells = extractCellsFromTr(tr).map((t) => t.replace(/\s+/g, ""));
+      if (cells.length < 2) return false;
+      const hasGroup = cells.some((t) => t.includes("会派"));
+      const hasName = cells.some((t) => t.includes("氏名") || t.includes("名前"));
+      // よみが無くてもOK（会派/氏名があれば採用）
+      return hasGroup && hasName;
+    }) || "";
 
-    idxName = ths.findIndex((t) => t.includes("氏名") || t.includes("名前"));
-    idxYomi = ths.findIndex((t) => t.includes("よみ") || t.includes("フリガナ"));
-    idxGroup = ths.findIndex((t) => t.includes("会派"));
+  if (headerTr) {
+    const cells = extractCellsFromTr(headerTr).map((t) => t.replace(/\s+/g, ""));
+    idxName = cells.findIndex((t) => t.includes("氏名") || t.includes("名前"));
+    idxYomi = cells.findIndex((t) => t.includes("よみ") || t.includes("フリガナ"));
+    idxGroup = cells.findIndex((t) => t.includes("会派"));
   }
 
-  const trs = targetTable.match(/<tr[^>]*>[\s\S]*?<\/tr>/gi) || [];
   for (const tr of trs) {
-    if (!/<td/i.test(tr)) continue;
+    // profileリンクがある行だけ
+    if (!/\/profile\/\d+\.htm/i.test(tr)) continue;
 
+    const hrefMatch = tr.match(
+      /<a[^>]*href="([^"]*\/profile\/\d+\.htm)"[^>]*>([\s\S]*?)<\/a>/i
+    );
+    if (!hrefMatch) continue;
+
+    const profileUrl = normalizeUrl(hrefMatch[1], baseUrl);
+    const nameFromLink = stripTags(hrefMatch[2] || "");
+
+    const cellsRaw = [];
+    // tdセル（中身はタグ付きで取ってからstripした方が列が崩れにくい）
     const tds = [...tr.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map(
       (m) => m[1] || ""
     );
-    if (tds.length === 0) continue;
+    for (const td of tds) cellsRaw.push(stripTags(td));
 
-    // プロフィールリンク
-    const a = tr.match(
-      /<a[^>]*href="([^"]*\/profile\/\d+\.htm)"[^>]*>([\s\S]*?)<\/a>/i
-    );
-    if (!a) continue;
+    // 文字だけのセル配列
+    const cells = cellsRaw.map((t) => (t ?? "").trim());
 
-    const profileUrl = normalizeUrl(a[1], baseUrl);
-    const nameFromLink = stripTags(a[2] || "");
-
-    // name/yomi/group を列から読む（無理なら保険でlink text）
     let name = "";
     let yomi = "";
     let group = "";
 
-    if (idxName >= 0 && idxName < tds.length) name = stripTags(tds[idxName]);
-    if (idxYomi >= 0 && idxYomi < tds.length) yomi = stripTags(tds[idxYomi]);
-    if (idxGroup >= 0 && idxGroup < tds.length) group = stripTags(tds[idxGroup]);
+    if (idxName >= 0 && idxName < cells.length) name = cells[idxName];
+    if (idxYomi >= 0 && idxYomi < cells.length) yomi = cells[idxYomi];
+    if (idxGroup >= 0 && idxGroup < cells.length) group = cells[idxGroup];
 
     if (!name) name = nameFromLink;
 
-    // 余計な末尾表記が混ざる場合の保険
+    // 列Indexが取れなかった場合の保険（会派は末尾寄りにあることが多い）
+    if (!group) {
+      // 空でないセルを後ろから探す（ただし name と同一は除外）
+      for (let i = cells.length - 1; i >= 0; i--) {
+        const v = (cells[i] || "").trim();
+        if (!v) continue;
+        if (v === name) continue;
+        group = v;
+        break;
+      }
+    }
+
     name = name.replace(/：\s*参議院\s*$/g, "").trim();
     yomi = yomi.replace(/：\s*参議院\s*$/g, "").trim();
     group = group.replace(/：\s*参議院\s*$/g, "").trim();
 
-    // id（プロフィールの数字）
     const idMatch = profileUrl.match(/\/profile\/(\d+)\.htm/i);
     const id = idMatch ? idMatch[1] : profileUrl;
 
     if (!name || !profileUrl) continue;
 
-    items.push({
-      id,
-      name,
-      yomi,
-      group,
-      profileUrl,
-    });
+    items.push({ id, name, yomi, group, profileUrl });
   }
 
   // 重複除去（id優先）
@@ -142,10 +168,9 @@ function extractList(html, baseUrl) {
 
 /**
  * プロフィールHTMLから顔写真URLを抽出
- * 参議院サイトは /kousei/giin/photo/xxxx.jpg の形式が多いのでそれを優先
+ * /kousei/giin/photo/xxxx.jpg を優先
  */
 function extractPhotoUrl(profileHtml, profileUrl) {
-  // まずは明確に photo ディレクトリのjpgを探す
   const m1 = profileHtml.match(
     /(https?:\/\/www\.sangiin\.go\.jp\/[^"' ]*\/photo\/[^"' ]+\.jpg)/i
   );
@@ -154,7 +179,6 @@ function extractPhotoUrl(profileHtml, profileUrl) {
   const m2 = profileHtml.match(/(\/[^"' ]*\/photo\/[^"' ]+\.jpg)/i);
   if (m2) return normalizeUrl(m2[1], profileUrl);
 
-  // 次に img src から jpg を探す
   const imgs = [...profileHtml.matchAll(/<img[^>]*src="([^"]+)"/gi)].map(
     (x) => x[1]
   );
@@ -177,7 +201,7 @@ async function main() {
     throw new Error("list is empty (0). parsing failed.");
   }
 
-  // プロフィールを順次取得（負荷を避けるため直列）
+  // プロフィールを順次取得（直列）
   const senators = [];
   for (let i = 0; i < list.length; i++) {
     const s = list[i];
@@ -195,7 +219,6 @@ async function main() {
       });
     } catch (e) {
       console.log("profile fetch failed:", s.profileUrl, String(e));
-      // 失敗しても最低限一覧データは残す（画像だけ空）
       senators.push({
         id: s.id,
         name: s.name,
@@ -213,7 +236,6 @@ async function main() {
     throw new Error("senators is empty (0). abort writing senators.json");
   }
 
-  // 出力先：web/public/data/senators.json
   const outPath = path.resolve(__dirname, "..", "public", "data", "senators.json");
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(senators, null, 2), "utf-8");
