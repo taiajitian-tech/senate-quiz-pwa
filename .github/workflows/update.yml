@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: update-senators
+  cancel-in-progress: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -40,6 +44,8 @@ jobs:
           # 生成物以外はコミットしない（lockは捨てる）
           git checkout -- web/package-lock.json || true
           git status --porcelain
+          # 空配列/不正JSONなら中断（既存senators.jsonを保持するため）
+          node -e "const fs=require('fs');const p='public/data/senators.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));if(!Array.isArray(d)||d.length===0){console.error('ERROR: senators.json is empty or invalid. Abort update.');process.exit(1)}"
           if git diff --quiet -- web/public/data/senators.json; then
             echo "No changes in senators.json"
             exit 0

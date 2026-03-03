@@ -184,10 +184,8 @@ async function main() {
   const links = extractProfileLinks(listHtml, listUrl);
   console.log("profile links extracted:", links.length);
   if (!links.length) {
-    // 0件でもファイルは更新（監視しやすくする）
-    fs.writeFileSync(OUTPUT_PATH, "[]\n", "utf-8");
-    console.error("Error: profile link list is empty (0).");
-    process.exit(0);
+    console.error("ERROR: profile link list is empty (0). Abort update to keep previous senators.json.");
+    process.exit(1);
   }
 
   const senators = [];
@@ -221,8 +219,11 @@ async function main() {
   }
 
   console.log("parsed senators:", senators.length);
+  if (senators.length === 0) {
+    console.error("ERROR: parsed senators is 0. Abort update to keep previous senators.json.");
+    process.exit(1);
+  }
 
-  // 0件でも落とさない（ただし空JSONになる）
   senators.sort((a, b) => a.id - b.id);
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(senators, null, 2) + "\n", "utf-8");
