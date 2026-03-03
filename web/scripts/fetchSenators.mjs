@@ -9,7 +9,12 @@ const __dirname = path.dirname(__filename);
 const ENTRY_URL =
   "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
-const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
+const CWD = process.cwd();
+// Actions では working-directory: web を使うため、まず web/ 配下を優先。
+// ローカル実行などで repo ルートから起動した場合も壊れないように分岐。
+const OUTPUT_PATH = CWD.endsWith(`${path.sep}web`)
+  ? path.resolve(CWD, "public/data/senators.json")
+  : path.resolve(CWD, "web/public/data/senators.json");
 
 // UA を固定（ブロック回避の保険）
 const UA =
@@ -282,7 +287,13 @@ async function main() {
   }
 
   senators.sort((a, b) => a.id - b.id);
+  if (!Array.isArray(senators) || senators.length < 1) {
+    console.error("ERROR: senators array is empty; aborting.");
+    process.exit(1);
+  }
   writeJsonAtomic(OUTPUT_PATH, senators);
+  console.log("OUTPUT_PATH:", OUTPUT_PATH);
+  try { const st = fs.statSync(OUTPUT_PATH); console.log("OUTPUT_SIZE:", st.size); } catch (e) { console.log("OUTPUT_STAT_ERROR:", String(e)); }
 }
 
 main().catch((e) => {
