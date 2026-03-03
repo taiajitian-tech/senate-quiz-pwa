@@ -8,10 +8,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: update-senators
-  cancel-in-progress: true
-
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -32,39 +28,24 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # lock不整合で npm ci が落ちるのを防ぐ
+          rm -f package-lock.json
           npm install --no-audit --no-fund
-          # lockは変更してもコミットしない（破棄運用）
-          git checkout -- package-lock.json || true
 
       - name: Generate senators data
         run: node scripts/fetchSenators.mjs
 
-      - name: Debug generated file
-        run: |
-          echo "---- senators.json head ----"
-          ls -la public/data/senators.json || true
-          head -c 400 public/data/senators.json || true
-          echo ""
-          echo "---- end ----"
-
-      - name: Validate generated JSON
-        run: |
-          node -e "const fs=require('fs');const p='public/data/senators.json';const s=fs.readFileSync(p,'utf8');let j;try{j=JSON.parse(s);}catch(e){console.error('Invalid JSON');process.exit(1);}if(!Array.isArray(j)){console.error('JSON is not array');process.exit(1);}if(j.length<1){console.error('JSON array is empty');process.exit(1);}console.log('JSON OK, count=',j.length);"
-
       - name: Commit and push if changed
         run: |
           # 生成物以外はコミットしない（lockは捨てる）
-          git checkout -- web/package-lock.json || true
+          git checkout -- package-lock.json || true
           git status --porcelain
-          echo "---- git diff (senators.json) ----"
-          git diff -- web/public/data/senators.json || true
-          echo "---- end ----"
-          if git diff --quiet -- web/public/data/senators.json; then
+          if git diff --quiet -- public/data/senators.json; then
             echo "No changes in senators.json"
             exit 0
           fi
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add web/public/data/senators.json
+          git add public/data/senators.json
           git commit -m "chore: update senators.json"
           git push

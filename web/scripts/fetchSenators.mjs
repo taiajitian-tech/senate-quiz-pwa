@@ -9,12 +9,7 @@ const __dirname = path.dirname(__filename);
 const ENTRY_URL =
   "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
-const CWD = process.cwd();
-// Actions では working-directory: web を使うため、まず web/ 配下を優先。
-// ローカル実行などで repo ルートから起動した場合も壊れないように分岐。
-const OUTPUT_PATH = CWD.endsWith(`${path.sep}web`)
-  ? path.resolve(CWD, "public/data/senators.json")
-  : path.resolve(CWD, "web/public/data/senators.json");
+const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
 
 // UA を固定（ブロック回避の保険）
 const UA =
@@ -28,42 +23,48 @@ function absUrl(base, href) {
   }
 }
 
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
+async function fetchText(url) {
+  const res = await fetch(url, {
+    redirect: "follow",
+    headers: {
+      "user-agent": UA,
+      accept: "text/html,application/xhtml+xml",
+    },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
+  const html = await res.text();
+  return { html, finalUrl: res.url || url };
 }
 
-async function fetchText(url, { maxRetries = 2 } = {}) {
-  let lastErr;
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    const controller = new AbortController();
-    const t = setTimeout(() => controller.abort(), 20000);
+// current/ が「中継HTML」になった場合、HTML内の実体URLを拾って追従
+function resolveRealListUrl(entryHtml, entryUrl, finalUrl) {
+  // まずは res.url（HTTPリダイレクト）を優先
+  if (finalUrl && finalUrl !== entryUrl) return finalUrl;
 
-    try {
-      const res = await fetch(url, {
-        redirect: "follow",
-        signal: controller.signal,
-        headers: {
-          "user-agent": UA,
-          accept: "text/html,application/xhtml+xml",
-        },
-      });
+  // 中継HTMLから実体URLを抽出（/giin/221/giin.htm のようなもの）
+  const m =
+    entryHtml.match(/\/japanese\/joho1\/kousei\/giin\/\d+\/giin\.htm/i) ||
+    entryHtml.match(/\/kousei\/giin\/\d+\/giin\.htm/i);
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
+  if (m?.[0]) return absUrl(entryUrl, m[0]);
 
-      const html = await res.text();
-      return { html, finalUrl: res.url || url };
-    } catch (e) {
-      lastErr = e;
-      // 429/一時障害想定：指数バックオフ
-      if (attempt < maxRetries) {
-        const wait = 500 * Math.pow(2, attempt);
-        await sleep(wait);
-      }
-    } finally {
-      clearTimeout(t);
-    }
-  }
-  throw lastErr;
+  return entryUrl;
+}
+
+function extractProfileLinks(listHtml, listUrl) {
+  const $ = cheerio.load(listHtml);
+  const set = new Set();
+
+  $("a[href]").each((_, a) => {
+    const href = $(a).attr("href") || "";
+    if (!/\/profile\/\d+\.htm/i.test(href)) return;
+    const u = absUrl(listUrl, href);
+    if (!u) return;
+    if (!u.startsWith("https://www.sangiin.go.jp/")) return;
+    set.add(u.replace(/\?.*$/, ""));
+  });
+
+  return Array.from(set);
 }
 
 function normText(s) {
@@ -75,85 +76,11 @@ function extractIdFromProfileUrl(profileUrl) {
   return m ? m[1] : "";
 }
 
-function extractProfileLinks(html, baseUrl) {
-  const $ = cheerio.load(html);
-  const set = new Set();
-
-  // DEBUG: profile を含む href を少しだけ出す（取得0件原因の特定用）
-  let debugShown = 0;
-
-  $("a[href]").each((_, a) => {
-    const href = $(a).attr("href") || "";
-    if (debugShown < 5 && /profile\//i.test(href)) {
-      console.log("  href contains profile:", href);
-      debugShown++;
-    }
-    if (!/(?:^|\/)?profile\/\d+\.htm/i.test(href)) return;
-    const u = absUrl(baseUrl, href);
-    if (!u) return;
-    if (!u.startsWith("https://www.sangiin.go.jp/")) return;
-    set.add(u.replace(/\?.*$/, ""));
-  });
-
-  return Array.from(set);
-}
-
-// 「入口 →（複数ページ）→ profileリンクが並ぶページ」に到達するまで、制御付きで辿る
-async function discoverProfileLinks(startUrl) {
-  const visited = new Set();
-  const queue = [{ url: startUrl, depth: 0 }];
-
-  const MAX_DEPTH = 4;       // 深すぎる巡回を防ぐ
-  const MAX_PAGES = 30;      // 過剰アクセス防止
-  const ALLOW_RE = /\/japanese\/joho1\/kousei\/giin\//i;
-
-  let pagesFetched = 0;
-
-  while (queue.length && pagesFetched < MAX_PAGES) {
-    const { url, depth } = queue.shift();
-    if (visited.has(url)) continue;
-    visited.add(url);
-
-    const { html, finalUrl } = await fetchText(url);
-    pagesFetched++;
-
-    const base = finalUrl || url;
-
-    const profiles = extractProfileLinks(html, base);
-    console.log("scan page:", base, "profiles:", profiles.length, "depth:", depth, "queue:", queue.length);
-    if (profiles.length) {
-      return { profileLinks: profiles, pagesFetched };
-    }
-
-    if (depth >= MAX_DEPTH) continue;
-
-    // 次ページ候補：同一ドメインかつ /kousei/giin/ 配下
-    const $ = cheerio.load(html);
-    $("a[href]").each((_, a) => {
-      const href = $(a).attr("href") || "";
-      if (!href) return;
-
-      const next = absUrl(base, href).replace(/\?.*$/, "");
-      if (!next) return;
-      if (!next.startsWith("https://www.sangiin.go.jp/")) return;
-      if (!ALLOW_RE.test(next)) return;
-
-      // profile は上で拾う。ここは中継ページ候補のみ
-      if (/\/profile\/\d+\.htm$/i.test(next)) return;
-
-      // HTML以外は除外
-      if (!/(\.htm|\.html|\/)$/i.test(next)) return;
-
-      queue.push({ url: next, depth: depth + 1 });
-    });
-  }
-
-  return { profileLinks: [], pagesFetched };
-}
-
+// DOMスキャン：ラベル（会派/所属会派 など）を探し、隣接要素の値を取る
 function scanByLabel($, labelVariants) {
   const labels = Array.isArray(labelVariants) ? labelVariants : [labelVariants];
 
+  // 1) th/td
   for (const label of labels) {
     const th = $(`th:contains("${label}")`).first();
     if (th.length) {
@@ -163,6 +90,7 @@ function scanByLabel($, labelVariants) {
     }
   }
 
+  // 2) dt/dd
   for (const label of labels) {
     const dt = $(`dt:contains("${label}")`).first();
     if (dt.length) {
@@ -172,6 +100,7 @@ function scanByLabel($, labelVariants) {
     }
   }
 
+  // 3) テキスト「label：value」型（最後の保険）
   const body = normText($("body").text());
   for (const label of labels) {
     const re = new RegExp(`${label}\\s*[：:]\\s*([^\\n\\r]{1,80})`);
@@ -188,14 +117,17 @@ function scanByLabel($, labelVariants) {
 function looksLikeGroup(v) {
   const s = normText(v);
   if (!s) return false;
+  // 県名等の短語を弾く（党/会/無所属等が無い短語は不採用）
   if (s.length <= 4 && !/(党|会|無所属|クラブ)/.test(s)) return false;
   return true;
 }
 
 function extractName($) {
+  // h1 を優先
   const h1 = normText($("h1").first().text());
   if (h1) return h1;
 
+  // title から推定（最終保険）
   const t = normText($("title").text());
   if (t) return t.replace(/｜.*$/g, "").replace(/:\s*参議院.*$/g, "").trim();
 
@@ -209,16 +141,19 @@ function extractGroup($) {
 }
 
 function extractPhoto(profileUrl, id, $) {
+  // 1) 仕様が安定している既知パス（g{ID}.jpg）を最優先
   if (id) {
     return `https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g${id}.jpg`;
   }
 
+  // 2) og:image
   const og = $('meta[property="og:image"]').attr("content");
   if (og) {
     const u = absUrl(profileUrl, og);
     if (u) return u;
   }
 
+  // 3) img の jpg
   const img = $("img[src$='.jpg'], img[src$='.JPG']").first().attr("src");
   if (img) {
     const u = absUrl(profileUrl, img);
@@ -228,30 +163,33 @@ function extractPhoto(profileUrl, id, $) {
   return "";
 }
 
-function writeJsonAtomic(targetPath, data) {
-  const dir = path.dirname(targetPath);
-  fs.mkdirSync(dir, { recursive: true });
-
-  const tmp = `${targetPath}.tmp`;
-  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + "\n", "utf-8");
-  fs.renameSync(tmp, targetPath);
-}
-
 async function main() {
   console.log("ENTRY_URL:", ENTRY_URL);
 
-  const { profileLinks, pagesFetched } = await discoverProfileLinks(ENTRY_URL);
+  // 入口
+  const entry = await fetchText(ENTRY_URL);
+  let listUrl = resolveRealListUrl(entry.html, ENTRY_URL, entry.finalUrl);
 
-  console.log("pages fetched:", pagesFetched);
-  console.log("profile links extracted:", profileLinks.length);
+  // current が中継HTMLのままなら、実体URLをもう一度拾って再fetchする
+  // （entry.html が極端に短い/ profileリンクが0の場合）
+  let listHtml = entry.html;
 
-  if (!profileLinks.length) {
-    console.error("ERROR: profile link list is empty (0). Stop without updating JSON.");
+  // 実体URLと判断できるのに HTML が entry のままの可能性があるので再取得
+  if (listUrl !== ENTRY_URL) {
+    const real = await fetchText(listUrl);
+    listHtml = real.html;
+    listUrl = real.finalUrl || listUrl;
+  }
+
+  const links = extractProfileLinks(listHtml, listUrl);
+  console.log("profile links extracted:", links.length);
+  if (!links.length) {
+    console.error("Error: profile link list is empty (0).");
     process.exit(1);
   }
 
   const senators = [];
-  for (const profileUrl of profileLinks) {
+  for (const profileUrl of links) {
     try {
       const { html } = await fetchText(profileUrl);
       const $ = cheerio.load(html);
@@ -261,6 +199,7 @@ async function main() {
 
       const name = extractName($);
       if (!name || !Number.isFinite(id)) {
+        // 最低限のキーが無ければ捨てる
         console.log("SKIP:", profileUrl, "(missing id/name)");
         continue;
       }
@@ -280,20 +219,15 @@ async function main() {
   }
 
   console.log("parsed senators:", senators.length);
-
-  if (senators.length < 1) {
-    console.error("ERROR: parsed senators is 0. Stop without updating JSON.");
+  if (!senators.length) {
+    console.error("Error: parsed senators is empty (0).");
     process.exit(1);
   }
 
+  // 安定化のためID順にソート
   senators.sort((a, b) => a.id - b.id);
-  if (!Array.isArray(senators) || senators.length < 1) {
-    console.error("ERROR: senators array is empty; aborting.");
-    process.exit(1);
-  }
-  writeJsonAtomic(OUTPUT_PATH, senators);
-  console.log("OUTPUT_PATH:", OUTPUT_PATH);
-  try { const st = fs.statSync(OUTPUT_PATH); console.log("OUTPUT_SIZE:", st.size); } catch (e) { console.log("OUTPUT_STAT_ERROR:", String(e)); }
+  fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(senators, null, 2) + "\n", "utf-8");
 }
 
 main().catch((e) => {
