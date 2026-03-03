@@ -126,10 +126,6 @@ async function discoverProfileLinks(startUrl) {
     const $ = cheerio.load(html);
     $("a[href]").each((_, a) => {
       const href = $(a).attr("href") || "";
-    if (debugShown < 5 && /profile\//i.test(href)) {
-      console.log("  href contains profile:", href);
-      debugShown++;
-    }
       if (!href) return;
 
       const next = absUrl(base, href).replace(/\?.*$/, "");
