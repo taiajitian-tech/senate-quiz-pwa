@@ -39,6 +39,14 @@ jobs:
       - name: Generate senators data
         run: node scripts/fetchSenators.mjs
 
+      - name: Debug generated file
+        run: |
+          echo "---- senators.json head ----"
+          ls -la public/data/senators.json || true
+          head -c 400 public/data/senators.json || true
+          echo ""
+          echo "---- end ----"
+
       - name: Validate generated JSON
         run: |
           node -e "const fs=require('fs');const p='public/data/senators.json';const s=fs.readFileSync(p,'utf8');let j;try{j=JSON.parse(s);}catch(e){console.error('Invalid JSON');process.exit(1);}if(!Array.isArray(j)){console.error('JSON is not array');process.exit(1);}if(j.length<1){console.error('JSON array is empty');process.exit(1);}console.log('JSON OK, count=',j.length);"

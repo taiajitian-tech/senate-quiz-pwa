@@ -74,9 +74,16 @@ function extractProfileLinks(html, baseUrl) {
   const $ = cheerio.load(html);
   const set = new Set();
 
+  // DEBUG: profile を含む href を少しだけ出す（取得0件原因の特定用）
+  let debugShown = 0;
+
   $("a[href]").each((_, a) => {
     const href = $(a).attr("href") || "";
-    if (!/\/profile\/\d+\.htm/i.test(href)) return;
+    if (debugShown < 5 && /profile\//i.test(href)) {
+      console.log("  href contains profile:", href);
+      debugShown++;
+    }
+    if (!/(?:^|\/)?profile\/\d+\.htm/i.test(href)) return;
     const u = absUrl(baseUrl, href);
     if (!u) return;
     if (!u.startsWith("https://www.sangiin.go.jp/")) return;
@@ -108,7 +115,7 @@ async function discoverProfileLinks(startUrl) {
     const base = finalUrl || url;
 
     const profiles = extractProfileLinks(html, base);
-    console.log("scan page:", base, "profiles:", profiles.length, "depth:", depth);
+    console.log("scan page:", base, "profiles:", profiles.length, "depth:", depth, "queue:", queue.length);
     if (profiles.length) {
       return { profileLinks: profiles, pagesFetched };
     }
@@ -119,6 +126,10 @@ async function discoverProfileLinks(startUrl) {
     const $ = cheerio.load(html);
     $("a[href]").each((_, a) => {
       const href = $(a).attr("href") || "";
+    if (debugShown < 5 && /profile\//i.test(href)) {
+      console.log("  href contains profile:", href);
+      debugShown++;
+    }
       if (!href) return;
 
       const next = absUrl(base, href).replace(/\?.*$/, "");
