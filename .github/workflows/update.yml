@@ -11,6 +11,9 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
 
     steps:
       - name: Checkout
@@ -20,31 +23,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
+          cache: "npm"
           cache-dependency-path: web/package-lock.json
 
       - name: Install dependencies
-        working-directory: web
-        run: npm ci
+        run: |
+          # lock不整合で npm ci が落ちるのを防ぐ
+          rm -f package-lock.json
+          npm install --no-audit --no-fund
 
       - name: Generate senators data
-        working-directory: web
-        run: npm run gen:senators
+        run: node scripts/fetchSenators.mjs
 
       - name: Commit and push if changed
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@users.noreply.github.com
-
-          # senators.json 以外の変更（例：package-lock.json）は必ず破棄
-          git checkout -- web/package-lock.json web/package.json || true
-
-          # senators.json に差分がなければ終了
+          # 生成物以外はコミットしない（lockは捨てる）
+          git checkout -- web/package-lock.json || true
+          git status --porcelain
           if git diff --quiet -- web/public/data/senators.json; then
             echo "No changes in senators.json"
             exit 0
           fi
-
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add web/public/data/senators.json
           git commit -m "chore: update senators.json"
-          git push origin main
+          git push

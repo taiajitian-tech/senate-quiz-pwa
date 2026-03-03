@@ -1,253 +1,234 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import * as cheerio from "cheerio";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 出力先（GitHub Pages が読む場所）
-const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
-
-// 入口（固定URL /current/ は実体URLに追従する）
 const ENTRY_URL =
   "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm";
 
-// 参議院サイトの写真URLは profile id から確定で作れる（g + id）
-const photoUrlFromId = (id) =>
-  `https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g${id}.jpg`;
+const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
+
+// UA を固定（ブロック回避の保険）
+const UA =
+  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122 Safari/537.36";
+
+function absUrl(base, href) {
+  try {
+    return new URL(href, base).toString();
+  } catch {
+    return "";
+  }
+}
 
 async function fetchText(url) {
   const res = await fetch(url, {
     redirect: "follow",
     headers: {
-      "User-Agent": "Mozilla/5.0",
-      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "user-agent": UA,
+      accept: "text/html,application/xhtml+xml",
     },
   });
-  if (!res.ok) throw new Error(`Fetch failed ${res.status}: ${url}`);
-  return { text: await res.text(), finalUrl: res.url || url };
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
+  const html = await res.text();
+  return { html, finalUrl: res.url || url };
 }
 
-function normalizeWS(s) {
-  return String(s || "")
-    .replace(/\r\n/g, "\n")
-    .replace(/[\t\f\v]+/g, " ")
-    .replace(/\u00a0/g, " ")
-    .replace(/[ ]{2,}/g, " ")
-    .trim();
+// current/ が「中継HTML」になった場合、HTML内の実体URLを拾って追従
+function resolveRealListUrl(entryHtml, entryUrl, finalUrl) {
+  // まずは res.url（HTTPリダイレクト）を優先
+  if (finalUrl && finalUrl !== entryUrl) return finalUrl;
+
+  // 中継HTMLから実体URLを抽出（/giin/221/giin.htm のようなもの）
+  const m =
+    entryHtml.match(/\/japanese\/joho1\/kousei\/giin\/\d+\/giin\.htm/i) ||
+    entryHtml.match(/\/kousei\/giin\/\d+\/giin\.htm/i);
+
+  if (m?.[0]) return absUrl(entryUrl, m[0]);
+
+  return entryUrl;
 }
 
-function stripTags(html) {
-  // script/style を先に除去
-  const noScript = html
-    .replace(/<script[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[\s\S]*?<\/style>/gi, "");
+function extractProfileLinks(listHtml, listUrl) {
+  const $ = cheerio.load(listHtml);
+  const set = new Set();
 
-  // 改行に寄せたいタグ
-  const withNL = noScript
-    .replace(/<\s*br\s*\/?>/gi, "\n")
-    .replace(/<\s*\/p\s*>/gi, "\n")
-    .replace(/<\s*\/tr\s*>/gi, "\n")
-    .replace(/<\s*\/li\s*>/gi, "\n")
-    .replace(/<\s*\/h\d\s*>/gi, "\n");
-
-  return normalizeWS(withNL.replace(/<[^>]*>/g, " "));
-}
-
-function cleanName(name) {
-  return normalizeWS(name)
-    // 旧姓などの角括弧表記を落とす（例：生稲 晃子［佐山 晃子］）
-    .replace(/\s*\[[^\]]+\]\s*/g, " ")
-    .replace(/\s*［[^］]+］\s*/g, " ")
-    .trim();
-}
-
-function extractRealListUrl(entryHtml, entryFinalUrl) {
-  // entry は軽量HTMLのことがあるため、href を直接拾う
-  // 優先順位：giinmei.htm（会派見出しが取れる） > giin.htm
-  const candidates = [];
-  for (const re of [
-    /\/japanese\/joho1\/kousei\/giin\/(\d{3,})\/giinmei\.htm/gi,
-    /\/japanese\/joho1\/kousei\/giin\/(\d{3,})\/giin\.htm/gi,
-  ]) {
-    for (const m of entryHtml.matchAll(re)) {
-      candidates.push(new URL(m[0], entryFinalUrl).href);
-    }
-  }
-  // response.url だけで実体に飛べる場合もある
-  if (candidates.length === 0 && /\/giin\/\d+\//.test(entryFinalUrl)) {
-    // giin.htm の場合は giinmei.htm を試す
-    const maybe = entryFinalUrl.replace(/\/giin\.htm$/, "/giinmei.htm");
-    candidates.push(maybe);
-    candidates.push(entryFinalUrl);
-  }
-  if (candidates.length === 0) return null;
-  // 一番先頭（優先順で入れている）
-  return candidates[0];
-}
-
-function parseListPage(listHtml, listUrl) {
-  // 方針：
-  // - /profile/\d+.htm のリンクを row 単位で抽出
-  // - row の td から (name, yomi, district) を拾う
-  // - 会派は「会派見出し（〜（n名））」の直後のテーブルに紐づく想定で、
-  //   row の直前に現れる見出しを採用（失敗したら空）
-
-  const html = listHtml;
-  const groupHeaders = [];
-
-  // 会派見出しらしき文字列：〜（数字名） かつ 党/無所属 を含む
-  const groupRe =
-    /(^|[>\n])\s*([^<>\n]{2,60}?(?:党|無所属)[^<>\n]{0,20}?)\s*[（(]\s*\d+\s*名\s*[）)]/g;
-  for (const m of html.matchAll(groupRe)) {
-    const label = normalizeWS(m[2]);
-    if (!label) continue;
-    groupHeaders.push({ idx: m.index ?? 0, label });
-  }
-  groupHeaders.sort((a, b) => a.idx - b.idx);
-
-  const rows = html.match(/<tr[^>]*>[\s\S]*?<\/tr>/gi) || [];
-  const out = [];
-
-  for (const tr of rows) {
-    const a = tr.match(
-      /<a[^>]*href="([^"]*\/profile\/(\d+)\.htm)"[^>]*>([\s\S]*?)<\/a>/i
-    );
-    if (!a) continue;
-
-    const profileUrl = new URL(a[1], listUrl).href;
-    const profileId = a[2];
-    const name = cleanName(stripTags(a[3] || ""));
-
-    const tds = [...tr.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map((m) =>
-      stripTags(m[1] || "")
-    );
-    // 想定： [0]=氏名, [1]=ふりがな, [2]=選挙区...
-    const yomi = normalizeWS(tds[1] || "");
-    const district = normalizeWS(tds[2] || "");
-
-    // この tr が listHtml 内のどこにあるかを探し、直前の見出しを会派候補に
-    const pos = html.indexOf(tr);
-    let groupHint = "";
-    if (pos >= 0 && groupHeaders.length > 0) {
-      for (let i = groupHeaders.length - 1; i >= 0; i--) {
-        if (groupHeaders[i].idx <= pos) {
-          groupHint = groupHeaders[i].label;
-          break;
-        }
-      }
-    }
-
-    if (!profileId || !name) continue;
-    out.push({ profileId, name, yomi, district, groupHint, profileUrl });
-  }
-
-  // 重複除去（profileId）
-  const seen = new Set();
-  return out.filter((x) => {
-    if (seen.has(x.profileId)) return false;
-    seen.add(x.profileId);
-    return true;
+  $("a[href]").each((_, a) => {
+    const href = $(a).attr("href") || "";
+    if (!/\/profile\/\d+\.htm/i.test(href)) return;
+    const u = absUrl(listUrl, href);
+    if (!u) return;
+    if (!u.startsWith("https://www.sangiin.go.jp/")) return;
+    set.add(u.replace(/\?.*$/, ""));
   });
+
+  return Array.from(set);
 }
 
-function extractGroupFromProfile(profileHtml) {
-  // profileページは「所属会派」「選挙区・比例区／当選年／当選回数」が比較的安定
-  const text = stripTags(profileHtml)
-    .replace(/\s*\/\s*/g, "／")
-    .replace(/[ ]{2,}/g, " ");
+function normText(s) {
+  return (s || "").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+}
 
-  // まず「所属会派」直後の1行を優先
-  const m = text.match(/所属会派\s*\n?\s*([^\n]{1,60})/);
-  if (m && m[1]) {
-    const v = normalizeWS(m[1]);
-    // 「選挙区...」が混ざる事故を防ぐ
-    if (v && !/選挙区|比例区|当選/.test(v)) return v;
+function extractIdFromProfileUrl(profileUrl) {
+  const m = profileUrl.match(/\/profile\/(\d+)\.htm$/);
+  return m ? m[1] : "";
+}
+
+// DOMスキャン：ラベル（会派/所属会派 など）を探し、隣接要素の値を取る
+function scanByLabel($, labelVariants) {
+  const labels = Array.isArray(labelVariants) ? labelVariants : [labelVariants];
+
+  // 1) th/td
+  for (const label of labels) {
+    const th = $(`th:contains("${label}")`).first();
+    if (th.length) {
+      const td = th.next("td");
+      const v = normText(td.text());
+      if (v) return v;
+    }
   }
 
-  // 保険：所属会派〜次ラベル の範囲
-  const m2 = text.match(
-    /所属会派([\s\S]{0,120}?)(選挙区・比例区|選挙区・比例区／当選年|参議院における役職)/
-  );
-  if (m2 && m2[1]) {
-    const v = normalizeWS(m2[1])
-      .split("\n")
-      .map(normalizeWS)
-      .find(Boolean);
-    if (v && !/選挙区|比例区|当選/.test(v)) return v;
+  // 2) dt/dd
+  for (const label of labels) {
+    const dt = $(`dt:contains("${label}")`).first();
+    if (dt.length) {
+      const dd = dt.next("dd");
+      const v = normText(dd.text());
+      if (v) return v;
+    }
+  }
+
+  // 3) テキスト「label：value」型（最後の保険）
+  const body = normText($("body").text());
+  for (const label of labels) {
+    const re = new RegExp(`${label}\\s*[：:]\\s*([^\\n\\r]{1,80})`);
+    const m = body.match(re);
+    if (m?.[1]) {
+      const v = normText(m[1]);
+      if (v) return v;
+    }
   }
 
   return "";
 }
 
-async function mapLimit(items, limit, fn) {
-  const results = new Array(items.length);
-  let i = 0;
-  const workers = new Array(Math.min(limit, items.length)).fill(0).map(async () => {
-    while (true) {
-      const idx = i++;
-      if (idx >= items.length) break;
-      results[idx] = await fn(items[idx], idx);
-    }
-  });
-  await Promise.all(workers);
-  return results;
+function looksLikeGroup(v) {
+  const s = normText(v);
+  if (!s) return false;
+  // 県名等の短語を弾く（党/会/無所属等が無い短語は不採用）
+  if (s.length <= 4 && !/(党|会|無所属|クラブ)/.test(s)) return false;
+  return true;
+}
+
+function extractName($) {
+  // h1 を優先
+  const h1 = normText($("h1").first().text());
+  if (h1) return h1;
+
+  // title から推定（最終保険）
+  const t = normText($("title").text());
+  if (t) return t.replace(/｜.*$/g, "").replace(/:\s*参議院.*$/g, "").trim();
+
+  return "";
+}
+
+function extractGroup($) {
+  const v = scanByLabel($, ["所属会派", "会派"]);
+  if (looksLikeGroup(v)) return v;
+  return "";
+}
+
+function extractPhoto(profileUrl, id, $) {
+  // 1) 仕様が安定している既知パス（g{ID}.jpg）を最優先
+  if (id) {
+    return `https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g${id}.jpg`;
+  }
+
+  // 2) og:image
+  const og = $('meta[property="og:image"]').attr("content");
+  if (og) {
+    const u = absUrl(profileUrl, og);
+    if (u) return u;
+  }
+
+  // 3) img の jpg
+  const img = $("img[src$='.jpg'], img[src$='.JPG']").first().attr("src");
+  if (img) {
+    const u = absUrl(profileUrl, img);
+    if (u) return u;
+  }
+
+  return "";
 }
 
 async function main() {
   console.log("ENTRY_URL:", ENTRY_URL);
-  const { text: entryHtml, finalUrl: entryFinalUrl } = await fetchText(ENTRY_URL);
 
-  const listUrl = extractRealListUrl(entryHtml, entryFinalUrl);
-  if (!listUrl) throw new Error("Failed to resolve list url from entry page.");
+  // 入口
+  const entry = await fetchText(ENTRY_URL);
+  let listUrl = resolveRealListUrl(entry.html, ENTRY_URL, entry.finalUrl);
 
-  console.log("LIST_URL:", listUrl);
-  const { text: listHtml } = await fetchText(listUrl);
+  // current が中継HTMLのままなら、実体URLをもう一度拾って再fetchする
+  // （entry.html が極端に短い/ profileリンクが0の場合）
+  let listHtml = entry.html;
 
-  const list = parseListPage(listHtml, listUrl);
-  console.log("list extracted:", list.length);
-  if (list.length === 0) {
-    console.log("ENTRY_HTML_LENGTH:", entryHtml.length);
-    console.log("LIST_HTML_LENGTH:", listHtml.length);
-    throw new Error("Error: list is empty (0). parsing failed.");
+  // 実体URLと判断できるのに HTML が entry のままの可能性があるので再取得
+  if (listUrl !== ENTRY_URL) {
+    const real = await fetchText(listUrl);
+    listHtml = real.html;
+    listUrl = real.finalUrl || listUrl;
   }
 
-  // 各プロフィールから会派を確定（失敗時は groupHint を採用）
-  const enriched = await mapLimit(list, 8, async (it) => {
-    let group = it.groupHint || "";
+  const links = extractProfileLinks(listHtml, listUrl);
+  console.log("profile links extracted:", links.length);
+  if (!links.length) {
+    // 0件でもファイルは更新（監視しやすくする）
+    fs.writeFileSync(OUTPUT_PATH, "[]\n", "utf-8");
+    console.error("Error: profile link list is empty (0).");
+    process.exit(0);
+  }
+
+  const senators = [];
+  for (const profileUrl of links) {
     try {
-      const { text: pHtml } = await fetchText(it.profileUrl);
-      const g = extractGroupFromProfile(pHtml);
-      if (g) group = g;
-    } catch {
-      // ignore
+      const { html } = await fetchText(profileUrl);
+      const $ = cheerio.load(html);
+
+      const idStr = extractIdFromProfileUrl(profileUrl);
+      const id = idStr ? Number(idStr) : NaN;
+
+      const name = extractName($);
+      if (!name || !Number.isFinite(id)) {
+        // 最低限のキーが無ければ捨てる
+        console.log("SKIP:", profileUrl, "(missing id/name)");
+        continue;
+      }
+
+      const group = extractGroup($);
+      const photoUrl = extractPhoto(profileUrl, idStr, $);
+
+      senators.push({
+        id,
+        name,
+        group,
+        images: photoUrl ? [photoUrl] : [],
+      });
+    } catch (e) {
+      console.log("SKIP:", profileUrl, String(e));
     }
+  }
 
-    const photoUrl = photoUrlFromId(it.profileId);
-    return {
-      // 既存UI互換（Quiz.tsx 用）
-      id: Number(it.profileId),
-      name: it.name,
-      group,
-      images: [photoUrl],
+  console.log("parsed senators:", senators.length);
 
-      // 将来の拡張（要件のJSON構造）
-      yomi: it.yomi || "",
-      district: it.district || "",
-      profileUrl: it.profileUrl,
-      photoUrl,
-    };
-  });
-
-  // id で安定ソート
-  enriched.sort((a, b) => (a.id || 0) - (b.id || 0));
-
+  // 0件でも落とさない（ただし空JSONになる）
+  senators.sort((a, b) => a.id - b.id);
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(enriched, null, 2), "utf-8");
-  console.log("Wrote:", OUTPUT_PATH);
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(senators, null, 2) + "\n", "utf-8");
 }
 
-main().catch((err) => {
-  console.error(err);
+main().catch((e) => {
+  console.error(e);
   process.exit(1);
 });
