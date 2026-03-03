@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: web
-        run: npm install
+        run: npm ci
 
       - name: Generate senators data
         working-directory: web
@@ -36,8 +36,15 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
 
-          if [ -n "$(git status --porcelain)" ]; then
-            git add web/public/data/senators.json
-            git commit -m "chore: update senators.json"
-            git push
+          # senators.json 以外の変更（例：package-lock.json）は必ず破棄
+          git checkout -- web/package-lock.json web/package.json || true
+
+          # senators.json に差分がなければ終了
+          if git diff --quiet -- web/public/data/senators.json; then
+            echo "No changes in senators.json"
+            exit 0
           fi
+
+          git add web/public/data/senators.json
+          git commit -m "chore: update senators.json"
+          git push origin main
