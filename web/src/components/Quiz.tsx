@@ -413,7 +413,7 @@ export default function Quiz() {
           {choices.map((id) => {
             const s = senatorsById.get(id);
             if (!s) return null;
-            const label = s.name;
+                        const label = s.name.replace(/：.*$/, "").trim();
             const isPicked = selected === id;
             const correctId = current.id;
 
@@ -435,7 +435,7 @@ export default function Quiz() {
 
             return (
               <button
-                key={label}
+                key={id}
                 type="button"
                 style={{ ...styles.choiceBtn, border, background }}
                 onClick={() => onSelect(id)}
