@@ -413,7 +413,7 @@ export default function Quiz() {
           {choices.map((id) => {
             const s = senatorsById.get(id);
             if (!s) return null;
-            const label = s.group ? `${s.name}（${s.group}）` : s.name;
+            const label = s.name;
             const isPicked = selected === id;
             const correctId = current.id;
 
