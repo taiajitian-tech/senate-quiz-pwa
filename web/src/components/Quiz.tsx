@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { bumpStats, loadStats } from "./stats";
+import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 
 type Senator = {
   id: number;
@@ -8,8 +10,6 @@ type Senator = {
 };
 
 type Mode = "normal" | "review";
-
-const WRONG_IDS_KEY = "senateQuizWrongIds.v1";
 
 const shuffle = <T,>(arr: T[]) => {
   const a = [...arr];
@@ -22,32 +22,25 @@ const shuffle = <T,>(arr: T[]) => {
 
 const pickN = <T,>(arr: T[], n: number) => shuffle(arr).slice(0, n);
 
-const loadWrongIds = (): number[] => {
-  try {
-    const raw = localStorage.getItem(WRONG_IDS_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((x) => Number.isFinite(x)).map((x) => Number(x));
-  } catch {
-    return [];
-  }
+type Props = {
+  initialMode: Mode;
+  normalCount: number;
+  onBackTitle: () => void;
 };
 
-const saveWrongIds = (ids: number[]) => {
-  try {
-    localStorage.setItem(WRONG_IDS_KEY, JSON.stringify(ids));
-  } catch {
-    // ignore
-  }
-};
-
-export default function Quiz() {
+export default function Quiz(props: Props) {
+  const BackBar = () => (
+    <div style={{ width: "100%", maxWidth: 560, margin: "0 auto 10px" }}>
+      <button type="button" style={styles.backBtn} onClick={props.onBackTitle}>
+        タイトルへ戻る
+      </button>
+    </div>
+  );
   const [senators, setSenators] = useState<Senator[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  const [mode, setMode] = useState<Mode>("normal");
+  const [mode, setMode] = useState<Mode>(props.initialMode);
 
   // normal: 20問の出題順（senator.id配列）と現在位置
   const [normalOrder, setNormalOrder] = useState<number[]>([]);
@@ -63,6 +56,10 @@ export default function Quiz() {
   // GitHub Pages 配下対応（BASE_URL）
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}data/senators.json`;
+
+  // 成績（永続）
+  const [stats, setStats] = useState(() => loadStats());
+  const [masteredSet, setMasteredSet] = useState<Set<number>>(() => new Set(loadMasteredIds()));
 
   // 初期ロード
   useEffect(() => {
@@ -81,8 +78,9 @@ export default function Quiz() {
         const wrongIds = loadWrongIds();
         setReviewWrongSet(new Set(wrongIds));
 
-        // normal 20問を生成
-        const ids = shuffle(arr.map((s) => s.id)).slice(0, Math.min(20, arr.length));
+        // normal 出題を生成
+        const count = Math.max(1, Math.min(props.normalCount, arr.length));
+        const ids = shuffle(arr.map((s) => s.id)).slice(0, count);
         setNormalOrder(ids);
         setNormalPos(0);
 
@@ -91,7 +89,11 @@ export default function Quiz() {
 
         setSelected(null);
         setImgError(false);
-        setMode("normal");
+        setMode(props.initialMode);
+
+        // 成績と完全正解の復元
+        setStats(loadStats());
+        setMasteredSet(new Set(loadMasteredIds()));
       } catch (e) {
         console.error(e);
         setSenators([]);
@@ -100,7 +102,7 @@ export default function Quiz() {
         setLoading(false);
       }
     })();
-  }, [dataUrl]);
+  }, [dataUrl, props.initialMode, props.normalCount]);
 
   const senatorsById = useMemo(() => {
     const m = new Map<number, Senator>();
@@ -143,7 +145,7 @@ export default function Quiz() {
   const isCorrect = isAnswered && current ? selected === current.id : false;
 
   // normalの進捗
-  const normalTotal = Math.min(20, senators.length);
+  const normalTotal = Math.min(props.normalCount, senators.length);
   const isNormalFinished =
     mode === "normal" && normalOrder.length > 0 && normalPos >= normalOrder.length;
 
@@ -163,8 +165,9 @@ export default function Quiz() {
     setReviewCurrentId(pick);
   };
 
-  const startNormal20 = () => {
-    const ids = shuffle(senators.map((s) => s.id)).slice(0, Math.min(20, senators.length));
+  const startNormal = () => {
+    const count = Math.max(1, Math.min(props.normalCount, senators.length));
+    const ids = shuffle(senators.map((s) => s.id)).slice(0, count);
     setMode("normal");
     setNormalOrder(ids);
     setNormalPos(0);
@@ -185,7 +188,7 @@ export default function Quiz() {
     saveWrongIds([]);
     setReviewWrongSet(new Set());
     setReviewCurrentId(null);
-    startNormal20();
+    startNormal();
   };
 
   const onSelect = (id: number) => {
@@ -193,51 +196,69 @@ export default function Quiz() {
     setSelected(id);
   };
 
-  
-  const onGotItByChoices = () => {
-    // 通常モード：正解後「四択見て分かった」→復習リストへ追加して次へ
-    if (!current) return;
+  const addWrong = (id: number) => {
     const nextIds = new Set<number>(loadWrongIds());
-    nextIds.add(current.id);
+    nextIds.add(id);
     const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
     saveWrongIds(arr);
     setReviewWrongSet(new Set(arr));
+  };
 
-    const nextPos = normalPos + 1;
+  const removeWrong = (id: number) => {
+    const nextIds = new Set<number>(loadWrongIds());
+    nextIds.delete(id);
+    const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
+    saveWrongIds(arr);
+    const nextSet = new Set(arr);
+    setReviewWrongSet(nextSet);
+    return nextSet;
+  };
+
+  const addMastered = (id: number) => {
+    const nextIds = new Set<number>(loadMasteredIds());
+    if (nextIds.has(id)) return;
+    nextIds.add(id);
+    const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
+    saveMasteredIds(arr);
+    setMasteredSet(new Set(arr));
+    setStats(bumpStats({ masteredCount: 1 }));
+  };
+
+  const onGotItByChoices = () => {
+    // 正解はしているが、四択を見て分かった → 復習へ回す
+    if (!current) return;
+    addWrong(current.id);
+    setStats(bumpStats({ playedTotal: 1, correctTotal: 1 }));
     setSelected(null);
     setImgError(false);
-    setNormalPos(nextPos);
+    if (mode === "normal") setNormalPos(normalPos + 1);
   };
 
   const onKnewWithoutChoices = () => {
-    // 通常モード：正解後「見なくても分かった」→復習へ回さず次へ
-    const nextPos = normalPos + 1;
+    // 完全正解
+    if (!current) return;
+    addMastered(current.id);
+    // 復習に入っているなら外す
+    removeWrong(current.id);
+    setStats(bumpStats({ playedTotal: 1, correctTotal: 1 }));
     setSelected(null);
     setImgError(false);
-    setNormalPos(nextPos);
+    if (mode === "normal") setNormalPos(normalPos + 1);
   };
 
-const onNext = () => {
+  const onNext = () => {
     if (!isAnswered) return;
 
     // 間違い記録（normal/review共通）
     if (current) {
       const wrongNow = selected !== current.id;
       if (wrongNow) {
-        const nextIds = new Set<number>(loadWrongIds());
-        nextIds.add(current.id);
-        const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
-        saveWrongIds(arr);
-        setReviewWrongSet(new Set(arr));
+        addWrong(current.id);
+        setStats(bumpStats({ playedTotal: 1, wrongTotal: 1 }));
       } else if (mode === "review") {
         // reviewで正解したら、そのIDを間違いリストから外す
-        const nextIds = new Set<number>(loadWrongIds());
-        nextIds.delete(current.id);
-        const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
-        saveWrongIds(arr);
-        const nextSet = new Set(arr);
-        setReviewWrongSet(nextSet);
-        // 次の問題を決定
+        const nextSet = removeWrong(current.id);
+        setStats(bumpStats({ playedTotal: 1, correctTotal: 1 }));
         setSelected(null);
         setImgError(false);
         setTimeout(() => ensureReviewCurrent(nextSet), 0);
@@ -274,18 +295,23 @@ const onNext = () => {
 
   if (loading) {
     return (
-      <div style={styles.wrap}>
+      <>
+        <BackBar />
+        <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>読み込み中</div>
           <div style={styles.sub}>senators.json を確認</div>
         </div>
       </div>
+      </>
     );
   }
 
   if (loadError || senators.length === 0) {
     return (
-      <div style={styles.wrap}>
+      <>
+        <BackBar />
+        <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>データを読み込めませんでした</div>
           <div style={styles.sub}>{loadError ? loadError : "senators.json が 0 件です"}</div>
@@ -299,6 +325,7 @@ const onNext = () => {
           </button>
         </div>
       </div>
+      </>
     );
   }
 
@@ -306,14 +333,16 @@ const onNext = () => {
   if (isNormalFinished) {
     const wrongCount = loadWrongIds().length;
     return (
-      <div style={styles.wrap}>
+      <>
+        <BackBar />
+        <div style={styles.wrap}>
         <div style={styles.card}>
-          <div style={styles.title}>20問終了</div>
+          <div style={styles.title}>{normalTotal}問終了</div>
           <div style={styles.sub}>間違い登録：{wrongCount} 件</div>
 
           <div style={styles.actions}>
-            <button type="button" style={styles.primaryBtn} onClick={startNormal20}>
-              通常モードをもう一度（20問）
+            <button type="button" style={styles.primaryBtn} onClick={startNormal}>
+              通常モードをもう一度（{normalTotal}問）
             </button>
 
             <button
@@ -333,20 +362,23 @@ const onNext = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
   // review終了画面
   if (isReviewFinished) {
     return (
-      <div style={styles.wrap}>
+      <>
+        <BackBar />
+        <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>復習完了</div>
           <div style={styles.sub}>間違いは全て解消されました</div>
 
           <div style={styles.actions}>
-            <button type="button" style={styles.primaryBtn} onClick={startNormal20}>
-              通常モード（20問）へ
+            <button type="button" style={styles.primaryBtn} onClick={startNormal}>
+              通常モードへ
             </button>
             <button type="button" style={styles.dangerBtn} onClick={resetAll}>
               リセット
@@ -354,13 +386,16 @@ const onNext = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
   // review開始直後に current が無い場合
   if (mode === "review" && current == null) {
     return (
-      <div style={styles.wrap}>
+      <>
+        <BackBar />
+        <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>復習モード</div>
           <div style={styles.sub}>間違いデータを準備中</div>
@@ -374,22 +409,34 @@ const onNext = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
   if (!current) {
     return (
-      <div style={styles.wrap}>
+      <>
+        <BackBar />
+        <div style={styles.wrap}>
         <div style={styles.card}>
           <div style={styles.title}>データ不整合</div>
         </div>
       </div>
+      </>
     );
   }
 
   return (
-    <div style={styles.wrap}>
+    <>
+      <BackBar />
+      <div style={styles.wrap}>
       <div style={styles.card}>
+        <div style={styles.statsBar}>
+          <span>残り問題 {mode === "normal" ? Math.max(0, normalOrder.length - normalPos) : reviewRemaining}</span>
+          <span>｜ 残り議員 {Math.max(0, senators.length - masteredSet.size)}</span>
+          <span>｜ 正解 {stats.correctTotal}</span>
+          <span>｜ 間違い {stats.wrongTotal}</span>
+        </div>
         <div style={styles.topRow}>
           <div style={styles.modeTag}>
             {mode === "normal" ? "通常" : "復習"}
@@ -520,17 +567,34 @@ const onNext = () => {
               復習モードへ
             </button>
           ) : (
-            <button type="button" style={styles.secondaryBtn} onClick={startNormal20}>
+            <button type="button" style={styles.secondaryBtn} onClick={startNormal}>
               通常モードへ
             </button>
           )}
         </div>
       </div>
     </div>
+    </>
   );
 }
 
 const styles: Record<string, React.CSSProperties> = {
+  backBtn: {
+    padding: "10px 12px",
+    borderRadius: 10,
+    border: "1px solid #999",
+    background: "#fff",
+  },
+  statsBar: {
+    width: "100%",
+    textAlign: "center",
+    fontSize: 13,
+    color: "#333",
+    padding: "8px 10px",
+    border: "1px solid #eee",
+    borderRadius: 10,
+    background: "#fafafa",
+  },
   wrap: {
     minHeight: "100vh",
     display: "flex",
