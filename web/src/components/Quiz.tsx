@@ -193,7 +193,31 @@ export default function Quiz() {
     setSelected(id);
   };
 
-  const onNext = () => {
+  
+  const onGotItByChoices = () => {
+    // 通常モード：正解後「四択見て分かった」→復習リストへ追加して次へ
+    if (!current) return;
+    const nextIds = new Set<number>(loadWrongIds());
+    nextIds.add(current.id);
+    const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
+    saveWrongIds(arr);
+    setReviewWrongSet(new Set(arr));
+
+    const nextPos = normalPos + 1;
+    setSelected(null);
+    setImgError(false);
+    setNormalPos(nextPos);
+  };
+
+  const onKnewWithoutChoices = () => {
+    // 通常モード：正解後「見なくても分かった」→復習へ回さず次へ
+    const nextPos = normalPos + 1;
+    setSelected(null);
+    setImgError(false);
+    setNormalPos(nextPos);
+  };
+
+const onNext = () => {
     if (!isAnswered) return;
 
     // 間違い記録（normal/review共通）
@@ -413,7 +437,8 @@ export default function Quiz() {
           {choices.map((id) => {
             const s = senatorsById.get(id);
             if (!s) return null;
-                        const label = s.name.replace(/：.*$/, "").trim();
+            const cleanedName = s.name.split("：")[0].split(":")[0];
+            const label = cleanedName;
             const isPicked = selected === id;
             const correctId = current.id;
 
@@ -435,7 +460,7 @@ export default function Quiz() {
 
             return (
               <button
-                key={id}
+                key={s.id}
                 type="button"
                 style={{ ...styles.choiceBtn, border, background }}
                 onClick={() => onSelect(id)}
@@ -459,15 +484,34 @@ export default function Quiz() {
             )}
           </div>
 
-          <button
-            type="button"
-            style={isAnswered ? styles.nextBtn : styles.nextBtnDisabled}
-            onClick={onNext}
-            disabled={!isAnswered}
-            aria-disabled={!isAnswered}
-          >
-            次へ
-          </button>
+          {mode === "normal" && isAnswered && isCorrect ? (
+            <div style={styles.afterCorrectActions}>
+              <button
+                type="button"
+                style={styles.nextBtn}
+                onClick={onGotItByChoices}
+              >
+                四択見て分かった
+              </button>
+              <button
+                type="button"
+                style={styles.nextBtn}
+                onClick={onKnewWithoutChoices}
+              >
+                見なくても分かった
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              style={isAnswered ? styles.nextBtn : styles.nextBtnDisabled}
+              onClick={onNext}
+              disabled={!isAnswered}
+              aria-disabled={!isAnswered}
+            >
+              次へ
+            </button>
+          )}
         </div>
 
         <div style={styles.bottomActions}>
@@ -604,6 +648,7 @@ const styles: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     whiteSpace: "nowrap",
   },
+  afterCorrectActions: { display: "flex", gap: 10, width: "100%", justifyContent: "center" },
   nextBtnDisabled: {
     padding: "10px 14px",
     borderRadius: "10px",
