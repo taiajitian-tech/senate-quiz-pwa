@@ -1,5 +1,5 @@
 type Props = {
-  onStartQuiz: () => void;
+  onStartLearn: () => void;
   onStartReview: () => void;
   onOpenStats: () => void;
   onOpenOptions: () => void;
@@ -13,11 +13,11 @@ export default function TitleView(props: Props) {
         <div style={styles.title}>議員集</div>
 
         <div style={styles.menu}>
-          <button type="button" style={styles.primaryBtn} onClick={props.onStartQuiz}>
-            4択問題モード
+          <button type="button" style={styles.primaryBtn} onClick={props.onStartLearn}>
+            学習（思い出して覚える）
           </button>
           <button type="button" style={styles.btn} onClick={props.onStartReview}>
-            復習モード
+            復習（期限切れのみ）
           </button>
           <button type="button" style={styles.btn} onClick={props.onOpenList}>
             議員一覧

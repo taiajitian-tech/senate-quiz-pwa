@@ -1,18 +1,16 @@
-import { useMemo, useState } from "react";
-import Quiz from "./components/Quiz";
+import { useState } from "react";
+import Learn from "./components/Learn";
 import SenatorList from "./components/SenatorList";
 import StatsView from "./components/StatsView";
 import OptionsView, { loadOptions, type Options } from "./components/OptionsView";
 import TitleView from "./components/TitleView";
 
-type Screen = "title" | "quiz" | "review" | "stats" | "options" | "list";
+type Screen = "title" | "learn" | "review" | "stats" | "options" | "list";
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>("title");
   const [options, setOptions] = useState<Options>(() => loadOptions());
 
-  const quizCount = useMemo(() => {
-    const n = Number(options.quizCount);
     if (!Number.isFinite(n)) return 20;
     return Math.max(10, Math.min(200, Math.round(n / 10) * 10));
   }, [options.quizCount]);
@@ -20,7 +18,7 @@ export default function App() {
   if (screen === "title") {
     return (
       <TitleView
-        onStartQuiz={() => setScreen("quiz")}
+        onStartLearn={() => setScreen("learn")}
         onStartReview={() => setScreen("review")}
         onOpenStats={() => setScreen("stats")}
         onOpenOptions={() => setScreen("options")}
@@ -47,11 +45,13 @@ export default function App() {
     return <SenatorList onBack={() => setScreen("title")} />;
   }
 
-  return (
-    <Quiz
-      initialMode={screen === "review" ? "review" : "normal"}
-      normalCount={quizCount}
-      onBackTitle={() => setScreen("title")}
-    />
-  );
+    if (screen === "learn") {
+    return <Learn mode="learn" onBackTitle={() => setScreen("title")} />;
+  }
+
+  if (screen === "review") {
+    return <Learn mode="review" onBackTitle={() => setScreen("title")} />;
+  }
+
+  return null;
 }

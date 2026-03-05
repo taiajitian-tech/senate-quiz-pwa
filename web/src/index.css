@@ -23,23 +23,14 @@ body {
 
 body {
   margin: 0;
-
-  /* 画面中央寄せ（左右ズレをここで止める） */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* 端末幅で変に寄らないように */
-  width: 100%;
-  min-height: 100vh;
-
-  /* 背景 */
   background: #ffffff;
 }
 
-/* Reactの描画領域を中央固定にする */
+/* Reactの描画領域 */
 #root {
   width: 100%;
-  max-width: 520px; /* 好みで 420〜600 の範囲で調整可 */
-  padding: 24px;
+  max-width: 520px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 16px;
 }
