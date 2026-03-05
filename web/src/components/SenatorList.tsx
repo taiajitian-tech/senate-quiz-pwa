@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import HelpModal from "./HelpModal";
 import { loadMasteredIds, loadWrongIds } from "./progress";
 
 type Senator = {
@@ -17,6 +18,7 @@ export default function SenatorList(props: Props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState("");
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}data/senators.json`;
@@ -60,7 +62,12 @@ export default function SenatorList(props: Props) {
         <button type="button" style={styles.backBtn} onClick={props.onBack}>
           タイトルへ戻る
         </button>
-        <div style={styles.h1}>議員一覧</div>
+        <div style={styles.headerRow}>
+          <div style={styles.h1}>議員一覧</div>
+          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>
+            ？
+          </button>
+        </div>
 
         <input
           value={q}
@@ -99,6 +106,12 @@ export default function SenatorList(props: Props) {
           );
         })}
       </div>
+
+
+      <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（議員一覧）">
+        <p>議員一覧です。検索で「名前」または「会派」を絞り込めます。</p>
+        <p>「タイトルへ戻る」でトップへ戻ります。</p>
+      </HelpModal>
     </div>
   );
 }

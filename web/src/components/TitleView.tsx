@@ -1,3 +1,6 @@
+import { useState } from "react";
+import HelpModal from "./HelpModal";
+
 type Props = {
   onStartLearn: () => void;
   onStartReview: () => void;
@@ -7,10 +10,15 @@ type Props = {
 };
 
 export default function TitleView(props: Props) {
+  const [helpOpen, setHelpOpen] = useState(false);
+
   return (
     <div style={styles.wrap}>
       <div style={styles.card}>
-        <div style={styles.title}>議員集</div>
+        <div style={styles.titleRow}>
+          <div style={styles.title}>議員集</div>
+          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
+        </div>
 
         <div style={styles.menu}>
           <button type="button" style={styles.primaryBtn} onClick={props.onStartLearn}>
@@ -30,6 +38,10 @@ export default function TitleView(props: Props) {
           </button>
         </div>
       </div>
+      <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（アプリ）">
+        <p>学習は「顔を見て名前を思い出す→答えを見る→自己判定」で進みます。</p>
+        <p>復習は期限切れのみ出題します。</p>
+      </HelpModal>
     </div>
   );
 }
