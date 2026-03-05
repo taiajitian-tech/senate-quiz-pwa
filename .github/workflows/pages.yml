@@ -36,8 +36,15 @@ jobs:
         run: |
           node -v
           npm -v
+          # npmが参照するregistry/lockのresolvedを安定化
+          npm config set registry https://registry.npmjs.org/
+          npm config delete proxy || true
+          npm config delete https-proxy || true
+          # lock内resolvedが社内ミラー等を指している場合に備えて無視
+          rm -f package-lock.json
           rm -rf node_modules
-          npm install
+          npm install --no-audit --no-fund
+
 
       - name: Build
         working-directory: web
