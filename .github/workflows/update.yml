@@ -23,20 +23,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm config set registry https://registry.npmjs.org/
-          npm config delete proxy || true
-          npm config delete https-proxy || true
-          rm -rf node_modules
-          npm install --no-audit --no-fund
+        run: npm ci
 
       - name: Generate senators data
-        run: node scripts/fetchSenators.mjs
+        run: npm run gen:senators
 
       - name: Generate ministers data
-        run: node scripts/fetchMinisters.mjs
+        run: npm run gen:ministers
 
       - name: Validate data
         run: npm run check:data
@@ -49,13 +46,12 @@ jobs:
           test -f web/public/data/ministers.json
           node -e "const a=require('./web/public/data/senators.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/ministers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
-          git checkout -- web/package-lock.json || true
           if [ -z "$(git status --porcelain -- web/public/data/senators.json web/public/data/ministers.json)" ]; then
             echo "No changes in generated data"
             exit 0
           fi
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add web/public/data/senators.json web/public/data/ministers.json
           git commit -m "chore: update senators and ministers data"
           git push
