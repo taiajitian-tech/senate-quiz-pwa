@@ -40,8 +40,7 @@ jobs:
           npm config set registry https://registry.npmjs.org/
           npm config delete proxy || true
           npm config delete https-proxy || true
-          # lock内resolvedが社内ミラー等を指している場合に備えて無視
-          rm -f package-lock.json
+          npm config get registry
           rm -rf node_modules
           npm install --no-audit --no-fund
 

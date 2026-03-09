@@ -1,4 +1,3 @@
-import type { TargetKey } from "./data";
 import type { Grade, ProgressItem } from "./srs";
 
 export type HistoryItem = {
@@ -7,12 +6,12 @@ export type HistoryItem = {
   grade: Grade;
 };
 
-const progressKey = (target: TargetKey) => `memorize:${target}:progress:v1`;
-const historyKey = (target: TargetKey) => `memorize:${target}:history:v1`;
+const PROGRESS_KEY = "senateQuiz:progress:v1";
+const HISTORY_KEY = "senateQuiz:history:v1";
 
-export function loadProgress(target: TargetKey): Record<number, ProgressItem> {
+export function loadProgress(): Record<number, ProgressItem> {
   try {
-    const raw = localStorage.getItem(progressKey(target));
+    const raw = localStorage.getItem(PROGRESS_KEY);
     if (!raw) return {};
     const parsed = JSON.parse(raw) as Record<number, ProgressItem>;
     return parsed && typeof parsed === "object" ? parsed : {};
@@ -21,13 +20,13 @@ export function loadProgress(target: TargetKey): Record<number, ProgressItem> {
   }
 }
 
-export function saveProgress(target: TargetKey, map: Record<number, ProgressItem>) {
-  localStorage.setItem(progressKey(target), JSON.stringify(map));
+export function saveProgress(map: Record<number, ProgressItem>) {
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(map));
 }
 
-export function loadHistory(target: TargetKey): HistoryItem[] {
+export function loadHistory(): HistoryItem[] {
   try {
-    const raw = localStorage.getItem(historyKey(target));
+    const raw = localStorage.getItem(HISTORY_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? (parsed as HistoryItem[]) : [];
@@ -36,33 +35,13 @@ export function loadHistory(target: TargetKey): HistoryItem[] {
   }
 }
 
-export function appendHistory(target: TargetKey, item: HistoryItem) {
-  const list = loadHistory(target);
+export function appendHistory(item: HistoryItem) {
+  const list = loadHistory();
   list.push(item);
-  localStorage.setItem(historyKey(target), JSON.stringify(list));
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
 }
 
-export function resetLearning(target: TargetKey) {
-  localStorage.removeItem(progressKey(target));
-  localStorage.removeItem(historyKey(target));
-}
-
-export function exportAllLearningData() {
-  const data: Record<string, unknown> = {};
-  for (const key of Object.keys(localStorage)) {
-    if (key.startsWith("memorize:") || key.startsWith("senateQuiz") || key === "app-first-launch") {
-      try {
-        data[key] = JSON.parse(localStorage.getItem(key) ?? "null");
-      } catch {
-        data[key] = localStorage.getItem(key);
-      }
-    }
-  }
-  return data;
-}
-
-export function importAllLearningData(value: Record<string, unknown>) {
-  for (const [key, item] of Object.entries(value)) {
-    localStorage.setItem(key, typeof item === "string" ? item : JSON.stringify(item));
-  }
+export function resetLearning() {
+  localStorage.removeItem(PROGRESS_KEY);
+  localStorage.removeItem(HISTORY_KEY);
 }
