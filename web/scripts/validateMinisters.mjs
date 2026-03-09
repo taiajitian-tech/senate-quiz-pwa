@@ -1,7 +1,7 @@
 
 import fs from "fs";
 
-const file="web/public/data/ministers.json";
+const file="public/data/ministers.json";
 
 const data=JSON.parse(fs.readFileSync(file,"utf8"));
 
