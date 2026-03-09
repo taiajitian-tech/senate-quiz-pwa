@@ -1,9 +1,31 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const file=path.resolve('public/data/ministers.json');
-const data=JSON.parse(fs.readFileSync(file,'utf8'));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const file = path.resolve(__dirname, "../public/data/ministers.json");
 
-if(!Array.isArray(data)) throw new Error('ministers.json not array');
+const raw = fs.readFileSync(file, "utf8");
+const parsed = JSON.parse(raw);
 
-console.log('ministers.json OK',data.length);
+if (!Array.isArray(parsed) || parsed.length === 0) {
+  throw new Error("ministers.json is empty or not an array");
+}
+
+const seen = new Set();
+for (const [index, item] of parsed.entries()) {
+  if (!item || typeof item !== "object") throw new Error(`Invalid item at ${index}`);
+  const id = Number(item.id);
+  if (!Number.isFinite(id)) throw new Error(`Invalid id at ${index}`);
+  if (seen.has(id)) throw new Error(`Duplicate id: ${id}`);
+  seen.add(id);
+  if (typeof item.name !== "string" || !item.name.trim()) throw new Error(`Invalid name for id ${id}`);
+  if (item.group != null && typeof item.group !== "string") throw new Error(`Invalid group for id ${id}`);
+  if (!Array.isArray(item.images)) throw new Error(`Invalid images for id ${id}`);
+  for (const img of item.images) {
+    if (typeof img !== "string") throw new Error(`Invalid image URL for id ${id}`);
+  }
+}
+
+console.log(`ministers.json OK (${parsed.length})`);

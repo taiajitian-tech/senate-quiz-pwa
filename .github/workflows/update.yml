@@ -1,4 +1,4 @@
-name: update-senators
+name: update-data
 
 on:
   workflow_dispatch:
@@ -35,29 +35,27 @@ jobs:
       - name: Generate senators data
         run: node scripts/fetchSenators.mjs
 
-      - name: Validate senators data
-        run: node scripts/validateSenators.mjs
+      - name: Generate ministers data
+        run: node scripts/fetchMinisters.mjs
+
+      - name: Validate data
+        run: npm run check:data
 
       - name: Commit and push if changed
         working-directory: .
         run: |
           set -euo pipefail
-
-          # 生成JSONが無い/空なら失敗（[] 固定化を防止）
           test -f web/public/data/senators.json
+          test -f web/public/data/ministers.json
           node -e "const a=require('./web/public/data/senators.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
-
-          # 生成物以外はコミットしない（lockは捨てる）
+          node -e "const a=require('./web/public/data/ministers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           git checkout -- web/package-lock.json || true
-
-          # 対象ファイルに変更が無ければコミットしない（誤判定防止）
-          if [ -z "$(git status --porcelain -- web/public/data/senators.json)" ]; then
-            echo "No changes in senators.json"
+          if [ -z "$(git status --porcelain -- web/public/data/senators.json web/public/data/ministers.json)" ]; then
+            echo "No changes in generated data"
             exit 0
           fi
-
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add web/public/data/senators.json
-          git commit -m "chore: update senators.json"
+          git add web/public/data/senators.json web/public/data/ministers.json
+          git commit -m "chore: update senators and ministers data"
           git push
