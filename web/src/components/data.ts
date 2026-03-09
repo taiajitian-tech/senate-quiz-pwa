@@ -1,4 +1,4 @@
-export type Target = "senators" | "ministers";
+export type Target = "senators" | "representatives" | "ministers";
 
 export type Person = {
   id: number;
@@ -8,12 +8,20 @@ export type Person = {
 };
 
 export const targetLabels: Record<Target, string> = {
-  senators: "現職参議院議員",
+  senators: "現職議員",
+  representatives: "現職衆議院議員",
+  ministers: "現職大臣",
+};
+
+export const targetTabs: Record<Target, string> = {
+  senators: "参議院",
+  representatives: "衆議院",
   ministers: "現職大臣",
 };
 
 export const targetDataPath: Record<Target, string> = {
   senators: "data/senators.json",
+  representatives: "data/representatives.json",
   ministers: "data/ministers.json",
 };
 

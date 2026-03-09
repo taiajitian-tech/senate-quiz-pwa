@@ -125,11 +125,11 @@ function looksLikeGroup(v) {
 function extractName($) {
   // h1 を優先
   const h1 = normText($("h1").first().text());
-  if (h1) return h1;
+  if (h1) return h1.replace(/：?参議院$/g, "").trim();
 
   // title から推定（最終保険）
   const t = normText($("title").text());
-  if (t) return t.replace(/｜.*$/g, "").replace(/:\s*参議院.*$/g, "").trim();
+  if (t) return t.replace(/｜.*$/g, "").replace(/:\s*参議院.*$/g, "").replace(/：?参議院$/g, "").trim();
 
   return "";
 }

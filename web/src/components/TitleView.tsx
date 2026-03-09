@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Target } from "./data";
-import { targetLabels } from "./data";
+import { targetLabels, targetTabs } from "./data";
 import HelpModal from "./HelpModal";
 
 type Props = {
@@ -30,10 +30,13 @@ export default function TitleView(props: Props) {
 
         <div style={styles.segment}>
           <button type="button" style={props.target === "senators" ? styles.segmentActive : styles.segmentBtn} onClick={() => props.onChangeTarget("senators")}>
-            参議院議員
+            {targetTabs.senators}
+          </button>
+          <button type="button" style={props.target === "representatives" ? styles.segmentActive : styles.segmentBtn} onClick={() => props.onChangeTarget("representatives")}>
+            {targetTabs.representatives}
           </button>
           <button type="button" style={props.target === "ministers" ? styles.segmentActive : styles.segmentBtn} onClick={() => props.onChangeTarget("ministers")}>
-            現職大臣
+            {targetTabs.ministers}
           </button>
         </div>
         <div style={styles.targetLabel}>{targetLabels[props.target]}</div>
@@ -84,7 +87,7 @@ const styles: Record<string, React.CSSProperties> = {
   titleRow: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" },
   title: { fontSize: 40, fontWeight: 800, letterSpacing: 1 },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
-  segment: { width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 },
+  segment: { width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 },
   segmentBtn: { ...commonBtn, border: "1px solid #999", background: "#fff", fontSize: 16 },
   segmentActive: { ...commonBtn, border: "1px solid #0969da", background: "#eef6ff", fontSize: 16, fontWeight: 700 },
   targetLabel: { fontSize: 14, color: "#444", alignSelf: "flex-start" },

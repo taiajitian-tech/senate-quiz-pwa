@@ -13,7 +13,9 @@
     "check:data": "node scripts/validateSenators.mjs && node scripts/validateMinisters.mjs",
     "check": "npm run typecheck && npm run build && npm run check:data",
     "prepare": "node scripts/setupHooks.mjs",
-    "gen:ministers": "node scripts/fetchMinisters.mjs"
+    "gen:ministers": "node scripts/fetchMinisters.mjs",
+    "gen:representatives": "node scripts/fetchRepresentatives.mjs",
+    "check:representatives": "node scripts/validateRepresentatives.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

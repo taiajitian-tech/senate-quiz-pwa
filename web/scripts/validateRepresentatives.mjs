@@ -4,13 +4,13 @@ import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const file = path.resolve(__dirname, "../public/data/ministers.json");
+const file = path.resolve(__dirname, "../public/data/representatives.json");
 
 const raw = fs.readFileSync(file, "utf8");
 const parsed = JSON.parse(raw);
 
-if (!Array.isArray(parsed) || parsed.length === 0) {
-  throw new Error("ministers.json is empty or not an array");
+if (!Array.isArray(parsed)) {
+  throw new Error("representatives.json is not an array");
 }
 
 const seen = new Set();
@@ -28,4 +28,4 @@ for (const [index, item] of parsed.entries()) {
   }
 }
 
-console.log(`ministers.json OK (${parsed.length})`);
+console.log(`representatives.json OK (${parsed.length})`);
