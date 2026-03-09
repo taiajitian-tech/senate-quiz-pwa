@@ -10,9 +10,10 @@
     "preview": "vite preview",
     "gen:senators": "node scripts/fetchSenators.mjs",
     "typecheck": "tsc --noEmit",
-    "check:data": "node scripts/validateSenators.mjs",
+    "check:data": "node scripts/validateSenators.mjs && node scripts/validateMinisters.mjs",
     "check": "npm run typecheck && npm run build && npm run check:data",
-    "prepare": "node scripts/setupHooks.mjs"
+    "prepare": "node scripts/setupHooks.mjs",
+    "gen:ministers": "node scripts/fetchMinisters.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
