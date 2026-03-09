@@ -1,20 +1,24 @@
 export type Options = {
   quizCount: number;
+  autoFaceSeconds: number;
+  autoAnswerSeconds: number;
 };
 
-const OPTIONS_KEY = "senateQuizOptions.v1";
+const OPTIONS_KEY = "senateQuizOptions.v2";
+
+const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
 
 export const loadOptions = (): Options => {
   try {
     const raw = localStorage.getItem(OPTIONS_KEY);
-    if (!raw) return { quizCount: 20 };
+    if (!raw) return { quizCount: 20, autoFaceSeconds: 2, autoAnswerSeconds: 2 };
     const parsed = JSON.parse(raw) as Partial<Options>;
-    const n = Number(parsed.quizCount);
-    if (!Number.isFinite(n)) return { quizCount: 20 };
-    const fixed = Math.max(10, Math.min(200, Math.round(n / 10) * 10));
-    return { quizCount: fixed };
+    const quizCount = clamp(Math.round((Number(parsed.quizCount) || 20) / 10) * 10, 10, 200);
+    const autoFaceSeconds = clamp(Number(parsed.autoFaceSeconds) || 2, 1, 10);
+    const autoAnswerSeconds = clamp(Number(parsed.autoAnswerSeconds) || 2, 1, 10);
+    return { quizCount, autoFaceSeconds, autoAnswerSeconds };
   } catch {
-    return { quizCount: 20 };
+    return { quizCount: 20, autoFaceSeconds: 2, autoAnswerSeconds: 2 };
   }
 };
 

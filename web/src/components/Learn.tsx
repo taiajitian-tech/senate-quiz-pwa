@@ -1,53 +1,60 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import HelpModal from "./HelpModal";
 import { applyGrade, type Grade, type ProgressItem } from "./srs";
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
-import { bumpStats } from "./stats";
-import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { parseSenatorsJson, type Senator } from "./data";
+import { parsePeopleJson, TARGET_DATA_PATH, TARGET_LABEL, type Person, type TargetKey, cleanDisplayName } from "./data";
 import SafeImage from "./SafeImage";
+import type { Options } from "./optionsStore";
 
 type Props = {
-  mode: "learn" | "review";
+  target: TargetKey;
+  mode: "learn" | "review" | "reverse" | "autoplay";
+  options: Options;
   onBackTitle: () => void;
 };
 
-function pickNext(senators: Senator[], progress: Record<number, ProgressItem>, now: number, mode: "learn" | "review") {
-  if (senators.length === 0) return null;
+function pickDue(people: Person[], progress: Record<number, ProgressItem>, now: number) {
+  return people.filter((p) => (progress[p.id]?.due ?? 0) <= now && progress[p.id]);
+}
 
-  const due: Senator[] = [];
-  const fresh: Senator[] = [];
-  let nearest: { s: Senator; due: number } | null = null;
+function pickFresh(people: Person[], progress: Record<number, ProgressItem>) {
+  return people.filter((p) => !progress[p.id]);
+}
 
-  for (const s of senators) {
-    const p = progress[s.id];
-    if (!p) {
-      if (mode === "learn") fresh.push(s);
-      continue;
-    }
+function randomPick<T>(items: T[]): T | null {
+  if (items.length === 0) return null;
+  return items[Math.floor(Math.random() * items.length)] ?? null;
+}
 
-    if (p.due <= now) due.push(s);
-
-    if (!nearest || p.due < nearest.due) nearest = { s, due: p.due };
-  }
-
-  if (due.length > 0) return due[Math.floor(Math.random() * due.length)];
-  if (mode === "review") return null; // 復習は期限切れのみ
-  if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
-  return nearest?.s ?? null;
+function pickNext(people: Person[], progress: Record<number, ProgressItem>, now: number, mode: Props["mode"], lastId?: number | null) {
+  const due = pickDue(people, progress, now).filter((p) => p.id !== lastId);
+  const fresh = pickFresh(people, progress).filter((p) => p.id !== lastId);
+  if (mode === "review") return randomPick(due);
+  if (due.length > 0) return randomPick(due);
+  if (fresh.length > 0) return randomPick(fresh);
+  const sorted = [...people]
+    .filter((p) => p.id !== lastId)
+    .sort((a, b) => (progress[a.id]?.due ?? Number.MAX_SAFE_INTEGER) - (progress[b.id]?.due ?? Number.MAX_SAFE_INTEGER));
+  return sorted[0] ?? people[0] ?? null;
 }
 
 export default function Learn(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [senators, setSenators] = useState<Senator[]>([]);
+  const [people, setPeople] = useState<Person[]>([]);
+  const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.target));
   const [revealed, setRevealed] = useState(false);
-
-  const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress());
+  const [showNameFirst, setShowNameFirst] = useState(true);
+  const [lastId, setLastId] = useState<number | null>(null);
+  const timerRef = useRef<number | null>(null);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
-  const dataUrl = `${baseUrl}data/senators.json`;
+  const dataUrl = `${baseUrl}${TARGET_DATA_PATH[props.target]}`;
+
+  useEffect(() => {
+    setProgress(loadProgress(props.target));
+  }, [props.target]);
 
   useEffect(() => {
     (async () => {
@@ -57,10 +64,10 @@ export default function Learn(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        setSenators(parseSenatorsJson(json));
+        setPeople(parsePeopleJson(json));
       } catch (e) {
         console.error(e);
-        setSenators([]);
+        setPeople([]);
         setError(String(e));
       } finally {
         setLoading(false);
@@ -68,251 +75,164 @@ export default function Learn(props: Props) {
     })();
   }, [dataUrl]);
 
-  const current = useMemo(() => {
-    const now = Date.now();
-    return pickNext(senators, progress, now, props.mode);
-  }, [senators, progress, props.mode]);
+  const current = useMemo(() => pickNext(people, progress, Date.now(), props.mode, lastId), [people, progress, props.mode, lastId]);
 
-  const onGrade = (grade: Grade) => {
+  const commitGrade = (grade: Grade) => {
     if (!current) return;
-
     const now = Date.now();
-    const prev = progress[current.id];
-    const next = applyGrade(prev, current.id, grade, now);
-
-    const nextMap = { ...progress, [current.id]: next };
+    const nextItem = applyGrade(progress[current.id], current.id, grade, now);
+    const nextMap = { ...progress, [current.id]: nextItem };
     setProgress(nextMap);
-    saveProgress(nextMap);
-    appendHistory({ at: now, id: current.id, grade });
-
-    // stats
-    bumpStats({
-      playedTotal: 1,
-      correctTotal: grade === "again" ? 0 : 1,
-      wrongTotal: grade === "again" ? 1 : 0,
-    });
-
-    // badges (一覧用)
-    const wrong = new Set(loadWrongIds());
-    const mastered = new Set(loadMasteredIds());
-
-    if (grade === "again") wrong.add(current.id);
-    else wrong.delete(current.id);
-
-    // 「完全」は good で reps>=4 を目安（短期で増えすぎないように）
-    if (grade === "good" && next.reps >= 4) mastered.add(current.id);
-
-    saveWrongIds([...wrong]);
-    saveMasteredIds([...mastered]);
-
+    saveProgress(props.target, nextMap);
+    appendHistory(props.target, { at: now, id: current.id, grade });
     setRevealed(false);
+    setShowNameFirst(true);
+    setLastId(current.id);
   };
 
-  const title = props.mode === "review" ? "復習（期限切れのみ）" : "学習（思い出して覚える）";
+  useEffect(() => {
+    if (props.mode !== "autoplay" || !current) return;
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    setShowNameFirst(true);
+    setRevealed(false);
+    timerRef.current = window.setTimeout(() => {
+      setShowNameFirst(false);
+      setRevealed(true);
+      timerRef.current = window.setTimeout(() => {
+        commitGrade("good");
+      }, props.options.autoAnswerSeconds * 1000);
+    }, props.options.autoFaceSeconds * 1000);
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current?.id, props.mode, props.options.autoFaceSeconds, props.options.autoAnswerSeconds]);
+
+  const title = props.mode === "learn"
+    ? `学習（${TARGET_LABEL[props.target]} / 顔→名前）`
+    : props.mode === "reverse"
+      ? `逆学習（${TARGET_LABEL[props.target]} / 名前→顔）`
+      : props.mode === "review"
+        ? `復習（${TARGET_LABEL[props.target]}）`
+        : `自動再生（${TARGET_LABEL[props.target]}）`;
+
+  if (loading) return <SimpleWrap title={title} onBack={props.onBackTitle}>読み込み中です。</SimpleWrap>;
+  if (error) return <SimpleWrap title={title} onBack={props.onBackTitle}>{error}</SimpleWrap>;
+  if (!current) return <SimpleWrap title={title} onBack={props.onBackTitle}>出題できるデータがありません。</SimpleWrap>;
+
+  const displayName = cleanDisplayName(current.name);
+  const imgUrl = current.images?.[0] ?? "";
+  const isReverse = props.mode === "reverse";
 
   return (
     <div style={styles.wrap}>
       <div style={styles.header}>
-        <button type="button" style={styles.backBtn} onClick={props.onBackTitle}>
-          タイトルへ戻る
-        </button>
+        <button type="button" style={styles.backBtn} onClick={props.onBackTitle}>タイトルへ戻る</button>
         <div style={styles.headerRow}>
           <div style={styles.h1}>{title}</div>
-          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>
-            ？
-          </button>
+          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
-        {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
       <div style={styles.card}>
-        {loading ? (
-          <div style={styles.center}>読み込み中</div>
-        ) : !current ? (
-          <div style={styles.center}>
-            {props.mode === "review" ? "期限切れの復習がありません。" : "出題できる議員がありません。"}
-          </div>
-        ) : (
+        {isReverse ? (
           <>
-            <div style={styles.imgBox}>
-              <SafeImage
-                src={current.images?.[0] ?? ""}
-                alt={current.name}
-                style={styles.img}
-                fallbackStyle={styles.noImg}
-                fallbackText="画像なし"
-              />
-            </div>
-
+            <div style={styles.nameBig}>{displayName}</div>
+            <div style={styles.group}>{current.group ?? ""}</div>
             {!revealed ? (
-              <div style={styles.block}>
-                <div style={styles.msg}>名前を思い出してから、答えを表示してください。</div>
-                <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>
-                  答えを見る
-                </button>
-              </div>
+              <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>顔を見る</button>
             ) : (
-              <div style={styles.block}>
-                <div style={styles.answerName}>{(current.name ?? "").split("：")[0].split(":")[0]}</div>
-                <div style={styles.answerGroup}>{current.group ?? ""}</div>
-
-                <div style={styles.gradeBtns}>
-                  <button type="button" style={styles.btn} onClick={() => onGrade("good")}>
-                    覚えていた
-                  </button>
-                  <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>
-                    うろ覚え
-                  </button>
-                  <button type="button" style={styles.btn} onClick={() => onGrade("again")}>
-                    覚えていない
-                  </button>
-                </div>
+              <div style={styles.imageWrap}>
+                <SafeImage src={imgUrl} alt={displayName} style={styles.image} fallbackStyle={styles.noImage} fallbackText="画像なし" />
               </div>
             )}
           </>
+        ) : props.mode === "autoplay" ? (
+          <>
+            {showNameFirst ? (
+              <div style={styles.imageWrap}>
+                <SafeImage src={imgUrl} alt={displayName} style={styles.image} fallbackStyle={styles.noImage} fallbackText="画像なし" />
+              </div>
+            ) : (
+              <>
+                <div style={styles.imageWrap}>
+                  <SafeImage src={imgUrl} alt={displayName} style={styles.image} fallbackStyle={styles.noImage} fallbackText="画像なし" />
+                </div>
+                <div style={styles.nameBig}>{displayName}</div>
+                <div style={styles.group}>{current.group ?? ""}</div>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <div style={styles.imageWrap}>
+              <SafeImage src={imgUrl} alt={displayName} style={styles.image} fallbackStyle={styles.noImage} fallbackText="画像なし" />
+            </div>
+            {!revealed ? (
+              <>
+                <div style={styles.note}>3秒以内に出なければ、考え込まずに答えを見てください。</div>
+                <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
+              </>
+            ) : (
+              <>
+                <div style={styles.nameBig}>{displayName}</div>
+                <div style={styles.group}>{current.group ?? ""}</div>
+              </>
+            )}
+          </>
         )}
+
+        {(revealed || props.mode === "autoplay") ? (
+          props.mode === "autoplay" ? null : (
+            <div style={styles.actions}>
+              <button type="button" style={styles.gradeBtn} onClick={() => commitGrade("good")}>覚えていた</button>
+              <button type="button" style={styles.gradeBtn} onClick={() => commitGrade("hard")}>うろ覚え</button>
+              <button type="button" style={styles.gradeBtn} onClick={() => commitGrade("again")}>覚えていない</button>
+            </div>
+          )
+        ) : null}
       </div>
 
-      <HelpModal open={helpOpen} title="ヘルプ" onClose={() => setHelpOpen(false)}>
-        <div>
-          <div style={{ fontWeight: 800 }}>やり方</div>
-          <div>顔を見て、名前を思い出してから「答えを見る」を押します。</div>
-
-          <div style={{ marginTop: 10, fontWeight: 800 }}>自己判定</div>
-          <div>「覚えていない」はすぐ再出題されます。</div>
-          <div>「覚えていた」は出題間隔が伸びます。</div>
-
-          <div style={{ marginTop: 10, fontWeight: 800 }}>復習モード</div>
-          <div>期限切れ（忘れかけ）のものだけ出します。</div>
-        </div>
+      <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title={`ヘルプ（${title}）`}>
+        <p>分からないときは考え込まずに進む方が、顔と名前は定着しやすいです。</p>
+        <p>目安は3秒です。3秒で出なければ、答えを見て次へ進んでください。</p>
+        <p>覚えていた：3秒以内にほぼ確信で出た。</p>
+        <p>うろ覚え：少し迷った、苗字だけ、答えを見て「ああそれだ」。</p>
+        <p>覚えていない：出ない、別人と混ざる、答えを見ても弱い。</p>
+        {props.mode === "autoplay" ? <p>自動再生は、顔→名前の切り替えを自動で進めます。表示時間はオプションで変更できます。</p> : null}
+        {props.mode === "reverse" ? <p>逆学習は、名前から顔を思い出す練習です。通常学習と組み合わせると定着しやすくなります。</p> : null}
       </HelpModal>
     </div>
   );
 }
 
+function SimpleWrap({ title, onBack, children }: { title: string; onBack: () => void; children: React.ReactNode }) {
+  return (
+    <div style={styles.wrap}>
+      <div style={styles.header}>
+        <button type="button" style={styles.backBtn} onClick={onBack}>タイトルへ戻る</button>
+        <div style={styles.h1}>{title}</div>
+      </div>
+      <div style={styles.card}>{children}</div>
+    </div>
+  );
+}
+
 const styles: Record<string, React.CSSProperties> = {
-  wrap: {
-    minHeight: "100vh",
-    padding: 16,
-    display: "flex",
-    flexDirection: "column",
-    gap: 12,
-    alignItems: "center",
-  },
-  header: {
-    width: "min(720px, 100%)",
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-  },
-  headerRow: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 10,
-  },
-  backBtn: {
-    alignSelf: "flex-start",
-    padding: "10px 12px",
-    borderRadius: 10,
-    border: "1px solid #999",
-    background: "#fff",
-  },
-  helpBtn: {
-    padding: "10px 12px",
-    borderRadius: 10,
-    border: "1px solid #999",
-    background: "#fff",
-    fontWeight: 800,
-    width: 44,
-  },
-  h1: {
-    fontSize: 20,
-    fontWeight: 800,
-  },
-  sub: {
-    fontSize: 13,
-    color: "#666",
-  },
-  card: {
-    width: "min(720px, 100%)",
-    border: "1px solid #ddd",
-    borderRadius: 12,
-    padding: 14,
-    display: "flex",
-    flexDirection: "column",
-    gap: 12,
-    minHeight: 320,
-  },
-  center: {
-    margin: "auto",
-    color: "#666",
-    fontSize: 14,
-  },
-  imgBox: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  img: {
-    width: "min(320px, 80vw)",
-    height: "min(320px, 80vw)",
-    objectFit: "cover",
-    borderRadius: 12,
-    border: "1px solid #eee",
-    background: "#fafafa",
-  },
-  noImg: {
-    width: 240,
-    height: 240,
-    borderRadius: 12,
-    border: "1px solid #eee",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "#999",
-  },
-  block: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-    alignItems: "center",
-  },
-  msg: {
-    fontSize: 14,
-    color: "#444",
-    textAlign: "center",
-  },
-  primaryBtn: {
-    width: "100%",
-    padding: "14px 12px",
-    borderRadius: 10,
-    border: "1px solid #0969da",
-    background: "#eef6ff",
-    fontSize: 18,
-    fontWeight: 800,
-  },
-  answerName: {
-    fontSize: 22,
-    fontWeight: 900,
-  },
-  answerGroup: {
-    fontSize: 14,
-    color: "#333",
-  },
-  gradeBtns: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-    marginTop: 4,
-  },
-  btn: {
-    width: "100%",
-    padding: "14px 12px",
-    borderRadius: 10,
-    border: "1px solid #999",
-    background: "#fff",
-    fontSize: 18,
-    fontWeight: 700,
-  },
+  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center" },
+  header: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 8 },
+  headerRow: { display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" },
+  backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
+  helpBtn: { width: 40, height: 40, borderRadius: 999, border: "1px solid #999", background: "#fff", fontSize: 18, fontWeight: 800 },
+  h1: { fontSize: 22, fontWeight: 800 },
+  card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, alignItems: "center" },
+  imageWrap: { width: "min(320px, 100%)", aspectRatio: "3 / 4", borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center" },
+  image: { width: "100%", height: "100%", objectFit: "cover" },
+  noImage: { fontSize: 14, color: "#777" },
+  primaryBtn: { width: "100%", padding: "14px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 18, fontWeight: 800 },
+  gradeBtn: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 16 },
+  actions: { width: "100%", display: "flex", flexDirection: "column", gap: 8 },
+  nameBig: { fontSize: 28, fontWeight: 800, textAlign: "center" },
+  group: { fontSize: 16, color: "#444", textAlign: "center" },
+  note: { fontSize: 14, color: "#444", textAlign: "center" },
 };
