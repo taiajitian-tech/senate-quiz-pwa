@@ -35,6 +35,9 @@ jobs:
       - name: Generate senators data
         run: node scripts/fetchSenators.mjs
 
+      - name: Validate senators data
+        run: node scripts/validateSenators.mjs
+
       - name: Commit and push if changed
         working-directory: .
         run: |

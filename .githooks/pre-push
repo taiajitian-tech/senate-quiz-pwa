@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -eu
+cd "$(dirname "$0")/../web"
+npm run typecheck
+npm run build
+npm run check:data

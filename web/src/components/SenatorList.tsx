@@ -1,13 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { loadMasteredIds, loadWrongIds } from "./progress";
-
-type Senator = {
-  id: number;
-  name: string;
-  group?: string;
-  images: string[];
-};
+import { parseSenatorsJson, type Senator } from "./data";
+import SafeImage from "./SafeImage";
 
 type Props = {
   onBack: () => void;
@@ -31,8 +26,7 @@ export default function SenatorList(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        const arr = Array.isArray(json) ? (json as Senator[]) : [];
-        setSenators(arr);
+        setSenators(parseSenatorsJson(json));
       } catch (e) {
         console.error(e);
         setSenators([]);
@@ -90,7 +84,7 @@ export default function SenatorList(props: Props) {
           return (
             <div key={s.id} style={styles.item}>
               <div style={styles.avatarBox}>
-                {imgUrl ? <img src={imgUrl} style={styles.avatar} /> : <div style={styles.noAvatar}>no</div>}
+                <SafeImage src={imgUrl} alt={cleanedName} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
               <div style={styles.meta}>
                 <div style={styles.nameRow}>

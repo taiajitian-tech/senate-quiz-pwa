@@ -4,13 +4,8 @@ import { applyGrade, type Grade, type ProgressItem } from "./srs";
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-
-type Senator = {
-  id: number;
-  name: string;
-  group?: string;
-  images: string[];
-};
+import { parseSenatorsJson, type Senator } from "./data";
+import SafeImage from "./SafeImage";
 
 type Props = {
   mode: "learn" | "review";
@@ -62,8 +57,7 @@ export default function Learn(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        const arr = Array.isArray(json) ? (json as Senator[]) : [];
-        setSenators(arr);
+        setSenators(parseSenatorsJson(json));
       } catch (e) {
         console.error(e);
         setSenators([]);
@@ -141,11 +135,13 @@ export default function Learn(props: Props) {
         ) : (
           <>
             <div style={styles.imgBox}>
-              {current.images?.[0] ? (
-                <img src={current.images[0]} alt={current.name} style={styles.img} />
-              ) : (
-                <div style={styles.noImg}>no image</div>
-              )}
+              <SafeImage
+                src={current.images?.[0] ?? ""}
+                alt={current.name}
+                style={styles.img}
+                fallbackStyle={styles.noImg}
+                fallbackText="画像なし"
+              />
             </div>
 
             {!revealed ? (
