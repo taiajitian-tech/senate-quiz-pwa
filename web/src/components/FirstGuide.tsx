@@ -1,5 +1,7 @@
 import HelpModal from "./HelpModal";
 
+export const FIRST_GUIDE_SEEN_KEY = "senateQuiz:firstGuideSeen:v1";
+
 type Props = {
   open: boolean;
   onClose: () => void;

@@ -1,22 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { loadMasteredIds, loadWrongIds } from "./progress";
-import { parseSenatorsJson, type Senator } from "./data";
+import { parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Props = {
+  target: Target;
   onBack: () => void;
 };
 
 export default function SenatorList(props: Props) {
-  const [senators, setSenators] = useState<Senator[]>([]);
+  const [items, setItems] = useState<Person[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [helpOpen, setHelpOpen] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
-  const dataUrl = `${baseUrl}data/senators.json`;
+  const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
     (async () => {
@@ -26,10 +27,10 @@ export default function SenatorList(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        setSenators(parseSenatorsJson(json));
+        setItems(parsePersonsJson(json));
       } catch (e) {
         console.error(e);
-        setSenators([]);
+        setItems([]);
         setError(String(e));
       } finally {
         setLoading(false);
@@ -37,140 +38,66 @@ export default function SenatorList(props: Props) {
     })();
   }, [dataUrl]);
 
-  const wrongSet = useMemo(() => new Set(loadWrongIds()), []);
-  const masteredSet = useMemo(() => new Set(loadMasteredIds()), []);
+  const wrongSet = useMemo(() => new Set(loadWrongIds(props.target)), [props.target]);
+  const masteredSet = useMemo(() => new Set(loadMasteredIds(props.target)), [props.target]);
 
   const filtered = useMemo(() => {
-    const key = q.trim();
-    if (!key) return senators;
-    return senators.filter((s) => {
-      const name = (s.name ?? "").toLowerCase();
-      const group = (s.group ?? "").toLowerCase();
-      return name.includes(key.toLowerCase()) || group.includes(key.toLowerCase());
-    });
-  }, [q, senators]);
+    const key = q.trim().toLowerCase();
+    if (!key) return items;
+    return items.filter((s) => s.name.toLowerCase().includes(key) || (s.group ?? "").toLowerCase().includes(key));
+  }, [q, items]);
 
   return (
     <div style={styles.wrap}>
       <div style={styles.header}>
-        <button type="button" style={styles.backBtn} onClick={props.onBack}>
-          タイトルへ戻る
-        </button>
+        <button type="button" style={styles.backBtn} onClick={props.onBack}>タイトルへ戻る</button>
         <div style={styles.headerRow}>
-          <div style={styles.h1}>議員一覧</div>
-          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>
-            ？
-          </button>
+          <div style={styles.h1}>一覧</div>
+          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
-
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="名前 / 会派で検索"
-          style={styles.search}
-        />
-        <div style={styles.sub}>
-          {loading ? "読み込み中" : `表示：${filtered.length} / ${senators.length}`}
-        </div>
+        <div style={styles.sub}>{targetLabels[props.target]}</div>
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 会派・役職で検索" style={styles.search} />
+        <div style={styles.sub}>{loading ? "読み込み中" : `表示：${filtered.length} / ${items.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
-
       <div style={styles.list}>
-        {filtered.map((s) => {
-          const imgUrl = s.images?.[0] ?? "";
-          const cleanedName = (s.name ?? "").split("：")[0].split(":")[0];
-          const isWrong = wrongSet.has(s.id);
-          const isMastered = masteredSet.has(s.id);
-          return (
-            <div key={s.id} style={styles.item}>
-              <div style={styles.avatarBox}>
-                <SafeImage src={imgUrl} alt={cleanedName} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
-              </div>
-              <div style={styles.meta}>
-                <div style={styles.nameRow}>
-                  <div style={styles.name}>{cleanedName}</div>
-                  <div style={styles.badges}>
-                    {isMastered ? <span style={styles.badgeOk}>完全</span> : null}
-                    {isWrong ? <span style={styles.badgeNg}>復習</span> : null}
-                  </div>
-                </div>
-                <div style={styles.group}>{s.group ?? ""}</div>
-              </div>
+        {filtered.map((s) => (
+          <div key={s.id} style={styles.item}>
+            <div style={styles.avatarBox}>
+              <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
             </div>
-          );
-        })}
+            <div style={styles.meta}>
+              <div style={styles.nameRow}>
+                <div style={styles.name}>{s.name}</div>
+                <div style={styles.badges}>
+                  {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
+                  {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
+                </div>
+              </div>
+              <div style={styles.group}>{s.group ?? ""}</div>
+            </div>
+          </div>
+        ))}
       </div>
-
-
-      <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（議員一覧）">
-        <p>議員一覧です。検索で「名前」または「会派」を絞り込めます。</p>
-        <p>「タイトルへ戻る」でトップへ戻ります。</p>
+      <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（一覧）">
+        <p>名前、会派、役職で検索できます。学習の確認用です。</p>
       </HelpModal>
     </div>
   );
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  wrap: {
-    minHeight: "100vh",
-    padding: 16,
-    display: "flex",
-    flexDirection: "column",
-    gap: 12,
-    alignItems: "center",
-  },
-  header: {
-    width: "min(820px, 100%)",
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-  },
-  backBtn: {
-    alignSelf: "flex-start",
-    padding: "10px 12px",
-    borderRadius: 10,
-    border: "1px solid #999",
-    background: "#fff",
-  },
-  h1: {
-    fontSize: 22,
-    fontWeight: 800,
-  },
-  search: {
-    width: "100%",
-    padding: "12px 12px",
-    borderRadius: 10,
-    border: "1px solid #999",
-    fontSize: 16,
-  },
-  sub: {
-    fontSize: 13,
-    color: "#444",
-  },
-  list: {
-    width: "min(820px, 100%)",
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-  },
-  item: {
-    display: "flex",
-    gap: 12,
-    border: "1px solid #ddd",
-    borderRadius: 12,
-    padding: 10,
-    alignItems: "center",
-  },
-  avatarBox: {
-    width: 64,
-    height: 64,
-    borderRadius: 10,
-    overflow: "hidden",
-    background: "#f3f3f3",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center" },
+  header: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 8 },
+  headerRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
+  backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
+  helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
+  h1: { fontSize: 22, fontWeight: 800 },
+  search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
+  sub: { fontSize: 13, color: "#444" },
+  list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
+  item: { display: "flex", gap: 12, border: "1px solid #ddd", borderRadius: 12, padding: 10, alignItems: "center" },
+  avatarBox: { width: 64, height: 64, borderRadius: 10, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
   meta: { flex: 1, display: "flex", flexDirection: "column", gap: 4 },
@@ -178,20 +105,6 @@ const styles: Record<string, React.CSSProperties> = {
   name: { fontSize: 16, fontWeight: 800 },
   group: { fontSize: 14, color: "#444" },
   badges: { display: "flex", gap: 6, alignItems: "center" },
-  badgeOk: {
-    padding: "4px 8px",
-    borderRadius: 999,
-    border: "1px solid #1a7f37",
-    background: "#eafff0",
-    fontSize: 12,
-    fontWeight: 800,
-  },
-  badgeNg: {
-    padding: "4px 8px",
-    borderRadius: 999,
-    border: "1px solid #cf222e",
-    background: "#fff0f0",
-    fontSize: 12,
-    fontWeight: 800,
-  },
+  badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
+  badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
 };

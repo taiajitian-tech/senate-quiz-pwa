@@ -1,9 +1,10 @@
-export const WRONG_IDS_KEY = "senateQuizWrongIds.v1";
-export const MASTERED_IDS_KEY = "senateQuizMasteredIds.v1";
+import type { Target } from "./data";
 
-const loadIds = (key: string): number[] => {
+const key = (target: Target, suffix: string) => `senateQuiz:${target}:${suffix}:v1`;
+
+const loadIds = (storageKey: string): number[] => {
   try {
-    const raw = localStorage.getItem(key);
+    const raw = localStorage.getItem(storageKey);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
@@ -13,16 +14,16 @@ const loadIds = (key: string): number[] => {
   }
 };
 
-const saveIds = (key: string, ids: number[]) => {
+const saveIds = (storageKey: string, ids: number[]) => {
   try {
-    localStorage.setItem(key, JSON.stringify(ids));
+    localStorage.setItem(storageKey, JSON.stringify(ids));
   } catch {
     // ignore
   }
 };
 
-export const loadWrongIds = () => loadIds(WRONG_IDS_KEY);
-export const saveWrongIds = (ids: number[]) => saveIds(WRONG_IDS_KEY, ids);
+export const loadWrongIds = (target: Target) => loadIds(key(target, "wrongIds"));
+export const saveWrongIds = (target: Target, ids: number[]) => saveIds(key(target, "wrongIds"), ids);
 
-export const loadMasteredIds = () => loadIds(MASTERED_IDS_KEY);
-export const saveMasteredIds = (ids: number[]) => saveIds(MASTERED_IDS_KEY, ids);
+export const loadMasteredIds = (target: Target) => loadIds(key(target, "masteredIds"));
+export const saveMasteredIds = (target: Target, ids: number[]) => saveIds(key(target, "masteredIds"), ids);

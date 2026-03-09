@@ -1,11 +1,23 @@
-export type Senator = {
+export type Target = "senators" | "ministers";
+
+export type Person = {
   id: number;
   name: string;
   group?: string;
   images: string[];
 };
 
-function isSenator(value: unknown): value is Senator {
+export const targetLabels: Record<Target, string> = {
+  senators: "現職参議院議員",
+  ministers: "現職大臣",
+};
+
+export const targetDataPath: Record<Target, string> = {
+  senators: "data/senators.json",
+  ministers: "data/ministers.json",
+};
+
+function isPerson(value: unknown): value is Person {
   if (!value || typeof value !== "object") return false;
   const v = value as Record<string, unknown>;
   return (
@@ -17,10 +29,10 @@ function isSenator(value: unknown): value is Senator {
   );
 }
 
-export function parseSenatorsJson(value: unknown): Senator[] {
+export function parsePersonsJson(value: unknown): Person[] {
   if (!Array.isArray(value)) return [];
   return value
-    .filter(isSenator)
+    .filter(isPerson)
     .map((s) => ({
       id: Number(s.id),
       name: s.name.trim(),
