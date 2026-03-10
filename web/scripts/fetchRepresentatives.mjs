@@ -1,3 +1,4 @@
+
 import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
@@ -5,98 +6,69 @@ import * as cheerio from "cheerio";
 const URL = "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/1giin.htm";
 
 const PARTY_KEYWORDS = [
-  "自民", "立民", "維新", "公明", "共産", "国民", "有志", "れ新", "保守", "社民", "参政", "無所属",
-  "自由民主党", "立憲民主党", "日本維新の会", "公明党", "日本共産党", "国民民主党", "れいわ新選組",
-  "日本保守党", "社会民主党", "参政党", "無所属"
+  "自民", "自由民主党",
+  "立民", "立憲民主党",
+  "維新", "日本維新の会",
+  "公明", "公明党",
+  "国民", "国民民主党",
+  "共産", "日本共産党",
+  "れいわ", "れ新",
+  "有志", "無所属", "無",
+  "社民", "教育", "保守", "参政"
 ];
 
 function normalizeText(value) {
   return String(value ?? "")
-    .replace(/　/g, " ")
+    .replace(/\u3000/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function stripHonorific(value) {
+function cleanName(value) {
   return normalizeText(value).replace(/君$/u, "").trim();
 }
 
-function hasJapanese(text) {
-  return /[一-龠々ぁ-んァ-ヶ]/u.test(text);
+function hasKanji(value) {
+  return /[\u4E00-\u9FFF々]/u.test(value);
 }
 
-function isKanaCandidate(text) {
-  const s = normalizeText(text);
+function isMostlyHiragana(value) {
+  const s = normalizeText(value).replace(/[ 　]/g, "");
   if (!s) return false;
-  if (s.length < 3 || s.length > 40) return false;
-  if (/[0-9０-９]/u.test(s)) return false;
-  const cleaned = s.replace(/[ 　]/g, "");
-  if (!cleaned) return false;
-  return /^[ぁ-んー・]+$/u.test(cleaned);
+  if (!/^[ぁ-んーゔゞゝ゜]+$/u.test(s)) return false;
+  return s.length >= 3;
 }
 
-function isPartyCandidate(text) {
-  const s = normalizeText(text);
+function isPartyLike(value) {
+  const s = normalizeText(value);
   if (!s) return false;
-  if (s.length > 30) return false;
-  if (/[0-9０-９]/u.test(s)) return false;
-  return PARTY_KEYWORDS.some((keyword) => s.includes(keyword));
+  if (s.length > 20) return false;
+  if (/[0-9]/.test(s)) return false;
+  return PARTY_KEYWORDS.some((kw) => s.includes(kw));
 }
 
-function isNameCandidate(text) {
-  const raw = normalizeText(text);
-  if (!raw) return false;
-  if (!hasJapanese(raw)) return false;
-  if (/[0-9０-９]/u.test(raw)) return false;
-  if (isKanaCandidate(raw)) return false;
-  if (isPartyCandidate(raw)) return false;
-  const s = stripHonorific(raw);
+function isNameLike(value) {
+  const s = normalizeText(value);
   if (!s) return false;
   if (s.length < 2 || s.length > 30) return false;
-  if (/^(氏名|ふりがな|会派|選挙区|当選回数)$/u.test(s)) return false;
-  return /[一-龠々]/u.test(s);
+  if (/[0-9]/.test(s)) return false;
+  if (/氏名|ふりがな|会派|選挙区|当選回数|現在|あ行|か行|さ行|た行|な行|は行|ま行|や行|ら行|わ行/u.test(s)) return false;
+  if (isMostlyHiragana(s)) return false;
+  if (!hasKanji(s)) return false;
+  return true;
 }
 
-function extractFromRow(cellTexts) {
-  const cells = cellTexts.map(normalizeText).filter(Boolean);
-  if (cells.length < 2) return null;
-
-  let name = "";
-  let kana = "";
-  let party = "";
-
-  for (const cell of cells) {
-    if (!name && isNameCandidate(cell)) {
-      name = stripHonorific(cell);
-      continue;
-    }
-    if (!kana && isKanaCandidate(cell)) {
-      kana = normalizeText(cell);
-      continue;
-    }
-    if (!party && isPartyCandidate(cell)) {
-      party = normalizeText(cell);
-      continue;
-    }
-  }
-
-  if (!name || !kana) return null;
-  return {
-    name,
-    kana,
-    house: "衆議院",
-    party,
-    role: "",
-    image: ""
-  };
+function collectCellTexts($, tr) {
+  return $(tr)
+    .find("td, th")
+    .map((_, cell) => normalizeText($(cell).text()))
+    .get()
+    .filter(Boolean);
 }
 
 async function main() {
   const res = await fetch(URL, {
-    headers: {
-      "user-agent": "Mozilla/5.0",
-      "accept-language": "ja,en;q=0.9"
-    }
+    headers: { "user-agent": "Mozilla/5.0" }
   });
 
   if (!res.ok) {
@@ -104,36 +76,69 @@ async function main() {
   }
 
   const html = await res.text();
-  const maintenanceMarkers = ["ただいまメンテナンス中", "This site is under maintenance"];
-  if (maintenanceMarkers.some((marker) => html.includes(marker))) {
-    throw new Error("Source page returned maintenance content");
-  }
-
   const $ = cheerio.load(html);
+
   const result = [];
   const seen = new Set();
+  const debugRows = [];
 
   $("tr").each((_, tr) => {
-    const cellTexts = $(tr)
-      .children("th, td")
-      .map((__, cell) => normalizeText($(cell).text()))
-      .get();
+    const cells = collectCellTexts($, tr);
+    if (cells.length < 2) return;
 
-    const item = extractFromRow(cellTexts);
-    if (!item) return;
+    if (debugRows.length < 12) {
+      debugRows.push(cells.join(" | "));
+    }
 
-    const key = `${item.name}__${item.kana}`;
+    let name = "";
+    let kana = "";
+    let party = "";
+
+    for (const cell of cells) {
+      if (!kana && isMostlyHiragana(cell)) {
+        kana = cell;
+        continue;
+      }
+      if (!party && isPartyLike(cell)) {
+        party = cell;
+        continue;
+      }
+    }
+
+    for (const cell of cells) {
+      if (isNameLike(cell)) {
+        const cleaned = cleanName(cell);
+        if (cleaned && cleaned !== party && cleaned !== kana) {
+          name = cleaned;
+          break;
+        }
+      }
+    }
+
+    if (!name || !kana) return;
+
+    const key = `${name}__${kana}`;
     if (seen.has(key)) return;
     seen.add(key);
-    result.push(item);
+
+    result.push({
+      name,
+      kana,
+      house: "衆議院",
+      party,
+      role: "",
+      image: ""
+    });
   });
 
   if (result.length === 0) {
-    throw new Error("No representatives extracted from page");
+    const preview = debugRows.length ? debugRows.join("\n") : "(no tr rows found)";
+    throw new Error(`No representatives extracted from page.\nSample rows:\n${preview}`);
   }
 
   const outDir = path.resolve("web/public/data");
   fs.mkdirSync(outDir, { recursive: true });
+
   const outFile = path.join(outDir, "representatives.json");
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2), "utf8");
 
