@@ -13,8 +13,7 @@ const PARTY_KEYWORDS = [
   "国民", "国民民主党",
   "共産", "日本共産党",
   "れいわ", "れ新",
-  "有志", "無所属", "無",
-  "社民", "教育", "保守", "参政"
+  "有志", "無所属", "社民", "参政", "保守", "教育"
 ];
 
 function normalizeText(value) {
@@ -32,17 +31,15 @@ function hasKanji(value) {
   return /[\u4E00-\u9FFF々]/u.test(value);
 }
 
-function isMostlyHiragana(value) {
+function isKanaLike(value) {
   const s = normalizeText(value).replace(/[ 　]/g, "");
-  if (!s) return false;
-  if (!/^[ぁ-んーゔゞゝ゜]+$/u.test(s)) return false;
-  return s.length >= 3;
+  return !!s && /^[ぁ-んーゔゞゝ゜]+$/u.test(s) && s.length >= 3;
 }
 
 function isPartyLike(value) {
   const s = normalizeText(value);
   if (!s) return false;
-  if (s.length > 20) return false;
+  if (s.length > 24) return false;
   if (/[0-9]/.test(s)) return false;
   return PARTY_KEYWORDS.some((kw) => s.includes(kw));
 }
@@ -52,13 +49,40 @@ function isNameLike(value) {
   if (!s) return false;
   if (s.length < 2 || s.length > 30) return false;
   if (/[0-9]/.test(s)) return false;
-  if (/氏名|ふりがな|会派|選挙区|当選回数|現在|あ行|か行|さ行|た行|な行|は行|ま行|や行|ら行|わ行/u.test(s)) return false;
-  if (isMostlyHiragana(s)) return false;
-  if (!hasKanji(s)) return false;
-  return true;
+  if (/氏名|ふりがな|会派|選挙区|当選回数|現在|議員一覧|あ行|か行|さ行|た行|な行|は行|ま行|や行|ら行|わ行/u.test(s)) return false;
+  if (isKanaLike(s)) return false;
+  if (isPartyLike(s)) return false;
+  return hasKanji(s);
 }
 
-function collectCellTexts($, tr) {
+function scoreDecodedHtml(html) {
+  let score = 0;
+  for (const token of ["氏名", "ふりがな", "会派", "選挙区", "当選回数", "衆議院"]) {
+    if (html.includes(token)) score += 3;
+  }
+  if (/逢沢|青木|青柳|青山/u.test(html)) score += 2;
+  if (html.includes("����")) score -= 10;
+  return score;
+}
+
+function decodeHtml(buffer) {
+  const candidates = ["shift_jis", "utf-8", "euc-jp"];
+  let best = { encoding: "utf-8", html: buffer.toString("utf8"), score: -Infinity };
+
+  for (const encoding of candidates) {
+    try {
+      const html = new TextDecoder(encoding).decode(buffer);
+      const score = scoreDecodedHtml(html);
+      if (score > best.score) {
+        best = { encoding, html, score };
+      }
+    } catch {}
+  }
+
+  return best;
+}
+
+function collectCells($, tr) {
   return $(tr)
     .find("td, th")
     .map((_, cell) => normalizeText($(cell).text()))
@@ -75,19 +99,28 @@ async function main() {
     throw new Error(`Fetch failed: ${res.status}`);
   }
 
-  const html = await res.text();
+  const buffer = Buffer.from(await res.arrayBuffer());
+  const decoded = decodeHtml(buffer);
+  const html = decoded.html;
   const $ = cheerio.load(html);
 
   const result = [];
   const seen = new Set();
-  const debugRows = [];
+  const sampleRows = [];
 
-  $("tr").each((_, tr) => {
-    const cells = collectCellTexts($, tr);
-    if (cells.length < 2) return;
+  const tables = $("table").filter((_, table) => {
+    const text = normalizeText($(table).text());
+    return text.includes("氏名") && text.includes("ふりがな") && text.includes("会派");
+  });
 
-    if (debugRows.length < 12) {
-      debugRows.push(cells.join(" | "));
+  const rowSource = tables.length ? tables.find("tr") : $("tr");
+
+  rowSource.each((_, tr) => {
+    const cells = collectCells($, tr);
+    if (cells.length < 3) return;
+
+    if (sampleRows.length < 12) {
+      sampleRows.push(cells.join(" | "));
     }
 
     let name = "";
@@ -95,20 +128,14 @@ async function main() {
     let party = "";
 
     for (const cell of cells) {
-      if (!kana && isMostlyHiragana(cell)) {
-        kana = cell;
-        continue;
-      }
-      if (!party && isPartyLike(cell)) {
-        party = cell;
-        continue;
-      }
+      if (!kana && isKanaLike(cell)) kana = cell;
+      if (!party && isPartyLike(cell)) party = cell;
     }
 
     for (const cell of cells) {
       if (isNameLike(cell)) {
         const cleaned = cleanName(cell);
-        if (cleaned && cleaned !== party && cleaned !== kana) {
+        if (cleaned && cleaned !== kana && cleaned !== party) {
           name = cleaned;
           break;
         }
@@ -131,18 +158,22 @@ async function main() {
     });
   });
 
-  if (result.length === 0) {
-    const preview = debugRows.length ? debugRows.join("\n") : "(no tr rows found)";
-    throw new Error(`No representatives extracted from page.\nSample rows:\n${preview}`);
+  if (result.length < 300) {
+    const preview = sampleRows.length ? sampleRows.join("\n") : "(no usable rows)";
+    throw new Error(
+      `Too few representatives extracted: ${result.length}\n` +
+      `Detected encoding: ${decoded.encoding}\n` +
+      `Sample rows:\n${preview}`
+    );
   }
 
   const outDir = path.resolve("web/public/data");
   fs.mkdirSync(outDir, { recursive: true });
-
   const outFile = path.join(outDir, "representatives.json");
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2), "utf8");
 
   console.log("representatives:", result.length);
+  console.log("encoding:", decoded.encoding);
 }
 
 main().catch((error) => {
