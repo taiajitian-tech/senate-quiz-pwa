@@ -1,34 +1,42 @@
 import fs from "fs";
+import path from "path";
 
-const path = "web/public/data/representatives.json";
-const data = JSON.parse(fs.readFileSync(path, "utf8"));
+const file = path.resolve("web/public/data/representatives.json");
+const text = fs.readFileSync(file, "utf8");
+const data = JSON.parse(text);
 
 if (!Array.isArray(data)) {
-  throw new Error("not array");
+  throw new Error("representatives.json is not an array");
 }
-
-console.log("count:", data.length);
 
 if (data.length < 400) {
-  throw new Error("too few representatives");
+  throw new Error(`representatives.json too small: ${data.length}`);
 }
 
-const names = new Set();
+const seen = new Set();
 
-for (const r of data) {
-  if (!r?.name || !r?.kana || !r?.party) {
-    throw new Error("invalid record");
+for (const [index, item] of data.entries()) {
+  if (!item || typeof item !== "object") {
+    throw new Error(`invalid row at ${index}`);
+  }
+  if (!item.name || typeof item.name !== "string") {
+    throw new Error(`missing name at ${index}`);
+  }
+  if (!item.kana || typeof item.kana !== "string") {
+    throw new Error(`missing kana at ${index}`);
+  }
+  if (!item.party || typeof item.party !== "string") {
+    throw new Error(`missing party at ${index}`);
+  }
+  if (item.house !== "衆議院") {
+    throw new Error(`invalid house at ${index}`);
   }
 
-  if (r.house !== "衆議院") {
-    throw new Error("invalid house: " + r.name);
+  const key = `${item.name}__${item.kana}`;
+  if (seen.has(key)) {
+    throw new Error(`duplicate representative at ${index}: ${key}`);
   }
-
-  if (names.has(r.name)) {
-    throw new Error("duplicate name: " + r.name);
-  }
-
-  names.add(r.name);
+  seen.add(key);
 }
 
-console.log("validation ok");
+console.log(`representatives.json OK (${data.length})`);
