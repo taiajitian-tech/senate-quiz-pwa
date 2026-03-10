@@ -25,27 +25,49 @@ export const targetDataPath: Record<Target, string> = {
   ministers: "data/ministers.json",
 };
 
-function isPerson(value: unknown): value is Person {
-  if (!value || typeof value !== "object") return false;
-  const v = value as Record<string, unknown>;
-  return (
-    Number.isFinite(Number(v.id)) &&
-    typeof v.name === "string" &&
-    Array.isArray(v.images) &&
-    v.images.every((img) => typeof img === "string") &&
-    (v.group === undefined || typeof v.group === "string")
-  );
+type RawPerson = Record<string, unknown>;
+
+function toText(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function toImages(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.filter((img): img is string => typeof img === "string").map((img) => img.trim()).filter(Boolean);
+  }
+  if (typeof value === "string") {
+    const img = value.trim();
+    return img ? [img] : [];
+  }
+  return [];
+}
+
+function normalizePerson(value: unknown, index: number): Person | null {
+  if (!value || typeof value !== "object") return null;
+  const v = value as RawPerson;
+
+  const rawName = toText(v.name);
+  if (!rawName) return null;
+
+  const rawId = Number(v.id);
+  const id = Number.isFinite(rawId) && rawId > 0 ? rawId : index + 1;
+
+  const group = toText(v.group) || toText(v.party) || toText(v.role);
+  const images = toImages(v.images ?? v.image);
+
+  return {
+    id,
+    name: rawName,
+    group,
+    images,
+  };
 }
 
 export function parsePersonsJson(value: unknown): Person[] {
   if (!Array.isArray(value)) return [];
+
   return value
-    .filter(isPerson)
-    .map((s) => ({
-      id: Number(s.id),
-      name: s.name.trim(),
-      group: (s.group ?? "").trim(),
-      images: s.images.filter(Boolean),
-    }))
-    .filter((s) => Number.isFinite(s.id) && !!s.name);
+    .map((item, index) => normalizePerson(item, index))
+    .filter((item): item is Person => item !== null)
+    .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name);
 }
