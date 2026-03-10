@@ -34,7 +34,7 @@ for (const [index, item] of data.entries()) {
 
   const key = `${item.name}__${item.kana}`;
   if (seen.has(key)) {
-    throw new Error(`duplicate representative at ${index}: ${key}`);
+    throw new Error(`duplicate representative: ${key}`);
   }
   seen.add(key);
 }
