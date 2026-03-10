@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const file = path.resolve("web/public/data/representatives.json");
+const file = path.resolve("public/data/representatives.json");
 const text = fs.readFileSync(file, "utf8");
 const data = JSON.parse(text);
 

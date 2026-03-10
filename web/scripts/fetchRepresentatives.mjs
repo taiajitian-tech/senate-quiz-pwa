@@ -377,7 +377,7 @@ async function main() {
     throw new Error(`Representative count out of expected range: ${finalRows.length}`);
   }
 
-  const outDir = path.resolve("web/public/data");
+  const outDir = path.resolve("public/data");
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
     path.join(outDir, "representatives.json"),
