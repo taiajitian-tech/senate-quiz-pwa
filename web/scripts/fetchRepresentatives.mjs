@@ -8,6 +8,7 @@ const URL = "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/
 async function main(){
 
   const res = await fetch(URL);
+
   if(!res.ok){
     throw new Error("Fetch failed: " + res.status);
   }
@@ -17,14 +18,19 @@ async function main(){
 
   const result = [];
 
-  $("table tr").each((_, tr) => {
+  // 議員一覧テーブルのみ取得
+  const table = $('table:has(th:contains("氏名"))');
+
+  table.find("tr").each((_, tr) => {
 
     const tds = $(tr).find("td");
 
+    // 議員行は必ず5列
     if(tds.length !== 5) return;
 
     const nameRaw = $(tds[0]).text().trim();
 
+    // 議員名は必ず「君」で終わる
     if(!nameRaw.includes("君")) return;
 
     const kana = $(tds[1]).text().trim();
@@ -51,6 +57,7 @@ async function main(){
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2), "utf8");
 
   console.log("representatives:", result.length);
+
 }
 
 main();
