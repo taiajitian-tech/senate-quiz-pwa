@@ -20,6 +20,9 @@ for (const [index, item] of data.entries()) {
   if (!item.name || typeof item.name !== "string") {
     throw new Error(`missing name at ${index}`);
   }
+  if (!item.kana || typeof item.kana !== "string") {
+    throw new Error(`missing kana at ${index}`);
+  }
 }
 
 console.log(`representatives.json OK (${data.length})`);
