@@ -1,31 +1,25 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import fs from "fs";
+import path from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const file = path.resolve(__dirname, "../public/data/representatives.json");
+const file = path.resolve("web/public/data/representatives.json");
+const text = fs.readFileSync(file, "utf8");
+const data = JSON.parse(text);
 
-const raw = fs.readFileSync(file, "utf8");
-const parsed = JSON.parse(raw);
-
-if (!Array.isArray(parsed)) {
+if (!Array.isArray(data)) {
   throw new Error("representatives.json is not an array");
 }
 
-const seen = new Set();
-for (const [index, item] of parsed.entries()) {
-  if (!item || typeof item !== "object") throw new Error(`Invalid item at ${index}`);
-  const id = Number(item.id);
-  if (!Number.isFinite(id)) throw new Error(`Invalid id at ${index}`);
-  if (seen.has(id)) throw new Error(`Duplicate id: ${id}`);
-  seen.add(id);
-  if (typeof item.name !== "string" || !item.name.trim()) throw new Error(`Invalid name for id ${id}`);
-  if (item.group != null && typeof item.group !== "string") throw new Error(`Invalid group for id ${id}`);
-  if (!Array.isArray(item.images)) throw new Error(`Invalid images for id ${id}`);
-  for (const img of item.images) {
-    if (typeof img !== "string") throw new Error(`Invalid image URL for id ${id}`);
+if (data.length < 300) {
+  throw new Error(`representatives.json too small: ${data.length}`);
+}
+
+for (const [index, item] of data.entries()) {
+  if (!item || typeof item !== "object") {
+    throw new Error(`invalid row at ${index}`);
+  }
+  if (!item.name || typeof item.name !== "string") {
+    throw new Error(`missing name at ${index}`);
   }
 }
 
-console.log(`representatives.json OK (${parsed.length})`);
+console.log(`representatives.json OK (${data.length})`);
