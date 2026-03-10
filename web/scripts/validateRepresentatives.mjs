@@ -1,29 +1,32 @@
-
 import fs from "fs";
-import path from "path";
 
-const file = path.resolve("web/public/data/representatives.json");
-const text = fs.readFileSync(file, "utf8");
-const data = JSON.parse(text);
+const path = "web/public/data/representatives.json";
+
+const data = JSON.parse(fs.readFileSync(path,"utf8"));
+
+console.log("count:", data.length);
 
 if (!Array.isArray(data)) {
-  throw new Error("representatives.json is not an array");
+throw new Error("not array");
 }
 
-if (data.length < 300) {
-  throw new Error(`representatives.json too small: ${data.length}`);
+if (data.length < 400) {
+throw new Error("too few representatives");
 }
 
-for (const [index, item] of data.entries()) {
-  if (!item || typeof item !== "object") {
-    throw new Error(`invalid row at ${index}`);
-  }
-  if (!item.name || typeof item.name !== "string") {
-    throw new Error(`missing name at ${index}`);
-  }
-  if (!item.kana || typeof item.kana !== "string") {
-    throw new Error(`missing kana at ${index}`);
-  }
+const names = new Set();
+
+for (const r of data) {
+
+if (!r.name || !r.kana) {
+throw new Error("invalid record");
 }
 
-console.log(`representatives.json OK (${data.length})`);
+if (names.has(r.name)) {
+throw new Error("duplicate name: " + r.name);
+}
+
+names.add(r.name);
+}
+
+console.log("validation ok");
