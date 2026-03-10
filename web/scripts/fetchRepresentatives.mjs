@@ -2,60 +2,87 @@ import fs from "fs";
 import { load } from "cheerio";
 
 const URL =
-"https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/1giin.htm";
+  "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/1giin.htm";
+
+function normalizeText(s) {
+  return (s ?? "").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function cleanName(s) {
+  return normalizeText(s).replace(/\s+/g, "").replace(/君$/u, "");
+}
+
+function cleanKana(s) {
+  return normalizeText(s).replace(/\s+/g, "");
+}
+
+function looksLikeKana(s) {
+  const v = normalizeText(s).replace(/\s+/g, "");
+  return /^[ぁ-んーゔゞゝ゜]+$/u.test(v);
+}
 
 async function main() {
+  const res = await fetch(URL);
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}`);
+  }
 
-const res = await fetch(URL);
-const buffer = await res.arrayBuffer();
+  const buffer = await res.arrayBuffer();
+  const html = new TextDecoder("shift_jis").decode(buffer);
+  const $ = load(html);
 
-const html = new TextDecoder("shift_jis").decode(buffer);
+  const result = [];
 
-const $ = load(html);
+  $("tr").each((_, tr) => {
+    const cells = $(tr)
+      .children("td")
+      .map((__, td) => normalizeText($(td).text()))
+      .get();
 
-const result = [];
+    // 議員一覧の本行だけ採用
+    if (cells.length !== 5) return;
 
-$("tr").each((i, tr) => {
+    const [rawName, rawKana, rawParty] = cells;
 
-const tds = $(tr).find("td");
+    // ヘッダ行除外
+    if (rawName === "氏名" && rawKana === "ふりがな") return;
 
-if (tds.length < 3) return;
+    // ふりがな列を基準に議員行判定
+    if (!looksLikeKana(rawKana)) return;
 
-const name = $(tds[0]).text().trim();
-const kana = $(tds[1]).text().trim();
-const party = $(tds[2]).text().trim();
+    const name = cleanName(rawName);
+    const kana = cleanKana(rawKana);
+    const party = normalizeText(rawParty);
 
-if (!name || !kana) return;
+    if (!name || !kana || !party) return;
 
-const cleanedName =
-name
-.replace(/\s/g,"")
-.replace(/君$/,"");
+    result.push({
+      name,
+      kana,
+      house: "衆議院",
+      party,
+    });
+  });
 
-const cleanedKana =
-kana
-.replace(/\s/g,"");
+  const deduped = Array.from(
+    new Map(result.map((x) => [x.name, x])).values()
+  );
 
-result.push({
-name: cleanedName,
-kana: cleanedKana,
-house: "衆議院",
-party: party
-});
+  console.log("representatives:", deduped.length);
 
-});
+  if (deduped.length < 400) {
+    throw new Error("Too few representatives extracted");
+  }
 
-console.log("representatives:", result.length);
-
-if (result.length < 400) {
-throw new Error("Too few representatives extracted");
+  fs.mkdirSync("web/public/data", { recursive: true });
+  fs.writeFileSync(
+    "web/public/data/representatives.json",
+    JSON.stringify(deduped, null, 2),
+    "utf8"
+  );
 }
 
-fs.writeFileSync(
-"web/public/data/representatives.json",
-JSON.stringify(result,null,2)
-);
-
-}
-
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
