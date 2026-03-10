@@ -1,79 +1,84 @@
 import fs from "fs";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 
 const URL =
 "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/1giin.htm";
 
 const PARTY_LIST = [
-"自民",
-"立民",
-"維新",
-"公明",
-"共産",
-"国民",
-"れ新",
-"参政",
-"社民",
-"無"
+  "自民",
+  "立民",
+  "維新",
+  "公明",
+  "共産",
+  "国民",
+  "れ新",
+  "参政",
+  "社民",
+  "無"
 ];
 
 async function main() {
+  const res = await fetch(URL);
+  const buffer = await res.arrayBuffer();
+  const html = new TextDecoder("shift_jis").decode(buffer);
 
-const res = await fetch(URL);
-const buffer = await res.arrayBuffer();
+  const $ = load(html);
+  const result = [];
 
-const html = new TextDecoder("shift_jis").decode(buffer);
+  $("tr").each((_, tr) => {
+    const tds = $(tr).children("td, th");
+    if (tds.length < 3) return;
 
-const $ = cheerio.load(html);
+    const cells = tds
+      .map((__, td) => $(td).text().replace(/\s+/g, " ").trim())
+      .get()
+      .filter(Boolean);
 
-const result = [];
+    if (cells.length < 3) return;
 
-$("tr").each((i, tr) => {
+    const kanaIndex = cells.findIndex((v) => /^[ぁ-んー\s]+$/.test(v));
+    if (kanaIndex <= 0) return;
 
-const tds = $(tr).find("td");
+    const rawName = cells[kanaIndex - 1] ?? "";
+    const rawKana = cells[kanaIndex] ?? "";
+    const rawParty = cells.slice(kanaIndex + 1).find((v) =>
+      PARTY_LIST.some((p) => v.includes(p))
+    ) ?? "";
 
-if (tds.length < 3) return;
+    const name = rawName.replace(/\s+/g, "").replace(/君$/u, "");
+    const kana = rawKana.replace(/\s+/g, "");
+    let party = PARTY_LIST.find((p) => rawParty.includes(p)) ?? rawParty.trim();
 
-const name = $(tds[0]).text().trim();
-const kana = $(tds[1]).text().trim();
-const party = $(tds[2]).text().trim();
+    if (!name || !kana || !party) return;
+    if (!/[一-龠々ヶヵぁ-んァ-ヴ]/u.test(name)) return;
 
-if (!name) return;
-if (!kana) return;
+    result.push({
+      name,
+      kana,
+      house: "衆議院",
+      party
+    });
+  });
 
-let p = PARTY_LIST.find(v => party.includes(v));
+  const deduped = Array.from(
+    new Map(result.map((item) => [item.name, item])).values()
+  );
 
-if (!p) p = party;
+  console.log("representatives:", deduped.length);
 
-const cleanedName =
-name
-.replace(/\s/g,"")
-.replace(/君$/,"");
+  if (deduped.length < 400) {
+    throw new Error("Too few representatives extracted");
+  }
 
-const cleanedKana =
-kana
-.replace(/\s/g,"");
-
-result.push({
-name: cleanedName,
-kana: cleanedKana,
-house: "衆議院",
-party: p
-});
-
-});
-
-console.log("representatives:", result.length);
-
-if (result.length < 400) {
-throw new Error("Too few representatives extracted");
+  fs.mkdirSync("web/public/data", { recursive: true });
+  fs.writeFileSync(
+    "web/public/data/representatives.json",
+    JSON.stringify(deduped, null, 2),
+    "utf8"
+  );
 }
 
-fs.writeFileSync(
-"web/public/data/representatives.json",
-JSON.stringify(result,null,2)
-);
-
-}
-
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
