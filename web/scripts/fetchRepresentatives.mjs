@@ -1,7 +1,7 @@
 
 import fs from "fs";
 import path from "path";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 const BASE = "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/";
 
