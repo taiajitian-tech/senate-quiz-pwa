@@ -3,96 +3,54 @@ import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
 
-const BASE = "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/";
+const URL = "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/syu/1giin.htm";
 
-// 固定巡回ページ（無限ループ防止）
-const pages = [
-  "agiin.htm",
-  "kagiin.htm",
-  "sagiin.htm",
-  "tagiin.htm",
-  "nagiin.htm",
-  "hagiin.htm",
-  "magiin.htm",
-  "yagiin.htm",
-  "ragiin.htm",
-  "wagiin.htm"
-];
+async function main(){
 
-const result = [];
-const visited = new Set();
-
-async function fetchWithTimeout(url, timeout = 10000) {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-
-  const res = await fetch(url, { signal: controller.signal });
-  clearTimeout(id);
-
-  if (!res.ok) throw new Error("HTTP " + res.status);
-  return res.text();
-}
-
-function extractKana(name) {
-  return name.replace(/[^ぁ-んー]/g, "");
-}
-
-async function run() {
-
-  for (const page of pages) {
-
-    const url = BASE + page;
-
-    if (visited.has(url)) continue;
-    visited.add(url);
-
-    try {
-
-      console.log("fetch:", url);
-
-      const html = await fetchWithTimeout(url);
-      const $ = cheerio.load(html);
-
-      $("a").each((_, el) => {
-
-        const name = $(el).text().trim();
-
-        if (!name) return;
-
-        if (name.length > 20) return;
-
-        const item = {
-          name: name,
-          kana: extractKana(name),
-          house: "衆議院",
-          party: "",
-          role: "",
-          image: ""
-        };
-
-        result.push(item);
-
-      });
-
-      if (result.length > 500) break;
-
-    } catch (e) {
-
-      console.log("skip:", url);
-
-    }
-
+  const res = await fetch(URL);
+  if(!res.ok){
+    throw new Error("failed fetch: " + res.status);
   }
 
+  const html = await res.text();
+  const $ = cheerio.load(html);
+
+  const result = [];
+
+  $("table tr").each((_,tr)=>{
+
+    const tds = $(tr).find("td");
+
+    if(tds.length < 5) return;
+
+    const nameRaw = $(tds[0]).text().trim();
+
+    if(!nameRaw.includes("君")) return;
+
+    const kana = $(tds[1]).text().trim();
+    const party = $(tds[2]).text().trim();
+
+    const name = nameRaw.replace("君","").trim();
+
+    result.push({
+      name: name,
+      kana: kana,
+      house: "衆議院",
+      party: party,
+      role: "",
+      image: ""
+    });
+
+  });
+
   const outDir = path.resolve("web/public/data");
-  fs.mkdirSync(outDir, { recursive: true });
+  fs.mkdirSync(outDir,{recursive:true});
 
-  const outPath = path.join(outDir, "representatives.json");
+  const outFile = path.join(outDir,"representatives.json");
 
-  fs.writeFileSync(outPath, JSON.stringify(result, null, 2), "utf8");
+  fs.writeFileSync(outFile, JSON.stringify(result,null,2),"utf8");
 
-  console.log("saved:", result.length);
-
+  console.log("representatives:",result.length);
 }
 
-run();
+main();
