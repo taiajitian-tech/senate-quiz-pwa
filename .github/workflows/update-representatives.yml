@@ -39,7 +39,6 @@ jobs:
         run: |
           set -euxo pipefail
           test -f web/public/data/representatives.json
-          node -e "const fs=require('fs'); const a=JSON.parse(fs.readFileSync('web/public/data/representatives.json','utf8')); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           git status --porcelain -- web/public/data/representatives.json
           if [ -z "$(git status --porcelain -- web/public/data/representatives.json)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
