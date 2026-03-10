@@ -33,18 +33,36 @@ jobs:
       - name: Validate representatives data
         run: npm run check:representatives
 
-      - name: Commit and push if changed
+      - name: Check generated file status
+        id: changes
         working-directory: .
         run: |
-          set -euo pipefail
+          set -euxo pipefail
           test -f web/public/data/representatives.json
           node -e "const a=require('./web/public/data/representatives.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
+          git status --porcelain -- web/public/data/representatives.json
           if [ -z "$(git status --porcelain -- web/public/data/representatives.json)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes in generated data"
             exit 0
           fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit generated file
+        if: steps.changes.outputs.changed == 'true'
+        working-directory: .
+        run: |
+          set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add web/public/data/representatives.json
           git commit -m "chore: update representatives data"
-          git push
+
+      - name: Push generated file
+        if: steps.changes.outputs.changed == 'true'
+        working-directory: .
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euxo pipefail
+          git push origin "HEAD:${BRANCH_NAME}"

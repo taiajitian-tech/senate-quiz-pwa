@@ -5,12 +5,19 @@ const file = path.resolve("web/public/data/representatives.json");
 const text = fs.readFileSync(file, "utf8");
 const data = JSON.parse(text);
 
+const MIN_EXPECTED = 430;
+const MAX_EXPECTED = 520;
+
 if (!Array.isArray(data)) {
   throw new Error("representatives.json is not an array");
 }
 
-if (data.length < 400) {
+if (data.length < MIN_EXPECTED) {
   throw new Error(`representatives.json too small: ${data.length}`);
+}
+
+if (data.length > MAX_EXPECTED) {
+  throw new Error(`representatives.json too large: ${data.length}`);
 }
 
 const seen = new Set();
