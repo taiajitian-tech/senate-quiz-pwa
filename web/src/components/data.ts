@@ -5,6 +5,7 @@ export type Person = {
   name: string;
   group?: string;
   images: string[];
+  aiGuess?: boolean;
 };
 
 export const targetLabels: Record<Target, string> = {
@@ -54,12 +55,14 @@ function normalizePerson(value: unknown, index: number): Person | null {
 
   const group = toText(v.group) || toText(v.party) || toText(v.role);
   const images = toImages(v.images ?? v.image);
+  const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
 
   return {
     id,
     name: rawName,
     group,
     images,
+    aiGuess,
   };
 }
 

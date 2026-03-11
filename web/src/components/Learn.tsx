@@ -127,6 +127,7 @@ export default function Learn(props: Props) {
               <div style={styles.block}>
                 <div style={styles.answerName}>{current.name}</div>
                 <div style={styles.answerGroup}>{current.group ?? ""}</div>
+                {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
                   <>
                     <div style={styles.msg}>顔を思い出してから、答えを表示してください。</div>
@@ -155,6 +156,7 @@ export default function Learn(props: Props) {
                   <div style={styles.block}>
                     <div style={styles.answerName}>{current.name}</div>
                     <div style={styles.answerGroup}>{current.group ?? ""}</div>
+                    {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                     <div style={styles.gradeBtns}>
                       <button type="button" style={styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
                       <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
@@ -202,6 +204,7 @@ const styles: Record<string, React.CSSProperties> = {
   primaryBtn: { padding: "14px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 18, fontWeight: 700 },
   answerName: { fontSize: 24, fontWeight: 800, textAlign: "center" },
   answerGroup: { fontSize: 15, color: "#555", textAlign: "center" },
+  guessBadge: { alignSelf: "center", padding: "4px 10px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
   gradeBtns: { display: "grid", gridTemplateColumns: "1fr", gap: 8 },
   btn: { padding: "12px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 16 },
 };

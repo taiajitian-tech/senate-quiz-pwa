@@ -70,6 +70,7 @@ export default function SenatorList(props: Props) {
               <div style={styles.nameRow}>
                 <div style={styles.name}>{s.name}</div>
                 <div style={styles.badges}>
+                  {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
                   {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
                   {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
                 </div>
@@ -107,4 +108,5 @@ const styles: Record<string, React.CSSProperties> = {
   badges: { display: "flex", gap: 6, alignItems: "center" },
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
+  badgeGuess: { padding: "4px 8px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
 };
