@@ -18,6 +18,25 @@ const MAX_EXPECTED = 520;
 const IMAGE_CONCURRENCY = 6;
 const TIMEOUT_MS = 12000;
 
+const MANUAL_IMAGE_OVERRIDES = {
+  "青山周平": {
+    image: "https://www.jimin.jp/member/img/aoyama-shyuhei.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/102126.html"
+  },
+  "赤澤亮正": {
+    image: "https://www.jimin.jp/member/img/akazawa-ryosei.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/100478.html"
+  },
+  "あかま二郎": {
+    image: "https://www.jimin.jp/member/img/akama-jiro.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/102081.html"
+  }
+};
+
+
 const PARTY_PATTERN =
   /(自由民主党・無所属の会|自由民主党|自民|立憲民主党・無所属|立憲民主党|立民|日本維新の会|維新|公明党|公明|国民民主党・無所属クラブ|国民民主党|国民|日本共産党|共産|れいわ新選組|れ新|参政党|参政|社民党|社民|有志の会|有志|日本保守党|保守|無所属)/u;
 
@@ -575,6 +594,19 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
+function applyManualOverrides(rows) {
+  return rows.map((row) => {
+    const m = MANUAL_IMAGE_OVERRIDES[row.name];
+    if (!m) return row;
+    return {
+      ...row,
+      image: m.image,
+      imageSource: m.imageSource,
+      imageSourceUrl: m.imageSourceUrl
+    };
+  });
+}
+
 async function enrichImages(rows) {
   const counts = { official: 0, wikipedia: 0, web: 0, empty: 0 };
   const enriched = await mapWithConcurrency(
@@ -638,7 +670,7 @@ async function main() {
     throw new Error(`Representative count out of expected range: ${finalRows.length}`);
   }
 
-  const finalWithImages = await enrichImages(finalRows);
+  const finalWithImages = applyManualOverrides(await enrichImages(finalRows));
 
   const outDir = path.resolve("public/data");
   fs.mkdirSync(outDir, { recursive: true });
