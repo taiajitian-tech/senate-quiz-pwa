@@ -18,6 +18,31 @@ const MAX_EXPECTED = 520;
 const IMAGE_CONCURRENCY = 6;
 const TIMEOUT_MS = 12000;
 
+const EXISTING_JSON_PATH = path.resolve("public/data/representatives.json");
+
+const MANUAL_IMAGE_OVERRIDES = {
+  "青山周平": {
+    image: "https://www.jimin.jp/member/img/aoyama-shyuhei.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/102126.html"
+  },
+  "赤澤亮正": {
+    image: "https://www.jimin.jp/member/img/akazawa-ryosei.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/100478.html"
+  },
+  "あかま二郎": {
+    image: "https://www.jimin.jp/member/img/akama-jiro.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/102081.html"
+  }
+};
+
+const MANUAL_BAD_IMAGE_REMOVALS = new Set([
+  "安藤たかお"
+]);
+
+
 const PARTY_PATTERN =
   /(自由民主党・無所属の会|自由民主党|自民|立憲民主党・無所属|立憲民主党|立民|日本維新の会|維新|公明党|公明|国民民主党・無所属クラブ|国民民主党|国民|日本共産党|共産|れいわ新選組|れ新|参政党|参政|社民党|社民|有志の会|有志|日本保守党|保守|無所属)/u;
 
@@ -170,8 +195,7 @@ function addRecord(results, seen, record) {
     image: "",
     imageSource: "",
     imageSourceUrl: "",
-    profileUrl: record.profileUrl || "",
-    aiGuess: false
+    profileUrl: record.profileUrl || ""
   });
 }
 
@@ -279,6 +303,106 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl) {
 
   console.log(`party-header-tables: ${sourceUrl} -> ${matchedTables}`);
   return results;
+}
+
+
+function loadExistingImageCache() {
+  try {
+    if (!fs.existsSync(EXISTING_JSON_PATH)) return new Map();
+    const parsed = JSON.parse(fs.readFileSync(EXISTING_JSON_PATH, "utf8"));
+    const out = new Map();
+    for (const row of Array.isArray(parsed) ? parsed : []) {
+      const key = `${cleanName(row?.name)}__${cleanKana(row?.kana)}`;
+      if (!key || !row?.image) continue;
+      out.set(key, {
+        image: row.image,
+        imageSource: row.imageSource || "cached",
+        imageSourceUrl: row.imageSourceUrl || row.profileUrl || "",
+        profileUrl: row.profileUrl || ""
+      });
+    }
+    return out;
+  } catch (error) {
+    console.log(`existing-cache-error: ${error.message}`);
+    return new Map();
+  }
+}
+
+function getOverrideImage(name) {
+  return MANUAL_IMAGE_OVERRIDES[cleanName(name)] || null;
+}
+
+function getCachedImage(cache, row) {
+  const key = `${cleanName(row?.name)}__${cleanKana(row?.kana)}`;
+  const hit = cache.get(key) || null;
+  if (!hit) return null;
+  if (MANUAL_BAD_IMAGE_REMOVALS.has(cleanName(row?.name))) return null;
+  if (hit.imageSource === "web-fallback") return null;
+  return hit;
+}
+
+function extractSearchTargetsFromBing(html, allowedDomains = []) {
+  const $ = load(html);
+  const out = [];
+  const seen = new Set();
+  $("a[href]").each((_, a) => {
+    const href = normalizeSpace($(a).attr("href") || "");
+    if (!/^https?:\/\//i.test(href)) return;
+    if (/(\/images\/|bing\.com\/ck\/a\?|microsoft|go\.microsoft)/i.test(href)) return;
+    if (allowedDomains.length) {
+      try {
+        const hostname = new URL(href).hostname.toLowerCase();
+        if (!allowedDomains.some((d) => hostname === d || hostname.endsWith(`.${d}`))) return;
+      } catch {
+        return;
+      }
+    }
+    if (seen.has(href)) return;
+    seen.add(href);
+    out.push(href);
+  });
+  return out;
+}
+
+async function searchTargetsBing(query, allowedDomains = []) {
+  try {
+    const html = await fetchPage(`https://www.bing.com/search?q=${encodeURIComponent(query)}`);
+    return extractSearchTargetsFromBing(html, allowedDomains);
+  } catch (error) {
+    console.log(`bing-search-error: ${query} -> ${error.message}`);
+    return [];
+  }
+}
+
+async function resolveJiminMemberImage(name) {
+  const targets = await searchTargetsBing(`site:jimin.jp/member ${name}`, ["jimin.jp"]);
+  for (const target of targets) {
+    if (!/https?:\/\/(www\.)?jimin\.jp\/member\/\d+\.html$/i.test(target)) continue;
+    const official = await resolveOfficialImage(target, name);
+    if (official?.url) return official;
+  }
+  return null;
+}
+
+async function resolveWikipediaImageVariants(name) {
+  const titleCandidates = [name, `${name} (政治家)`, `${name}_(政治家)`];
+  for (const rawTitle of titleCandidates) {
+    const wikiTitle = rawTitle.replace(/ /g, "_");
+    try {
+      const summary = await fetchJson(`https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`);
+      const img = summary?.originalimage?.source || summary?.thumbnail?.source || "";
+      if (img && /^https?:\/\//.test(img)) {
+        return {
+          url: img,
+          source: "wikipedia",
+          sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`
+        };
+      }
+    } catch {
+      // continue
+    }
+  }
+  return null;
 }
 
 async function fetchRaw(url, kind = "html") {
@@ -427,49 +551,44 @@ async function resolveOfficialImage(profileUrl, name) {
 }
 
 async function resolveWikipediaImage(name) {
-  const title = encodeURIComponent(name);
-  try {
-    const summary = await fetchJson(`https://ja.wikipedia.org/api/rest_v1/page/summary/${title}`);
-    if (
-      summary?.title === name &&
-      summary?.thumbnail?.source &&
-      /^https?:\/\//.test(summary.thumbnail.source)
-    ) {
-      return {
-        url: summary.thumbnail.source,
-        source: "wikipedia",
-        sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(name)}`
-      };
-    }
-  } catch {
-    // ignore and continue search API
-  }
+  const direct = await resolveWikipediaImageVariants(name);
+  if (direct) return direct;
 
-  try {
-    const search = await fetchJson(
-      `https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(
-        `intitle:${name} 衆議院議員`
-      )}&utf8=1&format=json&origin=*`
-    );
-    const hit = (search?.query?.search || []).find((item) => normalizeSpace(item.title) === name);
-    if (!hit) return null;
-    const page = await fetchJson(
-      `https://ja.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|thumbnail&pithumbsize=800&titles=${encodeURIComponent(
-        hit.title
-      )}&format=json&origin=*`
-    );
-    const pages = page?.query?.pages || {};
-    const first = Object.values(pages)[0];
-    const img = first?.original?.source || first?.thumbnail?.source || "";
-    if (img) {
-      return {
-        url: img,
-        source: "wikipedia",
-        sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(hit.title)}`
-      };
+  const searchQueries = [
+    `intitle:${name} 政治家`,
+    `"${name}" 衆議院議員`,
+    `"${name}" 政治家`
+  ];
+  for (const q of searchQueries) {
+    try {
+      const search = await fetchJson(
+        `https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&utf8=1&format=json&origin=*`
+      );
+      const candidates = search?.query?.search || [];
+      const hit = candidates.find((item) => {
+        const title = normalizeSpace(String(item?.title || ""));
+        return title === name || title === `${name} (政治家)`;
+      });
+      if (!hit) continue;
+      const title = String(hit.title).replace(/ /g, "_");
+      const page = await fetchJson(
+        `https://ja.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|thumbnail&pithumbsize=800&titles=${encodeURIComponent(
+          title
+        )}&format=json&origin=*`
+      );
+      const pages = page?.query?.pages || {};
+      const first = Object.values(pages)[0];
+      const img = first?.original?.source || first?.thumbnail?.source || "";
+      if (img) {
+        return {
+          url: img,
+          source: "wikipedia",
+          sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(title)}`
+        };
+      }
+    } catch (error) {
+      console.log(`image-wikipedia-error: ${name} -> ${error.message}`);
     }
-  } catch (error) {
-    console.log(`image-wikipedia-error: ${name} -> ${error.message}`);
   }
   return null;
 }
@@ -546,12 +665,39 @@ async function resolveWebFallbackImage(name) {
   return null;
 }
 
-async function resolveImageForRepresentative(rep) {
+async function resolveImageForRepresentative(rep, existingCache) {
+  if (MANUAL_BAD_IMAGE_REMOVALS.has(cleanName(rep.name))) {
+    return { url: "", source: "", sourceUrl: "" };
+  }
+
+  const override = getOverrideImage(rep.name);
+  if (override?.image) {
+    return {
+      url: override.image,
+      source: override.imageSource,
+      sourceUrl: override.imageSourceUrl
+    };
+  }
+
   const official = await resolveOfficialImage(rep.profileUrl, rep.name);
   if (official) return official;
 
+  if (String(rep.party || "").includes("自由民主党")) {
+    const jimin = await resolveJiminMemberImage(rep.name);
+    if (jimin) return jimin;
+  }
+
   const wikipedia = await resolveWikipediaImage(rep.name);
   if (wikipedia) return wikipedia;
+
+  const cached = getCachedImage(existingCache, rep);
+  if (cached?.image) {
+    return {
+      url: cached.image,
+      source: cached.imageSource || "cached",
+      sourceUrl: cached.imageSourceUrl || cached.profileUrl || ""
+    };
+  }
 
   const webFallback = await resolveWebFallbackImage(rep.name);
   if (webFallback) return webFallback;
@@ -576,12 +722,12 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
-async function enrichImages(rows) {
-  const counts = { official: 0, wikipedia: 0, web: 0, empty: 0 };
+async function enrichImages(rows, existingCache) {
+  const counts = { official: 0, wikipedia: 0, web: 0, cached: 0, empty: 0 };
   const enriched = await mapWithConcurrency(
     rows,
     async (row, i) => {
-      const image = await resolveImageForRepresentative(row);
+      const image = await resolveImageForRepresentative(row, existingCache);
       const next = {
         ...row,
         image: image.url,
@@ -592,6 +738,7 @@ async function enrichImages(rows) {
       if (image.source === "official") counts.official += 1;
       else if (image.source === "wikipedia") counts.wikipedia += 1;
       else if (image.source === "web-fallback") counts.web += 1;
+      else if (image.source === "cached" || image.source === "official-manual") counts.cached += 1;
       else counts.empty += 1;
       console.log(`image-progress: ${i + 1}/${rows.length} ${row.name} -> ${image.source || "empty"}`);
       return next;
@@ -599,7 +746,7 @@ async function enrichImages(rows) {
     IMAGE_CONCURRENCY
   );
   console.log(
-    `image-source-counts: official=${counts.official} wikipedia=${counts.wikipedia} web=${counts.web} empty=${counts.empty}`
+    `image-source-counts: official=${counts.official} wikipedia=${counts.wikipedia} web=${counts.web} cached=${counts.cached} empty=${counts.empty}`
   );
   return enriched;
 }
@@ -640,7 +787,9 @@ async function main() {
     throw new Error(`Representative count out of expected range: ${finalRows.length}`);
   }
 
-  const finalWithImages = await enrichImages(finalRows);
+  const existingCache = loadExistingImageCache();
+  console.log(`existing-image-cache: ${existingCache.size}`);
+  const finalWithImages = await enrichImages(finalRows, existingCache);
 
   const outDir = path.resolve("public/data");
   fs.mkdirSync(outDir, { recursive: true });
