@@ -28,6 +28,9 @@ export const targetDataPath: Record<Target, string> = {
 
 type RawPerson = Record<string, unknown>;
 
+const BAD_GUESS_IMAGE_NAMES = new Set(["浅田眞澄美"]);
+
+
 function toText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
@@ -56,12 +59,13 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const group = toText(v.group) || toText(v.party) || toText(v.role);
   const images = toImages(v.images ?? v.image);
   const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
+  const safeImages = aiGuess && BAD_GUESS_IMAGE_NAMES.has(rawName) ? [] : images;
 
   return {
     id,
     name: rawName,
     group,
-    images,
+    images: safeImages,
     aiGuess,
   };
 }
