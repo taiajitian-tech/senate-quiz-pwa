@@ -4,7 +4,7 @@
     "party": "自由民主党・無所属の会",
     "profileUrl": "",
     "imageSource": "",
-    "aiGuess": false
+    "aiGuess": true
   },
   {
     "name": "石原正敬",
@@ -295,13 +295,6 @@
   },
   {
     "name": "藤田ひかる",
-    "party": "自由民主党・無所属の会",
-    "profileUrl": "",
-    "imageSource": "",
-    "aiGuess": false
-  },
-  {
-    "name": "藤田誠",
     "party": "自由民主党・無所属の会",
     "profileUrl": "",
     "imageSource": "",
