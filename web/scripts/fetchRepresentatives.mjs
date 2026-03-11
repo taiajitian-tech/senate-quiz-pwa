@@ -16,7 +16,7 @@ const EXPECTED_HEADERS_PARTY = ["氏名", "ふりがな", "選挙区", "当選�
 const MIN_EXPECTED = 430;
 const MAX_EXPECTED = 520;
 const IMAGE_CONCURRENCY = 6;
-const FETCH_TIMEOUT_MS = 12000;
+const TIMEOUT_MS = 12000;
 
 const PARTY_PATTERN =
   /(自由民主党・無所属の会|自由民主党|自民|立憲民主党・無所属|立憲民主党|立民|日本維新の会|維新|公明党|公明|国民民主党・無所属クラブ|国民民主党|国民|日本共産党|共産|れいわ新選組|れ新|参政党|参政|社民党|社民|有志の会|有志|日本保守党|保守|無所属)/u;
@@ -137,13 +137,18 @@ function headerMatches(cells, expected) {
   return expected.every((label, i) => normalizeSpace(cells[i]) === label);
 }
 
-function toAbsoluteUrl(href, baseUrl) {
-  if (!href) return "";
+function normalizeUrl(url, baseUrl) {
+  if (!url) return "";
   try {
-    return new URL(href, baseUrl).href;
+    return new URL(url, baseUrl).href;
   } catch {
     return "";
   }
+}
+
+function extractProfileUrlFromRow($, row, baseUrl) {
+  const href = $(row).find("td:first-child a[href]").first().attr("href") || "";
+  return normalizeUrl(href, baseUrl);
 }
 
 function addRecord(results, seen, record) {
@@ -167,12 +172,6 @@ function addRecord(results, seen, record) {
     imageSourceUrl: "",
     profileUrl: record.profileUrl || ""
   });
-}
-
-function extractProfileUrlFromNameCell($, row, baseUrl) {
-  const firstCell = $(row).children("th,td").first();
-  const href = firstCell.find("a[href]").first().attr("href") || "";
-  return toAbsoluteUrl(href, baseUrl);
 }
 
 function extractFromListPage(html, sourceUrl) {
@@ -204,7 +203,7 @@ function extractFromListPage(html, sourceUrl) {
         name: rawName,
         kana: rawKana,
         party: rawParty,
-        profileUrl: extractProfileUrlFromNameCell($, row, sourceUrl),
+        profileUrl: extractProfileUrlFromRow($, row, sourceUrl),
         _source: sourceUrl
       });
     }
@@ -259,7 +258,6 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl) {
 
     for (const row of rows.slice(1)) {
       const cells = getDirectCells($, row).filter(Boolean);
-
       if (cells.length !== 4) continue;
 
       const [rawName, rawKana, rawDistrict, rawWins] = cells;
@@ -272,7 +270,7 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl) {
         name: rawName,
         kana: rawKana,
         party,
-        profileUrl: extractProfileUrlFromNameCell($, row, sourceUrl),
+        profileUrl: extractProfileUrlFromRow($, row, sourceUrl),
         _source: sourceUrl
       });
     }
@@ -282,36 +280,34 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl) {
   return results;
 }
 
-async function fetchWithTimeout(url, init = {}, timeoutMs = FETCH_TIMEOUT_MS) {
+async function fetchRaw(url, kind = "html") {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    return await fetch(url, { ...init, signal: controller.signal });
+    const res = await fetch(url, {
+      headers: {
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+        accept:
+          kind === "json"
+            ? "application/json,text/plain;q=0.9,*/*;q=0.8"
+            : "text/html,application/xhtml+xml,application/xml;q=0.9,text/plain;q=0.8,*/*;q=0.7",
+        "accept-language": "ja,en-US;q=0.9,en;q=0.8",
+        "cache-control": "no-cache",
+        pragma: "no-cache"
+      },
+      redirect: "follow",
+      signal: controller.signal
+    });
+    if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${url}`);
+    return res;
   } finally {
     clearTimeout(timer);
   }
 }
 
 async function fetchPage(url) {
-  const res = await fetchWithTimeout(
-    url,
-    {
-      headers: {
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
-        accept: "text/html,application/xhtml+xml,application/xml;q=0.9,text/plain;q=0.8,*/*;q=0.7",
-        "accept-language": "ja,en-US;q=0.9,en;q=0.8",
-        "cache-control": "no-cache",
-        pragma: "no-cache"
-      }
-    },
-    FETCH_TIMEOUT_MS
-  );
-
-  if (!res.ok) {
-    throw new Error(`Fetch failed: ${res.status} ${url}`);
-  }
-
+  const res = await fetchRaw(url, "html");
   const buffer = Buffer.from(await res.arrayBuffer());
   const contentType = res.headers.get("content-type") ?? "";
   const decoded = decodeHtml(buffer, contentType);
@@ -325,6 +321,11 @@ async function fetchPage(url) {
   }
 
   return decoded.text;
+}
+
+async function fetchJson(url) {
+  const res = await fetchRaw(url, "json");
+  return await res.json();
 }
 
 function withinExpectedRange(count) {
@@ -378,276 +379,226 @@ async function collectFromPartyPages() {
   return all;
 }
 
-function isLikelyImageUrl(url) {
-  if (!url || typeof url !== "string") return false;
-  return /^https?:\/\//i.test(url) && /(\.jpe?g|\.png|\.webp|\.gif)(?:$|[?#])/i.test(url);
-}
-
-function scoreImageCandidate(url, sourceUrl, name) {
-  const u = String(url || "").toLowerCase();
-  const s = String(sourceUrl || "").toLowerCase();
+function scoreImageCandidate(src, alt = "", name = "") {
+  const s = String(src || "");
+  const a = String(alt || "");
+  if (!/^https?:\/\//i.test(s)) return -100;
+  if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s)) return -10;
   let score = 0;
-
-  if (s.includes("shugiin.go.jp") || u.includes("shugiin.go.jp")) score += 100;
-  if (s.includes("wikipedia.org") || s.includes("wikimedia.org") || u.includes("wikimedia.org")) score += 80;
-  if (u.includes("/thumb/")) score -= 10;
-  if (u.includes("icon") || u.includes("logo") || u.includes("banner") || u.includes("spacer")) score -= 50;
-  if (name) {
-    const compact = name.replace(/\s+/g, "").toLowerCase();
-    if (compact && (u.includes(compact) || s.includes(compact))) score += 8;
-  }
-
+  if (/portrait|profile|face|kao|photo|member|giin|politician|article|upload|commons/i.test(s)) score += 2;
+  if (/logo|icon|banner|spacer|line|pixel|print|btn|button|share/i.test(s)) score -= 4;
+  if (name && (a.includes(name) || decodeURIComponentSafe(s).includes(name))) score += 3;
   return score;
 }
 
-function pickBestImage(candidates, name) {
-  const ranked = candidates
-    .filter((candidate) => isLikelyImageUrl(candidate.url))
-    .map((candidate) => ({
-      ...candidate,
-      score: scoreImageCandidate(candidate.url, candidate.sourceUrl, name)
-    }))
-    .sort((a, b) => b.score - a.score);
-
-  return ranked[0] ?? null;
+function decodeURIComponentSafe(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
 }
 
-function extractImagesFromOfficialHtml(html, baseUrl, name) {
-  const $ = load(html);
-  const candidates = [];
-
-  $("img[src]").each((_, img) => {
-    const src = toAbsoluteUrl($(img).attr("src"), baseUrl);
-    const alt = normalizeSpace($(img).attr("alt") || "");
-    const title = normalizeSpace($(img).attr("title") || "");
-    const width = Number($(img).attr("width") || 0);
-    const height = Number($(img).attr("height") || 0);
-
-    if (!isLikelyImageUrl(src)) return;
-    if (width > 0 && width < 80) return;
-    if (height > 0 && height < 80) return;
-    if (/(logo|icon|banner|spacer|arrow|pdf)/i.test(src)) return;
-
-    let bonus = 0;
-    const metaText = `${alt} ${title}`;
-    if (metaText.includes(name)) bonus += 30;
-    if (src.includes("/giin/")) bonus += 20;
-    if (src.includes("/member/")) bonus += 15;
-
-    candidates.push({
-      url: src,
-      source: "official",
-      sourceUrl: baseUrl,
-      score: 100 + bonus
-    });
-  });
-
-  candidates.sort((a, b) => b.score - a.score);
-  return candidates[0] ?? null;
-}
-
-async function tryOfficialImage(profileUrl, name) {
+async function resolveOfficialImage(profileUrl, name) {
   if (!profileUrl) return null;
   try {
     const html = await fetchPage(profileUrl);
-    return extractImagesFromOfficialHtml(html, profileUrl, name);
-  } catch (error) {
-    console.log(`official-image-error: ${name} -> ${error.message}`);
-    return null;
-  }
-}
-
-async function fetchJson(url) {
-  const res = await fetchWithTimeout(
-    url,
-    {
-      headers: {
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
-        accept: "application/json,text/plain;q=0.9,*/*;q=0.8",
-        "accept-language": "ja,en-US;q=0.9,en;q=0.8",
-        "cache-control": "no-cache",
-        pragma: "no-cache"
-      }
-    },
-    FETCH_TIMEOUT_MS
-  );
-  if (!res.ok) {
-    throw new Error(`Fetch failed: ${res.status} ${url}`);
-  }
-  return await res.json();
-}
-
-function stripDisambiguation(title) {
-  return cleanName(String(title || "").replace(/\s*[（(].*?[）)]\s*$/u, ""));
-}
-
-async function searchWikipediaTitle(name) {
-  try {
-    const url = `https://ja.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(
-      name
-    )}&limit=5&namespace=0&format=json&origin=*`;
-    const json = await fetchJson(url);
-    const titles = Array.isArray(json?.[1]) ? json[1] : [];
-    const title = titles.find((item) => stripDisambiguation(item) === name) || titles[0] || "";
-    return typeof title === "string" ? title : "";
-  } catch (error) {
-    console.log(`wikipedia-search-error: ${name} -> ${error.message}`);
-    return "";
-  }
-}
-
-async function tryWikipediaImage(name) {
-  const title = (await searchWikipediaTitle(name)) || name;
-
-  try {
-    const url = `https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
-    const json = await fetchJson(url);
-    const actualTitle = cleanName(stripDisambiguation(json?.title || title));
-    if (actualTitle && actualTitle !== name) {
-      console.log(`wikipedia-title-mismatch: ${name} -> ${actualTitle}`);
-      return null;
-    }
-
-    const imageUrl =
-      json?.originalimage?.source ||
-      json?.thumbnail?.source ||
-      "";
-
-    if (!isLikelyImageUrl(imageUrl)) return null;
-
-    return {
-      url: imageUrl,
-      source: "wikipedia",
-      sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(json?.title || title)}`
-    };
-  } catch (error) {
-    console.log(`wikipedia-image-error: ${name} -> ${error.message}`);
-    return null;
-  }
-}
-
-function extractFallbackImageCandidates(html, sourceUrl, name) {
-  const $ = load(html);
-  const candidates = [];
-
-  $("img[src]").each((_, img) => {
-    const src = $(img).attr("src") || "";
-    const dataSrc = $(img).attr("data-src") || "";
-    const realSrc = src.startsWith("data:") ? dataSrc : src;
-    const abs = toAbsoluteUrl(realSrc, sourceUrl);
-    const alt = normalizeSpace($(img).attr("alt") || "");
-
-    if (!isLikelyImageUrl(abs)) return;
-    if (/(logo|icon|banner|spacer|emoji|sprite|thumb\/1\/1)/i.test(abs)) return;
-
-    let score = 0;
-    if (alt.includes(name)) score += 50;
-    if (abs.toLowerCase().includes(name.toLowerCase())) score += 10;
-
-    candidates.push({
-      url: abs,
-      source: "web-fallback",
-      sourceUrl,
-      score
+    const $ = load(html);
+    const candidates = [];
+    $("img[src]").each((_, img) => {
+      const src = normalizeUrl($(img).attr("src") || "", profileUrl);
+      const alt = normalizeSpace($(img).attr("alt") || $(img).attr("title") || "");
+      const score = scoreImageCandidate(src, alt, name);
+      if (score > 0) candidates.push({ src, alt, score });
     });
-  });
-
-  candidates.sort((a, b) => b.score - a.score);
-  return candidates;
-}
-
-async function tryWebFallback(name) {
-  const queries = [
-    `${name} 衆議院議員 公式`,
-    `${name} 衆議院議員`,
-    `${name} wikipedia`
-  ];
-
-  for (const query of queries) {
-    try {
-      const url = `https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
-      const html = await fetchPage(url);
-      const candidates = extractFallbackImageCandidates(html, url, name);
-      const best = pickBestImage(candidates, name);
-      if (best && best.score >= 30) {
-        return {
-          url: best.url,
-          source: "web-fallback",
-          sourceUrl: best.sourceUrl
-        };
-      }
-    } catch (error) {
-      console.log(`web-fallback-error: ${name} -> ${error.message}`);
+    candidates.sort((a, b) => b.score - a.score);
+    if (candidates[0]) {
+      return {
+        url: candidates[0].src,
+        source: "official",
+        sourceUrl: profileUrl
+      };
     }
+  } catch (error) {
+    console.log(`image-official-error: ${name} -> ${error.message}`);
   }
-
   return null;
 }
 
-async function resolveImageForRepresentative(item) {
-  const official = await tryOfficialImage(item.profileUrl, item.name);
-  if (official) return official;
+async function resolveWikipediaImage(name) {
+  const title = encodeURIComponent(name);
+  try {
+    const summary = await fetchJson(`https://ja.wikipedia.org/api/rest_v1/page/summary/${title}`);
+    if (
+      summary?.title === name &&
+      summary?.thumbnail?.source &&
+      /^https?:\/\//.test(summary.thumbnail.source)
+    ) {
+      return {
+        url: summary.thumbnail.source,
+        source: "wikipedia",
+        sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(name)}`
+      };
+    }
+  } catch {
+    // ignore and continue search API
+  }
 
-  const wikipedia = await tryWikipediaImage(item.name);
-  if (wikipedia) return wikipedia;
-
-  const fallback = await tryWebFallback(item.name);
-  if (fallback) return fallback;
-
-  return {
-    url: "",
-    source: "",
-    sourceUrl: item.profileUrl || ""
-  };
+  try {
+    const search = await fetchJson(
+      `https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(
+        `intitle:${name} 衆議院議員`
+      )}&utf8=1&format=json&origin=*`
+    );
+    const hit = (search?.query?.search || []).find((item) => normalizeSpace(item.title) === name);
+    if (!hit) return null;
+    const page = await fetchJson(
+      `https://ja.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|thumbnail&pithumbsize=800&titles=${encodeURIComponent(
+        hit.title
+      )}&format=json&origin=*`
+    );
+    const pages = page?.query?.pages || {};
+    const first = Object.values(pages)[0];
+    const img = first?.original?.source || first?.thumbnail?.source || "";
+    if (img) {
+      return {
+        url: img,
+        source: "wikipedia",
+        sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(hit.title)}`
+      };
+    }
+  } catch (error) {
+    console.log(`image-wikipedia-error: ${name} -> ${error.message}`);
+  }
+  return null;
 }
 
-async function mapWithConcurrency(items, limit, mapper) {
-  const results = new Array(items.length);
-  let nextIndex = 0;
+function looksPoliticianPage(text, name) {
+  const s = normalizeSpace(text);
+  let score = 0;
+  if (name && s.includes(name)) score += 3;
+  for (const token of ["衆議院", "議員", "公式", "プロフィール", "自由民主党", "立憲民主党", "公明党", "日本維新", "国民民主党", "日本共産党", "れいわ新選組"]) {
+    if (s.includes(token)) score += 1;
+  }
+  return score >= 4;
+}
 
-  async function worker() {
+function extractOgImage(html, pageUrl, name) {
+  const $ = load(html);
+  const metas = [
+    'meta[property="og:image"]',
+    'meta[name="og:image"]',
+    'meta[name="twitter:image"]',
+    'meta[property="twitter:image"]'
+  ];
+  const urls = [];
+  for (const sel of metas) {
+    $(sel).each((_, el) => {
+      const v = normalizeUrl($(el).attr("content") || "", pageUrl);
+      if (v) urls.push(v);
+    });
+  }
+  const img = urls.find((u) => scoreImageCandidate(u, "", name) > 0);
+  return img || "";
+}
+
+function extractDuckDuckGoTargets(html) {
+  const $ = load(html);
+  const out = [];
+  const seen = new Set();
+  $("a[href]").each((_, a) => {
+    const href = $(a).attr("href") || "";
+    if (!href.includes("uddg=")) return;
+    const m = href.match(/[?&]uddg=([^&]+)/);
+    const target = m ? decodeURIComponentSafe(m[1]) : "";
+    if (!/^https?:\/\//i.test(target)) return;
+    if (seen.has(target)) return;
+    seen.add(target);
+    out.push(target);
+  });
+  return out;
+}
+
+async function resolveWebFallbackImage(name) {
+  try {
+    const query = encodeURIComponent(`${name} 衆議院議員 公式 プロフィール`);
+    const html = await fetchPage(`https://duckduckgo.com/html/?q=${query}`);
+    const targets = extractDuckDuckGoTargets(html).slice(0, 5);
+    for (const target of targets) {
+      try {
+        const pageHtml = await fetchPage(target);
+        if (!looksPoliticianPage(pageHtml, name)) continue;
+        const img = extractOgImage(pageHtml, target, name);
+        if (!img) continue;
+        return {
+          url: img,
+          source: "web-fallback",
+          sourceUrl: target
+        };
+      } catch (error) {
+        console.log(`image-web-page-error: ${name} -> ${target} -> ${error.message}`);
+      }
+    }
+  } catch (error) {
+    console.log(`image-web-search-error: ${name} -> ${error.message}`);
+  }
+  return null;
+}
+
+async function resolveImageForRepresentative(rep) {
+  const official = await resolveOfficialImage(rep.profileUrl, rep.name);
+  if (official) return official;
+
+  const wikipedia = await resolveWikipediaImage(rep.name);
+  if (wikipedia) return wikipedia;
+
+  const webFallback = await resolveWebFallbackImage(rep.name);
+  if (webFallback) return webFallback;
+
+  return { url: "", source: "", sourceUrl: "" };
+}
+
+async function mapWithConcurrency(items, worker, concurrency) {
+  const results = new Array(items.length);
+  let index = 0;
+
+  async function runOne() {
     while (true) {
-      const currentIndex = nextIndex;
-      nextIndex += 1;
-      if (currentIndex >= items.length) return;
-      results[currentIndex] = await mapper(items[currentIndex], currentIndex);
+      const current = index;
+      index += 1;
+      if (current >= items.length) return;
+      results[current] = await worker(items[current], current);
     }
   }
 
-  const workers = Array.from({ length: Math.min(limit, items.length || 1) }, () => worker());
-  await Promise.all(workers);
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => runOne()));
   return results;
 }
 
 async function enrichImages(rows) {
-  let officialCount = 0;
-  let wikipediaCount = 0;
-  let fallbackCount = 0;
-  let emptyCount = 0;
-
-  const enriched = await mapWithConcurrency(rows, IMAGE_CONCURRENCY, async (row, index) => {
-    const image = await resolveImageForRepresentative(row);
-    const next = {
-      ...row,
-      image: image.url || "",
-      imageSource: image.source || "",
-      imageSourceUrl: image.sourceUrl || row.profileUrl || ""
-    };
-
-    if (next.imageSource === "official") officialCount += 1;
-    else if (next.imageSource === "wikipedia") wikipediaCount += 1;
-    else if (next.imageSource === "web-fallback") fallbackCount += 1;
-    else emptyCount += 1;
-
-    console.log(
-      `image-progress: ${index + 1}/${rows.length} ${row.name} -> ${next.imageSource || "none"}`
-    );
-
-    return next;
-  });
-
-  console.log(`image-source-counts: official=${officialCount} wikipedia=${wikipediaCount} web=${fallbackCount} empty=${emptyCount}`);
+  const counts = { official: 0, wikipedia: 0, web: 0, empty: 0 };
+  const enriched = await mapWithConcurrency(
+    rows,
+    async (row, i) => {
+      const image = await resolveImageForRepresentative(row);
+      const next = {
+        ...row,
+        image: image.url,
+        imageSource: image.source,
+        imageSourceUrl: image.sourceUrl
+      };
+      if (image.source === "official") counts.official += 1;
+      else if (image.source === "wikipedia") counts.wikipedia += 1;
+      else if (image.source === "web-fallback") counts.web += 1;
+      else counts.empty += 1;
+      console.log(`image-progress: ${i + 1}/${rows.length} ${row.name} -> ${image.source || "empty"}`);
+      return next;
+    },
+    IMAGE_CONCURRENCY
+  );
+  console.log(
+    `image-source-counts: official=${counts.official} wikipedia=${counts.wikipedia} web=${counts.web} empty=${counts.empty}`
+  );
   return enriched;
 }
 
@@ -687,13 +638,13 @@ async function main() {
     throw new Error(`Representative count out of expected range: ${finalRows.length}`);
   }
 
-  const enrichedRows = await enrichImages(finalRows);
+  const finalWithImages = await enrichImages(finalRows);
 
   const outDir = path.resolve("public/data");
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
     path.join(outDir, "representatives.json"),
-    JSON.stringify(enrichedRows, null, 2),
+    JSON.stringify(finalWithImages, null, 2),
     "utf8"
   );
 }
