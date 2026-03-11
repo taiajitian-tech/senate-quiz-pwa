@@ -15,7 +15,7 @@
     "imageSource": "",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": true
   },
   {
     "name": "石坂太",
@@ -874,15 +874,6 @@
   },
   {
     "name": "藤田ひかる",
-    "party": "自由民主党・無所属の会",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "profileUrl": "",
-    "aiGuess": false
-  },
-  {
-    "name": "藤田誠",
     "party": "自由民主党・無所属の会",
     "image": "",
     "imageSource": "",

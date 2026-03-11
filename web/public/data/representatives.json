@@ -153,7 +153,7 @@
     "imageSource": "",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": true
   },
   {
     "name": "五十嵐清",
@@ -2885,9 +2885,9 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Emperor_Naruhito_Empress_Masako_Makoto_Fujita_and_Hiroshi_Shiono_20190617.jpg",
+    "imageSource": "wikidata-commons",
+    "imageSourceUrl": "https://www.wikidata.org/wiki/Q11624900",
     "profileUrl": "",
     "aiGuess": false
   },
