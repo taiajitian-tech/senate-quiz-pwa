@@ -9,6 +9,11 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      REP_IMAGE_CONCURRENCY: "8"
+      REP_IMAGE_WAIT_MS: "100"
+      REP_IMAGE_TIMEOUT_MS: "12000"
     defaults:
       run:
         working-directory: web
