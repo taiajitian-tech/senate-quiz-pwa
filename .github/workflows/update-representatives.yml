@@ -9,11 +9,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-    env:
-      REP_IMAGE_CONCURRENCY: "8"
-      REP_IMAGE_WAIT_MS: "100"
-      REP_IMAGE_TIMEOUT_MS: "12000"
+    timeout-minutes: 35
     defaults:
       run:
         working-directory: web
@@ -36,6 +32,11 @@ jobs:
         run: npm run gen:representatives
 
       - name: Auto-fill missing representative images
+        env:
+          REP_IMAGE_CONCURRENCY: "10"
+          REP_IMAGE_WAIT_MS: "80"
+          REP_IMAGE_TIMEOUT_MS: "12000"
+          REP_IMAGE_SEARCH_LIMIT: "8"
         run: npm run gen:representatives:images
 
       - name: Generate representative image reports

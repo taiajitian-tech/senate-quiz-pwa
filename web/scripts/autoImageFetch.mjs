@@ -4,48 +4,107 @@ import { load } from "cheerio";
 
 const dataPath = path.resolve("public/data/representatives.json");
 const TIMEOUT_MS = Number(process.env.REP_IMAGE_TIMEOUT_MS || 12000);
-const WAIT_MS = Number(process.env.REP_IMAGE_WAIT_MS || 150);
+const WAIT_MS = Number(process.env.REP_IMAGE_WAIT_MS || 100);
 const CONCURRENCY = Math.max(1, Number(process.env.REP_IMAGE_CONCURRENCY || 8));
+const SEARCH_RESULT_LIMIT = Math.max(3, Number(process.env.REP_IMAGE_SEARCH_LIMIT || 8));
 
-const PARTY_SEARCH_HINTS = {
-  "自由民主党・無所属の会": {
-    domains: ["jimin.jp"],
-    queries: ["site:jimin.jp member", "site:jimin.jp/member", "site:jimin.jp profile"]
-  },
-  "日本維新の会": {
-    domains: ["o-ishin.jp"],
-    queries: ["site:o-ishin.jp", "site:o-ishin.jp/member", "site:o-ishin.jp/sangiin"]
-  },
-  "国民民主党・無所属クラブ": {
-    domains: ["new-kokumin.jp"],
-    queries: ["site:new-kokumin.jp", "site:new-kokumin.jp/member", "site:new-kokumin.jp/news"]
-  },
-  "参政党": {
-    domains: ["sanseito.jp"],
-    queries: ["site:sanseito.jp", "site:sanseito.jp/member", "site:sanseito.jp/election"]
-  },
-  "日本共産党": {
-    domains: ["jcp.or.jp"],
-    queries: ["site:jcp.or.jp", "site:jcp.or.jp/member", "site:jcp.or.jp/web_policy"]
-  },
-  "チームみらい": {
-    domains: ["team-mirai.jp"],
-    queries: ["site:team-mirai.jp", "site:team-mirai.jp/member"]
-  },
-  "中道改革連合・無所属": {
-    domains: [],
-    queries: []
-  },
-  "無所属": {
-    domains: [],
-    queries: []
+const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
+const MANUAL_OVERRIDES = {
+  浅田眞澄美: {
+    url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
+    source: "official-manual",
+    sourceUrl: "https://asada-masumi.com/about-us/"
   }
 };
 
-const BAD_IMAGE_NAMES = new Set(["安藤たかお"]);
+const PARTY_HINTS = [
+  {
+    match: /自由民主党|自民/u,
+    domains: ["jimin.jp"],
+    queries: (name) => [`site:jimin.jp/member ${name}`, `site:jimin.jp ${name} 議員`]
+  },
+  {
+    match: /立憲民主党|立民/u,
+    domains: ["cdp-japan.jp"],
+    queries: (name) => [`site:cdp-japan.jp ${name} 衆議院`, `site:cdp-japan.jp ${name}`]
+  },
+  {
+    match: /日本維新の会|維新/u,
+    domains: ["o-ishin.jp"],
+    queries: (name) => [`site:o-ishin.jp ${name}`, `site:o-ishin.jp ${name} 議員`]
+  },
+  {
+    match: /公明党/u,
+    domains: ["komei.or.jp"],
+    queries: (name) => [`site:komei.or.jp ${name}`, `site:komei.or.jp ${name} プロフィール`]
+  },
+  {
+    match: /国民民主党|国民/u,
+    domains: ["new-kokumin.jp"],
+    queries: (name) => [`site:new-kokumin.jp ${name}`, `site:new-kokumin.jp ${name} 議員`]
+  },
+  {
+    match: /日本共産党|共産/u,
+    domains: ["jcp.or.jp"],
+    queries: (name) => [`site:jcp.or.jp ${name}`, `site:jcp.or.jp ${name} 議員`]
+  },
+  {
+    match: /れいわ新選組/u,
+    domains: ["reiwa-shinsengumi.com"],
+    queries: (name) => [`site:reiwa-shinsengumi.com ${name}`, `site:reiwa-shinsengumi.com ${name} プロフィール`]
+  },
+  {
+    match: /参政党/u,
+    domains: ["sanseito.jp"],
+    queries: (name) => [`site:sanseito.jp ${name}`, `site:sanseito.jp ${name} 議員`]
+  },
+  {
+    match: /社民党|社民/u,
+    domains: ["sdp.or.jp"],
+    queries: (name) => [`site:sdp.or.jp ${name}`, `site:sdp.or.jp ${name} プロフィール`]
+  },
+  {
+    match: /日本保守党|保守/u,
+    domains: ["hoshuto.jp"],
+    queries: (name) => [`site:hoshuto.jp ${name}`, `site:hoshuto.jp ${name} 議員`]
+  }
+];
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function normalizeSpace(value) {
+  return String(value || "").replace(/\u00a0/g, " ").replace(/\u3000/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function cleanName(value) {
+  return normalizeSpace(value).replace(/君$/u, "").replace(/\s+/g, "");
+}
+
+function decodeText(buffer, contentType = "") {
+  const ctype = String(contentType).toLowerCase();
+  const candidates = [];
+  if (ctype.includes("shift_jis") || ctype.includes("shift-jis") || ctype.includes("sjis")) {
+    candidates.push("shift_jis");
+  }
+  candidates.push("utf-8", "shift_jis", "euc-jp");
+
+  let best = { text: buffer.toString("utf8"), score: -Infinity };
+  for (const encoding of [...new Set(candidates)]) {
+    try {
+      const text = new TextDecoder(encoding).decode(buffer);
+      let score = 0;
+      for (const token of ["衆議院", "議員", "プロフィール", "会派", "政治家", "公式"]) {
+        if (text.includes(token)) score += 1;
+      }
+      if (text.includes("����")) score -= 10;
+      if (score > best.score) best = { text, score };
+    } catch {
+      // ignore
+    }
+  }
+  return best.text;
 }
 
 async function fetchRaw(url, kind = "html") {
@@ -81,21 +140,13 @@ async function fetchJson(url) {
 
 async function fetchPage(url) {
   const res = await fetchRaw(url, "html");
-  return Buffer.from(await res.arrayBuffer()).toString("utf8");
-}
-
-function normalizeSpace(value) {
-  return String(value || "")
-    .replace(/\u00a0/g, " ")
-    .replace(/\u3000/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  const buffer = Buffer.from(await res.arrayBuffer());
+  return decodeText(buffer, res.headers.get("content-type") || "");
 }
 
 function normalizeUrl(url, baseUrl = "") {
   const raw = String(url || "").trim();
-  if (!raw) return "";
-  if (/^data:/i.test(raw)) return "";
+  if (!raw || /^data:/i.test(raw)) return "";
   try {
     return new URL(raw, baseUrl).toString();
   } catch {
@@ -111,53 +162,178 @@ function decodeURIComponentSafe(value) {
   }
 }
 
-function cleanName(value) {
-  return normalizeSpace(value).replace(/\s+/g, "");
+function hostnameOf(url) {
+  try {
+    return new URL(url).hostname.toLowerCase();
+  } catch {
+    return "";
+  }
 }
 
-function getPartyHint(party) {
-  return PARTY_SEARCH_HINTS[party] || { domains: [], queries: [] };
-}
-
-function partyKeywords(party) {
-  return String(party || "")
-    .split(/[・\s]/)
-    .map((x) => normalizeSpace(x))
-    .filter(Boolean);
+function isLikelyBadImage(src = "", alt = "") {
+  const s = `${src} ${alt}`.toLowerCase();
+  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|poster|flyer|bill|manifesto|policy|leaflet|thumb)/i.test(
+    s
+  );
 }
 
 function scoreImageCandidate(src, alt = "", name = "", pageUrl = "") {
   const s = String(src || "");
-  const a = String(alt || "");
-  const p = String(pageUrl || "");
+  const a = normalizeSpace(alt);
   if (!/^https?:\/\//i.test(s)) return -100;
-  if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s)) return -20;
+  if (isLikelyBadImage(s, a)) return -50;
+  if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s)) return -10;
 
   let score = 0;
-  const full = `${decodeURIComponentSafe(s)} ${decodeURIComponentSafe(a)} ${decodeURIComponentSafe(p)}`;
-
-  if (/portrait|profile|face|kao|photo|member|giin|politician|candidate|profile_photo|headshot|本人|議員|顔/i.test(full)) score += 4;
-  if (/logo|icon|banner|spacer|line|pixel|print|btn|button|share|ogp-default|noimage|default|placeholder/i.test(full)) score -= 8;
-  if (/poster|ポスター|街宣|演説|のぼり|看板|選挙/i.test(full)) score -= 8;
-  if (/twitter|x\.com|facebook|instagram|youtube/i.test(full)) score -= 4;
-  if (/jimin\.jp|o-ishin\.jp|new-kokumin\.jp|sanseito\.jp|jcp\.or\.jp|team-mirai\.jp|wikipedia|wikimedia|commons/i.test(full)) score += 3;
-  if (name && (full.includes(name) || full.includes(cleanName(name)))) score += 5;
+  if (/upload\.wikimedia|commons\.wikimedia/i.test(s)) score += 8;
+  if (/portrait|profile|face|kao|photo|member|giin|politician|headshot/i.test(s)) score += 4;
+  if (/member|profile|giin|politician|representative/i.test(pageUrl)) score += 2;
+  if (name) {
+    const plainName = cleanName(name);
+    const hay = `${decodeURIComponentSafe(s)} ${a}`.replace(/[\s\-_]/g, "");
+    if (hay.includes(plainName)) score += 6;
+  }
+  if (/\b(400|500|600|700|800|900|1000)\b/.test(s)) score += 1;
+  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ/i.test(a)) score -= 6;
+  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto/i.test(s)) score -= 6;
   return score;
 }
 
-function scorePage(html, pageUrl, name, party) {
-  const text = normalizeSpace(String(html || "").slice(0, 6000));
+function looksPoliticianPage(text, name) {
+  const s = normalizeSpace(text);
   let score = 0;
-  if (name && text.includes(name)) score += 5;
-  for (const token of ["衆議院", "議員", "プロフィール", "公式", "member", "profile"]) {
-    if (text.includes(token)) score += 1;
+  if (name && s.includes(name)) score += 4;
+  for (const token of ["衆議院", "議員", "プロフィール", "会派", "公式サイト", "自由民主党", "立憲民主党", "公明党", "維新", "国民民主党", "参政党"]) {
+    if (s.includes(token)) score += 1;
   }
-  for (const token of partyKeywords(party)) {
-    if (token && text.includes(token)) score += 1;
+  return score >= 4;
+}
+
+function extractSearchTargetsFromDuckDuckGo(html, allowedDomains = []) {
+  const $ = load(html);
+  const out = [];
+  const seen = new Set();
+  $("a[href]").each((_, a) => {
+    const href = $(a).attr("href") || "";
+    if (!href.includes("uddg=")) return;
+    const m = href.match(/[?&]uddg=([^&]+)/);
+    const target = m ? decodeURIComponentSafe(m[1]) : "";
+    if (!/^https?:\/\//i.test(target)) return;
+    const host = hostnameOf(target);
+    if (allowedDomains.length && !allowedDomains.some((d) => host === d || host.endsWith(`.${d}`))) return;
+    if (seen.has(target)) return;
+    seen.add(target);
+    out.push(target);
+  });
+  return out;
+}
+
+function extractSearchTargetsFromBing(html, allowedDomains = []) {
+  const $ = load(html);
+  const out = [];
+  const seen = new Set();
+  $("a[href]").each((_, a) => {
+    const href = normalizeSpace($(a).attr("href") || "");
+    if (!/^https?:\/\//i.test(href)) return;
+    if (/(\/images\/|bing\.com\/ck\/a\?|microsoft|go\.microsoft)/i.test(href)) return;
+    const host = hostnameOf(href);
+    if (allowedDomains.length && !allowedDomains.some((d) => host === d || host.endsWith(`.${d}`))) return;
+    if (seen.has(href)) return;
+    seen.add(href);
+    out.push(href);
+  });
+  return out;
+}
+
+async function searchTargets(query, allowedDomains = []) {
+  const results = [];
+  const seen = new Set();
+
+  try {
+    const html = await fetchPage(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`);
+    for (const target of extractSearchTargetsFromDuckDuckGo(html, allowedDomains)) {
+      if (seen.has(target)) continue;
+      seen.add(target);
+      results.push(target);
+      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+    }
+  } catch {
+    // ignore
   }
-  if (/404|not found|ページが見つかりません|アクセスできません/i.test(text)) score -= 8;
-  if (/facebook|instagram|youtube|x\.com|twitter/i.test(pageUrl)) score -= 4;
-  return score;
+
+  try {
+    const html = await fetchPage(`https://www.bing.com/search?q=${encodeURIComponent(query)}`);
+    for (const target of extractSearchTargetsFromBing(html, allowedDomains)) {
+      if (seen.has(target)) continue;
+      seen.add(target);
+      results.push(target);
+      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+    }
+  } catch {
+    // ignore
+  }
+
+  return results;
+}
+
+function collectImageCandidatesFromPage(html, pageUrl, name) {
+  const $ = load(html);
+  const candidates = [];
+
+  const pushCandidate = (src, alt = "", sourceHint = "page") => {
+    const url = normalizeUrl(src, pageUrl);
+    if (!url) return;
+    const score = scoreImageCandidate(url, alt, name, pageUrl);
+    if (score <= 0) return;
+    candidates.push({ url, alt, score, sourceHint });
+  };
+
+  for (const sel of [
+    'meta[property="og:image"]',
+    'meta[name="og:image"]',
+    'meta[name="twitter:image"]',
+    'meta[property="twitter:image"]'
+  ]) {
+    $(sel).each((_, el) => pushCandidate($(el).attr("content") || "", "", "meta"));
+  }
+
+  $("img[src]").each((_, img) => {
+    const el = $(img);
+    const alt = normalizeSpace(el.attr("alt") || el.attr("title") || "");
+    pushCandidate(el.attr("src") || "", alt, "img");
+    pushCandidate(el.attr("data-src") || "", alt, "img");
+    pushCandidate(el.attr("data-lazy-src") || "", alt, "img");
+    pushCandidate(el.attr("srcset")?.split(",")[0]?.trim().split(/\s+/)[0] || "", alt, "img");
+  });
+
+  const nameNoSpace = cleanName(name);
+  for (const item of candidates) {
+    const hay = `${item.url} ${item.alt}`.replace(/[\s\-_]/g, "");
+    if (hay.includes(nameNoSpace)) item.score += 3;
+    if (item.sourceHint === "meta") item.score += 1;
+    if (/(member|profile|politician|giin)/i.test(pageUrl)) item.score += 1;
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+  return candidates;
+}
+
+async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "official") {
+  if (!profileUrl) return null;
+  try {
+    const html = await fetchPage(profileUrl);
+    if (!looksPoliticianPage(html, name)) return null;
+    const candidates = collectImageCandidatesFromPage(html, profileUrl, name);
+    const best = candidates[0];
+    if (!best) return null;
+    return {
+      url: best.url,
+      source: sourceLabel,
+      sourceUrl: profileUrl
+    };
+  } catch {
+    return null;
+  }
 }
 
 async function searchWikipediaImage(name) {
@@ -171,8 +347,7 @@ async function searchWikipediaImage(name) {
         return {
           url: img,
           source: "wikipedia",
-          sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`,
-          aiGuess: false
+          sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`
         };
       }
     } catch {
@@ -194,9 +369,7 @@ async function searchWikipediaImage(name) {
       if (!hit) continue;
       const title = String(hit.title).replace(/ /g, "_");
       const page = await fetchJson(
-        `https://ja.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|thumbnail&pithumbsize=800&titles=${encodeURIComponent(
-          title
-        )}&format=json&origin=*`
+        `https://ja.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|thumbnail&pithumbsize=800&titles=${encodeURIComponent(title)}&format=json&origin=*`
       );
       const pages = page?.query?.pages || {};
       const first = Object.values(pages)[0];
@@ -205,14 +378,14 @@ async function searchWikipediaImage(name) {
         return {
           url: img,
           source: "wikipedia",
-          sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(title)}`,
-          aiGuess: false
+          sourceUrl: `https://ja.wikipedia.org/wiki/${encodeURIComponent(title)}`
         };
       }
     } catch {
       // continue
     }
   }
+
   return null;
 }
 
@@ -227,9 +400,7 @@ async function searchWikidataCommonsImage(name) {
       for (const candidate of candidates) {
         const id = candidate?.id;
         if (!id) continue;
-        const entityRes = await fetchJson(
-          `https://www.wikidata.org/wiki/Special:EntityData/${encodeURIComponent(String(id))}.json`
-        );
+        const entityRes = await fetchJson(`https://www.wikidata.org/wiki/Special:EntityData/${encodeURIComponent(String(id))}.json`);
         const entity = entityRes?.entities?.[id];
         const fileName = entity?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
         if (!fileName) continue;
@@ -237,8 +408,7 @@ async function searchWikidataCommonsImage(name) {
         return {
           url: `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(commonsFile)}`,
           source: "wikidata-commons",
-          sourceUrl: `https://www.wikidata.org/wiki/${encodeURIComponent(String(id))}`,
-          aiGuess: false
+          sourceUrl: `https://www.wikidata.org/wiki/${encodeURIComponent(String(id))}`
         };
       }
     } catch {
@@ -248,194 +418,141 @@ async function searchWikidataCommonsImage(name) {
   return null;
 }
 
-function extractDuckDuckGoTargets(html) {
-  const $ = load(html);
-  const out = [];
-  const seen = new Set();
-
-  $("a[href]").each((_, a) => {
-    const href = $(a).attr("href") || "";
-    if (!href.includes("uddg=")) return;
-    const m = href.match(/[?&]uddg=([^&]+)/);
-    const target = m ? decodeURIComponentSafe(m[1]) : "";
-    if (!/^https?:\/\//i.test(target)) return;
-    if (seen.has(target)) return;
-    seen.add(target);
-    out.push(target);
-  });
-
-  return out;
+function partyHintsFor(member) {
+  const party = String(member.party || member.role || "");
+  return PARTY_HINTS.filter((item) => item.match.test(party));
 }
 
-function extractImageCandidates(html, pageUrl, name) {
-  const $ = load(html);
-  const candidates = [];
-
-  const pushCandidate = (url, alt = "") => {
-    const normalized = normalizeUrl(url, pageUrl);
-    if (!normalized) return;
-    candidates.push({ url: normalized, alt, score: scoreImageCandidate(normalized, alt, name, pageUrl) });
-  };
-
-  for (const sel of [
-    'meta[property="og:image"]',
-    'meta[name="og:image"]',
-    'meta[name="twitter:image"]',
-    'meta[property="twitter:image"]'
-  ]) {
-    $(sel).each((_, el) => pushCandidate($(el).attr("content") || "", "meta-image"));
-  }
-
-  const imgSelectors = [
-    "main img",
-    "article img",
-    ".profile img",
-    ".member img",
-    ".entry img",
-    ".post img",
-    "#main img",
-    "img"
-  ];
-
-  for (const sel of imgSelectors) {
-    $(sel).each((_, img) => {
-      pushCandidate($(img).attr("src") || "", $(img).attr("alt") || "");
-      pushCandidate($(img).attr("data-src") || "", $(img).attr("alt") || "");
-    });
-  }
-
-  candidates.sort((a, b) => b.score - a.score);
-  return candidates;
-}
-
-function makeSearchQueries(name, party) {
-  const hint = getPartyHint(party);
-  const base = [
-    `"${name}" 衆議院議員`,
-    `"${name}" 政治家`,
-    `${name} 衆議院議員 公式 プロフィール`
-  ];
-  const partySpecific = hint.queries.map((q) => `${q} "${name}"`);
-  return [...partySpecific, ...base];
-}
-
-function preferredDomain(url, party) {
-  const hint = getPartyHint(party);
-  return hint.domains.some((domain) => url.includes(domain));
-}
-
-async function searchWebImage(name, party) {
-  const queries = makeSearchQueries(name, party);
-  const visitedPages = new Set();
-
-  for (const q of queries) {
-    try {
-      const query = encodeURIComponent(q);
-      const html = await fetchPage(`https://duckduckgo.com/html/?q=${query}`);
-      const targets = extractDuckDuckGoTargets(html);
-      const orderedTargets = [
-        ...targets.filter((url) => preferredDomain(url, party)),
-        ...targets.filter((url) => !preferredDomain(url, party))
-      ].slice(0, 8);
-
-      for (const target of orderedTargets) {
-        if (visitedPages.has(target)) continue;
-        visitedPages.add(target);
-        try {
-          const pageHtml = await fetchPage(target);
-          if (scorePage(pageHtml, target, name, party) < 4) continue;
-          const candidates = extractImageCandidates(pageHtml, target, name);
-          const best = candidates.find((candidate) => candidate.score >= 5);
-          if (!best) continue;
-          return {
-            url: best.url,
-            source: preferredDomain(target, party) ? "party-site" : "web-fallback",
-            sourceUrl: target,
-            aiGuess: true
-          };
-        } catch {
-          // continue
-        }
+async function searchFromPartyHints(member) {
+  const name = member.name;
+  for (const hint of partyHintsFor(member)) {
+    for (const query of hint.queries(name)) {
+      const targets = await searchTargets(query, hint.domains);
+      for (const target of targets) {
+        const found = await resolveImageFromProfilePage(target, name, "party-site");
+        if (found) return found;
         await sleep(WAIT_MS);
       }
-    } catch {
-      // continue
     }
-    await sleep(WAIT_MS);
+  }
+  return null;
+}
+
+async function searchFromGeneralWeb(member) {
+  const name = member.name;
+  const queries = [
+    `${name} 衆議院議員 公式 プロフィール`,
+    `${name} 衆議院 議員 プロフィール`,
+    `${name} 政治家 公式`
+  ];
+  for (const query of queries) {
+    const targets = await searchTargets(query);
+    for (const target of targets) {
+      const host = hostnameOf(target);
+      if (/wikipedia\.org|wikimedia\.org|youtube\.com|youtu\.be|facebook\.com|x\.com|twitter\.com|instagram\.com/.test(host)) {
+        continue;
+      }
+      const found = await resolveImageFromProfilePage(target, name, "web-fallback");
+      if (found) return found;
+      await sleep(WAIT_MS);
+    }
   }
   return null;
 }
 
 async function resolveImage(member) {
-  const name = member.name;
-  const party = member.party || "";
+  const name = cleanName(member.name);
 
-  const wikipedia = await searchWikipediaImage(name);
+  if (MANUAL_BAD_IMAGE_REMOVALS.has(name)) {
+    return null;
+  }
+
+  if (MANUAL_OVERRIDES[name]) {
+    return MANUAL_OVERRIDES[name];
+  }
+
+  const profileUrl = String(member.profileUrl || "").trim();
+  if (profileUrl) {
+    const direct = await resolveImageFromProfilePage(profileUrl, member.name, "official-profile");
+    if (direct) return direct;
+    await sleep(WAIT_MS);
+  }
+
+  const partySite = await searchFromPartyHints(member);
+  if (partySite) return partySite;
+  await sleep(WAIT_MS);
+
+  const wikipedia = await searchWikipediaImage(member.name);
   if (wikipedia) return wikipedia;
   await sleep(WAIT_MS);
 
-  const commons = await searchWikidataCommonsImage(name);
+  const commons = await searchWikidataCommonsImage(member.name);
   if (commons) return commons;
   await sleep(WAIT_MS);
 
-  const web = await searchWebImage(name, party);
+  const web = await searchFromGeneralWeb(member);
   if (web) return web;
 
   return null;
 }
 
-async function runPool(items, worker, concurrency) {
+async function mapWithConcurrency(items, worker, concurrency) {
+  const results = new Array(items.length);
   let index = 0;
-  const runners = Array.from({ length: concurrency }, async () => {
+
+  async function runOne() {
     while (true) {
-      const i = index;
+      const current = index;
       index += 1;
-      if (i >= items.length) return;
-      await worker(items[i], i);
+      if (current >= items.length) return;
+      results[current] = await worker(items[current], current);
     }
-  });
-  await Promise.all(runners);
+  }
+
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => runOne()));
+  return results;
 }
 
 async function main() {
   const raw = fs.readFileSync(dataPath, "utf8");
   const members = JSON.parse(raw);
 
-  const targets = members.filter((member) => !normalizeSpace(member.image) && !BAD_IMAGE_NAMES.has(member.name));
   let filled = 0;
   let stillMissing = 0;
+  let skipped = 0;
 
-  await runPool(
-    targets,
-    async (member) => {
+  await mapWithConcurrency(
+    members,
+    async (member, index) => {
+      const hasImage = String(member.image || "").trim();
+      if (hasImage) {
+        skipped += 1;
+        return;
+      }
+
       const found = await resolveImage(member);
       if (found?.url) {
         member.image = found.url;
         member.imageSource = found.source;
         member.imageSourceUrl = found.sourceUrl;
-        member.aiGuess = Boolean(found.aiGuess);
+        member.aiGuess = !["wikipedia", "wikidata-commons", "official-profile", "official-manual", "party-site"].includes(found.source);
         filled += 1;
         console.log(`filled: ${member.name} -> ${found.source}`);
       } else {
         stillMissing += 1;
         console.log(`missing: ${member.name}`);
       }
+
+      if ((index + 1) % 10 === 0) {
+        console.log(`progress: ${index + 1}/${members.length} filled=${filled} missing=${stillMissing}`);
+      }
       await sleep(WAIT_MS);
     },
     CONCURRENCY
   );
 
-  for (const member of members) {
-    if (BAD_IMAGE_NAMES.has(member.name)) {
-      member.image = "";
-      member.imageSource = "";
-      member.imageSourceUrl = "";
-      member.aiGuess = true;
-    }
-  }
-
   fs.writeFileSync(dataPath, `${JSON.stringify(members, null, 2)}\n`, "utf8");
-  console.log(`auto-image-fetch: filled=${filled} still-missing=${stillMissing} concurrency=${CONCURRENCY}`);
+  console.log(`auto-image-fetch: skipped=${skipped} filled=${filled} still-missing=${stillMissing}`);
 }
 
 main().catch((error) => {
