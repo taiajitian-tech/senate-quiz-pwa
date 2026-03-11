@@ -1,14 +1,80 @@
-import type { Target } from "./data";
-import { targetLabels } from "./data";
-import { loadStats, resetStats, type Stats } from "./stats";
+import { useEffect, useMemo, useState } from "react";
+import { loadProgress } from "./learnStorage";
+import { parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { loadMasteredIds, loadWrongIds } from "./progress";
+import { resetStats } from "./stats";
 
 type Props = {
   target: Target;
   onBack: () => void;
 };
 
+type Summary = {
+  total: number;
+  remembered: number;
+  notRemembered: number;
+  notChecked: number;
+};
+
 export default function StatsView(props: Props) {
-  const stats: Stats = loadStats(props.target);
+  const [items, setItems] = useState<Person[]>([]);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  const baseUrl = import.meta.env.BASE_URL ?? "/";
+  const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      try {
+        setLoadError(null);
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+        const json = (await res.json()) as unknown;
+        const parsed = parsePersonsJson(json);
+        if (!cancelled) setItems(parsed);
+      } catch (error) {
+        console.error(error);
+        if (!cancelled) {
+          setItems([]);
+          setLoadError("人数を取得できませんでした。");
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [dataUrl]);
+
+  const summary = useMemo<Summary>(() => {
+    const validIds = new Set(items.map((item) => item.id));
+    const progress = loadProgress(props.target);
+    const seenIds = new Set(
+      Object.keys(progress)
+        .map((key) => Number(key))
+        .filter((id) => Number.isFinite(id) && validIds.has(id))
+    );
+
+    const rememberedIds = new Set(loadMasteredIds(props.target).filter((id) => validIds.has(id)));
+
+    const notRememberedIds = new Set(
+      loadWrongIds(props.target).filter((id) => validIds.has(id) && !rememberedIds.has(id))
+    );
+
+    const total = items.length;
+    const remembered = rememberedIds.size;
+    const notRemembered = notRememberedIds.size;
+    const notChecked = Math.max(total - seenIds.size, 0);
+
+    return {
+      total,
+      remembered,
+      notRemembered,
+      notChecked,
+    };
+  }, [items, props.target]);
 
   return (
     <div style={styles.wrap}>
@@ -16,13 +82,14 @@ export default function StatsView(props: Props) {
         <button type="button" style={styles.backBtn} onClick={props.onBack}>タイトルへ戻る</button>
         <div style={styles.h1}>成績確認</div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
+        {loadError ? <div style={{ ...styles.sub, color: "#cf222e" }}>{loadError}</div> : null}
       </div>
 
       <div style={styles.card}>
-        <div style={styles.row}><div style={styles.k}>総プレイ</div><div style={styles.v}>{stats.playedTotal}</div></div>
-        <div style={styles.row}><div style={styles.k}>正解</div><div style={styles.v}>{stats.correctTotal}</div></div>
-        <div style={styles.row}><div style={styles.k}>間違い</div><div style={styles.v}>{stats.wrongTotal}</div></div>
-        <div style={styles.row}><div style={styles.k}>完全正解</div><div style={styles.v}>{stats.masteredCount}</div></div>
+        <div style={styles.row}><div style={styles.k}>総人数</div><div style={styles.v}>{summary.total}</div></div>
+        <div style={styles.row}><div style={styles.k}>覚えた人数</div><div style={styles.v}>{summary.remembered}</div></div>
+        <div style={styles.row}><div style={styles.k}>覚えてない人数</div><div style={styles.v}>{summary.notRemembered}</div></div>
+        <div style={styles.row}><div style={styles.k}>まだ確認してない人数</div><div style={styles.v}>{summary.notChecked}</div></div>
         <button type="button" style={styles.dangerBtn} onClick={() => { resetStats(props.target); location.reload(); }}>成績リセット</button>
       </div>
     </div>
