@@ -14,5 +14,11 @@
     ],
     "checkedSources": [],
     "notes": "建物画像を除外。本人顔写真ページを固定で確認。"
+  },
+  "_template": {
+    "preferredSourceType": "official_or_party",
+    "candidatePageUrls": [],
+    "checkedSources": [],
+    "notes": "ここに議員ごとの参照ページURLを追加すると、そのページを最優先で見に行きます。"
   }
 }

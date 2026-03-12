@@ -6,7 +6,7 @@ const dataPath = path.resolve("public/data/representatives.json");
 const TIMEOUT_MS = Number(process.env.REP_IMAGE_TIMEOUT_MS || 12000);
 const WAIT_MS = Number(process.env.REP_IMAGE_WAIT_MS || 100);
 const CONCURRENCY = Math.max(1, Number(process.env.REP_IMAGE_CONCURRENCY || 8));
-const SEARCH_RESULT_LIMIT = Math.max(3, Number(process.env.REP_IMAGE_SEARCH_LIMIT || 8));
+const SEARCH_RESULT_LIMIT = Math.max(4, Number(process.env.REP_IMAGE_SEARCH_LIMIT || 12));
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const MANUAL_SOURCE_PAGES = fs.existsSync(MANUAL_SOURCE_PAGES_PATH)
@@ -21,6 +21,25 @@ const MANUAL_OVERRIDES = {
     sourceUrl: "https://asada-masumi.com/about-us/"
   }
 };
+
+
+const TRUSTED_FALLBACK_DOMAINS = [
+  "go2senkyo.com",
+  "senkyo.janjan.jp",
+  "smartvote.jp",
+  "politician.cafe",
+  "sangiin.go.jp",
+  "shugiin.go.jp"
+];
+
+const GENERAL_QUERY_VARIANTS = (name) => [
+  `${name} 衆議院議員 プロフィール`,
+  `${name} 政治家 プロフィール`,
+  `${name} go2senkyo`,
+  `${name} 選挙ドットコム`,
+  `${name} 公式`,
+  `${name} wikipedia`
+];
 
 const PARTY_HINTS = [
   {
@@ -177,7 +196,7 @@ function hostnameOf(url) {
 
 function isLikelyBadImage(src = "", alt = "") {
   const s = `${src} ${alt}`.toLowerCase();
-  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|poster|flyer|bill|manifesto|policy|leaflet|thumb)/i.test(
+  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|poster|flyer|bill|manifesto|policy|leaflet|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly)/i.test(
     s
   );
 }
@@ -199,8 +218,10 @@ function scoreImageCandidate(src, alt = "", name = "", pageUrl = "") {
     if (hay.includes(plainName)) score += 6;
   }
   if (/\b(400|500|600|700|800|900|1000)\b/.test(s)) score += 1;
-  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ/i.test(a)) score -= 6;
-  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto/i.test(s)) score -= 6;
+  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group/i.test(a)) score -= 8;
+  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto|building|議事堂|parliament/i.test(s)) score -= 8;
+  if (/go2senkyo|smartvote|senkyo\.janjan/i.test(s)) score += 3;
+  if (/jimin\.jp|cdp-japan\.jp|o-ishin\.jp|komei\.or\.jp|new-kokumin\.jp|jcp\.or\.jp|reiwa-shinsengumi\.com|sanseito\.jp/i.test(s)) score += 4;
   return score;
 }
 
@@ -233,6 +254,24 @@ function extractSearchTargetsFromDuckDuckGo(html, allowedDomains = []) {
   return out;
 }
 
+
+function extractSearchTargetsFromDuckDuckGoLite(html, allowedDomains = []) {
+  const $ = load(html);
+  const out = [];
+  const seen = new Set();
+  $("a[href]").each((_, a) => {
+    const href = normalizeSpace($(a).attr("href") || "");
+    if (!/^https?:\/\//i.test(href)) return;
+    const host = hostnameOf(href);
+    if (/duckduckgo\.com/.test(host)) return;
+    if (allowedDomains.length && !allowedDomains.some((d) => host === d || host.endsWith(`.${d}`))) return;
+    if (seen.has(href)) return;
+    seen.add(href);
+    out.push(href);
+  });
+  return out;
+}
+
 function extractSearchTargetsFromBing(html, allowedDomains = []) {
   const $ = load(html);
   const out = [];
@@ -254,29 +293,38 @@ async function searchTargets(query, allowedDomains = []) {
   const results = [];
   const seen = new Set();
 
-  try {
-    const html = await fetchPage(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`);
-    for (const target of extractSearchTargetsFromDuckDuckGo(html, allowedDomains)) {
+  const pushAll = (items) => {
+    for (const target of items) {
       if (seen.has(target)) continue;
       seen.add(target);
       results.push(target);
-      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+      if (results.length >= SEARCH_RESULT_LIMIT) break;
     }
-  } catch {
-    // ignore
-  }
+  };
+
+  try {
+    const html = await fetchPage(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`);
+    pushAll(extractSearchTargetsFromDuckDuckGo(html, allowedDomains));
+    if (results.length >= SEARCH_RESULT_LIMIT) return results;
+  } catch {}
+
+  try {
+    const html = await fetchPage(`https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(query)}`);
+    pushAll(extractSearchTargetsFromDuckDuckGoLite(html, allowedDomains));
+    if (results.length >= SEARCH_RESULT_LIMIT) return results;
+  } catch {}
 
   try {
     const html = await fetchPage(`https://www.bing.com/search?q=${encodeURIComponent(query)}`);
-    for (const target of extractSearchTargetsFromBing(html, allowedDomains)) {
-      if (seen.has(target)) continue;
-      seen.add(target);
-      results.push(target);
-      if (results.length >= SEARCH_RESULT_LIMIT) return results;
-    }
-  } catch {
-    // ignore
-  }
+    pushAll(extractSearchTargetsFromBing(html, allowedDomains));
+    if (results.length >= SEARCH_RESULT_LIMIT) return results;
+  } catch {}
+
+  try {
+    const html = await fetchPage(`https://search.yahoo.co.jp/search?p=${encodeURIComponent(query)}`);
+    pushAll(extractSearchTargetsFromBing(html, allowedDomains));
+    if (results.length >= SEARCH_RESULT_LIMIT) return results;
+  } catch {}
 
   return results;
 }
@@ -445,19 +493,35 @@ async function searchFromPartyHints(member) {
 
 async function searchFromGeneralWeb(member) {
   const name = member.name;
-  const queries = [
-    `${name} 衆議院議員 公式 プロフィール`,
-    `${name} 衆議院 議員 プロフィール`,
-    `${name} 政治家 公式`
-  ];
+  const queries = GENERAL_QUERY_VARIANTS(name);
   for (const query of queries) {
     const targets = await searchTargets(query);
     for (const target of targets) {
       const host = hostnameOf(target);
-      if (/wikipedia\.org|wikimedia\.org|youtube\.com|youtu\.be|facebook\.com|x\.com|twitter\.com|instagram\.com/.test(host)) {
+      if (/youtube\.com|youtu\.be|facebook\.com|x\.com|twitter\.com|instagram\.com/.test(host)) {
         continue;
       }
       const found = await resolveImageFromProfilePage(target, name, "web-fallback");
+      if (found) return found;
+      await sleep(WAIT_MS);
+    }
+  }
+  return null;
+}
+
+async function searchFromTrustedFallbacks(member) {
+  const name = member.name;
+  const queries = [
+    `site:go2senkyo.com ${name}`,
+    `site:smartvote.jp ${name}`,
+    `site:senkyo.janjan.jp ${name}`,
+    `${name} go2senkyo`,
+    `${name} smartvote`
+  ];
+  for (const query of queries) {
+    const targets = await searchTargets(query, TRUSTED_FALLBACK_DOMAINS);
+    for (const target of targets) {
+      const found = await resolveImageFromProfilePage(target, name, "trusted-fallback");
       if (found) return found;
       await sleep(WAIT_MS);
     }
@@ -511,6 +575,10 @@ async function resolveImage(member) {
   if (commons) return commons;
   await sleep(WAIT_MS);
 
+  const trustedFallback = await searchFromTrustedFallbacks(member);
+  if (trustedFallback) return trustedFallback;
+  await sleep(WAIT_MS);
+
   const web = await searchFromGeneralWeb(member);
   if (web) return web;
 
@@ -556,7 +624,7 @@ async function main() {
         member.image = found.url;
         member.imageSource = found.source;
         member.imageSourceUrl = found.sourceUrl;
-        member.aiGuess = !["wikipedia", "wikidata-commons", "official-profile", "official-manual", "party-site"].includes(found.source);
+        member.aiGuess = !["wikipedia", "wikidata-commons", "official-profile", "official-manual", "party-site", "trusted-fallback", "manual-source-page"].includes(found.source);
         filled += 1;
         console.log(`filled: ${member.name} -> ${found.source}`);
       } else {
