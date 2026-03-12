@@ -18,7 +18,9 @@
   "_template": {
     "preferredSourceType": "official_or_party",
     "candidatePageUrls": [],
+    "directImageUrl": "",
+    "directSourceUrl": "",
     "checkedSources": [],
-    "notes": "ここに議員ごとの参照ページURLを追加すると、そのページを最優先で見に行きます。"
+    "notes": "candidatePageUrls を入れるとそのページを最優先で見ます。directImageUrl を入れると検索せず画像URLを固定します。"
   }
 }

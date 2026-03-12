@@ -1,12 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { load } from "cheerio";
 
 const dataPath = path.resolve("public/data/representatives.json");
 const TIMEOUT_MS = Number(process.env.REP_IMAGE_TIMEOUT_MS || 12000);
-const WAIT_MS = Number(process.env.REP_IMAGE_WAIT_MS || 100);
+const WAIT_MS = Number(process.env.REP_IMAGE_WAIT_MS || 80);
 const CONCURRENCY = Math.max(1, Number(process.env.REP_IMAGE_CONCURRENCY || 8));
-const SEARCH_RESULT_LIMIT = Math.max(4, Number(process.env.REP_IMAGE_SEARCH_LIMIT || 12));
+const SEARCH_RESULT_LIMIT = Math.max(4, Number(process.env.REP_IMAGE_SEARCH_LIMIT || 10));
+const BATCH_LIMIT = Math.max(1, Number(process.env.REP_IMAGE_BATCH_LIMIT || 25));
+const TARGET_MODE = String(process.env.REP_IMAGE_TARGET_MODE || "missing").trim().toLowerCase();
+const SKIP_AI_GUESS = String(process.env.REP_IMAGE_SKIP_AI_GUESS || "false").trim().toLowerCase() === "true";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const MANUAL_SOURCE_PAGES = fs.existsSync(MANUAL_SOURCE_PAGES_PATH)
@@ -22,7 +26,6 @@ const MANUAL_OVERRIDES = {
   }
 };
 
-
 const TRUSTED_FALLBACK_DOMAINS = [
   "go2senkyo.com",
   "senkyo.janjan.jp",
@@ -35,10 +38,9 @@ const TRUSTED_FALLBACK_DOMAINS = [
 const GENERAL_QUERY_VARIANTS = (name) => [
   `${name} 衆議院議員 プロフィール`,
   `${name} 政治家 プロフィール`,
-  `${name} go2senkyo`,
-  `${name} 選挙ドットコム`,
   `${name} 公式`,
-  `${name} wikipedia`
+  `${name} wikipedia`,
+  `${name} go2senkyo`
 ];
 
 const PARTY_HINTS = [
@@ -93,6 +95,11 @@ const PARTY_HINTS = [
     queries: (name) => [`site:hoshuto.jp ${name}`, `site:hoshuto.jp ${name} 議員`]
   }
 ];
+
+const jsonCache = new Map();
+const htmlCache = new Map();
+const searchCache = new Map();
+const profilePageCache = new Map();
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -158,14 +165,24 @@ async function fetchRaw(url, kind = "html") {
 }
 
 async function fetchJson(url) {
-  const res = await fetchRaw(url, "json");
-  return await res.json();
+  if (jsonCache.has(url)) return jsonCache.get(url);
+  const promise = (async () => {
+    const res = await fetchRaw(url, "json");
+    return await res.json();
+  })();
+  jsonCache.set(url, promise);
+  return await promise;
 }
 
 async function fetchPage(url) {
-  const res = await fetchRaw(url, "html");
-  const buffer = Buffer.from(await res.arrayBuffer());
-  return decodeText(buffer, res.headers.get("content-type") || "");
+  if (htmlCache.has(url)) return htmlCache.get(url);
+  const promise = (async () => {
+    const res = await fetchRaw(url, "html");
+    const buffer = Buffer.from(await res.arrayBuffer());
+    return decodeText(buffer, res.headers.get("content-type") || "");
+  })();
+  htmlCache.set(url, promise);
+  return await promise;
 }
 
 function normalizeUrl(url, baseUrl = "") {
@@ -194,6 +211,10 @@ function hostnameOf(url) {
   }
 }
 
+function stableHash(value) {
+  return crypto.createHash("sha1").update(String(value)).digest("hex").slice(0, 10);
+}
+
 function isLikelyBadImage(src = "", alt = "") {
   const s = `${src} ${alt}`.toLowerCase();
   return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|poster|flyer|bill|manifesto|policy|leaflet|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly)/i.test(
@@ -201,21 +222,28 @@ function isLikelyBadImage(src = "", alt = "") {
   );
 }
 
-function scoreImageCandidate(src, alt = "", name = "", pageUrl = "") {
+function scoreImageCandidate(src, alt = "", name = "", pageUrl = "", sourceHint = "") {
   const s = String(src || "");
   const a = normalizeSpace(alt);
   if (!/^https?:\/\//i.test(s)) return -100;
-  if (isLikelyBadImage(s, a)) return -50;
-  if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s)) return -10;
+  if (isLikelyBadImage(s, a)) return -60;
+  if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s) && !/Special:FilePath/i.test(s)) return -15;
 
   let score = 0;
-  if (/upload\.wikimedia|commons\.wikimedia/i.test(s)) score += 8;
+  const decodedUrl = decodeURIComponentSafe(s);
+  const hay = `${decodedUrl} ${a}`.replace(/[\s\-_]/g, "");
+  const plainName = cleanName(name);
+
+  if (/upload\.wikimedia|commons\.wikimedia/i.test(s)) score += 10;
   if (/portrait|profile|face|kao|photo|member|giin|politician|headshot/i.test(s)) score += 4;
   if (/member|profile|giin|politician|representative/i.test(pageUrl)) score += 2;
-  if (name) {
-    const plainName = cleanName(name);
-    const hay = `${decodeURIComponentSafe(s)} ${a}`.replace(/[\s\-_]/g, "");
-    if (hay.includes(plainName)) score += 6;
+  if (/meta/.test(sourceHint)) score += 1;
+  if (/figure/.test(sourceHint)) score += 1;
+  if (/official|manual/.test(sourceHint)) score += 2;
+  if (plainName && hay.includes(plainName)) score += 6;
+  if (plainName && /[ァ-ヶ一-龯々]/u.test(plainName)) {
+    const family = plainName.slice(0, Math.max(1, Math.floor(plainName.length / 2)));
+    if (family && hay.includes(family)) score += 2;
   }
   if (/\b(400|500|600|700|800|900|1000)\b/.test(s)) score += 1;
   if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group/i.test(a)) score -= 8;
@@ -254,7 +282,6 @@ function extractSearchTargetsFromDuckDuckGo(html, allowedDomains = []) {
   return out;
 }
 
-
 function extractSearchTargetsFromDuckDuckGoLite(html, allowedDomains = []) {
   const $ = load(html);
   const out = [];
@@ -290,53 +317,64 @@ function extractSearchTargetsFromBing(html, allowedDomains = []) {
 }
 
 async function searchTargets(query, allowedDomains = []) {
-  const results = [];
-  const seen = new Set();
+  const cacheKey = JSON.stringify({ query, allowedDomains });
+  if (searchCache.has(cacheKey)) return searchCache.get(cacheKey);
 
-  const pushAll = (items) => {
-    for (const target of items) {
-      if (seen.has(target)) continue;
-      seen.add(target);
-      results.push(target);
-      if (results.length >= SEARCH_RESULT_LIMIT) break;
-    }
-  };
+  const promise = (async () => {
+    const results = [];
+    const seen = new Set();
 
-  try {
-    const html = await fetchPage(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`);
-    pushAll(extractSearchTargetsFromDuckDuckGo(html, allowedDomains));
-    if (results.length >= SEARCH_RESULT_LIMIT) return results;
-  } catch {}
+    const pushAll = (items) => {
+      for (const target of items) {
+        if (seen.has(target)) continue;
+        seen.add(target);
+        results.push(target);
+        if (results.length >= SEARCH_RESULT_LIMIT) break;
+      }
+    };
 
-  try {
-    const html = await fetchPage(`https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(query)}`);
-    pushAll(extractSearchTargetsFromDuckDuckGoLite(html, allowedDomains));
-    if (results.length >= SEARCH_RESULT_LIMIT) return results;
-  } catch {}
+    try {
+      const html = await fetchPage(`https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`);
+      pushAll(extractSearchTargetsFromDuckDuckGo(html, allowedDomains));
+      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+    } catch {}
 
-  try {
-    const html = await fetchPage(`https://www.bing.com/search?q=${encodeURIComponent(query)}`);
-    pushAll(extractSearchTargetsFromBing(html, allowedDomains));
-    if (results.length >= SEARCH_RESULT_LIMIT) return results;
-  } catch {}
+    try {
+      const html = await fetchPage(`https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(query)}`);
+      pushAll(extractSearchTargetsFromDuckDuckGoLite(html, allowedDomains));
+      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+    } catch {}
 
-  try {
-    const html = await fetchPage(`https://search.yahoo.co.jp/search?p=${encodeURIComponent(query)}`);
-    pushAll(extractSearchTargetsFromBing(html, allowedDomains));
-    if (results.length >= SEARCH_RESULT_LIMIT) return results;
-  } catch {}
+    try {
+      const html = await fetchPage(`https://www.bing.com/search?q=${encodeURIComponent(query)}`);
+      pushAll(extractSearchTargetsFromBing(html, allowedDomains));
+      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+    } catch {}
 
-  return results;
+    try {
+      const html = await fetchPage(`https://search.yahoo.co.jp/search?p=${encodeURIComponent(query)}`);
+      pushAll(extractSearchTargetsFromBing(html, allowedDomains));
+      if (results.length >= SEARCH_RESULT_LIMIT) return results;
+    } catch {}
+
+    return results;
+  })();
+
+  searchCache.set(cacheKey, promise);
+  return await promise;
 }
 
-function collectImageCandidatesFromPage(html, pageUrl, name) {
+function collectImageCandidatesFromPage(html, pageUrl, name, pageWeight = 0) {
   const $ = load(html);
   const candidates = [];
+  const seen = new Set();
 
   const pushCandidate = (src, alt = "", sourceHint = "page") => {
     const url = normalizeUrl(src, pageUrl);
     if (!url) return;
-    const score = scoreImageCandidate(url, alt, name, pageUrl);
+    if (seen.has(url)) return;
+    seen.add(url);
+    const score = scoreImageCandidate(url, alt, name, pageUrl, sourceHint) + pageWeight;
     if (score <= 0) return;
     candidates.push({ url, alt, score, sourceHint });
   };
@@ -350,13 +388,22 @@ function collectImageCandidatesFromPage(html, pageUrl, name) {
     $(sel).each((_, el) => pushCandidate($(el).attr("content") || "", "", "meta"));
   }
 
-  $("img[src]").each((_, img) => {
+  $("img[src], img[data-src], img[data-lazy-src]").each((_, img) => {
     const el = $(img);
     const alt = normalizeSpace(el.attr("alt") || el.attr("title") || "");
-    pushCandidate(el.attr("src") || "", alt, "img");
-    pushCandidate(el.attr("data-src") || "", alt, "img");
-    pushCandidate(el.attr("data-lazy-src") || "", alt, "img");
-    pushCandidate(el.attr("srcset")?.split(",")[0]?.trim().split(/\s+/)[0] || "", alt, "img");
+    const parentText = normalizeSpace(el.parent().text() || "").slice(0, 120);
+    const className = normalizeSpace(el.attr("class") || "");
+    const sourceHint = `${className} ${parentText}`;
+    pushCandidate(el.attr("src") || "", alt, sourceHint);
+    pushCandidate(el.attr("data-src") || "", alt, sourceHint);
+    pushCandidate(el.attr("data-lazy-src") || "", alt, sourceHint);
+    pushCandidate(el.attr("srcset")?.split(",")[0]?.trim().split(/\s+/)[0] || "", alt, sourceHint);
+  });
+
+  $("figure img, .profile img, .member img, .politician img").each((_, img) => {
+    const el = $(img);
+    const alt = normalizeSpace(el.attr("alt") || el.attr("title") || "");
+    pushCandidate(el.attr("src") || "", alt, "figure profile");
   });
 
   const nameNoSpace = cleanName(name);
@@ -371,22 +418,30 @@ function collectImageCandidatesFromPage(html, pageUrl, name) {
   return candidates;
 }
 
-async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "official") {
+async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "official", pageWeight = 0) {
   if (!profileUrl) return null;
-  try {
-    const html = await fetchPage(profileUrl);
-    if (!looksPoliticianPage(html, name)) return null;
-    const candidates = collectImageCandidatesFromPage(html, profileUrl, name);
-    const best = candidates[0];
-    if (!best) return null;
-    return {
-      url: best.url,
-      source: sourceLabel,
-      sourceUrl: profileUrl
-    };
-  } catch {
-    return null;
-  }
+  const cacheKey = `${sourceLabel}:${profileUrl}:${cleanName(name)}`;
+  if (profilePageCache.has(cacheKey)) return profilePageCache.get(cacheKey);
+
+  const promise = (async () => {
+    try {
+      const html = await fetchPage(profileUrl);
+      if (!looksPoliticianPage(html, name)) return null;
+      const candidates = collectImageCandidatesFromPage(html, profileUrl, name, pageWeight);
+      const best = candidates[0];
+      if (!best) return null;
+      return {
+        url: best.url,
+        source: sourceLabel,
+        sourceUrl: profileUrl
+      };
+    } catch {
+      return null;
+    }
+  })();
+
+  profilePageCache.set(cacheKey, promise);
+  return await promise;
 }
 
 async function searchWikipediaImage(name) {
@@ -442,15 +497,26 @@ async function searchWikipediaImage(name) {
   return null;
 }
 
+function isLikelyWikidataPersonCandidate(candidate = {}, name = "") {
+  const label = normalizeSpace(candidate?.label || candidate?.display?.label?.value || "");
+  const desc = normalizeSpace(candidate?.description || candidate?.display?.description?.value || "");
+  const cleaned = cleanName(name);
+  const cleanedLabel = cleanName(label);
+  if (cleaned && cleanedLabel && cleaned === cleanedLabel) return true;
+  if (cleaned && cleanedLabel.includes(cleaned)) return true;
+  return /(日本|衆議院|議員|政治家|politician)/i.test(desc);
+}
+
 async function searchWikidataCommonsImage(name) {
   const queries = [`${name} 政治家`, `${name} 衆議院議員`, name];
   for (const query of queries) {
     try {
       const search = await fetchJson(
-        `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(query)}&language=ja&limit=5&format=json&origin=*`
+        `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(query)}&language=ja&limit=8&format=json&origin=*`
       );
       const candidates = Array.isArray(search?.search) ? search.search : [];
       for (const candidate of candidates) {
+        if (!isLikelyWikidataPersonCandidate(candidate, name)) continue;
         const id = candidate?.id;
         if (!id) continue;
         const entityRes = await fetchJson(`https://www.wikidata.org/wiki/Special:EntityData/${encodeURIComponent(String(id))}.json`);
@@ -482,7 +548,7 @@ async function searchFromPartyHints(member) {
     for (const query of hint.queries(name)) {
       const targets = await searchTargets(query, hint.domains);
       for (const target of targets) {
-        const found = await resolveImageFromProfilePage(target, name, "party-site");
+        const found = await resolveImageFromProfilePage(target, name, "party-site", 5);
         if (found) return found;
         await sleep(WAIT_MS);
       }
@@ -498,10 +564,8 @@ async function searchFromGeneralWeb(member) {
     const targets = await searchTargets(query);
     for (const target of targets) {
       const host = hostnameOf(target);
-      if (/youtube\.com|youtu\.be|facebook\.com|x\.com|twitter\.com|instagram\.com/.test(host)) {
-        continue;
-      }
-      const found = await resolveImageFromProfilePage(target, name, "web-fallback");
+      if (/youtube\.com|youtu\.be|facebook\.com|x\.com|twitter\.com|instagram\.com/.test(host)) continue;
+      const found = await resolveImageFromProfilePage(target, name, "web-fallback", 0);
       if (found) return found;
       await sleep(WAIT_MS);
     }
@@ -521,7 +585,7 @@ async function searchFromTrustedFallbacks(member) {
   for (const query of queries) {
     const targets = await searchTargets(query, TRUSTED_FALLBACK_DOMAINS);
     for (const target of targets) {
-      const found = await resolveImageFromProfilePage(target, name, "trusted-fallback");
+      const found = await resolveImageFromProfilePage(target, name, "trusted-fallback", 2);
       if (found) return found;
       await sleep(WAIT_MS);
     }
@@ -529,28 +593,54 @@ async function searchFromTrustedFallbacks(member) {
   return null;
 }
 
+function readManualSourceEntry(member) {
+  return MANUAL_SOURCE_PAGES[cleanName(member.name)] || MANUAL_SOURCE_PAGES[member.name] || null;
+}
+
 async function resolveImageFromManualSourcePages(member) {
-  const entry = MANUAL_SOURCE_PAGES[cleanName(member.name)] || MANUAL_SOURCE_PAGES[member.name];
+  const entry = readManualSourceEntry(member);
   if (!entry) return null;
+
+  const directImageUrl = normalizeUrl(entry.directImageUrl || entry.imageUrl || "");
+  if (directImageUrl) {
+    return {
+      url: directImageUrl,
+      source: "manual-direct-image",
+      sourceUrl: normalizeUrl(entry.directSourceUrl || entry.sourceUrl || entry.candidatePageUrls?.[0] || "") || directImageUrl
+    };
+  }
+
   const candidates = Array.isArray(entry.candidatePageUrls) ? entry.candidatePageUrls : [];
   for (const pageUrl of candidates) {
-    const found = await resolveImageFromProfilePage(pageUrl, member.name, "manual-source-page");
+    const found = await resolveImageFromProfilePage(pageUrl, member.name, "manual-source-page", 8);
     if (found) return found;
     await sleep(WAIT_MS);
   }
   return null;
 }
 
+function markResolved(member, found) {
+  member.image = found.url;
+  member.imageSource = found.source;
+  member.imageSourceUrl = found.sourceUrl;
+  member.aiGuess = ![
+    "wikipedia",
+    "wikidata-commons",
+    "official-profile",
+    "official-manual",
+    "party-site",
+    "trusted-fallback",
+    "manual-source-page",
+    "manual-direct-image"
+  ].includes(found.source);
+  member.sourceType = member.aiGuess ? "estimated" : "verified";
+}
+
 async function resolveImage(member) {
   const name = cleanName(member.name);
 
-  if (MANUAL_BAD_IMAGE_REMOVALS.has(name)) {
-    return null;
-  }
-
-  if (MANUAL_OVERRIDES[name]) {
-    return MANUAL_OVERRIDES[name];
-  }
+  if (MANUAL_BAD_IMAGE_REMOVALS.has(name)) return null;
+  if (MANUAL_OVERRIDES[name]) return MANUAL_OVERRIDES[name];
 
   const manualSource = await resolveImageFromManualSourcePages(member);
   if (manualSource) return manualSource;
@@ -558,14 +648,10 @@ async function resolveImage(member) {
 
   const profileUrl = String(member.profileUrl || "").trim();
   if (profileUrl) {
-    const direct = await resolveImageFromProfilePage(profileUrl, member.name, "official-profile");
+    const direct = await resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10);
     if (direct) return direct;
     await sleep(WAIT_MS);
   }
-
-  const partySite = await searchFromPartyHints(member);
-  if (partySite) return partySite;
-  await sleep(WAIT_MS);
 
   const wikipedia = await searchWikipediaImage(member.name);
   if (wikipedia) return wikipedia;
@@ -575,12 +661,18 @@ async function resolveImage(member) {
   if (commons) return commons;
   await sleep(WAIT_MS);
 
+  const partySite = await searchFromPartyHints(member);
+  if (partySite) return partySite;
+  await sleep(WAIT_MS);
+
   const trustedFallback = await searchFromTrustedFallbacks(member);
   if (trustedFallback) return trustedFallback;
   await sleep(WAIT_MS);
 
-  const web = await searchFromGeneralWeb(member);
-  if (web) return web;
+  if (!SKIP_AI_GUESS) {
+    const web = await searchFromGeneralWeb(member);
+    if (web) return web;
+  }
 
   return null;
 }
@@ -602,29 +694,46 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
+function shouldProcessMember(member) {
+  const hasImage = Boolean(normalizeSpace(member.image));
+  const aiGuess = Boolean(member.aiGuess);
+  if (TARGET_MODE === "all") return true;
+  if (TARGET_MODE === "review") return hasImage && aiGuess;
+  return !hasImage;
+}
+
+function buildWorkQueue(members) {
+  const queue = members
+    .map((member, index) => ({ member, index }))
+    .filter(({ member }) => shouldProcessMember(member));
+
+  return queue.slice(0, BATCH_LIMIT);
+}
+
 async function main() {
   const raw = fs.readFileSync(dataPath, "utf8");
   const members = JSON.parse(raw);
+  const queue = buildWorkQueue(members);
 
   let filled = 0;
   let stillMissing = 0;
-  let skipped = 0;
+  let skipped = members.length - queue.length;
+
+  console.log(
+    `auto-image-fetch:v5 mode=${TARGET_MODE} total=${members.length} batch=${queue.length} batchLimit=${BATCH_LIMIT} concurrency=${CONCURRENCY}`
+  );
+
+  if (!queue.length) {
+    console.log("auto-image-fetch:v5 nothing-to-process");
+    return;
+  }
 
   await mapWithConcurrency(
-    members,
-    async (member, index) => {
-      const hasImage = String(member.image || "").trim();
-      if (hasImage) {
-        skipped += 1;
-        return;
-      }
-
+    queue,
+    async ({ member, index }, queueIndex) => {
       const found = await resolveImage(member);
       if (found?.url) {
-        member.image = found.url;
-        member.imageSource = found.source;
-        member.imageSourceUrl = found.sourceUrl;
-        member.aiGuess = !["wikipedia", "wikidata-commons", "official-profile", "official-manual", "party-site", "trusted-fallback", "manual-source-page"].includes(found.source);
+        markResolved(member, found);
         filled += 1;
         console.log(`filled: ${member.name} -> ${found.source}`);
       } else {
@@ -632,8 +741,10 @@ async function main() {
         console.log(`missing: ${member.name}`);
       }
 
-      if ((index + 1) % 10 === 0) {
-        console.log(`progress: ${index + 1}/${members.length} filled=${filled} missing=${stillMissing}`);
+      if ((queueIndex + 1) % 10 === 0 || queueIndex + 1 === queue.length) {
+        console.log(
+          `progress: ${queueIndex + 1}/${queue.length} lastGlobalIndex=${index + 1}/${members.length} filled=${filled} missing=${stillMissing}`
+        );
       }
       await sleep(WAIT_MS);
     },
@@ -641,7 +752,7 @@ async function main() {
   );
 
   fs.writeFileSync(dataPath, `${JSON.stringify(members, null, 2)}\n`, "utf8");
-  console.log(`auto-image-fetch: skipped=${skipped} filled=${filled} still-missing=${stillMissing}`);
+  console.log(`auto-image-fetch:v5 complete skipped=${skipped} filled=${filled} still-missing=${stillMissing}`);
 }
 
 main().catch((error) => {

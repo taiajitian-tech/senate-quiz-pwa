@@ -1,4 +1,3 @@
-
 name: update-representatives
 
 on:
@@ -33,13 +32,15 @@ jobs:
       - name: Generate representatives data
         run: npm run gen:representatives
 
-      - name: Auto-fill missing representative images
+      - name: Auto-fill missing representative images (v5 batch)
         env:
           REP_IMAGE_CONCURRENCY: "10"
           REP_IMAGE_WAIT_MS: "80"
           REP_IMAGE_TIMEOUT_MS: "12000"
-          REP_IMAGE_SEARCH_LIMIT: "12"
-        run: node scripts/autoImageFetch.mjs
+          REP_IMAGE_SEARCH_LIMIT: "10"
+          REP_IMAGE_BATCH_LIMIT: "25"
+          REP_IMAGE_TARGET_MODE: "missing"
+        run: npm run gen:representatives:images
 
       - name: Generate representative image reports
         run: npm run report:representatives:images
@@ -52,18 +53,32 @@ jobs:
         working-directory: .
         run: |
           set -euxo pipefail
-          if [ -z "$(git status --porcelain)" ]; then
+          test -f web/public/data/representatives.json
+          test -f web/public/data/missing-images.json
+          test -f web/public/data/representatives-image-review.json
+          test -f web/public/data/representatives-image-search-targets.json
+          test -f web/public/data/representatives-image-fix-targets.json
+
+          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit generated file
         if: steps.changes.outputs.changed == 'true'
         working-directory: .
         run: |
+          set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add web/public/data/representatives.json \
+                  web/public/data/missing-images.json \
+                  web/public/data/representatives-image-review.json \
+                  web/public/data/representatives-image-search-targets.json \
+                  web/public/data/representatives-image-search-targets.csv \
+                  web/public/data/representatives-image-fix-targets.json \
+                  web/public/data/representatives-image-fix-targets.csv
           git commit -m "auto update representatives data"
           git push
