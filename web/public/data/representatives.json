@@ -617,11 +617,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://ishizuka-kei.work/wp-content/uploads/2026/01/IMG_6069-932x1280.jpeg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/165903/posts/1273929",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "大岡敏孝",
@@ -1421,11 +1422,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://i.ytimg.com/vi/O1eleuXDXFM/maxresdefault.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/senkyoku/51236",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "西條昌良",
@@ -1433,11 +1435,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/election/results/sen_shu50/common/img/sns.png",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/50on.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "齋藤健",
@@ -1781,11 +1784,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/election/results/sen_shu50/common/img/sns.png",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/50on.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "世耕弘成",
@@ -2117,11 +2121,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_9.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/9/4",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "辻清人",
@@ -2153,11 +2158,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_5.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/5/4",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "津島淳",
@@ -2273,11 +2279,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/nakagawa-koichi.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212402.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "中川貴元",
@@ -2309,11 +2316,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/ogp_image/7212/e73f94e7-611f-4ca0-bf20-103fbeee5cb4.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/155761",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "長島昭久",
@@ -2429,11 +2437,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/nagano-harunobu.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212411.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "中村裕之",
@@ -2549,11 +2558,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/nishiyama-naotoshi.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212405.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "新田章文",
@@ -2597,11 +2607,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/nemoto-taku.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/209168.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "根本幸典",
@@ -2729,11 +2740,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/news/img/news_sns.png",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/news/information/5302024.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "平井卓也",
@@ -2861,11 +2873,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/6401/73716236-085e-4499-aee4-8ab799227e45.png",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/163389/posts/1280166",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "藤田ひかる",
@@ -2873,11 +2886,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/fujita-hikaru.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212421.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "藤田誠",
@@ -2933,11 +2947,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/member_blank.png",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/209205.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "船田元",
@@ -2957,11 +2972,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/aboutus/organize/toukaikaku/assets/image/ogp.png",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/aboutus/organize/toukaikaku/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "古川直季",
@@ -3149,11 +3165,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/matsumoto-izumi.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/209170.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "松本尚",
@@ -3185,11 +3202,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/member/img/maruo-natsuko.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212416.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified"
   },
   {
     "name": "丸川珠代",
