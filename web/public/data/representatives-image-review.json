@@ -20,9 +20,9 @@
   {
     "name": "石坂太",
     "party": "自由民主党・無所属の会",
-    "image": "https://www.jimin.jp/member/img/ishizaka-masaru.jpg",
+    "image": "https://www.sankei.com/common/images/politician-profile/politprof_ogp.jpg",
     "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.jimin.jp/member/212407.html",
+    "imageSourceUrl": "https://www.sankei.com/politician/148121/",
     "profileUrl": "",
     "aiGuess": true
   },
@@ -585,24 +585,6 @@
     "aiGuess": false
   },
   {
-    "name": "金子恵美",
-    "party": "中道改革連合・無所属",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "profileUrl": "",
-    "aiGuess": false
-  },
-  {
-    "name": "河野義博",
-    "party": "中道改革連合・無所属",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "profileUrl": "",
-    "aiGuess": false
-  },
-  {
     "name": "中川宏昌",
     "party": "中道改革連合・無所属",
     "image": "",
@@ -883,15 +865,6 @@
   },
   {
     "name": "日野紗里亜",
-    "party": "国民民主党・無所属クラブ",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "profileUrl": "",
-    "aiGuess": false
-  },
-  {
-    "name": "森ようすけ",
     "party": "国民民主党・無所属クラブ",
     "image": "",
     "imageSource": "",
