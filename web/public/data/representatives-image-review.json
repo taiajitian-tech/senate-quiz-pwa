@@ -94,7 +94,7 @@
     "currentImage": "",
     "imageSource": "",
     "imageSourceUrl": "",
-    "aiGuess": true,
+    "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
@@ -112,9 +112,9 @@
     "status": "review",
     "reason": "wrong_person_suspected",
     "profileUrl": "",
-    "currentImage": "https://www.sankei.com/common/images/politician-profile/politprof_ogp.jpg",
+    "currentImage": "https://www.jimin.jp/member/img/ishizaka-masaru.jpg",
     "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.sankei.com/politician/148121/",
+    "imageSourceUrl": "https://www.jimin.jp/member/212407.html",
     "aiGuess": true,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -319,69 +319,6 @@
     "notes": ""
   },
   {
-    "name": "大空幸星",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "大空幸星"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "大西洋平",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "大西洋平"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "大野敬太郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "大野敬太郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "岡本康宏",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -397,27 +334,6 @@
       "自由民主党・無所属の会",
       "議員",
       "岡本康宏"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "尾崎正直",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "尾崎正直"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -445,69 +361,6 @@
     "notes": ""
   },
   {
-    "name": "小里泰弘",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小里泰弘"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "鬼木誠",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "鬼木誠"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "小野寺五典",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小野寺五典"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "尾花瑛仁",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -523,48 +376,6 @@
       "自由民主党・無所属の会",
       "議員",
       "尾花瑛仁"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "小渕優子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小渕優子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "尾身朝子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "尾身朝子"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -592,69 +403,6 @@
     "notes": ""
   },
   {
-    "name": "梶山弘志",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "梶山弘志"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "勝俣孝明",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "勝俣孝明"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "勝目康",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "勝目康"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "門寛子",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -670,69 +418,6 @@
       "自由民主党・無所属の会",
       "議員",
       "門寛子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "加藤鮎子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "加藤鮎子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "加藤勝信",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "加藤勝信"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "加藤貴弘",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "加藤貴弘"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -760,48 +445,6 @@
     "notes": ""
   },
   {
-    "name": "加藤竜祥",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "加藤竜祥"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "門山宏哲",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "門山宏哲"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "金澤結衣",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -823,77 +466,14 @@
     "notes": ""
   },
   {
-    "name": "金子恭之",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "金子恭之"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "金子容三",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "金子容三"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "上川陽子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "上川陽子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "川崎ひでと",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/2/25/Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B4%8E%E3%81%B2%E3%81%A7%E3%81%A8",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -949,216 +529,6 @@
     "notes": ""
   },
   {
-    "name": "菅家一郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "菅家一郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "神田潤一",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "神田潤一"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "城内実",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "城内実"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "黄川田仁志",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "黄川田仁志"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "岸信千世",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "岸信千世"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "岸田文雄",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "岸田文雄"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "北神圭朗",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "北神圭朗"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "木原誠二",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "木原誠二"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "木原稔",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "木原稔"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "木村次郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "木村次郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "草間剛",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -1174,90 +544,6 @@
       "自由民主党・無所属の会",
       "議員",
       "草間剛"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "工藤彰三",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "工藤彰三"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "国定勇人",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "国定勇人"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "国光あやの",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "国光あやの"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "栗原渉",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "栗原渉"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1306,69 +592,6 @@
     "notes": ""
   },
   {
-    "name": "小泉進次郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小泉進次郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "小泉龍司",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小泉龍司"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "河野太郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "河野太郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "こうらい啓一郎",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -1384,132 +607,6 @@
       "自由民主党・無所属の会",
       "議員",
       "こうらい啓一郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "古賀篤",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "古賀篤"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "國場幸之助",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "國場幸之助"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "小寺裕雄",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小寺裕雄"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "後藤茂之",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "後藤茂之"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "小林鷹之",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小林鷹之"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "小林史明",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "小林史明"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1579,48 +676,6 @@
     "notes": ""
   },
   {
-    "name": "齋藤健",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "齋藤健"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "斎藤洋明",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "斎藤洋明"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "坂本竜太郎",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -1636,48 +691,6 @@
       "自由民主党・無所属の会",
       "議員",
       "坂本竜太郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "鈴木俊一",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "鈴木俊一"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "鈴木貴子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "鈴木貴子"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1705,27 +718,6 @@
     "notes": ""
   },
   {
-    "name": "鈴木隼人",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "鈴木隼人"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "世古万美子",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -1741,48 +733,6 @@
       "自由民主党・無所属の会",
       "議員",
       "世古万美子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "高市早苗",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "高市早苗"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "高階恵美子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "高階恵美子"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1888,27 +838,6 @@
       "自由民主党・無所属の会",
       "議員",
       "辻由布子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "とかしきなおみ",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "とかしきなおみ"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2077,48 +1006,6 @@
       "自由民主党・無所属の会",
       "議員",
       "広瀬建"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "深澤陽一",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "深澤陽一"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "福田かおる",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "福田かおる"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2419,27 +1306,6 @@
     "notes": ""
   },
   {
-    "name": "山口晋",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "山口晋"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "山田基靖",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -2608,48 +1474,6 @@
     "notes": ""
   },
   {
-    "name": "浮島智子",
-    "party": "中道改革連合・無所属",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "中道改革連合・無所属",
-      "議員",
-      "浮島智子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "後藤祐一",
-    "party": "中道改革連合・無所属",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "中道改革連合・無所属",
-      "議員",
-      "後藤祐一"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "中川宏昌",
     "party": "中道改革連合・無所属",
     "status": "missing",
@@ -2686,27 +1510,6 @@
       "中道改革連合・無所属",
       "議員",
       "沼崎満子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "浜地雅一",
-    "party": "中道改革連合・無所属",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "中道改革連合・無所属",
-      "議員",
-      "浜地雅一"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2818,27 +1621,6 @@
     "notes": ""
   },
   {
-    "name": "東徹",
-    "party": "日本維新の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "日本維新の会",
-      "議員",
-      "東徹"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "池下卓",
     "party": "日本維新の会",
     "status": "missing",
@@ -2875,48 +1657,6 @@
       "日本維新の会",
       "議員",
       "池畑浩太朗"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "市村浩一郎",
-    "party": "日本維新の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "日本維新の会",
-      "議員",
-      "市村浩一郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "うるま譲司",
-    "party": "日本維新の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "日本維新の会",
-      "議員",
-      "うるま譲司"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -3175,27 +1915,6 @@
     "notes": ""
   },
   {
-    "name": "井戸まさえ",
-    "party": "国民民主党・無所属クラブ",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "国民民主党・無所属クラブ",
-      "議員",
-      "井戸まさえ"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "小竹凱",
     "party": "国民民主党・無所属クラブ",
     "status": "missing",
@@ -3316,27 +2035,6 @@
       "国民民主党・無所属クラブ",
       "議員",
       "高沢一基"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "田中健",
-    "party": "国民民主党・無所属クラブ",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "国民民主党・無所属クラブ",
-      "議員",
-      "田中健"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -3904,27 +2602,6 @@
       "無所属",
       "議員",
       "中村はやと"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "山本ジョージ",
-    "party": "無所属",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "無所属",
-      "議員",
-      "山本ジョージ"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
