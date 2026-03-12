@@ -15,28 +15,60 @@ type Props = {
   onBackTitle: () => void;
 };
 
-function pickNext(items: Person[], progress: Record<number, ProgressItem>, now: number, mode: Mode) {
+const ACTIVE_NEW_LIMIT = 12;
+const DUE_PRIORITY_LIMIT = 16;
+
+function pickRandomPerson(list: Person[], avoidId: number | null) {
+  if (list.length === 0) return null;
+  if (avoidId == null || list.length === 1) return list[Math.floor(Math.random() * list.length)];
+
+  const filtered = list.filter((item) => item.id !== avoidId);
+  const pool = filtered.length > 0 ? filtered : list;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function pickNext(items: Person[], progress: Record<number, ProgressItem>, now: number, mode: Mode, avoidId: number | null) {
   if (items.length === 0) return null;
 
-  const due: Person[] = [];
+  const urgentDue: Array<{ person: Person; due: number; reps: number }> = [];
+  const due: Array<{ person: Person; due: number; reps: number }> = [];
   const fresh: Person[] = [];
-  let nearest: { s: Person; due: number } | null = null;
+  let nearest: { person: Person; due: number } | null = null;
 
-  for (const s of items) {
-    const p = progress[s.id];
-    if (!p) {
-      if (mode !== "review") fresh.push(s);
+  for (const person of items) {
+    const item = progress[person.id];
+    if (!item) {
+      if (mode !== "review") fresh.push(person);
       continue;
     }
 
-    if (p.due <= now) due.push(s);
-    if (!nearest || p.due < nearest.due) nearest = { s, due: p.due };
+    if (item.due <= now) {
+      const bucket = item.reps <= 1 || item.lastGrade === "again" ? urgentDue : due;
+      bucket.push({ person, due: item.due, reps: item.reps ?? 0 });
+      continue;
+    }
+
+    if (!nearest || item.due < nearest.due) nearest = { person, due: item.due };
   }
 
-  if (due.length > 0) return due[Math.floor(Math.random() * due.length)];
+  if (urgentDue.length > 0) {
+    urgentDue.sort((a, b) => a.due - b.due || a.reps - b.reps || a.person.id - b.person.id);
+    return pickRandomPerson(urgentDue.slice(0, DUE_PRIORITY_LIMIT).map((entry) => entry.person), avoidId);
+  }
+
+  if (due.length > 0) {
+    due.sort((a, b) => a.due - b.due || a.reps - b.reps || a.person.id - b.person.id);
+    return pickRandomPerson(due.slice(0, DUE_PRIORITY_LIMIT).map((entry) => entry.person), avoidId);
+  }
+
   if (mode === "review") return null;
-  if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
-  return nearest?.s ?? null;
+
+  if (fresh.length > 0) {
+    fresh.sort((a, b) => a.id - b.id);
+    return pickRandomPerson(fresh.slice(0, ACTIVE_NEW_LIMIT), avoidId);
+  }
+
+  return nearest?.person ?? null;
 }
 
 export default function Learn(props: Props) {
@@ -46,12 +78,14 @@ export default function Learn(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [revealed, setRevealed] = useState(false);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.target));
+  const [lastCompletedId, setLastCompletedId] = useState<number | null>(null);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
     setProgress(loadProgress(props.target));
+    setLastCompletedId(null);
   }, [props.target]);
 
   useEffect(() => {
@@ -73,7 +107,7 @@ export default function Learn(props: Props) {
     })();
   }, [dataUrl]);
 
-  const current = useMemo(() => pickNext(items, progress, Date.now(), props.mode), [items, progress, props.mode]);
+  const current = useMemo(() => pickNext(items, progress, Date.now(), props.mode, lastCompletedId), [items, progress, props.mode, lastCompletedId]);
 
   const onGrade = (grade: Grade) => {
     if (!current) return;
@@ -97,6 +131,7 @@ export default function Learn(props: Props) {
     if (grade === "good" && next.reps >= 4) mastered.add(current.id);
     saveWrongIds(props.target, [...wrong]);
     saveMasteredIds(props.target, [...mastered]);
+    setLastCompletedId(current.id);
     setRevealed(false);
   };
 
@@ -180,6 +215,8 @@ export default function Learn(props: Props) {
           <div>覚えていない：出ない、別人と混ざる</div>
           <div><b>復習</b></div>
           <div>復習モードは、忘れかけのものだけ出します。</div>
+          <div><b>出題順</b></div>
+          <div>新しい議員は一度に少人数ずつ出し、覚えきれていない議員を先に繰り返します。</div>
         </div>
       </HelpModal>
     </div>
