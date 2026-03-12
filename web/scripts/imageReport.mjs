@@ -15,13 +15,19 @@ function normalizeText(value) {
 function inferReason(item) {
   const image = String(item.image || "").toLowerCase();
   const source = String(item.imageSource || "").toLowerCase();
+  const sourceUrl = String(item.imageSourceUrl || "").toLowerCase();
   if (!normalizeText(item.image)) return "no_image";
-  if (/diet|kokkai|building|議事堂|parliament|国会議事堂/.test(image)) return "building_image";
-  if (/poster|flyer|leaflet|manifesto|選挙公報/.test(image)) return "poster_image";
-  if (/youtube|facebook|x\.com|twitter|instagram/.test(image)) return "sns_or_video_thumbnail";
+  if (/diet|kokkai|building|議事堂|parliament|国会議事堂/.test(`${image} ${sourceUrl}`)) return "building_image";
+  if (/poster|flyer|leaflet|manifesto|選挙公報|senkyo/.test(`${image} ${sourceUrl}`)) return "poster_image";
+  if (/youtube|facebook|x\.com|twitter|instagram/.test(`${image} ${sourceUrl}`)) return "sns_or_video_thumbnail";
   if (item.aiGuess) return "wrong_person_suspected";
   if (/web-fallback/.test(source)) return "needs_manual_check";
+  if (/wikipedia/.test(source) && /geta_zoutei|集合|group|speech|街頭|演説/.test(`${image} ${sourceUrl}`)) return "face_too_far";
   return "manual_review";
+}
+
+function buildSearchHints(item) {
+  return [item.house || "衆議院", item.party || "", "議員", item.name].filter(Boolean);
 }
 
 function makeBaseRecord(item, status) {
@@ -37,6 +43,7 @@ function makeBaseRecord(item, status) {
     imageSourceUrl: item.imageSourceUrl || "",
     aiGuess: Boolean(item.aiGuess),
     preferredSourceType: manual.preferredSourceType || "official_or_party",
+    searchHints: Array.isArray(manual.searchHints) && manual.searchHints.length ? manual.searchHints : buildSearchHints(item),
     checkedSources: Array.isArray(manual.checkedSources) ? manual.checkedSources : [],
     candidatePageUrls: Array.isArray(manual.candidatePageUrls) ? manual.candidatePageUrls : [],
     notes: manual.notes || ""
@@ -48,12 +55,13 @@ const missing = data
   .map((item) => makeBaseRecord(item, "missing"));
 
 const review = data
-  .filter((item) => Boolean(item.aiGuess) || !normalizeText(item.image))
+  .filter((item) => {
+    const reason = inferReason(item);
+    return reason !== "manual_review";
+  })
   .map((item) => makeBaseRecord(item, !normalizeText(item.image) ? "missing" : "review"));
 
-const fixTargets = data
-  .filter((item) => Boolean(item.aiGuess) || !normalizeText(item.image))
-  .map((item) => makeBaseRecord(item, !normalizeText(item.image) ? "missing" : "review"));
+const fixTargets = review;
 
 function toCsv(rows) {
   const headers = [
@@ -66,6 +74,7 @@ function toCsv(rows) {
     "imageSource",
     "imageSourceUrl",
     "preferredSourceType",
+    "searchHints",
     "checkedSources",
     "candidatePageUrls",
     "notes"
