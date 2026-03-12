@@ -14,22 +14,20 @@ const MIN = 60_000;
 export function nextIntervalMin(prev: ProgressItem | undefined, grade: Grade): number {
   const reps = prev?.reps ?? 0;
 
-  if (grade === "again") return reps <= 1 ? 1 : 3;
+  if (grade === "again") return 1;
 
   if (grade === "hard") {
-    if (reps <= 0) return 3;
-    if (reps === 1) return 10;
-    if (reps === 2) return 60;
-    if (reps === 3) return 6 * 60;
+    if (reps <= 0) return 10;
+    if (reps === 1) return 30;
+    if (reps === 2) return 6 * 60;
     return 24 * 60;
   }
 
   // good
-  if (reps <= 0) return 5;
-  if (reps === 1) return 30;
-  if (reps === 2) return 6 * 60;
-  if (reps === 3) return 24 * 60;
-  if (reps === 4) return 3 * 24 * 60;
+  if (reps <= 0) return 30;
+  if (reps === 1) return 6 * 60;
+  if (reps === 2) return 24 * 60;
+  if (reps === 3) return 3 * 24 * 60;
   return 7 * 24 * 60;
 }
 

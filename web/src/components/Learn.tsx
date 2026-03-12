@@ -15,60 +15,45 @@ type Props = {
   onBackTitle: () => void;
 };
 
-const ACTIVE_NEW_LIMIT = 12;
-const DUE_PRIORITY_LIMIT = 16;
+type SessionResult = {
+  total: number;
+  remembered: number;
+  hazy: number;
+  notRemembered: number;
+};
 
-function pickRandomPerson(list: Person[], avoidId: number | null) {
-  if (list.length === 0) return null;
-  if (avoidId == null || list.length === 1) return list[Math.floor(Math.random() * list.length)];
+const SESSION_SIZE = 30;
 
-  const filtered = list.filter((item) => item.id !== avoidId);
-  const pool = filtered.length > 0 ? filtered : list;
-  return pool[Math.floor(Math.random() * pool.length)];
-}
-
-function pickNext(items: Person[], progress: Record<number, ProgressItem>, now: number, mode: Mode, avoidId: number | null) {
+function pickNext(
+  items: Person[],
+  progress: Record<number, ProgressItem>,
+  now: number,
+  mode: Mode,
+  askedIds: Set<number>
+) {
   if (items.length === 0) return null;
 
-  const urgentDue: Array<{ person: Person; due: number; reps: number }> = [];
-  const due: Array<{ person: Person; due: number; reps: number }> = [];
+  const due: Person[] = [];
   const fresh: Person[] = [];
-  let nearest: { person: Person; due: number } | null = null;
+  let nearest: { s: Person; due: number } | null = null;
 
-  for (const person of items) {
-    const item = progress[person.id];
-    if (!item) {
-      if (mode !== "review") fresh.push(person);
+  for (const s of items) {
+    if (askedIds.has(s.id)) continue;
+
+    const p = progress[s.id];
+    if (!p) {
+      if (mode !== "review") fresh.push(s);
       continue;
     }
 
-    if (item.due <= now) {
-      const bucket = item.reps <= 1 || item.lastGrade === "again" ? urgentDue : due;
-      bucket.push({ person, due: item.due, reps: item.reps ?? 0 });
-      continue;
-    }
-
-    if (!nearest || item.due < nearest.due) nearest = { person, due: item.due };
+    if (p.due <= now) due.push(s);
+    if (!nearest || p.due < nearest.due) nearest = { s, due: p.due };
   }
 
-  if (urgentDue.length > 0) {
-    urgentDue.sort((a, b) => a.due - b.due || a.reps - b.reps || a.person.id - b.person.id);
-    return pickRandomPerson(urgentDue.slice(0, DUE_PRIORITY_LIMIT).map((entry) => entry.person), avoidId);
-  }
-
-  if (due.length > 0) {
-    due.sort((a, b) => a.due - b.due || a.reps - b.reps || a.person.id - b.person.id);
-    return pickRandomPerson(due.slice(0, DUE_PRIORITY_LIMIT).map((entry) => entry.person), avoidId);
-  }
-
+  if (due.length > 0) return due[Math.floor(Math.random() * due.length)];
   if (mode === "review") return null;
-
-  if (fresh.length > 0) {
-    fresh.sort((a, b) => a.id - b.id);
-    return pickRandomPerson(fresh.slice(0, ACTIVE_NEW_LIMIT), avoidId);
-  }
-
-  return nearest?.person ?? null;
+  if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
+  return nearest?.s ?? null;
 }
 
 export default function Learn(props: Props) {
@@ -78,15 +63,20 @@ export default function Learn(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [revealed, setRevealed] = useState(false);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.target));
-  const [lastCompletedId, setLastCompletedId] = useState<number | null>(null);
+  const [askedIds, setAskedIds] = useState<number[]>([]);
+  const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+  const [sessionDone, setSessionDone] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
     setProgress(loadProgress(props.target));
-    setLastCompletedId(null);
-  }, [props.target]);
+    setAskedIds([]);
+    setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionDone(false);
+    setRevealed(false);
+  }, [props.target, props.mode]);
 
   useEffect(() => {
     (async () => {
@@ -107,7 +97,19 @@ export default function Learn(props: Props) {
     })();
   }, [dataUrl]);
 
-  const current = useMemo(() => pickNext(items, progress, Date.now(), props.mode, lastCompletedId), [items, progress, props.mode, lastCompletedId]);
+  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const current = useMemo(() => {
+    if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
+    return pickNext(items, progress, Date.now(), props.mode, askedIdSet);
+  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone]);
+
+  useEffect(() => {
+    if (loading) return;
+    if (!sessionDone && askedIds.length > 0 && (askedIds.length >= SESSION_SIZE || !current)) {
+      setSessionDone(true);
+      setRevealed(false);
+    }
+  }, [askedIds.length, current, loading, sessionDone]);
 
   const onGrade = (grade: Grade) => {
     if (!current) return;
@@ -131,7 +133,21 @@ export default function Learn(props: Props) {
     if (grade === "good" && next.reps >= 4) mastered.add(current.id);
     saveWrongIds(props.target, [...wrong]);
     saveMasteredIds(props.target, [...mastered]);
-    setLastCompletedId(current.id);
+
+    setAskedIds((prevAsked) => [...prevAsked, current.id]);
+    setSessionResult((prevResult) => ({
+      total: prevResult.total + 1,
+      remembered: prevResult.remembered + (grade === "good" ? 1 : 0),
+      hazy: prevResult.hazy + (grade === "hard" ? 1 : 0),
+      notRemembered: prevResult.notRemembered + (grade === "again" ? 1 : 0),
+    }));
+    setRevealed(false);
+  };
+
+  const resetSession = () => {
+    setAskedIds([]);
+    setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionDone(false);
     setRevealed(false);
   };
 
@@ -139,6 +155,12 @@ export default function Learn(props: Props) {
     learn: "学習（顔→名前）",
     review: "復習（期限切れのみ）",
     reverse: "逆学習（名前→顔）",
+  };
+
+  const modeHelp: Record<Mode, string> = {
+    learn: "基本の学習です。顔を見て名前を思い出す力を付けます。",
+    review: "忘れかけだけを出します。短時間で定着しやすいモードです。",
+    reverse: "名前から顔も引けるようにして、記憶の結び付きを強くします。",
   };
 
   return (
@@ -150,11 +172,28 @@ export default function Learn(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
+        <div style={styles.modeDesc}>{modeHelp[props.mode]}</div>
+        <div style={styles.progressBox}>今回のセット {Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
       <div style={styles.card}>
-        {loading ? <div style={styles.center}>読み込み中</div> : !current ? (
+        {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
+          <div style={styles.doneWrap}>
+            <div style={styles.doneTitle}>今回の出題は終了です</div>
+            <div style={styles.doneSub}>結果を確認して、次のセットへ進めます。</div>
+            <div style={styles.resultGrid}>
+              <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
+              <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
+              <div style={styles.resultCard}><div style={styles.resultLabel}>うろ覚え</div><div style={styles.resultValue}>{sessionResult.hazy}</div></div>
+              <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていない</div><div style={styles.resultValue}>{sessionResult.notRemembered}</div></div>
+            </div>
+            <div style={styles.doneBtns}>
+              <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
+              <button type="button" style={styles.btn} onClick={props.onBackTitle}>終了してタイトルへ戻る</button>
+            </div>
+          </div>
+        ) : !current ? (
           <div style={styles.center}>{props.mode === "review" ? "期限切れの復習がありません。" : "出題できるデータがありません。"}</div>
         ) : (
           <>
@@ -205,18 +244,16 @@ export default function Learn(props: Props) {
         )}
       </div>
 
-      <HelpModal open={helpOpen} title="ヘルプ" onClose={() => setHelpOpen(false)}>
+      <HelpModal open={helpOpen} title="このモードの使い方" onClose={() => setHelpOpen(false)}>
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div><b>分からないとき</b></div>
-          <div>3秒以内に出ない場合は、考え込まずに答えを見て次へ進んでください。</div>
-          <div><b>自己判定</b></div>
+          <div><b>このモードの役割</b></div>
+          <div>{modeHelp[props.mode]}</div>
+          <div><b>判定の基準</b></div>
           <div>覚えていた：3秒以内に出た</div>
-          <div>うろ覚え：少し迷った、苗字だけ、答えを見て分かった</div>
+          <div>うろ覚え：少し迷った、部分的に出た</div>
           <div>覚えていない：出ない、別人と混ざる</div>
-          <div><b>復習</b></div>
-          <div>復習モードは、忘れかけのものだけ出します。</div>
-          <div><b>出題順</b></div>
-          <div>新しい議員は一度に少人数ずつ出し、覚えきれていない議員を先に繰り返します。</div>
+          <div><b>記憶の定着</b></div>
+          <div>答えを見た後に自己判定し、忘れかけのものが後でまた出ることで定着します。</div>
         </div>
       </HelpModal>
     </div>
@@ -224,14 +261,16 @@ export default function Learn(props: Props) {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center" },
+  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center", background: "#f7f8fa" },
   header: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 8 },
   headerRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
   backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 20, fontWeight: 800 },
   sub: { fontSize: 13, color: "#666" },
-  card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 320 },
+  modeDesc: { fontSize: 14, color: "#444" },
+  progressBox: { alignSelf: "flex-start", padding: "6px 10px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 13, color: "#0958b3" },
+  card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 320, background: "#fff" },
   center: { margin: "auto", color: "#666", fontSize: 14 },
   imgBox: { display: "flex", justifyContent: "center" },
   img: { width: "min(320px, 80vw)", height: "min(320px, 80vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
@@ -244,4 +283,12 @@ const styles: Record<string, React.CSSProperties> = {
   guessBadge: { alignSelf: "center", padding: "4px 10px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
   gradeBtns: { display: "grid", gridTemplateColumns: "1fr", gap: 8 },
   btn: { padding: "12px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 16 },
+  doneWrap: { display: "flex", flexDirection: "column", gap: 12 },
+  doneTitle: { fontSize: 24, fontWeight: 800, textAlign: "center" },
+  doneSub: { fontSize: 14, color: "#555", textAlign: "center" },
+  resultGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },
+  resultCard: { border: "1px solid #e5e7eb", borderRadius: 12, padding: 12, background: "#fafbfc" },
+  resultLabel: { fontSize: 13, color: "#666" },
+  resultValue: { fontSize: 24, fontWeight: 800, marginTop: 6 },
+  doneBtns: { display: "grid", gridTemplateColumns: "1fr", gap: 8 },
 };
