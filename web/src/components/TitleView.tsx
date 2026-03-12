@@ -63,7 +63,7 @@ export default function TitleView(props: Props) {
         <div style={styles.guideBox}>
           <div style={styles.guideTitle}>おすすめの順番</div>
           <div style={styles.stepGrid}>
-            <div style={styles.stepCard}><div style={styles.stepNum}>1</div><div><b>自動再生</b><div style={styles.stepText}>まず多くの顔を一気に見る</div></div></div>
+            <div style={styles.stepCard}><div style={styles.stepNum}>1</div><div><b>自動再生</b><div style={styles.stepText}>まず多くの顔を一気に見る（おすすめ: 顔2秒・名前2秒）</div></div></div>
             <div style={styles.stepCard}><div style={styles.stepNum}>2</div><div><b>学習</b><div style={styles.stepText}>顔を見て名前を思い出す</div></div></div>
             <div style={styles.stepCard}><div style={styles.stepNum}>3</div><div><b>逆学習</b><div style={styles.stepText}>名前から顔も引けるようにする</div></div></div>
             <div style={styles.stepCard}><div style={styles.stepNum}>4</div><div><b>復習</b><div style={styles.stepText}>忘れかけを戻して定着させる</div></div></div>
@@ -78,8 +78,8 @@ export default function TitleView(props: Props) {
           <MenuButton primary label="最初に（使い方）" sub="各モードの順番と覚え方を見る" onClick={props.onOpenFirstGuide} />
           <MenuButton primary label="学習（顔→名前）" sub="基本モード。顔から名前を引く力を付ける" onClick={props.onStartLearn} />
           <MenuButton label="逆学習（名前→顔）" sub="名前を見て顔を思い出す力を付ける" onClick={props.onStartReverse} />
-          <MenuButton label="復習（期限切れのみ）" sub="忘れかけだけを出して効率よく固める" onClick={props.onStartReview} />
-          <MenuButton label="自動再生" sub="最初の大量インプットに使う" onClick={props.onOpenAutoplay} />
+          <MenuButton label="復習（忘れかけだけ）" sub="今ちょうど忘れかけの議員だけを出して固める" onClick={props.onStartReview} />
+          <MenuButton label="自動再生" sub="最初の大量インプットに使う（おすすめ: 顔2秒・名前2秒）" onClick={props.onOpenAutoplay} />
           <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
           <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認の人数を見る" onClick={props.onOpenStats} />
           <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
@@ -89,11 +89,11 @@ export default function TitleView(props: Props) {
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（アプリ）">
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <div><b>最初にやること</b></div>
-          <div>最初は自動再生で顔を広く見てください。その後に学習へ入ると、初回から覚えやすくなります。</div>
+          <div>最初は自動再生で顔を広く見てください。おすすめは顔2秒・名前2秒です。その後に学習へ入ると、初回から覚えやすくなります。</div>
           <div><b>迷ったときの基準</b></div>
           <div>3秒以内に出なければ、考え込まずに答えを見た方が効率が上がります。</div>
           <div><b>復習の役割</b></div>
-          <div>復習は、すでに見た議員の中から忘れかけだけを出します。定着に最も大事な部分です。</div>
+          <div>復習は、すでに見た議員の中から今ちょうど忘れかけの議員だけを出します。定着に最も大事な部分です。</div>
         </div>
       </HelpModal>
     </div>

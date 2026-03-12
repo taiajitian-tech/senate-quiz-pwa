@@ -1,0 +1,18 @@
+{
+  "浅田眞澄美": {
+    "preferredSourceType": "official_or_party",
+    "candidatePageUrls": [
+      "https://www.jimin.jp/member/209189.html"
+    ],
+    "checkedSources": [],
+    "notes": "本人顔が大きく写るページを優先。"
+  },
+  "石坂太": {
+    "preferredSourceType": "official_or_party",
+    "candidatePageUrls": [
+      "https://www.jimin.jp/member/212584.html"
+    ],
+    "checkedSources": [],
+    "notes": "建物画像を除外。本人顔写真ページを固定で確認。"
+  }
+}

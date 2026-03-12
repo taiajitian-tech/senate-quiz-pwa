@@ -15,7 +15,7 @@ export default function FirstGuide(props: Props) {
 
         <div style={styles.box}>
           <div style={styles.boxTitle}>おすすめの順番</div>
-          <div style={styles.step}><b>1 自動再生</b><span>最初に多くの顔を一気に見ます。初回のインプットです。</span></div>
+          <div style={styles.step}><b>1 自動再生</b><span>最初に多くの顔を一気に見ます。初回のインプットです。おすすめは <b>顔2秒・名前2秒</b> です。</span></div>
           <div style={styles.step}><b>2 学習（顔→名前）</b><span>顔を見て名前を思い出します。基本の練習です。</span></div>
           <div style={styles.step}><b>3 逆学習（名前→顔）</b><span>名前から顔も引けるようにして、結び付きを強くします。</span></div>
           <div style={styles.step}><b>4 復習</b><span>忘れかけだけを出して、短い時間で定着させます。</span></div>
@@ -28,6 +28,13 @@ export default function FirstGuide(props: Props) {
           <div style={styles.step}><b>多くの顔を見る</b><span>最初に全体像を作ります。</span></div>
           <div style={styles.step}><b>すぐ思い出す</b><span>顔を見て名前を引く回数を増やします。</span></div>
           <div style={styles.step}><b>忘れかけで復習する</b><span>少し忘れた頃にもう一度出すと、定着しやすくなります。</span></div>
+        </div>
+
+        <div style={styles.box}>
+          <div style={styles.boxTitle}>自動再生のおすすめ時間</div>
+          <div style={styles.step}><b>最初の1周</b><span>顔2秒・名前2秒で全体像を作ります。</span></div>
+          <div style={styles.step}><b>慣れてきたら</b><span>顔1秒・名前2秒にすると、思い出す速さを鍛えやすいです。</span></div>
+          <div style={styles.step}><b>迷うとき</b><span>早すぎると感じたら、顔3秒・名前2秒へ一時的に戻します。</span></div>
         </div>
 
         <div style={styles.box}>

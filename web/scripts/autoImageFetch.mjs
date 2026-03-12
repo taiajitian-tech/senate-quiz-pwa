@@ -8,6 +8,11 @@ const WAIT_MS = Number(process.env.REP_IMAGE_WAIT_MS || 100);
 const CONCURRENCY = Math.max(1, Number(process.env.REP_IMAGE_CONCURRENCY || 8));
 const SEARCH_RESULT_LIMIT = Math.max(3, Number(process.env.REP_IMAGE_SEARCH_LIMIT || 8));
 
+const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
+const MANUAL_SOURCE_PAGES = fs.existsSync(MANUAL_SOURCE_PAGES_PATH)
+  ? JSON.parse(fs.readFileSync(MANUAL_SOURCE_PAGES_PATH, "utf8"))
+  : {};
+
 const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
@@ -460,6 +465,18 @@ async function searchFromGeneralWeb(member) {
   return null;
 }
 
+async function resolveImageFromManualSourcePages(member) {
+  const entry = MANUAL_SOURCE_PAGES[cleanName(member.name)] || MANUAL_SOURCE_PAGES[member.name];
+  if (!entry) return null;
+  const candidates = Array.isArray(entry.candidatePageUrls) ? entry.candidatePageUrls : [];
+  for (const pageUrl of candidates) {
+    const found = await resolveImageFromProfilePage(pageUrl, member.name, "manual-source-page");
+    if (found) return found;
+    await sleep(WAIT_MS);
+  }
+  return null;
+}
+
 async function resolveImage(member) {
   const name = cleanName(member.name);
 
@@ -470,6 +487,10 @@ async function resolveImage(member) {
   if (MANUAL_OVERRIDES[name]) {
     return MANUAL_OVERRIDES[name];
   }
+
+  const manualSource = await resolveImageFromManualSourcePages(member);
+  if (manualSource) return manualSource;
+  await sleep(WAIT_MS);
 
   const profileUrl = String(member.profileUrl || "").trim();
   if (profileUrl) {

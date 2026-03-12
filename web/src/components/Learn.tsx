@@ -153,7 +153,7 @@ export default function Learn(props: Props) {
 
   const titleMap: Record<Mode, string> = {
     learn: "学習（顔→名前）",
-    review: "復習（期限切れのみ）",
+    review: "復習（忘れかけだけ）",
     reverse: "逆学習（名前→顔）",
   };
 
@@ -194,7 +194,7 @@ export default function Learn(props: Props) {
             </div>
           </div>
         ) : !current ? (
-          <div style={styles.center}>{props.mode === "review" ? "期限切れの復習がありません。" : "出題できるデータがありません。"}</div>
+          <div style={styles.center}>{props.mode === "review" ? "今は忘れかけの復習がありません。" : "出題できるデータがありません。"}</div>
         ) : (
           <>
             {props.mode === "reverse" ? (

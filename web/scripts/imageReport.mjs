@@ -3,34 +3,90 @@ import path from "node:path";
 
 const dataPath = path.resolve("public/data/representatives.json");
 const outDir = path.resolve("public/data");
+const sourcePagesPath = path.resolve("scripts/representativeImageSourcePages.json");
 
 const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+const sourcePages = fs.existsSync(sourcePagesPath) ? JSON.parse(fs.readFileSync(sourcePagesPath, "utf8")) : {};
 
-const missing = data
-  .filter((item) => !String(item.image || "").trim())
-  .map((item) => ({
+function normalizeText(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function inferReason(item) {
+  const image = String(item.image || "").toLowerCase();
+  const source = String(item.imageSource || "").toLowerCase();
+  if (!normalizeText(item.image)) return "no_image";
+  if (/diet|kokkai|building|議事堂|parliament|国会議事堂/.test(image)) return "building_image";
+  if (/poster|flyer|leaflet|manifesto|選挙公報/.test(image)) return "poster_image";
+  if (/youtube|facebook|x\.com|twitter|instagram/.test(image)) return "sns_or_video_thumbnail";
+  if (item.aiGuess) return "wrong_person_suspected";
+  if (/web-fallback/.test(source)) return "needs_manual_check";
+  return "manual_review";
+}
+
+function makeBaseRecord(item, status) {
+  const manual = sourcePages[item.name] || {};
+  return {
     name: item.name,
     party: item.party || item.role || "",
+    status,
+    reason: inferReason(item),
     profileUrl: item.profileUrl || "",
-    imageSource: item.imageSource || "",
-    aiGuess: Boolean(item.aiGuess)
-  }));
-
-const review = data
-  .filter((item) => Boolean(item.aiGuess) || !String(item.image || "").trim())
-  .map((item) => ({
-    name: item.name,
-    party: item.party || item.role || "",
-    image: item.image || "",
+    currentImage: item.image || "",
     imageSource: item.imageSource || "",
     imageSourceUrl: item.imageSourceUrl || "",
-    profileUrl: item.profileUrl || "",
-    aiGuess: Boolean(item.aiGuess)
-  }));
+    aiGuess: Boolean(item.aiGuess),
+    preferredSourceType: manual.preferredSourceType || "official_or_party",
+    checkedSources: Array.isArray(manual.checkedSources) ? manual.checkedSources : [],
+    candidatePageUrls: Array.isArray(manual.candidatePageUrls) ? manual.candidatePageUrls : [],
+    notes: manual.notes || ""
+  };
+}
+
+const missing = data
+  .filter((item) => !normalizeText(item.image))
+  .map((item) => makeBaseRecord(item, "missing"));
+
+const review = data
+  .filter((item) => Boolean(item.aiGuess) || !normalizeText(item.image))
+  .map((item) => makeBaseRecord(item, !normalizeText(item.image) ? "missing" : "review"));
+
+const fixTargets = data
+  .filter((item) => Boolean(item.aiGuess) || !normalizeText(item.image))
+  .map((item) => makeBaseRecord(item, !normalizeText(item.image) ? "missing" : "review"));
+
+function toCsv(rows) {
+  const headers = [
+    "name",
+    "party",
+    "status",
+    "reason",
+    "profileUrl",
+    "currentImage",
+    "imageSource",
+    "imageSourceUrl",
+    "preferredSourceType",
+    "checkedSources",
+    "candidatePageUrls",
+    "notes"
+  ];
+  const escape = (value) => {
+    const text = Array.isArray(value) ? value.join(" | ") : String(value ?? "");
+    const escaped = text.replace(/"/g, '""');
+    return `"${escaped}"`;
+  };
+  return [headers.join(","), ...rows.map((row) => headers.map((h) => escape(row[h])).join(","))].join("\n") + "\n";
+}
 
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "missing-images.json"), `${JSON.stringify(missing, null, 2)}\n`, "utf8");
 fs.writeFileSync(path.join(outDir, "representatives-image-review.json"), `${JSON.stringify(review, null, 2)}\n`, "utf8");
+fs.writeFileSync(path.join(outDir, "representatives-image-search-targets.json"), `${JSON.stringify(missing, null, 2)}\n`, "utf8");
+fs.writeFileSync(path.join(outDir, "representatives-image-search-targets.csv"), toCsv(missing), "utf8");
+fs.writeFileSync(path.join(outDir, "representatives-image-fix-targets.json"), `${JSON.stringify(fixTargets, null, 2)}\n`, "utf8");
+fs.writeFileSync(path.join(outDir, "representatives-image-fix-targets.csv"), toCsv(fixTargets), "utf8");
 
 console.log(`missing: ${missing.length}`);
 console.log(`review: ${review.length}`);
+console.log(`search-targets: ${missing.length}`);
+console.log(`fix-targets: ${fixTargets.length}`);
