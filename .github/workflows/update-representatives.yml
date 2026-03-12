@@ -1,3 +1,4 @@
+
 name: update-representatives
 
 on:
@@ -9,7 +10,8 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 120
+
     defaults:
       run:
         working-directory: web
@@ -37,7 +39,7 @@ jobs:
           REP_IMAGE_WAIT_MS: "80"
           REP_IMAGE_TIMEOUT_MS: "12000"
           REP_IMAGE_SEARCH_LIMIT: "12"
-        run: npm run gen:representatives:images
+        run: node scripts/autoImageFetch.mjs
 
       - name: Generate representative image reports
         run: npm run report:representatives:images
@@ -50,34 +52,18 @@ jobs:
         working-directory: .
         run: |
           set -euxo pipefail
-          test -f web/public/data/representatives.json
-          test -f web/public/data/missing-images.json
-          test -f web/public/data/representatives-image-review.json
-          test -f web/public/data/representatives-image-search-targets.json
-          test -f web/public/data/representatives-image-fix-targets.json
-          git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv
-          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv)" ]; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes in generated data"
-            exit 0
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-          echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit generated file
         if: steps.changes.outputs.changed == 'true'
         working-directory: .
         run: |
-          set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv
-          git commit -m "chore: update representatives data"
-
-      - name: Push generated file
-        if: steps.changes.outputs.changed == 'true'
-        working-directory: .
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        run: |
-          set -euxo pipefail
-          git push origin "HEAD:${BRANCH_NAME}"
+          git add .
+          git commit -m "auto update representatives data"
+          git push
