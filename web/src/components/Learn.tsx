@@ -224,7 +224,7 @@ export default function Learn(props: Props) {
                   </>
                 ) : (
                   <>
-                    <div style={isCompact ? styles.imgBoxCompact : styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={isCompact ? styles.imgCompact : styles.img} fallbackStyle={isCompact ? styles.noImgCompact : styles.noImg} fallbackText="画像なし" /></div>
+                    <div style={isCompact ? styles.imgBoxCompact : styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={isCompact ? styles.imgCompact : styles.img} fallbackStyle={isCompact ? styles.noImgCompact : styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
                     <div style={isCompact ? styles.gradeBtnsCompact : styles.gradeBtns}>
                       <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
                       <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
@@ -235,7 +235,7 @@ export default function Learn(props: Props) {
               </div>
             ) : (
               <>
-                <div style={isCompact ? styles.imgBoxCompact : styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={isCompact ? styles.imgCompact : styles.img} fallbackStyle={isCompact ? styles.noImgCompact : styles.noImg} fallbackText="画像なし" /></div>
+                <div style={isCompact ? styles.imgBoxCompact : styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={isCompact ? styles.imgCompact : styles.img} fallbackStyle={isCompact ? styles.noImgCompact : styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
                 {!revealed ? (
                   <div style={styles.block}>
                     <div style={isCompact ? styles.msgCompact : styles.msg}>名前を思い出してから、答えを表示してください。</div>
