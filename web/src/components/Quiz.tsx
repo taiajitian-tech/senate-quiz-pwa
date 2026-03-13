@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import SafeImage from "./SafeImage";
 import { bumpStats, loadStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 
@@ -462,11 +463,13 @@ export default function Quiz(props: Props) {
 
         <div style={styles.imageBox}>
           {imgUrl && !imgError ? (
-            <img
+            <SafeImage
               src={imgUrl}
               alt={current.name}
               style={styles.image}
-              onError={() => setImgError(true)}
+              fallbackStyle={styles.noImage}
+              fallbackText="画像なし"
+              maskBottom={Boolean(current.imageMaskBottom)}
             />
           ) : (
             <div style={styles.noImage}>画像なし</div>

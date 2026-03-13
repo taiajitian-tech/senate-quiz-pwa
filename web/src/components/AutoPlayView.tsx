@@ -62,7 +62,7 @@ export default function AutoPlayView(props: Props) {
       <div style={styles.card}>
         {!current ? <div style={styles.center}>読み込み中</div> : (
           <>
-            <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
+            <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
                 <div style={styles.name}>{current.name}</div>

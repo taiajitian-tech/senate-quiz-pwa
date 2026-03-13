@@ -11,6 +11,7 @@ const SEARCH_RESULT_LIMIT = Math.max(4, Number(process.env.REP_IMAGE_SEARCH_LIMI
 const BATCH_LIMIT = Math.max(1, Number(process.env.REP_IMAGE_BATCH_LIMIT || 25));
 const TARGET_MODE = String(process.env.REP_IMAGE_TARGET_MODE || "missing").trim().toLowerCase();
 const SKIP_AI_GUESS = String(process.env.REP_IMAGE_SKIP_AI_GUESS || "false").trim().toLowerCase() === "true";
+const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true").trim().toLowerCase() !== "false";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const MANUAL_SOURCE_PAGES = fs.existsSync(MANUAL_SOURCE_PAGES_PATH)
@@ -217,7 +218,7 @@ function stableHash(value) {
 
 function isLikelyBadImage(src = "", alt = "") {
   const s = `${src} ${alt}`.toLowerCase();
-  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|poster|flyer|bill|manifesto|policy|leaflet|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly)/i.test(
+  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly)/i.test(
     s
   );
 }
@@ -247,7 +248,8 @@ function scoreImageCandidate(src, alt = "", name = "", pageUrl = "", sourceHint 
   }
   if (/\b(400|500|600|700|800|900|1000)\b/.test(s)) score += 1;
   if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group/i.test(a)) score -= 8;
-  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto|building|議事堂|parliament/i.test(s)) score -= 8;
+  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto/i.test(s)) score -= 3;
+  if (/building|議事堂|parliament/i.test(s)) score -= 8;
   if (/go2senkyo|smartvote|senkyo\.janjan/i.test(s)) score += 3;
   if (/jimin\.jp|cdp-japan\.jp|o-ishin\.jp|komei\.or\.jp|new-kokumin\.jp|jcp\.or\.jp|reiwa-shinsengumi\.com|sanseito\.jp/i.test(s)) score += 4;
   return score;
@@ -619,6 +621,12 @@ async function resolveImageFromManualSourcePages(member) {
   return null;
 }
 
+function shouldMaskBottom(found = {}, member = {}) {
+  if (!ENABLE_TEXT_MASK) return false;
+  const joined = [found?.source || "", found?.url || "", found?.sourceUrl || "", member?.party || "", member?.role || ""].join(" ").toLowerCase();
+  return /(party-site|trusted-fallback|web-fallback|manual-direct-image|go2senkyo|smartvote|senkyo\.janjan|jimin\.jp|cdp-japan\.jp|o-ishin\.jp|komei\.or\.jp|new-kokumin\.jp|jcp\.or\.jp|reiwa-shinsengumi\.com|sanseito\.jp|sdp\.or\.jp|hoshuto\.jp|選挙|ポスター|公認|manifesto|policy)/i.test(joined);
+}
+
 function markResolved(member, found) {
   member.image = found.url;
   member.imageSource = found.source;
@@ -634,6 +642,8 @@ function markResolved(member, found) {
     "manual-direct-image"
   ].includes(found.source);
   member.sourceType = member.aiGuess ? "estimated" : "verified";
+  member.imageMaskBottom = shouldMaskBottom(found, member);
+  member.imageMaskMode = member.imageMaskBottom ? "pixelate-bottom" : "none";
 }
 
 async function resolveImage(member) {

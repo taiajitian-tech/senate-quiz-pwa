@@ -209,7 +209,7 @@ export default function Learn(props: Props) {
                   </>
                 ) : (
                   <>
-                    <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
+                    <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
                     <div style={styles.gradeBtns}>
                       <button type="button" style={styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
                       <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
@@ -220,7 +220,7 @@ export default function Learn(props: Props) {
               </div>
             ) : (
               <>
-                <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
+                <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
                 {!revealed ? (
                   <div style={styles.block}>
                     <div style={styles.msg}>名前を思い出してから、答えを表示してください。</div>

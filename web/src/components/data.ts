@@ -6,6 +6,7 @@ export type Person = {
   group?: string;
   images: string[];
   aiGuess?: boolean;
+  imageMaskBottom?: boolean;
 };
 
 export const targetLabels: Record<Target, string> = {
@@ -60,6 +61,7 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const images = toImages(v.images ?? v.image);
   const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
   const safeImages = aiGuess && BAD_GUESS_IMAGE_NAMES.has(rawName) ? [] : images;
+  const imageMaskBottom = v.imageMaskBottom === true || toText(v.imageMaskMode) === "pixelate-bottom";
 
   return {
     id,
@@ -67,6 +69,7 @@ function normalizePerson(value: unknown, index: number): Person | null {
     group,
     images: safeImages,
     aiGuess,
+    imageMaskBottom,
   };
 }
 
