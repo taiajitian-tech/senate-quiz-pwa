@@ -529,8 +529,10 @@
       "顔写真"
     ],
     "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "candidatePageUrls": [
+      "https://craj.jp/member/6437"
+    ],
+    "notes": "所属議員ページを最優先。比例ブロック画像を除外。"
   },
   {
     "name": "平林晃",
@@ -552,8 +554,11 @@
       "顔写真"
     ],
     "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "candidatePageUrls": [
+      "https://akirahirabayashi.jp/profile/",
+      "https://akirahirabayashi.jp/"
+    ],
+    "notes": "公式プロフィールを最優先。比例ブロック一覧画像を除外。"
   },
   {
     "name": "福重隆浩",
@@ -575,8 +580,10 @@
       "顔写真"
     ],
     "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "candidatePageUrls": [
+      "https://craj.jp/member/6411"
+    ],
+    "notes": "所属議員ページを最優先。比例ブロック画像を除外。"
   },
   {
     "name": "山崎正恭",
@@ -598,8 +605,11 @@
       "顔写真"
     ],
     "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "candidatePageUrls": [
+      "https://www.komei.or.jp/km/kochi-yamasaki-masayasu/",
+      "https://craj.jp/election2026/candidates/6426/%E5%B1%B1%E5%B4%8E%E6%AD%A3%E6%81%AD"
+    ],
+    "notes": "公式サイトを最優先。比例ブロック画像を除外。"
   },
   {
     "name": "早稲田ゆき",
@@ -621,8 +631,10 @@
       "顔写真"
     ],
     "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "candidatePageUrls": [
+      "https://waseda-yuki.jp/"
+    ],
+    "notes": "本人公式サイトを最優先。選挙ポスターや一覧画像を除外。"
   },
   {
     "name": "柏倉祐司",
@@ -717,60 +729,14 @@
     "notes": ""
   },
   {
-    "name": "野村美穂",
-    "party": "国民民主党・無所属クラブ",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "国民民主党・無所属クラブ",
-      "議員",
-      "野村美穂",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "日野紗里亜",
-    "party": "国民民主党・無所属クラブ",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "国民民主党・無所属クラブ",
-      "議員",
-      "日野紗里亜",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "青木ひとみ",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -788,12 +754,12 @@
   {
     "name": "石川勝",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -809,37 +775,14 @@
     "notes": ""
   },
   {
-    "name": "伊藤恵介",
-    "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "参政党",
-      "議員",
-      "伊藤恵介",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "木下敏之",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -857,12 +800,12 @@
   {
     "name": "工藤聖子",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -878,60 +821,14 @@
     "notes": ""
   },
   {
-    "name": "島村かおる",
-    "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "参政党",
-      "議員",
-      "島村かおる",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "鈴木美香",
-    "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "参政党",
-      "議員",
-      "鈴木美香",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "谷浩一郎",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -947,37 +844,14 @@
     "notes": ""
   },
   {
-    "name": "なかやめぐ",
-    "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "参政党",
-      "議員",
-      "なかやめぐ",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "牧野俊一",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -995,12 +869,12 @@
   {
     "name": "渡辺藍理",
     "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://sanseito.jp/nppoj/wp-content/themes/wp_310/images/defalt_ogp.webp?20250919",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://sanseito.jp/diet_activity/",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
@@ -1087,13 +961,13 @@
   {
     "name": "土橋章宏",
     "party": "チームみらい",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "estimated_candidate",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
+    "currentImage": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
+    "imageSource": "web-fallback",
+    "imageSourceUrl": "https://chiebukuro.yahoo.co.jp/search/?p=%E5%9C%9F%E6%A9%8B%E7%AB%A0%E5%AE%8F+%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1+%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&ei=UTF-8&x=nl",
+    "aiGuess": true,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
