@@ -218,7 +218,14 @@ function stableHash(value) {
 
 function isLikelyBadImage(src = "", alt = "") {
   const s = `${src} ${alt}`.toLowerCase();
-  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly)/i.test(
+  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly|no_photo|image_not_found|no-photo|notfound|missing-image)/i.test(
+    s
+  );
+}
+
+function isClearlyNonPortraitImage(src = "", alt = "", pageUrl = "", sourceHint = "") {
+  const s = `${src} ${alt} ${pageUrl} ${sourceHint}`.toLowerCase();
+  return /(一覧|list|候補者|candidate|比例|block|ブロック|選挙区|election|senkyo|ポスター|poster|flyer|leaflet|bill|manifesto|政策|policy|公報|当選|バナー|アイコン|placeholder|noimage|no-image|image not found|画像なし|議員一覧|参議院議員一覧|衆議院議員一覧|party[-_ ]?list|member[-_ ]?list)/i.test(
     s
   );
 }
@@ -228,6 +235,7 @@ function scoreImageCandidate(src, alt = "", name = "", pageUrl = "", sourceHint 
   const a = normalizeSpace(alt);
   if (!/^https?:\/\//i.test(s)) return -100;
   if (isLikelyBadImage(s, a)) return -60;
+  if (isClearlyNonPortraitImage(s, a, pageUrl, sourceHint)) return -80;
   if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s) && !/Special:FilePath/i.test(s)) return -15;
 
   let score = 0;
@@ -453,7 +461,7 @@ async function searchWikipediaImage(name) {
     try {
       const summary = await fetchJson(`https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`);
       const img = summary?.originalimage?.source || summary?.thumbnail?.source || "";
-      if (img && /^https?:\/\//.test(img)) {
+      if (img && /^https?:\/\//.test(img) && !isClearlyNonPortraitImage(img, summary?.title || "", `https://ja.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`, "wikipedia-summary")) {
         return {
           url: img,
           source: "wikipedia",
@@ -484,7 +492,7 @@ async function searchWikipediaImage(name) {
       const pages = page?.query?.pages || {};
       const first = Object.values(pages)[0];
       const img = first?.original?.source || first?.thumbnail?.source || "";
-      if (img) {
+      if (img && !isClearlyNonPortraitImage(img, title, `https://ja.wikipedia.org/wiki/${encodeURIComponent(title)}`, "wikipedia-pageimages")) {
         return {
           url: img,
           source: "wikipedia",
@@ -526,6 +534,7 @@ async function searchWikidataCommonsImage(name) {
         const fileName = entity?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
         if (!fileName) continue;
         const commonsFile = String(fileName).replace(/ /g, "_");
+        if (isClearlyNonPortraitImage(commonsFile, candidate?.label || "", `https://www.wikidata.org/wiki/${encodeURIComponent(String(id))}`, "wikidata-p18")) continue;
         return {
           url: `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(commonsFile)}`,
           source: "wikidata-commons",
