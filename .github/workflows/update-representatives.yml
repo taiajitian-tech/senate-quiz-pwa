@@ -32,7 +32,7 @@ jobs:
       - name: Generate representatives data
         run: npm run gen:representatives
 
-      - name: Normalize representative images and fallback
+      - name: Auto-fill missing representative images (v6 missing-only exhaustive batch)
         env:
           REP_IMAGE_CONCURRENCY: "10"
           REP_IMAGE_WAIT_MS: "80"
@@ -40,6 +40,7 @@ jobs:
           REP_IMAGE_SEARCH_LIMIT: "10"
           REP_IMAGE_BATCH_LIMIT: "25"
           REP_IMAGE_TARGET_MODE: "missing"
+          REP_IMAGE_SKIP_AI_GUESS: "false"
         run: npm run gen:representatives:images
 
       - name: Generate representative image reports

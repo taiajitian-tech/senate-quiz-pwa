@@ -22,41 +22,5 @@
     "directSourceUrl": "",
     "checkedSources": [],
     "notes": "candidatePageUrls を入れるとそのページを最優先で見ます。directImageUrl を入れると検索せず画像URLを固定します。"
-  },
-  "青木ひとみ": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://sanseito.jp/election_member/aokihitomi/"
-    ],
-    "directImageUrl": "",
-    "directSourceUrl": "",
-    "checkedSources": [
-      "sanseito.jp"
-    ],
-    "notes": "参政党候補者ページを最優先。"
-  },
-  "野村美穂": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://election2026.new-kokumin.jp/candidate/detail/nomura-miho/"
-    ],
-    "directImageUrl": "",
-    "directSourceUrl": "",
-    "checkedSources": [
-      "new-kokumin.jp"
-    ],
-    "notes": "国民民主党候補者ページを最優先。"
-  },
-  "柏倉祐司": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://o-ishin.jp/member/detail/kashiwakura_yuuji.html"
-    ],
-    "directImageUrl": "",
-    "directSourceUrl": "",
-    "checkedSources": [
-      "o-ishin.jp"
-    ],
-    "notes": "日本維新の会の本人詳細ページを最優先。"
   }
 }

@@ -14,59 +14,15 @@ const SKIP_AI_GUESS = String(process.env.REP_IMAGE_SKIP_AI_GUESS || "false").tri
 const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true").trim().toLowerCase() !== "false";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
+const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
 const MANUAL_SOURCE_PAGES = fs.existsSync(MANUAL_SOURCE_PAGES_PATH)
   ? JSON.parse(fs.readFileSync(MANUAL_SOURCE_PAGES_PATH, "utf8"))
   : {};
+const FIX_TARGETS = fs.existsSync(FIX_TARGETS_PATH)
+  ? JSON.parse(fs.readFileSync(FIX_TARGETS_PATH, "utf8"))
+  : [];
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set([
-  "安藤たかお",
-  "犬飼明佳",
-  "中川宏昌",
-  "沼崎満子",
-  "原田直樹",
-  "平林晃",
-  "福重隆浩",
-  "山崎正恭",
-  "早稲田ゆき",
-  "俵田祐児",
-  "吉田有理",
-  "池畑浩太朗",
-  "一谷勇一郎",
-  "渡辺創",
-  "うるま譲司",
-  "東田淳平",
-  "古井康介",
-  "大森江里子",
-  "吉川里奈",
-  "藤田誠",
-  "阿部弘樹",
-  "井戸まさえ",
-  "西村智奈美",
-  "野間健",
-  "原山大亮",
-  "山本ジョージ",
-  "辰巳孝太郎",
-  "河村たかし",
-  "須田英太郎",
-  "青柳仁士",
-  "中川宏昌",
-  "沼崎満子",
-  "柏倉祐司",
-  "奥下剛光",
-  "住吉寛紀",
-  "高見亮",
-  "萩原佳",
-  "原田直樹",
-  "平林晃",
-  "福重隆浩",
-  "原山大亮",
-  "荻原佳",
-  "住吉寛紀",
-  "住吉寛紀",
-  "原山大亮",
-  "犬飼明佳",
-  "俵田祐児"
-]);
+const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
     url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
@@ -266,7 +222,7 @@ function stableHash(value) {
 
 function isLikelyBadImage(src = "", alt = "") {
   const s = `${src} ${alt}`.toLowerCase();
-  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|gthumb\.svg|news_sns\.png|ogp\.png|sangiin2022_sp\.jpg|hirei_\d+\.jpg|一覧|ichiran|比例|ブロック|候補者|選挙公報|選挙ポスター|campaign|senkyo|speaker|megaphone|speech|rally|街宣|街頭|演説|building|議事堂|parliament|kensei|assembly|co-create|new ldp)/i.test(
+  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly)/i.test(
     s
   );
 }
@@ -295,9 +251,9 @@ function scoreImageCandidate(src, alt = "", name = "", pageUrl = "", sourceHint 
     if (family && hay.includes(family)) score += 2;
   }
   if (/\b(400|500|600|700|800|900|1000)\b/.test(s)) score += 1;
-  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group|メガホン|街頭演説/i.test(a)) score -= 12;
-  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto|比例|ブロック|候補者|一覧|ichiran/i.test(`${s} ${a}`)) score -= 18;
-  if (/building|議事堂|parliament|news_sns|ogp\.png|gthumb\.svg|sangiin2022_sp\.jpg/i.test(s)) score -= 20;
+  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group/i.test(a)) score -= 8;
+  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto/i.test(s)) score -= 3;
+  if (/building|議事堂|parliament/i.test(s)) score -= 8;
   if (/go2senkyo|smartvote|senkyo\.janjan/i.test(s)) score += 3;
   if (/jimin\.jp|cdp-japan\.jp|o-ishin\.jp|komei\.or\.jp|new-kokumin\.jp|jcp\.or\.jp|reiwa-shinsengumi\.com|sanseito\.jp/i.test(s)) score += 4;
   return score;
@@ -752,11 +708,37 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
+
+function normalizeTargetMode(value) {
+  const mode = String(value || "missing").trim().toLowerCase();
+  if (["all", "review", "fix", "missing"].includes(mode)) return mode;
+  return "missing";
+}
+
+const EFFECTIVE_TARGET_MODE = normalizeTargetMode(TARGET_MODE);
+
+function buildFixTargetNameSet() {
+  const set = new Set();
+  for (const item of Array.isArray(FIX_TARGETS) ? FIX_TARGETS : []) {
+    const name = cleanName(item?.name || "");
+    if (name) set.add(name);
+  }
+  return set;
+}
+
+const FIX_TARGET_NAME_SET = buildFixTargetNameSet();
+
+function isFixTarget(member) {
+  return FIX_TARGET_NAME_SET.has(cleanName(member?.name || ""));
+}
+
 function shouldProcessMember(member) {
   const hasImage = Boolean(normalizeSpace(member.image));
   const aiGuess = Boolean(member.aiGuess);
-  if (TARGET_MODE === "all") return true;
-  if (TARGET_MODE === "review") return hasImage && aiGuess;
+
+  if (EFFECTIVE_TARGET_MODE === "all") return true;
+  if (EFFECTIVE_TARGET_MODE === "review") return hasImage && aiGuess;
+  if (EFFECTIVE_TARGET_MODE === "fix") return isFixTarget(member);
   return !hasImage;
 }
 
@@ -778,11 +760,11 @@ async function main() {
   let skipped = members.length - queue.length;
 
   console.log(
-    `auto-image-fetch:v5 mode=${TARGET_MODE} total=${members.length} batch=${queue.length} batchLimit=${BATCH_LIMIT} concurrency=${CONCURRENCY}`
+    `auto-image-fetch:v6 mode=${EFFECTIVE_TARGET_MODE} total=${members.length} candidates=${members.filter((member) => shouldProcessMember(member)).length} batch=${queue.length} batchLimit=${BATCH_LIMIT} concurrency=${CONCURRENCY}`
   );
 
   if (!queue.length) {
-    console.log("auto-image-fetch:v5 nothing-to-process");
+    console.log(`auto-image-fetch:v6 nothing-to-process mode=${EFFECTIVE_TARGET_MODE}`);
     return;
   }
 
@@ -810,7 +792,7 @@ async function main() {
   );
 
   fs.writeFileSync(dataPath, `${JSON.stringify(members, null, 2)}\n`, "utf8");
-  console.log(`auto-image-fetch:v5 complete skipped=${skipped} filled=${filled} still-missing=${stillMissing}`);
+  console.log(`auto-image-fetch:v6 complete mode=${EFFECTIVE_TARGET_MODE} skipped=${skipped} filled=${filled} still-missing=${stillMissing}`);
 }
 
 main().catch((error) => {
