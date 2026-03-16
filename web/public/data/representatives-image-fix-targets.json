@@ -5,7 +5,7 @@
     "status": "review",
     "reason": "face_too_far",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg/500px-Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%80%A2%E6%B2%A2%E4%B8%80%E9%83%8E",
     "aiGuess": false,
@@ -14,34 +14,13 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "逢沢一郎"
+      "逢沢一郎",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
     "notes": ""
-  },
-  {
-    "name": "浅田眞澄美",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "wrong_person_suspected",
-    "profileUrl": "",
-    "currentImage": "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
-    "imageSource": "web-fallback",
-    "imageSourceUrl": "https://asada-masumi.com/about-us/",
-    "aiGuess": true,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "浅田眞澄美"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [
-      "https://www.jimin.jp/member/209189.html"
-    ],
-    "notes": "本人顔が大きく写るページを優先。"
   },
   {
     "name": "東国幹",
@@ -49,7 +28,7 @@
     "status": "review",
     "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg/1280px-Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
     "aiGuess": false,
@@ -58,7 +37,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "東国幹"
+      "東国幹",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -70,7 +51,7 @@
     "status": "review",
     "reason": "face_too_far",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg/330px-Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%BC%98%E6%A8%B9",
     "aiGuess": false,
@@ -79,7 +60,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "阿部弘樹"
+      "阿部弘樹",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -100,51 +83,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "安藤たかお"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "石坂太",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "wrong_person_suspected",
-    "profileUrl": "",
-    "currentImage": "https://www.jimin.jp/member/img/ishizaka-masaru.jpg",
-    "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.jimin.jp/member/212407.html",
-    "aiGuess": true,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "石坂太"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [
-      "https://www.jimin.jp/member/212584.html"
-    ],
-    "notes": "建物画像を除外。本人顔写真ページを固定で確認。"
-  },
-  {
-    "name": "石原正敬",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "石原正敬"
+      "安藤たかお",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -153,61 +94,21 @@
   {
     "name": "伊藤聡",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_4.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/4/4",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "伊藤聡"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "稲葉大輔",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "稲葉大輔"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "井原隆",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "井原隆"
+      "伊藤聡",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -219,7 +120,7 @@
     "status": "review",
     "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg/250px-Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
     "aiGuess": false,
@@ -228,70 +129,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "上田英俊"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "上原正裕",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "上原正裕"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "内山こう",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "内山こう"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "衛藤博昭",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "衛藤博昭"
+      "上田英俊",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -300,166 +140,21 @@
   {
     "name": "遠藤寛明",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/3942/7fe6164f-bd3a-4ff6-b155-300ff86dd5ec.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/165903/posts/1273929",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "遠藤寛明"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "岡本康宏",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "岡本康宏"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "長田紘一郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "長田紘一郎"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "尾花瑛仁",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "尾花瑛仁"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "鹿嶋祐介",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "鹿嶋祐介"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "門寛子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "門寛子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "加藤大博",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "加藤大博"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "金澤結衣",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "金澤結衣"
+      "遠藤寛明",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -471,7 +166,7 @@
     "status": "review",
     "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/2/25/Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg/500px-Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B4%8E%E3%81%B2%E3%81%A7%E3%81%A8",
     "aiGuess": false,
@@ -480,70 +175,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "川崎ひでと"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "河野正美",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "河野正美"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "川松真一朗",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "川松真一朗"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "草間剛",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "草間剛"
+      "川崎ひでと",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -552,19 +186,21 @@
   {
     "name": "黒崎祐一",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "estimated_candidate",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
+    "currentImage": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
+    "imageSource": "web-fallback",
+    "imageSourceUrl": "https://chiebukuro.yahoo.co.jp/search/?p=%E9%BB%92%E5%B4%8E%E7%A5%90%E4%B8%80+%E6%94%BF%E6%B2%BB%E5%AE%B6+%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&ei=UTF-8&x=nl",
+    "aiGuess": true,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "黒崎祐一"
+      "黒崎祐一",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -573,40 +209,21 @@
   {
     "name": "小池正昭",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/7164/e43f626d-28a7-4873-9aff-e891a616ac3f.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/50408/posts/1323702",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "小池正昭"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "こうらい啓一郎",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "こうらい啓一郎"
+      "小池正昭",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -615,19 +232,21 @@
   {
     "name": "今洋佑",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_6.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/6/4",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "今洋佑"
+      "今洋佑",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -636,19 +255,21 @@
   {
     "name": "斉木武志",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "estimated_candidate",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
+    "currentImage": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
+    "imageSource": "web-fallback",
+    "imageSourceUrl": "https://chiebukuro.yahoo.co.jp/search/?p=%E6%96%89%E6%9C%A8%E6%AD%A6%E5%BF%97+wikipedia&ei=UTF-8&x=nl",
+    "aiGuess": true,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "斉木武志"
+      "斉木武志",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -657,19 +278,21 @@
   {
     "name": "西條昌良",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "estimated_candidate",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
+    "currentImage": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
+    "imageSource": "web-fallback",
+    "imageSourceUrl": "https://chiebukuro.yahoo.co.jp/search/?p=%E8%A5%BF%E6%A2%9D%E6%98%8C%E8%89%AF+%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1+%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&ei=UTF-8&x=nl",
+    "aiGuess": true,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "西條昌良"
+      "西條昌良",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -678,19 +301,21 @@
   {
     "name": "坂本竜太郎",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/5363/c9857e8a-721e-47a6-b82e-a7594e3a74b1.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/30364",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "坂本竜太郎"
+      "坂本竜太郎",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -699,19 +324,21 @@
   {
     "name": "鈴木拓海",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/ogp_image/7221/6bef5f0f-083c-4712-b5a8-09b4a6cb0cc0.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/198072",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "鈴木拓海"
+      "鈴木拓海",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -720,19 +347,21 @@
   {
     "name": "世古万美子",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "estimated_candidate",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
+    "currentImage": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
+    "imageSource": "web-fallback",
+    "imageSourceUrl": "https://chiebukuro.yahoo.co.jp/search/?p=%E4%B8%96%E5%8F%A4%E4%B8%87%E7%BE%8E%E5%AD%90+%E6%94%BF%E6%B2%BB%E5%AE%B6+%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&ei=UTF-8&x=nl",
+    "aiGuess": true,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "世古万美子"
+      "世古万美子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -741,19 +370,21 @@
   {
     "name": "高橋祐介",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/6170/ef255400-68e9-4957-a5ce-428aadc4e2f7.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://go2senkyo.com/seijika/182725",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "高橋祐介"
+      "高橋祐介",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -774,7 +405,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "田宮寿人"
+      "田宮寿人",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -783,40 +416,21 @@
   {
     "name": "俵田祐児",
     "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
+    "status": "review",
+    "reason": "poster_image",
     "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "currentImage": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_9.jpg",
+    "imageSource": "trusted-fallback",
+    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/9/4",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
     "searchHints": [
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "俵田祐児"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "辻秀樹",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "辻秀樹"
+      "俵田祐児",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -837,28 +451,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "辻由布子"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "中川こういち",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "中川こういち"
+      "辻由布子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -879,7 +474,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "長澤興祐"
+      "長澤興祐",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -900,7 +497,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "長野春信"
+      "長野春信",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -921,7 +520,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "西山尚利"
+      "西山尚利",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -942,7 +543,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "新田章文"
+      "新田章文",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -963,7 +566,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "根本拓"
+      "根本拓",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -984,7 +589,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "東田淳平"
+      "東田淳平",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -996,7 +603,7 @@
     "status": "review",
     "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg/250px-Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%83%E7%80%AC%E5%BB%BA",
     "aiGuess": false,
@@ -1005,7 +612,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "広瀬建"
+      "広瀬建",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1026,7 +635,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "藤沢忠盛"
+      "藤沢忠盛",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1047,7 +658,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "藤田ひかる"
+      "藤田ひかる",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1068,7 +681,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "文月涼"
+      "文月涼",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1089,7 +704,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "古井康介"
+      "古井康介",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1110,7 +727,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "前川恵"
+      "前川恵",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1131,7 +750,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "松下英樹"
+      "松下英樹",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1152,7 +773,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "松本泉"
+      "松本泉",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1173,7 +796,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "丸尾なつ子"
+      "丸尾なつ子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1194,7 +819,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "丸田康一郎"
+      "丸田康一郎",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1215,7 +842,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "水野よしひこ"
+      "水野よしひこ",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1236,7 +865,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "三原朝利"
+      "三原朝利",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1248,7 +879,7 @@
     "status": "review",
     "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/6/65/Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg/250px-Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E6%B7%B3",
     "aiGuess": false,
@@ -1257,7 +888,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "向山淳"
+      "向山淳",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1278,7 +911,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "森原紀代子"
+      "森原紀代子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1299,7 +934,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "保岡宏武"
+      "保岡宏武",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1320,7 +957,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "山田基靖"
+      "山田基靖",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1341,7 +980,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "山本深"
+      "山本深",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1362,7 +1003,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "山本裕三"
+      "山本裕三",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1383,7 +1026,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "吉田有理"
+      "吉田有理",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1404,7 +1049,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "吉村悠"
+      "吉村悠",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1425,7 +1072,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "米内紘正"
+      "米内紘正",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1446,7 +1095,9 @@
       "衆議院",
       "自由民主党・無所属の会",
       "議員",
-      "渡辺勝幸"
+      "渡辺勝幸",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1467,7 +1118,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "犬飼明佳"
+      "犬飼明佳",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1488,7 +1141,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "中川宏昌"
+      "中川宏昌",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1509,7 +1164,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "沼崎満子"
+      "沼崎満子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1530,7 +1187,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "原田直樹"
+      "原田直樹",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1551,7 +1210,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "平林晃"
+      "平林晃",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1572,7 +1233,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "福重隆浩"
+      "福重隆浩",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1593,7 +1256,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "山崎正恭"
+      "山崎正恭",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1614,7 +1279,9 @@
       "衆議院",
       "中道改革連合・無所属",
       "議員",
-      "早稲田ゆき"
+      "早稲田ゆき",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1635,7 +1302,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "池下卓"
+      "池下卓",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1656,7 +1325,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "池畑浩太朗"
+      "池畑浩太朗",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1677,7 +1348,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "奥下剛光"
+      "奥下剛光",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1698,7 +1371,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "柏倉祐司"
+      "柏倉祐司",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1719,7 +1394,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "喜多義典"
+      "喜多義典",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1740,7 +1417,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "住吉寛紀"
+      "住吉寛紀",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1761,7 +1440,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "高見亮"
+      "高見亮",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1782,7 +1463,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "西田薫"
+      "西田薫",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1803,7 +1486,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "萩原佳"
+      "萩原佳",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1824,7 +1509,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "原山大亮"
+      "原山大亮",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1845,7 +1532,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "三木圭恵"
+      "三木圭恵",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1866,7 +1555,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "美延映夫"
+      "美延映夫",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1887,7 +1578,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "横田光弘"
+      "横田光弘",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1908,7 +1601,9 @@
       "衆議院",
       "日本維新の会",
       "議員",
-      "若狹清史"
+      "若狹清史",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1929,7 +1624,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "小竹凱"
+      "小竹凱",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1950,7 +1647,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "河井昭成"
+      "河井昭成",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1971,7 +1670,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "許斐亮太郎"
+      "許斐亮太郎",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -1992,7 +1693,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "近藤雅彦"
+      "近藤雅彦",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2013,7 +1716,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "佐々木真琴"
+      "佐々木真琴",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2034,7 +1739,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "高沢一基"
+      "高沢一基",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2055,7 +1762,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "丹野みどり"
+      "丹野みどり",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2076,7 +1785,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "長友慎治"
+      "長友慎治",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2097,7 +1808,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "鍋島勢理"
+      "鍋島勢理",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2118,7 +1831,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "野村美穂"
+      "野村美穂",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2139,7 +1854,9 @@
       "衆議院",
       "国民民主党・無所属クラブ",
       "議員",
-      "日野紗里亜"
+      "日野紗里亜",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2160,7 +1877,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "青木ひとみ"
+      "青木ひとみ",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2181,7 +1900,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "石川勝"
+      "石川勝",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2202,7 +1923,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "伊藤恵介"
+      "伊藤恵介",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2223,7 +1946,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "木下敏之"
+      "木下敏之",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2244,7 +1969,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "工藤聖子"
+      "工藤聖子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2265,7 +1992,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "島村かおる"
+      "島村かおる",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2286,7 +2015,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "鈴木美香"
+      "鈴木美香",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2307,7 +2038,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "谷浩一郎"
+      "谷浩一郎",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2328,7 +2061,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "なかやめぐ"
+      "なかやめぐ",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2349,7 +2084,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "牧野俊一"
+      "牧野俊一",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2370,7 +2107,9 @@
       "衆議院",
       "参政党",
       "議員",
-      "渡辺藍理"
+      "渡辺藍理",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2391,7 +2130,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "宇佐美登"
+      "宇佐美登",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2412,7 +2153,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "河合道雄"
+      "河合道雄",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2433,7 +2176,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "小林修平"
+      "小林修平",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2454,7 +2199,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "土橋章宏"
+      "土橋章宏",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2475,7 +2222,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "林拓海"
+      "林拓海",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2496,7 +2245,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "古川あおい"
+      "古川あおい",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2517,7 +2268,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "峰島侑也"
+      "峰島侑也",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2538,7 +2291,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "武藤かず子"
+      "武藤かず子",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2559,7 +2314,9 @@
       "衆議院",
       "チームみらい",
       "議員",
-      "山田瑛理"
+      "山田瑛理",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2580,7 +2337,9 @@
       "衆議院",
       "無所属",
       "議員",
-      "緒方林太郎"
+      "緒方林太郎",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2601,7 +2360,9 @@
       "衆議院",
       "無所属",
       "議員",
-      "中村はやと"
+      "中村はやと",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
@@ -2622,240 +2383,12 @@
       "衆議院",
       "無所属",
       "議員",
-      "渡辺真太朗"
+      "渡辺真太朗",
+      "プロフィール",
+      "顔写真"
     ],
     "checkedSources": [],
     "candidatePageUrls": [],
     "notes": ""
-  },
-  {
-    "name": "岩崎比菜",
-    "kana": "いわさきひな",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/1/14/Hina_Iwasaki.png",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E6%AF%94%E8%8F%9C",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "岩崎比菜",
-      "いわさきひな"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "斉藤りえ",
-    "kana": "さいとうりえ",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Rie_Saito_2019-07_at_Kobe_Sannomiya.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E3%82%8A%E3%81%88",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "斉藤りえ",
-      "さいとうりえ"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "佐藤主迪",
-    "kana": "さとうまさし",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Masashi_sat%C5%8D_cropped_1_20260220shu_san_honkaigi5.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E4%B8%BB%E8%BF%AA",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "佐藤主迪",
-      "さとうまさし"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "藤田誠",
-    "kana": "ふじたまこと",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Emperor_Naruhito_Empress_Masako_Makoto_Fujita_and_Hiroshi_Shiono_20190617.jpg",
-    "imageSource": "wikidata-commons",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q11624900",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "藤田誠",
-      "ふじたまこと"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "村木汀",
-    "kana": "むらきなぎさ",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%9C%A8%E6%B1%80",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "村木汀",
-      "むらきなぎさ"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "山口晋",
-    "kana": "やまぐちすすむ",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/9/94/Susumu_Yamaguchi_20230123shiseihoshin_a_06.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E6%99%8B_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "山口晋",
-      "やまぐちすすむ"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "渡辺創",
-    "kana": "わたなべそう",
-    "party": "中道改革連合・無所属",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%89%B5",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "中道改革連合・無所属",
-      "議員",
-      "渡辺創",
-      "わたなべそう"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "一谷勇一郎",
-    "kana": "いちたにゆういちろう",
-    "party": "日本維新の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%80%E8%B0%B7%E5%8B%87%E4%B8%80%E9%83%8E",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "日本維新の会",
-      "議員",
-      "一谷勇一郎",
-      "いちたにゆういちろう"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "うるま譲司",
-    "kana": "うるまじょうじ",
-    "party": "日本維新の会",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%86%E3%82%8B%E3%81%BE%E8%AD%B2%E5%8F%B8",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "日本維新の会",
-      "議員",
-      "うるま譲司",
-      "うるまじょうじ"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
-  },
-  {
-    "name": "井戸まさえ",
-    "kana": "いどまさえ",
-    "party": "国民民主党・無所属クラブ",
-    "status": "review",
-    "reason": "user_reported_missing_or_wrong_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/5/59/Japanese_general_election_2012_Masae_Ido_in_Motomachi_IMG_0076_20121209.JPG",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E6%88%B8%E3%81%BE%E3%81%95%E3%81%88",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "国民民主党・無所属クラブ",
-      "議員",
-      "井戸まさえ",
-      "いどまさえ"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": "user_reported"
   }
 ]
