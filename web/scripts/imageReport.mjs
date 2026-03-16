@@ -59,7 +59,7 @@ const missing = data
 const review = data
   .filter((item) => {
     const reason = inferReason(item);
-    return reason !== "manual_review";
+    return reason !== "manual_review" && reason !== "manual_source_page";
   })
   .map((item) => makeBaseRecord(item, !normalizeText(item.image) ? "missing" : "review"));
 

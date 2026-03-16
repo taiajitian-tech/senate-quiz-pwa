@@ -768,6 +768,21 @@ function shouldMaskBottom(found = {}, member = {}) {
   return /(party-site|trusted-fallback|web-fallback|manual-direct-image|go2senkyo|smartvote|senkyo\.janjan|jimin\.jp|cdp-japan\.jp|o-ishin\.jp|komei\.or\.jp|new-kokumin\.jp|jcp\.or\.jp|reiwa-shinsengumi\.com|sanseito\.jp|sdp\.or\.jp|hoshuto\.jp|選挙|ポスター|公認|manifesto|policy)/i.test(joined);
 }
 
+function sameNormalizedUrl(a = "", b = "") {
+  const na = normalizeUrl(a);
+  const nb = normalizeUrl(b);
+  return Boolean(na) && Boolean(nb) && na === nb;
+}
+
+function shouldAcceptFound(member = {}, found = {}) {
+  if (!found?.url) return false;
+  if (EFFECTIVE_TARGET_MODE !== "fix") return true;
+  const currentImage = String(member?.image || "").trim();
+  if (!currentImage) return true;
+  if (sameNormalizedUrl(found.url, currentImage)) return false;
+  return true;
+}
+
 function markResolved(member, found) {
   member.image = found.url;
   member.imageSource = found.source;
@@ -787,42 +802,46 @@ function markResolved(member, found) {
   member.imageMaskMode = member.imageMaskBottom ? "pixelate-bottom" : "none";
 }
 
+async function tryResolver(member, resolver) {
+  const found = await resolver();
+  if (!found?.url) return null;
+  if (!shouldAcceptFound(member, found)) return null;
+  return found;
+}
+
 async function resolveImage(member) {
   const name = cleanName(member.name);
 
   if (MANUAL_BAD_IMAGE_REMOVALS.has(name)) return null;
   if (MANUAL_OVERRIDES[name]) return MANUAL_OVERRIDES[name];
 
-  const manualSource = await resolveImageFromManualSourcePages(member);
-  if (manualSource) return manualSource;
-  await sleep(WAIT_MS);
-
   const profileUrl = String(member.profileUrl || "").trim();
-  if (profileUrl) {
-    const direct = await resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10);
-    if (direct) return direct;
-    await sleep(WAIT_MS);
-  }
+  const resolverSteps = EFFECTIVE_TARGET_MODE === "fix"
+    ? [
+        () => resolveImageFromManualSourcePages(member),
+        () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
+        () => searchFromPartyHints(member),
+        () => searchFromTrustedFallbacks(member),
+        () => searchWikipediaImage(member.name),
+        () => searchWikidataCommonsImage(member.name),
+        () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
+      ]
+    : [
+        () => resolveImageFromManualSourcePages(member),
+        () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
+        () => searchWikipediaImage(member.name),
+        () => searchWikidataCommonsImage(member.name),
+        () => searchFromPartyHints(member),
+        () => searchFromTrustedFallbacks(member),
+        () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
+      ];
 
-  const wikipedia = await searchWikipediaImage(member.name);
-  if (wikipedia) return wikipedia;
-  await sleep(WAIT_MS);
-
-  const commons = await searchWikidataCommonsImage(member.name);
-  if (commons) return commons;
-  await sleep(WAIT_MS);
-
-  const partySite = await searchFromPartyHints(member);
-  if (partySite) return partySite;
-  await sleep(WAIT_MS);
-
-  const trustedFallback = await searchFromTrustedFallbacks(member);
-  if (trustedFallback) return trustedFallback;
-  await sleep(WAIT_MS);
-
-  if (!SKIP_AI_GUESS) {
-    const web = await searchFromGeneralWeb(member);
-    if (web) return web;
+  for (let i = 0; i < resolverSteps.length; i += 1) {
+    const found = await tryResolver(member, resolverSteps[i]);
+    if (found) return found;
+    if (i + 1 < resolverSteps.length) {
+      await sleep(WAIT_MS);
+    }
   }
 
   return null;
