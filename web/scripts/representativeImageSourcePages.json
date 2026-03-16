@@ -23,73 +23,40 @@
     "checkedSources": [],
     "notes": "candidatePageUrls を入れるとそのページを最優先で見ます。directImageUrl を入れると検索せず画像URLを固定します。"
   },
-  "池畑浩太朗": {
+  "青木ひとみ": {
     "preferredSourceType": "official_or_party",
     "candidatePageUrls": [
-      "https://ishin.hyogo.jp/member/114",
-      "https://ishin.hyogo.jp/shu12"
+      "https://sanseito.jp/election_member/aokihitomi/"
     ],
-    "checkedSources": [],
-    "notes": "兵庫維新の会の本人ページを最優先。参院一覧画像を除外。"
+    "directImageUrl": "",
+    "directSourceUrl": "",
+    "checkedSources": [
+      "sanseito.jp"
+    ],
+    "notes": "参政党候補者ページを最優先。"
   },
-  "早稲田ゆき": {
+  "野村美穂": {
     "preferredSourceType": "official_or_party",
     "candidatePageUrls": [
-      "https://waseda-yuki.jp/"
+      "https://election2026.new-kokumin.jp/candidate/detail/nomura-miho/"
     ],
-    "checkedSources": [],
-    "notes": "本人公式サイトを最優先。選挙ポスターや一覧画像を除外。"
+    "directImageUrl": "",
+    "directSourceUrl": "",
+    "checkedSources": [
+      "new-kokumin.jp"
+    ],
+    "notes": "国民民主党候補者ページを最優先。"
   },
-  "平林晃": {
+  "柏倉祐司": {
     "preferredSourceType": "official_or_party",
     "candidatePageUrls": [
-      "https://akirahirabayashi.jp/profile/",
-      "https://akirahirabayashi.jp/"
+      "https://o-ishin.jp/member/detail/kashiwakura_yuuji.html"
     ],
-    "checkedSources": [],
-    "notes": "公式プロフィールを最優先。比例ブロック一覧画像を除外。"
-  },
-  "福重隆浩": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://craj.jp/member/6411"
+    "directImageUrl": "",
+    "directSourceUrl": "",
+    "checkedSources": [
+      "o-ishin.jp"
     ],
-    "checkedSources": [],
-    "notes": "所属議員ページを最優先。比例ブロック画像を除外。"
-  },
-  "原田直樹": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://craj.jp/member/6437"
-    ],
-    "checkedSources": [],
-    "notes": "所属議員ページを最優先。比例ブロック画像を除外。"
-  },
-  "山崎正恭": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://www.komei.or.jp/km/kochi-yamasaki-masayasu/",
-      "https://craj.jp/election2026/candidates/6426/%E5%B1%B1%E5%B4%8E%E6%AD%A3%E6%81%AD"
-    ],
-    "checkedSources": [],
-    "notes": "公式サイトを最優先。比例ブロック画像を除外。"
-  },
-  "一谷勇一郎": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://www.nippon-ishin-kobe-ichitani.jp/",
-      "https://o-ishin.jp/member/detail/post_47.html"
-    ],
-    "checkedSources": [],
-    "notes": "公式または維新公式を最優先。Wikipediaの画像なしテンプレを除外。"
-  },
-  "渡辺創": {
-    "preferredSourceType": "official_or_party",
-    "candidatePageUrls": [
-      "https://www.watasou.org/",
-      "https://craj.jp/election2026/candidates/4108/%E6%B8%A1%E8%BE%BA%E5%89%B5"
-    ],
-    "checkedSources": [],
-    "notes": "公式サイトを最優先。画像なしプレースホルダを除外。"
+    "notes": "日本維新の会の本人詳細ページを最優先。"
   }
 }

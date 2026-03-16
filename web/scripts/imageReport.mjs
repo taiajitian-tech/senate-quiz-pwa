@@ -17,9 +17,10 @@ function inferReason(item) {
   const source = String(item.imageSource || "").toLowerCase();
   const sourceUrl = String(item.imageSourceUrl || "").toLowerCase();
   if (!normalizeText(item.image)) return "no_image";
+  if (/gthumb\.svg|noimage|placeholder|news_sns\.png|ogp\.png/.test(`${image} ${sourceUrl}`)) return "placeholder_or_ogp_image";
   if (/diet|kokkai|building|議事堂|parliament|国会議事堂/.test(`${image} ${sourceUrl}`)) return "building_image";
-  if (/poster|flyer|leaflet|manifesto|選挙公報|senkyo/.test(`${image} ${sourceUrl}`)) return "poster_image";
-  if (/youtube|facebook|x\.com|twitter|instagram/.test(`${image} ${sourceUrl}`)) return "sns_or_video_thumbnail";
+  if (/hirei_\d+\.jpg|一覧|ichiran|比例|ブロック|poster|flyer|leaflet|manifesto|選挙公報|senkyo/.test(`${image} ${sourceUrl}`)) return "poster_image";
+  if (/youtube|facebook|x\.com|twitter|instagram|speech|演説|街頭|街宣/.test(`${image} ${sourceUrl}`)) return "sns_or_video_thumbnail";
   if (item.aiGuess) return "estimated_candidate";
   if (/manual-source-page/.test(source)) return "manual_source_page";
   if (/trusted-fallback/.test(source)) return "trusted_fallback_review";

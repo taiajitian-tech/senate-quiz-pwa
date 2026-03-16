@@ -18,7 +18,55 @@ const MANUAL_SOURCE_PAGES = fs.existsSync(MANUAL_SOURCE_PAGES_PATH)
   ? JSON.parse(fs.readFileSync(MANUAL_SOURCE_PAGES_PATH, "utf8"))
   : {};
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
+const MANUAL_BAD_IMAGE_REMOVALS = new Set([
+  "安藤たかお",
+  "犬飼明佳",
+  "中川宏昌",
+  "沼崎満子",
+  "原田直樹",
+  "平林晃",
+  "福重隆浩",
+  "山崎正恭",
+  "早稲田ゆき",
+  "俵田祐児",
+  "吉田有理",
+  "池畑浩太朗",
+  "一谷勇一郎",
+  "渡辺創",
+  "うるま譲司",
+  "東田淳平",
+  "古井康介",
+  "大森江里子",
+  "吉川里奈",
+  "藤田誠",
+  "阿部弘樹",
+  "井戸まさえ",
+  "西村智奈美",
+  "野間健",
+  "原山大亮",
+  "山本ジョージ",
+  "辰巳孝太郎",
+  "河村たかし",
+  "須田英太郎",
+  "青柳仁士",
+  "中川宏昌",
+  "沼崎満子",
+  "柏倉祐司",
+  "奥下剛光",
+  "住吉寛紀",
+  "高見亮",
+  "萩原佳",
+  "原田直樹",
+  "平林晃",
+  "福重隆浩",
+  "原山大亮",
+  "荻原佳",
+  "住吉寛紀",
+  "住吉寛紀",
+  "原山大亮",
+  "犬飼明佳",
+  "俵田祐児"
+]);
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
     url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
@@ -218,14 +266,7 @@ function stableHash(value) {
 
 function isLikelyBadImage(src = "", alt = "") {
   const s = `${src} ${alt}`.toLowerCase();
-  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|group|集合|街頭|演説|speech|rally|building|議事堂|parliament|kensei|assembly|no_photo|image_not_found|no-photo|notfound|missing-image)/i.test(
-    s
-  );
-}
-
-function isClearlyNonPortraitImage(src = "", alt = "", pageUrl = "", sourceHint = "") {
-  const s = `${src} ${alt} ${pageUrl} ${sourceHint}`.toLowerCase();
-  return /(一覧|list|候補者|candidate|比例|block|ブロック|選挙区|election|senkyo|ポスター|poster|flyer|leaflet|bill|manifesto|政策|policy|公報|当選|バナー|アイコン|placeholder|noimage|no-image|image not found|画像なし|議員一覧|参議院議員一覧|衆議院議員一覧|party[-_ ]?list|member[-_ ]?list)/i.test(
+  return /(logo|icon|banner|spacer|pixel|sprite|button|btn|share|thumbnail-default|default-user|placeholder|noimage|no-image|ogp-default|header|footer|youtube|facebook|x\.com|twitter|instagram|line|amazons3.*logo|favicon|thumb|gthumb\.svg|news_sns\.png|ogp\.png|sangiin2022_sp\.jpg|hirei_\d+\.jpg|一覧|ichiran|比例|ブロック|候補者|選挙公報|選挙ポスター|campaign|senkyo|speaker|megaphone|speech|rally|街宣|街頭|演説|building|議事堂|parliament|kensei|assembly|co-create|new ldp)/i.test(
     s
   );
 }
@@ -235,7 +276,6 @@ function scoreImageCandidate(src, alt = "", name = "", pageUrl = "", sourceHint 
   const a = normalizeSpace(alt);
   if (!/^https?:\/\//i.test(s)) return -100;
   if (isLikelyBadImage(s, a)) return -60;
-  if (isClearlyNonPortraitImage(s, a, pageUrl, sourceHint)) return -80;
   if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s) && !/Special:FilePath/i.test(s)) return -15;
 
   let score = 0;
@@ -255,9 +295,9 @@ function scoreImageCandidate(src, alt = "", name = "", pageUrl = "", sourceHint 
     if (family && hay.includes(family)) score += 2;
   }
   if (/\b(400|500|600|700|800|900|1000)\b/.test(s)) score += 1;
-  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group/i.test(a)) score -= 8;
-  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto/i.test(s)) score -= 3;
-  if (/building|議事堂|parliament/i.test(s)) score -= 8;
+  if (/speaker|speech|meeting|街頭|街宣|演説|youtube|サムネ|集合|group|メガホン|街頭演説/i.test(a)) score -= 12;
+  if (/poster|flyer|bill|leaflet|senkyo|選挙|policy|manifesto|比例|ブロック|候補者|一覧|ichiran/i.test(`${s} ${a}`)) score -= 18;
+  if (/building|議事堂|parliament|news_sns|ogp\.png|gthumb\.svg|sangiin2022_sp\.jpg/i.test(s)) score -= 20;
   if (/go2senkyo|smartvote|senkyo\.janjan/i.test(s)) score += 3;
   if (/jimin\.jp|cdp-japan\.jp|o-ishin\.jp|komei\.or\.jp|new-kokumin\.jp|jcp\.or\.jp|reiwa-shinsengumi\.com|sanseito\.jp/i.test(s)) score += 4;
   return score;
@@ -461,7 +501,7 @@ async function searchWikipediaImage(name) {
     try {
       const summary = await fetchJson(`https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`);
       const img = summary?.originalimage?.source || summary?.thumbnail?.source || "";
-      if (img && /^https?:\/\//.test(img) && !isClearlyNonPortraitImage(img, summary?.title || "", `https://ja.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`, "wikipedia-summary")) {
+      if (img && /^https?:\/\//.test(img)) {
         return {
           url: img,
           source: "wikipedia",
@@ -492,7 +532,7 @@ async function searchWikipediaImage(name) {
       const pages = page?.query?.pages || {};
       const first = Object.values(pages)[0];
       const img = first?.original?.source || first?.thumbnail?.source || "";
-      if (img && !isClearlyNonPortraitImage(img, title, `https://ja.wikipedia.org/wiki/${encodeURIComponent(title)}`, "wikipedia-pageimages")) {
+      if (img) {
         return {
           url: img,
           source: "wikipedia",
@@ -534,7 +574,6 @@ async function searchWikidataCommonsImage(name) {
         const fileName = entity?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
         if (!fileName) continue;
         const commonsFile = String(fileName).replace(/ /g, "_");
-        if (isClearlyNonPortraitImage(commonsFile, candidate?.label || "", `https://www.wikidata.org/wiki/${encodeURIComponent(String(id))}`, "wikidata-p18")) continue;
         return {
           url: `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(commonsFile)}`,
           source: "wikidata-commons",
