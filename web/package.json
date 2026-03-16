@@ -16,7 +16,7 @@
     "gen:ministers": "node scripts/fetchMinisters.mjs",
     "gen:representatives": "node scripts/fetchRepresentatives.mjs",
     "check:representatives": "node scripts/validateRepresentatives.mjs",
-    "gen:representatives:images": "node scripts/autoImageFetch.mjs",
+    "gen:representatives:images": "node scripts/updateRepresentativesImages.js",
     "report:representatives:images": "node scripts/imageReport.mjs"
   },
   "dependencies": {

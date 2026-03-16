@@ -32,7 +32,7 @@ jobs:
       - name: Generate representatives data
         run: npm run gen:representatives
 
-      - name: Auto-fill missing representative images (v5 batch)
+      - name: Normalize representative images and fallback
         env:
           REP_IMAGE_CONCURRENCY: "10"
           REP_IMAGE_WAIT_MS: "80"

@@ -708,14 +708,14 @@ const styles: Record<string, React.CSSProperties> = {
     opacity: 0.8,
   },
   imageBox: {
-    width: "min(260px, 70vw)",
+    width: "min(320px, 78vw)",
     aspectRatio: "1 / 1",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   imageBoxCompact: {
-    width: "min(180px, 46vw)",
+    width: "min(240px, 62vw)",
     aspectRatio: "1 / 1",
     display: "flex",
     alignItems: "center",

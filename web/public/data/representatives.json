@@ -5,11 +5,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg/500px-Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%80%A2%E6%B2%A2%E4%B8%80%E9%83%8E",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "青山繁晴",
@@ -77,11 +78,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/asada-masumi.jpg",
-    "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.jimin.jp/member/212431.html",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": true
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "東国幹",
@@ -89,11 +91,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg/1280px-Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "畦元将吾",
@@ -137,8 +140,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -152,11 +155,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "五十嵐清",
@@ -200,11 +204,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/ishizaka-masaru.jpg",
-    "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.jimin.jp/member/212407.html",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": true
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "石田真敏",
@@ -512,11 +517,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg/250px-Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "上野賢一郎",
@@ -620,11 +626,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://ishizuka-kei.work/wp-content/uploads/2026/01/IMG_6069-932x1280.jpeg",
-    "imageSource": "trusted-fallback",
-    "imageSourceUrl": "https://go2senkyo.com/seijika/165903/posts/1273929",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "大岡敏孝",
@@ -1004,11 +1011,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B4%8E%E3%81%B2%E3%81%A7%E3%81%A8",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "河野正美",
@@ -1424,11 +1432,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://i.ytimg.com/vi/O1eleuXDXFM/maxresdefault.jpg",
-    "imageSource": "trusted-fallback",
-    "imageSourceUrl": "https://shugiin.go2senkyo.com/51/senkyoku/51236",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "西條昌良",
@@ -2120,8 +2129,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -2147,11 +2156,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/tsuji-hideki.jpg",
-    "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.jimin.jp/member/212424.html",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": true
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "辻由布子",
@@ -2159,8 +2169,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -2318,11 +2328,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/ogp_image/7212/e73f94e7-611f-4ca0-bf20-103fbeee5cb4.jpg",
-    "imageSource": "trusted-fallback",
-    "imageSourceUrl": "https://go2senkyo.com/seijika/155761",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "長島昭久",
@@ -2570,11 +2581,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/nitta-shobun.jpg",
-    "imageSource": "web-fallback",
-    "imageSourceUrl": "https://www.jimin.jp/member/212478.html",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": true
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "丹羽秀樹",
@@ -2738,8 +2750,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -2801,11 +2813,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%83%E7%80%AC%E5%BB%BA",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "深澤陽一",
@@ -2873,11 +2886,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/6401/73716236-085e-4499-aee4-8ab799227e45.png",
-    "imageSource": "trusted-fallback",
-    "imageSourceUrl": "https://go2senkyo.com/seijika/163389/posts/1280166",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "藤田ひかる",
@@ -2897,8 +2911,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -2972,8 +2986,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -3311,8 +3325,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -3374,11 +3388,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/65/Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E6%B7%B3",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "武藤容治",
@@ -3509,13 +3524,13 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://i.ytimg.com/vi/g2ulHyJ2BLU/hqdefault.jpg",
-    "imageSource": "party-site",
-    "imageSourceUrl": "https://www.jimin.jp/member/202134.html",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
-    "imageMaskBottom": true,
+    "imageMaskBottom": false,
     "imageMaskMode": "pixelate-bottom"
   },
   {
@@ -3560,11 +3575,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Susumu_Yamaguchi_20230123shiseihoshin_a_06.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E6%99%8B_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "山口壯",
@@ -3632,13 +3648,13 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/ckeditor/pictures/1738643/0bf8cbe2-78ba-425c-b69a-4cec7df91827.jpg",
-    "imageSource": "trusted-fallback",
-    "imageSourceUrl": "https://go2senkyo.com/seijika/186639/posts/1113937",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
-    "imageMaskBottom": true,
+    "imageMaskBottom": false,
     "imageMaskMode": "pixelate-bottom"
   },
   {
@@ -3713,8 +3729,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -3905,8 +3921,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -3944,8 +3960,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4199,8 +4215,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4262,8 +4278,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4277,8 +4293,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4304,8 +4320,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4331,8 +4347,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4346,8 +4362,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4361,8 +4377,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4388,8 +4404,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4439,8 +4455,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4454,8 +4470,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4469,8 +4485,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4535,8 +4551,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4550,8 +4566,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4565,11 +4581,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C5%8Dichir%C5%8D_Ichimura.jpg",
-    "imageSource": "wikidata-commons",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q6426248",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
+    "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "伊東信久",
@@ -4637,8 +4654,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4664,8 +4681,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4679,8 +4696,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4706,11 +4723,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "黒田征樹",
@@ -4742,8 +4760,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4769,8 +4787,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4796,11 +4814,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "萩原佳",
@@ -4808,8 +4827,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4835,8 +4854,8 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4874,11 +4893,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "美延映夫",
@@ -4886,11 +4906,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "村上智信",
@@ -4910,11 +4931,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "若狹清史",
@@ -4922,11 +4944,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "浅野哲",
@@ -4958,8 +4981,8 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -4997,11 +5020,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "河井昭成",
@@ -5009,11 +5033,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "許斐亮太郎",
@@ -5021,11 +5046,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "近藤雅彦",
@@ -5033,11 +5059,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "佐々木真琴",
@@ -5045,11 +5072,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "鈴木義弘",
@@ -5069,11 +5097,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "田中健",
@@ -5105,11 +5134,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "長友慎治",
@@ -5117,11 +5147,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "鍋島勢理",
@@ -5129,11 +5160,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "西岡秀子",
@@ -5165,11 +5197,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "橋本幹彦",
@@ -5189,11 +5222,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "深作ヘスス",
@@ -5273,11 +5307,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "石川勝",
@@ -5285,11 +5320,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "伊藤恵介",
@@ -5297,11 +5333,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "川裕一郎",
@@ -5321,11 +5358,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "工藤聖子",
@@ -5333,11 +5371,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "島村かおる",
@@ -5345,11 +5384,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "鈴木美香",
@@ -5357,11 +5397,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "谷浩一郎",
@@ -5369,11 +5410,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "豊田真由子",
@@ -5393,11 +5435,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "牧野俊一",
@@ -5405,11 +5448,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "吉川里奈",
@@ -5417,8 +5461,8 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -5444,11 +5488,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "宇佐美登",
@@ -5456,11 +5501,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "河合道雄",
@@ -5468,11 +5514,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "小林修平",
@@ -5480,11 +5527,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "須田英太郎",
@@ -5492,8 +5540,8 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -5519,11 +5567,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "林拓海",
@@ -5531,11 +5580,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "古川あおい",
@@ -5543,11 +5593,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "峰島侑也",
@@ -5555,11 +5606,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "武藤かず子",
@@ -5567,11 +5619,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "山田瑛理",
@@ -5579,11 +5632,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "塩川鉄也",
@@ -5603,8 +5657,8 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -5654,11 +5708,12 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "河村たかし",
@@ -5666,8 +5721,8 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -5681,11 +5736,12 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   },
   {
     "name": "森英介",
@@ -5705,8 +5761,8 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
     "aiGuess": false,
@@ -5720,10 +5776,11 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "",
+    "image": "assets/no-photo.webp",
+    "imageSource": "fallback-manual",
     "imageSourceUrl": "",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageMaskBottom": false
   }
 ]
