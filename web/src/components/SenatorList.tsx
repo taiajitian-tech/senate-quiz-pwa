@@ -99,7 +99,7 @@ const styles: Record<string, React.CSSProperties> = {
   sub: { fontSize: 13, color: "#444" },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
-  avatarBox: { width: 112, height: 112, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 112px" },
+  avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
   meta: { flex: 1, display: "flex", flexDirection: "column", gap: 4 },

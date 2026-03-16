@@ -165,83 +165,104 @@ export default function Learn(props: Props) {
 
   return (
     <div style={styles.wrap}>
-      <div style={styles.header}>
-        <button type="button" style={styles.backBtn} onClick={props.onBackTitle}>タイトルへ戻る</button>
-        <div style={styles.headerRow}>
-          <div style={styles.h1}>{titleMap[props.mode]}</div>
-          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
-        </div>
-        <div style={styles.sub}>{targetLabels[props.target]}</div>
-        <div style={styles.modeDesc}>{modeHelp[props.mode]}</div>
-        <div style={styles.progressBox}>今回のセット {Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
-        {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
-      </div>
-
-      <div style={styles.card}>
-        {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
-          <div style={styles.doneWrap}>
-            <div style={styles.doneTitle}>今回の出題は終了です</div>
-            <div style={styles.doneSub}>結果を確認して、次のセットへ進めます。</div>
-            <div style={styles.resultGrid}>
-              <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
-              <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
-              <div style={styles.resultCard}><div style={styles.resultLabel}>うろ覚え</div><div style={styles.resultValue}>{sessionResult.hazy}</div></div>
-              <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていない</div><div style={styles.resultValue}>{sessionResult.notRemembered}</div></div>
-            </div>
-            <div style={styles.doneBtns}>
-              <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
-              <button type="button" style={styles.btn} onClick={props.onBackTitle}>終了してタイトルへ戻る</button>
-            </div>
+      <div style={styles.shell}>
+        <div style={styles.header}>
+          <div style={styles.topRow}>
+            <button type="button" style={styles.backBtn} onClick={props.onBackTitle}>タイトルへ戻る</button>
+            <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
           </div>
-        ) : !current ? (
-          <div style={styles.center}>{props.mode === "review" ? "今は忘れかけの復習がありません。" : "出題できるデータがありません。"}</div>
-        ) : (
-          <>
-            {props.mode === "reverse" ? (
-              <div style={styles.block}>
+          <div style={styles.h1}>{titleMap[props.mode]}</div>
+          <div style={styles.subRow}>
+            <div style={styles.sub}>{targetLabels[props.target]}</div>
+            <div style={styles.progressBox}>{Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
+          </div>
+          <div style={styles.modeDesc}>{modeHelp[props.mode]}</div>
+          {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
+        </div>
+
+        <div style={styles.card}>
+          {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
+            <div style={styles.doneWrap}>
+              <div style={styles.doneTitle}>今回の出題は終了です</div>
+              <div style={styles.doneSub}>結果を確認して、次のセットへ進めます。</div>
+              <div style={styles.resultGrid}>
+                <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
+                <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
+                <div style={styles.resultCard}><div style={styles.resultLabel}>うろ覚え</div><div style={styles.resultValue}>{sessionResult.hazy}</div></div>
+                <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていない</div><div style={styles.resultValue}>{sessionResult.notRemembered}</div></div>
+              </div>
+              <div style={styles.doneBtns}>
+                <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
+                <button type="button" style={styles.btn} onClick={props.onBackTitle}>終了してタイトルへ戻る</button>
+              </div>
+            </div>
+          ) : !current ? (
+            <div style={styles.center}>{props.mode === "review" ? "今は忘れかけの復習がありません。" : "出題できるデータがありません。"}</div>
+          ) : props.mode === "reverse" ? (
+            <div style={styles.quizLayout}>
+              <div style={styles.infoZone}>
                 <div style={styles.answerName}>{formatNameWithKana(current)}</div>
                 <div style={styles.answerGroup}>{current.group ?? ""}</div>
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
-                  <>
+                  <div style={styles.promptBox}>
                     <div style={styles.msg}>顔を思い出してから、答えを表示してください。</div>
                     <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
-                  </>
+                  </div>
+                ) : null}
+              </div>
+              <div style={styles.imageZone}>
+                {revealed ? (
+                  <div style={styles.imgBox}>
+                    <SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" />
+                  </div>
                 ) : (
-                  <>
-                    <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
-                    <div style={styles.gradeBtns}>
-                      <button type="button" style={styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
-                      <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
-                      <button type="button" style={styles.btn} onClick={() => onGrade("again")}>覚えていない</button>
-                    </div>
-                  </>
+                  <div style={styles.placeholderBox}>表示前</div>
                 )}
               </div>
-            ) : (
-              <>
-                <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
+              <div style={styles.actionZone}>
+                {revealed ? (
+                  <div style={styles.gradeBtns}>
+                    <button type="button" style={styles.btnRemembered} onClick={() => onGrade("good")}>覚えていた</button>
+                    <button type="button" style={styles.btnHazy} onClick={() => onGrade("hard")}>うろ覚え</button>
+                    <button type="button" style={styles.btnForgot} onClick={() => onGrade("again")}>覚えていない</button>
+                  </div>
+                ) : <div style={styles.actionSpacer} />}
+              </div>
+            </div>
+          ) : (
+            <div style={styles.quizLayout}>
+              <div style={styles.imageZone}>
+                <div style={styles.imgBox}>
+                  <SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" />
+                </div>
+              </div>
+              <div style={styles.infoZone}>
                 {!revealed ? (
-                  <div style={styles.block}>
+                  <div style={styles.promptBox}>
                     <div style={styles.msg}>名前を思い出してから、答えを表示してください。</div>
                     <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
                   </div>
                 ) : (
-                  <div style={styles.block}>
+                  <>
                     <div style={styles.answerName}>{formatNameWithKana(current)}</div>
                     <div style={styles.answerGroup}>{current.group ?? ""}</div>
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
-                    <div style={styles.gradeBtns}>
-                      <button type="button" style={styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
-                      <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
-                      <button type="button" style={styles.btn} onClick={() => onGrade("again")}>覚えていない</button>
-                    </div>
-                  </div>
+                  </>
                 )}
-              </>
-            )}
-          </>
-        )}
+              </div>
+              <div style={styles.actionZone}>
+                {revealed ? (
+                  <div style={styles.gradeBtns}>
+                    <button type="button" style={styles.btnRemembered} onClick={() => onGrade("good")}>覚えていた</button>
+                    <button type="button" style={styles.btnHazy} onClick={() => onGrade("hard")}>うろ覚え</button>
+                    <button type="button" style={styles.btnForgot} onClick={() => onGrade("again")}>覚えていない</button>
+                  </div>
+                ) : <div style={styles.actionSpacer} />}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <HelpModal open={helpOpen} title="このモードの使い方" onClose={() => setHelpOpen(false)}>
@@ -261,29 +282,40 @@ export default function Learn(props: Props) {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center", background: "#f7f8fa" },
-  header: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 8 },
-  headerRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
-  backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
-  helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
-  h1: { fontSize: 20, fontWeight: 800 },
-  sub: { fontSize: 13, color: "#666" },
-  modeDesc: { fontSize: 14, color: "#444" },
-  progressBox: { alignSelf: "flex-start", padding: "6px 10px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 13, color: "#0958b3" },
-  card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 320, background: "#fff" },
-  center: { margin: "auto", color: "#666", fontSize: 14 },
-  imgBox: { display: "flex", justifyContent: "center" },
-  img: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
-  noImg: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
-  block: { display: "flex", flexDirection: "column", gap: 10 },
-  msg: { fontSize: 15 },
-  primaryBtn: { padding: "14px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 18, fontWeight: 700 },
-  answerName: { fontSize: 24, fontWeight: 800, textAlign: "center" },
-  answerGroup: { fontSize: 15, color: "#555", textAlign: "center" },
-  guessBadge: { alignSelf: "center", padding: "4px 10px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
-  gradeBtns: { display: "flex", flexDirection: "column", gap: 12, width: "100%" },
-  btn: { width: "100%", padding: "14px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 18 },
-  doneWrap: { display: "flex", flexDirection: "column", gap: 12 },
+  wrap: { minHeight: "100dvh", background: "#f7f8fa", padding: 8, overflow: "hidden" },
+  shell: { width: "min(720px, 100%)", margin: "0 auto", minHeight: "calc(100dvh - 16px)", display: "flex", flexDirection: "column", gap: 8 },
+  header: { display: "flex", flexDirection: "column", gap: 6, background: "#fff", border: "1px solid #ddd", borderRadius: 14, padding: 10, flex: "0 0 auto" },
+  topRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
+  backBtn: { padding: "9px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 13 },
+  helpBtn: { padding: "9px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 42, fontSize: 15 },
+  h1: { fontSize: 18, fontWeight: 800, lineHeight: 1.25 },
+  subRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
+  sub: { fontSize: 12, color: "#555" },
+  modeDesc: { fontSize: 12, color: "#444", lineHeight: 1.5 },
+  progressBox: { padding: "4px 10px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 12, color: "#0958b3", fontWeight: 700, whiteSpace: "nowrap" },
+  card: { flex: 1, minHeight: 0, border: "1px solid #ddd", borderRadius: 14, padding: 10, background: "#fff", display: "flex", overflow: "hidden" },
+  center: { margin: "auto", color: "#666", fontSize: 14, textAlign: "center" },
+  quizLayout: { display: "grid", gridTemplateRows: "minmax(0, 45vh) auto auto", gap: 10, width: "100%", minHeight: 0 },
+  imageZone: { minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center" },
+  imgBox: { width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
+  img: { width: "100%", height: "100%", maxHeight: "45vh", objectFit: "contain", borderRadius: 12, background: "#f3f3f3" },
+  noImg: { width: "100%", height: "100%", maxHeight: "45vh", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
+  placeholderBox: { width: "100%", height: "100%", maxHeight: "45vh", borderRadius: 12, background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", fontSize: 14 },
+  infoZone: { display: "flex", flexDirection: "column", gap: 6, alignItems: "center", justifyContent: "center", textAlign: "center" },
+  promptBox: { width: "100%", display: "flex", flexDirection: "column", gap: 8, alignItems: "stretch" },
+  msg: { fontSize: 14, color: "#222", lineHeight: 1.5, textAlign: "center" },
+  primaryBtn: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #0969da", background: "#eef6ff", fontSize: 17, fontWeight: 700 },
+  answerName: { fontSize: 22, fontWeight: 800, lineHeight: 1.25 },
+  answerGroup: { fontSize: 13, color: "#555", lineHeight: 1.4 },
+  guessBadge: { padding: "4px 10px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
+  actionZone: { minHeight: 0 },
+  gradeBtns: { display: "flex", flexDirection: "column", gap: 8, width: "100%" },
+  actionSpacer: { minHeight: 0 },
+  btn: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #999", background: "#fff", fontSize: 17 },
+  btnRemembered: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #1a7f37", background: "#effcf3", fontSize: 17, fontWeight: 700 },
+  btnHazy: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #b26a00", background: "#fff6e8", fontSize: 17, fontWeight: 700 },
+  btnForgot: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 17, fontWeight: 700 },
+  doneWrap: { display: "flex", flexDirection: "column", gap: 12, width: "100%", margin: "auto 0" },
   doneTitle: { fontSize: 24, fontWeight: 800, textAlign: "center" },
   doneSub: { fontSize: 14, color: "#555", textAlign: "center" },
   resultGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },

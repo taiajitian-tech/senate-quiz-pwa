@@ -106,6 +106,98 @@ const htmlCache = new Map();
 const searchCache = new Map();
 const profilePageCache = new Map();
 
+const SEARCH_HISTORY_PATH = path.resolve("public/data/image-search-cache.json");
+const URL_HISTORY_PATH = path.resolve("public/data/representatives-image-url-cache.json");
+
+function readJsonFileSafe(filePath, fallback) {
+  if (!fs.existsSync(filePath)) return fallback;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
+  }
+}
+
+const persistedSearchHistory = readJsonFileSafe(SEARCH_HISTORY_PATH, {});
+const persistedUrlHistory = readJsonFileSafe(URL_HISTORY_PATH, {});
+let searchHistoryDirty = false;
+let urlHistoryDirty = false;
+
+function ensureMemberSearchHistory(name) {
+  const key = cleanName(name);
+  if (!persistedSearchHistory[key] || typeof persistedSearchHistory[key] !== "object") {
+    persistedSearchHistory[key] = { name: normalizeSpace(name), sources: {}, resolved: false, updatedAt: "" };
+    searchHistoryDirty = true;
+  }
+  if (!persistedSearchHistory[key].sources || typeof persistedSearchHistory[key].sources !== "object") {
+    persistedSearchHistory[key].sources = {};
+    searchHistoryDirty = true;
+  }
+  return persistedSearchHistory[key];
+}
+
+function getSourceState(name, sourceKey) {
+  const entry = ensureMemberSearchHistory(name);
+  return String(entry.sources?.[sourceKey] || "");
+}
+
+function setSourceState(name, sourceKey, state) {
+  const entry = ensureMemberSearchHistory(name);
+  if (entry.sources[sourceKey] === state) return;
+  entry.sources[sourceKey] = state;
+  entry.updatedAt = new Date().toISOString();
+  if (state === "success") entry.resolved = true;
+  searchHistoryDirty = true;
+}
+
+function shouldSkipSource(name, sourceKey) {
+  const state = getSourceState(name, sourceKey);
+  return state === "not_found";
+}
+
+function inferBlockedUrlReason(url = "") {
+  const text = String(url).toLowerCase();
+  if (!text) return "";
+  if (/logo/.test(text)) return "logo";
+  if (/poster|leaflet|flyer|manifesto|senkyo/.test(text)) return "poster";
+  if (/group|集合|allmember|members/.test(text)) return "group-photo";
+  if (/text|policy|profile_pdf|pdf/.test(text)) return "text-heavy";
+  return "";
+}
+
+function markUrlState(url, state, reason = "") {
+  if (!url) return;
+  const prev = persistedUrlHistory[url] || {};
+  if (prev.state === state && prev.reason === reason) return;
+  persistedUrlHistory[url] = { state, reason, updatedAt: new Date().toISOString() };
+  urlHistoryDirty = true;
+}
+
+function shouldSkipUrl(url = "") {
+  if (!url) return true;
+  const blocked = inferBlockedUrlReason(url);
+  if (blocked) {
+    markUrlState(url, "blocked", blocked);
+    return true;
+  }
+  const state = persistedUrlHistory[url]?.state;
+  return state === "not_found" || state === "blocked";
+}
+
+function flushPersistentCaches() {
+  if (searchHistoryDirty) {
+    fs.writeFileSync(SEARCH_HISTORY_PATH, `${JSON.stringify(persistedSearchHistory, null, 2)}
+`, "utf8");
+    searchHistoryDirty = false;
+  }
+  if (urlHistoryDirty) {
+    fs.writeFileSync(URL_HISTORY_PATH, `${JSON.stringify(persistedUrlHistory, null, 2)}
+`, "utf8");
+    urlHistoryDirty = false;
+  }
+}
+
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -322,6 +414,18 @@ function extractSearchTargetsFromBing(html, allowedDomains = []) {
   return out;
 }
 
+
+function mapSourceLabelToHistoryKey(sourceLabel = "") {
+  if (/manual/.test(sourceLabel)) return "official";
+  if (/official/.test(sourceLabel)) return "official";
+  if (/wikipedia/.test(sourceLabel)) return "wikipedia";
+  if (/wikidata|wikimedia|commons/.test(sourceLabel)) return "wikimedia";
+  if (/party/.test(sourceLabel)) return "party";
+  if (/trusted-fallback/.test(sourceLabel)) return "news";
+  if (/web-fallback/.test(sourceLabel)) return "web";
+  return sourceLabel || "web";
+}
+
 async function searchTargets(query, allowedDomains = []) {
   const cacheKey = JSON.stringify({ query, allowedDomains });
   if (searchCache.has(cacheKey)) return searchCache.get(cacheKey);
@@ -332,7 +436,7 @@ async function searchTargets(query, allowedDomains = []) {
 
     const pushAll = (items) => {
       for (const target of items) {
-        if (seen.has(target)) continue;
+        if (seen.has(target) || shouldSkipUrl(target)) continue;
         seen.add(target);
         results.push(target);
         if (results.length >= SEARCH_RESULT_LIMIT) break;
@@ -378,6 +482,7 @@ function collectImageCandidatesFromPage(html, pageUrl, name, pageWeight = 0) {
   const pushCandidate = (src, alt = "", sourceHint = "page") => {
     const url = normalizeUrl(src, pageUrl);
     if (!url) return;
+    if (shouldSkipUrl(url)) return;
     if (seen.has(url)) return;
     seen.add(url);
     const score = scoreImageCandidate(url, alt, name, pageUrl, sourceHint) + pageWeight;
@@ -425,23 +530,36 @@ function collectImageCandidatesFromPage(html, pageUrl, name, pageWeight = 0) {
 }
 
 async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "official", pageWeight = 0) {
-  if (!profileUrl) return null;
+  if (!profileUrl || shouldSkipUrl(profileUrl)) return null;
+  const historyKey = mapSourceLabelToHistoryKey(sourceLabel);
+  if (shouldSkipSource(name, historyKey)) return null;
   const cacheKey = `${sourceLabel}:${profileUrl}:${cleanName(name)}`;
   if (profilePageCache.has(cacheKey)) return profilePageCache.get(cacheKey);
 
   const promise = (async () => {
     try {
       const html = await fetchPage(profileUrl);
-      if (!looksPoliticianPage(html, name)) return null;
+      if (!looksPoliticianPage(html, name)) {
+        setSourceState(name, historyKey, "not_found");
+        markUrlState(profileUrl, "not_found", "not-politician-page");
+        return null;
+      }
       const candidates = collectImageCandidatesFromPage(html, profileUrl, name, pageWeight);
       const best = candidates[0];
-      if (!best) return null;
+      if (!best) {
+        setSourceState(name, historyKey, "not_found");
+        markUrlState(profileUrl, "not_found", "no-image-candidate");
+        return null;
+      }
+      setSourceState(name, historyKey, "success");
       return {
         url: best.url,
         source: sourceLabel,
         sourceUrl: profileUrl
       };
     } catch {
+      setSourceState(name, historyKey, "not_found");
+      markUrlState(profileUrl, "not_found", "fetch-failed");
       return null;
     }
   })();
@@ -451,6 +569,7 @@ async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "offi
 }
 
 async function searchWikipediaImage(name) {
+  if (shouldSkipSource(name, "wikipedia")) return null;
   const titleCandidates = [name, `${name} (政治家)`, `${name}_(政治家)`];
   for (const rawTitle of titleCandidates) {
     const wikiTitle = rawTitle.replace(/ /g, "_");
@@ -458,6 +577,7 @@ async function searchWikipediaImage(name) {
       const summary = await fetchJson(`https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`);
       const img = summary?.originalimage?.source || summary?.thumbnail?.source || "";
       if (img && /^https?:\/\//.test(img)) {
+        setSourceState(name, "wikipedia", "success");
         return {
           url: img,
           source: "wikipedia",
@@ -489,6 +609,7 @@ async function searchWikipediaImage(name) {
       const first = Object.values(pages)[0];
       const img = first?.original?.source || first?.thumbnail?.source || "";
       if (img) {
+        setSourceState(name, "wikipedia", "success");
         return {
           url: img,
           source: "wikipedia",
@@ -500,6 +621,7 @@ async function searchWikipediaImage(name) {
     }
   }
 
+  setSourceState(name, "wikipedia", "not_found");
   return null;
 }
 
@@ -514,6 +636,7 @@ function isLikelyWikidataPersonCandidate(candidate = {}, name = "") {
 }
 
 async function searchWikidataCommonsImage(name) {
+  if (shouldSkipSource(name, "wikimedia")) return null;
   const queries = [`${name} 政治家`, `${name} 衆議院議員`, name];
   for (const query of queries) {
     try {
@@ -530,6 +653,7 @@ async function searchWikidataCommonsImage(name) {
         const fileName = entity?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
         if (!fileName) continue;
         const commonsFile = String(fileName).replace(/ /g, "_");
+        setSourceState(name, "wikimedia", "success");
         return {
           url: `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(commonsFile)}`,
           source: "wikidata-commons",
@@ -540,6 +664,7 @@ async function searchWikidataCommonsImage(name) {
       // continue
     }
   }
+  setSourceState(name, "wikimedia", "not_found");
   return null;
 }
 
@@ -550,6 +675,7 @@ function partyHintsFor(member) {
 
 async function searchFromPartyHints(member) {
   const name = member.name;
+  if (shouldSkipSource(name, "party")) return null;
   for (const hint of partyHintsFor(member)) {
     for (const query of hint.queries(name)) {
       const targets = await searchTargets(query, hint.domains);
@@ -560,11 +686,13 @@ async function searchFromPartyHints(member) {
       }
     }
   }
+  setSourceState(name, "party", "not_found");
   return null;
 }
 
 async function searchFromGeneralWeb(member) {
   const name = member.name;
+  if (shouldSkipSource(name, "web")) return null;
   const queries = GENERAL_QUERY_VARIANTS(name);
   for (const query of queries) {
     const targets = await searchTargets(query);
@@ -576,11 +704,13 @@ async function searchFromGeneralWeb(member) {
       await sleep(WAIT_MS);
     }
   }
+  setSourceState(name, "web", "not_found");
   return null;
 }
 
 async function searchFromTrustedFallbacks(member) {
   const name = member.name;
+  if (shouldSkipSource(name, "news")) return null;
   const queries = [
     `site:go2senkyo.com ${name}`,
     `site:smartvote.jp ${name}`,
@@ -596,6 +726,7 @@ async function searchFromTrustedFallbacks(member) {
       await sleep(WAIT_MS);
     }
   }
+  setSourceState(name, "news", "not_found");
   return null;
 }
 
@@ -604,11 +735,16 @@ function readManualSourceEntry(member) {
 }
 
 async function resolveImageFromManualSourcePages(member) {
+  if (shouldSkipSource(member.name, "official")) return null;
   const entry = readManualSourceEntry(member);
-  if (!entry) return null;
+  if (!entry) {
+    setSourceState(member.name, "official", "not_found");
+    return null;
+  }
 
   const directImageUrl = normalizeUrl(entry.directImageUrl || entry.imageUrl || "");
   if (directImageUrl) {
+    setSourceState(member.name, "official", "success");
     return {
       url: directImageUrl,
       source: "manual-direct-image",
@@ -622,6 +758,7 @@ async function resolveImageFromManualSourcePages(member) {
     if (found) return found;
     await sleep(WAIT_MS);
   }
+  setSourceState(member.name, "official", "not_found");
   return null;
 }
 
@@ -728,6 +865,13 @@ function buildFixTargetNameSet() {
 
 const FIX_TARGET_NAME_SET = buildFixTargetNameSet();
 
+const SEARCH_SOURCE_ORDER = ["official", "party", "wikipedia", "wikimedia", "news", "web"];
+
+function hasRemainingSources(name) {
+  return SEARCH_SOURCE_ORDER.some((sourceKey) => getSourceState(name, sourceKey) !== "not_found");
+}
+
+
 function isFixTarget(member) {
   return FIX_TARGET_NAME_SET.has(cleanName(member?.name || ""));
 }
@@ -739,7 +883,7 @@ function shouldProcessMember(member) {
   if (EFFECTIVE_TARGET_MODE === "all") return true;
   if (EFFECTIVE_TARGET_MODE === "review") return hasImage && aiGuess;
   if (EFFECTIVE_TARGET_MODE === "fix") return isFixTarget(member);
-  return !hasImage;
+  return !hasImage && hasRemainingSources(member.name);
 }
 
 function buildWorkQueue(members) {
@@ -781,7 +925,8 @@ async function main() {
         console.log(`missing: ${member.name}`);
       }
 
-      if ((queueIndex + 1) % 10 === 0 || queueIndex + 1 === queue.length) {
+      if ((queueIndex + 1) % 5 === 0 || queueIndex + 1 === queue.length) {
+        flushPersistentCaches();
         console.log(
           `progress: ${queueIndex + 1}/${queue.length} lastGlobalIndex=${index + 1}/${members.length} filled=${filled} missing=${stillMissing}`
         );

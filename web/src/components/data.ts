@@ -10,7 +10,7 @@ export type Person = {
 };
 
 export const targetLabels: Record<Target, string> = {
-  senators: "現職議員",
+  senators: "現職参議院議員",
   representatives: "現職衆議院議員",
   ministers: "現職大臣",
 };
