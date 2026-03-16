@@ -44,7 +44,7 @@ export default function SenatorList(props: Props) {
   const filtered = useMemo(() => {
     const key = q.trim().toLowerCase();
     if (!key) return items;
-    return items.filter((s) => s.name.toLowerCase().includes(key) || (s.group ?? "").toLowerCase().includes(key));
+    return items.filter((s) => s.name.toLowerCase().includes(key) || (s.kana ?? "").toLowerCase().includes(key) || (s.group ?? "").toLowerCase().includes(key));
   }, [q, items]);
 
   return (
@@ -75,6 +75,7 @@ export default function SenatorList(props: Props) {
                   {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
                 </div>
               </div>
+              {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
               <div style={styles.group}>{s.group ?? ""}</div>
             </div>
           </div>
@@ -98,12 +99,13 @@ const styles: Record<string, React.CSSProperties> = {
   sub: { fontSize: 13, color: "#444" },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
-  avatarBox: { width: 88, height: 88, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 88px" },
+  avatarBox: { width: 112, height: 112, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 112px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
   meta: { flex: 1, display: "flex", flexDirection: "column", gap: 4 },
   nameRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   name: { fontSize: 18, fontWeight: 800 },
+  kana: { fontSize: 14, color: "#666" },
   group: { fontSize: 15, color: "#444" },
   badges: { display: "flex", gap: 6, alignItems: "center" },
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },

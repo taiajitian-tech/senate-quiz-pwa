@@ -52,3 +52,23 @@
 - `.github/workflows/update-representatives.yml`
 - `web/public/data/representatives-image-fix-targets.json`
 - `web/scripts/representativeImageSourcePages.json`
+
+
+## 今回のUI修正
+- 学習画面の出題画像を拡大した。
+- 自動再生の画像を拡大した。
+- 旧四択画面の下部ボタンを縦並びに戻した。
+- 一覧にふりがな表示を追加した。
+- 一覧の顔画像サイズを拡大した。
+
+## ユーザー側で手動実行する操作
+画面: GitHub → Actions
+1. update-representatives
+2. Run workflow
+3. Branch: main を確認
+4. Run workflow
+
+理由
+- missing 議員の画像探索
+- fix-target に入れた議員の再探索
+- representatives.json / 各レポート更新

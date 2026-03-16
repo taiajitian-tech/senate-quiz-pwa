@@ -4,7 +4,7 @@ import { applyGrade, type Grade, type ProgressItem } from "./srs";
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { formatNameWithKana, parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -66,12 +66,6 @@ export default function Learn(props: Props) {
   const [askedIds, setAskedIds] = useState<number[]>([]);
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionDone, setSessionDone] = useState(false);
-  const [viewport, setViewport] = useState(() => ({
-    width: typeof window !== "undefined" ? window.innerWidth : 390,
-    height: typeof window !== "undefined" ? window.innerHeight : 844,
-  }));
-
-  const isCompact = viewport.width <= 480 || viewport.height <= 780;
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
@@ -83,15 +77,6 @@ export default function Learn(props: Props) {
     setSessionDone(false);
     setRevealed(false);
   }, [props.target, props.mode]);
-
-  useEffect(() => {
-    const onResize = () => {
-      setViewport({ width: window.innerWidth, height: window.innerHeight });
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
 
   useEffect(() => {
     (async () => {
@@ -179,8 +164,8 @@ export default function Learn(props: Props) {
   };
 
   return (
-    <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-      <div style={isCompact ? styles.headerCompact : styles.header}>
+    <div style={styles.wrap}>
+      <div style={styles.header}>
         <button type="button" style={styles.backBtn} onClick={props.onBackTitle}>タイトルへ戻る</button>
         <div style={styles.headerRow}>
           <div style={styles.h1}>{titleMap[props.mode]}</div>
@@ -188,11 +173,11 @@ export default function Learn(props: Props) {
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
         <div style={styles.modeDesc}>{modeHelp[props.mode]}</div>
-        <div style={isCompact ? styles.progressBoxCompact : styles.progressBox}>今回のセット {Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
+        <div style={styles.progressBox}>今回のセット {Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
-      <div style={isCompact ? styles.cardCompact : styles.card}>
+      <div style={styles.card}>
         {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
           <div style={styles.doneWrap}>
             <div style={styles.doneTitle}>今回の出題は終了です</div>
@@ -214,42 +199,42 @@ export default function Learn(props: Props) {
           <>
             {props.mode === "reverse" ? (
               <div style={styles.block}>
-                <div style={isCompact ? styles.answerNameCompact : styles.answerName}>{current.name}</div>
-                <div style={isCompact ? styles.answerGroupCompact : styles.answerGroup}>{current.group ?? ""}</div>
+                <div style={styles.answerName}>{formatNameWithKana(current)}</div>
+                <div style={styles.answerGroup}>{current.group ?? ""}</div>
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
                   <>
-                    <div style={isCompact ? styles.msgCompact : styles.msg}>顔を思い出してから、答えを表示してください。</div>
-                    <button type="button" style={isCompact ? styles.primaryBtnCompact : styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
+                    <div style={styles.msg}>顔を思い出してから、答えを表示してください。</div>
+                    <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
                   </>
                 ) : (
                   <>
-                    <div style={isCompact ? styles.imgBoxCompact : styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={isCompact ? styles.imgCompact : styles.img} fallbackStyle={isCompact ? styles.noImgCompact : styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
-                    <div style={isCompact ? styles.gradeBtnsCompact : styles.gradeBtns}>
-                      <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
-                      <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
-                      <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("again")}>覚えていない</button>
+                    <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
+                    <div style={styles.gradeBtns}>
+                      <button type="button" style={styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
+                      <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
+                      <button type="button" style={styles.btn} onClick={() => onGrade("again")}>覚えていない</button>
                     </div>
                   </>
                 )}
               </div>
             ) : (
               <>
-                <div style={isCompact ? styles.imgBoxCompact : styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={isCompact ? styles.imgCompact : styles.img} fallbackStyle={isCompact ? styles.noImgCompact : styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
+                <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
                 {!revealed ? (
                   <div style={styles.block}>
-                    <div style={isCompact ? styles.msgCompact : styles.msg}>名前を思い出してから、答えを表示してください。</div>
-                    <button type="button" style={isCompact ? styles.primaryBtnCompact : styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
+                    <div style={styles.msg}>名前を思い出してから、答えを表示してください。</div>
+                    <button type="button" style={styles.primaryBtn} onClick={() => setRevealed(true)}>答えを見る</button>
                   </div>
                 ) : (
                   <div style={styles.block}>
-                    <div style={isCompact ? styles.answerNameCompact : styles.answerName}>{current.name}</div>
-                    <div style={isCompact ? styles.answerGroupCompact : styles.answerGroup}>{current.group ?? ""}</div>
+                    <div style={styles.answerName}>{formatNameWithKana(current)}</div>
+                    <div style={styles.answerGroup}>{current.group ?? ""}</div>
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
-                    <div style={isCompact ? styles.gradeBtnsCompact : styles.gradeBtns}>
-                      <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
-                      <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
-                      <button type="button" style={isCompact ? styles.btnCompact : styles.btn} onClick={() => onGrade("again")}>覚えていない</button>
+                    <div style={styles.gradeBtns}>
+                      <button type="button" style={styles.btn} onClick={() => onGrade("good")}>覚えていた</button>
+                      <button type="button" style={styles.btn} onClick={() => onGrade("hard")}>うろ覚え</button>
+                      <button type="button" style={styles.btn} onClick={() => onGrade("again")}>覚えていない</button>
                     </div>
                   </div>
                 )}
@@ -276,10 +261,8 @@ export default function Learn(props: Props) {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  wrap: { minHeight: "100dvh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center", background: "#f7f8fa" },
-  wrapCompact: { minHeight: "100dvh", padding: 10, display: "flex", flexDirection: "column", gap: 8, alignItems: "center", background: "#f7f8fa" },
+  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center", background: "#f7f8fa" },
   header: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 8 },
-  headerCompact: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 6 },
   headerRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
   backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
@@ -287,30 +270,19 @@ const styles: Record<string, React.CSSProperties> = {
   sub: { fontSize: 13, color: "#666" },
   modeDesc: { fontSize: 14, color: "#444" },
   progressBox: { alignSelf: "flex-start", padding: "6px 10px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 13, color: "#0958b3" },
-  progressBoxCompact: { alignSelf: "flex-start", padding: "5px 8px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 12, color: "#0958b3" },
   card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 320, background: "#fff" },
-  cardCompact: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 10, display: "flex", flexDirection: "column", gap: 8, minHeight: "calc(100dvh - 136px)", background: "#fff", overflow: "hidden" },
   center: { margin: "auto", color: "#666", fontSize: 14 },
   imgBox: { display: "flex", justifyContent: "center" },
-  imgBoxCompact: { display: "flex", justifyContent: "center" },
-  img: { width: "min(320px, 80vw)", height: "min(320px, 80vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
-  imgCompact: { width: "min(210px, 56vw)", height: "min(210px, 56vw)", objectFit: "cover", borderRadius: 10, background: "#f3f3f3" },
-  noImg: { width: "min(320px, 80vw)", height: "min(320px, 80vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
-  noImgCompact: { width: "min(210px, 56vw)", height: "min(210px, 56vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 10 },
-  block: { display: "flex", flexDirection: "column", gap: 10, flex: 1, justifyContent: "center" },
+  img: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
+  noImg: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
+  block: { display: "flex", flexDirection: "column", gap: 10 },
   msg: { fontSize: 15 },
-  msgCompact: { fontSize: 13, textAlign: "center" },
   primaryBtn: { padding: "14px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 18, fontWeight: 700 },
-  primaryBtnCompact: { padding: "11px 10px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 16, fontWeight: 700 },
   answerName: { fontSize: 24, fontWeight: 800, textAlign: "center" },
-  answerNameCompact: { fontSize: 20, fontWeight: 800, textAlign: "center", lineHeight: 1.25 },
   answerGroup: { fontSize: 15, color: "#555", textAlign: "center" },
-  answerGroupCompact: { fontSize: 13, color: "#555", textAlign: "center", lineHeight: 1.3 },
   guessBadge: { alignSelf: "center", padding: "4px 10px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
-  gradeBtns: { display: "grid", gridTemplateColumns: "1fr", gap: 8 },
-  gradeBtnsCompact: { display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 },
-  btn: { padding: "12px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 16 },
-  btnCompact: { padding: "10px 6px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 13, lineHeight: 1.25 },
+  gradeBtns: { display: "flex", flexDirection: "column", gap: 12, width: "100%" },
+  btn: { width: "100%", padding: "14px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 18 },
   doneWrap: { display: "flex", flexDirection: "column", gap: 12 },
   doneTitle: { fontSize: 24, fontWeight: 800, textAlign: "center" },
   doneSub: { fontSize: 14, color: "#555", textAlign: "center" },

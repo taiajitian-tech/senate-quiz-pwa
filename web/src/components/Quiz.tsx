@@ -7,7 +7,6 @@ type Senator = {
   name: string;
   group?: string;
   images: string[];
-  imageMaskBottom?: boolean;
 };
 
 type Mode = "normal" | "review";
@@ -54,12 +53,6 @@ export default function Quiz(props: Props) {
 
   const [imgError, setImgError] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
-  const [viewport, setViewport] = useState(() => ({
-    width: typeof window !== "undefined" ? window.innerWidth : 390,
-    height: typeof window !== "undefined" ? window.innerHeight : 844,
-  }));
-
-  const isCompact = viewport.width <= 480 || viewport.height <= 780;
 
   // GitHub Pages 配下対応（BASE_URL）
   const baseUrl = import.meta.env.BASE_URL ?? "/";
@@ -68,15 +61,6 @@ export default function Quiz(props: Props) {
   // 成績（永続）
   const [stats, setStats] = useState(() => loadStats(target));
   const [masteredSet, setMasteredSet] = useState<Set<number>>(() => new Set(loadMasteredIds(target)));
-
-  useEffect(() => {
-    const onResize = () => {
-      setViewport({ width: window.innerWidth, height: window.innerHeight });
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
 
   // 初期ロード
   useEffect(() => {
@@ -314,8 +298,8 @@ export default function Quiz(props: Props) {
     return (
       <>
         <BackBar />
-        <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-        <div style={isCompact ? styles.cardCompact : styles.card}>
+        <div style={styles.wrap}>
+        <div style={styles.card}>
           <div style={styles.title}>読み込み中</div>
           <div style={styles.sub}>senators.json を確認</div>
         </div>
@@ -328,8 +312,8 @@ export default function Quiz(props: Props) {
     return (
       <>
         <BackBar />
-        <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-        <div style={isCompact ? styles.cardCompact : styles.card}>
+        <div style={styles.wrap}>
+        <div style={styles.card}>
           <div style={styles.title}>データを読み込めませんでした</div>
           <div style={styles.sub}>{loadError ? loadError : "senators.json が 0 件です"}</div>
           <div style={{ ...styles.sub, wordBreak: "break-all", marginTop: 12 }}>
@@ -352,8 +336,8 @@ export default function Quiz(props: Props) {
     return (
       <>
         <BackBar />
-        <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-        <div style={isCompact ? styles.cardCompact : styles.card}>
+        <div style={styles.wrap}>
+        <div style={styles.card}>
           <div style={styles.title}>{normalTotal}問終了</div>
           <div style={styles.sub}>間違い登録：{wrongCount} 件</div>
 
@@ -388,8 +372,8 @@ export default function Quiz(props: Props) {
     return (
       <>
         <BackBar />
-        <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-        <div style={isCompact ? styles.cardCompact : styles.card}>
+        <div style={styles.wrap}>
+        <div style={styles.card}>
           <div style={styles.title}>復習完了</div>
           <div style={styles.sub}>間違いは全て解消されました</div>
 
@@ -412,8 +396,8 @@ export default function Quiz(props: Props) {
     return (
       <>
         <BackBar />
-        <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-        <div style={isCompact ? styles.cardCompact : styles.card}>
+        <div style={styles.wrap}>
+        <div style={styles.card}>
           <div style={styles.title}>復習モード</div>
           <div style={styles.sub}>間違いデータを準備中</div>
           <div style={styles.actions}>
@@ -434,8 +418,8 @@ export default function Quiz(props: Props) {
     return (
       <>
         <BackBar />
-        <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-        <div style={isCompact ? styles.cardCompact : styles.card}>
+        <div style={styles.wrap}>
+        <div style={styles.card}>
           <div style={styles.title}>データ不整合</div>
         </div>
       </div>
@@ -446,15 +430,15 @@ export default function Quiz(props: Props) {
   return (
     <>
       <BackBar />
-      <div style={isCompact ? styles.wrapCompact : styles.wrap}>
-      <div style={isCompact ? styles.cardCompact : styles.card}>
-        <div style={isCompact ? styles.statsBarCompact : styles.statsBar}>
+      <div style={styles.wrap}>
+      <div style={styles.card}>
+        <div style={styles.statsBar}>
           <span>残り問題 {mode === "normal" ? Math.max(0, normalOrder.length - normalPos) : reviewRemaining}</span>
           <span>｜ 残り議員 {Math.max(0, senators.length - masteredSet.size)}</span>
           <span>｜ 正解 {stats.correctTotal}</span>
           <span>｜ 間違い {stats.wrongTotal}</span>
         </div>
-        <div style={isCompact ? styles.topRowCompact : styles.topRow}>
+        <div style={styles.topRow}>
           <div style={styles.modeTag}>
             {mode === "normal" ? "通常" : "復習"}
           </div>
@@ -464,9 +448,9 @@ export default function Quiz(props: Props) {
           </button>
         </div>
 
-        <div style={isCompact ? styles.titleCompact : styles.title}>この議員は誰？</div>
+        <div style={styles.title}>この議員は誰？</div>
 
-        <div style={isCompact ? styles.progressCompact : styles.progress}>
+        <div style={styles.progress}>
           {mode === "normal" ? (
             <span>
               {Math.min(normalPos + 1, normalTotal)}/{normalTotal}
@@ -476,23 +460,20 @@ export default function Quiz(props: Props) {
           )}
         </div>
 
-        <div style={isCompact ? styles.imageBoxCompact : styles.imageBox}>
+        <div style={styles.imageBox}>
           {imgUrl && !imgError ? (
-            <div style={isCompact ? styles.imageFrameCompact : styles.imageFrame}>
-              <img
-                src={imgUrl}
-                alt={current.name}
-                style={isCompact ? styles.imageCompact : styles.image}
-                onError={() => setImgError(true)}
-              />
-              {current.imageMaskBottom ? <div style={styles.imageMaskBottom} aria-hidden="true" /> : null}
-            </div>
+            <img
+              src={imgUrl}
+              alt={current.name}
+              style={styles.image}
+              onError={() => setImgError(true)}
+            />
           ) : (
-            <div style={isCompact ? styles.noImageCompact : styles.noImage}>画像なし</div>
+            <div style={styles.noImage}>画像なし</div>
           )}
         </div>
 
-        <div style={isCompact ? styles.groupCompact : styles.group}>{current.group ?? ""}</div>
+        <div style={styles.group}>{current.group ?? ""}</div>
 
         {senators.length > 0 && senators.length < 4 ? (
           <div style={styles.notice}>
@@ -500,7 +481,7 @@ export default function Quiz(props: Props) {
           </div>
         ) : null}
 
-        <div style={isCompact ? styles.choicesCompact : styles.choices}>
+        <div style={styles.choices}>
           {choices.map((id) => {
             const s = senatorsById.get(id);
             if (!s) return null;
@@ -529,7 +510,7 @@ export default function Quiz(props: Props) {
               <button
                 key={s.id}
                 type="button"
-                style={{ ...(isCompact ? styles.choiceBtnCompact : styles.choiceBtn), border, background }}
+                style={{ ...styles.choiceBtn, border, background }}
                 onClick={() => onSelect(id)}
               >
                 {label}
@@ -538,8 +519,8 @@ export default function Quiz(props: Props) {
           })}
         </div>
 
-        <div style={isCompact ? styles.footerCompact : styles.footer}>
-          <div style={isCompact ? styles.resultCompact : styles.result}>
+        <div style={styles.footer}>
+          <div style={styles.result}>
             {!isAnswered ? (
               <span>選択</span>
             ) : isCorrect ? (
@@ -552,17 +533,17 @@ export default function Quiz(props: Props) {
           </div>
 
           {mode === "normal" && isAnswered && isCorrect ? (
-            <div style={isCompact ? styles.afterCorrectActionsCompact : styles.afterCorrectActions}>
+            <div style={styles.afterCorrectActions}>
               <button
                 type="button"
-                style={isCompact ? styles.nextBtnCompact : styles.nextBtn}
+                style={styles.nextBtn}
                 onClick={onGotItByChoices}
               >
                 四択見て分かった
               </button>
               <button
                 type="button"
-                style={isCompact ? styles.nextBtnCompact : styles.nextBtn}
+                style={styles.nextBtn}
                 onClick={onKnewWithoutChoices}
               >
                 見なくても分かった
@@ -571,7 +552,7 @@ export default function Quiz(props: Props) {
           ) : (
             <button
               type="button"
-              style={isAnswered ? (isCompact ? styles.nextBtnCompact : styles.nextBtn) : (isCompact ? styles.nextBtnDisabledCompact : styles.nextBtnDisabled)}
+              style={isAnswered ? styles.nextBtn : styles.nextBtnDisabled}
               onClick={onNext}
               disabled={!isAnswered}
               aria-disabled={!isAnswered}
@@ -581,13 +562,13 @@ export default function Quiz(props: Props) {
           )}
         </div>
 
-        <div style={isCompact ? styles.bottomActionsCompact : styles.bottomActions}>
+        <div style={styles.bottomActions}>
           {mode === "normal" ? (
-            <button type="button" style={isCompact ? styles.secondaryBtnCompact : styles.secondaryBtn} onClick={startReview}>
+            <button type="button" style={styles.secondaryBtn} onClick={startReview}>
               復習モードへ
             </button>
           ) : (
-            <button type="button" style={isCompact ? styles.secondaryBtnCompact : styles.secondaryBtn} onClick={startNormal}>
+            <button type="button" style={styles.secondaryBtn} onClick={startNormal}>
               通常モードへ
             </button>
           )}
@@ -615,30 +596,12 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 10,
     background: "#fafafa",
   },
-  statsBarCompact: {
-    width: "100%",
-    textAlign: "center",
-    fontSize: 11,
-    color: "#333",
-    padding: "6px 8px",
-    border: "1px solid #eee",
-    borderRadius: 10,
-    background: "#fafafa",
-    lineHeight: 1.4,
-  },
   wrap: {
-    minHeight: "100dvh",
+    minHeight: "100vh",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     padding: "16px",
-  },
-  wrapCompact: {
-    minHeight: "100dvh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "10px",
   },
   card: {
     width: "min(560px, 100%)",
@@ -647,26 +610,12 @@ const styles: Record<string, React.CSSProperties> = {
     gap: "12px",
     alignItems: "center",
   },
-  cardCompact: {
-    width: "min(560px, 100%)",
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-    alignItems: "center",
-  },
   topRow: {
     width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     gap: "10px",
-  },
-  topRowCompact: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "8px",
   },
   modeTag: {
     fontSize: "12px",
@@ -689,11 +638,6 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 700,
     textAlign: "center",
   },
-  titleCompact: {
-    fontSize: "18px",
-    fontWeight: 700,
-    textAlign: "center",
-  },
   sub: {
     fontSize: "14px",
     opacity: 0.8,
@@ -703,37 +647,12 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "13px",
     opacity: 0.8,
   },
-  progressCompact: {
-    fontSize: "12px",
-    opacity: 0.8,
-  },
   imageBox: {
-    width: "min(260px, 70vw)",
+    width: "min(360px, 88vw)",
     aspectRatio: "1 / 1",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  },
-  imageBoxCompact: {
-    width: "min(180px, 46vw)",
-    aspectRatio: "1 / 1",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  imageFrame: {
-    width: "100%",
-    height: "100%",
-    position: "relative",
-    borderRadius: "10px",
-    overflow: "hidden",
-    border: "1px solid #ddd",
-    background: "#fafafa",
-  },
-  imageFrameCompact: {
-    width: "100%",
-    height: "100%",
-    position: "relative",
     borderRadius: "10px",
     overflow: "hidden",
     border: "1px solid #ddd",
@@ -744,56 +663,15 @@ const styles: Record<string, React.CSSProperties> = {
     height: "100%",
     objectFit: "cover",
   },
-  imageCompact: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  },
-  imageMaskBottom: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "28%",
-    backdropFilter: "blur(8px)",
-    background: "rgba(255,255,255,0.75)",
-  },
   noImage: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     fontSize: "14px",
     color: "#666",
-    borderRadius: "10px",
-    border: "1px solid #ddd",
-    background: "#fafafa",
-  },
-  noImageCompact: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "13px",
-    color: "#666",
-    borderRadius: "10px",
-    border: "1px solid #ddd",
-    background: "#fafafa",
   },
   group: {
     fontSize: "14px",
     fontWeight: 700,
     color: "#555",
     marginTop: "2px",
-  },
-  groupCompact: {
-    fontSize: "12px",
-    fontWeight: 700,
-    color: "#555",
-    marginTop: "0px",
-    textAlign: "center",
   },
   notice: {
     width: "100%",
@@ -808,12 +686,6 @@ const styles: Record<string, React.CSSProperties> = {
     gridTemplateColumns: "1fr",
     gap: "10px",
   },
-  choicesCompact: {
-    width: "100%",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "6px",
-  },
   choiceBtn: {
     width: "100%",
     padding: "12px 10px",
@@ -821,88 +693,44 @@ const styles: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     fontSize: "16px",
   },
-  choiceBtnCompact: {
-    width: "100%",
-    minHeight: "52px",
-    padding: "8px 6px",
-    borderRadius: "10px",
-    cursor: "pointer",
-    fontSize: "13px",
-    lineHeight: 1.25,
-    wordBreak: "break-word",
-  },
   footer: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "12px",
-    marginTop: "4px",
-  },
-  footerCompact: {
     width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "stretch",
-    gap: "8px",
-    marginTop: "2px",
+    justifyContent: "space-between",
+    gap: "12px",
+    marginTop: "4px",
   },
   result: {
     fontSize: "14px",
-    flex: 1,
-  },
-  resultCompact: {
-    fontSize: "13px",
+    width: "100%",
     textAlign: "center",
-    lineHeight: 1.35,
   },
   nextBtn: {
-    padding: "10px 14px",
+    width: "100%",
+    padding: "12px 14px",
     borderRadius: "10px",
     border: "1px solid #999",
     background: "#fff",
     cursor: "pointer",
     whiteSpace: "nowrap",
   },
-  nextBtnCompact: {
-    width: "100%",
-    padding: "11px 10px",
-    borderRadius: "10px",
-    border: "1px solid #999",
-    background: "#fff",
-    cursor: "pointer",
-    fontSize: "14px",
-  },
-  afterCorrectActions: { display: "flex", gap: 10, width: "100%", justifyContent: "center" },
-  afterCorrectActionsCompact: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, width: "100%" },
+  afterCorrectActions: { display: "flex", flexDirection: "column", gap: 10, width: "100%", justifyContent: "center" },
   nextBtnDisabled: {
-    padding: "10px 14px",
+    width: "100%",
+    padding: "12px 14px",
     borderRadius: "10px",
     border: "1px solid #ddd",
     background: "#f5f5f5",
     cursor: "not-allowed",
     whiteSpace: "nowrap",
     color: "#888",
-  },
-  nextBtnDisabledCompact: {
-    width: "100%",
-    padding: "11px 10px",
-    borderRadius: "10px",
-    border: "1px solid #ddd",
-    background: "#f5f5f5",
-    cursor: "not-allowed",
-    color: "#888",
-    fontSize: "14px",
   },
   bottomActions: {
     width: "100%",
     display: "flex",
     justifyContent: "flex-end",
-  },
-  bottomActionsCompact: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "stretch",
   },
   secondaryBtn: {
     padding: "10px 14px",
@@ -910,15 +738,6 @@ const styles: Record<string, React.CSSProperties> = {
     border: "1px solid #999",
     background: "#fff",
     cursor: "pointer",
-  },
-  secondaryBtnCompact: {
-    width: "100%",
-    padding: "10px 12px",
-    borderRadius: "10px",
-    border: "1px solid #999",
-    background: "#fff",
-    cursor: "pointer",
-    fontSize: "14px",
   },
   actions: {
     width: "100%",

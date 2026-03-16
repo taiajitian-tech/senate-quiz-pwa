@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { formatNameWithKana, parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
 
 type Props = {
   target: Target;
@@ -62,10 +62,10 @@ export default function AutoPlayView(props: Props) {
       <div style={styles.card}>
         {!current ? <div style={styles.center}>読み込み中</div> : (
           <>
-            <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" maskBottom={Boolean(current.imageMaskBottom)} /></div>
+            <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
-                <div style={styles.name}>{current.name}</div>
+                <div style={styles.name}>{formatNameWithKana(current)}</div>
                 <div style={styles.group}>{current.group ?? ""}</div>
               </div>
             )}
@@ -91,8 +91,8 @@ const styles: Record<string, React.CSSProperties> = {
   card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 420 },
   center: { margin: "auto", color: "#666", fontSize: 14 },
   imgBox: { display: "flex", justifyContent: "center" },
-  img: { width: "min(320px, 80vw)", height: "min(320px, 80vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
-  noImg: { width: "min(320px, 80vw)", height: "min(320px, 80vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
+  img: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
+  noImg: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
   faceOnly: { fontSize: 18, fontWeight: 700, textAlign: "center" },
   answerBox: { display: "flex", flexDirection: "column", gap: 6, textAlign: "center" },
   name: { fontSize: 24, fontWeight: 800 },

@@ -43,6 +43,18 @@ jobs:
           REP_IMAGE_SKIP_AI_GUESS: "false"
         run: npm run gen:representatives:images
 
+
+      - name: Auto-fix selected representative images (explicit fix-target batch)
+        env:
+          REP_IMAGE_CONCURRENCY: "8"
+          REP_IMAGE_WAIT_MS: "80"
+          REP_IMAGE_TIMEOUT_MS: "12000"
+          REP_IMAGE_SEARCH_LIMIT: "10"
+          REP_IMAGE_BATCH_LIMIT: "80"
+          REP_IMAGE_TARGET_MODE: "fix"
+          REP_IMAGE_SKIP_AI_GUESS: "false"
+        run: npm run gen:representatives:images
+
       - name: Generate representative image reports
         run: npm run report:representatives:images
 
