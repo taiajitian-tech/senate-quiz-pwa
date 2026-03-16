@@ -73,7 +73,7 @@ function toImages(value: unknown): string[] {
 }
 
 function normalizeCompact(value: string): string {
-  return value.replace(/[\s　]+/g, "").trim();
+  return value.replace(/[\s\u3000]+/g, "").trim();
 }
 
 function splitNameAndKana(rawName: string) {
