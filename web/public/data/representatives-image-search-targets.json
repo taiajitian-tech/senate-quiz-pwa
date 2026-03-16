@@ -1,28 +1,5 @@
 [
   {
-    "name": "阿部弘樹",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "阿部弘樹",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
     "name": "安藤たかお",
     "party": "自由民主党・無所属の会",
     "status": "missing",
@@ -38,52 +15,6 @@
       "自由民主党・無所属の会",
       "議員",
       "安藤たかお",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "俵田祐児",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "俵田祐児",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "辻由布子",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "辻由布子",
       "プロフィール",
       "顔写真"
     ],
@@ -153,29 +84,6 @@
       "自由民主党・無所属の会",
       "議員",
       "古井康介",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "三原朝利",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "三原朝利",
       "プロフィール",
       "顔写真"
     ],
@@ -1361,29 +1269,6 @@
       "参政党",
       "議員",
       "牧野俊一",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
-  },
-  {
-    "name": "吉川里奈",
-    "party": "参政党",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "参政党",
-      "議員",
-      "吉川里奈",
       "プロフィール",
       "顔写真"
     ],
