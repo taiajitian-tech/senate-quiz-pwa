@@ -587,7 +587,6 @@ function extractYomiuriProfile(html, pageUrl) {
 
 
 async function crawlYomiuriCandidatePagesWithBrowser() {
-  const urls = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
   let puppeteer = null;
   try {
     puppeteer = await import("puppeteer");
@@ -596,15 +595,27 @@ async function crawlYomiuriCandidatePagesWithBrowser() {
     return { winnerPages: [], candidatePages: [] };
   }
 
+  const OUT_DIR = path.resolve("..", "yomiuri-debug-runtime");
+  fs.rmSync(OUT_DIR, { recursive: true, force: true });
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  const uniqueBy = (arr, keyFn) => {
+    const seen = new Set();
+    const out = [];
+    for (const item of arr) {
+      const key = keyFn(item);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(item);
+    }
+    return out;
+  };
+
   const browser = await puppeteer.default.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
     defaultViewport: { width: 1440, height: 2200 }
   });
-
-  const sleepMs = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const winnerPages = new Set();
-  const candidatePages = new Set();
 
   try {
     const page = await browser.newPage();
@@ -612,49 +623,73 @@ async function crawlYomiuriCandidatePagesWithBrowser() {
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
     );
 
-    for (const baseUrl of urls) {
-      try {
-        await page.goto(baseUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
-        await sleepMs(5000);
-        await page.evaluate(async () => {
-          const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-          for (let i = 0; i < 8; i += 1) {
-            window.scrollTo(0, document.body.scrollHeight);
-            await wait(500);
+    const baseUrl = normalizeUrl(YOMIURI_WINNERS_BASE_URLS[0] || "https://www.yomiuri.co.jp/election/shugiin/2026winners001/");
+    await page.goto(baseUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
+    await sleep(5000);
+
+    await page.evaluate(async () => {
+      const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      for (let i = 0; i < 8; i += 1) {
+        window.scrollTo(0, document.body.scrollHeight);
+        await wait(500);
+      }
+      window.scrollTo(0, 0);
+    });
+
+    for (const sel of ["button", "[role=button]", "a"]) {
+      const handles = await page.$$(sel);
+      for (const handle of handles.slice(0, 40)) {
+        try {
+          const buttonText = ((await page.evaluate((el) => (el.textContent || "").trim(), handle)) || "").replace(/\s+/g, " ");
+          if (/同意|承諾|許可|閉じる|OK|了解/i.test(buttonText)) {
+            await handle.click({ delay: 20 }).catch(() => {});
+            await sleep(500);
           }
-          window.scrollTo(0, 0);
-        });
-        for (const sel of ["button", "[role=button]", "a"]) {
-          const handles = await page.$$(sel);
-          for (const handle of handles.slice(0, 40)) {
-            try {
-              const buttonText = ((await page.evaluate((el) => (el.textContent || "").trim(), handle)) || "").replace(/\s+/g, " ");
-              if (/同意|承諾|許可|閉じる|OK|了解/i.test(buttonText)) {
-                await handle.click({ delay: 20 }).catch(() => {});
-                await sleepMs(500);
-              }
-            } catch {}
-          }
-        }
-        await sleepMs(2000);
-        const anchors = await page.$$eval("a[href]", (nodes) =>
-          nodes.map((a) => ({ href: a.href, text: (a.textContent || "").replace(/\s+/g, " ").trim() }))
-        );
-        for (const anchor of anchors) {
-          const href = normalizeUrl(anchor?.href || "");
-          if (!href) continue;
-          if (/\/election\/shugiin\/2026winners\d+\/?$/i.test(href)) winnerPages.add(href);
-          if (/\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i.test(href)) candidatePages.add(href);
-        }
-      } catch (error) {
-        console.log(`yomiuri-browser: fetch-failed url=${baseUrl} reason=${error?.message || "unknown"}`);
+        } catch {}
       }
     }
+    await sleep(2000);
+
+    const html = await page.content();
+    fs.writeFileSync(path.join(OUT_DIR, 'page.html'), html, 'utf8');
+    await page.screenshot({ path: path.join(OUT_DIR, 'page.png'), fullPage: true }).catch(() => {});
+
+    const anchors = await page.$$eval('a[href]', (nodes) =>
+      nodes.map((a) => ({
+        href: a.href,
+        text: (a.textContent || '').replace(/\s+/g, ' ').trim(),
+        html: a.outerHTML.slice(0, 1000)
+      }))
+    );
+
+    const normalizedAnchors = uniqueBy(anchors, (a) => `${a.href}__${a.text}`);
+    const electionAnchors = normalizedAnchors.filter((a) => /\/election\/shugiin\//.test(a.href));
+    const winnerPages = uniqueBy(
+      electionAnchors.filter((a) => /\/election\/shugiin\/2026winners\d+\/?$/i.test(a.href)),
+      (a) => a.href
+    ).map((a) => normalizeUrl(a.href)).filter(Boolean);
+    const candidatePages = uniqueBy(
+      electionAnchors.filter((a) => /\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i.test(a.href)),
+      (a) => a.href
+    ).map((a) => normalizeUrl(a.href)).filter(Boolean);
+
+    fs.writeFileSync(path.join(OUT_DIR, 'all-anchors.json'), JSON.stringify(normalizedAnchors, null, 2), 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'election-anchors.json'), JSON.stringify(electionAnchors, null, 2), 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'winner-pages.json'), JSON.stringify(winnerPages, null, 2), 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'candidate-pages.json'), JSON.stringify(candidatePages, null, 2), 'utf8');
+
+    console.log(`yomiuri-browser: anchorCount=${normalizedAnchors.length}`);
+    console.log(`yomiuri-browser: electionAnchorCount=${electionAnchors.length}`);
+    console.log(`yomiuri-browser: winnerPages=${winnerPages.length}`);
+    console.log(`yomiuri-browser: candidatePages=${candidatePages.length}`);
+
+    return { winnerPages, candidatePages };
+  } catch (error) {
+    console.log(`yomiuri-browser: crawl-failed reason=${error?.message || 'unknown'}`);
+    return { winnerPages: [], candidatePages: [] };
   } finally {
     await browser.close().catch(() => {});
   }
-
-  return { winnerPages: [...winnerPages], candidatePages: [...candidatePages] };
 }
 
 async function fetchYomiuriProfileWithBrowser(pageUrl) {
