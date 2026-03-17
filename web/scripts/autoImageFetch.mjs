@@ -15,8 +15,7 @@ const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true"
 const YOMIURI_ONLY = String(process.env.REP_IMAGE_YOMIURI_ONLY || "false").trim().toLowerCase() === "true";
 const YOMIURI_REPLACE_EXISTING = String(process.env.REP_IMAGE_YOMIURI_REPLACE_EXISTING || "false").trim().toLowerCase() === "true";
 const YOMIURI_REBUILD_CACHE = String(process.env.REP_IMAGE_YOMIURI_REBUILD_CACHE || (YOMIURI_ONLY ? "true" : "false")).trim().toLowerCase() === "true";
-const YOMIURI_USE_BROWSER = String(process.env.REP_IMAGE_YOMIURI_USE_BROWSER || (YOMIURI_ONLY ? "true" : "false")).trim().toLowerCase() !== "false";
-const YOMIURI_BROWSER_WAIT_MS = Number(process.env.REP_IMAGE_YOMIURI_BROWSER_WAIT_MS || 1200);
+const YOMIURI_USE_BROWSER = String(process.env.REP_IMAGE_YOMIURI_USE_BROWSER || "true").trim().toLowerCase() !== "false";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
@@ -485,115 +484,6 @@ function extractYomiuriListProfiles(html, pageUrl) {
   return out;
 }
 
-function extractYomiuriWinnersPageLinks(html, pageUrl) {
-  const $ = load(html);
-  const urls = new Set();
-  const add = (href) => {
-    const normalized = normalizeUrl(href, pageUrl);
-    if (!normalized) return;
-    if (/yomiuri\.co\.jp\/election\/shugiin\/2026winners\d{3}\/?$/i.test(normalized)) {
-      urls.add(normalized);
-    }
-  };
-
-  $('a[href]').each((_, el) => add($(el).attr('href') || ''));
-  const rawMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026winners\d{3}\/?/gi) || [];
-  for (const href of rawMatches) add(href);
-  const pathMatches = String(html).match(/\/election\/shugiin\/2026winners\d{3}\/?/gi) || [];
-  for (const href of pathMatches) add(href);
-  return [...urls];
-}
-
-let puppeteerModulePromise = null;
-
-async function loadPuppeteerModule() {
-  if (!puppeteerModulePromise) {
-    puppeteerModulePromise = import('puppeteer')
-      .then((mod) => mod.default || mod)
-      .catch(() => null);
-  }
-  return await puppeteerModulePromise;
-}
-
-async function fetchRenderedPage(browser, url) {
-  const page = await browser.newPage();
-  try {
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
-    await page.setExtraHTTPHeaders({
-      'accept-language': 'ja,en-US;q=0.9,en;q=0.8',
-      'upgrade-insecure-requests': '1'
-    });
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: Math.max(TIMEOUT_MS, 30000) });
-    await sleep(YOMIURI_BROWSER_WAIT_MS);
-    return await page.content();
-  } finally {
-    await page.close().catch(() => {});
-  }
-}
-
-async function buildYomiuriCacheViaBrowser() {
-  const puppeteer = await loadPuppeteerModule();
-  if (!puppeteer) return null;
-
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-  });
-
-  try {
-    const nextEntries = {};
-    const nextPages = {};
-    const addTempEntry = (name, entry) => {
-      const aliases = buildNameAliases(name);
-      if (!aliases.length) return;
-      const payload = {
-        name: normalizeSpace(name),
-        aliases,
-        imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
-        pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
-        source: entry.source || 'yomiuri-winners'
-      };
-      for (const key of aliases) nextEntries[key] = payload;
-    };
-
-    const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
-    const visitedWinnerPages = new Set();
-    const candidatePageUrls = new Set();
-
-    while (winnersQueue.length > 0) {
-      const url = winnersQueue.shift();
-      if (!url || visitedWinnerPages.has(url)) continue;
-      visitedWinnerPages.add(url);
-
-      const html = await fetchRenderedPage(browser, url);
-      nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
-
-      for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
-      for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
-      for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
-        if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
-      }
-    }
-
-    for (const pageUrl of [...candidatePageUrls].sort()) {
-      const html = await fetchRenderedPage(browser, pageUrl);
-      nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
-      const profile = extractYomiuriProfile(html, pageUrl);
-      if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
-    }
-
-    return {
-      entries: nextEntries,
-      pages: nextPages,
-      winnersCount: visitedWinnerPages.size,
-      candidateCount: candidatePageUrls.size
-    };
-  } finally {
-    await browser.close().catch(() => {});
-  }
-}
-
-
 function extractYomiuriPageName(html, pageUrl = '') {
   const $ = load(html);
   const candidates = [];
@@ -695,27 +585,135 @@ function extractYomiuriProfile(html, pageUrl) {
   return { name, imageUrl: best.url, pageUrl, source: 'yomiuri-winners' };
 }
 
-async function ensureYomiuriCacheBuilt() {
-  const existingEntries = { ...(persistedYomiuriCache.entries || {}) };
-  const existingPages = { ...(persistedYomiuriCache.pages || {}) };
-  const existingCount = Object.keys(existingEntries).length;
-  if (!YOMIURI_REBUILD_CACHE && persistedYomiuriCache.updatedAt && existingCount >= 430) {
-    console.log(`yomiuri-cache: count=${existingCount}`);
-    return persistedYomiuriCache;
+
+async function withYomiuriBrowser(task) {
+  let puppeteer;
+  try {
+    ({ default: puppeteer } = await import("puppeteer"));
+  } catch (error) {
+    console.log(`yomiuri-cache: puppeteer-import-failed reason=${error?.message || "unknown"}`);
+    return null;
   }
 
-  let rebuilt = null;
-  if (YOMIURI_USE_BROWSER) {
-    try {
-      rebuilt = await buildYomiuriCacheViaBrowser();
-    } catch (error) {
-      console.log(`yomiuri-cache: browser-rebuild-failed reason=${error?.message || 'unknown'}`);
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    defaultViewport: { width: 1440, height: 2200 }
+  });
+
+  try {
+    return await task(browser);
+  } finally {
+    await browser.close().catch(() => {});
+  }
+}
+
+async function prepareYomiuriPage(page, url) {
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36');
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await sleep(5000);
+
+  await page.evaluate(async () => {
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    for (let i = 0; i < 8; i += 1) {
+      window.scrollTo(0, document.body.scrollHeight);
+      await wait(500);
+    }
+    window.scrollTo(0, 0);
+  });
+
+  for (const sel of ['button', '[role="button"]', 'a']) {
+    const handles = await page.$$(sel);
+    for (const handle of handles.slice(0, 40)) {
+      try {
+        const text = ((await page.evaluate((el) => (el.textContent || '').trim(), handle)) || '').replace(/\s+/g, ' ');
+        if (/同意|承諾|許可|閉じる|OK|了解/i.test(text)) {
+          await handle.click({ delay: 20 }).catch(() => {});
+          await sleep(500);
+        }
+      } catch {}
     }
   }
 
-  if (!rebuilt) {
+  await sleep(2000);
+}
+
+function uniqueByHref(items) {
+  const seen = new Set();
+  const out = [];
+  for (const item of items) {
+    const href = normalizeUrl(item?.href || item);
+    if (!href || seen.has(href)) continue;
+    seen.add(href);
+    out.push(typeof item === 'string' ? href : { ...item, href });
+  }
+  return out;
+}
+
+async function collectYomiuriAnchorsFromBrowser(browser, url) {
+  const page = await browser.newPage();
+  try {
+    await prepareYomiuriPage(page, url);
+    const anchors = await page.$$eval('a[href]', (nodes) =>
+      nodes.map((a) => ({
+        href: a.href,
+        text: (a.textContent || '').replace(/\s+/g, ' ').trim()
+      }))
+    );
+    return uniqueByHref(anchors);
+  } finally {
+    await page.close().catch(() => {});
+  }
+}
+
+async function collectYomiuriProfileFromBrowser(browser, pageUrl) {
+  const page = await browser.newPage();
+  try {
+    await prepareYomiuriPage(page, pageUrl);
+    const result = await page.evaluate(() => {
+      const norm = (v) => String(v || '').replace(/\s+/g, ' ').trim();
+      const img = document.querySelector('img[src*="/images/election/shugiin/2026/"]');
+      const titleCandidates = [
+        document.querySelector('.election-shugiin-profile__inner_col h1'),
+        document.querySelector('.election-shugiin-profile__detail h1'),
+        document.querySelector('h1'),
+        document.querySelector('title')
+      ].filter(Boolean);
+      const nameText = titleCandidates.map((el) => norm(el.textContent || el.innerText || '')).find(Boolean) || '';
+      return {
+        imageUrl: img ? img.getAttribute('src') || img.src || '' : '',
+        nameText,
+        html: document.documentElement.outerHTML
+      };
+    });
+    if (!result) return null;
+    const html = result.html || '';
+    const profile = extractYomiuriProfile(html, pageUrl);
+    if (result.imageUrl && !profile?.imageUrl) {
+      const fallbackName = stripNameNoise(result.nameText);
+      if (fallbackName) {
+        return {
+          name: fallbackName,
+          imageUrl: normalizeUrl(result.imageUrl, pageUrl),
+          pageUrl,
+          source: 'yomiuri-winners'
+        };
+      }
+    }
+    return profile;
+  } finally {
+    await page.close().catch(() => {});
+  }
+}
+
+async function buildYomiuriCacheWithBrowser(existingEntries = {}, existingPages = {}) {
+  return await withYomiuriBrowser(async (browser) => {
+    const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
+    const visitedWinnerPages = new Set();
+    const candidatePageUrls = new Set();
     const nextEntries = {};
     const nextPages = {};
+
     const addTempEntry = (name, entry) => {
       const aliases = buildNameAliases(name);
       if (!aliases.length) return;
@@ -729,57 +727,133 @@ async function ensureYomiuriCacheBuilt() {
       for (const key of aliases) nextEntries[key] = payload;
     };
 
-    const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
-    const visitedWinnerPages = new Set();
-    const candidatePageUrls = new Set();
-    let fetchFailures = 0;
-
     while (winnersQueue.length > 0) {
       const url = winnersQueue.shift();
       if (!url || visitedWinnerPages.has(url)) continue;
       visitedWinnerPages.add(url);
-
       try {
-        const html = await fetchPage(url);
+        const anchors = await collectYomiuriAnchorsFromBrowser(browser, url);
         nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
-
-        for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
-        for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
-        for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
-          if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
+        for (const anchor of anchors) {
+          const href = normalizeUrl(anchor?.href);
+          if (!href) continue;
+          if (/\/election\/shugiin\/2026winners\d+\//.test(href)) {
+            if (!visitedWinnerPages.has(href)) winnersQueue.push(href);
+          }
+          if (/\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\//i.test(href)) {
+            candidatePageUrls.add(href);
+          }
         }
       } catch (error) {
-        fetchFailures += 1;
-        if (fetchFailures <= 3) {
-          console.log(`yomiuri-cache: fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
-        }
+        console.log(`yomiuri-cache: browser-fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
       }
     }
 
-    rebuilt = {
-      entries: nextEntries,
-      pages: nextPages,
-      winnersCount: visitedWinnerPages.size,
-      candidateCount: candidatePageUrls.size
-    };
-
-    console.log(`yomiuri-cache: winners-pages=${rebuilt.winnersCount}`);
-    console.log(`yomiuri-cache: candidate-pages=${rebuilt.candidateCount}`);
+    console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
+    console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
 
     for (const pageUrl of [...candidatePageUrls].sort()) {
       try {
-        const html = await fetchPage(pageUrl);
         nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
-        const profile = extractYomiuriProfile(html, pageUrl);
+        const profile = await collectYomiuriProfileFromBrowser(browser, pageUrl);
         if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
-      } catch {}
+      } catch (error) {
+        console.log(`yomiuri-cache: browser-profile-failed url=${pageUrl} reason=${error?.message || 'unknown'}`);
+      }
     }
-  } else {
-    console.log(`yomiuri-cache: winners-pages=${rebuilt.winnersCount}`);
-    console.log(`yomiuri-cache: candidate-pages=${rebuilt.candidateCount}`);
+
+    const nextCount = Object.keys(nextEntries).length;
+    const existingCount = Object.keys(existingEntries || {}).length;
+    const shouldKeepExisting = nextCount < 300 && existingCount > nextCount;
+    if (shouldKeepExisting) {
+      persistedYomiuriCache.entries = existingEntries;
+      persistedYomiuriCache.pages = existingPages;
+      persistedYomiuriCache.updatedAt = new Date().toISOString();
+      yomiuriCacheDirty = true;
+      flushPersistentCaches();
+      console.log(`yomiuri-cache: fallback-to-existing count=${existingCount} rebuilt=${nextCount}`);
+      return persistedYomiuriCache;
+    }
+
+    persistedYomiuriCache.entries = nextEntries;
+    persistedYomiuriCache.pages = nextPages;
+    persistedYomiuriCache.updatedAt = new Date().toISOString();
+    yomiuriCacheDirty = true;
+    flushPersistentCaches();
+    console.log(`yomiuri-cache: count=${Object.keys(persistedYomiuriCache.entries).length}`);
+    return persistedYomiuriCache;
+  });
+}
+
+async function ensureYomiuriCacheBuilt() {
+  const existingEntries = { ...(persistedYomiuriCache.entries || {}) };
+  const existingPages = { ...(persistedYomiuriCache.pages || {}) };
+  const existingCount = Object.keys(existingEntries).length;
+  if (!YOMIURI_REBUILD_CACHE && persistedYomiuriCache.updatedAt && existingCount >= 430) {
+    console.log(`yomiuri-cache: count=${existingCount}`);
+    return persistedYomiuriCache;
   }
 
-  const nextCount = Object.keys(rebuilt.entries || {}).length;
+  if (YOMIURI_USE_BROWSER) {
+    const built = await buildYomiuriCacheWithBrowser(existingEntries, existingPages);
+    if (built) return built;
+  }
+
+  const nextEntries = {};
+  const nextPages = {};
+  const addTempEntry = (name, entry) => {
+    const aliases = buildNameAliases(name);
+    if (!aliases.length) return;
+    const payload = {
+      name: normalizeSpace(name),
+      aliases,
+      imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
+      pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
+      source: entry.source || 'yomiuri-winners'
+    };
+    for (const key of aliases) nextEntries[key] = payload;
+  };
+
+  const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
+  const visitedWinnerPages = new Set();
+  const candidatePageUrls = new Set();
+  let fetchFailures = 0;
+
+  while (winnersQueue.length > 0) {
+    const url = winnersQueue.shift();
+    if (!url || visitedWinnerPages.has(url)) continue;
+    visitedWinnerPages.add(url);
+
+    try {
+      const html = await fetchPage(url);
+      nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
+
+      for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
+      for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
+      for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
+        if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
+      }
+    } catch (error) {
+      fetchFailures += 1;
+      if (fetchFailures <= 3) {
+        console.log(`yomiuri-cache: fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
+      }
+    }
+  }
+
+  console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
+  console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
+
+  for (const pageUrl of [...candidatePageUrls].sort()) {
+    try {
+      const html = await fetchPage(pageUrl);
+      nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
+      const profile = extractYomiuriProfile(html, pageUrl);
+      if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
+    } catch {}
+  }
+
+  const nextCount = Object.keys(nextEntries).length;
   const shouldKeepExisting = nextCount < 300 && existingCount > nextCount;
   if (shouldKeepExisting) {
     persistedYomiuriCache.entries = existingEntries;
@@ -791,8 +865,8 @@ async function ensureYomiuriCacheBuilt() {
     return persistedYomiuriCache;
   }
 
-  persistedYomiuriCache.entries = rebuilt.entries;
-  persistedYomiuriCache.pages = rebuilt.pages;
+  persistedYomiuriCache.entries = nextEntries;
+  persistedYomiuriCache.pages = nextPages;
   persistedYomiuriCache.updatedAt = new Date().toISOString();
   yomiuriCacheDirty = true;
   flushPersistentCaches();
