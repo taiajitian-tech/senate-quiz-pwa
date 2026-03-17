@@ -1232,7 +1232,10 @@ async function resolveImage(member) {
 
   const profileUrl = String(member.profileUrl || "").trim();
   const resolverSteps = YOMIURI_ONLY
-    ? [() => searchFromYomiuriWinners(member)]
+    ? [
+        () => searchFromYomiuriWinners(member),
+        () => resolveImageFromManualSourcePages(member)
+      ]
     : EFFECTIVE_TARGET_MODE === "fix"
       ? [
           () => searchFromYomiuriWinners(member),
