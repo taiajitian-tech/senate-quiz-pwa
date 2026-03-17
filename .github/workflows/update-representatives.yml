@@ -40,7 +40,7 @@ jobs:
           REP_IMAGE_SEARCH_LIMIT: "10"
           REP_IMAGE_BATCH_LIMIT: "25"
           REP_IMAGE_TARGET_MODE: "missing"
-          REP_IMAGE_SKIP_AI_GUESS: "false"
+          REP_IMAGE_SKIP_AI_GUESS: "true"
         run: npm run gen:representatives:images
 
 
@@ -55,7 +55,7 @@ jobs:
           REP_IMAGE_SEARCH_LIMIT: "10"
           REP_IMAGE_BATCH_LIMIT: "80"
           REP_IMAGE_TARGET_MODE: "fix"
-          REP_IMAGE_SKIP_AI_GUESS: "false"
+          REP_IMAGE_SKIP_AI_GUESS: "true"
         run: npm run gen:representatives:images
 
       - name: Regenerate representative image reports (after fix pass)
@@ -76,9 +76,8 @@ jobs:
           test -f web/public/data/representatives-image-fix-targets.json
           test -f web/public/data/image-search-cache.json
           test -f web/public/data/representatives-image-url-cache.json
-          test -f web/public/data/representatives-yomiuri-cache.json
 
-          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv web/public/data/image-search-cache.json web/public/data/representatives-image-url-cache.json web/public/data/representatives-yomiuri-cache.json)" ]; then
+          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv web/public/data/image-search-cache.json web/public/data/representatives-image-url-cache.json)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -100,7 +99,6 @@ jobs:
                   web/public/data/representatives-image-fix-targets.json \
                   web/public/data/representatives-image-fix-targets.csv \
                   web/public/data/image-search-cache.json \
-                  web/public/data/representatives-image-url-cache.json \
-                  web/public/data/representatives-yomiuri-cache.json
+                  web/public/data/representatives-image-url-cache.json
           git commit -m "auto update representatives data"
           git push
