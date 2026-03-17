@@ -1,25 +1,41 @@
 {
   "安藤たかお": {
     "name": "安藤たかお",
-    "sources": {},
-    "resolved": false,
-    "updatedAt": ""
+    "sources": {
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:03.951Z"
   },
   "西條昌良": {
     "name": "西條昌良",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:58.947Z"
+    "updatedAt": "2026-03-17T06:10:18.121Z"
   },
   "世古万美子": {
     "name": "世古万美子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.189Z"
+    "updatedAt": "2026-03-17T06:10:21.793Z"
   },
   "田宮寿人": {
     "name": "田宮寿人",
@@ -32,26 +48,41 @@
   "辻由布子": {
     "name": "辻由布子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.439Z"
+    "updatedAt": "2026-03-17T06:10:56.834Z"
   },
   "長澤興祐": {
     "name": "長澤興祐",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:40.153Z"
+    "updatedAt": "2026-03-17T06:12:11.967Z"
   },
   "長野春信": {
     "name": "長野春信",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.665Z"
+    "updatedAt": "2026-03-17T06:12:33.291Z"
   },
   "西山尚利": {
     "name": "西山尚利",
@@ -80,18 +111,28 @@
   "東田淳平": {
     "name": "東田淳平",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.843Z"
+    "updatedAt": "2026-03-17T06:13:19.827Z"
   },
   "藤沢忠盛": {
     "name": "藤沢忠盛",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.927Z"
+    "updatedAt": "2026-03-17T06:13:31.299Z"
   },
   "藤田ひかる": {
     "name": "藤田ひかる",
@@ -104,26 +145,41 @@
   "文月涼": {
     "name": "文月涼",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.002Z"
+    "updatedAt": "2026-03-17T06:13:40.273Z"
   },
   "古井康介": {
     "name": "古井康介",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.005Z"
+    "updatedAt": "2026-03-17T06:14:00.726Z"
   },
   "前川恵": {
     "name": "前川恵",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.089Z"
+    "updatedAt": "2026-03-17T06:14:22.851Z"
   },
   "松下英樹": {
     "name": "松下英樹",
@@ -144,10 +200,15 @@
   "丸尾なつ子": {
     "name": "丸尾なつ子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:40.998Z"
+    "updatedAt": "2026-03-17T06:14:23.758Z"
   },
   "丸田康一郎": {
     "name": "丸田康一郎",
@@ -160,34 +221,54 @@
   "水野よしひこ": {
     "name": "水野よしひこ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:41.041Z"
+    "updatedAt": "2026-03-17T06:14:44.151Z"
   },
   "三原朝利": {
     "name": "三原朝利",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.236Z"
+    "updatedAt": "2026-03-17T06:15:05.897Z"
   },
   "森原紀代子": {
     "name": "森原紀代子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.332Z"
+    "updatedAt": "2026-03-17T06:15:15.167Z"
   },
   "保岡宏武": {
     "name": "保岡宏武",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.338Z"
+    "updatedAt": "2026-03-17T06:15:15.655Z"
   },
   "山田基靖": {
     "name": "山田基靖",
@@ -216,10 +297,15 @@
   "吉田有理": {
     "name": "吉田有理",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.495Z"
+    "updatedAt": "2026-03-17T06:15:54.694Z"
   },
   "吉村悠": {
     "name": "吉村悠",
@@ -232,10 +318,15 @@
   "米内紘正": {
     "name": "米内紘正",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.497Z"
+    "updatedAt": "2026-03-17T06:16:01.243Z"
   },
   "渡辺勝幸": {
     "name": "渡辺勝幸",
@@ -248,226 +339,366 @@
   "犬飼明佳": {
     "name": "犬飼明佳",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.638Z"
+    "updatedAt": "2026-03-17T06:15:33.175Z"
   },
   "中川宏昌": {
     "name": "中川宏昌",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.821Z"
+    "updatedAt": "2026-03-17T06:16:13.098Z"
   },
   "沼崎満子": {
     "name": "沼崎満子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.883Z"
+    "updatedAt": "2026-03-17T06:16:16.106Z"
   },
   "原田直樹": {
     "name": "原田直樹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.902Z"
+    "updatedAt": "2026-03-17T06:16:19.636Z"
   },
   "平林晃": {
     "name": "平林晃",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.904Z"
+    "updatedAt": "2026-03-17T06:16:33.326Z"
   },
   "福重隆浩": {
     "name": "福重隆浩",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.906Z"
+    "updatedAt": "2026-03-17T06:16:55.039Z"
   },
   "山崎正恭": {
     "name": "山崎正恭",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.908Z"
+    "updatedAt": "2026-03-17T06:17:03.163Z"
   },
   "早稲田ゆき": {
     "name": "早稲田ゆき",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.967Z"
+    "updatedAt": "2026-03-17T06:17:10.999Z"
   },
   "池下卓": {
     "name": "池下卓",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.990Z"
+    "updatedAt": "2026-03-17T06:18:06.528Z"
   },
   "池畑浩太朗": {
     "name": "池畑浩太朗",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:00.995Z"
+    "updatedAt": "2026-03-17T06:18:23.592Z"
   },
   "奥下剛光": {
     "name": "奥下剛光",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.077Z"
+    "updatedAt": "2026-03-17T06:18:40.536Z"
   },
   "柏倉祐司": {
     "name": "柏倉祐司",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.128Z"
+    "updatedAt": "2026-03-17T06:18:42.508Z"
   },
   "喜多義典": {
     "name": "喜多義典",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.130Z"
+    "updatedAt": "2026-03-17T06:18:45.488Z"
   },
   "住吉寛紀": {
     "name": "住吉寛紀",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.150Z"
+    "updatedAt": "2026-03-17T06:18:48.998Z"
   },
   "高見亮": {
     "name": "高見亮",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.153Z"
+    "updatedAt": "2026-03-17T06:19:03.158Z"
   },
   "西田薫": {
     "name": "西田薫",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.159Z"
+    "updatedAt": "2026-03-17T06:19:25.481Z"
   },
   "萩原佳": {
     "name": "萩原佳",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.210Z"
+    "updatedAt": "2026-03-17T06:19:31.989Z"
   },
   "原山大亮": {
     "name": "原山大亮",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.213Z"
+    "updatedAt": "2026-03-17T06:19:43.924Z"
   },
   "三木圭恵": {
     "name": "三木圭恵",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.232Z"
+    "updatedAt": "2026-03-17T06:20:38.894Z"
   },
   "美延映夫": {
     "name": "美延映夫",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.233Z"
+    "updatedAt": "2026-03-17T06:20:52.385Z"
   },
   "横田光弘": {
     "name": "横田光弘",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.236Z"
+    "updatedAt": "2026-03-17T06:21:11.891Z"
   },
   "若狹清史": {
     "name": "若狹清史",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.240Z"
+    "updatedAt": "2026-03-17T06:21:12.334Z"
   },
   "小竹凱": {
     "name": "小竹凱",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.314Z"
+    "updatedAt": "2026-03-17T06:21:20.850Z"
   },
   "河井昭成": {
     "name": "河井昭成",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.316Z"
+    "updatedAt": "2026-03-17T06:21:21.353Z"
   },
   "許斐亮太郎": {
     "name": "許斐亮太郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.317Z"
+    "updatedAt": "2026-03-17T06:21:34.034Z"
   },
   "近藤雅彦": {
     "name": "近藤雅彦",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.318Z"
+    "updatedAt": "2026-03-17T06:21:55.313Z"
   },
   "佐々木真琴": {
     "name": "佐々木真琴",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.323Z"
+    "updatedAt": "2026-03-17T06:22:03.820Z"
   },
   "高沢一基": {
     "name": "高沢一基",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.374Z"
+    "updatedAt": "2026-03-17T06:22:17.261Z"
   },
   "丹野みどり": {
     "name": "丹野みどり",
@@ -488,18 +719,28 @@
   "鍋島勢理": {
     "name": "鍋島勢理",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.398Z"
+    "updatedAt": "2026-03-17T06:23:09.418Z"
   },
   "野村美穂": {
     "name": "野村美穂",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.405Z"
+    "updatedAt": "2026-03-17T06:23:22.752Z"
   },
   "日野紗里亜": {
     "name": "日野紗里亜",
@@ -512,186 +753,299 @@
   "青木ひとみ": {
     "name": "青木ひとみ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.482Z"
+    "updatedAt": "2026-03-17T06:23:44.245Z"
   },
   "石川勝": {
     "name": "石川勝",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.487Z"
+    "updatedAt": "2026-03-17T06:21:19.050Z"
   },
   "伊藤恵介": {
     "name": "伊藤恵介",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.535Z"
+    "updatedAt": "2026-03-17T06:23:47.744Z"
   },
   "木下敏之": {
     "name": "木下敏之",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.539Z"
+    "updatedAt": "2026-03-17T06:23:49.715Z"
   },
   "工藤聖子": {
     "name": "工藤聖子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.540Z"
+    "updatedAt": "2026-03-17T06:23:50.222Z"
   },
   "島村かおる": {
     "name": "島村かおる",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.558Z"
+    "updatedAt": "2026-03-17T06:24:05.536Z"
   },
   "鈴木美香": {
     "name": "鈴木美香",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.560Z"
+    "updatedAt": "2026-03-17T06:24:27.327Z"
   },
   "谷浩一郎": {
     "name": "谷浩一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.562Z"
+    "updatedAt": "2026-03-17T06:24:32.704Z"
   },
   "なかやめぐ": {
     "name": "なかやめぐ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.564Z"
+    "updatedAt": "2026-03-17T06:24:48.772Z"
   },
   "牧野俊一": {
     "name": "牧野俊一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.570Z"
+    "updatedAt": "2026-03-17T06:25:39.181Z"
   },
   "渡辺藍理": {
     "name": "渡辺藍理",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.620Z"
+    "updatedAt": "2026-03-17T06:25:54.620Z"
   },
   "宇佐美登": {
     "name": "宇佐美登",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.622Z"
+    "updatedAt": "2026-03-17T06:25:32.638Z"
   },
   "河合道雄": {
     "name": "河合道雄",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.640Z"
+    "updatedAt": "2026-03-17T06:25:35.323Z"
   },
   "小林修平": {
     "name": "小林修平",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.642Z"
+    "updatedAt": "2026-03-17T06:25:37.153Z"
   },
   "土橋章宏": {
     "name": "土橋章宏",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.646Z"
+    "updatedAt": "2026-03-17T06:25:39.677Z"
   },
   "林拓海": {
     "name": "林拓海",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.651Z"
+    "updatedAt": "2026-03-17T06:25:55.244Z"
   },
   "古川あおい": {
     "name": "古川あおい",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.698Z"
+    "updatedAt": "2026-03-17T06:26:16.343Z"
   },
   "峰島侑也": {
     "name": "峰島侑也",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.700Z"
+    "updatedAt": "2026-03-17T06:26:20.724Z"
   },
   "武藤かず子": {
     "name": "武藤かず子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.701Z"
+    "updatedAt": "2026-03-17T06:26:38.134Z"
   },
   "山田瑛理": {
     "name": "山田瑛理",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.703Z"
+    "updatedAt": "2026-03-17T06:27:21.189Z"
   },
   "緒方林太郎": {
     "name": "緒方林太郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.733Z"
+    "updatedAt": "2026-03-17T06:27:26.542Z"
   },
   "中村はやと": {
     "name": "中村はやと",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.781Z"
+    "updatedAt": "2026-03-17T06:27:26.515Z"
   },
   "渡辺真太朗": {
     "name": "渡辺真太朗",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:44:01.805Z"
+    "updatedAt": "2026-03-17T06:27:26.998Z"
   },
   "逢沢一郎": {
     "name": "逢沢一郎",
@@ -712,18 +1066,24 @@
   "阿部弘樹": {
     "name": "阿部弘樹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:58.119Z"
+    "updatedAt": "2026-03-17T06:10:01.134Z"
   },
   "伊藤聡": {
     "name": "伊藤聡",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:58.203Z"
+    "updatedAt": "2026-03-17T06:10:12.029Z"
   },
   "上田英俊": {
     "name": "上田英俊",
@@ -744,10 +1104,14 @@
   "川崎ひでと": {
     "name": "川崎ひでと",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:38.944Z"
+    "updatedAt": "2026-03-17T06:10:06.413Z"
   },
   "黒崎祐一": {
     "name": "黒崎祐一",
@@ -768,10 +1132,15 @@
   "今洋佑": {
     "name": "今洋佑",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:58.943Z"
+    "updatedAt": "2026-03-17T06:10:19.099Z"
   },
   "斉木武志": {
     "name": "斉木武志",
@@ -792,10 +1161,15 @@
   "鈴木拓海": {
     "name": "鈴木拓海",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.184Z"
+    "updatedAt": "2026-03-17T06:10:21.691Z"
   },
   "高橋祐介": {
     "name": "高橋祐介",
@@ -808,10 +1182,15 @@
   "俵田祐児": {
     "name": "俵田祐児",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T03:43:59.432Z"
+    "updatedAt": "2026-03-17T06:11:07.474Z"
   },
   "広瀬建": {
     "name": "広瀬建",
@@ -848,26 +1227,34 @@
   "赤澤亮正": {
     "name": "赤澤亮正",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:37.949Z"
+    "updatedAt": "2026-03-17T06:10:00.654Z"
   },
   "あかま二郎": {
     "name": "あかま二郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:37.968Z"
+    "updatedAt": "2026-03-17T06:10:00.702Z"
   },
   "秋葉賢也": {
     "name": "秋葉賢也",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.032Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:02.269Z"
   },
   "浅田眞澄美": {
     "name": "浅田眞澄美",
@@ -896,10 +1283,14 @@
   "あべ俊子": {
     "name": "あべ俊子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.117Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:03.560Z"
   },
   "五十嵐清": {
     "name": "五十嵐清",
@@ -920,10 +1311,14 @@
   "石川昭政": {
     "name": "石川昭政",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.125Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:04.465Z"
   },
   "石坂太": {
     "name": "石坂太",
@@ -936,10 +1331,14 @@
   "石田真敏": {
     "name": "石田真敏",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.127Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:02.180Z"
   },
   "石破茂": {
     "name": "石破茂",
@@ -984,10 +1383,14 @@
   "伊藤信太郎": {
     "name": "伊藤信太郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.204Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:02.398Z"
   },
   "伊藤忠彦": {
     "name": "伊藤忠彦",
@@ -1008,10 +1411,12 @@
   "伊東良孝": {
     "name": "伊東良孝",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.209Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:01.507Z"
   },
   "稲田朋美": {
     "name": "稲田朋美",
@@ -1096,10 +1501,12 @@
   "岩崎比菜": {
     "name": "岩崎比菜",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.292Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:02.011Z"
   },
   "岩田和親": {
     "name": "岩田和親",
@@ -1136,10 +1543,14 @@
   "上野宏史": {
     "name": "上野宏史",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.367Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:05.159Z"
   },
   "上原正裕": {
     "name": "上原正裕",
@@ -1152,26 +1563,36 @@
   "内山こう": {
     "name": "内山こう",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:38.494Z"
+    "updatedAt": "2026-03-17T06:10:04.306Z"
   },
   "江渡聡徳": {
     "name": "江渡聡徳",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.372Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:02.563Z"
   },
   "江藤拓": {
     "name": "江藤拓",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.373Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:03.830Z"
   },
   "衛藤博昭": {
     "name": "衛藤博昭",
@@ -1248,26 +1669,37 @@
   "尾崎正直": {
     "name": "尾崎正直",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:38.647Z"
+    "updatedAt": "2026-03-17T06:10:03.324Z"
   },
   "長田紘一郎": {
     "name": "長田紘一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.525Z"
+    "updatedAt": "2026-03-17T06:10:14.737Z"
   },
   "小里泰弘": {
     "name": "小里泰弘",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.527Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:05.483Z"
   },
   "小田原潔": {
     "name": "小田原潔",
@@ -1312,10 +1744,12 @@
   "尾身朝子": {
     "name": "尾身朝子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.534Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:04.272Z"
   },
   "鹿嶋祐介": {
     "name": "鹿嶋祐介",
@@ -1408,10 +1842,14 @@
   "金澤結衣": {
     "name": "金澤結衣",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:38.877Z"
+    "updatedAt": "2026-03-17T06:10:06.721Z"
   },
   "金子恭之": {
     "name": "金子恭之",
@@ -1440,10 +1878,14 @@
   "河野正美": {
     "name": "河野正美",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.694Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:06.481Z"
   },
   "川松真一朗": {
     "name": "川松真一朗",
@@ -1456,10 +1898,15 @@
   "菅家一郎": {
     "name": "菅家一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.696Z"
+    "updatedAt": "2026-03-17T06:10:15.655Z"
   },
   "神田潤一": {
     "name": "神田潤一",
@@ -1560,18 +2007,27 @@
   "国光あやの": {
     "name": "国光あやの",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:39.140Z"
+    "updatedAt": "2026-03-17T06:10:07.022Z"
   },
   "熊田裕通": {
     "name": "熊田裕通",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.851Z"
+    "updatedAt": "2026-03-17T06:10:16.953Z"
   },
   "栗原渉": {
     "name": "栗原渉",
@@ -1616,10 +2072,14 @@
   "こうらい啓一郎": {
     "name": "こうらい啓一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.862Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:07.643Z"
   },
   "古賀篤": {
     "name": "古賀篤",
@@ -1632,18 +2092,22 @@
   "國場幸之助": {
     "name": "國場幸之助",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:39.271Z"
+    "updatedAt": "2026-03-17T06:10:06.293Z"
   },
   "小寺裕雄": {
     "name": "小寺裕雄",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:58.934Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:06.912Z"
   },
   "後藤茂之": {
     "name": "後藤茂之",
@@ -1688,10 +2152,12 @@
   "齋藤健": {
     "name": "齋藤健",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:39.379Z"
+    "updatedAt": "2026-03-17T06:10:07.353Z"
   },
   "斎藤洋明": {
     "name": "斎藤洋明",
@@ -1704,10 +2170,15 @@
   "斉藤りえ": {
     "name": "斉藤りえ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.017Z"
+    "updatedAt": "2026-03-17T06:10:19.746Z"
   },
   "坂井学": {
     "name": "坂井学",
@@ -1760,10 +2231,12 @@
   "繁本護": {
     "name": "繁本護",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.094Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:09.539Z"
   },
   "柴山昌彦": {
     "name": "柴山昌彦",
@@ -1784,10 +2257,14 @@
   "島田智明": {
     "name": "島田智明",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.099Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:10.622Z"
   },
   "下村博文": {
     "name": "下村博文",
@@ -1800,10 +2277,14 @@
   "白坂亜紀": {
     "name": "白坂亜紀",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.104Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:10.953Z"
   },
   "新谷正義": {
     "name": "新谷正義",
@@ -1856,10 +2337,12 @@
   "鈴木淳司": {
     "name": "鈴木淳司",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.179Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:12.980Z"
   },
   "鈴木貴子": {
     "name": "鈴木貴子",
@@ -1896,18 +2379,25 @@
   "世耕弘成": {
     "name": "世耕弘成",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.194Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:12.450Z"
   },
   "瀬戸隆一": {
     "name": "瀬戸隆一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.257Z"
+    "updatedAt": "2026-03-17T06:10:22.574Z"
   },
   "園崎弘道": {
     "name": "園崎弘道",
@@ -1952,10 +2442,12 @@
   "高木宏壽": {
     "name": "高木宏壽",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:39.774Z"
+    "updatedAt": "2026-03-17T06:10:14.888Z"
   },
   "高鳥修一": {
     "name": "高鳥修一",
@@ -1976,10 +2468,12 @@
   "武井俊輔": {
     "name": "武井俊輔",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.339Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:15.496Z"
   },
   "武田良太": {
     "name": "武田良太",
@@ -2032,10 +2526,12 @@
   "田中昌史": {
     "name": "田中昌史",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.351Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:16.413Z"
   },
   "田中良生": {
     "name": "田中良生",
@@ -2080,10 +2576,12 @@
   "田畑裕明": {
     "name": "田畑裕明",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.423Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:16.480Z"
   },
   "田村憲久": {
     "name": "田村憲久",
@@ -2104,10 +2602,15 @@
   "辻秀樹": {
     "name": "辻秀樹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.435Z"
+    "updatedAt": "2026-03-17T06:10:46.367Z"
   },
   "津島淳": {
     "name": "津島淳",
@@ -2136,10 +2639,12 @@
   "寺田稔": {
     "name": "寺田稔",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.504Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:18.016Z"
   },
   "土井亨": {
     "name": "土井亨",
@@ -2168,34 +2673,51 @@
   "とかしきなおみ": {
     "name": "とかしきなおみ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.515Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:20.480Z"
   },
   "永岡桂子": {
     "name": "永岡桂子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.516Z"
+    "updatedAt": "2026-03-17T06:11:28.979Z"
   },
   "中川こういち": {
     "name": "中川こういち",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:40.116Z"
+    "updatedAt": "2026-03-17T06:11:50.371Z"
   },
   "中川貴元": {
     "name": "中川貴元",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.582Z"
+    "updatedAt": "2026-03-17T06:11:50.393Z"
   },
   "長坂康正": {
     "name": "長坂康正",
@@ -2264,10 +2786,12 @@
   "中根一幸": {
     "name": "中根一幸",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.663Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:22.733Z"
   },
   "中野英幸": {
     "name": "中野英幸",
@@ -2288,18 +2812,28 @@
   "中山展宏": {
     "name": "中山展宏",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.676Z"
+    "updatedAt": "2026-03-17T06:12:43.847Z"
   },
   "中山泰秀": {
     "name": "中山泰秀",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "not_found",
+      "party": "not_found",
+      "news": "not_found"
     },
     "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.678Z"
+    "updatedAt": "2026-03-17T06:12:42.850Z"
   },
   "仁木博文": {
     "name": "仁木博文",
@@ -2448,10 +2982,12 @@
   "平井卓也": {
     "name": "平井卓也",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.845Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:57.904Z"
   },
   "平口洋": {
     "name": "平口洋",
@@ -2472,18 +3008,22 @@
   "平沼正二郎": {
     "name": "平沼正二郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.908Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:10:58.800Z"
   },
   "深澤陽一": {
     "name": "深澤陽一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:40.636Z"
+    "updatedAt": "2026-03-17T06:10:59.572Z"
   },
   "福田かおる": {
     "name": "福田かおる",
@@ -2528,10 +3068,12 @@
   "藤田洋司": {
     "name": "藤田洋司",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:43:59.989Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:11:09.349Z"
   },
   "藤丸敏": {
     "name": "藤丸敏",
@@ -2608,10 +3150,12 @@
   "細田健一": {
     "name": "細田健一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.073Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:11:53.683Z"
   },
   "細野豪志": {
     "name": "細野豪志",
@@ -2704,18 +3248,22 @@
   "三ッ林裕巳": {
     "name": "三ッ林裕巳",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:41.090Z"
+    "updatedAt": "2026-03-17T06:12:34.477Z"
   },
   "御法川信英": {
     "name": "御法川信英",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.235Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:12:35.091Z"
   },
   "宮内秀樹": {
     "name": "宮内秀樹",
@@ -2760,10 +3308,12 @@
   "宗清皇一": {
     "name": "宗清皇一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.313Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:12:44.234Z"
   },
   "村井英樹": {
     "name": "村井英樹",
@@ -2776,18 +3326,22 @@
   "村上誠一郎": {
     "name": "村上誠一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.316Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:12:44.925Z"
   },
   "村木汀": {
     "name": "村木汀",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.318Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:12:44.871Z"
   },
   "茂木敏充": {
     "name": "茂木敏充",
@@ -2824,10 +3378,12 @@
   "簗和生": {
     "name": "簗和生",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.394Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:21.621Z"
   },
   "山際大志郎": {
     "name": "山際大志郎",
@@ -2856,10 +3412,12 @@
   "山口壯": {
     "name": "山口壯",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
     "resolved": true,
-    "updatedAt": "2026-03-17T04:05:41.330Z"
+    "updatedAt": "2026-03-17T06:13:22.631Z"
   },
   "山下史守朗": {
     "name": "山下史守朗",
@@ -2896,10 +3454,12 @@
   "山本左近": {
     "name": "山本左近",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.475Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:23.863Z"
   },
   "山本大地": {
     "name": "山本大地",
@@ -2912,10 +3472,12 @@
   "吉田真次": {
     "name": "吉田真次",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.493Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:24.866Z"
   },
   "若林健太": {
     "name": "若林健太",
@@ -2960,10 +3522,12 @@
   "渡辺孝一": {
     "name": "渡辺孝一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.575Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:41.767Z"
   },
   "渡辺博道": {
     "name": "渡辺博道",
@@ -2976,498 +3540,625 @@
   "赤羽一嘉": {
     "name": "赤羽一嘉",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.577Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:42.368Z"
   },
   "有田芳生": {
     "name": "有田芳生",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.578Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:43.385Z"
   },
   "伊佐進一": {
     "name": "伊佐進一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.580Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:44.267Z"
   },
   "泉健太": {
     "name": "泉健太",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.585Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:13:45.020Z"
   },
   "浮島智子": {
     "name": "浮島智子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.640Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:01.404Z"
   },
   "大島敦": {
     "name": "大島敦",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.641Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:03.311Z"
   },
   "大森江里子": {
     "name": "大森江里子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.642Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:04.510Z"
   },
   "岡本三成": {
     "name": "岡本三成",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.657Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:05.261Z"
   },
   "小川淳也": {
     "name": "小川淳也",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.659Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:05.846Z"
   },
   "落合貴之": {
     "name": "落合貴之",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.660Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:06.370Z"
   },
   "河西宏一": {
     "name": "河西宏一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.661Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:08.276Z"
   },
   "金子恵美": {
     "name": "金子恵美",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.662Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:10.295Z"
   },
   "神谷裕": {
     "name": "神谷裕",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.666Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:10.951Z"
   },
   "河野義博": {
     "name": "河野義博",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.719Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:12.193Z"
   },
   "菊田真紀子": {
     "name": "菊田真紀子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.722Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:15.210Z"
   },
   "金城泰邦": {
     "name": "金城泰邦",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.723Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:16.526Z"
   },
   "國重徹": {
     "name": "國重徹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.724Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:18.300Z"
   },
   "輿水恵一": {
     "name": "輿水恵一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.739Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:18.978Z"
   },
   "後藤祐一": {
     "name": "後藤祐一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.740Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:21.143Z"
   },
   "近藤和也": {
     "name": "近藤和也",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.742Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:21.764Z"
   },
   "斉藤鉄夫": {
     "name": "斉藤鉄夫",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.743Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:24.633Z"
   },
   "佐藤英道": {
     "name": "佐藤英道",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.744Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:24.198Z"
   },
   "重徳和彦": {
     "name": "重徳和彦",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.749Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:24.403Z"
   },
   "階猛": {
     "name": "階猛",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.801Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:26.501Z"
   },
   "庄子賢一": {
     "name": "庄子賢一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.803Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:24.898Z"
   },
   "田嶋要": {
     "name": "田嶋要",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.804Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:25.351Z"
   },
   "角田秀穂": {
     "name": "角田秀穂",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.806Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:26.474Z"
   },
   "中川康洋": {
     "name": "中川康洋",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.822Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:27.614Z"
   },
   "長妻昭": {
     "name": "長妻昭",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.824Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:28.135Z"
   },
   "中野洋昌": {
     "name": "中野洋昌",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.825Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:28.319Z"
   },
   "西園勝秀": {
     "name": "西園勝秀",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.826Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:30.693Z"
   },
   "西村智奈美": {
     "name": "西村智奈美",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.831Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:29.019Z"
   },
   "野田佳彦": {
     "name": "野田佳彦",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.884Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:31.375Z"
   },
   "野間健": {
     "name": "野間健",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.885Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:32.112Z"
   },
   "浜地雅一": {
     "name": "浜地雅一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.887Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:14:32.608Z"
   },
   "山岡達丸": {
     "name": "山岡達丸",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.907Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:15.827Z"
   },
   "山本香苗": {
     "name": "山本香苗",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.912Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:16.471Z"
   },
   "吉田宣弘": {
     "name": "吉田宣弘",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.964Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:19.219Z"
   },
   "笠浩史": {
     "name": "笠浩史",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.966Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:21.859Z"
   },
   "渡辺創": {
     "name": "渡辺創",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.968Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:33.846Z"
   },
   "青柳仁士": {
     "name": "青柳仁士",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.984Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:34.345Z"
   },
   "東徹": {
     "name": "東徹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.986Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:35.291Z"
   },
   "阿部圭史": {
     "name": "阿部圭史",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.988Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:36.170Z"
   },
   "阿部司": {
     "name": "阿部司",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:00.989Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:15:37.907Z"
   },
   "一谷勇一郎": {
     "name": "一谷勇一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.046Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:03.008Z"
   },
   "市村浩一郎": {
     "name": "市村浩一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.047Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:05.153Z"
   },
   "伊東信久": {
     "name": "伊東信久",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.048Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:05.889Z"
   },
   "井上英孝": {
     "name": "井上英孝",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.050Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:06.427Z"
   },
   "岩谷良平": {
     "name": "岩谷良平",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.067Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:06.938Z"
   },
   "梅村聡": {
     "name": "梅村聡",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.069Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:07.460Z"
   },
   "浦野靖人": {
     "name": "浦野靖人",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.070Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:08.092Z"
   },
   "うるま譲司": {
     "name": "うるま譲司",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.071Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:08.886Z"
   },
   "遠藤敬": {
     "name": "遠藤敬",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.072Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:09.492Z"
   },
   "金村龍那": {
     "name": "金村龍那",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.129Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:16.957Z"
   },
   "黒田征樹": {
     "name": "黒田征樹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.132Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:20.266Z"
   },
   "斎藤アレックス": {
     "name": "斎藤アレックス",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.148Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:20.608Z"
   },
   "関健一郎": {
     "name": "関健一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.151Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:33.980Z"
   },
   "中司宏": {
     "name": "中司宏",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.154Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:16:55.915Z"
   },
   "馬場伸幸": {
     "name": "馬場伸幸",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.211Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:17:11.643Z"
   },
   "藤田文武": {
     "name": "藤田文武",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.215Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:07.217Z"
   },
   "前原誠司": {
     "name": "前原誠司",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.230Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:07.819Z"
   },
   "村上智信": {
     "name": "村上智信",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.235Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:41.313Z"
   },
   "浅野哲": {
     "name": "浅野哲",
@@ -3480,50 +4171,62 @@
   "飯泉嘉門": {
     "name": "飯泉嘉門",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.293Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:47.818Z"
   },
   "井戸まさえ": {
     "name": "井戸まさえ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.294Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:48.395Z"
   },
   "臼木秀剛": {
     "name": "臼木秀剛",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.296Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:49.139Z"
   },
   "岡野純子": {
     "name": "岡野純子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.312Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:18:49.663Z"
   },
   "鈴木義弘": {
     "name": "鈴木義弘",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.373Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:19:47.425Z"
   },
   "田中健": {
     "name": "田中健",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.376Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:20:39.800Z"
   },
   "玉木雄一郎": {
     "name": "玉木雄一郎",
@@ -3544,34 +4247,42 @@
   "西岡義高": {
     "name": "西岡義高",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.400Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:20:54.221Z"
   },
   "橋本幹彦": {
     "name": "橋本幹彦",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.454Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:21:12.548Z"
   },
   "深作ヘスス": {
     "name": "深作ヘスス",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.457Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:21:13.157Z"
   },
   "福田徹": {
     "name": "福田徹",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.458Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:21:14.434Z"
   },
   "古川元久": {
     "name": "古川元久",
@@ -3584,10 +4295,12 @@
   "向山好一": {
     "name": "向山好一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.479Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:21:13.933Z"
   },
   "村岡敏英": {
     "name": "村岡敏英",
@@ -3600,106 +4313,133 @@
   "森ようすけ": {
     "name": "森ようすけ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "not_found",
+      "wikimedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.481Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:21:15.525Z"
   },
   "川裕一郎": {
     "name": "川裕一郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.537Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:21:21.473Z"
   },
   "豊田真由子": {
     "name": "豊田真由子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.563Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:22:17.974Z"
   },
   "吉川里奈": {
     "name": "吉川里奈",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.617Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:23:23.546Z"
   },
   "和田政宗": {
     "name": "和田政宗",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.619Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:23:24.190Z"
   },
   "須田英太郎": {
     "name": "須田英太郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.644Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:23:50.951Z"
   },
   "高山聡史": {
     "name": "高山聡史",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.645Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:23:51.294Z"
   },
   "塩川鉄也": {
     "name": "塩川鉄也",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.723Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:36.055Z"
   },
   "辰巳孝太郎": {
     "name": "辰巳孝太郎",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.725Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:36.723Z"
   },
   "田村智子": {
     "name": "田村智子",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.726Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:37.235Z"
   },
   "畑野君枝": {
     "name": "畑野君枝",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.728Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:37.910Z"
   },
   "石井啓一": {
     "name": "石井啓一",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.729Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:37.910Z"
   },
   "河村たかし": {
     "name": "河村たかし",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T03:44:01.780Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:38.514Z"
   },
   "森英介": {
     "name": "森英介",
@@ -3720,9 +4460,11 @@
   "山本ジョジ": {
     "name": "山本ジョージ",
     "sources": {
-      "yomiuri": "not_found"
+      "yomiuri": "not_found",
+      "official": "not_found",
+      "wikipedia": "success"
     },
-    "resolved": false,
-    "updatedAt": "2026-03-17T04:05:42.785Z"
+    "resolved": true,
+    "updatedAt": "2026-03-17T06:25:40.003Z"
   }
 }

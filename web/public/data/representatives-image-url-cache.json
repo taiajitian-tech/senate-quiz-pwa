@@ -73,5 +73,300 @@
     "state": "blocked",
     "reason": "logo",
     "updatedAt": "2026-03-17T02:04:19.441Z"
+  },
+  "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:00.992Z"
+  },
+  "https://www.ntv.co.jp/election2024/research/zero-logo.png": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T06:10:01.130Z"
+  },
+  "https://www.ntv.co.jp/election2024/research/jx-logo-horizontal.svg": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T06:10:01.130Z"
+  },
+  "https://www.jimin.jp/member/209189.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:02.340Z"
+  },
+  "https://www.jimin.jp/news/policy/135082.html": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:04.000Z"
+  },
+  "https://storage2.jimin.jp/pdf/member/officer.pdf": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:04.181Z"
+  },
+  "https://storage.jimin.jp/pdf/news/activities/126583_1.pdf": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:04.181Z"
+  },
+  "https://storage.jimin.jp/pdf/news/activities/135811_1.pdf?201710092000": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:04.181Z"
+  },
+  "https://storage.jimin.jp/sen_shu48/pdf/result/shuin2017_result.pdf": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:05.141Z"
+  },
+  "https://storage.jimin.jp/pdf/news/policy/137263_1.pdf": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:05.141Z"
+  },
+  "https://www.jimin.jp/election/results/sen_shu48/common/img/img_logo.gif": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T06:10:05.159Z"
+  },
+  "https://www.jimin.jp/election/results/sen_shu48/common/img/img_logo_sp.png": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T06:10:05.159Z"
+  },
+  "https://www.jimin.jp/election/results/sen_shu48/common/img/img_logo_footer.png": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T06:10:05.159Z"
+  },
+  "https://www.jimin.jp/member/212434.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:05.275Z"
+  },
+  "https://shugiin.go2senkyo.com/51/hirei/4/4": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://go2senkyo.com/seijika/194610": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://go2senkyo.com/shugiin/22503/hireiku/126/hirei_party/4/candidates": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://go2senkyo.com/shugiin/28030/hireiku/154/hirei_party/4/candidates": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://go2senkyo.com/shugiin/22503/hireiku/126/hirei_party/4/candidates?sort=k": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://shugiin.go2senkyo.com/51/hirei/4/all": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://shugiin.go2senkyo.com/50/hirei/2/4": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://prod-cdn.go2senkyo.com/public/senkyo_koho/24249/20251005%E9%B6%B4%E5%B2%A1%E5%B8%82%E8%AD%B0%E4%BC%9A%E8%AD%B0%E5%93%A1%E9%81%B8%E6%8C%99.pdf": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://go2senkyo.com/seijika/184568": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:05.892Z"
+  },
+  "https://www.jimin.jp/member/114234.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:07.065Z"
+  },
+  "https://www.jimin.jp/news/policy/205981.html": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:07.149Z"
+  },
+  "https://www.jimin.jp/news/policy/129973.html": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:07.149Z"
+  },
+  "https://www.jimin.jp/election/results/sen_shu49/candidate/113884.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:07.167Z"
+  },
+  "https://go2senkyo.com/seijika/198328": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:08.059Z"
+  },
+  "https://shugiin.go2senkyo.com/51/hirei/7/4": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:08.059Z"
+  },
+  "https://go2senkyo.com/shugiin/28030/hireiku/157/hirei_party/4/candidates?sort=k": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:08.059Z"
+  },
+  "https://shugiin.go2senkyo.com/51/hirei/7/all": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:08.059Z"
+  },
+  "https://go2senkyo.com/seijika/163389/posts/1280166": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:08.059Z"
+  },
+  "https://prod-cdn.go2senkyo.com/public/senkyo_koho/24022/20250615%E5%B0%BC%E5%B4%8E%E5%B8%82%E8%AD%B0%E4%BC%9A%E8%AD%B0%E5%93%A1%E9%81%B8%E6%8C%99.pdf": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:08.059Z"
+  },
+  "https://www.jimin.jp/news/policy/203843.html": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:08.117Z"
+  },
+  "https://storage.jimin.jp/pdf/sansen27/23aichi_sakai-yasuyuki.pdf": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:08.117Z"
+  },
+  "https://www.jimin.jp/news/policy/203401.html": {
+    "state": "blocked",
+    "reason": "text-heavy",
+    "updatedAt": "2026-03-17T06:10:08.117Z"
+  },
+  "https://www.jimin.jp/member/209196.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:09.168Z"
+  },
+  "https://www.jimin.jp/member/209217.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:09.485Z"
+  },
+  "https://go2senkyo.com/seijika/26112": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://shugiin.go2senkyo.com/51/hirei/2/4": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://go2senkyo.com/shugiin/28030/hireiku/152/hirei_party/4/candidates": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://go2senkyo.com/shugiin/28030/hireiku/152/hirei_party/4/candidates?sort=k": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://shugiin.go2senkyo.com/49/hireiku/108": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://shugiin.go2senkyo.com/51/hirei/2/all": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://shugiin.go2senkyo.com/49/senkyoku/38819": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://shugiin.go2senkyo.com/49/seitou/4": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://go2senkyo.com/shugiin/15530/hireiku/2/hirei_party/4/candidates": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://shugiin.go2senkyo.com/50/senkyoku/44472": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.703Z"
+  },
+  "https://go2senkyo.com/seijika/135900": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:09.969Z"
+  },
+  "https://www.jimin.jp/member/212436.html": {
+    "state": "not_found",
+    "reason": "not-politician-page",
+    "updatedAt": "2026-03-17T06:10:10.345Z"
+  },
+  "https://go2senkyo.com/seijika/76896": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://shugiin.go2senkyo.com/51/senkyoku/51001": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://go2senkyo.com/shugiin/28030/hireiku/157/hirei_party/4/candidates": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://go2senkyo.com/seijika/139771/posts/699030": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://shugiin.go2senkyo.com/50/senkyoku/44172": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://shugiin.go2senkyo.com/49/senkyoku/38943": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://prod-cdn.go2senkyo.com/public/senkyo_koho/28030/hireiku/157/7_%E5%85%AC%E5%A0%B1_%E7%AC%AC51%E5%9B%9E%E8%A1%86%E9%99%A2%E9%81%B8_%E6%AF%94%E4%BE%8B%E4%BB%A3%E8%A1%A8_%E6%9D%B1%E6%B5%B7%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF..pdf": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://go2senkyo.com/articles/2024/10/25/102626.html": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
+  },
+  "https://shugiin.go2senkyo.com/49/hireiku/113?party=4": {
+    "state": "blocked",
+    "reason": "poster",
+    "updatedAt": "2026-03-17T06:10:10.790Z"
   }
 }
