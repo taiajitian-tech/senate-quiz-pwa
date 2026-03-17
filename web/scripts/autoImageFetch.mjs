@@ -12,7 +12,7 @@ const BATCH_LIMIT = Math.max(1, Number(process.env.REP_IMAGE_BATCH_LIMIT || 25))
 const TARGET_MODE = String(process.env.REP_IMAGE_TARGET_MODE || "missing").trim().toLowerCase();
 const SKIP_AI_GUESS = String(process.env.REP_IMAGE_SKIP_AI_GUESS || "false").trim().toLowerCase() === "true";
 const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true").trim().toLowerCase() !== "false";
-const YOMIURI_ONLY = String(process.env.REP_IMAGE_YOMIURI_ONLY || "true").trim().toLowerCase() !== "false";
+const YOMIURI_ONLY = String(process.env.REP_IMAGE_YOMIURI_ONLY || "false").trim().toLowerCase() === "true";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
@@ -120,8 +120,6 @@ const jsonCache = new Map();
 const htmlCache = new Map();
 const searchCache = new Map();
 const profilePageCache = new Map();
-const yomiuriWinnersCache = new Map();
-const YOMIURI_CACHE_PATH = path.resolve("public/data/representatives-yomiuri-cache.json");
 
 const SEARCH_HISTORY_PATH = path.resolve("public/data/image-search-cache.json");
 const URL_HISTORY_PATH = path.resolve("public/data/representatives-image-url-cache.json");
@@ -179,7 +177,6 @@ function inferBlockedUrlReason(url = "") {
   if (/poster|leaflet|flyer|manifesto|senkyo/.test(text)) return "poster";
   if (/group|集合|allmember|members/.test(text)) return "group-photo";
   if (/text|policy|profile_pdf|pdf/.test(text)) return "text-heavy";
-  if (/election-shugiin-ogp|\bogp\b|default-share|noimage|no-image/.test(text)) return "shared-ogp";
   return "";
 }
 
@@ -493,94 +490,6 @@ async function searchTargets(query, allowedDomains = []) {
   return await promise;
 }
 
-
-function collectLocalYomiuriCandidates($, root, pageUrl, name, pageWeight = 0) {
-  const candidates = [];
-  const seen = new Set();
-  const pushCandidate = (src, alt = "", sourceHint = "yomiuri-local") => {
-    const url = normalizeUrl(src, pageUrl);
-    if (!url) return;
-    if (shouldSkipUrl(url)) return;
-    if (seen.has(url)) return;
-    seen.add(url);
-    const score = scoreImageCandidate(url, alt, name, pageUrl, sourceHint) + pageWeight + 8;
-    if (score <= 0) return;
-    candidates.push({ url, alt, score, sourceHint });
-  };
-
-  root.find('img[src], img[data-src], img[data-lazy-src], source[srcset]').each((_, img) => {
-    const el = $(img);
-    const alt = normalizeSpace(el.attr('alt') || el.attr('title') || '');
-    pushCandidate(el.attr('src') || '', alt, 'yomiuri-local');
-    pushCandidate(el.attr('data-src') || '', alt, 'yomiuri-local');
-    pushCandidate(el.attr('data-lazy-src') || '', alt, 'yomiuri-local');
-    const srcset = el.attr('srcset') || '';
-    if (srcset) pushCandidate(srcset.split(',')[0]?.trim().split(/\s+/)[0] || '', alt, 'yomiuri-local');
-  });
-
-  candidates.sort((a, b) => b.score - a.score);
-  return candidates;
-}
-
-function collectYomiuriNameAnchoredCandidates(html, pageUrl, name, pageWeight = 0) {
-  const $ = load(html);
-  const cleaned = cleanName(name);
-  const results = [];
-  const seen = new Set();
-  const selectors = ['article', 'li', 'section', 'div', 'tr'];
-  for (const sel of selectors) {
-    $(sel).each((_, node) => {
-      const el = $(node);
-      const text = cleanName(el.text() || '');
-      if (!text || !text.includes(cleaned)) return;
-      const candidates = collectLocalYomiuriCandidates($, el, pageUrl, name, pageWeight);
-      for (const item of candidates) {
-        if (seen.has(item.url)) continue;
-        seen.add(item.url);
-        item.score += 6;
-        results.push(item);
-      }
-    });
-  }
-  results.sort((a, b) => b.score - a.score);
-  return results;
-}
-
-async function resolveImageFromYomiuriPage(profileUrl, name, pageWeight = 0) {
-  if (!profileUrl || shouldSkipUrl(profileUrl)) return null;
-  const cacheKey = `yomiuri-local:${profileUrl}:${cleanName(name)}`;
-  if (profilePageCache.has(cacheKey)) return profilePageCache.get(cacheKey);
-
-  const promise = (async () => {
-    try {
-      const html = await fetchPage(profileUrl);
-      if (!looksPoliticianPage(html, name)) {
-        markUrlState(profileUrl, 'not_found', 'not-politician-page');
-        return null;
-      }
-      const localCandidates = collectYomiuriNameAnchoredCandidates(html, profileUrl, name, pageWeight);
-      const bestLocal = localCandidates[0];
-      if (bestLocal) {
-        return { url: bestLocal.url, source: 'yomiuri-winners', sourceUrl: profileUrl };
-      }
-      const genericCandidates = collectImageCandidatesFromPage(html, profileUrl, name, pageWeight)
-        .filter((item) => !/election-shugiin-ogp|\bogp\b/i.test(item.url));
-      const bestGeneric = genericCandidates[0];
-      if (bestGeneric) {
-        return { url: bestGeneric.url, source: 'yomiuri-winners', sourceUrl: profileUrl };
-      }
-      markUrlState(profileUrl, 'not_found', 'no-image-candidate');
-      return null;
-    } catch {
-      markUrlState(profileUrl, 'not_found', 'fetch-failed');
-      return null;
-    }
-  })();
-
-  profilePageCache.set(cacheKey, promise);
-  return await promise;
-}
-
 function collectImageCandidatesFromPage(html, pageUrl, name, pageWeight = 0) {
   const $ = load(html);
   const candidates = [];
@@ -639,6 +548,7 @@ function collectImageCandidatesFromPage(html, pageUrl, name, pageWeight = 0) {
 async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "official", pageWeight = 0) {
   if (!profileUrl || shouldSkipUrl(profileUrl)) return null;
   const historyKey = mapSourceLabelToHistoryKey(sourceLabel);
+  if (shouldSkipSource(name, historyKey)) return null;
   const cacheKey = `${sourceLabel}:${profileUrl}:${cleanName(name)}`;
   if (profilePageCache.has(cacheKey)) return profilePageCache.get(cacheKey);
 
@@ -646,21 +556,25 @@ async function resolveImageFromProfilePage(profileUrl, name, sourceLabel = "offi
     try {
       const html = await fetchPage(profileUrl);
       if (!looksPoliticianPage(html, name)) {
+        setSourceState(name, historyKey, "not_found");
         markUrlState(profileUrl, "not_found", "not-politician-page");
         return null;
       }
       const candidates = collectImageCandidatesFromPage(html, profileUrl, name, pageWeight);
       const best = candidates[0];
       if (!best) {
+        setSourceState(name, historyKey, "not_found");
         markUrlState(profileUrl, "not_found", "no-image-candidate");
         return null;
       }
+      setSourceState(name, historyKey, "success");
       return {
         url: best.url,
         source: sourceLabel,
         sourceUrl: profileUrl
       };
     } catch {
+      setSourceState(name, historyKey, "not_found");
       markUrlState(profileUrl, "not_found", "fetch-failed");
       return null;
     }
@@ -781,79 +695,14 @@ function yomiuriSourcePagesFor(member) {
   return [...urls];
 }
 
-
-async function warmYomiuriCache(members = []) {
-  if (yomiuriWinnersCache.size) return yomiuriWinnersCache;
-  const persisted = readJsonFileSafe(YOMIURI_CACHE_PATH, {});
-  for (const [name, value] of Object.entries(persisted || {})) {
-    if (value?.url) yomiuriWinnersCache.set(cleanName(name), value);
-  }
-  const targets = [];
-  const seenTargets = new Set();
-  for (const url of YOMIURI_WINNERS_BASE_URLS) {
-    if (seenTargets.has(url)) continue;
-    seenTargets.add(url);
-    targets.push(url);
-  }
-  const membersByParty = new Map();
-  for (const member of members) {
-    const party = normalizeSpace(member.party || member.role || '');
-    if (!membersByParty.has(party)) membersByParty.set(party, []);
-    membersByParty.get(party).push(member.name);
-  }
-  for (const [party, names] of membersByParty.entries()) {
-    const queries = [
-      `site:yomiuri.co.jp/election/shugiin "${party}" "衆議院選挙・開票結果"`,
-      ...names.slice(0, 3).map((name) => `site:yomiuri.co.jp/election/shugiin "${name}"`)];
-    for (const query of queries) {
-      const found = await searchTargets(query, ['yomiuri.co.jp']);
-      for (const url of found) {
-        if (!/yomiuri\.co\.jp\/election\/shugiin\//.test(url)) continue;
-        if (seenTargets.has(url)) continue;
-        seenTargets.add(url);
-        targets.push(url);
-      }
-    }
-  }
-  for (const url of targets) {
-    try {
-      const html = await fetchPage(url);
-      const $ = load(html);
-      for (const member of members) {
-        const cleaned = cleanName(member.name);
-        if (yomiuriWinnersCache.has(cleaned)) continue;
-        const candidates = collectYomiuriNameAnchoredCandidates(html, url, member.name, 20);
-        const best = candidates[0];
-        if (!best) continue;
-        yomiuriWinnersCache.set(cleaned, { url: best.url, source: 'yomiuri-winners', sourceUrl: url });
-      }
-    } catch {}
-  }
-  const out = {};
-  for (const [key, value] of yomiuriWinnersCache.entries()) out[key] = value;
-  fs.writeFileSync(YOMIURI_CACHE_PATH, `${JSON.stringify(out, null, 2)}
-`, 'utf8');
-  return yomiuriWinnersCache;
-}
-
 async function searchFromYomiuriWinners(member) {
   const name = member.name;
   if (shouldSkipSource(name, "yomiuri")) return null;
 
-  const cached = yomiuriWinnersCache.get(cleanName(name));
-  if (cached?.url) {
-    setSourceState(name, "yomiuri", "success");
-    return cached;
-  }
-
   const directUrls = yomiuriSourcePagesFor(member);
   for (const pageUrl of directUrls) {
-    const found = await resolveImageFromYomiuriPage(pageUrl, name, 24);
-    if (found) {
-      yomiuriWinnersCache.set(cleanName(name), found);
-      setSourceState(name, "yomiuri", "success");
-      return found;
-    }
+    const found = await resolveImageFromProfilePage(pageUrl, name, "yomiuri-winners", 16);
+    if (found) return found;
     await sleep(WAIT_MS);
   }
 
@@ -868,12 +717,8 @@ async function searchFromYomiuriWinners(member) {
     const targets = await searchTargets(query, ["yomiuri.co.jp"]);
     for (const target of targets) {
       if (!/yomiuri\.co\.jp\/election\/shugiin\//.test(target)) continue;
-      const found = await resolveImageFromYomiuriPage(target, name, 26);
-      if (found) {
-        yomiuriWinnersCache.set(cleanName(name), found);
-        setSourceState(name, "yomiuri", "success");
-        return found;
-      }
+      const found = await resolveImageFromProfilePage(target, name, "yomiuri-winners", 18);
+      if (found) return found;
       await sleep(WAIT_MS);
     }
   }
@@ -1031,27 +876,31 @@ async function resolveImage(member) {
   if (MANUAL_OVERRIDES[name]) return MANUAL_OVERRIDES[name];
 
   const profileUrl = String(member.profileUrl || "").trim();
-  const resolverSteps = EFFECTIVE_TARGET_MODE === "fix"
+  const resolverSteps = YOMIURI_ONLY
     ? [
-        () => searchFromYomiuriWinners(member),
-        () => resolveImageFromManualSourcePages(member),
-        () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
-        () => searchFromPartyHints(member),
-        () => searchFromTrustedFallbacks(member),
-        () => searchWikipediaImage(member.name),
-        () => searchWikidataCommonsImage(member.name),
-        () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
+        () => searchFromYomiuriWinners(member)
       ]
-    : [
-        () => searchFromYomiuriWinners(member),
-        () => resolveImageFromManualSourcePages(member),
-        () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
-        () => searchWikipediaImage(member.name),
-        () => searchWikidataCommonsImage(member.name),
-        () => searchFromPartyHints(member),
-        () => searchFromTrustedFallbacks(member),
-        () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
-      ];
+    : EFFECTIVE_TARGET_MODE === "fix"
+      ? [
+          () => searchFromYomiuriWinners(member),
+          () => resolveImageFromManualSourcePages(member),
+          () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
+          () => searchFromPartyHints(member),
+          () => searchFromTrustedFallbacks(member),
+          () => searchWikipediaImage(member.name),
+          () => searchWikidataCommonsImage(member.name),
+          () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
+        ]
+      : [
+          () => searchFromYomiuriWinners(member),
+          () => resolveImageFromManualSourcePages(member),
+          () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
+          () => searchWikipediaImage(member.name),
+          () => searchWikidataCommonsImage(member.name),
+          () => searchFromPartyHints(member),
+          () => searchFromTrustedFallbacks(member),
+          () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
+        ];
 
   for (let i = 0; i < resolverSteps.length; i += 1) {
     const found = await tryResolver(member, resolverSteps[i]);
@@ -1101,7 +950,7 @@ function buildFixTargetNameSet() {
 
 const FIX_TARGET_NAME_SET = buildFixTargetNameSet();
 
-const SEARCH_SOURCE_ORDER = YOMIURI_ONLY ? ["yomiuri"] : ["yomiuri", "official", "party", "wikipedia", "wikimedia", "news", "web"];
+const SEARCH_SOURCE_ORDER = ["yomiuri", "official", "party", "wikipedia", "wikimedia", "news", "web"];
 
 function hasRemainingSources(name) {
   return SEARCH_SOURCE_ORDER.some((sourceKey) => getSourceState(name, sourceKey) !== "not_found");
@@ -1133,8 +982,6 @@ function buildWorkQueue(members) {
 async function main() {
   const raw = fs.readFileSync(dataPath, "utf8");
   const members = JSON.parse(raw);
-  await warmYomiuriCache(members);
-  console.log(`yomiuri-cache: count=${yomiuriWinnersCache.size}`);
   const queue = buildWorkQueue(members);
 
   let filled = 0;
