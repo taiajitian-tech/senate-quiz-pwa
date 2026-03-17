@@ -68,5 +68,10 @@
     "state": "blocked",
     "reason": "group-photo",
     "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/graphics/election-shugiin-2024/images/common_nav/logo_white.png": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T02:04:19.441Z"
   }
 }
