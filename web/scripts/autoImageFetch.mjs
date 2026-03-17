@@ -15,7 +15,7 @@ const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true"
 const YOMIURI_ONLY = String(process.env.REP_IMAGE_YOMIURI_ONLY || "false").trim().toLowerCase() === "true";
 const YOMIURI_REPLACE_EXISTING = String(process.env.REP_IMAGE_YOMIURI_REPLACE_EXISTING || "false").trim().toLowerCase() === "true";
 const YOMIURI_REBUILD_CACHE = String(process.env.REP_IMAGE_YOMIURI_REBUILD_CACHE || (YOMIURI_ONLY ? "true" : "false")).trim().toLowerCase() === "true";
-const YOMIURI_USE_BROWSER = String(process.env.REP_IMAGE_YOMIURI_USE_BROWSER || "true").trim().toLowerCase() !== "false";
+const YOMIURI_USE_BROWSER = String(process.env.REP_IMAGE_YOMIURI_USE_BROWSER || "false").trim().toLowerCase() === "true";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
@@ -586,203 +586,116 @@ function extractYomiuriProfile(html, pageUrl) {
 }
 
 
-async function withYomiuriBrowser(task) {
-  let puppeteer;
+async function crawlYomiuriCandidatePagesWithBrowser() {
+  const urls = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
+  let puppeteer = null;
   try {
-    ({ default: puppeteer } = await import("puppeteer"));
+    puppeteer = await import("puppeteer");
   } catch (error) {
-    console.log(`yomiuri-cache: puppeteer-import-failed reason=${error?.message || "unknown"}`);
-    return null;
+    console.log(`yomiuri-browser: unavailable reason=${error?.message || "unknown"}`);
+    return { winnerPages: [], candidatePages: [] };
   }
 
-  const browser = await puppeteer.launch({
+  const browser = await puppeteer.default.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
     defaultViewport: { width: 1440, height: 2200 }
   });
 
+  const sleepMs = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const winnerPages = new Set();
+  const candidatePages = new Set();
+
   try {
-    return await task(browser);
+    const page = await browser.newPage();
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+    );
+
+    for (const baseUrl of urls) {
+      try {
+        await page.goto(baseUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
+        await sleepMs(5000);
+        await page.evaluate(async () => {
+          const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+          for (let i = 0; i < 8; i += 1) {
+            window.scrollTo(0, document.body.scrollHeight);
+            await wait(500);
+          }
+          window.scrollTo(0, 0);
+        });
+        for (const sel of ["button", "[role=button]", "a"]) {
+          const handles = await page.$$(sel);
+          for (const handle of handles.slice(0, 40)) {
+            try {
+              const buttonText = ((await page.evaluate((el) => (el.textContent || "").trim(), handle)) || "").replace(/\s+/g, " ");
+              if (/同意|承諾|許可|閉じる|OK|了解/i.test(buttonText)) {
+                await handle.click({ delay: 20 }).catch(() => {});
+                await sleepMs(500);
+              }
+            } catch {}
+          }
+        }
+        await sleepMs(2000);
+        const anchors = await page.$$eval("a[href]", (nodes) =>
+          nodes.map((a) => ({ href: a.href, text: (a.textContent || "").replace(/\s+/g, " ").trim() }))
+        );
+        for (const anchor of anchors) {
+          const href = normalizeUrl(anchor?.href || "");
+          if (!href) continue;
+          if (/\/election\/shugiin\/2026winners\d+\/?$/i.test(href)) winnerPages.add(href);
+          if (/\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i.test(href)) candidatePages.add(href);
+        }
+      } catch (error) {
+        console.log(`yomiuri-browser: fetch-failed url=${baseUrl} reason=${error?.message || "unknown"}`);
+      }
+    }
   } finally {
     await browser.close().catch(() => {});
   }
+
+  return { winnerPages: [...winnerPages], candidatePages: [...candidatePages] };
 }
 
-async function prepareYomiuriPage(page, url) {
-  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36');
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await sleep(5000);
-
-  await page.evaluate(async () => {
-    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    for (let i = 0; i < 8; i += 1) {
-      window.scrollTo(0, document.body.scrollHeight);
-      await wait(500);
-    }
-    window.scrollTo(0, 0);
-  });
-
-  for (const sel of ['button', '[role="button"]', 'a']) {
-    const handles = await page.$$(sel);
-    for (const handle of handles.slice(0, 40)) {
-      try {
-        const text = ((await page.evaluate((el) => (el.textContent || '').trim(), handle)) || '').replace(/\s+/g, ' ');
-        if (/同意|承諾|許可|閉じる|OK|了解/i.test(text)) {
-          await handle.click({ delay: 20 }).catch(() => {});
-          await sleep(500);
-        }
-      } catch {}
-    }
-  }
-
-  await sleep(2000);
-}
-
-function uniqueByHref(items) {
-  const seen = new Set();
-  const out = [];
-  for (const item of items) {
-    const href = normalizeUrl(item?.href || item);
-    if (!href || seen.has(href)) continue;
-    seen.add(href);
-    out.push(typeof item === 'string' ? href : { ...item, href });
-  }
-  return out;
-}
-
-async function collectYomiuriAnchorsFromBrowser(browser, url) {
-  const page = await browser.newPage();
+async function fetchYomiuriProfileWithBrowser(pageUrl) {
+  let puppeteer = null;
   try {
-    await prepareYomiuriPage(page, url);
-    const anchors = await page.$$eval('a[href]', (nodes) =>
-      nodes.map((a) => ({
-        href: a.href,
-        text: (a.textContent || '').replace(/\s+/g, ' ').trim()
-      }))
+    puppeteer = await import("puppeteer");
+  } catch {
+    return null;
+  }
+  const browser = await puppeteer.default.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    defaultViewport: { width: 1440, height: 2200 }
+  });
+  const sleepMs = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  try {
+    const page = await browser.newPage();
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
     );
-    return uniqueByHref(anchors);
-  } finally {
-    await page.close().catch(() => {});
-  }
-}
-
-async function collectYomiuriProfileFromBrowser(browser, pageUrl) {
-  const page = await browser.newPage();
-  try {
-    await prepareYomiuriPage(page, pageUrl);
-    const result = await page.evaluate(() => {
-      const norm = (v) => String(v || '').replace(/\s+/g, ' ').trim();
+    await page.goto(pageUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
+    await sleepMs(3000);
+    const profile = await page.evaluate(() => {
+      const text = (document.body?.innerText || "").replace(/\s+/g, " ");
+      const m = text.match(/[一-龯々〆ヶ]{1,6}\s*[一-龯々〆ヶ]{1,6}/u);
       const img = document.querySelector('img[src*="/images/election/shugiin/2026/"]');
-      const titleCandidates = [
-        document.querySelector('.election-shugiin-profile__inner_col h1'),
-        document.querySelector('.election-shugiin-profile__detail h1'),
-        document.querySelector('h1'),
-        document.querySelector('title')
-      ].filter(Boolean);
-      const nameText = titleCandidates.map((el) => norm(el.textContent || el.innerText || '')).find(Boolean) || '';
-      return {
-        imageUrl: img ? img.getAttribute('src') || img.src || '' : '',
-        nameText,
-        html: document.documentElement.outerHTML
-      };
+      const src = img?.getAttribute('src') || '';
+      return { name: m ? m[0].replace(/\s+/g, '') : '', src };
     });
-    if (!result) return null;
-    const html = result.html || '';
-    const profile = extractYomiuriProfile(html, pageUrl);
-    if (result.imageUrl && !profile?.imageUrl) {
-      const fallbackName = stripNameNoise(result.nameText);
-      if (fallbackName) {
-        return {
-          name: fallbackName,
-          imageUrl: normalizeUrl(result.imageUrl, pageUrl),
-          pageUrl,
-          source: 'yomiuri-winners'
-        };
-      }
-    }
-    return profile;
-  } finally {
-    await page.close().catch(() => {});
-  }
-}
-
-async function buildYomiuriCacheWithBrowser(existingEntries = {}, existingPages = {}) {
-  return await withYomiuriBrowser(async (browser) => {
-    const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
-    const visitedWinnerPages = new Set();
-    const candidatePageUrls = new Set();
-    const nextEntries = {};
-    const nextPages = {};
-
-    const addTempEntry = (name, entry) => {
-      const aliases = buildNameAliases(name);
-      if (!aliases.length) return;
-      const payload = {
-        name: normalizeSpace(name),
-        aliases,
-        imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
-        pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
-        source: entry.source || 'yomiuri-winners'
-      };
-      for (const key of aliases) nextEntries[key] = payload;
+    if (!profile?.src) return null;
+    return {
+      name: cleanName(profile.name || extractYomiuriPageName(pageUrl, pageUrl)),
+      imageUrl: normalizeUrl(profile.src, pageUrl),
+      pageUrl,
+      source: "yomiuri-winners"
     };
-
-    while (winnersQueue.length > 0) {
-      const url = winnersQueue.shift();
-      if (!url || visitedWinnerPages.has(url)) continue;
-      visitedWinnerPages.add(url);
-      try {
-        const anchors = await collectYomiuriAnchorsFromBrowser(browser, url);
-        nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
-        for (const anchor of anchors) {
-          const href = normalizeUrl(anchor?.href);
-          if (!href) continue;
-          if (/\/election\/shugiin\/2026winners\d+\//.test(href)) {
-            if (!visitedWinnerPages.has(href)) winnersQueue.push(href);
-          }
-          if (/\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\//i.test(href)) {
-            candidatePageUrls.add(href);
-          }
-        }
-      } catch (error) {
-        console.log(`yomiuri-cache: browser-fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
-      }
-    }
-
-    console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
-    console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
-
-    for (const pageUrl of [...candidatePageUrls].sort()) {
-      try {
-        nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
-        const profile = await collectYomiuriProfileFromBrowser(browser, pageUrl);
-        if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
-      } catch (error) {
-        console.log(`yomiuri-cache: browser-profile-failed url=${pageUrl} reason=${error?.message || 'unknown'}`);
-      }
-    }
-
-    const nextCount = Object.keys(nextEntries).length;
-    const existingCount = Object.keys(existingEntries || {}).length;
-    const shouldKeepExisting = nextCount < 300 && existingCount > nextCount;
-    if (shouldKeepExisting) {
-      persistedYomiuriCache.entries = existingEntries;
-      persistedYomiuriCache.pages = existingPages;
-      persistedYomiuriCache.updatedAt = new Date().toISOString();
-      yomiuriCacheDirty = true;
-      flushPersistentCaches();
-      console.log(`yomiuri-cache: fallback-to-existing count=${existingCount} rebuilt=${nextCount}`);
-      return persistedYomiuriCache;
-    }
-
-    persistedYomiuriCache.entries = nextEntries;
-    persistedYomiuriCache.pages = nextPages;
-    persistedYomiuriCache.updatedAt = new Date().toISOString();
-    yomiuriCacheDirty = true;
-    flushPersistentCaches();
-    console.log(`yomiuri-cache: count=${Object.keys(persistedYomiuriCache.entries).length}`);
-    return persistedYomiuriCache;
-  });
+  } catch {
+    return null;
+  } finally {
+    await browser.close().catch(() => {});
+  }
 }
 
 async function ensureYomiuriCacheBuilt() {
@@ -792,11 +705,6 @@ async function ensureYomiuriCacheBuilt() {
   if (!YOMIURI_REBUILD_CACHE && persistedYomiuriCache.updatedAt && existingCount >= 430) {
     console.log(`yomiuri-cache: count=${existingCount}`);
     return persistedYomiuriCache;
-  }
-
-  if (YOMIURI_USE_BROWSER) {
-    const built = await buildYomiuriCacheWithBrowser(existingEntries, existingPages);
-    if (built) return built;
   }
 
   const nextEntries = {};
@@ -841,6 +749,12 @@ async function ensureYomiuriCacheBuilt() {
     }
   }
 
+  if (YOMIURI_USE_BROWSER && candidatePageUrls.size < 300) {
+    const browserCrawl = await crawlYomiuriCandidatePagesWithBrowser();
+    for (const url of browserCrawl.winnerPages || []) visitedWinnerPages.add(url);
+    for (const url of browserCrawl.candidatePages || []) candidatePageUrls.add(url);
+  }
+
   console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
   console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
 
@@ -848,9 +762,17 @@ async function ensureYomiuriCacheBuilt() {
     try {
       const html = await fetchPage(pageUrl);
       nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
-      const profile = extractYomiuriProfile(html, pageUrl);
+      let profile = extractYomiuriProfile(html, pageUrl);
+      if ((!profile?.name || !profile?.imageUrl) && YOMIURI_USE_BROWSER) {
+        profile = await fetchYomiuriProfileWithBrowser(pageUrl);
+      }
       if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
-    } catch {}
+    } catch {
+      if (YOMIURI_USE_BROWSER) {
+        const profile = await fetchYomiuriProfileWithBrowser(pageUrl);
+        if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
+      }
+    }
   }
 
   const nextCount = Object.keys(nextEntries).length;
