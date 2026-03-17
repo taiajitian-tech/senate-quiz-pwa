@@ -15,6 +15,8 @@ const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true"
 const YOMIURI_ONLY = String(process.env.REP_IMAGE_YOMIURI_ONLY || "false").trim().toLowerCase() === "true";
 const YOMIURI_REPLACE_EXISTING = String(process.env.REP_IMAGE_YOMIURI_REPLACE_EXISTING || "false").trim().toLowerCase() === "true";
 const YOMIURI_REBUILD_CACHE = String(process.env.REP_IMAGE_YOMIURI_REBUILD_CACHE || (YOMIURI_ONLY ? "true" : "false")).trim().toLowerCase() === "true";
+const YOMIURI_USE_BROWSER = String(process.env.REP_IMAGE_YOMIURI_USE_BROWSER || (YOMIURI_ONLY ? "true" : "false")).trim().toLowerCase() !== "false";
+const YOMIURI_BROWSER_WAIT_MS = Number(process.env.REP_IMAGE_YOMIURI_BROWSER_WAIT_MS || 1200);
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
@@ -25,7 +27,7 @@ const FIX_TARGETS = fs.existsSync(FIX_TARGETS_PATH)
   ? JSON.parse(fs.readFileSync(FIX_TARGETS_PATH, "utf8"))
   : [];
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set();
+const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
     url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
@@ -483,6 +485,115 @@ function extractYomiuriListProfiles(html, pageUrl) {
   return out;
 }
 
+function extractYomiuriWinnersPageLinks(html, pageUrl) {
+  const $ = load(html);
+  const urls = new Set();
+  const add = (href) => {
+    const normalized = normalizeUrl(href, pageUrl);
+    if (!normalized) return;
+    if (/yomiuri\.co\.jp\/election\/shugiin\/2026winners\d{3}\/?$/i.test(normalized)) {
+      urls.add(normalized);
+    }
+  };
+
+  $('a[href]').each((_, el) => add($(el).attr('href') || ''));
+  const rawMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026winners\d{3}\/?/gi) || [];
+  for (const href of rawMatches) add(href);
+  const pathMatches = String(html).match(/\/election\/shugiin\/2026winners\d{3}\/?/gi) || [];
+  for (const href of pathMatches) add(href);
+  return [...urls];
+}
+
+let puppeteerModulePromise = null;
+
+async function loadPuppeteerModule() {
+  if (!puppeteerModulePromise) {
+    puppeteerModulePromise = import('puppeteer')
+      .then((mod) => mod.default || mod)
+      .catch(() => null);
+  }
+  return await puppeteerModulePromise;
+}
+
+async function fetchRenderedPage(browser, url) {
+  const page = await browser.newPage();
+  try {
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
+    await page.setExtraHTTPHeaders({
+      'accept-language': 'ja,en-US;q=0.9,en;q=0.8',
+      'upgrade-insecure-requests': '1'
+    });
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: Math.max(TIMEOUT_MS, 30000) });
+    await sleep(YOMIURI_BROWSER_WAIT_MS);
+    return await page.content();
+  } finally {
+    await page.close().catch(() => {});
+  }
+}
+
+async function buildYomiuriCacheViaBrowser() {
+  const puppeteer = await loadPuppeteerModule();
+  if (!puppeteer) return null;
+
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+  });
+
+  try {
+    const nextEntries = {};
+    const nextPages = {};
+    const addTempEntry = (name, entry) => {
+      const aliases = buildNameAliases(name);
+      if (!aliases.length) return;
+      const payload = {
+        name: normalizeSpace(name),
+        aliases,
+        imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
+        pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
+        source: entry.source || 'yomiuri-winners'
+      };
+      for (const key of aliases) nextEntries[key] = payload;
+    };
+
+    const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
+    const visitedWinnerPages = new Set();
+    const candidatePageUrls = new Set();
+
+    while (winnersQueue.length > 0) {
+      const url = winnersQueue.shift();
+      if (!url || visitedWinnerPages.has(url)) continue;
+      visitedWinnerPages.add(url);
+
+      const html = await fetchRenderedPage(browser, url);
+      nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
+
+      for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
+      for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
+      for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
+        if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
+      }
+    }
+
+    for (const pageUrl of [...candidatePageUrls].sort()) {
+      const html = await fetchRenderedPage(browser, pageUrl);
+      nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
+      const profile = extractYomiuriProfile(html, pageUrl);
+      if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
+    }
+
+    return {
+      entries: nextEntries,
+      pages: nextPages,
+      winnersCount: visitedWinnerPages.size,
+      candidateCount: candidatePageUrls.size
+    };
+  } finally {
+    await browser.close().catch(() => {});
+  }
+}
+
+
 function extractYomiuriPageName(html, pageUrl = '') {
   const $ = load(html);
   const candidates = [];
@@ -593,61 +704,82 @@ async function ensureYomiuriCacheBuilt() {
     return persistedYomiuriCache;
   }
 
-  const nextEntries = {};
-  const nextPages = {};
-  const addTempEntry = (name, entry) => {
-    const aliases = buildNameAliases(name);
-    if (!aliases.length) return;
-    const payload = {
-      name: normalizeSpace(name),
-      aliases,
-      imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
-      pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
-      source: entry.source || 'yomiuri-winners'
-    };
-    for (const key of aliases) nextEntries[key] = payload;
-  };
-
-  const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
-  const visitedWinnerPages = new Set();
-  const candidatePageUrls = new Set();
-  let fetchFailures = 0;
-
-  while (winnersQueue.length > 0) {
-    const url = winnersQueue.shift();
-    if (!url || visitedWinnerPages.has(url)) continue;
-    visitedWinnerPages.add(url);
-
+  let rebuilt = null;
+  if (YOMIURI_USE_BROWSER) {
     try {
-      const html = await fetchPage(url);
-      nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
-
-      for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
-      for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
-      for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
-        if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
-      }
+      rebuilt = await buildYomiuriCacheViaBrowser();
     } catch (error) {
-      fetchFailures += 1;
-      if (fetchFailures <= 3) {
-        console.log(`yomiuri-cache: fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
-      }
+      console.log(`yomiuri-cache: browser-rebuild-failed reason=${error?.message || 'unknown'}`);
     }
   }
 
-  console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
-  console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
+  if (!rebuilt) {
+    const nextEntries = {};
+    const nextPages = {};
+    const addTempEntry = (name, entry) => {
+      const aliases = buildNameAliases(name);
+      if (!aliases.length) return;
+      const payload = {
+        name: normalizeSpace(name),
+        aliases,
+        imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
+        pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
+        source: entry.source || 'yomiuri-winners'
+      };
+      for (const key of aliases) nextEntries[key] = payload;
+    };
 
-  for (const pageUrl of [...candidatePageUrls].sort()) {
-    try {
-      const html = await fetchPage(pageUrl);
-      nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
-      const profile = extractYomiuriProfile(html, pageUrl);
-      if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
-    } catch {}
+    const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
+    const visitedWinnerPages = new Set();
+    const candidatePageUrls = new Set();
+    let fetchFailures = 0;
+
+    while (winnersQueue.length > 0) {
+      const url = winnersQueue.shift();
+      if (!url || visitedWinnerPages.has(url)) continue;
+      visitedWinnerPages.add(url);
+
+      try {
+        const html = await fetchPage(url);
+        nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
+
+        for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
+        for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
+        for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
+          if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
+        }
+      } catch (error) {
+        fetchFailures += 1;
+        if (fetchFailures <= 3) {
+          console.log(`yomiuri-cache: fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
+        }
+      }
+    }
+
+    rebuilt = {
+      entries: nextEntries,
+      pages: nextPages,
+      winnersCount: visitedWinnerPages.size,
+      candidateCount: candidatePageUrls.size
+    };
+
+    console.log(`yomiuri-cache: winners-pages=${rebuilt.winnersCount}`);
+    console.log(`yomiuri-cache: candidate-pages=${rebuilt.candidateCount}`);
+
+    for (const pageUrl of [...candidatePageUrls].sort()) {
+      try {
+        const html = await fetchPage(pageUrl);
+        nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
+        const profile = extractYomiuriProfile(html, pageUrl);
+        if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
+      } catch {}
+    }
+  } else {
+    console.log(`yomiuri-cache: winners-pages=${rebuilt.winnersCount}`);
+    console.log(`yomiuri-cache: candidate-pages=${rebuilt.candidateCount}`);
   }
 
-  const nextCount = Object.keys(nextEntries).length;
+  const nextCount = Object.keys(rebuilt.entries || {}).length;
   const shouldKeepExisting = nextCount < 300 && existingCount > nextCount;
   if (shouldKeepExisting) {
     persistedYomiuriCache.entries = existingEntries;
@@ -659,8 +791,8 @@ async function ensureYomiuriCacheBuilt() {
     return persistedYomiuriCache;
   }
 
-  persistedYomiuriCache.entries = nextEntries;
-  persistedYomiuriCache.pages = nextPages;
+  persistedYomiuriCache.entries = rebuilt.entries;
+  persistedYomiuriCache.pages = rebuilt.pages;
   persistedYomiuriCache.updatedAt = new Date().toISOString();
   yomiuriCacheDirty = true;
   flushPersistentCaches();
@@ -1233,29 +1365,28 @@ async function resolveImage(member) {
   const profileUrl = String(member.profileUrl || "").trim();
   const resolverSteps = YOMIURI_ONLY
     ? [
-        () => resolveImageFromManualSourcePages(member),
-        () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
-        () => searchFromYomiuriWinners(member)
+        () => searchFromYomiuriWinners(member),
+        () => resolveImageFromManualSourcePages(member)
       ]
     : EFFECTIVE_TARGET_MODE === "fix"
       ? [
+          () => searchFromYomiuriWinners(member),
           () => resolveImageFromManualSourcePages(member),
           () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
           () => searchFromPartyHints(member),
           () => searchFromTrustedFallbacks(member),
           () => searchWikipediaImage(member.name),
           () => searchWikidataCommonsImage(member.name),
-          () => searchFromYomiuriWinners(member),
           () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
         ]
       : [
+          () => searchFromYomiuriWinners(member),
           () => resolveImageFromManualSourcePages(member),
           () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
           () => searchWikipediaImage(member.name),
           () => searchWikidataCommonsImage(member.name),
           () => searchFromPartyHints(member),
           () => searchFromTrustedFallbacks(member),
-          () => searchFromYomiuriWinners(member),
           () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
         ];
 
