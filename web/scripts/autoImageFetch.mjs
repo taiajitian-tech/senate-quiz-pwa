@@ -57,8 +57,6 @@ const YOMIURI_WINNERS_BASE_URLS = [
   "https://www.yomiuri.co.jp/election/shugiin/2026winners033/",
   "https://www.yomiuri.co.jp/election/shugiin/2026winners858/"
 ];
-const YOMIURI_WINNERS_PAGE_PATTERN = /yomiuri\.co\.jp\/election\/shugiin\/2026winners\d+\/?$/i;
-const YOMIURI_CANDIDATE_PAGE_PATTERN = /yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i;
 
 const YOMIURI_HINTS = [
   { match: /自由民主党・無所属の会|自由民主党|自民/u, urls: ["https://www.yomiuri.co.jp/election/shugiin/2026winners001/"] },
@@ -431,13 +429,15 @@ function getYomiuriCacheEntry(name) {
   return null;
 }
 
-function extractYomiuriLinksByPattern(html, pageUrl, pattern, rawAbsoluteRegex, rawPathRegex) {
+function extractYomiuriCandidateLinks(html, pageUrl) {
   const $ = load(html);
   const urls = new Set();
   const add = (href) => {
     const normalized = normalizeUrl(href, pageUrl);
     if (!normalized) return;
-    if (pattern.test(normalized)) urls.add(normalized);
+    if (/yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i.test(normalized)) {
+      urls.add(normalized);
+    }
   };
 
   $('a[href]').each((_, el) => add($(el).attr('href') || ''));
@@ -445,33 +445,13 @@ function extractYomiuriLinksByPattern(html, pageUrl, pattern, rawAbsoluteRegex, 
     add($(el).attr('data-href') || $(el).attr('data-url') || $(el).attr('data-link') || $(el).attr('data-candidate-url') || '');
   });
 
-  const rawMatches = String(html).match(rawAbsoluteRegex) || [];
+  const rawMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?/gi) || [];
   for (const href of rawMatches) add(href);
 
-  const pathMatches = String(html).match(rawPathRegex) || [];
+  const pathMatches = String(html).match(/\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?/gi) || [];
   for (const href of pathMatches) add(href);
 
   return [...urls];
-}
-
-function extractYomiuriCandidateLinks(html, pageUrl) {
-  return extractYomiuriLinksByPattern(
-    html,
-    pageUrl,
-    YOMIURI_CANDIDATE_PAGE_PATTERN,
-    /https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?/gi,
-    /\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?/gi
-  );
-}
-
-function extractYomiuriWinnersPageLinks(html, pageUrl) {
-  return extractYomiuriLinksByPattern(
-    html,
-    pageUrl,
-    YOMIURI_WINNERS_PAGE_PATTERN,
-    /https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026winners\d+\/?/gi,
-    /\/election\/shugiin\/2026winners\d+\/?/gi
-  );
 }
 
 function extractYomiuriListProfiles(html, pageUrl) {
@@ -511,10 +491,25 @@ function extractYomiuriPageName(html, pageUrl = '') {
     if (name) candidates.push(name);
   };
 
+  const pushHeading = (value) => {
+    const normalized = normalizeSpace(value)
+      .replace(/[ぁ-んァ-ヶヴー]{2,}/gu, ' ')
+      .replace(/[()（）【】\[\]「」『』]/gu, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const matches = normalized.match(/[一-龯々]{2,6}\s*[一-龯々]{1,6}/gu) || [];
+    for (const match of matches) push(match);
+    push(normalized);
+  };
+
   push($('meta[property="og:title"]').attr('content') || '');
   push($('title').text() || '');
   for (const sel of ['h1', 'main h1', 'article h1', '.p-electionCandidateHero__name', '.candidateProfile h1', '[class*="Candidate"] h1']) {
-    $(sel).each((_, el) => push($(el).text() || ''));
+    $(sel).each((_, el) => {
+      const clone = $(el).clone();
+      clone.find('rt, rp').remove();
+      pushHeading(clone.text() || '');
+    });
   }
 
   const bodyHead = normalizeSpace($('body').text().slice(0, 1200));
@@ -590,19 +585,33 @@ function extractYomiuriProfile(html, pageUrl) {
 }
 
 async function ensureYomiuriCacheBuilt() {
-  const existingCount = Object.keys(persistedYomiuriCache.entries || {}).length;
+  const existingEntries = { ...(persistedYomiuriCache.entries || {}) };
+  const existingPages = { ...(persistedYomiuriCache.pages || {}) };
+  const existingCount = Object.keys(existingEntries).length;
   if (!YOMIURI_REBUILD_CACHE && persistedYomiuriCache.updatedAt && existingCount >= 430) {
     console.log(`yomiuri-cache: count=${existingCount}`);
     return persistedYomiuriCache;
   }
 
-  persistedYomiuriCache.entries = {};
-  persistedYomiuriCache.pages = {};
-  yomiuriCacheDirty = true;
+  const nextEntries = {};
+  const nextPages = {};
+  const addTempEntry = (name, entry) => {
+    const aliases = buildNameAliases(name);
+    if (!aliases.length) return;
+    const payload = {
+      name: normalizeSpace(name),
+      aliases,
+      imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
+      pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
+      source: entry.source || 'yomiuri-winners'
+    };
+    for (const key of aliases) nextEntries[key] = payload;
+  };
 
   const winnersQueue = [...new Set(YOMIURI_WINNERS_BASE_URLS.map((url) => normalizeUrl(url)).filter(Boolean))];
   const visitedWinnerPages = new Set();
   const candidatePageUrls = new Set();
+  let fetchFailures = 0;
 
   while (winnersQueue.length > 0) {
     const url = winnersQueue.shift();
@@ -611,15 +620,19 @@ async function ensureYomiuriCacheBuilt() {
 
     try {
       const html = await fetchPage(url);
-      persistedYomiuriCache.pages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
-      yomiuriCacheDirty = true;
+      nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
 
-      for (const profile of extractYomiuriListProfiles(html, url)) addYomiuriCacheEntry(profile.name, profile);
+      for (const profile of extractYomiuriListProfiles(html, url)) addTempEntry(profile.name, profile);
       for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
       for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
         if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
       }
-    } catch {}
+    } catch (error) {
+      fetchFailures += 1;
+      if (fetchFailures <= 3) {
+        console.log(`yomiuri-cache: fetch-failed url=${url} reason=${error?.message || 'unknown'}`);
+      }
+    }
   }
 
   console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
@@ -628,13 +641,26 @@ async function ensureYomiuriCacheBuilt() {
   for (const pageUrl of [...candidatePageUrls].sort()) {
     try {
       const html = await fetchPage(pageUrl);
-      persistedYomiuriCache.pages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
-      yomiuriCacheDirty = true;
+      nextPages[pageUrl] = { fetchedAt: new Date().toISOString(), kind: 'candidate' };
       const profile = extractYomiuriProfile(html, pageUrl);
-      if (profile?.name && profile?.imageUrl) addYomiuriCacheEntry(profile.name, profile);
+      if (profile?.name && profile?.imageUrl) addTempEntry(profile.name, profile);
     } catch {}
   }
 
+  const nextCount = Object.keys(nextEntries).length;
+  const shouldKeepExisting = nextCount < 300 && existingCount > nextCount;
+  if (shouldKeepExisting) {
+    persistedYomiuriCache.entries = existingEntries;
+    persistedYomiuriCache.pages = existingPages;
+    persistedYomiuriCache.updatedAt = new Date().toISOString();
+    yomiuriCacheDirty = true;
+    flushPersistentCaches();
+    console.log(`yomiuri-cache: fallback-to-existing count=${existingCount} rebuilt=${nextCount}`);
+    return persistedYomiuriCache;
+  }
+
+  persistedYomiuriCache.entries = nextEntries;
+  persistedYomiuriCache.pages = nextPages;
   persistedYomiuriCache.updatedAt = new Date().toISOString();
   yomiuriCacheDirty = true;
   flushPersistentCaches();
@@ -1201,7 +1227,7 @@ async function tryResolver(member, resolver) {
 async function resolveImage(member) {
   const name = cleanName(member.name);
 
-  if (MANUAL_BAD_IMAGE_REMOVALS.has(name)) return null;
+  if (MANUAL_BAD_IMAGE_REMOVALS.has(name) && !YOMIURI_ONLY) return null;
   if (MANUAL_OVERRIDES[name] && !YOMIURI_ONLY) return MANUAL_OVERRIDES[name];
 
   const profileUrl = String(member.profileUrl || "").trim();
