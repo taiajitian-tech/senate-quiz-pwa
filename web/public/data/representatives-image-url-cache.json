@@ -1,1 +1,72 @@
-{}
+{
+  "https://www.yomiuri.co.jp/assets/images/common/dc-com_logo_yol-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T01:34:22.062Z"
+  },
+  "https://www.yomiuri.co.jp/graphics/election/shugiin/51/images/election-shugiin2026-header-logo.jpg": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T01:34:22.064Z"
+  },
+  "https://www.yomiuri.co.jp/media/2024/12/Glogo_black241227.jpg": {
+    "state": "blocked",
+    "reason": "logo",
+    "updatedAt": "2026-03-17T01:34:22.072Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_giants-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_chuko-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_yomiuriland-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_ntv-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_bsntv-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_yomiuriryokou-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_yomilkaru-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_yomikyo-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_hochi-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_yfc-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  },
+  "https://www.yomiuri.co.jp/assets/images/footer/dc-grouplinks_yomilogi-20260306044033.svg": {
+    "state": "blocked",
+    "reason": "group-photo",
+    "updatedAt": "2026-03-17T01:34:22.073Z"
+  }
+}

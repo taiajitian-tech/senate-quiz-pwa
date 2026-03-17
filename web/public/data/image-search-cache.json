@@ -1,1 +1,832 @@
-{}
+{
+  "安藤たかお": {
+    "name": "安藤たかお",
+    "sources": {},
+    "resolved": false,
+    "updatedAt": ""
+  },
+  "西條昌良": {
+    "name": "西條昌良",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.095Z"
+  },
+  "世古万美子": {
+    "name": "世古万美子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.184Z"
+  },
+  "田宮寿人": {
+    "name": "田宮寿人",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.235Z"
+  },
+  "辻由布子": {
+    "name": "辻由布子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.332Z"
+  },
+  "長澤興祐": {
+    "name": "長澤興祐",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.386Z"
+  },
+  "長野春信": {
+    "name": "長野春信",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.435Z"
+  },
+  "西山尚利": {
+    "name": "西山尚利",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.478Z"
+  },
+  "新田章文": {
+    "name": "新田章文",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.529Z"
+  },
+  "根本拓": {
+    "name": "根本拓",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.574Z"
+  },
+  "東田淳平": {
+    "name": "東田淳平",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.620Z"
+  },
+  "藤沢忠盛": {
+    "name": "藤沢忠盛",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.765Z"
+  },
+  "藤田ひかる": {
+    "name": "藤田ひかる",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.836Z"
+  },
+  "文月涼": {
+    "name": "文月涼",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.901Z"
+  },
+  "古井康介": {
+    "name": "古井康介",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:22.966Z"
+  },
+  "前川恵": {
+    "name": "前川恵",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.020Z"
+  },
+  "松下英樹": {
+    "name": "松下英樹",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.065Z"
+  },
+  "松本泉": {
+    "name": "松本泉",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.110Z"
+  },
+  "丸尾なつ子": {
+    "name": "丸尾なつ子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.320Z"
+  },
+  "丸田康一郎": {
+    "name": "丸田康一郎",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.373Z"
+  },
+  "水野よしひこ": {
+    "name": "水野よしひこ",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.418Z"
+  },
+  "三原朝利": {
+    "name": "三原朝利",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.463Z"
+  },
+  "森原紀代子": {
+    "name": "森原紀代子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.518Z"
+  },
+  "保岡宏武": {
+    "name": "保岡宏武",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.566Z"
+  },
+  "山田基靖": {
+    "name": "山田基靖",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:23.610Z"
+  },
+  "山本深": {
+    "name": "山本深",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.707Z"
+  },
+  "山本裕三": {
+    "name": "山本裕三",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.757Z"
+  },
+  "吉田有理": {
+    "name": "吉田有理",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.803Z"
+  },
+  "吉村悠": {
+    "name": "吉村悠",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.849Z"
+  },
+  "米内紘正": {
+    "name": "米内紘正",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.905Z"
+  },
+  "渡辺勝幸": {
+    "name": "渡辺勝幸",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.953Z"
+  },
+  "犬飼明佳": {
+    "name": "犬飼明佳",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.998Z"
+  },
+  "中川宏昌": {
+    "name": "中川宏昌",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.053Z"
+  },
+  "沼崎満子": {
+    "name": "沼崎満子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.101Z"
+  },
+  "原田直樹": {
+    "name": "原田直樹",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.146Z"
+  },
+  "平林晃": {
+    "name": "平林晃",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.192Z"
+  },
+  "福重隆浩": {
+    "name": "福重隆浩",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.245Z"
+  },
+  "山崎正恭": {
+    "name": "山崎正恭",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.289Z"
+  },
+  "早稲田ゆき": {
+    "name": "早稲田ゆき",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.334Z"
+  },
+  "池下卓": {
+    "name": "池下卓",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.389Z"
+  },
+  "池畑浩太朗": {
+    "name": "池畑浩太朗",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.434Z"
+  },
+  "奥下剛光": {
+    "name": "奥下剛光",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.480Z"
+  },
+  "柏倉祐司": {
+    "name": "柏倉祐司",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.536Z"
+  },
+  "喜多義典": {
+    "name": "喜多義典",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.581Z"
+  },
+  "住吉寛紀": {
+    "name": "住吉寛紀",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.627Z"
+  },
+  "高見亮": {
+    "name": "高見亮",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.696Z"
+  },
+  "西田薫": {
+    "name": "西田薫",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.752Z"
+  },
+  "萩原佳": {
+    "name": "萩原佳",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.822Z"
+  },
+  "原山大亮": {
+    "name": "原山大亮",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.871Z"
+  },
+  "三木圭恵": {
+    "name": "三木圭恵",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.932Z"
+  },
+  "美延映夫": {
+    "name": "美延映夫",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:26.980Z"
+  },
+  "横田光弘": {
+    "name": "横田光弘",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.031Z"
+  },
+  "若狹清史": {
+    "name": "若狹清史",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.099Z"
+  },
+  "小竹凱": {
+    "name": "小竹凱",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.270Z"
+  },
+  "河井昭成": {
+    "name": "河井昭成",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.317Z"
+  },
+  "許斐亮太郎": {
+    "name": "許斐亮太郎",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.362Z"
+  },
+  "近藤雅彦": {
+    "name": "近藤雅彦",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.413Z"
+  },
+  "佐々木真琴": {
+    "name": "佐々木真琴",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.468Z"
+  },
+  "高沢一基": {
+    "name": "高沢一基",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.517Z"
+  },
+  "丹野みどり": {
+    "name": "丹野みどり",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.564Z"
+  },
+  "長友慎治": {
+    "name": "長友慎治",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.622Z"
+  },
+  "鍋島勢理": {
+    "name": "鍋島勢理",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.676Z"
+  },
+  "野村美穂": {
+    "name": "野村美穂",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.730Z"
+  },
+  "日野紗里亜": {
+    "name": "日野紗里亜",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.792Z"
+  },
+  "青木ひとみ": {
+    "name": "青木ひとみ",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.841Z"
+  },
+  "石川勝": {
+    "name": "石川勝",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.894Z"
+  },
+  "伊藤恵介": {
+    "name": "伊藤恵介",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:27.966Z"
+  },
+  "木下敏之": {
+    "name": "木下敏之",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.015Z"
+  },
+  "工藤聖子": {
+    "name": "工藤聖子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.063Z"
+  },
+  "島村かおる": {
+    "name": "島村かおる",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.121Z"
+  },
+  "鈴木美香": {
+    "name": "鈴木美香",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.171Z"
+  },
+  "谷浩一郎": {
+    "name": "谷浩一郎",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.218Z"
+  },
+  "なかやめぐ": {
+    "name": "なかやめぐ",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.272Z"
+  },
+  "牧野俊一": {
+    "name": "牧野俊一",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.333Z"
+  },
+  "渡辺藍理": {
+    "name": "渡辺藍理",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.382Z"
+  },
+  "宇佐美登": {
+    "name": "宇佐美登",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.432Z"
+  },
+  "河合道雄": {
+    "name": "河合道雄",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.505Z"
+  },
+  "小林修平": {
+    "name": "小林修平",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.558Z"
+  },
+  "土橋章宏": {
+    "name": "土橋章宏",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.635Z"
+  },
+  "林拓海": {
+    "name": "林拓海",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.726Z"
+  },
+  "古川あおい": {
+    "name": "古川あおい",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.788Z"
+  },
+  "峰島侑也": {
+    "name": "峰島侑也",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.834Z"
+  },
+  "武藤かず子": {
+    "name": "武藤かず子",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.879Z"
+  },
+  "山田瑛理": {
+    "name": "山田瑛理",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.924Z"
+  },
+  "緒方林太郎": {
+    "name": "緒方林太郎",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:28.986Z"
+  },
+  "中村はやと": {
+    "name": "中村はやと",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:29.044Z"
+  },
+  "渡辺真太朗": {
+    "name": "渡辺真太朗",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:29.090Z"
+  },
+  "逢沢一郎": {
+    "name": "逢沢一郎",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.538Z"
+  },
+  "東国幹": {
+    "name": "東国幹",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.626Z"
+  },
+  "阿部弘樹": {
+    "name": "阿部弘樹",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.678Z"
+  },
+  "伊藤聡": {
+    "name": "伊藤聡",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.769Z"
+  },
+  "上田英俊": {
+    "name": "上田英俊",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.825Z"
+  },
+  "遠藤寛明": {
+    "name": "遠藤寛明",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.873Z"
+  },
+  "川崎ひでと": {
+    "name": "川崎ひでと",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.919Z"
+  },
+  "黒崎祐一": {
+    "name": "黒崎祐一",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:24.975Z"
+  },
+  "小池正昭": {
+    "name": "小池正昭",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.047Z"
+  },
+  "今洋佑": {
+    "name": "今洋佑",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.093Z"
+  },
+  "斉木武志": {
+    "name": "斉木武志",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.158Z"
+  },
+  "坂本竜太郎": {
+    "name": "坂本竜太郎",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.226Z"
+  },
+  "鈴木拓海": {
+    "name": "鈴木拓海",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.289Z"
+  },
+  "高橋祐介": {
+    "name": "高橋祐介",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.354Z"
+  },
+  "俵田祐児": {
+    "name": "俵田祐児",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.411Z"
+  },
+  "広瀬建": {
+    "name": "広瀬建",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.456Z"
+  },
+  "向山淳": {
+    "name": "向山淳",
+    "sources": {
+      "yomiuri": "success"
+    },
+    "resolved": true,
+    "updatedAt": "2026-03-17T01:34:25.502Z"
+  }
+}
