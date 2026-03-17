@@ -230,11 +230,56 @@ function sleep(ms) {
 }
 
 function normalizeSpace(value) {
-  return String(value || "").replace(/\u00a0/g, " ").replace(/\u3000/g, " ").replace(/\s+/g, " ").trim();
+  return String(value || "")
+    .normalize("NFKC")
+    .replace(/\u00a0/g, " ")
+    .replace(/\u3000/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function stripNameNoise(value) {
+  return normalizeSpace(value)
+    .replace(/氏|さん|君$/gu, "")
+    .replace(/（[^）]*）|\([^)]*\)|【[^】]*】|\[[^\]]*\]/gu, " ")
+    .replace(/衆院選|衆議院|開票結果|候補者|プロフィール|読売新聞|オンライン|選挙区|比例|当選|年齢|党派|経歴|学歴|出身地|自民党|公明党|立憲民主党|日本維新の会|国民民主党|参政党|日本共産党/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function buildNameAliases(value) {
+  const raw = stripNameNoise(value);
+  if (!raw) return [];
+
+  const aliases = new Set();
+  const add = (candidate) => {
+    const cleaned = cleanNameLoose(candidate);
+    if (!cleaned) return;
+    if (!/[一-龯々〆ヶぁ-んァ-ヶヴー]/u.test(cleaned)) return;
+    if (cleaned.length < 2 || cleaned.length > 20) return;
+    aliases.add(cleaned);
+  };
+
+  add(raw);
+  add(raw.replace(/[ぁ-んァ-ヶヴー]{2,}/gu, " "));
+
+  for (const token of raw.split(/[\s/｜|・]+/u)) add(token);
+
+  const matches = raw.match(/[一-龯々〆ヶぁ-んァ-ヶヴー]{2,20}/gu) || [];
+  for (const token of matches) add(token);
+
+  const kanjiHeavy = [...aliases].filter((item) => /[一-龯々〆ヶ]/u.test(item));
+  return kanjiHeavy.length ? [...new Set([...kanjiHeavy, ...aliases])] : [...aliases];
+}
+
+function primaryNameAlias(value) {
+  const aliases = buildNameAliases(value);
+  if (!aliases.length) return "";
+  return aliases[0] || "";
 }
 
 function cleanName(value) {
-  return normalizeSpace(value).replace(/君$/u, "").replace(/\s+/g, "");
+  return primaryNameAlias(value) || normalizeSpace(value).replace(/君$/u, "").replace(/\s+/g, "");
 }
 
 function decodeText(buffer, contentType = "") {
@@ -335,7 +380,7 @@ function toHalfWidthKana(value) {
 }
 
 function cleanNameLoose(value) {
-  return toHalfWidthKana(normalizeSpace(value))
+  return toHalfWidthKana(stripNameNoise(value))
     .replace(/[\s　・･・\-－ー―‐]/g, "")
     .replace(/[()（）【】\[\]「」『』]/g, "")
     .trim();
@@ -354,23 +399,29 @@ function extractLikelyJapaneseName(text) {
 }
 
 function addYomiuriCacheEntry(name, entry) {
-  const key = cleanNameLoose(name);
-  if (!key) return;
-  const current = persistedYomiuriCache.entries[key];
-  if (current && current.imageUrl === entry.imageUrl && current.pageUrl === entry.pageUrl) return;
-  persistedYomiuriCache.entries[key] = {
+  const aliases = buildNameAliases(name);
+  if (!aliases.length) return;
+  const payload = {
     name: normalizeSpace(name),
+    aliases,
     imageUrl: normalizeUrl(entry.imageUrl, entry.pageUrl) || entry.imageUrl,
     pageUrl: normalizeUrl(entry.pageUrl) || entry.pageUrl,
     source: entry.source || "yomiuri-winners"
   };
-  yomiuriCacheDirty = true;
+
+  for (const key of aliases) {
+    const current = persistedYomiuriCache.entries[key];
+    if (current && current.imageUrl === payload.imageUrl && current.pageUrl === payload.pageUrl) continue;
+    persistedYomiuriCache.entries[key] = payload;
+    yomiuriCacheDirty = true;
+  }
 }
 
 function getYomiuriCacheEntry(name) {
-  const key = cleanNameLoose(name);
-  if (!key) return null;
-  return persistedYomiuriCache.entries[key] || null;
+  for (const key of buildNameAliases(name)) {
+    if (persistedYomiuriCache.entries[key]) return persistedYomiuriCache.entries[key];
+  }
+  return null;
 }
 
 function extractYomiuriCandidateLinks(html, pageUrl) {
@@ -930,13 +981,21 @@ async function searchFromYomiuriWinners(member) {
     return { url: cached.imageUrl, source: "yomiuri-winners", sourceUrl: cached.pageUrl || cached.imageUrl };
   }
 
-  const kanaKey = cleanNameLoose(String(member.kana || ''));
-  if (kanaKey) {
+  const memberAliases = new Set([
+    ...buildNameAliases(member.name),
+    ...buildNameAliases(String(member.kana || ''))
+  ]);
+  if (memberAliases.size) {
     for (const entry of Object.values(persistedYomiuriCache.entries || {})) {
-      const pageText = cleanNameLoose(`${entry?.name || ''} ${entry?.pageUrl || ''}`);
-      if (pageText && pageText.includes(kanaKey) && entry?.imageUrl) {
-        setSourceState(name, "yomiuri", "success");
-        return { url: entry.imageUrl, source: "yomiuri-winners", sourceUrl: entry.pageUrl || entry.imageUrl };
+      const pageAliases = new Set([
+        ...buildNameAliases(entry?.name || ''),
+        ...buildNameAliases(`${entry?.name || ''} ${entry?.pageUrl || ''}`)
+      ]);
+      for (const alias of memberAliases) {
+        if (pageAliases.has(alias) && entry?.imageUrl) {
+          setSourceState(name, "yomiuri", "success");
+          return { url: entry.imageUrl, source: "yomiuri-winners", sourceUrl: entry.pageUrl || entry.imageUrl };
+        }
       }
     }
   }
