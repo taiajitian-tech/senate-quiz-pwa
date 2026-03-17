@@ -24,7 +24,7 @@ const FIX_TARGETS = fs.existsSync(FIX_TARGETS_PATH)
   ? JSON.parse(fs.readFileSync(FIX_TARGETS_PATH, "utf8"))
   : [];
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
+const MANUAL_BAD_IMAGE_REMOVALS = new Set([]);
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
     url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",

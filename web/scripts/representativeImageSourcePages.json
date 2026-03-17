@@ -20,5 +20,25 @@
     "candidatePageUrls": [],
     "checkedSources": [],
     "notes": "ここに議員ごとの参照ページURLを追加すると、そのページを最優先で見に行きます。"
+  },
+  "安藤たかお": {
+    "preferredSourceType": "official_or_party",
+    "candidatePageUrls": [
+      "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html"
+    ],
+    "directImageUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/img/s/andou-takao.jpg",
+    "directSourceUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html",
+    "checkedSources": [],
+    "notes": "読売で安定取得できないため、自民党の候補者ページ画像を固定使用。"
+  },
+  "阿部弘樹": {
+    "preferredSourceType": "official_or_party",
+    "candidatePageUrls": [
+      "https://www.ntv.co.jp/election2024/research/candidate/400095/"
+    ],
+    "directImageUrl": "https://www.ntv.co.jp/election2024/research/candidate/400095.jpg",
+    "directSourceUrl": "https://www.ntv.co.jp/election2024/research/candidate/400095/",
+    "checkedSources": [],
+    "notes": "Wikipediaの街頭演説写真を避け、顔が大きい候補者写真を固定使用。"
   }
 }

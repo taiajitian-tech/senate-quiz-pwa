@@ -155,11 +155,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%BC%98%E6%A8%B9",
+    "image": "https://www.ntv.co.jp/election2024/research/candidate/400095.jpg",
+    "imageSource": "manual-source-page",
+    "imageSourceUrl": "https://www.ntv.co.jp/election2024/research/candidate/400095/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "安藤たかお",
@@ -167,11 +170,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.jimin.jp/election/results/sen_shu50/candidate/img/s/andou-takao.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "五十嵐清",

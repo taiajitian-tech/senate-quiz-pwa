@@ -21,7 +21,7 @@ function inferReason(item) {
   if (/poster|flyer|leaflet|manifesto|選挙公報|senkyo/.test(`${image} ${sourceUrl}`)) return "poster_image";
   if (/youtube|facebook|x\.com|twitter|instagram/.test(`${image} ${sourceUrl}`)) return "sns_or_video_thumbnail";
   if (item.aiGuess) return "estimated_candidate";
-  if (/manual-source-page/.test(source)) return "manual_source_page";
+  if (/manual-source-page|manual-direct-image/.test(source)) return "manual_source_page";
   if (/trusted-fallback/.test(source)) return "trusted_fallback_review";
   if (/web-fallback/.test(source)) return "needs_manual_check";
   if (/wikipedia/.test(source) && /geta_zoutei|集合|group|speech|街頭|演説/.test(`${image} ${sourceUrl}`)) return "face_too_far";
