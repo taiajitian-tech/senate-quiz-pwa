@@ -50,11 +50,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/akazawa-ryosei.jpg",
-    "imageSource": "official-manual",
-    "imageSourceUrl": "https://www.jimin.jp/member/100478.html",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Ryosei_Akazawa_20230528_%28front%29_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E6%BE%A4%E4%BA%AE%E6%AD%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "あかま二郎",
@@ -62,11 +65,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/akama-jiro.jpg",
-    "imageSource": "official-manual",
-    "imageSourceUrl": "https://www.jimin.jp/member/102081.html",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Official_portrait_of_Jiro_Akama%2C_Minister_of_State_for_Special_Missions.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%82%E3%81%8B%E3%81%BE%E4%BA%8C%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "秋葉賢也",
@@ -74,11 +80,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Kenya_Akiba_20190911.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E8%91%89%E8%B3%A2%E4%B9%9F",
+    "image": "https://www.jimin.jp/member/img/akiba-kenya.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/100442.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "浅田眞澄美",
@@ -90,7 +99,10 @@
     "imageSource": "official-manual",
     "imageSourceUrl": "https://asada-masumi.com/about-us/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "東国幹",
@@ -143,11 +155,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Toshiko_Abe_20200604_%28cropped%29.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%82%E3%81%B9%E4%BF%8A%E5%AD%90",
+    "image": "https://www.jimin.jp/member/img/abe-toshiko.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/100556.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "阿部弘樹",
@@ -170,9 +185,9 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/election/results/sen_shu50/candidate/img/s/andou-takao.jpg",
+    "image": "https://www.jimin.jp/member/img/andou-takao.jpg",
     "imageSource": "party-site",
-    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html",
+    "imageSourceUrl": "https://www.jimin.jp/member/135980.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
@@ -215,11 +230,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Akimasa_Ishikawa.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E6%98%AD%E6%94%BF",
+    "image": "https://www.jimin.jp/election/results/sen_shu49/candidate/img/w/ishikawa-akimasa_l.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu49/candidate/110527.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "石坂太",
@@ -242,11 +260,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Masatoshi_Ishida_2024-12-23.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E7%9C%9F%E6%95%8F",
+    "image": "https://i.ytimg.com/vi/eTgD7e2r5vQ/hqdefault.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/100475.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "石破茂",
@@ -341,11 +362,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Shintar%C5%8D_It%C5%8D.2023.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E4%BF%A1%E5%A4%AA%E9%83%8E",
+    "image": "https://www.jimin.jp/member/img/ito-shintaro.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/100569.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "伊藤忠彦",
@@ -387,7 +411,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E8%89%AF%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "稲田朋美",
@@ -549,7 +576,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E6%AF%94%E8%8F%9C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "岩田和親",
@@ -632,11 +662,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Hiroshi_Ueno.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%AE%8F%E5%8F%B2",
+    "image": "https://www.jimin.jp/election/results/sen_shu48/common/img/candidate/img_preload.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu48/candidate/ueno_hiroshi.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "上原正裕",
@@ -659,11 +692,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15001XXX002K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA15XXXXXX000/135206/",
+    "image": "https://www.jimin.jp/member/img/uchiyama-koh.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212420.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "江渡聡徳",
@@ -675,7 +711,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%B8%A1%E8%81%A1%E5%BE%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "江藤拓",
@@ -683,11 +722,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Taku_Eto_20210311.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E8%97%A4%E6%8B%93",
+    "image": "https://i.ytimg.com/vi/GVtcg1Ekl8g/hqdefault.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/100411.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "衛藤博昭",
@@ -845,11 +887,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA39002XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA39XXXXXX000/135364/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Masanao_Ozaki_2022.png",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E5%B4%8E%E6%AD%A3%E7%9B%B4",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "長田紘一郎",
@@ -869,11 +914,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Yasuhiro_Ozato.jpg",
-    "imageSource": "wikidata-commons",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q8049988",
+    "image": "https://i.ytimg.com/vi/xgENeieoS18/hqdefault.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/100448.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "小田原潔",
@@ -960,7 +1008,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E8%BA%AB%E6%9C%9D%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "鹿嶋祐介",
@@ -1133,11 +1184,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14020XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135461/",
+    "image": "https://www.jimin.jp/member/img/kanazawa-yui.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/212417.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "金子恭之",
@@ -1190,11 +1244,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA24002XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA24XXXXXX000/135745/",
+    "image": "https://www.jimin.jp/member/img/kawasaki-hideto.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/202147.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "河野正美",
@@ -1206,7 +1263,10 @@
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/202194.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "川松真一朗",
@@ -1421,11 +1481,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA08006XXX002K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA08XXXXXX000/135542/",
+    "image": "https://i.ytimg.com/vi/FQFgRYgZLqM/hqdefault.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/135831.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "熊田裕通",
@@ -1554,7 +1617,10 @@
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/202151.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "古賀篤",
@@ -1577,11 +1643,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA47001XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA47XXXXXX000/135435/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Konosuke_Kokuba.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%8B%E5%A0%B4%E5%B9%B8%E4%B9%8B%E5%8A%A9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "小寺裕雄",
@@ -1593,7 +1662,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AF%BA%E8%A3%95%E9%9B%84",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "後藤茂之",
@@ -1715,11 +1787,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12007XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135562/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Ken_Sait%C5%8D_20231214.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BD%8B%E8%97%A4%E5%81%A5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "斎藤洋明",
@@ -1863,7 +1938,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B9%81%E6%9C%AC%E8%AD%B7",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "柴山昌彦",
@@ -1901,11 +1979,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Tomoaki_Shimada_3.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B3%B6%E7%94%B0%E6%99%BA%E6%98%8E",
+    "image": "https://www.jimin.jp/member/img/shimada-tomoaki.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/209061.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "下村博文",
@@ -1928,11 +2009,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/65/Aki_Shirasaka_2023-10-22_%28cropped%29.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%99%BD%E5%9D%82%E4%BA%9C%E7%B4%80",
+    "image": "https://i.ytimg.com/vi/34473xDVJmE/hqdefault.jpg",
+    "imageSource": "party-site",
+    "imageSourceUrl": "https://www.jimin.jp/member/205728.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": true,
+    "imageMaskMode": "pixelate-bottom"
   },
   {
     "name": "新谷正義",
@@ -2034,7 +2118,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E6%B7%B3%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "鈴木貴子",
@@ -2126,11 +2213,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Hiroshige_Sek%C5%8D_20160928_%28cropped%29.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hiroshige_Sek%C5%8D_20160928_%28cropped%29.jpg/500px-Hiroshige_Sek%C5%8D_20160928_%28cropped%29.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%96%E8%80%95%E5%BC%98%E6%88%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "瀬戸隆一",
@@ -2225,11 +2315,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01003XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135674/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Hirohisa_Takagi_20230915.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%AE%8F%E5%A3%BD",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "高鳥修一",
@@ -2282,11 +2375,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Shunsuke_Takei_20220812.jpg/250px-Shunsuke_Takei_20220812.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Shunsuke_Takei_20220812.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E4%BA%95%E4%BF%8A%E8%BC%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "武田良太",
@@ -2388,7 +2484,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%98%8C%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "田中良生",
@@ -2475,7 +2574,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E7%95%91%E8%A3%95%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "田宮寿人",
@@ -2613,7 +2715,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AF%BA%E7%94%B0%E7%A8%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "土井亨",
@@ -2670,7 +2775,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%A8%E3%81%8B%E3%81%97%E3%81%8D%E3%81%AA%E3%81%8A%E3%81%BF",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "永岡桂子",
@@ -2850,7 +2958,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%A0%B9%E4%B8%80%E5%B9%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中野英幸",
@@ -3255,7 +3366,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E4%BA%95%E5%8D%93%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "平口洋",
@@ -3297,7 +3411,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B2%BC%E6%AD%A3%E4%BA%8C%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "広瀬建",
@@ -3320,11 +3437,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22004XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135570/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/20211111fukazawa_yoichi.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E6%BE%A4%E9%99%BD%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "福田かおる",
@@ -3438,7 +3558,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%B4%8B%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "藤丸敏",
@@ -3609,7 +3732,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%81%A5%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "細野豪志",
@@ -3863,11 +3989,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11013XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135727/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Hiromi_Mitsubayashi.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%89%E3%83%83%E6%9E%97%E8%A3%95%E5%B7%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "御法川信英",
@@ -3879,7 +4008,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E6%B3%95%E5%B7%9D%E4%BF%A1%E8%8B%B1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "三原朝利",
@@ -3993,7 +4125,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%97%E6%B8%85%E7%9A%87%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "村井英樹",
@@ -4020,7 +4155,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E8%AA%A0%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "村木汀",
@@ -4028,11 +4166,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg/250px-Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%9C%A8%E6%B1%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "茂木敏充",
@@ -4128,7 +4269,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B0%97%E5%92%8C%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山際大志郎",
@@ -4181,11 +4325,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28012XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135313/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Tsuyoshi_Yamaguchi_20190303.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E5%A3%AF",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山下史守朗",
@@ -4272,7 +4419,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%B7%A6%E8%BF%91",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山本深",
@@ -4329,7 +4479,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E7%9C%9F%E6%AC%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "吉田有理",
@@ -4470,7 +4623,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%AD%9D%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "渡辺博道",
@@ -4497,7 +4653,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%BE%BD%E4%B8%80%E5%98%89",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "有田芳生",
@@ -4509,7 +4668,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%89%E7%94%B0%E8%8A%B3%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "伊佐進一",
@@ -4521,7 +4683,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E4%BD%90%E9%80%B2%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "泉健太",
@@ -4533,7 +4698,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%81%A5%E5%A4%AA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "犬飼明佳",
@@ -4557,7 +4725,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%AE%E5%B3%B6%E6%99%BA%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "大島敦",
@@ -4569,7 +4740,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B3%B6%E6%95%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "大森江里子",
@@ -4581,7 +4755,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A3%AE%E6%B1%9F%E9%87%8C%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "岡本三成",
@@ -4593,7 +4770,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%9C%AC%E4%B8%89%E6%88%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "小川淳也",
@@ -4605,7 +4785,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%B7%9D%E6%B7%B3%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "落合貴之",
@@ -4617,7 +4800,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%90%BD%E5%90%88%E8%B2%B4%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "河西宏一",
@@ -4629,7 +4815,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E8%A5%BF%E5%AE%8F%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "金子恵美",
@@ -4641,7 +4830,10 @@
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q5371065",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "神谷裕",
@@ -4653,7 +4845,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A5%9E%E8%B0%B7%E8%A3%95",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "河野義博",
@@ -4665,7 +4860,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E9%87%8E%E7%BE%A9%E5%8D%9A_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "菊田真紀子",
@@ -4677,7 +4875,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%8A%E7%94%B0%E7%9C%9F%E7%B4%80%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "金城泰邦",
@@ -4689,7 +4890,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%9F%8E%E6%B3%B0%E9%82%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "國重徹",
@@ -4701,7 +4905,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%8B%E9%87%8D%E5%BE%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "輿水恵一",
@@ -4713,7 +4920,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BC%BF%E6%B0%B4%E6%81%B5%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "後藤祐一",
@@ -4725,7 +4935,10 @@
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q11488572",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "近藤和也",
@@ -4737,7 +4950,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E5%92%8C%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "斉藤鉄夫",
@@ -4745,11 +4961,14 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Tetsuo_Saito_20211004.jpg/960px-Tetsuo_Saito_20211004.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Tetsuo_Saito_20211004.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E9%89%84%E5%A4%AB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "佐藤英道",
@@ -4757,11 +4976,14 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/20211111sato_hidemichi.jpg/250px-20211111sato_hidemichi.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/20211111sato_hidemichi.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E8%8B%B1%E9%81%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "重徳和彦",
@@ -4773,7 +4995,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8D%E5%BE%B3%E5%92%8C%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "階猛",
@@ -4785,7 +5010,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9A%8E%E7%8C%9B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "庄子賢一",
@@ -4797,7 +5025,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%84%E5%AD%90%E8%B3%A2%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "田嶋要",
@@ -4809,7 +5040,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E5%B6%8B%E8%A6%81",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "角田秀穂",
@@ -4821,7 +5055,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A7%92%E7%94%B0%E7%A7%80%E7%A9%82",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中川宏昌",
@@ -4845,7 +5082,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E5%BA%B7%E6%B4%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "長妻昭",
@@ -4857,7 +5097,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%A6%BB%E6%98%AD",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中野洋昌",
@@ -4869,7 +5112,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E9%87%8E%E6%B4%8B%E6%98%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "西園勝秀",
@@ -4881,7 +5127,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%9C%92%E5%8B%9D%E7%A7%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "西村智奈美",
@@ -4893,7 +5142,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%99%BA%E5%A5%88%E7%BE%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "沼崎満子",
@@ -4917,7 +5169,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E4%BD%B3%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "野間健",
@@ -4929,7 +5184,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E9%96%93%E5%81%A5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "浜地雅一",
@@ -4941,7 +5199,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%9C%B0%E9%9B%85%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "原田直樹",
@@ -4989,7 +5250,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%B2%A1%E9%81%94%E4%B8%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山崎正恭",
@@ -5013,7 +5277,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E9%A6%99%E8%8B%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "吉田宣弘",
@@ -5025,7 +5292,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E5%AE%A3%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "笠浩史",
@@ -5037,7 +5307,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%AC%A0%E6%B5%A9%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "早稲田ゆき",
@@ -5061,7 +5334,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%89%B5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "青柳仁士",
@@ -5073,7 +5349,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%9F%B3%E4%BB%81%E5%A3%AB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "東徹",
@@ -5085,7 +5364,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%BE%B9_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "阿部圭史",
@@ -5097,7 +5379,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%9C%AD%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "阿部司",
@@ -5109,7 +5394,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "池下卓",
@@ -5145,7 +5433,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%80%E8%B0%B7%E5%8B%87%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "市村浩一郎",
@@ -5157,7 +5448,10 @@
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q6426248",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "伊東信久",
@@ -5169,7 +5463,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E4%BF%A1%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "井上英孝",
@@ -5181,7 +5478,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%8B%B1%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "岩谷良平",
@@ -5193,7 +5493,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E8%B0%B7%E8%89%AF%E5%B9%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "梅村聡",
@@ -5205,7 +5508,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A2%85%E6%9D%91%E8%81%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "浦野靖人",
@@ -5217,7 +5523,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%A6%E9%87%8E%E9%9D%96%E4%BA%BA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "うるま譲司",
@@ -5229,7 +5538,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%86%E3%82%8B%E3%81%BE%E8%AD%B2%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "遠藤敬",
@@ -5241,7 +5553,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%81%A0%E8%97%A4%E6%95%AC",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "奥下剛光",
@@ -5277,7 +5592,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%9D%91%E9%BE%8D%E9%82%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "喜多義典",
@@ -5301,7 +5619,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BB%92%E7%94%B0%E5%BE%81%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "斎藤アレックス",
@@ -5309,11 +5630,14 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Alexsaito.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Alexsaito.jpg/960px-Alexsaito.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%8E%E8%97%A4%E3%82%A2%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "住吉寛紀",
@@ -5337,7 +5661,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%96%A2%E5%81%A5%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "高見亮",
@@ -5361,7 +5688,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%8F%B8%E5%AE%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "西田薫",
@@ -5397,7 +5727,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A6%AC%E5%A0%B4%E4%BC%B8%E5%B9%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "原山大亮",
@@ -5421,7 +5754,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%96%87%E6%AD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "前原誠司",
@@ -5433,7 +5769,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%89%8D%E5%8E%9F%E8%AA%A0%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "三木圭恵",
@@ -5469,7 +5808,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E6%99%BA%E4%BF%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "横田光弘",
@@ -5520,7 +5862,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E6%B3%89%E5%98%89%E9%96%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "井戸まさえ",
@@ -5532,7 +5877,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E6%88%B8%E3%81%BE%E3%81%95%E3%81%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "臼木秀剛",
@@ -5540,11 +5888,14 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Hidetake_Usuki_20241118.jpg/250px-Hidetake_Usuki_20241118.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Hidetake_Usuki_20241118.jpg",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%87%BC%E6%9C%A8%E7%A7%80%E5%89%9B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "岡野純子",
@@ -5556,7 +5907,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E9%87%8E%E7%B4%94%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "小竹凱",
@@ -5628,7 +5982,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E7%BE%A9%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "高沢一基",
@@ -5652,7 +6009,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E5%81%A5_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "玉木雄一郎",
@@ -5736,7 +6096,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B2%A1%E7%BE%A9%E9%AB%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "野村美穂",
@@ -5760,7 +6123,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E5%B9%B9%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "日野紗里亜",
@@ -5787,7 +6153,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E4%BD%9C%E3%83%98%E3%82%B9%E3%82%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "福田徹",
@@ -5799,7 +6168,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E5%BE%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "古川元久",
@@ -5826,7 +6198,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E5%A5%BD%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "村岡敏英",
@@ -5853,7 +6228,10 @@
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q130736349",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "青木ひとみ",
@@ -5873,11 +6251,14 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/%E6%84%9B%E5%AA%9B%E7%9C%8C%E6%96%B0%E5%B1%85%E6%B5%9C%E5%B8%82_%E5%B8%82%E9%95%B7_%E7%9F%B3%E5%B7%9D%E5%8B%9D%E8%A1%8C.jpg",
+    "imageSource": "wikidata-commons",
+    "imageSourceUrl": "https://www.wikidata.org/wiki/Q16264020",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "伊藤恵介",
@@ -5901,7 +6282,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E8%A3%95%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "木下敏之",
@@ -5973,7 +6357,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B1%8A%E7%94%B0%E7%9C%9F%E7%94%B1%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "なかやめぐ",
@@ -6009,7 +6396,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E5%B7%9D%E9%87%8C%E5%A5%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "和田政宗",
@@ -6021,7 +6411,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E6%94%BF%E5%AE%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "渡辺藍理",
@@ -6081,7 +6474,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A0%88%E7%94%B0%E8%8B%B1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "高山聡史",
@@ -6093,7 +6489,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B1%B1%E8%81%A1%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "土橋章宏",
@@ -6177,7 +6576,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E5%B7%9D%E9%89%84%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "辰巳孝太郎",
@@ -6189,7 +6591,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BE%B0%E5%B7%B3%E5%AD%9D%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "田村智子",
@@ -6201,7 +6606,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%9D%91%E6%99%BA%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "畑野君枝",
@@ -6213,7 +6621,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%95%91%E9%87%8E%E5%90%9B%E6%9E%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "石井啓一",
@@ -6225,7 +6636,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E5%95%93%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "緒方林太郎",
@@ -6249,7 +6663,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E6%9D%91%E3%81%9F%E3%81%8B%E3%81%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中村はやと",
@@ -6288,7 +6705,10 @@
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "verified",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "渡辺真太朗",
