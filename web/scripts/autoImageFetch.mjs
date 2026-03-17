@@ -14,6 +14,7 @@ const SKIP_AI_GUESS = String(process.env.REP_IMAGE_SKIP_AI_GUESS || "false").tri
 const ENABLE_TEXT_MASK = String(process.env.REP_IMAGE_ENABLE_TEXT_MASK || "true").trim().toLowerCase() !== "false";
 const YOMIURI_ONLY = String(process.env.REP_IMAGE_YOMIURI_ONLY || "false").trim().toLowerCase() === "true";
 const YOMIURI_REPLACE_EXISTING = String(process.env.REP_IMAGE_YOMIURI_REPLACE_EXISTING || "false").trim().toLowerCase() === "true";
+const YOMIURI_REBUILD_CACHE = String(process.env.REP_IMAGE_YOMIURI_REBUILD_CACHE || (YOMIURI_ONLY ? "true" : "false")).trim().toLowerCase() === "true";
 
 const MANUAL_SOURCE_PAGES_PATH = path.resolve("scripts/representativeImageSourcePages.json");
 const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
@@ -24,7 +25,7 @@ const FIX_TARGETS = fs.existsSync(FIX_TARGETS_PATH)
   ? JSON.parse(fs.readFileSync(FIX_TARGETS_PATH, "utf8"))
   : [];
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set([]);
+const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
     url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
@@ -240,6 +241,10 @@ function normalizeSpace(value) {
 
 function stripNameNoise(value) {
   return normalizeSpace(value)
+    .replace(/^[0-9０-９]+\s*区/gu, " ")
+    .replace(/^比例(?:北海道|東北|北関東|南関東|東京|北陸信越|東海|近畿|中国|四国|九州)ブロック/gu, " ")
+    .replace(/^(?:北海道|東北|北関東|南関東|東京|北陸信越|東海|近畿|中国|四国|九州)比例/gu, " ")
+    .replace(/^[区比]/gu, " ")
     .replace(/氏|さん|君$/gu, "")
     .replace(/（[^）]*）|\([^)]*\)|【[^】]*】|\[[^\]]*\]/gu, " ")
     .replace(/衆院選|衆議院|開票結果|候補者|プロフィール|読売新聞|オンライン|選挙区|比例|当選|年齢|党派|経歴|学歴|出身地|自民党|公明党|立憲民主党|日本維新の会|国民民主党|参政党|日本共産党/gu, " ")
@@ -387,7 +392,7 @@ function cleanNameLoose(value) {
 }
 
 function extractLikelyJapaneseName(text) {
-  const normalized = normalizeSpace(text).replace(/\s+/g, "");
+  const normalized = stripNameNoise(text).replace(/\s+/g, "");
   if (!normalized) return "";
   const matches = normalized.match(/[一-龯々〆ヶぁ-んァ-ヶヴー]{2,}/g) || [];
   const filtered = matches.filter((item) => !/衆院選|衆議院|開票結果|候補者|プロフィール|読売新聞|オンライン|選挙区|比例|当選|年齢|党派|経歴|学歴|出身地/.test(item));
@@ -468,7 +473,8 @@ function extractYomiuriListProfiles(html, pageUrl) {
   $('a[href]').each((_, anchor) => {
     const href = normalizeUrl($(anchor).attr('href') || '', pageUrl);
     if (!href || !/yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i.test(href)) return;
-    const text = normalizeSpace($(anchor).text() || '');
+    const card = $(anchor).closest('li, article, section, div');
+    const text = normalizeSpace(card.text() || $(anchor).text() || '');
     const img = $(anchor).find('img').first();
     const imageUrl = img.attr('src') || img.attr('data-src') || img.attr('srcset')?.split(',')[0]?.trim().split(/\s+/)[0] || img.attr('data-srcset')?.split(',')[0]?.trim().split(/\s+/)[0] || '';
     add(text, imageUrl, href);
@@ -546,6 +552,17 @@ function extractYomiuriProfile(html, pageUrl) {
     push2($(el).attr('content') || $(el).attr('href') || '', 1, 'meta');
   });
 
+
+  const rawImageMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/images\/election\/shugiin\/2026\/[^"'\s<>()]+/gi) || [];
+  for (const matched of rawImageMatches) {
+    push2(matched, 30, 'raw-html');
+  }
+
+  const pathImageMatches = String(html).match(/\/images\/election\/shugiin\/2026\/[^"'\s<>()]+/gi) || [];
+  for (const matched of pathImageMatches) {
+    push2(matched, 28, 'raw-html-path');
+  }
+
   imageCandidates.sort((a, b) => b.score - a.score);
   const best = imageCandidates[0];
   if (!best) return null;
@@ -554,7 +571,7 @@ function extractYomiuriProfile(html, pageUrl) {
 
 async function ensureYomiuriCacheBuilt() {
   const existingCount = Object.keys(persistedYomiuriCache.entries || {}).length;
-  if (persistedYomiuriCache.updatedAt && existingCount >= 430) {
+  if (!YOMIURI_REBUILD_CACHE && persistedYomiuriCache.updatedAt && existingCount >= 430) {
     console.log(`yomiuri-cache: count=${existingCount}`);
     return persistedYomiuriCache;
   }
@@ -575,7 +592,9 @@ async function ensureYomiuriCacheBuilt() {
     } catch {}
   }
 
-  for (const pageUrl of [...candidatePageUrls]) {
+  console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
+
+  for (const pageUrl of [...candidatePageUrls].sort()) {
     try {
       const html = await fetchPage(pageUrl);
       const profile = extractYomiuriProfile(html, pageUrl);

@@ -41,8 +41,9 @@ jobs:
           REP_IMAGE_BATCH_LIMIT: "465"
           REP_IMAGE_TARGET_MODE: "all"
           REP_IMAGE_SKIP_AI_GUESS: "true"
-          REP_IMAGE_YOMIURI_ONLY: "false"
+          REP_IMAGE_YOMIURI_ONLY: "true"
           REP_IMAGE_YOMIURI_REPLACE_EXISTING: "true"
+          REP_IMAGE_YOMIURI_REBUILD_CACHE: "true"
         run: npm run gen:representatives:images
 
 
@@ -51,6 +52,25 @@ jobs:
 
       - name: Validate representatives data
         run: npm run check:representatives
+
+      - name: Fail if any representative image is still missing after Yomiuri normalize
+        working-directory: .
+        run: |
+          set -euxo pipefail
+          node - <<'NODE'
+          const fs = require("fs");
+          const missing = JSON.parse(fs.readFileSync("web/public/data/missing-images.json", "utf8"));
+          if (!Array.isArray(missing)) {
+            throw new Error("missing-images.json is not an array");
+          }
+          if (missing.length > 0) {
+            console.error(`Yomiuri normalize incomplete. missing=${missing.length}`);
+            for (const item of missing.slice(0, 50)) console.error(`missing: ${item.name}`);
+            process.exit(1);
+          }
+          console.log("Yomiuri normalize complete. missing=0");
+          NODE
+
 
       - name: Check generated file status
         id: changes
