@@ -25,7 +25,7 @@ const FIX_TARGETS = fs.existsSync(FIX_TARGETS_PATH)
   ? JSON.parse(fs.readFileSync(FIX_TARGETS_PATH, "utf8"))
   : [];
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set(["安藤たかお"]);
+const MANUAL_BAD_IMAGE_REMOVALS = new Set();
 const MANUAL_OVERRIDES = {
   浅田眞澄美: {
     url: "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
@@ -1233,28 +1233,29 @@ async function resolveImage(member) {
   const profileUrl = String(member.profileUrl || "").trim();
   const resolverSteps = YOMIURI_ONLY
     ? [
-        () => searchFromYomiuriWinners(member),
-        () => resolveImageFromManualSourcePages(member)
+        () => resolveImageFromManualSourcePages(member),
+        () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
+        () => searchFromYomiuriWinners(member)
       ]
     : EFFECTIVE_TARGET_MODE === "fix"
       ? [
-          () => searchFromYomiuriWinners(member),
           () => resolveImageFromManualSourcePages(member),
           () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
           () => searchFromPartyHints(member),
           () => searchFromTrustedFallbacks(member),
           () => searchWikipediaImage(member.name),
           () => searchWikidataCommonsImage(member.name),
+          () => searchFromYomiuriWinners(member),
           () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
         ]
       : [
-          () => searchFromYomiuriWinners(member),
           () => resolveImageFromManualSourcePages(member),
           () => (profileUrl ? resolveImageFromProfilePage(profileUrl, member.name, "official-profile", 10) : null),
           () => searchWikipediaImage(member.name),
           () => searchWikidataCommonsImage(member.name),
           () => searchFromPartyHints(member),
           () => searchFromTrustedFallbacks(member),
+          () => searchFromYomiuriWinners(member),
           () => (!SKIP_AI_GUESS ? searchFromGeneralWeb(member) : null)
         ];
 
