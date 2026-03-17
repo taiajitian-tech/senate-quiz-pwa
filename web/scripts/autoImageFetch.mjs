@@ -31,6 +31,41 @@ const MANUAL_OVERRIDES = {
   }
 };
 
+const YOMIURI_WINNERS_PARTY_PAGES = [
+  {
+    match: /自由民主党|自民/u,
+    urls: ["https://www.yomiuri.co.jp/election/shugiin/2026winners001/"]
+  },
+  {
+    match: /中道改革連合|中道/u,
+    urls: ["https://craj.jp/members/"]
+  },
+  {
+    match: /日本維新の会|維新/u,
+    urls: []
+  },
+  {
+    match: /国民民主党|国民/u,
+    urls: ["https://www.yomiuri.co.jp/election/shugiin/2026winners013/"]
+  },
+  {
+    match: /参政党/u,
+    urls: ["https://www.yomiuri.co.jp/election/shugiin/2026winners858/"]
+  },
+  {
+    match: /チームみらい/u,
+    urls: ["https://www.yomiuri.co.jp/election/shugiin/2026winners033/"]
+  },
+  {
+    match: /日本共産党|共産/u,
+    urls: []
+  },
+  {
+    match: /無所属/u,
+    urls: []
+  }
+];
+
 const TRUSTED_FALLBACK_DOMAINS = [
   "go2senkyo.com",
   "senkyo.janjan.jp",
@@ -51,53 +86,81 @@ const GENERAL_QUERY_VARIANTS = (name) => [
 const PARTY_HINTS = [
   {
     match: /自由民主党|自民/u,
-    domains: ["jimin.jp"],
-    queries: (name) => [`site:jimin.jp/member ${name}`, `site:jimin.jp ${name} 議員`]
+    domains: ["yomiuri.co.jp", "jimin.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:jimin.jp/member ${name}`,
+      `site:jimin.jp ${name} 議員`
+    ]
   },
   {
-    match: /立憲民主党|立民/u,
-    domains: ["cdp-japan.jp"],
-    queries: (name) => [`site:cdp-japan.jp ${name} 衆議院`, `site:cdp-japan.jp ${name}`]
+    match: /中道改革連合|中道/u,
+    domains: ["yomiuri.co.jp", "craj.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:craj.jp ${name}`,
+      `site:craj.jp/members ${name}`
+    ]
   },
   {
     match: /日本維新の会|維新/u,
-    domains: ["o-ishin.jp"],
-    queries: (name) => [`site:o-ishin.jp ${name}`, `site:o-ishin.jp ${name} 議員`]
-  },
-  {
-    match: /公明党/u,
-    domains: ["komei.or.jp"],
-    queries: (name) => [`site:komei.or.jp ${name}`, `site:komei.or.jp ${name} プロフィール`]
+    domains: ["yomiuri.co.jp", "o-ishin.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:o-ishin.jp ${name}`,
+      `site:o-ishin.jp ${name} 議員`
+    ]
   },
   {
     match: /国民民主党|国民/u,
-    domains: ["new-kokumin.jp"],
-    queries: (name) => [`site:new-kokumin.jp ${name}`, `site:new-kokumin.jp ${name} 議員`]
+    domains: ["yomiuri.co.jp", "new-kokumin.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:new-kokumin.jp ${name}`,
+      `site:new-kokumin.jp/members ${name}`
+    ]
   },
   {
     match: /日本共産党|共産/u,
-    domains: ["jcp.or.jp"],
-    queries: (name) => [`site:jcp.or.jp ${name}`, `site:jcp.or.jp ${name} 議員`]
-  },
-  {
-    match: /れいわ新選組/u,
-    domains: ["reiwa-shinsengumi.com"],
-    queries: (name) => [`site:reiwa-shinsengumi.com ${name}`, `site:reiwa-shinsengumi.com ${name} プロフィール`]
+    domains: ["yomiuri.co.jp", "jcp.or.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:jcp.or.jp ${name}`,
+      `site:jcp.or.jp ${name} 議員`
+    ]
   },
   {
     match: /参政党/u,
-    domains: ["sanseito.jp"],
-    queries: (name) => [`site:sanseito.jp ${name}`, `site:sanseito.jp ${name} 議員`]
+    domains: ["yomiuri.co.jp", "sanseito.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:sanseito.jp ${name}`,
+      `site:sanseito.jp/member ${name}`
+    ]
   },
   {
-    match: /社民党|社民/u,
-    domains: ["sdp.or.jp"],
-    queries: (name) => [`site:sdp.or.jp ${name}`, `site:sdp.or.jp ${name} プロフィール`]
+    match: /チームみらい/u,
+    domains: ["yomiuri.co.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `${name} チームみらい 読売 当選者`
+    ]
   },
   {
-    match: /日本保守党|保守/u,
-    domains: ["hoshuto.jp"],
-    queries: (name) => [`site:hoshuto.jp ${name}`, `site:hoshuto.jp ${name} 議員`]
+    match: /無所属/u,
+    domains: ["yomiuri.co.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `${name} 読売 当選者 衆院`
+    ]
+  },
+  {
+    match: /立憲民主党|立民|公明党/u,
+    domains: ["yomiuri.co.jp", "craj.jp"],
+    queries: (name) => [
+      `site:yomiuri.co.jp/election/shugiin ${name}`,
+      `site:craj.jp ${name}`
+    ]
   }
 ];
 
@@ -420,6 +483,7 @@ function mapSourceLabelToHistoryKey(sourceLabel = "") {
   if (/official/.test(sourceLabel)) return "official";
   if (/wikipedia/.test(sourceLabel)) return "wikipedia";
   if (/wikidata|wikimedia|commons/.test(sourceLabel)) return "wikimedia";
+  if (/yomiuri/.test(sourceLabel)) return "party";
   if (/party/.test(sourceLabel)) return "party";
   if (/trusted-fallback/.test(sourceLabel)) return "news";
   if (/web-fallback/.test(sourceLabel)) return "web";
@@ -673,15 +737,124 @@ function partyHintsFor(member) {
   return PARTY_HINTS.filter((item) => item.match.test(party));
 }
 
+function yomiuriSourcePagesFor(member) {
+  const party = String(member.party || member.role || "");
+  for (const item of YOMIURI_WINNERS_PARTY_PAGES) {
+    if (item.match.test(party)) return Array.from(new Set(item.urls || []));
+  }
+  return [];
+}
+
+function collectNamedImageCandidatesFromFragment($root, pageUrl, name, sourceHint = "named-fragment", pageWeight = 0) {
+  const candidates = [];
+  const seen = new Set();
+  const pushCandidate = (src, alt = "", localHint = "") => {
+    const url = normalizeUrl(src, pageUrl);
+    if (!url || shouldSkipUrl(url) || seen.has(url)) return;
+    seen.add(url);
+    const score = scoreImageCandidate(url, alt, name, pageUrl, `${sourceHint} ${localHint}`) + pageWeight;
+    if (score <= 0) return;
+    candidates.push({ url, alt, score, sourceHint: `${sourceHint} ${localHint}`.trim() });
+  };
+
+  $root.find('img[src], img[data-src], img[data-lazy-src], source[srcset]').each((_, img) => {
+    const el = $root.constructor(img);
+    const alt = normalizeSpace(el.attr('alt') || el.attr('title') || '');
+    pushCandidate(el.attr('src') || '', alt, 'img');
+    pushCandidate(el.attr('data-src') || '', alt, 'data-src');
+    pushCandidate(el.attr('data-lazy-src') || '', alt, 'lazy-src');
+    const srcset = String(el.attr('srcset') || '').split(',').map((part) => part.trim().split(/\s+/)[0]).filter(Boolean);
+    for (const one of srcset) pushCandidate(one, alt, 'srcset');
+  });
+
+  return candidates.sort((a, b) => b.score - a.score);
+}
+
+async function resolveImageFromYomiuriWinnersPage(pageUrl, name) {
+  if (!/yomiuri\.co\.jp|craj\.jp/.test(hostnameOf(pageUrl))) return null;
+  const cacheKey = `${pageUrl}::${cleanName(name)}::yomiuri-like`;
+  if (profilePageCache.has(cacheKey)) return profilePageCache.get(cacheKey);
+
+  const promise = (async () => {
+    try {
+      const html = await fetchPage(pageUrl);
+      const $ = load(html);
+      const plainName = cleanName(name);
+      const directMatches = [];
+      $('li, article, section, div, tr').each((_, node) => {
+        const el = $(node);
+        const text = cleanName(el.text());
+        if (!text || !plainName || !text.includes(plainName)) return;
+        directMatches.push(el);
+      });
+
+      for (const el of directMatches) {
+        const local = collectNamedImageCandidatesFromFragment(el, pageUrl, name, 'yomiuri-winners', 16);
+        if (local[0]) {
+          return {
+            url: local[0].url,
+            source: 'yomiuri-winners',
+            sourceUrl: pageUrl
+          };
+        }
+      }
+
+      const pageCandidates = collectImageCandidatesFromPage(html, pageUrl, name, 4).filter((item) => {
+        const hay = `${decodeURIComponentSafe(item.url)} ${item.alt || ''}`.replace(/[\s\-_]/g, '');
+        return hay.includes(plainName) || /yomiuri-winners|member|candidate|portrait|profile/i.test(item.sourceHint || '');
+      });
+
+      if (pageCandidates[0]) {
+        return {
+          url: pageCandidates[0].url,
+          source: 'yomiuri-winners',
+          sourceUrl: pageUrl
+        };
+      }
+    } catch {
+      return null;
+    }
+    return null;
+  })();
+
+  profilePageCache.set(cacheKey, promise);
+  return await promise;
+}
+
+async function searchFromYomiuriPartyPages(member) {
+  const name = member.name;
+  if (shouldSkipSource(name, 'party')) return null;
+  const pageUrls = yomiuriSourcePagesFor(member);
+  for (const pageUrl of pageUrls) {
+    const found = await resolveImageFromYomiuriWinnersPage(pageUrl, name);
+    if (found) return found;
+    await sleep(WAIT_MS);
+  }
+  return null;
+}
+
 async function searchFromPartyHints(member) {
   const name = member.name;
   if (shouldSkipSource(name, "party")) return null;
+
+  const yomiuriFound = await searchFromYomiuriPartyPages(member);
+  if (yomiuriFound) {
+    setSourceState(name, "party", "success");
+    return yomiuriFound;
+  }
+
   for (const hint of partyHintsFor(member)) {
     for (const query of hint.queries(name)) {
       const targets = await searchTargets(query, hint.domains);
       for (const target of targets) {
-        const found = await resolveImageFromProfilePage(target, name, "party-site", 5);
-        if (found) return found;
+        const sourceHint = /yomiuri\.co\.jp/.test(hostnameOf(target)) ? 'yomiuri-winners' : 'party-site';
+        const found = /yomiuri\.co\.jp|craj\.jp/.test(hostnameOf(target))
+          ? await resolveImageFromYomiuriWinnersPage(target, name)
+          : await resolveImageFromProfilePage(target, name, sourceHint, 5);
+        if (found) {
+          setSourceState(name, "party", "success");
+          return found;
+        }
         await sleep(WAIT_MS);
       }
     }
@@ -793,6 +966,7 @@ function markResolved(member, found) {
     "official-profile",
     "official-manual",
     "party-site",
+    "yomiuri-winners",
     "trusted-fallback",
     "manual-source-page",
     "manual-direct-image"
