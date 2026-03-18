@@ -824,6 +824,7 @@ async function fetchYomiuriProfileWithBrowser(pageUrl) {
 }
 
 async function ensureYomiuriCacheBuilt() {
+  console.log("yomiuri-fix-version=v6");
   const existingEntries = { ...(persistedYomiuriCache.entries || {}) };
   const existingPages = { ...(persistedYomiuriCache.pages || {}) };
   const existingCount = Object.keys(existingEntries).length;
