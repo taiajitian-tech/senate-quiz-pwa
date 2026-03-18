@@ -1,1 +1,0 @@
-このZIPは丸ごと入れ替え用です。workflowとautoImageFetchを差し替え済み。
