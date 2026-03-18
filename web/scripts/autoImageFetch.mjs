@@ -370,7 +370,11 @@ function normalizeUrl(url, baseUrl = "") {
   const base = String(baseUrl || "").replace(/[?#].*$/, "");
   try {
     const normalized = new URL(sanitized, base).toString();
-    return normalized.replace(/([^:])\/{2,}/g, "$1/");
+    const parsed = new URL(normalized);
+    parsed.hash = "";
+    parsed.search = "";
+    parsed.pathname = parsed.pathname.replace(/\/{2,}/g, "/");
+    return parsed.toString();
   } catch {
     return "";
   }
@@ -881,6 +885,8 @@ async function ensureYomiuriCacheBuilt() {
     for (const url of browserCrawl.candidatePages || []) candidatePageUrls.add(url);
   }
 
+  const sampleCandidatePage = [...candidatePageUrls][0] || "";
+  if (sampleCandidatePage) console.log(`yomiuri-cache: sample-candidate-url=${sampleCandidatePage}`);
   console.log(`yomiuri-cache: winners-pages=${visitedWinnerPages.size}`);
   console.log(`yomiuri-cache: candidate-pages=${candidatePageUrls.size}`);
 
