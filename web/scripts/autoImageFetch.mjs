@@ -361,10 +361,16 @@ async function fetchPage(url) {
 }
 
 function normalizeUrl(url, baseUrl = "") {
-  const raw = String(url || "").trim();
-  if (!raw || /^data:/i.test(raw)) return "";
+  const raw = String(url || "")
+    .replace(/&amp;/g, "&")
+    .replace(/^['"]+|['"]+$/g, "")
+    .replace(/^[\s\u0000-\u001f]+|[\s\u0000-\u001f]+$/g, "");
+  if (!raw || /^data:/i.test(raw) || /^javascript:/i.test(raw) || /^mailto:/i.test(raw)) return "";
+  const sanitized = raw.replace(/[?#].*$/, "");
+  const base = String(baseUrl || "").replace(/[?#].*$/, "");
   try {
-    return new URL(raw, baseUrl).toString();
+    const normalized = new URL(sanitized, base).toString();
+    return normalized.replace(/([^:])\/{2,}/g, "$1/");
   } catch {
     return "";
   }
@@ -430,6 +436,69 @@ function getYomiuriCacheEntry(name) {
   return null;
 }
 
+function pickBestSrcFromSet(value) {
+  const raw = normalizeSpace(value);
+  if (!raw) return "";
+  const parts = raw
+    .split(",")
+    .map((item) => normalizeSpace(item).split(/\s+/)[0])
+    .filter(Boolean);
+  return parts[parts.length - 1] || parts[0] || "";
+}
+
+function extractImageUrlFromElement($, element, pageUrl = "") {
+  const el = $(element);
+  const candidates = [
+    el.attr("src"),
+    el.attr("data-src"),
+    el.attr("data-original"),
+    el.attr("data-lazy-src"),
+    el.attr("data-image"),
+    el.attr("data-img"),
+    el.attr("srcset") ? pickBestSrcFromSet(el.attr("srcset")) : "",
+    el.attr("data-srcset") ? pickBestSrcFromSet(el.attr("data-srcset")) : "",
+    el.attr("data-lazy-srcset") ? pickBestSrcFromSet(el.attr("data-lazy-srcset")) : ""
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    const normalized = normalizeUrl(candidate, pageUrl);
+    if (normalized) return normalized;
+  }
+  return "";
+}
+
+function equalJapaneseName(a, b) {
+  const aa = cleanNameLoose(a);
+  const bb = cleanNameLoose(b);
+  if (!aa || !bb) return false;
+  return aa === bb;
+}
+
+function extractYomiuriWinnersPageLinks(html, pageUrl) {
+  const $ = load(html);
+  const urls = new Set();
+  const add = (href) => {
+    const normalized = normalizeUrl(href, pageUrl);
+    if (!normalized) return;
+    if (/yomiuri\.co\.jp\/election\/shugiin\/2026winners\d+\/?$/i.test(normalized)) {
+      urls.add(normalized);
+    }
+  };
+
+  $('a[href]').each((_, el) => add($(el).attr('href') || ''));
+  $('[data-href], [data-url], [data-link]').each((_, el) => {
+    add($(el).attr('data-href') || $(el).attr('data-url') || $(el).attr('data-link') || '');
+  });
+
+  const rawMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026winners\d+\/?/gi) || [];
+  for (const href of rawMatches) add(href);
+
+  const pathMatches = String(html).match(/\/election\/shugiin\/2026winners\d+\/?/gi) || [];
+  for (const href of pathMatches) add(href);
+
+  return [...urls];
+}
+
 function extractYomiuriCandidateLinks(html, pageUrl) {
   const $ = load(html);
   const urls = new Set();
@@ -441,14 +510,12 @@ function extractYomiuriCandidateLinks(html, pageUrl) {
     }
   };
 
-  $('a[href]').each((_, el) => add($(el).attr('href') || ''));
-  $('[data-href], [data-url], [data-link], [data-candidate-url]').each((_, el) => {
+  $('li.result.result__tosen > a[href], li.result > a[href], a[href]').each((_, el) => add($(el).attr('href') || ''));
+  $('[data-href], [data-url], [data-link], [data-candidate-url], [onclick]').each((_, el) => {
     add($(el).attr('data-href') || $(el).attr('data-url') || $(el).attr('data-link') || $(el).attr('data-candidate-url') || '');
-  });
-  $('[onclick]').each((_, el) => {
-    const raw = $(el).attr('onclick') || '';
-    const matches = raw.match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?|\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?/gi) || [];
-    for (const href of matches) add(href);
+    const onclick = String($(el).attr('onclick') || '');
+    for (const matched of onclick.match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?/gi) || []) add(matched);
+    for (const matched of onclick.match(/\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?/gi) || []) add(matched);
   });
 
   const rawMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?/gi) || [];
@@ -464,79 +531,46 @@ function extractYomiuriListProfiles(html, pageUrl) {
   const $ = load(html);
   const out = [];
   const seen = new Set();
-  const add = (name, imageUrl, sourceUrl) => {
+  const add = (name, imageUrl, sourceUrl, source = 'yomiuri-winners') => {
     const cleanedName = extractLikelyJapaneseName(name);
     const normalizedImage = normalizeUrl(imageUrl, pageUrl);
     const normalizedSource = normalizeUrl(sourceUrl, pageUrl) || pageUrl;
-    if (!cleanedName || !normalizedImage) return;
+    if (!cleanedName || !normalizedImage || !normalizedSource) return;
     if (/election-shugiin-ogp\.(jpg|png)/i.test(normalizedImage)) return;
     const key = `${cleanNameLoose(cleanedName)}::${normalizedImage}`;
     if (seen.has(key)) return;
     seen.add(key);
-    out.push({ name: cleanedName, imageUrl: normalizedImage, pageUrl: normalizedSource, source: 'yomiuri-winners' });
+    out.push({ name: cleanedName, imageUrl: normalizedImage, pageUrl: normalizedSource, source });
   };
+
+  $('li.result.result__tosen').each((_, li) => {
+    const block = $(li);
+    const anchor = block.find('a[href]').first();
+    const href = normalizeUrl(anchor.attr('href') || '', pageUrl);
+    if (!href || !/yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?$/i.test(href)) return;
+
+    const name = normalizeSpace(block.find('span.candidate-name').first().text() || anchor.text() || '');
+    const info = normalizeSpace(block.find('span.candidate-info').first().text() || '');
+    const img = block.find('figure.candidate-photo img, img').first();
+    const imageUrl = extractImageUrlFromElement($, img, pageUrl);
+    if (!name || !imageUrl) return;
+    add(`${name} ${info}`, imageUrl, href, 'yomiuri-list-exact');
+  });
+
+  if (out.length > 0) return out;
 
   $('a[href]').each((_, anchor) => {
     const href = normalizeUrl($(anchor).attr('href') || '', pageUrl);
     if (!href || !/yomiuri\.co\.jp\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?$/i.test(href)) return;
-    const card = $(anchor).closest('li, article, section, div');
-    const text = normalizeSpace(card.text() || $(anchor).text() || '');
-    const img = $(anchor).find('img').first();
-    const imageUrl = img.attr('src') || img.attr('data-src') || img.attr('srcset')?.split(',')[0]?.trim().split(/\s+/)[0] || img.attr('data-srcset')?.split(',')[0]?.trim().split(/\s+/)[0] || '';
-    add(text, imageUrl, href);
+    const card = $(anchor).closest('li.result, li, article, section, div');
+    const hasCandidatePhoto = card.find('figure.candidate-photo, [class*="candidate-photo"]').length > 0;
+    const hasCandidateName = card.find('span.candidate-name, [class*="candidate-name"]').length > 0;
+    if (!hasCandidatePhoto || !hasCandidateName) return;
+    const name = normalizeSpace(card.find('span.candidate-name, [class*="candidate-name"]').first().text() || '');
+    const imageUrl = extractImageUrlFromElement($, card.find('figure.candidate-photo img, [class*="candidate-photo"] img, img').first(), pageUrl);
+    if (!name || !imageUrl) return;
+    add(name, imageUrl, href, 'yomiuri-list-generic');
   });
-
-  return out;
-}
-
-
-function extractYomiuriListCardProfiles(html, pageUrl) {
-  const $ = load(html);
-  const blocks = $('li, article, section, div, tr').toArray();
-  const out = [];
-  const seen = new Set();
-
-  const toImageUrl = (el) => {
-    const node = $(el);
-    const src =
-      node.attr('src') ||
-      node.attr('data-src') ||
-      node.attr('data-original') ||
-      node.attr('srcset')?.split(',')[0]?.trim().split(/\s+/)[0] ||
-      node.attr('data-srcset')?.split(',')[0]?.trim().split(/\s+/)[0] ||
-      '';
-    return normalizeUrl(src, pageUrl);
-  };
-
-  for (const blockEl of blocks) {
-    const block = $(blockEl);
-    const blockText = normalizeSpace(block.text());
-    if (!blockText || blockText.length > 300) continue;
-
-    const roseImages = block.find('img').toArray().filter((img) => {
-      const el = $(img);
-      const hay = `${el.attr('src') || ''} ${el.attr('data-src') || ''} ${el.attr('alt') || ''} ${el.attr('title') || ''} ${el.attr('class') || ''}`;
-      return /rose|bara|当選|winner|選管確定/i.test(hay);
-    });
-    if (!roseImages.length) continue;
-
-    const name = extractLikelyJapaneseName(blockText);
-    if (!name) continue;
-
-    const portrait = block.find('img').toArray().map((img) => toImageUrl(img)).find((url) => {
-      if (!url) return false;
-      if (/election-shugiin-ogp\.(jpg|png)/i.test(url)) return false;
-      if (/rose|bara|当選|winner/i.test(url)) return false;
-      if (shouldSkipUrl(url)) return false;
-      return true;
-    });
-    if (!portrait) continue;
-
-    const key = `${cleanNameLoose(name)}::${portrait}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push({ name, imageUrl: portrait, pageUrl, source: 'yomiuri-winners-list-rose' });
-  }
 
   return out;
 }
@@ -549,24 +583,20 @@ function extractYomiuriPageName(html, pageUrl = '') {
     if (name) candidates.push(name);
   };
 
-  const pushHeading = (value) => {
-    const normalized = normalizeSpace(value)
-      .replace(/[ぁ-んァ-ヶヴー]{2,}/gu, ' ')
-      .replace(/[()（）【】\[\]「」『』]/gu, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-    const matches = normalized.match(/[一-龯々]{2,6}\s*[一-龯々]{1,6}/gu) || [];
-    for (const match of matches) push(match);
-    push(normalized);
-  };
+  const exactRuby = normalizeSpace($('.election-shugiin-profile__name rb').first().text() || '');
+  if (exactRuby) push(exactRuby);
+
+  const exactH1 = normalizeSpace($('.election-shugiin-profile__name h1').first().clone().find('rt, rp').remove().end().text() || '');
+  if (exactH1) push(exactH1);
 
   push($('meta[property="og:title"]').attr('content') || '');
   push($('title').text() || '');
-  for (const sel of ['h1', 'main h1', 'article h1', '.p-electionCandidateHero__name', '.candidateProfile h1', '[class*="Candidate"] h1']) {
+
+  for (const sel of ['h1', 'main h1', 'article h1', '.election-shugiin-profile__name', '.p-electionCandidateHero__name', '.candidateProfile h1', '[class*="Candidate"] h1']) {
     $(sel).each((_, el) => {
       const clone = $(el).clone();
       clone.find('rt, rp').remove();
-      pushHeading(clone.text() || '');
+      push(clone.text() || '');
     });
   }
 
@@ -576,25 +606,28 @@ function extractYomiuriPageName(html, pageUrl = '') {
   push(bodyHead);
 
   const normalizedUrl = normalizeUrl(pageUrl);
-  if (normalizedUrl) {
-    const urlDecoded = decodeURIComponentSafe(normalizedUrl);
-    push(urlDecoded);
-  }
+  if (normalizedUrl) push(decodeURIComponentSafe(normalizedUrl));
 
   return candidates[0] || '';
 }
 
 function extractYomiuriProfile(html, pageUrl) {
   const $ = load(html);
-  const name = extractYomiuriPageName(html, pageUrl);
+  const exactName = normalizeSpace($('.election-shugiin-profile__name rb').first().text() || '') ||
+    normalizeSpace($('.election-shugiin-profile__name h1').first().clone().find('rt, rp').remove().end().text() || '');
+  const name = extractLikelyJapaneseName(exactName) || extractYomiuriPageName(html, pageUrl);
   if (!name) return null;
+
+  const exactImg = extractImageUrlFromElement($, $('.election-shugiin-profile__photo img, .election-shugiin-profile__photo source, .election-shugiin-profile__photo picture img').first(), pageUrl);
+  if (exactImg && !shouldSkipUrl(exactImg)) {
+    return { name, imageUrl: exactImg, pageUrl, source: 'yomiuri-profile-exact' };
+  }
 
   const imageCandidates = [];
   const seen = new Set();
   const push2 = (src, weight = 0, alt = '', extra = '') => {
     const url = normalizeUrl(src, pageUrl);
-    if (!url) return;
-    if (seen.has(url)) return;
+    if (!url || seen.has(url)) return;
     seen.add(url);
     if (/election-shugiin-ogp\.(jpg|png)/i.test(url)) return;
     if (shouldSkipUrl(url)) return;
@@ -605,7 +638,7 @@ function extractYomiuriProfile(html, pageUrl) {
     imageCandidates.push({ url, score });
   };
 
-  const scopedRoots = ['main', 'article', '[role="main"]', '.p-electionCandidateHero', '.candidateProfile', 'body'];
+  const scopedRoots = ['main', 'article', '[role="main"]', '.election-shugiin-profile', '.p-electionCandidateHero', '.candidateProfile', 'body'];
   for (const rootSel of scopedRoots) {
     const root = $(rootSel).first();
     if (!root.length) continue;
@@ -616,8 +649,9 @@ function extractYomiuriProfile(html, pageUrl) {
       push2(el.attr('src') || '', 10, alt, context);
       push2(el.attr('data-src') || '', 10, alt, context);
       push2(el.attr('data-original') || '', 10, alt, context);
-      push2(el.attr('srcset')?.split(',')[0]?.trim().split(/\s+/)[0] || '', 9, alt, context);
-      push2(el.attr('data-srcset')?.split(',')[0]?.trim().split(/\s+/)[0] || '', 9, alt, context);
+      push2(pickBestSrcFromSet(el.attr('srcset') || ''), 9, alt, context);
+      push2(pickBestSrcFromSet(el.attr('data-srcset') || ''), 9, alt, context);
+      push2(pickBestSrcFromSet(el.attr('data-lazy-srcset') || ''), 9, alt, context);
     });
   }
 
@@ -625,21 +659,16 @@ function extractYomiuriProfile(html, pageUrl) {
     push2($(el).attr('content') || $(el).attr('href') || '', 1, 'meta');
   });
 
-
   const rawImageMatches = String(html).match(/https?:\/\/www\.yomiuri\.co\.jp\/images\/election\/shugiin\/2026\/[^"'\s<>()]+/gi) || [];
-  for (const matched of rawImageMatches) {
-    push2(matched, 30, 'raw-html');
-  }
+  for (const matched of rawImageMatches) push2(matched, 30, 'raw-html');
 
   const pathImageMatches = String(html).match(/\/images\/election\/shugiin\/2026\/[^"'\s<>()]+/gi) || [];
-  for (const matched of pathImageMatches) {
-    push2(matched, 28, 'raw-html-path');
-  }
+  for (const matched of pathImageMatches) push2(matched, 28, 'raw-html-path');
 
   imageCandidates.sort((a, b) => b.score - a.score);
   const best = imageCandidates[0];
   if (!best) return null;
-  return { name, imageUrl: best.url, pageUrl, source: 'yomiuri-winners' };
+  return { name, imageUrl: best.url, pageUrl, source: 'yomiuri-profile-fallback' };
 }
 
 
@@ -726,7 +755,7 @@ async function crawlYomiuriCandidatePagesWithBrowser() {
       (a) => a.href
     ).map((a) => normalizeUrl(a.href)).filter(Boolean);
     const candidatePages = uniqueBy(
-      electionAnchors.filter((a) => /\/election\/shugiin\/2026\/[A-Za-z0-9_-]+\/\d+\/?$/i.test(a.href)),
+      electionAnchors.filter((a) => /\/election\/shugiin\/2026\/[A-Z0-9]+\/\d+\/?$/i.test(a.href)),
       (a) => a.href
     ).map((a) => normalizeUrl(a.href)).filter(Boolean);
 
@@ -828,15 +857,13 @@ async function ensureYomiuriCacheBuilt() {
       const html = await fetchPage(url);
       nextPages[url] = { fetchedAt: new Date().toISOString(), kind: 'winners' };
 
-      const listProfiles = [
-        ...extractYomiuriListProfiles(html, url),
-        ...extractYomiuriListCardProfiles(html, url)
-      ];
-      for (const profile of listProfiles) addTempEntry(profile.name, profile);
-      if (listProfiles.length) {
-        console.log(`yomiuri-cache: list-profiles=${listProfiles.length} url=${url}`);
+      const listProfiles = extractYomiuriListProfiles(html, url);
+      for (const profile of listProfiles) {
+        addTempEntry(profile.name, profile);
+        if (profile.pageUrl) candidatePageUrls.add(profile.pageUrl);
       }
       for (const link of extractYomiuriCandidateLinks(html, url)) candidatePageUrls.add(link);
+      console.log(`yomiuri-cache: list-profiles=${listProfiles.length} url=${url}`);
       for (const nextUrl of extractYomiuriWinnersPageLinks(html, url)) {
         if (!visitedWinnerPages.has(nextUrl)) winnersQueue.push(nextUrl);
       }
