@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 const START_URL =
   "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_senkyoku.html";
