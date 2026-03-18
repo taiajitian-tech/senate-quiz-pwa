@@ -38,7 +38,7 @@ jobs:
       - name: Fill only missing representative images from NHK HTML
         env:
           REP_IMAGE_TARGET_MODE: "missing"
-        run: npm run gen:representatives:images:nhk
+        run: npm run nhk:card
 
       - name: Generate representative image reports (after missing fill)
         run: npm run report:representatives:images
@@ -46,7 +46,7 @@ jobs:
       - name: Replace only bad or distant representative images from NHK HTML
         env:
           REP_IMAGE_TARGET_MODE: "fix"
-        run: npm run gen:representatives:images:nhk
+        run: npm run nhk:card
 
       - name: Generate representative image reports (final)
         run: npm run report:representatives:images
