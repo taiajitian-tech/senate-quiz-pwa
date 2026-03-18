@@ -35,18 +35,18 @@ jobs:
       - name: Generate representative image reports (before image update)
         run: npm run report:representatives:images
 
-      - name: Fill only missing representative images from NHK static assets
+      - name: Fill only missing representative images from NHK HTML
         env:
           REP_IMAGE_TARGET_MODE: "missing"
-        run: node scripts/fetchNhkStaticAssets.mjs
+        run: node scripts/fetchNhkAnyway.mjs
 
       - name: Generate representative image reports (after missing fill)
         run: npm run report:representatives:images
 
-      - name: Replace only bad or distant representative images from NHK static assets
+      - name: Replace only bad or distant representative images from NHK HTML
         env:
           REP_IMAGE_TARGET_MODE: "fix"
-        run: node scripts/fetchNhkStaticAssets.mjs
+        run: node scripts/fetchNhkAnyway.mjs
 
       - name: Generate representative image reports (final)
         run: npm run report:representatives:images
@@ -78,5 +78,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add web/public/data/representatives.json                   web/public/data/missing-images.json                   web/public/data/representatives-image-review.json                   web/public/data/representatives-image-search-targets.json                   web/public/data/representatives-image-search-targets.csv                   web/public/data/representatives-image-fix-targets.json                   web/public/data/representatives-image-fix-targets.csv
-          git commit -m "Update representative images from NHK static assets"
+          git commit -m "Update representative images from NHK HTML"
           git push
