@@ -1,0 +1,11 @@
+修正内容
+- web/scripts/fetchNhkAnyway.mjs を全面差し替え
+- NHKは img alt の名前完全一致で取得
+- /senkyo/database/shugiin/ と /news/special/election2024/ を巡回
+- working-directory: web 前提のまま public/data/representatives.json に保存
+- .git はZIPから除外
+
+上書き後
+1. リポジトリに中身を上書き
+2. push
+3. GitHub Actions で update-representatives を実行
