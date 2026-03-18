@@ -38,38 +38,22 @@ jobs:
       - name: Generate representative image reports (before image update)
         run: npm run report:representatives:images
 
-      - name: Fill only missing representative images
+      - name: Fill only missing representative images from NHK
         env:
-          REP_IMAGE_CONCURRENCY: "10"
-          REP_IMAGE_WAIT_MS: "80"
-          REP_IMAGE_TIMEOUT_MS: "12000"
-          REP_IMAGE_SEARCH_LIMIT: "10"
-          REP_IMAGE_BATCH_LIMIT: "465"
           REP_IMAGE_TARGET_MODE: "missing"
-          REP_IMAGE_SKIP_AI_GUESS: "true"
-          REP_IMAGE_YOMIURI_ONLY: "true"
-          REP_IMAGE_YOMIURI_REPLACE_EXISTING: "false"
-          REP_IMAGE_YOMIURI_REBUILD_CACHE: "true"
-          REP_IMAGE_YOMIURI_USE_BROWSER: "false"
-        run: npm run gen:representatives:images
+          REP_IMAGE_CONCURRENCY: "4"
+          REP_IMAGE_NHK_WAIT_MS: "1500"
+        run: node scripts/fetchNhkWinnersImages.mjs
 
       - name: Generate representative image reports (after missing fill)
         run: npm run report:representatives:images
 
-      - name: Replace only bad or distant representative images
+      - name: Replace only bad or distant representative images from NHK
         env:
-          REP_IMAGE_CONCURRENCY: "10"
-          REP_IMAGE_WAIT_MS: "80"
-          REP_IMAGE_TIMEOUT_MS: "12000"
-          REP_IMAGE_SEARCH_LIMIT: "10"
-          REP_IMAGE_BATCH_LIMIT: "465"
           REP_IMAGE_TARGET_MODE: "fix"
-          REP_IMAGE_SKIP_AI_GUESS: "true"
-          REP_IMAGE_YOMIURI_ONLY: "true"
-          REP_IMAGE_YOMIURI_REPLACE_EXISTING: "true"
-          REP_IMAGE_YOMIURI_REBUILD_CACHE: "false"
-          REP_IMAGE_YOMIURI_USE_BROWSER: "false"
-        run: npm run gen:representatives:images
+          REP_IMAGE_CONCURRENCY: "4"
+          REP_IMAGE_NHK_WAIT_MS: "1500"
+        run: node scripts/fetchNhkWinnersImages.mjs
 
       - name: Generate representative image reports (final)
         run: npm run report:representatives:images
@@ -77,52 +61,14 @@ jobs:
       - name: Validate representatives data
         run: npm run check:representatives
 
-      - name: Fail if any representative image is still missing after image update
-        working-directory: .
+      - name: Commit and push if changed
         run: |
-          set -euxo pipefail
-          node - <<'NODE'
-          const fs = require("fs");
-          const missing = JSON.parse(fs.readFileSync("web/public/data/missing-images.json", "utf8"));
-          if (!Array.isArray(missing)) {
-            throw new Error("missing-images.json is not an array");
-          }
-          if (missing.length > 0) {
-            console.error(`Image update incomplete. missing=${missing.length}`);
-            for (const item of missing.slice(0, 50)) console.error(`missing: ${item.name}`);
-            process.exit(1);
-          }
-          console.log("Image update complete. missing=0");
-          NODE
-
-      - name: Check generated file status
-        id: changes
-        working-directory: .
-        run: |
-          set -euxo pipefail
-          test -f web/public/data/representatives.json
-          test -f web/public/data/missing-images.json
-          test -f web/public/data/representatives-image-review.json
-          test -f web/public/data/representatives-image-search-targets.json
-          test -f web/public/data/representatives-image-fix-targets.json
-          test -f web/public/data/image-search-cache.json
-          test -f web/public/data/representatives-image-url-cache.json
-          test -f web/public/data/representatives-yomiuri-cache.json
-
-          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv web/public/data/image-search-cache.json web/public/data/representatives-image-url-cache.json web/public/data/representatives-yomiuri-cache.json)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Commit generated file
-        if: steps.changes.outputs.changed == 'true'
-        working-directory: .
-        run: |
-          set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/public/data/representatives.json                   web/public/data/missing-images.json                   web/public/data/representatives-image-review.json                   web/public/data/representatives-image-search-targets.json                   web/public/data/representatives-image-search-targets.csv                   web/public/data/representatives-image-fix-targets.json                   web/public/data/representatives-image-fix-targets.csv                   web/public/data/image-search-cache.json                   web/public/data/representatives-image-url-cache.json                   web/public/data/representatives-yomiuri-cache.json
-          git commit -m "auto update representatives data"
+          git add public/data/representatives.json public/data/representatives-image-*.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Update representative images from NHK winners pages"
           git push
