@@ -17,7 +17,8 @@
     "gen:representatives": "node scripts/fetchRepresentatives.mjs",
     "check:representatives": "node scripts/validateRepresentatives.mjs",
     "gen:representatives:images": "node scripts/autoImageFetch.mjs",
-    "report:representatives:images": "node scripts/imageReport.mjs"
+    "report:representatives:images": "node scripts/imageReport.mjs",
+    "gen:representatives:images:nhk": "node scripts/fetchNhkByCard.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
