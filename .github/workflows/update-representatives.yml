@@ -35,18 +35,18 @@ jobs:
       - name: Generate representative image reports (before image update)
         run: npm run report:representatives:images
 
-      - name: Fill only missing representative images from NHK static sources
+      - name: Fill only missing representative images from NHK static assets
         env:
           REP_IMAGE_TARGET_MODE: "missing"
-        run: node scripts/fetchNhkWinnersImagesStatic.mjs
+        run: node scripts/fetchNhkStaticAssets.mjs
 
       - name: Generate representative image reports (after missing fill)
         run: npm run report:representatives:images
 
-      - name: Replace only bad or distant representative images from NHK static sources
+      - name: Replace only bad or distant representative images from NHK static assets
         env:
           REP_IMAGE_TARGET_MODE: "fix"
-        run: node scripts/fetchNhkWinnersImagesStatic.mjs
+        run: node scripts/fetchNhkStaticAssets.mjs
 
       - name: Generate representative image reports (final)
         run: npm run report:representatives:images
@@ -54,14 +54,29 @@ jobs:
       - name: Validate representatives data
         run: npm run check:representatives
 
-      - name: Commit and push if changed
+      - name: Check generated file status
+        id: changes
+        working-directory: ..
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/representatives.json public/data/representatives-image-*.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
+          set -euxo pipefail
+          test -f web/public/data/representatives.json
+          test -f web/public/data/missing-images.json
+          test -f web/public/data/representatives-image-review.json
+          test -f web/public/data/representatives-image-search-targets.json
+          test -f web/public/data/representatives-image-fix-targets.json
+          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git commit -m "Update representative images from NHK static sources"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit generated file
+        if: steps.changes.outputs.changed == 'true'
+        working-directory: ..
+        run: |
+          set -euxo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/public/data/representatives.json                   web/public/data/missing-images.json                   web/public/data/representatives-image-review.json                   web/public/data/representatives-image-search-targets.json                   web/public/data/representatives-image-search-targets.csv                   web/public/data/representatives-image-fix-targets.json                   web/public/data/representatives-image-fix-targets.csv
+          git commit -m "Update representative images from NHK static assets"
           git push
