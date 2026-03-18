@@ -1,11 +1,18 @@
-NHK取得修正メモ
+NHK取得修正版
 
-- workflow の NHK 呼び出しは npm run nhk:card に変更
-- 実体は web/scripts/fetchNhkByCard.mjs
-- fetchNhkAnyway.mjs は互換用の委譲だけ
-- .git は ZIP から除外して渡すこと
+変更点
+- web/scripts/fetchNhkByCard.mjs を追加
+- update-representatives workflow の NHK実行を npm run nhk:card に変更
+- fetchNhkAnyway.mjs は fetchNhkByCard.mjs へ委譲
+- web/package.json に nhk:card を追加
 
-手動確認箇所
-1. GitHub Actions の Fill only missing representative images from NHK HTML
-2. ログに nhk-card page=... cards=... が出ること
-3. 完了ログに matched / missing が出ること
+実行
+1. このZIPを展開
+2. 中身をリポジトリへ上書き（.git は同梱していません）
+3. push
+4. GitHub Actions > update-representatives を実行
+
+補足
+- NHK側が 404 / レイアウト変更でも、workflow 全体はここで即死しないようにしています。
+- news.web.nhk と www3.nhk.or.jp の両方を試します。
+- candidate系セレクタ優先、取れない場合は img 周辺テキストの exact-name fallback を試します。
