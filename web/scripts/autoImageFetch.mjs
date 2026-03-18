@@ -527,7 +527,77 @@ function extractYomiuriPageName(html, pageUrl = '') {
   return candidates[0] || '';
 }
 
+
+function extractYomiuriRoseWinnerProfile(html, pageUrl) {
+  const $ = load(html);
+  const blocks = $('tr, li, article, section, div').toArray();
+  const candidates = [];
+
+  const toImageUrl = (el, pageUrl) => {
+    const node = $(el);
+    const src =
+      node.attr('src') ||
+      node.attr('data-src') ||
+      node.attr('data-original') ||
+      node.attr('srcset')?.split(',')[0]?.trim().split(/\s+/)[0] ||
+      node.attr('data-srcset')?.split(',')[0]?.trim().split(/\s+/)[0] ||
+      '';
+    return normalizeUrl(src, pageUrl);
+  };
+
+  for (const blockEl of blocks) {
+    const block = $(blockEl);
+    const blockText = normalizeSpace(block.text());
+    if (!blockText) continue;
+
+    const roseImages = block.find('img').toArray().filter((img) => {
+      const el = $(img);
+      const src = `${el.attr('src') || ''} ${el.attr('data-src') || ''} ${el.attr('srcset') || ''}`;
+      const alt = `${el.attr('alt') || ''} ${el.attr('title') || ''}`;
+      const cls = `${el.attr('class') || ''}`;
+      const hay = `${src} ${alt} ${cls} ${blockText}`;
+      return /rose|bara|当選|winner|選管確定/i.test(hay);
+    });
+    if (!roseImages.length) continue;
+
+    const nonRoseImgs = block.find('img').toArray().filter((img) => {
+      const el = $(img);
+      const src = `${el.attr('src') || ''} ${el.attr('data-src') || ''} ${el.attr('srcset') || ''}`;
+      const alt = `${el.attr('alt') || ''} ${el.attr('title') || ''}`;
+      const cls = `${el.attr('class') || ''}`;
+      const hay = `${src} ${alt} ${cls}`;
+      if (/rose|bara|当選|winner/i.test(hay)) return false;
+      const url = toImageUrl(img, pageUrl);
+      if (!url) return false;
+      if (/election-shugiin-ogp\.(jpg|png)/i.test(url)) return false;
+      if (shouldSkipUrl(url)) return false;
+      return true;
+    });
+    if (!nonRoseImgs.length) continue;
+
+    const imageUrl = toImageUrl(nonRoseImgs[0], pageUrl);
+    if (!imageUrl) continue;
+
+    const name = extractLikelyJapaneseName(blockText);
+    if (!name) continue;
+
+    candidates.push({
+      name,
+      imageUrl,
+      pageUrl,
+      source: 'yomiuri-winners-rose',
+      score: roseImages.length * 10 + (/[0-9]+\.[0-9]+%/.test(blockText) ? 3 : 0)
+    });
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+  return candidates[0] || null;
+}
+
 function extractYomiuriProfile(html, pageUrl) {
+  const roseWinner = extractYomiuriRoseWinnerProfile(html, pageUrl);
+  if (roseWinner?.name && roseWinner?.imageUrl) return roseWinner;
+
   const $ = load(html);
   const name = extractYomiuriPageName(html, pageUrl);
   if (!name) return null;

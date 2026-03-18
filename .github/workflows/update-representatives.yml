@@ -47,7 +47,7 @@ jobs:
           REP_IMAGE_YOMIURI_ONLY: "true"
           REP_IMAGE_YOMIURI_REPLACE_EXISTING: "true"
           REP_IMAGE_YOMIURI_REBUILD_CACHE: "true"
-          REP_IMAGE_YOMIURI_USE_BROWSER: "true"
+          REP_IMAGE_YOMIURI_USE_BROWSER: "false"
         run: npm run gen:representatives:images
 
 
