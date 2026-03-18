@@ -29,31 +29,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Puppeteer
-        run: npm install --no-save puppeteer
-
       - name: Generate representatives data
         run: npm run gen:representatives
 
       - name: Generate representative image reports (before image update)
         run: npm run report:representatives:images
 
-      - name: Fill only missing representative images from NHK
+      - name: Fill only missing representative images from NHK static sources
         env:
           REP_IMAGE_TARGET_MODE: "missing"
-          REP_IMAGE_CONCURRENCY: "4"
-          REP_IMAGE_NHK_WAIT_MS: "1500"
-        run: node scripts/fetchNhkWinnersImages.mjs
+        run: node scripts/fetchNhkWinnersImagesStatic.mjs
 
       - name: Generate representative image reports (after missing fill)
         run: npm run report:representatives:images
 
-      - name: Replace only bad or distant representative images from NHK
+      - name: Replace only bad or distant representative images from NHK static sources
         env:
           REP_IMAGE_TARGET_MODE: "fix"
-          REP_IMAGE_CONCURRENCY: "4"
-          REP_IMAGE_NHK_WAIT_MS: "1500"
-        run: node scripts/fetchNhkWinnersImages.mjs
+        run: node scripts/fetchNhkWinnersImagesStatic.mjs
 
       - name: Generate representative image reports (final)
         run: npm run report:representatives:images
@@ -70,5 +63,5 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Update representative images from NHK winners pages"
+          git commit -m "Update representative images from NHK static sources"
           git push
