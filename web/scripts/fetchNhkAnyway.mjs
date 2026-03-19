@@ -6,9 +6,8 @@ const DATA_PATH = path.resolve("public/data/representatives.json");
 const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-targets.json");
 const SEARCH_TARGETS_PATH = path.resolve("public/data/representatives-image-search-targets.json");
 const MISSING_PATH = path.resolve("public/data/missing-images.json");
-const TARGET_MODE = String(process.env.REP_IMAGE_TARGET_MODE || "missing").trim().toLowerCase();
 
-const NHK_URLS = [
+const PAGE_URLS = [
   "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_senkyoku.html",
   "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_hirei.html",
   "https://www3.nhk.or.jp/news/special/election2024/",
@@ -17,6 +16,15 @@ const NHK_URLS = [
 const EXTRA_NAME_ALIASES = {
   "安藤たかお": ["安藤高夫"],
 };
+
+function readJsonIfExists(filePath, fallback) {
+  try {
+    if (!fs.existsSync(filePath)) return fallback;
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
+  }
+}
 
 function normalizeSpace(value = "") {
   return String(value ?? "").replace(/\s+/g, " ").trim();
@@ -40,12 +48,8 @@ function normalizeKana(value = "") {
 }
 
 function normalizeUrl(url = "", base = "") {
-  const raw = String(url || "").trim().replace(/&amp;/g, "&");
-  if (!raw || /^data:/i.test(raw) || /^javascript:/i.test(raw) || /^mailto:/i.test(raw)) return "";
   try {
-    const parsed = new URL(raw, base || undefined);
-    parsed.hash = "";
-    return parsed.toString();
+    return new URL(String(url || "").trim().replace(/&amp;/g, "&"), base).toString();
   } catch {
     return "";
   }
@@ -55,40 +59,40 @@ function looksLikeImageUrl(url = "") {
   return /^https?:\/\//i.test(url) && /(\.jpg|\.jpeg|\.png|\.webp)(\?|$)/i.test(url);
 }
 
-function readJsonIfExists(filePath, fallback) {
-  try {
-    if (!fs.existsSync(filePath)) return fallback;
-    return JSON.parse(fs.readFileSync(filePath, "utf8"));
-  } catch {
-    return fallback;
-  }
-}
-
-function pickTargets(members) {
+function readTargets(members) {
   const fixTargets = readJsonIfExists(FIX_TARGETS_PATH, []);
   if (Array.isArray(fixTargets) && fixTargets.length > 0) {
-    const names = [...new Set(fixTargets.map((item) => cleanName(item?.name || "")).filter(Boolean))];
-    return { mode: "fix", names };
+    return {
+      mode: "fix",
+      names: [...new Set(fixTargets.map((x) => cleanName(x?.name || "")).filter(Boolean))],
+    };
   }
 
   const searchTargets = readJsonIfExists(SEARCH_TARGETS_PATH, []);
   if (Array.isArray(searchTargets) && searchTargets.length > 0) {
-    const names = [...new Set(searchTargets.map((item) => cleanName(item?.name || "")).filter(Boolean))];
-    return { mode: "missing", names };
+    return {
+      mode: "missing",
+      names: [...new Set(searchTargets.map((x) => cleanName(x?.name || "")).filter(Boolean))],
+    };
   }
 
   const missingTargets = readJsonIfExists(MISSING_PATH, []);
   if (Array.isArray(missingTargets) && missingTargets.length > 0) {
-    const names = [...new Set(missingTargets.map((item) => cleanName(item?.name || "")).filter(Boolean))];
-    return { mode: "missing", names };
+    return {
+      mode: "missing",
+      names: [...new Set(missingTargets.map((x) => cleanName(x?.name || "")).filter(Boolean))],
+    };
   }
 
-  const names = members
-    .filter((member) => !normalizeSpace(member?.image || ""))
-    .map((member) => cleanName(member?.name || ""))
-    .filter(Boolean);
-
-  return { mode: "missing", names: [...new Set(names)] };
+  return {
+    mode: "missing",
+    names: [...new Set(
+      members
+        .filter((m) => !normalizeSpace(m?.image || ""))
+        .map((m) => cleanName(m?.name || ""))
+        .filter(Boolean)
+    )],
+  };
 }
 
 function buildAliases(member) {
@@ -103,13 +107,7 @@ function buildAliases(member) {
   add(member?.furigana);
   add(member?.yomi);
   add(member?.yomigana);
-  add(member?.displayName);
-  add(member?.formalName);
-  add(member?.profileName);
-
-  for (const extra of EXTRA_NAME_ALIASES[normalizeSpace(member?.name || "")] || []) {
-    add(extra);
-  }
+  for (const alias of EXTRA_NAME_ALIASES[normalizeSpace(member?.name || "")] || []) add(alias);
 
   const exact = new Set();
   const kana = new Set();
@@ -121,11 +119,7 @@ function buildAliases(member) {
     if (k) kana.add(k);
   }
 
-  return {
-    raw: [...raw],
-    exact,
-    kana,
-  };
+  return { exact, kana };
 }
 
 function buildTargetIndex(members, targetNames) {
@@ -136,7 +130,7 @@ function buildTargetIndex(members, targetNames) {
 
   for (const member of members) {
     const memberName = cleanName(member?.name || "");
-    if (!targetSet.has(memberName) && TARGET_MODE !== "all") continue;
+    if (!targetSet.has(memberName)) continue;
 
     const aliases = buildAliases(member);
     const target = { member, memberName, aliases };
@@ -152,10 +146,10 @@ function buildTargetIndex(members, targetNames) {
     }
   }
 
-  return { targetSet, byExact, byKana, targetMembers };
+  return { targetSet, targetMembers, byExact, byKana };
 }
 
-async function fetchText(url) {
+async function fetchHtml(url) {
   const res = await fetch(url, {
     headers: {
       "user-agent": "Mozilla/5.0",
@@ -167,155 +161,129 @@ async function fetchText(url) {
   return await res.text();
 }
 
-function candidateImageUrls(attrs = {}, sourceUrl = "") {
-  const raws = [
-    attrs.src,
-    attrs["data-src"],
-    attrs["data-original"],
-    attrs["data-lazy-src"],
-    attrs["data-srcset"],
-    attrs.srcset,
-  ];
+function collectNameCandidates($, block) {
+  const texts = new Set();
 
-  const urls = [];
-  for (const raw of raws) {
-    const value = String(raw || "").trim();
-    if (!value) continue;
-    const first = value.split(",")[0]?.trim().split(/\s+/)[0]?.trim();
-    const url = normalizeUrl(first, sourceUrl);
-    if (url && looksLikeImageUrl(url)) urls.push(url);
-  }
-  return [...new Set(urls)];
-}
+  const push = (v) => {
+    const raw = normalizeSpace(v || "");
+    if (raw) texts.add(raw);
+  };
 
-function scoreImage(url = "", attrs = {}, context = "") {
-  const hay = `${url} ${attrs.alt || ""} ${attrs.class || ""} ${attrs.id || ""} ${context}`.toLowerCase();
-  let score = 0;
-  if (/photo|portrait|profile|member|giin|candidate|face|kao/.test(hay)) score += 6;
-  if (/logo|icon|banner|btn|button|sprite|thumb-default/.test(hay)) score -= 12;
-  if (/party|政党/.test(hay)) score -= 4;
-  return score;
-}
+  push(block.text());
 
-function collectNhkMatches(html = "", pageUrl = "", indexes) {
-  const { byExact, byKana } = indexes;
-  const $ = cheerio.load(html);
-  const found = [];
-
-  $("img").each((_, el) => {
-    const attrs = el.attribs || {};
-    const urls = candidateImageUrls(attrs, pageUrl);
-    if (urls.length === 0) return;
-
-    const container = $(el).closest("a, li, article, section, tr, div");
-    const text = normalizeSpace(`${attrs.alt || ""} ${attrs.title || ""} ${container.text() || ""}`);
-    const exactTokens = [cleanName(text), cleanName(attrs.alt || ""), cleanName(attrs.title || "")].filter(Boolean);
-    const kanaTokens = [normalizeKana(text), normalizeKana(attrs.alt || ""), normalizeKana(attrs.title || "")].filter(Boolean);
-
-    const matchedTargets = new Set();
-    for (const token of exactTokens) {
-      const items = byExact.get(token) || [];
-      for (const item of items) matchedTargets.add(item);
-    }
-    for (const token of kanaTokens) {
-      const items = byKana.get(token) || [];
-      for (const item of items) matchedTargets.add(item);
-    }
-
-    if (matchedTargets.size !== 1) return;
-
-    const target = [...matchedTargets][0];
-    const bestUrl = urls
-      .map((url) => ({ url, score: scoreImage(url, attrs, text) }))
-      .sort((a, b) => b.score - a.score)[0]?.url;
-
-    if (!bestUrl) return;
-
-    found.push({
-      memberName: target.memberName,
-      url: bestUrl,
-      source: "nhk-html-img",
-      sourceUrl: pageUrl,
-      text,
-    });
+  block.find("*").each((_, node) => {
+    const el = $(node);
+    push(el.attr("alt"));
+    push(el.attr("title"));
+    push(el.attr("aria-label"));
+    push(el.text());
   });
 
-  return found;
+  return [...texts];
 }
 
-function firstMetaImage($, pageUrl) {
-  const candidates = [
-    $('meta[property="og:image"]').attr("content"),
-    $('meta[name="twitter:image"]').attr("content"),
-    $('link[rel="image_src"]').attr("href"),
-  ];
+function findSingleTargetFromNames(nameCandidates, indexes) {
+  const matched = new Set();
 
-  for (const raw of candidates) {
-    const url = normalizeUrl(raw, pageUrl);
-    if (url && looksLikeImageUrl(url)) return url;
+  for (const value of nameCandidates) {
+    const exact = cleanName(value);
+    if (exact) {
+      for (const item of indexes.byExact.get(exact) || []) matched.add(item);
+    }
+    const kana = normalizeKana(value);
+    if (kana) {
+      for (const item of indexes.byKana.get(kana) || []) matched.add(item);
+    }
   }
-  return "";
+
+  if (matched.size !== 1) return null;
+  return [...matched][0];
 }
 
-function collectProfilePageImage(html = "", pageUrl = "") {
-  const $ = cheerio.load(html);
-  const meta = firstMetaImage($, pageUrl);
-  if (meta) return meta;
+function findImageInBlock($, block, pageUrl) {
+  const images = [];
 
-  const scored = [];
-  $("img").each((_, el) => {
-    const attrs = el.attribs || {};
-    const urls = candidateImageUrls(attrs, pageUrl);
-    const context = normalizeSpace($(el).closest("main, article, section, div").text() || "");
-    for (const url of urls) {
-      scored.push({
-        url,
-        score: scoreImage(url, attrs, context),
-      });
+  block.find("img").each((_, img) => {
+    const el = $(img);
+    const attrs = img.attribs || {};
+    const srcCandidates = [
+      attrs.src,
+      attrs["data-src"],
+      attrs["data-original"],
+      attrs["data-lazy-src"],
+      attrs.srcset ? attrs.srcset.split(",")[0]?.trim().split(/\s+/)[0] : "",
+      attrs["data-srcset"] ? attrs["data-srcset"].split(",")[0]?.trim().split(/\s+/)[0] : "",
+    ].filter(Boolean);
+
+    for (const raw of srcCandidates) {
+      const url = normalizeUrl(raw, pageUrl);
+      if (!looksLikeImageUrl(url)) continue;
+
+      const hay = `${url} ${attrs.alt || ""} ${attrs.class || ""} ${attrs.id || ""}`.toLowerCase();
+      let score = 0;
+      if (/photo|portrait|profile|member|candidate|win|face|kao/.test(hay)) score += 6;
+      if (/logo|icon|banner|btn|button|sprite/.test(hay)) score -= 10;
+
+      images.push({ url, score });
     }
   });
 
-  return scored
-    .sort((a, b) => b.score - a.score)
-    .find((item) => item.score >= 0)?.url || "";
+  return images.sort((a, b) => b.score - a.score)[0]?.url || "";
 }
 
-function markResolved(member, found) {
-  member.image = found.url;
-  member.imageSource = found.source || "profile-page";
-  member.imageSourceUrl = found.sourceUrl || found.url;
-  member.aiGuess = false;
-  member.sourceType = "verified";
-  member.imageMaskBottom = false;
-  member.imageMaskMode = "none";
-}
+function collectMatchesFromPage(html, pageUrl, indexes) {
+  const $ = cheerio.load(html);
+  const matches = [];
+  let noImage = 0;
+  let noName = 0;
+  let ambiguous = 0;
 
-async function tryProfileFallback(target) {
-  const urls = [
-    normalizeUrl(target.member?.profileUrl || ""),
-    normalizeUrl(target.member?.imageSourceUrl || ""),
-  ].filter(Boolean);
+  const selectors = [
+    ".senkyoku-result__result-item",
+    ".hirei-result__result-item",
+    ".candidate",
+    ".candidate_profile",
+    "li",
+    "article",
+  ];
 
-  for (const pageUrl of [...new Set(urls)]) {
-    try {
-      const html = await fetchText(pageUrl);
-      const bytes = Buffer.byteLength(html, "utf8");
-      console.log(`nhk-anyway fallback-page=${pageUrl} bytes=${bytes}`);
+  const seenBlocks = new Set();
 
-      const image = collectProfilePageImage(html, pageUrl);
-      if (!image) continue;
+  for (const selector of selectors) {
+    $(selector).each((_, node) => {
+      const block = $(node);
+      const textKey = cleanName(block.text()).slice(0, 120);
+      const htmlKey = `${selector}:${textKey}`;
+      if (!textKey || seenBlocks.has(htmlKey)) return;
+      seenBlocks.add(htmlKey);
 
-      return {
+      const image = findImageInBlock($, block, pageUrl);
+      if (!image) {
+        noImage += 1;
+        return;
+      }
+
+      const nameCandidates = collectNameCandidates($, block);
+      if (nameCandidates.length === 0) {
+        noName += 1;
+        return;
+      }
+
+      const target = findSingleTargetFromNames(nameCandidates, indexes);
+      if (!target) {
+        ambiguous += 1;
+        return;
+      }
+
+      matches.push({
         memberName: target.memberName,
-        url: image,
-        source: "profile-page",
+        image,
         sourceUrl: pageUrl,
-      };
-    } catch (error) {
-      console.log(`nhk-anyway fallback-failed=${pageUrl} error=${error?.message ?? String(error)}`);
-    }
+      });
+    });
   }
-  return null;
+
+  return { matches, stats: { noImage, noName, ambiguous } };
 }
 
 async function main() {
@@ -324,29 +292,29 @@ async function main() {
   }
 
   const members = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
-  const picked = pickTargets(members);
-  const mode = picked.mode;
-  const indexes = buildTargetIndex(members, picked.names);
+  const targetInfo = readTargets(members);
+  const indexes = buildTargetIndex(members, targetInfo.names);
 
-  console.log(`nhk-anyway mode=${mode} total=${members.length} targets=${indexes.targetSet.size}`);
+  console.log(`nhk-anyway mode=${targetInfo.mode} total=${members.length} targets=${indexes.targetSet.size}`);
 
+  const bestByName = new Map();
   let visitedPages = 0;
   let rawMatches = 0;
-  const bestByName = new Map();
 
-  for (const pageUrl of NHK_URLS) {
+  for (const pageUrl of PAGE_URLS) {
     try {
-      const html = await fetchText(pageUrl);
+      const html = await fetchHtml(pageUrl);
       const bytes = Buffer.byteLength(html, "utf8");
+      const result = collectMatchesFromPage(html, pageUrl, indexes);
+
       console.log(`nhk-anyway page=${pageUrl} bytes=${bytes}`);
+      console.log(`nhk-anyway page-matches=${result.matches.length} no-image=${result.stats.noImage} no-name=${result.stats.noName} ambiguous=${result.stats.ambiguous}`);
 
-      const matches = collectNhkMatches(html, pageUrl, indexes);
-      console.log(`nhk-anyway page-matches=${matches.length}`);
-
-      for (const item of matches) {
+      for (const item of result.matches) {
         rawMatches += 1;
         if (!bestByName.has(item.memberName)) bestByName.set(item.memberName, item);
       }
+
       visitedPages += 1;
     } catch (error) {
       console.log(`nhk-anyway page-failed=${pageUrl} error=${error?.message ?? String(error)}`);
@@ -357,21 +325,15 @@ async function main() {
   console.log(`nhk-anyway raw-matches=${rawMatches}`);
   console.log(`nhk-anyway unique-matches=${bestByName.size}`);
 
-  for (const target of indexes.targetMembers) {
-    if (bestByName.has(target.memberName)) continue;
-    const fallback = await tryProfileFallback(target);
-    if (!fallback) continue;
-    bestByName.set(target.memberName, fallback);
-    console.log(`nhk-anyway fallback-hit=${target.memberName}`);
-  }
-
   let filled = 0;
   for (const target of indexes.targetMembers) {
     const found = bestByName.get(target.memberName);
     if (!found) continue;
 
-    if (!normalizeSpace(target.member?.image || "") || mode === "fix" || TARGET_MODE === "all") {
-      markResolved(target.member, found);
+    if (!normalizeSpace(target.member?.image || "") || targetInfo.mode === "fix") {
+      target.member.image = found.image;
+      target.member.imageSource = "nhk";
+      target.member.imageSourceUrl = found.sourceUrl;
       filled += 1;
     }
   }
@@ -386,7 +348,7 @@ async function main() {
     }
   }
 
-  console.log(`nhk-anyway complete mode=${mode} filled=${filled} still-missing=${stillMissing.length}`);
+  console.log(`nhk-anyway complete mode=${targetInfo.mode} filled=${filled} still-missing=${stillMissing.length}`);
 }
 
 main().catch((error) => {
