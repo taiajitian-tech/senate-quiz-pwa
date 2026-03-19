@@ -7,116 +7,15 @@ const FIX_TARGETS_PATH = path.resolve("public/data/representatives-image-fix-tar
 const SEARCH_TARGETS_PATH = path.resolve("public/data/representatives-image-search-targets.json");
 const MISSING_PATH = path.resolve("public/data/missing-images.json");
 
-const PAGE_URLS = [];
-for (let i = 0; i <= 99; i += 1) {
-  const page = String(i).padStart(2, "0");
-  PAGE_URLS.push(`https://news.web.nhk/senkyo/database/shugiin/${page}/tousen_toukaku_senkyoku.html`);
-  PAGE_URLS.push(`https://news.web.nhk/senkyo/database/shugiin/${page}/tousen_toukaku_hirei.html`);
-}
-PAGE_URLS.push("https://www3.nhk.or.jp/news/special/election2024/");
+const ENTRY_URLS = [
+  "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_senkyoku.html",
+  "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_hirei.html",
+  "https://www3.nhk.or.jp/news/special/election2024/",
+];
 
 const EXTRA_NAME_ALIASES = {
   "安藤たかお": ["安藤高夫"],
 };
-
-const FORCE_REPLACE = new Set([
-  "浅田眞澄美",
-  "石田真敏",
-  "伊藤聡",
-  "岩崎比菜",
-  "上野宏史",
-  "江藤拓",
-  "長田紘一郎",
-  "小里泰弘",
-  "国光あやの",
-  "今洋佑",
-  "西條昌良",
-  "斉藤りえ",
-  "白坂亜紀",
-  "鈴木拓海",
-  "世古万美子",
-  "俵田祐児",
-  "辻由布子",
-  "とかしきなおみ",
-  "長野春信",
-  "東田淳平",
-  "藤沢忠盛",
-  "藤田洋司",
-  "文月涼",
-  "古井康介",
-  "前川恵",
-  "三原朝利",
-  "村木汀",
-  "森原紀代子",
-  "保岡宏武",
-  "吉田有理",
-  "米内紘正",
-  "犬飼明佳",
-  "大森江里子",
-  "後藤祐一",
-  "近藤和也",
-  "重徳和彦",
-  "中川宏昌",
-  "沼崎満子",
-  "野間健",
-  "原田直樹",
-  "平林晃",
-  "福重隆浩",
-  "山崎正恭",
-  "早稲田ゆき",
-  "青柳仁士",
-  "池下卓",
-  "池畑浩太朗",
-  "一谷勇一郎",
-  "うるま譲司",
-  "奥下剛光",
-  "柏倉祐司",
-  "住吉寛紀",
-  "高見亮",
-  "西田薫",
-  "萩原佳",
-  "原山大亮",
-  "三木圭恵",
-  "美延映夫",
-  "喜多義典",
-  "若狹清史",
-  "横田光弘",
-  "井戸まさえ",
-  "小竹凱",
-  "河井昭成",
-  "許斐亮太郎",
-  "近藤雅彦",
-  "佐々木真琴",
-  "高沢一基",
-  "鍋島勢理",
-  "野村美穂",
-  "福田徹",
-  "向山好一",
-  "青木ひとみ",
-  "伊藤恵介",
-  "川裕一郎",
-  "木下敏之",
-  "工藤聖子",
-  "島村かおる",
-  "鈴木美香",
-  "なかやめぐ",
-  "牧野俊一",
-  "渡辺藍理",
-  "宇佐美登",
-  "河合道雄",
-  "小林修平",
-  "須田英太郎",
-  "土橋章宏",
-  "林拓海",
-  "古川あおい",
-  "峰島侑也",
-  "武藤かず子",
-  "山田瑛理",
-  "緒方林太郎",
-  "中村はやと",
-  "山本ジョージ",
-  "渡辺真太朗"
-]);
 
 function readJsonIfExists(filePath, fallback) {
   try {
@@ -134,7 +33,7 @@ function normalizeSpace(value = "") {
 function cleanName(value = "") {
   return normalizeSpace(String(value ?? ""))
     .normalize("NFKC")
-    .replace(/[ \u3000\t\r\n]/g, "")
+    .replace(/[ 　\t\r\n]/g, "")
     .replace(/[()（）「」『』［］【】〔〕]/g, "")
     .replace(/[・･]/g, "")
     .replace(/[‐‑‒–—―ー－\-]/g, "")
@@ -149,8 +48,12 @@ function normalizeKana(value = "") {
 }
 
 function normalizeUrl(url = "", base = "") {
+  const raw = String(url || "").trim().replace(/&amp;/g, "&");
+  if (!raw || /^data:/i.test(raw) || /^javascript:/i.test(raw) || /^mailto:/i.test(raw)) return "";
   try {
-    return new URL(String(url || "").trim().replace(/&amp;/g, "&"), base).toString();
+    const parsed = new URL(raw, base || undefined);
+    parsed.hash = "";
+    return parsed.toString();
   } catch {
     return "";
   }
@@ -158,6 +61,11 @@ function normalizeUrl(url = "", base = "") {
 
 function looksLikeImageUrl(url = "") {
   return /^https?:\/\//i.test(url) && /(\.jpg|\.jpeg|\.png|\.webp)(\?|$)/i.test(url);
+}
+
+function shouldSkipImage(url = "", context = "") {
+  const hay = `${url} ${context}`.toLowerCase();
+  return /logo|icon|banner|btn|button|sprite|loading|no-photo|spacer|blank/.test(hay);
 }
 
 function readTargets(members) {
@@ -208,7 +116,13 @@ function buildAliases(member) {
   add(member?.furigana);
   add(member?.yomi);
   add(member?.yomigana);
-  for (const alias of EXTRA_NAME_ALIASES[normalizeSpace(member?.name || "")] || []) add(alias);
+  add(member?.displayName);
+  add(member?.formalName);
+  add(member?.profileName);
+
+  for (const alias of EXTRA_NAME_ALIASES[normalizeSpace(member?.name || "")] || []) {
+    add(alias);
+  }
 
   const exact = new Set();
   const kana = new Set();
@@ -231,11 +145,10 @@ function buildTargetIndex(members, targetNames) {
 
   for (const member of members) {
     const memberName = cleanName(member?.name || "");
-    const forced = FORCE_REPLACE.has(normalizeSpace(member?.name || ""));
-    if (!forced && !targetSet.has(memberName)) continue;
+    if (!targetSet.has(memberName)) continue;
 
     const aliases = buildAliases(member);
-    const target = { member, memberName, aliases, forced };
+    const target = { member, memberName, aliases };
     targetMembers.push(target);
 
     for (const key of aliases.exact) {
@@ -248,7 +161,23 @@ function buildTargetIndex(members, targetNames) {
     }
   }
 
-  return { targetSet, targetMembers, byExact, byKana };
+  return { targetMembers, byExact, byKana, targetSet };
+}
+
+function matchTarget(rawName, indexes) {
+  const matched = new Set();
+
+  const exact = cleanName(rawName);
+  if (exact) {
+    for (const item of indexes.byExact.get(exact) || []) matched.add(item);
+  }
+
+  const kana = normalizeKana(rawName);
+  if (kana) {
+    for (const item of indexes.byKana.get(kana) || []) matched.add(item);
+  }
+
+  return matched.size === 1 ? [...matched][0] : null;
 }
 
 async function fetchHtml(url) {
@@ -263,81 +192,90 @@ async function fetchHtml(url) {
   return await res.text();
 }
 
-function collectNameCandidates($, block) {
-  const texts = new Set();
+function candidateImageUrls(attrs = {}, base = "") {
+  const raws = [
+    attrs.src,
+    attrs["data-src"],
+    attrs["data-original"],
+    attrs["data-lazy-src"],
+    attrs["data-srcset"],
+    attrs.srcset,
+  ];
 
-  const push = (v) => {
-    const raw = normalizeSpace(v || "");
-    if (raw) texts.add(raw);
-  };
-
-  push(block.text());
-
-  block.find("*").each((_, node) => {
-    const el = $(node);
-    push(el.attr("alt"));
-    push(el.attr("title"));
-    push(el.attr("aria-label"));
-    push(el.text());
-  });
-
-  return [...texts];
-}
-
-function findSingleTargetFromNames(nameCandidates, indexes) {
-  const matched = new Set();
-
-  for (const value of nameCandidates) {
-    const exact = cleanName(value);
-    if (exact) {
-      for (const item of indexes.byExact.get(exact) || []) matched.add(item);
-    }
-    const kana = normalizeKana(value);
-    if (kana) {
-      for (const item of indexes.byKana.get(kana) || []) matched.add(item);
-    }
+  const out = [];
+  for (const raw of raws) {
+    const value = String(raw || "").trim();
+    if (!value) continue;
+    const first = value.split(",")[0]?.trim().split(/\s+/)[0]?.trim();
+    const url = normalizeUrl(first, base);
+    if (looksLikeImageUrl(url)) out.push(url);
   }
-
-  if (matched.size !== 1) return null;
-  return [...matched][0];
+  return [...new Set(out)];
 }
 
-function findImageInBlock($, block, pageUrl) {
-  const images = [];
+function scoreImage(url = "", attrs = {}, context = "") {
+  const hay = `${url} ${attrs.alt || ""} ${attrs.class || ""} ${attrs.id || ""} ${context}`.toLowerCase();
+  let score = 0;
+  if (/photo|portrait|profile|member|candidate|win|face|kao/.test(hay)) score += 8;
+  if (/logo|icon|banner|btn|button|sprite|loading/.test(hay)) score -= 20;
+  if (/no-photo|default/.test(hay)) score -= 30;
+  return score;
+}
 
-  block.find("img").each((_, img) => {
-    const attrs = img.attribs || {};
-    const srcCandidates = [
-      attrs.src,
-      attrs["data-src"],
-      attrs["data-original"],
-      attrs["data-lazy-src"],
-      attrs.srcset ? attrs.srcset.split(",")[0]?.trim().split(/\s+/)[0] : "",
-      attrs["data-srcset"] ? attrs["data-srcset"].split(",")[0]?.trim().split(/\s+/)[0] : "",
-    ].filter(Boolean);
+function collectNhkLinks(html = "", baseUrl = "") {
+  const $ = cheerio.load(html);
+  const urls = new Set();
 
-    for (const raw of srcCandidates) {
-      const url = normalizeUrl(raw, pageUrl);
-      if (!looksLikeImageUrl(url)) continue;
-
-      const hay = `${url} ${attrs.alt || ""} ${attrs.class || ""} ${attrs.id || ""}`.toLowerCase();
-      let score = 0;
-      if (/photo|portrait|profile|member|candidate|win|face|kao/.test(hay)) score += 6;
-      if (/logo|icon|banner|btn|button|sprite/.test(hay)) score -= 10;
-
-      images.push({ url, score });
+  $("a[href]").each((_, el) => {
+    const href = $(el).attr("href");
+    const url = normalizeUrl(href, baseUrl);
+    if (!url) return;
+    if (/^https:\/\/news\.web\.nhk\/senkyo\/database\/shugiin\/\d{2}\/(?:tousen_toukaku_senkyoku|tousen_toukaku_hirei)\.html$/i.test(url)) {
+      urls.add(url);
     }
   });
 
-  return images.sort((a, b) => b.score - a.score)[0]?.url || "";
+  const raw = html.match(/https:\/\/news\.web\.nhk\/senkyo\/database\/shugiin\/\d{2}\/(?:tousen_toukaku_senkyoku|tousen_toukaku_hirei)\.html/g) || [];
+  for (const item of raw) urls.add(item);
+
+  return [...urls];
 }
 
-function collectMatchesFromPage(html, pageUrl, indexes) {
+function collectDirectAltMatches(html = "", pageUrl = "", indexes) {
   const $ = cheerio.load(html);
-  const matches = [];
+  const found = [];
+
+  $("img[alt]").each((_, el) => {
+    const attrs = el.attribs || {};
+    const target = matchTarget(attrs.alt || "", indexes);
+    if (!target) return;
+
+    const best = candidateImageUrls(attrs, pageUrl)
+      .map((url) => ({ url, score: scoreImage(url, attrs, attrs.alt || "") }))
+      .sort((a, b) => b.score - a.score)[0];
+
+    if (!best) return;
+    if (shouldSkipImage(best.url, attrs.alt || "")) return;
+
+    found.push({
+      memberName: target.memberName,
+      image: best.url,
+      sourceUrl: pageUrl,
+      source: "nhk-direct-alt",
+      score: best.score,
+    });
+  });
+
+  return found;
+}
+
+function collectBlockMatches(html = "", pageUrl = "", indexes) {
+  const $ = cheerio.load(html);
+  const found = [];
   const selectors = [
     ".senkyoku-result__result-item",
     ".hirei-result__result-item",
+    ".candidate_set .candidate",
     ".candidate",
     ".candidate_profile",
     "li",
@@ -349,30 +287,142 @@ function collectMatchesFromPage(html, pageUrl, indexes) {
   for (const selector of selectors) {
     $(selector).each((_, node) => {
       const block = $(node);
-      const textKey = cleanName(block.text()).slice(0, 120);
-      if (!textKey) return;
-      const key = `${selector}:${textKey}`;
+      const key = `${selector}:${cleanName(block.text()).slice(0, 80)}`;
+      if (!key || key.endsWith(":")) return;
       if (seen.has(key)) return;
       seen.add(key);
 
-      const image = findImageInBlock($, block, pageUrl);
-      if (!image) return;
+      const rawTexts = new Set();
+      const pushText = (v) => {
+        const t = normalizeSpace(v || "");
+        if (t) rawTexts.add(t);
+      };
 
-      const nameCandidates = collectNameCandidates($, block);
-      if (nameCandidates.length === 0) return;
+      pushText(block.text());
+      block.find("*").each((__, child) => {
+        const el = $(child);
+        pushText(el.attr("alt"));
+        pushText(el.attr("title"));
+        pushText(el.attr("aria-label"));
+      });
 
-      const target = findSingleTargetFromNames(nameCandidates, indexes);
+      let target = null;
+      for (const raw of rawTexts) {
+        target = matchTarget(raw, indexes);
+        if (target) break;
+      }
       if (!target) return;
 
-      matches.push({
+      const scored = [];
+      block.find("img").each((__, img) => {
+        const attrs = img.attribs || {};
+        for (const url of candidateImageUrls(attrs, pageUrl)) {
+          scored.push({ url, score: scoreImage(url, attrs, [...rawTexts].join(" ")) });
+        }
+      });
+
+      const best = scored.sort((a, b) => b.score - a.score)[0];
+      if (!best) return;
+      if (shouldSkipImage(best.url, [...rawTexts].join(" "))) return;
+
+      found.push({
         memberName: target.memberName,
-        image,
+        image: best.url,
         sourceUrl: pageUrl,
+        source: "nhk-block",
+        score: best.score,
       });
     });
   }
 
-  return matches;
+  return found;
+}
+
+function collectProfilePageImage(html = "", pageUrl = "") {
+  const $ = cheerio.load(html);
+
+  const metaCandidates = [
+    $('meta[property="og:image"]').attr("content"),
+    $('meta[name="twitter:image"]').attr("content"),
+    $('link[rel="image_src"]').attr("href"),
+  ];
+
+  for (const raw of metaCandidates) {
+    const url = normalizeUrl(raw, pageUrl);
+    if (url && looksLikeImageUrl(url) && !shouldSkipImage(url)) return url;
+  }
+
+  const scored = [];
+  $("img").each((_, img) => {
+    const attrs = img.attribs || {};
+    const context = normalizeSpace($(img).closest("main, article, section, div").text() || "");
+    for (const url of candidateImageUrls(attrs, pageUrl)) {
+      scored.push({ url, score: scoreImage(url, attrs, context) });
+    }
+  });
+
+  return scored.sort((a, b) => b.score - a.score).find((item) => item.score >= 0)?.url || "";
+}
+
+async function buildNhkPages() {
+  const queue = [...ENTRY_URLS];
+  const seen = new Set();
+  const pages = [];
+
+  while (queue.length > 0) {
+    const url = queue.shift();
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+
+    try {
+      const html = await fetchHtml(url);
+      pages.push({ url, html });
+
+      const discovered = collectNhkLinks(html, url);
+      for (const next of discovered) {
+        if (!seen.has(next)) queue.push(next);
+      }
+    } catch (error) {
+      console.log(`rep-image nhk-seed-failed url=${url} error=${error?.message ?? String(error)}`);
+    }
+  }
+
+  return pages;
+}
+
+async function tryProfileFallback(target) {
+  const urls = [
+    normalizeUrl(target.member?.imageSourceUrl || ""),
+    normalizeUrl(target.member?.profileUrl || ""),
+  ].filter(Boolean);
+
+  for (const pageUrl of [...new Set(urls)]) {
+    try {
+      const html = await fetchHtml(pageUrl);
+      const image = collectProfilePageImage(html, pageUrl);
+      if (!image) continue;
+      return {
+        memberName: target.memberName,
+        image,
+        sourceUrl: pageUrl,
+        source: "profile-page",
+        score: 0,
+      };
+    } catch (error) {
+      console.log(`rep-image profile-failed name=${target.member.name} url=${pageUrl} error=${error?.message ?? String(error)}`);
+    }
+  }
+
+  return null;
+}
+
+function applyFound(member, found) {
+  member.image = found.image;
+  member.imageSource = found.source === "profile-page" ? "profile-page" : "nhk";
+  member.imageSourceUrl = found.sourceUrl;
+  member.sourceType = found.source === "profile-page" ? "profile-fixed" : "nhk-fixed";
+  member.imageMaskBottom = false;
+  member.imageMaskMode = "none";
 }
 
 async function main() {
@@ -384,40 +434,46 @@ async function main() {
   const targetInfo = readTargets(members);
   const indexes = buildTargetIndex(members, targetInfo.names);
 
-  console.log(`nhk-anyway mode=${targetInfo.mode} total=${members.length} targets=${indexes.targetMembers.length} force=${FORCE_REPLACE.size}`);
+  console.log(`rep-image mode=${targetInfo.mode} total=${members.length} targets=${indexes.targetMembers.length}`);
+
+  const nhkPages = await buildNhkPages();
+  console.log(`rep-image nhk-pages=${nhkPages.length}`);
 
   const bestByName = new Map();
 
-  for (const pageUrl of PAGE_URLS) {
-    try {
-      const html = await fetchHtml(pageUrl);
-      const bytes = Buffer.byteLength(html, "utf8");
-      const matches = collectMatchesFromPage(html, pageUrl, indexes);
+  for (const page of nhkPages) {
+    const direct = collectDirectAltMatches(page.html, page.url, indexes);
+    const block = collectBlockMatches(page.html, page.url, indexes);
 
-      console.log(`nhk-anyway page=${pageUrl} bytes=${bytes} page-matches=${matches.length}`);
+    console.log(`rep-image nhk-page url=${page.url} direct=${direct.length} block=${block.length}`);
 
-      for (const item of matches) {
-        if (!bestByName.has(item.memberName)) bestByName.set(item.memberName, item);
+    for (const item of [...direct, ...block]) {
+      const prev = bestByName.get(item.memberName);
+      if (!prev || item.score > prev.score) {
+        bestByName.set(item.memberName, item);
       }
-    } catch (error) {
-      console.log(`nhk-anyway page-failed=${pageUrl} error=${error?.message ?? String(error)}`);
     }
   }
 
-  let filled = 0;
+  let profileHits = 0;
+  for (const target of indexes.targetMembers) {
+    if (bestByName.has(target.memberName)) continue;
+    const fallback = await tryProfileFallback(target);
+    if (!fallback) continue;
+    bestByName.set(target.memberName, fallback);
+    profileHits += 1;
+    console.log(`rep-image profile-hit name=${target.member.name}`);
+  }
+
+  let replaced = 0;
   for (const target of indexes.targetMembers) {
     const found = bestByName.get(target.memberName);
     if (!found) continue;
 
-    if (target.forced || !normalizeSpace(target.member?.image || "") || targetInfo.mode === "fix") {
-      target.member.image = found.image;
-      target.member.imageSource = "nhk";
-      target.member.imageSourceUrl = found.sourceUrl;
-      target.member.sourceType = "nhk-fixed";
-      target.member.imageMaskBottom = false;
-      target.member.imageMaskMode = "none";
-      filled += 1;
-      console.log(`replaced: ${target.member.name}`);
+    if (targetInfo.mode === "fix" || !normalizeSpace(target.member?.image || "")) {
+      applyFound(target.member, found);
+      replaced += 1;
+      console.log(`replaced: ${target.member.name} <- ${found.source}`);
     }
   }
 
@@ -425,13 +481,13 @@ async function main() {
 
   const stillMissing = [];
   for (const target of indexes.targetMembers) {
-    if ((target.forced || targetInfo.mode === "fix") && !bestByName.has(target.memberName)) {
-      stillMissing.push(target.member.name);
+    if ((targetInfo.mode === "fix" || !normalizeSpace(target.member?.image || "")) && !bestByName.has(target.memberName)) {
+      stillMissing.push(normalizeSpace(target.member?.name || target.memberName));
       console.log(`missing: ${target.member.name}`);
     }
   }
 
-  console.log(`nhk-anyway complete filled=${filled} still-missing=${stillMissing.length}`);
+  console.log(`rep-image complete replaced=${replaced} nhk-found=${[...bestByName.values()].filter(v => v.source !== "profile-page").length} profile-found=${profileHits} still-missing=${stillMissing.length}`);
 }
 
 main().catch((error) => {
