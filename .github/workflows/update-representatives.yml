@@ -56,15 +56,14 @@ jobs:
 
       - name: Check generated file status
         id: changes
-        working-directory: ..
         run: |
           set -euxo pipefail
-          test -f web/public/data/representatives.json
-          test -f web/public/data/missing-images.json
-          test -f web/public/data/representatives-image-review.json
-          test -f web/public/data/representatives-image-search-targets.json
-          test -f web/public/data/representatives-image-fix-targets.json
-          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv)" ]; then
+          test -f public/data/representatives.json
+          test -f public/data/missing-images.json
+          test -f public/data/representatives-image-review.json
+          test -f public/data/representatives-image-search-targets.json
+          test -f public/data/representatives-image-fix-targets.json
+          if [ -z "$(git status --porcelain -- public/data/representatives.json public/data/missing-images.json public/data/representatives-image-review.json public/data/representatives-image-search-targets.json public/data/representatives-image-search-targets.csv public/data/representatives-image-fix-targets.json public/data/representatives-image-fix-targets.csv)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -72,11 +71,10 @@ jobs:
 
       - name: Commit generated file
         if: steps.changes.outputs.changed == 'true'
-        working-directory: ..
         run: |
           set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/public/data/representatives.json                   web/public/data/missing-images.json                   web/public/data/representatives-image-review.json                   web/public/data/representatives-image-search-targets.json                   web/public/data/representatives-image-search-targets.csv                   web/public/data/representatives-image-fix-targets.json                   web/public/data/representatives-image-fix-targets.csv
+          git add public/data/representatives.json                   public/data/missing-images.json                   public/data/representatives-image-review.json                   public/data/representatives-image-search-targets.json                   public/data/representatives-image-search-targets.csv                   public/data/representatives-image-fix-targets.json                   public/data/representatives-image-fix-targets.csv
           git commit -m "Update representative images from NHK HTML"
           git push
