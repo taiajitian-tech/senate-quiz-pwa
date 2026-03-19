@@ -1,12 +1,35 @@
 [
   {
+    "name": "逢沢一郎",
+    "party": "自由民主党・無所属の会",
+    "status": "review",
+    "reason": "face_too_far",
+    "profileUrl": "",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%80%A2%E6%B2%A2%E4%B8%80%E9%83%8E",
+    "aiGuess": false,
+    "preferredSourceType": "official_or_party",
+    "searchHints": [
+      "衆議院",
+      "自由民主党・無所属の会",
+      "議員",
+      "逢沢一郎",
+      "プロフィール",
+      "顔写真"
+    ],
+    "checkedSources": [],
+    "candidatePageUrls": [],
+    "notes": ""
+  },
+  {
     "name": "東国幹",
     "party": "自由民主党・無所属の会",
     "status": "review",
     "reason": "building_image",
     "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg/1280px-Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
-    "imageSource": "profile-page",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",
@@ -21,6 +44,31 @@
     "checkedSources": [],
     "candidatePageUrls": [],
     "notes": ""
+  },
+  {
+    "name": "阿部弘樹",
+    "party": "自由民主党・無所属の会",
+    "status": "review",
+    "reason": "face_too_far",
+    "profileUrl": "",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%BC%98%E6%A8%B9",
+    "aiGuess": false,
+    "preferredSourceType": "official_or_party",
+    "searchHints": [
+      "衆議院",
+      "自由民主党・無所属の会",
+      "議員",
+      "阿部弘樹",
+      "プロフィール",
+      "顔写真"
+    ],
+    "checkedSources": [],
+    "candidatePageUrls": [
+      "https://www.ntv.co.jp/election2024/research/candidate/400095/"
+    ],
+    "notes": "Wikipediaの街頭演説写真を避け、顔が大きい候補者写真を固定使用。"
   },
   {
     "name": "安藤たかお",
@@ -54,7 +102,7 @@
     "reason": "building_image",
     "profileUrl": "",
     "currentImage": "https://upload.wikimedia.org/wikipedia/commons/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
-    "imageSource": "profile-page",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
     "aiGuess": false,
     "preferredSourceType": "official_or_party",

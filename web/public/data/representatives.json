@@ -6,13 +6,10 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
-    "imageSource": "profile-page",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%80%A2%E6%B2%A2%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "sourceType": "profile-fixed",
-    "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "aiGuess": false
   },
   {
     "name": "青山繁晴",
@@ -81,10 +78,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
-    "imageSource": "official-manual",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://asada-masumi.com/about-us/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "東国幹",
@@ -92,14 +92,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg/1280px-Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
-    "imageSource": "profile-page",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
     "profileUrl": "",
-    "aiGuess": false,
-    "sourceType": "profile-fixed",
-    "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "aiGuess": false
   },
   {
     "name": "畦元将吾",
@@ -144,13 +141,10 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
-    "imageSource": "profile-page",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%BC%98%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false,
-    "sourceType": "profile-fixed",
-    "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "aiGuess": false
   },
   {
     "name": "安藤たかお",
@@ -218,11 +212,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Masatoshi_Ishida_2024-12-23.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Masatoshi_Ishida_2024-12-23.jpg/500px-Masatoshi_Ishida_2024-12-23.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E7%9C%9F%E6%95%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "石破茂",
@@ -291,10 +288,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "伊藤信太郎",
@@ -470,11 +470,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/14/Hina_Iwasaki.png",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Hina_Iwasaki.png/500px-Hina_Iwasaki.png",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E6%AF%94%E8%8F%9C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "岩田和親",
@@ -519,13 +522,10 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
-    "imageSource": "profile-page",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
     "profileUrl": "",
-    "aiGuess": false,
-    "sourceType": "profile-fixed",
-    "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "aiGuess": false
   },
   {
     "name": "上野賢一郎",
@@ -546,10 +546,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Hiroshi_Ueno.jpg",
-    "imageSource": "wikipedia",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%AE%8F%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "上原正裕",
@@ -593,11 +596,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Taku_Eto_20210311.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Taku_Eto_20210311.jpg/960px-Taku_Eto_20210311.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E8%97%A4%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "衛藤博昭",
@@ -737,11 +743,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1_%E9%95%B7%E7%94%B0_%E7%B4%98%E4%B8%80%E9%83%8E_%E6%B0%8F_%EF%BC%92%EF%BC%90%E6%97%A5_%E8%A1%86%E8%AD%B0%E9%99%A2%E6%9C%AC%E4%BC%9A%E8%AD%B0%E5%A0%B4.jpg/1280px-%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1_%E9%95%B7%E7%94%B0_%E7%B4%98%E4%B8%80%E9%83%8E_%E6%B0%8F_%EF%BC%92%EF%BC%90%E6%97%A5_%E8%A1%86%E8%AD%B0%E9%99%A2%E6%9C%AC%E4%BC%9A%E8%AD%B0%E5%A0%B4.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1_%E9%95%B7%E7%94%B0_%E7%B4%98%E4%B8%80%E9%83%8E_%E6%B0%8F_%EF%BC%92%EF%BC%90%E6%97%A5_%E8%A1%86%E8%AD%B0%E9%99%A2%E6%9C%AC%E4%BC%9A%E8%AD%B0%E5%A0%B4.jpg/960px-%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1_%E9%95%B7%E7%94%B0_%E7%B4%98%E4%B8%80%E9%83%8E_%E6%B0%8F_%EF%BC%92%EF%BC%90%E6%97%A5_%E8%A1%86%E8%AD%B0%E9%99%A2%E6%9C%AC%E4%BC%9A%E8%AD%B0%E5%A0%B4.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E7%94%B0%E7%B4%98%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "小里泰弘",
@@ -750,10 +759,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Yasuhiro_Ozato_20210914_%28cropped%29.jpg",
-    "imageSource": "wikipedia",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E9%87%8C%E6%B3%B0%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "小田原潔",
@@ -869,9 +881,9 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26001XXX003K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135239/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Yasushi_Katsume_20241122.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8B%9D%E7%9B%AE%E5%BA%B7",
     "profileUrl": "",
     "aiGuess": false
   },
@@ -1205,11 +1217,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://i.ytimg.com/vi/FQFgRYgZLqM/hqdefault.jpg",
-    "imageSource": "party-site",
+    "image": "https://www.jimin.jp/member/img/kunimitsu-ayano.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.jimin.jp/member/135831.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "熊田裕通",
@@ -1422,10 +1437,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "斉木武志",
@@ -1446,10 +1464,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "齋藤健",
@@ -1481,11 +1502,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Rie_Saito_2019-07_at_Kobe_Sannomiya.jpg/500px-Rie_Saito_2019-07_at_Kobe_Sannomiya.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Rie_Saito_2019-07_at_Kobe_Sannomiya.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E3%82%8A%E3%81%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "坂井学",
@@ -1637,11 +1661,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://i.ytimg.com/vi/34473xDVJmE/hqdefault.jpg",
-    "imageSource": "party-site",
+    "image": "https://www.jimin.jp/member/img/shirasaka-aki.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.jimin.jp/member/205728.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "新谷正義",
@@ -1697,9 +1724,9 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14007XXX001K_0.jpg",
-    "imageSource": "yomiuri-winners",
-    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135538/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Keisuke_Suzuki%2C_Minister_of_Justice_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E9%A6%A8%E7%A5%90",
     "profileUrl": "",
     "aiGuess": false
   },
@@ -1746,10 +1773,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "鈴木憲和",
@@ -1794,10 +1824,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "世耕弘成",
@@ -2130,10 +2163,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "辻清人",
@@ -2166,10 +2202,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "津島淳",
@@ -2261,11 +2300,14 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/03/Naomi_Tokashiki_Jimin_IMG_5317_20130706.JPG",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Naomi_Tokashiki_Jimin_IMG_5317_20130706.JPG/960px-Naomi_Tokashiki_Jimin_IMG_5317_20130706.JPG",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%A8%E3%81%8B%E3%81%97%E3%81%8D%E3%81%AA%E3%81%8A%E3%81%BF",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "永岡桂子",
@@ -2442,10 +2484,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中村裕之",
@@ -2742,10 +2787,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "平井卓也",
@@ -2874,10 +2922,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "藤田ひかる",
@@ -2910,10 +2961,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Y%C5%8Dji_Fujita_cropped_1_20260220shu_san_honkaigi5.jpg",
-    "imageSource": "wikipedia",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%B4%8B%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "藤丸敏",
@@ -2946,10 +3000,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "船田元",
@@ -2970,10 +3027,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "古川直季",
@@ -3102,10 +3162,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "牧島かれん",
@@ -3294,10 +3357,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "宮内秀樹",
@@ -3414,10 +3480,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg",
-    "imageSource": "wikipedia",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%9C%A8%E6%B1%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "茂木敏充",
@@ -3450,10 +3519,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "森山裕",
@@ -3486,10 +3558,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "簗和生",
@@ -3678,10 +3753,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "吉村悠",
@@ -3702,10 +3780,13 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "若林健太",
@@ -3858,10 +3939,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "浮島智子",
@@ -3893,11 +3977,14 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Centrist_Reform_Alliance_politicians_2026-01-25%2808%29_%28cropped%29.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Centrist_Reform_Alliance_politicians_2026-01-25%2808%29_%28cropped%29.jpg/960px-Centrist_Reform_Alliance_politicians_2026-01-25%2808%29_%28cropped%29.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A3%AE%E6%B1%9F%E9%87%8C%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "岡本三成",
@@ -4037,11 +4124,14 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Y%C5%ABichi_Got%C5%8D.jpg",
-    "imageSource": "wikidata-commons",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/29/Yuichi_Goto_20140117.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q11488572",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "近藤和也",
@@ -4049,11 +4139,14 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Kazuya_Kondo_20200808_%28cropped%29.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Kazuya_Kondo_20200808_%28cropped%29.jpg/120px-Kazuya_Kondo_20200808_%28cropped%29.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E5%92%8C%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "斉藤鉄夫",
@@ -4085,11 +4178,14 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Kazuhiko_Shigetoku_%282014.03.23%29_2.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kazuhiko_Shigetoku_%282014.03.23%29_2.jpg/960px-Kazuhiko_Shigetoku_%282014.03.23%29_2.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8D%E5%BE%B3%E5%92%8C%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "階猛",
@@ -4146,10 +4242,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中川康洋",
@@ -4218,10 +4317,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "野田佳彦",
@@ -4242,10 +4344,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Takeshi_Noma_20221015.jpg",
-    "imageSource": "wikipedia",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E9%96%93%E5%81%A5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "浜地雅一",
@@ -4266,10 +4371,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "平林晃",
@@ -4278,10 +4386,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "福重隆浩",
@@ -4290,10 +4401,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山岡達丸",
@@ -4314,10 +4428,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山本香苗",
@@ -4362,10 +4479,13 @@
     "party": "中道改革連合・無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "渡辺創",
@@ -4434,10 +4554,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "池畑浩太朗",
@@ -4446,10 +4569,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "一谷勇一郎",
@@ -4457,11 +4583,14 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/1280px-Gthumb.svg.png",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%80%E8%B0%B7%E5%8B%87%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "市村浩一郎",
@@ -4566,10 +4695,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "柏倉祐司",
@@ -4578,10 +4710,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "金村龍那",
@@ -4602,10 +4737,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "黒田征樹",
@@ -4638,10 +4776,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "関健一郎",
@@ -4662,10 +4803,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "中司宏",
@@ -4686,10 +4830,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "萩原佳",
@@ -4698,10 +4845,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "馬場伸幸",
@@ -4722,10 +4872,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "藤田文武",
@@ -4758,10 +4911,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "美延映夫",
@@ -4770,10 +4926,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "村上智信",
@@ -4794,10 +4953,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "若狹清史",
@@ -4806,10 +4968,13 @@
     "party": "日本維新の会",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "浅野哲",
@@ -4842,10 +5007,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://upload.wikimedia.org/wikipedia/commons/5/59/Japanese_general_election_2012_Masae_Ido_in_Motomachi_IMG_0076_20121209.JPG",
-    "imageSource": "wikipedia",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E6%88%B8%E3%81%BE%E3%81%95%E3%81%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "臼木秀剛",
@@ -4878,10 +5046,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "河井昭成",
@@ -4890,10 +5061,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "許斐亮太郎",
@@ -4902,10 +5076,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "近藤雅彦",
@@ -4914,10 +5091,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "佐々木真琴",
@@ -4926,10 +5106,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "鈴木義弘",
@@ -4950,10 +5133,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "田中健",
@@ -5010,10 +5196,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "西岡秀子",
@@ -5046,10 +5235,13 @@
     "party": "国民民主党・無所属クラブ",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "橋本幹彦",
@@ -5093,11 +5285,14 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/2025%E5%B9%B411%E6%9C%8815%E6%97%A5_%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%E5%89%8D%E3%81%A7%E8%A1%97%E9%A0%AD%E6%BC%94%E8%AA%AC%E3%82%92%E8%A1%8C%E3%81%86%E7%A6%8F%E7%94%B0%E5%BE%B9.jpg",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2025%E5%B9%B411%E6%9C%8815%E6%97%A5_%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%E5%89%8D%E3%81%A7%E8%A1%97%E9%A0%AD%E6%BC%94%E8%AA%AC%E3%82%92%E8%A1%8C%E3%81%86%E7%A6%8F%E7%94%B0%E5%BE%B9.jpg/330px-2025%E5%B9%B411%E6%9C%8815%E6%97%A5_%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%E5%89%8D%E3%81%A7%E8%A1%97%E9%A0%AD%E6%BC%94%E8%AA%AC%E3%82%92%E8%A1%8C%E3%81%86%E7%A6%8F%E7%94%B0%E5%BE%B9.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E5%BE%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "古川元久",
@@ -5154,10 +5349,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "石川勝",
@@ -5178,10 +5376,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "川裕一郎",
@@ -5202,10 +5403,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "工藤聖子",
@@ -5214,10 +5418,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "島村かおる",
@@ -5226,10 +5433,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "鈴木美香",
@@ -5238,10 +5448,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "谷浩一郎",
@@ -5274,10 +5487,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "牧野俊一",
@@ -5286,10 +5502,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "吉川里奈",
@@ -5322,10 +5541,13 @@
     "party": "参政党",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "宇佐美登",
@@ -5334,10 +5556,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "河合道雄",
@@ -5346,10 +5571,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "小林修平",
@@ -5358,10 +5586,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "須田英太郎",
@@ -5369,11 +5600,14 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/%E9%A0%88%E7%94%B0%E3%81%88%E3%81%84%E3%81%9F%E3%82%8D%E3%81%86_7%E6%9C%8819%E6%97%A5.png",
-    "imageSource": "wikipedia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/%E9%A0%88%E7%94%B0%E3%81%88%E3%81%84%E3%81%9F%E3%82%8D%E3%81%86_7%E6%9C%8819%E6%97%A5.png/500px-%E9%A0%88%E7%94%B0%E3%81%88%E3%81%84%E3%81%9F%E3%82%8D%E3%81%86_7%E6%9C%8819%E6%97%A5.png",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A0%88%E7%94%B0%E8%8B%B1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "高山聡史",
@@ -5394,10 +5628,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "林拓海",
@@ -5406,10 +5643,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "古川あおい",
@@ -5418,10 +5658,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "峰島侑也",
@@ -5430,10 +5673,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "武藤かず子",
@@ -5442,10 +5688,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "山田瑛理",
@@ -5454,10 +5703,13 @@
     "party": "チームみらい",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "塩川鉄也",
@@ -5526,10 +5778,13 @@
     "party": "無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "河村たかし",
@@ -5550,10 +5805,13 @@
     "party": "無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   },
   {
     "name": "森英介",
@@ -5586,9 +5844,12 @@
     "party": "無所属",
     "role": "",
     "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
-    "imageSource": "yomiuri-winners",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026winners001/",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "sourceType": "profile-fixed",
+    "imageMaskBottom": false,
+    "imageMaskMode": "none"
   }
 ]
