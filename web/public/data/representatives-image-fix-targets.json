@@ -1,73 +1,290 @@
 [
   {
-    "name": "東国幹",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "building_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg/1280px-Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
-    "imageSource": "profile-page",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "東国幹",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "name": "浅田眞澄美"
   },
   {
-    "name": "安藤たかお",
-    "party": "自由民主党・無所属の会",
-    "status": "missing",
-    "reason": "no_image",
-    "profileUrl": "",
-    "currentImage": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "安藤たかお",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [
-      "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html"
-    ],
-    "notes": "読売で安定取得できないため、自民党の候補者ページ画像を固定使用。"
+    "name": "石田真敏"
   },
   {
-    "name": "上田英俊",
-    "party": "自由民主党・無所属の会",
-    "status": "review",
-    "reason": "building_image",
-    "profileUrl": "",
-    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
-    "imageSource": "profile-page",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
-    "aiGuess": false,
-    "preferredSourceType": "official_or_party",
-    "searchHints": [
-      "衆議院",
-      "自由民主党・無所属の会",
-      "議員",
-      "上田英俊",
-      "プロフィール",
-      "顔写真"
-    ],
-    "checkedSources": [],
-    "candidatePageUrls": [],
-    "notes": ""
+    "name": "伊藤聡"
+  },
+  {
+    "name": "岩崎比菜"
+  },
+  {
+    "name": "上野宏史"
+  },
+  {
+    "name": "江藤拓"
+  },
+  {
+    "name": "長田紘一郎"
+  },
+  {
+    "name": "小里泰弘"
+  },
+  {
+    "name": "国光あやの"
+  },
+  {
+    "name": "今洋佑"
+  },
+  {
+    "name": "西條昌良"
+  },
+  {
+    "name": "斉藤りえ"
+  },
+  {
+    "name": "白坂亜紀"
+  },
+  {
+    "name": "鈴木拓海"
+  },
+  {
+    "name": "世古万美子"
+  },
+  {
+    "name": "俵田祐児"
+  },
+  {
+    "name": "辻由布子"
+  },
+  {
+    "name": "とかしきなおみ"
+  },
+  {
+    "name": "長野春信"
+  },
+  {
+    "name": "東田淳平"
+  },
+  {
+    "name": "藤沢忠盛"
+  },
+  {
+    "name": "藤田洋司"
+  },
+  {
+    "name": "文月涼"
+  },
+  {
+    "name": "古井康介"
+  },
+  {
+    "name": "前川恵"
+  },
+  {
+    "name": "三原朝利"
+  },
+  {
+    "name": "村木汀"
+  },
+  {
+    "name": "森原紀代子"
+  },
+  {
+    "name": "保岡宏武"
+  },
+  {
+    "name": "吉田有理"
+  },
+  {
+    "name": "米内紘正"
+  },
+  {
+    "name": "犬飼明佳"
+  },
+  {
+    "name": "大森江里子"
+  },
+  {
+    "name": "後藤祐一"
+  },
+  {
+    "name": "近藤和也"
+  },
+  {
+    "name": "重徳和彦"
+  },
+  {
+    "name": "中川宏昌"
+  },
+  {
+    "name": "沼崎満子"
+  },
+  {
+    "name": "野間健"
+  },
+  {
+    "name": "原田直樹"
+  },
+  {
+    "name": "平林晃"
+  },
+  {
+    "name": "福重隆浩"
+  },
+  {
+    "name": "山崎正恭"
+  },
+  {
+    "name": "早稲田ゆき"
+  },
+  {
+    "name": "青柳仁士"
+  },
+  {
+    "name": "池下卓"
+  },
+  {
+    "name": "池畑浩太朗"
+  },
+  {
+    "name": "一谷勇一郎"
+  },
+  {
+    "name": "うるま譲司"
+  },
+  {
+    "name": "奥下剛光"
+  },
+  {
+    "name": "柏倉祐司"
+  },
+  {
+    "name": "住吉寛紀"
+  },
+  {
+    "name": "高見亮"
+  },
+  {
+    "name": "西田薫"
+  },
+  {
+    "name": "萩原佳"
+  },
+  {
+    "name": "原山大亮"
+  },
+  {
+    "name": "三木圭恵"
+  },
+  {
+    "name": "美延映夫"
+  },
+  {
+    "name": "喜多義典"
+  },
+  {
+    "name": "若狹清史"
+  },
+  {
+    "name": "横田光弘"
+  },
+  {
+    "name": "井戸まさえ"
+  },
+  {
+    "name": "小竹凱"
+  },
+  {
+    "name": "河井昭成"
+  },
+  {
+    "name": "許斐亮太郎"
+  },
+  {
+    "name": "近藤雅彦"
+  },
+  {
+    "name": "佐々木真琴"
+  },
+  {
+    "name": "高沢一基"
+  },
+  {
+    "name": "鍋島勢理"
+  },
+  {
+    "name": "野村美穂"
+  },
+  {
+    "name": "福田徹"
+  },
+  {
+    "name": "向山好一"
+  },
+  {
+    "name": "青木ひとみ"
+  },
+  {
+    "name": "伊藤恵介"
+  },
+  {
+    "name": "川裕一郎"
+  },
+  {
+    "name": "木下敏之"
+  },
+  {
+    "name": "工藤聖子"
+  },
+  {
+    "name": "島村かおる"
+  },
+  {
+    "name": "鈴木美香"
+  },
+  {
+    "name": "なかやめぐ"
+  },
+  {
+    "name": "牧野俊一"
+  },
+  {
+    "name": "渡辺藍理"
+  },
+  {
+    "name": "宇佐美登"
+  },
+  {
+    "name": "河合道雄"
+  },
+  {
+    "name": "小林修平"
+  },
+  {
+    "name": "須田英太郎"
+  },
+  {
+    "name": "土橋章宏"
+  },
+  {
+    "name": "林拓海"
+  },
+  {
+    "name": "古川あおい"
+  },
+  {
+    "name": "峰島侑也"
+  },
+  {
+    "name": "武藤かず子"
+  },
+  {
+    "name": "山田瑛理"
+  },
+  {
+    "name": "緒方林太郎"
+  },
+  {
+    "name": "中村はやと"
+  },
+  {
+    "name": "山本ジョージ"
+  },
+  {
+    "name": "渡辺真太朗"
   }
 ]
