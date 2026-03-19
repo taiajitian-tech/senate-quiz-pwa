@@ -1,4 +1,6 @@
-returncode=0
-stdout=
+count=96
+node_check=0
 
-stderr=
+STDOUT:
+
+STDERR:
