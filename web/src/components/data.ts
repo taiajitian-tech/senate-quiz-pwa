@@ -5,6 +5,9 @@ export type Person = {
   name: string;
   kana?: string;
   group?: string;
+  party?: string;
+  district?: string;
+  terms?: number;
   nextElectionYear?: number;
   images: string[];
   aiGuess?: boolean;
@@ -87,6 +90,20 @@ function toYear(value: unknown): number | undefined {
   return undefined;
 }
 
+function toCount(value: unknown): number | undefined {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return Math.trunc(value);
+  }
+  if (typeof value === "string") {
+    const digits = value.replace(/[^\d]/g, "");
+    if (digits) {
+      const count = Number(digits);
+      if (Number.isFinite(count)) return count;
+    }
+  }
+  return undefined;
+}
+
 function normalizeCompact(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
 }
@@ -127,7 +144,10 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const split = splitNameAndKana(rawName);
   const cleanName = split.name;
   const kana = deriveKana(v, cleanName, split.kana);
-  const group = toText(v.group) || toText(v.party) || toText(v.role);
+  const group = toText(v.group) || toText(v.role);
+  const party = toText(v.party) || group;
+  const district = toText(v.district) || toText(v.constituency) || toText(v.area) || toText(v.electoralDistrict);
+  const terms = toCount(v.terms ?? v.termCount ?? v.electedCount ?? v.wins);
   const nextElectionYear = toYear(v.nextElectionYear ?? v.next_election_year ?? v.termEndYear);
   const images = toImages(v.images ?? v.image);
   const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
@@ -138,6 +158,9 @@ function normalizePerson(value: unknown, index: number): Person | null {
     name: cleanName,
     kana,
     group,
+    party,
+    district,
+    terms,
     nextElectionYear,
     images: safeImages,
     aiGuess,
