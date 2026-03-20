@@ -96,7 +96,10 @@ function splitNameAndKana(rawName) {
 }
 
 function normalizeNameForMatch(rawName) {
-  return splitNameAndKana(rawName).name;
+  return splitNameAndKana(rawName).name
+    .replace(/\s*\[[^\]]+\]\s*/gu, "")
+    .replace(/\s*＜正字＞\s*/gu, "")
+    .trim();
 }
 
 function toGregorianYear(text) {
@@ -108,53 +111,50 @@ function toGregorianYear(text) {
   return undefined;
 }
 
-function parseListRowsFromText(listHtml, listUrl) {
+function parseListRowsFromLinks(listHtml, listUrl) {
   const $ = cheerio.load(listHtml);
   const infoMap = new Map();
-  const lines = $("body")
-    .text()
-    .split(/\r?\n/u)
-    .map((line) => normText(line))
-    .filter(Boolean);
 
-  const queue = extractProfileLinks(listHtml, listUrl);
-  let linkIndex = 0;
+  $("a[href]").each((_, a) => {
+    const href = $(a).attr("href") || "";
+    if (!/\/profile\/\d+\.htm/i.test(href)) return;
 
-  for (const line of lines) {
-    if (!queue[linkIndex]) break;
-    if (!/令和\d+年\d+月\d+日/u.test(line)) continue;
-    if (/議員氏名|読み方|会派|選挙区|任期満了|正字|現在|正式な会派名|クリック/u.test(line)) continue;
+    const profileUrl = absUrl(listUrl, href).replace(/\?.*$/, "");
+    if (!profileUrl) return;
 
-    const cleanedLine = line.replace(/\s*＜正字＞.*/u, "");
-    const dateMatch = cleanedLine.match(/(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
-    if (!dateMatch) continue;
+    const rawName = normText($(a).text());
+    if (!rawName) return;
 
-    const termEnd = dateMatch[1];
-    const head = normText(cleanedLine.slice(0, cleanedLine.length - termEnd.length));
-    const tokens = head.split(/\s+/u).filter(Boolean);
-    if (tokens.length < 4) continue;
+    const parentText = normText($(a).parent().text()) || normText($(a).closest("li, td, p, div").text());
+    const rowText = parentText
+      .replace(/\s*＜正字＞.*/u, "")
+      .replace(/\s*\[[^\]]+\]/gu, "")
+      .trim();
 
-    const district = tokens[tokens.length - 1];
-    const shortGroup = tokens[tokens.length - 2];
-    const kana = tokens[tokens.length - 3];
-    const rawName = normText(tokens.slice(0, -3).join(" "));
-    const profileUrl = queue[linkIndex++].replace(/\?.*$/, "");
+    const nameOnly = normalizeNameForMatch(rawName);
+    let trailing = rowText;
+    if (trailing.startsWith(nameOnly)) {
+      trailing = normText(trailing.slice(nameOnly.length));
+    }
+
+    const m = trailing.match(/^(.+?)\s+([^\s]+)\s+([^\s]+)\s+(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
+    if (!m) return;
+
+    const kana = normalizeCompact(m[1]);
+    const shortGroup = normText(m[2]);
+    const district = normalizeDistrict(m[3]);
+    const termEnd = normText(m[4]);
 
     infoMap.set(profileUrl, {
-      name: normalizeNameForMatch(rawName),
-      kana: normalizeCompact(kana),
-      shortGroup: normText(shortGroup),
-      district: normalizeDistrict(district),
+      name: nameOnly,
+      kana,
+      shortGroup,
+      district,
       termEnd,
       nextElectionYear: toGregorianYear(termEnd),
     });
-  }
+  });
 
-  return infoMap;
-}
-
-function parseListRowInfo(listHtml, listUrl) {
-  const infoMap = parseListRowsFromText(listHtml, listUrl);
   return infoMap;
 }
 
@@ -292,12 +292,13 @@ async function main() {
     process.exit(1);
   }
 
-  const listInfoMap = parseListRowInfo(listHtml, listUrl);
+  const listInfoMap = parseListRowsFromLinks(listHtml, listUrl);
   console.log("list row info extracted:", listInfoMap.size);
 
   const senators = [];
   let districtCount = 0;
   let termsCount = 0;
+  let nextElectionYearCount = 0;
 
   for (const profileUrl of links) {
     try {
@@ -318,9 +319,11 @@ async function main() {
       const party = group;
       const { district, terms } = extractProfileElectionInfo($);
       const photoUrl = extractPhoto(profileUrl, idStr, $);
+      const nextElectionYear = listInfo?.nextElectionYear;
 
-      if (district) districtCount += 1;
+      if (district || listInfo?.district) districtCount += 1;
       if (typeof terms === "number") termsCount += 1;
+      if (typeof nextElectionYear === "number") nextElectionYearCount += 1;
 
       senators.push({
         id,
@@ -329,7 +332,7 @@ async function main() {
         party,
         district: district || listInfo?.district || undefined,
         terms,
-        nextElectionYear: listInfo?.nextElectionYear,
+        nextElectionYear,
         images: photoUrl ? [photoUrl] : [],
       });
     } catch (e) {
@@ -339,6 +342,7 @@ async function main() {
 
   console.log("district extracted:", districtCount);
   console.log("terms extracted:", termsCount);
+  console.log("nextElectionYear extracted:", nextElectionYearCount);
   console.log("parsed senators:", senators.length);
   if (!senators.length) {
     console.error("Error: parsed senators is empty (0).");

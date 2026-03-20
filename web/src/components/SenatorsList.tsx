@@ -1,3 +1,1 @@
-import SenatorList from "./SenatorList";
-
-export default SenatorList;
+export { default } from "./SenatorList";

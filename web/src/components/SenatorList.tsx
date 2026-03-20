@@ -9,60 +9,155 @@ type Props = {
   onBack: () => void;
 };
 
-type SortKey = "name_asc" | "name_desc" | "party" | "district" | "terms" | "year_asc" | "year_desc";
+type SortKey =
+  | "name_asc"
+  | "name_desc"
+  | "party"
+  | "district_geo"
+  | "terms_asc"
+  | "terms_desc"
+  | "year_asc"
+  | "year_desc";
 
-function textValue(value?: string): string {
-  return (value ?? "").trim();
+const JA_COLLATOR = new Intl.Collator("ja");
+
+const PREFECTURE_ORDER = [
+  "北海道",
+  "青森",
+  "岩手",
+  "宮城",
+  "秋田",
+  "山形",
+  "福島",
+  "茨城",
+  "栃木",
+  "群馬",
+  "埼玉",
+  "千葉",
+  "東京",
+  "神奈川",
+  "新潟",
+  "富山",
+  "石川",
+  "福井",
+  "山梨",
+  "長野",
+  "岐阜",
+  "静岡",
+  "愛知",
+  "三重",
+  "滋賀",
+  "京都",
+  "大阪",
+  "兵庫",
+  "奈良",
+  "和歌山",
+  "鳥取",
+  "島根",
+  "岡山",
+  "広島",
+  "山口",
+  "徳島",
+  "香川",
+  "愛媛",
+  "高知",
+  "福岡",
+  "佐賀",
+  "長崎",
+  "熊本",
+  "大分",
+  "宮崎",
+  "鹿児島",
+  "沖縄",
+] as const;
+
+const PREFECTURE_ORDER_MAP = new Map(PREFECTURE_ORDER.map((name, index) => [name, index]));
+
+function sortText(value: string | undefined): string {
+  return value?.trim() ?? "";
 }
 
-function numberValue(value?: number, fallback = Number.MAX_SAFE_INTEGER): number {
-  return typeof value === "number" && Number.isFinite(value) ? value : fallback;
+function normalizeDistrictText(value: string | undefined): string {
+  return sortText(value)
+    .replace(/^選挙区\s*[：:：]?\s*/u, "")
+    .replace(/[（(]([^）)]+)[）)]/gu, "$1")
+    .replace(/選挙区/gu, "")
+    .trim();
 }
 
-function districtRank(value?: string): number {
-  const v = textValue(value);
-  if (!v) return 2;
-  if (v.includes("比例")) return 1;
-  return 0;
-}
+function getDistrictGeoRank(value: string | undefined): number {
+  const text = normalizeDistrictText(value);
+  if (!text) return 9998;
+  if (text.includes("比例")) return 9999;
 
-function compareByName(a: Person, b: Person, desc = false): number {
-  const left = textValue(a.name);
-  const right = textValue(b.name);
-  return desc ? right.localeCompare(left, "ja") : left.localeCompare(right, "ja");
-}
-
-function comparePersons(a: Person, b: Person, sortKey: SortKey): number {
-  switch (sortKey) {
-    case "name_asc":
-      return compareByName(a, b, false);
-    case "name_desc":
-      return compareByName(a, b, true);
-    case "party": {
-      const cmp = textValue(a.party || a.group).localeCompare(textValue(b.party || b.group), "ja");
-      return cmp || compareByName(a, b, false);
+  for (const prefecture of PREFECTURE_ORDER) {
+    if (text.includes(prefecture)) {
+      return PREFECTURE_ORDER_MAP.get(prefecture) ?? 9998;
     }
-    case "district": {
-      const rank = districtRank(a.district) - districtRank(b.district);
-      if (rank !== 0) return rank;
-      const cmp = textValue(a.district).localeCompare(textValue(b.district), "ja");
-      return cmp || compareByName(a, b, false);
-    }
-    case "terms": {
-      const cmp = numberValue(a.terms) - numberValue(b.terms);
-      return cmp || compareByName(a, b, false);
-    }
-    case "year_asc": {
-      const cmp = numberValue(a.nextElectionYear) - numberValue(b.nextElectionYear);
-      return cmp || compareByName(a, b, false);
-    }
-    case "year_desc": {
-      const cmp = numberValue(b.nextElectionYear, Number.MIN_SAFE_INTEGER) - numberValue(a.nextElectionYear, Number.MIN_SAFE_INTEGER);
-      return cmp || compareByName(a, b, false);
-    }
-    default:
-      return 0;
   }
+
+  return 9998;
+}
+
+function compareName(a: Person, b: Person): number {
+  return JA_COLLATOR.compare(a.name, b.name);
+}
+
+function compareParty(a: Person, b: Person): number {
+  const diff = JA_COLLATOR.compare(sortText(a.party ?? a.group), sortText(b.party ?? b.group));
+  return diff !== 0 ? diff : compareName(a, b);
+}
+
+function compareDistrictGeo(a: Person, b: Person): number {
+  const rankDiff = getDistrictGeoRank(a.district) - getDistrictGeoRank(b.district);
+  if (rankDiff !== 0) return rankDiff;
+  const diff = JA_COLLATOR.compare(normalizeDistrictText(a.district), normalizeDistrictText(b.district));
+  return diff !== 0 ? diff : compareName(a, b);
+}
+
+function compareTerms(a: Person, b: Person, desc = false): number {
+  const missingRankA = typeof a.terms === "number" ? 0 : 1;
+  const missingRankB = typeof b.terms === "number" ? 0 : 1;
+  if (missingRankA !== missingRankB) return missingRankA - missingRankB;
+  const av = a.terms ?? -1;
+  const bv = b.terms ?? -1;
+  const diff = desc ? bv - av : av - bv;
+  return diff !== 0 ? diff : compareName(a, b);
+}
+
+function compareYear(a: Person, b: Person, desc = false): number {
+  const missingRankA = typeof a.nextElectionYear === "number" ? 0 : 1;
+  const missingRankB = typeof b.nextElectionYear === "number" ? 0 : 1;
+  if (missingRankA !== missingRankB) return missingRankA - missingRankB;
+  const av = a.nextElectionYear ?? -1;
+  const bv = b.nextElectionYear ?? -1;
+  const diff = desc ? bv - av : av - bv;
+  return diff !== 0 ? diff : compareName(a, b);
+}
+
+function sortItems(items: Person[], sortKey: SortKey): Person[] {
+  return [...items].sort((a, b) => {
+    switch (sortKey) {
+      case "name_asc":
+        return compareName(a, b);
+      case "name_desc":
+        return compareName(b, a);
+      case "party":
+        return compareParty(a, b);
+      case "district_geo":
+        return compareDistrictGeo(a, b);
+      case "terms_asc":
+        return compareTerms(a, b, false);
+      case "terms_desc":
+        return compareTerms(a, b, true);
+      case "year_asc":
+        return compareYear(a, b, false);
+      case "year_desc":
+        return compareYear(a, b, true);
+      default:
+        return 0;
+    }
+  });
 }
 
 export default function SenatorList(props: Props) {
@@ -102,16 +197,21 @@ export default function SenatorList(props: Props) {
     const key = q.trim().toLowerCase();
     if (!key) return items;
     return items.filter((s) => {
-      return s.name.toLowerCase().includes(key)
-        || (s.kana ?? "").toLowerCase().includes(key)
-        || (s.party ?? s.group ?? "").toLowerCase().includes(key)
-        || (s.district ?? "").toLowerCase().includes(key);
+      const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
+      const termsText = typeof s.terms === "number" ? String(s.terms) : "";
+      return (
+        s.name.toLowerCase().includes(key) ||
+        (s.kana ?? "").toLowerCase().includes(key) ||
+        (s.party ?? s.group ?? "").toLowerCase().includes(key) ||
+        (s.district ?? "").toLowerCase().includes(key) ||
+        termsText.includes(key) ||
+        nextElectionText.includes(key)
+      );
     });
   }, [q, items]);
 
-  const sorted = useMemo(() => {
-    return [...filtered].sort((a, b) => comparePersons(a, b, sortKey));
-  }, [filtered, sortKey]);
+  const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
+  const isSenators = props.target === "senators";
 
   return (
     <div style={styles.wrap}>
@@ -122,16 +222,19 @@ export default function SenatorList(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区で検索" style={styles.search} />
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
-          <option value="name_asc">名前（昇順）</option>
-          <option value="name_desc">名前（降順）</option>
-          <option value="party">政党</option>
-          <option value="district">選挙区</option>
-          <option value="terms">当選回数</option>
-          <option value="year_asc">次の改選年（昇順）</option>
-          <option value="year_desc">次の改選年（降順）</option>
-        </select>
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索" style={styles.search} />
+        {isSenators ? (
+          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
+            <option value="name_asc">名前（昇順）</option>
+            <option value="name_desc">名前（降順）</option>
+            <option value="party">政党</option>
+            <option value="district_geo">選挙区</option>
+            <option value="terms_asc">当選回数（昇順）</option>
+            <option value="terms_desc">当選回数（降順）</option>
+            <option value="year_asc">次の改選年（昇順）</option>
+            <option value="year_desc">次の改選年（降順）</option>
+          </select>
+        ) : null}
         <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
@@ -151,16 +254,22 @@ export default function SenatorList(props: Props) {
                 </div>
               </div>
               {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
-              <div style={styles.detail}>政党：{s.party || s.group || "不明"}</div>
-              <div style={styles.detail}>選挙区：{s.district || "不明"}</div>
-              <div style={styles.detail}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
-              <div style={styles.detail}>次の改選年：{typeof s.nextElectionYear === "number" ? `${s.nextElectionYear}年` : "不明"}</div>
+              {isSenators ? (
+                <div style={styles.infoGrid}>
+                  <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
+                  <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
+                  <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
+                  <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
+                </div>
+              ) : (
+                <div style={styles.group}>{s.group ?? ""}</div>
+              )}
             </div>
           </div>
         ))}
       </div>
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（一覧）">
-        <p>名前、政党、選挙区で検索できます。一覧はソート切替にも対応しています。</p>
+        <p>名前、政党、選挙区、当選回数、改選年で検索できます。</p>
       </HelpModal>
     </div>
   );
@@ -181,11 +290,13 @@ const styles: Record<string, React.CSSProperties> = {
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
-  meta: { flex: 1, display: "flex", flexDirection: "column", gap: 4 },
+  meta: { flex: 1, display: "flex", flexDirection: "column", gap: 6 },
   nameRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   name: { fontSize: 18, fontWeight: 800 },
   kana: { fontSize: 14, color: "#666" },
-  detail: { fontSize: 15, color: "#444" },
+  group: { fontSize: 15, color: "#444" },
+  infoGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 6 },
+  infoLine: { fontSize: 14, color: "#444" },
   badges: { display: "flex", gap: 6, alignItems: "center" },
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
