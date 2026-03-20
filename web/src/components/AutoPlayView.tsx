@@ -9,15 +9,55 @@ type Props = {
   onBack: () => void;
 };
 
+type AutoPlayMemory = {
+  index: number;
+  phase: "face" | "answer";
+  paused: boolean;
+};
+
+const getAutoPlayMemoryKey = (target: Target) => `senateQuiz.autoplay.${target}.v1`;
+
+function loadAutoPlayMemory(target: Target): AutoPlayMemory {
+  try {
+    const raw = localStorage.getItem(getAutoPlayMemoryKey(target));
+    if (!raw) return { index: 0, phase: "face", paused: false };
+    const parsed = JSON.parse(raw) as Partial<AutoPlayMemory>;
+    return {
+      index: Number.isFinite(Number(parsed.index)) ? Math.max(0, Math.floor(Number(parsed.index))) : 0,
+      phase: parsed.phase === "answer" ? "answer" : "face",
+      paused: parsed.paused === true,
+    };
+  } catch {
+    return { index: 0, phase: "face", paused: false };
+  }
+}
+
+function saveAutoPlayMemory(target: Target, value: AutoPlayMemory) {
+  try {
+    localStorage.setItem(getAutoPlayMemoryKey(target), JSON.stringify(value));
+  } catch {
+    // ignore
+  }
+}
+
 export default function AutoPlayView(props: Props) {
+  const initialMemory = useMemo(() => loadAutoPlayMemory(props.target), [props.target]);
   const [items, setItems] = useState<Person[]>([]);
-  const [index, setIndex] = useState(0);
-  const [phase, setPhase] = useState<"face" | "answer">("face");
+  const [index, setIndex] = useState(initialMemory.index);
+  const [phase, setPhase] = useState<"face" | "answer">(initialMemory.phase);
+  const [paused, setPaused] = useState(initialMemory.paused);
   const [helpOpen, setHelpOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const options = loadOptions();
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
+
+  useEffect(() => {
+    const memory = loadAutoPlayMemory(props.target);
+    setIndex(memory.index);
+    setPhase(memory.phase);
+    setPaused(memory.paused);
+  }, [props.target]);
 
   useEffect(() => {
     (async () => {
@@ -33,20 +73,52 @@ export default function AutoPlayView(props: Props) {
     })();
   }, [dataUrl]);
 
-  const current = useMemo(() => items[index] ?? null, [items, index]);
+  useEffect(() => {
+    if (items.length === 0) return;
+    if (index < items.length) return;
+    setIndex(items.length - 1);
+  }, [items, index]);
 
   useEffect(() => {
-    if (!current) return;
+    saveAutoPlayMemory(props.target, { index, phase, paused });
+  }, [props.target, index, phase, paused]);
+
+  const current = useMemo(() => items[index] ?? null, [items, index]);
+  const progressText = items.length === 0 ? "0 / 0" : `${index + 1} / ${items.length}`;
+
+  useEffect(() => {
+    if (!current || paused) return;
     const ms = (phase === "face" ? options.faceSeconds : options.answerSeconds) * 1000;
     const timer = window.setTimeout(() => {
-      if (phase === "face") setPhase("answer");
-      else {
-        setPhase("face");
-        setIndex((prev) => (items.length === 0 ? 0 : (prev + 1) % items.length));
+      if (phase === "face") {
+        setPhase("answer");
+        return;
       }
+      setPhase("face");
+      setIndex((prev) => (items.length === 0 ? 0 : (prev + 1) % items.length));
     }, ms);
     return () => window.clearTimeout(timer);
-  }, [current, phase, options.faceSeconds, options.answerSeconds, items.length]);
+  }, [current, paused, phase, options.faceSeconds, options.answerSeconds, items.length]);
+
+  const handleReset = () => {
+    setIndex(0);
+    setPhase("face");
+    setPaused(true);
+  };
+
+  const handlePrev = () => {
+    if (items.length === 0) return;
+    setIndex((prev) => (prev <= 0 ? 0 : prev - 1));
+    setPhase("face");
+    setPaused(true);
+  };
+
+  const handleNext = () => {
+    if (items.length === 0) return;
+    setIndex((prev) => (prev >= items.length - 1 ? items.length - 1 : prev + 1));
+    setPhase("face");
+    setPaused(true);
+  };
 
   return (
     <div style={styles.wrap}>
@@ -57,6 +129,20 @@ export default function AutoPlayView(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{targetLabels[props.target]} / 顔 {options.faceSeconds}秒 → 名前 {options.answerSeconds}秒</div>
+        <div style={styles.sub}>前回の位置を保存します。停止して戻っても、続きから再開できます。</div>
+        <div style={styles.statusRow}>
+          <div style={styles.progress}>{progressText}</div>
+          <div style={styles.phaseBadge}>{phase === "face" ? "顔表示中" : "名前表示中"}</div>
+          <div style={styles.phaseBadge}>{paused ? "一時停止中" : "再生中"}</div>
+        </div>
+        <div style={styles.controls}>
+          <button type="button" style={styles.controlBtn} onClick={() => setPaused((prev) => !prev)} disabled={!current}>
+            {paused ? "再開" : "一時停止"}
+          </button>
+          <button type="button" style={styles.controlBtn} onClick={handlePrev} disabled={!current || index === 0}>前へ</button>
+          <button type="button" style={styles.controlBtn} onClick={handleNext} disabled={!current || items.length === 0 || index >= items.length - 1}>次へ</button>
+          <button type="button" style={styles.controlBtn} onClick={handleReset} disabled={!current}>最初から</button>
+        </div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
       <div style={styles.card}>
@@ -74,6 +160,8 @@ export default function AutoPlayView(props: Props) {
       </div>
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（自動再生）">
         <p>顔→名前を自動で流します。覚えた後の思い出す速さを鍛えるためのモードです。</p>
+        <p>一時停止、再開、前へ、次へ、最初から に対応しています。</p>
+        <p>再生位置は保存されるため、途中でやめても次回は続きから再開できます。</p>
         <p>おすすめは、顔2秒・名前2秒です。慣れたら顔1秒にすると速さの練習になります。</p>
       </HelpModal>
     </div>
@@ -88,6 +176,11 @@ const styles: Record<string, React.CSSProperties> = {
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 20, fontWeight: 800 },
   sub: { fontSize: 13, color: "#666" },
+  statusRow: { display: "flex", flexWrap: "wrap", gap: 8 },
+  progress: { fontSize: 13, color: "#333", padding: "6px 10px", borderRadius: 999, background: "#f3f4f6", border: "1px solid #d1d5db" },
+  phaseBadge: { fontSize: 13, color: "#333", padding: "6px 10px", borderRadius: 999, background: "#fff", border: "1px solid #d1d5db" },
+  controls: { display: "flex", flexWrap: "wrap", gap: 8 },
+  controlBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 700 },
   card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 420 },
   center: { margin: "auto", color: "#666", fontSize: 14 },
   imgBox: { display: "flex", justifyContent: "center" },
