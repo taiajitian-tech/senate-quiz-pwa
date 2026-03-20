@@ -22,6 +22,9 @@ for (const [index, item] of parsed.entries()) {
   seen.add(id);
   if (typeof item.name !== "string" || !item.name.trim()) throw new Error(`Invalid name for id ${id}`);
   if (item.group != null && typeof item.group !== "string") throw new Error(`Invalid group for id ${id}`);
+  if (item.nextElectionYear != null && !Number.isFinite(Number(item.nextElectionYear))) {
+    throw new Error(`Invalid nextElectionYear for id ${id}`);
+  }
   if (!Array.isArray(item.images)) throw new Error(`Invalid images for id ${id}`);
   for (const img of item.images) {
     if (typeof img !== "string") throw new Error(`Invalid image URL for id ${id}`);

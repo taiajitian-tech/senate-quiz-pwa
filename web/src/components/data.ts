@@ -5,6 +5,7 @@ export type Person = {
   name: string;
   kana?: string;
   group?: string;
+  nextElectionYear?: number;
   images: string[];
   aiGuess?: boolean;
 };
@@ -72,6 +73,20 @@ function toImages(value: unknown): string[] {
   return [];
 }
 
+function toYear(value: unknown): number | undefined {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return Math.trunc(value);
+  }
+  if (typeof value === "string") {
+    const digits = value.match(/\d{4}/)?.[0];
+    if (digits) {
+      const year = Number(digits);
+      if (Number.isFinite(year)) return year;
+    }
+  }
+  return undefined;
+}
+
 function normalizeCompact(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
 }
@@ -113,6 +128,7 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const cleanName = split.name;
   const kana = deriveKana(v, cleanName, split.kana);
   const group = toText(v.group) || toText(v.party) || toText(v.role);
+  const nextElectionYear = toYear(v.nextElectionYear ?? v.next_election_year ?? v.termEndYear);
   const images = toImages(v.images ?? v.image);
   const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
   const safeImages = aiGuess && BAD_GUESS_IMAGE_NAMES.has(cleanName) ? [] : images;
@@ -122,6 +138,7 @@ function normalizePerson(value: unknown, index: number): Person | null {
     name: cleanName,
     kana,
     group,
+    nextElectionYear,
     images: safeImages,
     aiGuess,
   };

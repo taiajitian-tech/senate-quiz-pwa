@@ -44,7 +44,15 @@ export default function SenatorList(props: Props) {
   const filtered = useMemo(() => {
     const key = q.trim().toLowerCase();
     if (!key) return items;
-    return items.filter((s) => s.name.toLowerCase().includes(key) || (s.kana ?? "").toLowerCase().includes(key) || (s.group ?? "").toLowerCase().includes(key));
+    return items.filter((s) => {
+      const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
+      return (
+        s.name.toLowerCase().includes(key) ||
+        (s.kana ?? "").toLowerCase().includes(key) ||
+        (s.group ?? "").toLowerCase().includes(key) ||
+        nextElectionText.includes(key)
+      );
+    });
   }, [q, items]);
 
   return (
@@ -56,7 +64,7 @@ export default function SenatorList(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 会派・役職で検索" style={styles.search} />
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 会派・役職 / 改選年で検索" style={styles.search} />
         <div style={styles.sub}>{loading ? "読み込み中" : `表示：${filtered.length} / ${items.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
@@ -76,7 +84,10 @@ export default function SenatorList(props: Props) {
                 </div>
               </div>
               {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
-              <div style={styles.group}>{s.group ?? ""}</div>
+              {s.group ? <div style={styles.group}>{s.group}</div> : null}
+              {props.target === "senators" && s.nextElectionYear ? (
+                <div style={styles.nextElectionYear}>次の改選年：{s.nextElectionYear}年</div>
+              ) : null}
             </div>
           </div>
         ))}
@@ -107,6 +118,7 @@ const styles: Record<string, React.CSSProperties> = {
   name: { fontSize: 18, fontWeight: 800 },
   kana: { fontSize: 14, color: "#666" },
   group: { fontSize: 15, color: "#444" },
+  nextElectionYear: { fontSize: 14, color: "#1f4b99", fontWeight: 700 },
   badges: { display: "flex", gap: 6, alignItems: "center" },
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
