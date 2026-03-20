@@ -9,43 +9,60 @@ type Props = {
   onBack: () => void;
 };
 
-type AutoPlayMemory = {
-  index: number;
-  phase: "face" | "answer";
+type Phase = "face" | "answer";
+
+type SavedState = {
+  sequence: number[];
+  position: number;
+  phase: Phase;
   paused: boolean;
+  random: boolean;
 };
 
-const getAutoPlayMemoryKey = (target: Target) => `senateQuiz.autoplay.${target}.v1`;
+const storageKey = (target: Target) => `autoplay-state:${target}`;
 
-function loadAutoPlayMemory(target: Target): AutoPlayMemory {
+function shuffleIndices(length: number) {
+  const arr = Array.from({ length }, (_, i) => i);
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function readSavedState(target: Target): SavedState | null {
   try {
-    const raw = localStorage.getItem(getAutoPlayMemoryKey(target));
-    if (!raw) return { index: 0, phase: "face", paused: false };
-    const parsed = JSON.parse(raw) as Partial<AutoPlayMemory>;
+    const raw = localStorage.getItem(storageKey(target));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<SavedState>;
+    if (!Array.isArray(parsed.sequence)) return null;
     return {
-      index: Number.isFinite(Number(parsed.index)) ? Math.max(0, Math.floor(Number(parsed.index))) : 0,
+      sequence: parsed.sequence.filter((v): v is number => Number.isInteger(v) && v >= 0),
+      position: Number.isInteger(parsed.position) ? Math.max(0, parsed.position as number) : 0,
       phase: parsed.phase === "answer" ? "answer" : "face",
-      paused: parsed.paused === true,
+      paused: Boolean(parsed.paused),
+      random: Boolean(parsed.random),
     };
   } catch {
-    return { index: 0, phase: "face", paused: false };
+    return null;
   }
 }
 
-function saveAutoPlayMemory(target: Target, value: AutoPlayMemory) {
+function writeSavedState(target: Target, state: SavedState) {
   try {
-    localStorage.setItem(getAutoPlayMemoryKey(target), JSON.stringify(value));
+    localStorage.setItem(storageKey(target), JSON.stringify(state));
   } catch {
-    // ignore
+    // ignore storage errors
   }
 }
 
 export default function AutoPlayView(props: Props) {
-  const initialMemory = useMemo(() => loadAutoPlayMemory(props.target), [props.target]);
   const [items, setItems] = useState<Person[]>([]);
-  const [index, setIndex] = useState(initialMemory.index);
-  const [phase, setPhase] = useState<"face" | "answer">(initialMemory.phase);
-  const [paused, setPaused] = useState(initialMemory.paused);
+  const [sequence, setSequence] = useState<number[]>([]);
+  const [position, setPosition] = useState(0);
+  const [phase, setPhase] = useState<Phase>("face");
+  const [paused, setPaused] = useState(false);
+  const [randomMode, setRandomMode] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const options = loadOptions();
@@ -53,38 +70,50 @@ export default function AutoPlayView(props: Props) {
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
-    const memory = loadAutoPlayMemory(props.target);
-    setIndex(memory.index);
-    setPhase(memory.phase);
-    setPaused(memory.paused);
-  }, [props.target]);
-
-  useEffect(() => {
     (async () => {
       try {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json));
+        const parsed = parsePersonsJson(json);
+        setItems(parsed);
+
+        const saved = readSavedState(props.target);
+        const maxIndex = parsed.length - 1;
+        const validSequence =
+          saved &&
+          saved.sequence.length === parsed.length &&
+          saved.sequence.every((n) => n >= 0 && n <= maxIndex);
+
+        const nextSequence = validSequence
+          ? saved.sequence
+          : (saved?.random ? shuffleIndices(parsed.length) : Array.from({ length: parsed.length }, (_, i) => i));
+
+        setSequence(nextSequence);
+        setPosition(saved ? Math.min(saved.position, Math.max(0, nextSequence.length - 1)) : 0);
+        setPhase(saved?.phase ?? "face");
+        setPaused(saved?.paused ?? false);
+        setRandomMode(saved?.random ?? false);
       } catch (e) {
         console.error(e);
         setError(String(e));
       }
     })();
-  }, [dataUrl]);
+  }, [dataUrl, props.target]);
+
+  const currentIndex = sequence[position] ?? 0;
+  const current = useMemo(() => items[currentIndex] ?? null, [items, currentIndex]);
 
   useEffect(() => {
-    if (items.length === 0) return;
-    if (index < items.length) return;
-    setIndex(items.length - 1);
-  }, [items, index]);
-
-  useEffect(() => {
-    saveAutoPlayMemory(props.target, { index, phase, paused });
-  }, [props.target, index, phase, paused]);
-
-  const current = useMemo(() => items[index] ?? null, [items, index]);
-  const progressText = items.length === 0 ? "0 / 0" : `${index + 1} / ${items.length}`;
+    if (items.length === 0 || sequence.length === 0) return;
+    writeSavedState(props.target, {
+      sequence,
+      position,
+      phase,
+      paused,
+      random: randomMode,
+    });
+  }, [items.length, sequence, position, phase, paused, randomMode, props.target]);
 
   useEffect(() => {
     if (!current || paused) return;
@@ -95,30 +124,42 @@ export default function AutoPlayView(props: Props) {
         return;
       }
       setPhase("face");
-      setIndex((prev) => (items.length === 0 ? 0 : (prev + 1) % items.length));
+      setPosition((prev) => {
+        if (sequence.length === 0) return 0;
+        return (prev + 1) % sequence.length;
+      });
     }, ms);
     return () => window.clearTimeout(timer);
-  }, [current, paused, phase, options.faceSeconds, options.answerSeconds, items.length]);
+  }, [current, phase, paused, options.faceSeconds, options.answerSeconds, sequence.length]);
 
-  const handleReset = () => {
-    setIndex(0);
+  function move(delta: 1 | -1) {
+    if (sequence.length === 0) return;
     setPhase("face");
-    setPaused(true);
-  };
+    setPosition((prev) => {
+      const next = prev + delta;
+      if (next < 0) return sequence.length - 1;
+      if (next >= sequence.length) return 0;
+      return next;
+    });
+  }
 
-  const handlePrev = () => {
+  function restart() {
+    setPhase("face");
+    setPaused(false);
+    setPosition(0);
+  }
+
+  function toggleRandomMode() {
     if (items.length === 0) return;
-    setIndex((prev) => (prev <= 0 ? 0 : prev - 1));
+    const nextRandom = !randomMode;
+    const nextSequence = nextRandom
+      ? shuffleIndices(items.length)
+      : Array.from({ length: items.length }, (_, i) => i);
+    setRandomMode(nextRandom);
+    setSequence(nextSequence);
+    setPosition(0);
     setPhase("face");
-    setPaused(true);
-  };
-
-  const handleNext = () => {
-    if (items.length === 0) return;
-    setIndex((prev) => (prev >= items.length - 1 ? items.length - 1 : prev + 1));
-    setPhase("face");
-    setPaused(true);
-  };
+  }
 
   return (
     <div style={styles.wrap}>
@@ -129,22 +170,18 @@ export default function AutoPlayView(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{targetLabels[props.target]} / 顔 {options.faceSeconds}秒 → 名前 {options.answerSeconds}秒</div>
-        <div style={styles.sub}>前回の位置を保存します。停止して戻っても、続きから再開できます。</div>
-        <div style={styles.statusRow}>
-          <div style={styles.progress}>{progressText}</div>
-          <div style={styles.phaseBadge}>{phase === "face" ? "顔表示中" : "名前表示中"}</div>
-          <div style={styles.phaseBadge}>{paused ? "一時停止中" : "再生中"}</div>
-        </div>
-        <div style={styles.controls}>
-          <button type="button" style={styles.controlBtn} onClick={() => setPaused((prev) => !prev)} disabled={!current}>
-            {paused ? "再開" : "一時停止"}
-          </button>
-          <button type="button" style={styles.controlBtn} onClick={handlePrev} disabled={!current || index === 0}>前へ</button>
-          <button type="button" style={styles.controlBtn} onClick={handleNext} disabled={!current || items.length === 0 || index >= items.length - 1}>次へ</button>
-          <button type="button" style={styles.controlBtn} onClick={handleReset} disabled={!current}>最初から</button>
-        </div>
+        <div style={styles.sub}>再生順：{randomMode ? "ランダム" : "通常"} / 保存位置：{sequence.length === 0 ? 0 : position + 1} / {sequence.length}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
+
+      <div style={styles.controls}>
+        <button type="button" style={styles.ctrlBtn} onClick={() => move(-1)} disabled={sequence.length === 0}>前へ</button>
+        <button type="button" style={styles.ctrlBtn} onClick={() => setPaused((prev) => !prev)} disabled={sequence.length === 0}>{paused ? "再開" : "一時停止"}</button>
+        <button type="button" style={styles.ctrlBtn} onClick={() => move(1)} disabled={sequence.length === 0}>次へ</button>
+        <button type="button" style={styles.ctrlBtn} onClick={restart} disabled={sequence.length === 0}>最初から</button>
+        <button type="button" style={{ ...styles.ctrlBtn, ...(randomMode ? styles.ctrlBtnActive : null) }} onClick={toggleRandomMode} disabled={items.length === 0}>{randomMode ? "ランダム中" : "ランダム再生"}</button>
+      </div>
+
       <div style={styles.card}>
         {!current ? <div style={styles.center}>読み込み中</div> : (
           <>
@@ -158,11 +195,11 @@ export default function AutoPlayView(props: Props) {
           </>
         )}
       </div>
+
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（自動再生）">
         <p>顔→名前を自動で流します。覚えた後の思い出す速さを鍛えるためのモードです。</p>
-        <p>一時停止、再開、前へ、次へ、最初から に対応しています。</p>
-        <p>再生位置は保存されるため、途中でやめても次回は続きから再開できます。</p>
-        <p>おすすめは、顔2秒・名前2秒です。慣れたら顔1秒にすると速さの練習になります。</p>
+        <p>一時停止・再開・前へ・次へ・最初からに対応しています。途中で閉じても保存位置から再開します。</p>
+        <p>ランダム再生を押すと、現在の対象だけをランダム順で流します。ランダム順も保存されます。</p>
       </HelpModal>
     </div>
   );
@@ -174,13 +211,11 @@ const styles: Record<string, React.CSSProperties> = {
   headerRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
   backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
+  controls: { width: "min(720px, 100%)", display: "flex", flexWrap: "wrap", gap: 8 },
+  ctrlBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
+  ctrlBtnActive: { background: "#e8f0fe", borderColor: "#8ab4f8" },
   h1: { fontSize: 20, fontWeight: 800 },
   sub: { fontSize: 13, color: "#666" },
-  statusRow: { display: "flex", flexWrap: "wrap", gap: 8 },
-  progress: { fontSize: 13, color: "#333", padding: "6px 10px", borderRadius: 999, background: "#f3f4f6", border: "1px solid #d1d5db" },
-  phaseBadge: { fontSize: 13, color: "#333", padding: "6px 10px", borderRadius: 999, background: "#fff", border: "1px solid #d1d5db" },
-  controls: { display: "flex", flexWrap: "wrap", gap: 8 },
-  controlBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 700 },
   card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 420 },
   center: { margin: "auto", color: "#666", fontSize: 14 },
   imgBox: { display: "flex", justifyContent: "center" },
