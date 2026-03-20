@@ -319,10 +319,19 @@ async function main() {
       const party = group;
       const { district, terms } = extractProfileElectionInfo($);
       const photoUrl = extractPhoto(profileUrl, idStr, $);
+      const termEndRaw = scanByLabel($, ["任期満了日"]);
       const bodyText = normText($("body").text());
       const nextElectionYear = (() => {
-        const m = bodyText.match(/任期満了日[^0-9]*(\d{4})年/u);
-        return m ? Number(m[1]) : listInfo?.nextElectionYear;
+        const direct = toGregorianYear(termEndRaw);
+        if (typeof direct === "number") return direct;
+
+        const reiwa = bodyText.match(/任期満了日[^\n\r]*?令和\s*(\d+)\s*年/u);
+        if (reiwa) return 2018 + Number(reiwa[1]);
+
+        const western = bodyText.match(/任期満了日[^\n\r]*?(20\d{2})\s*年/u);
+        if (western) return Number(western[1]);
+
+        return listInfo?.nextElectionYear;
       })();
 
       if (district || listInfo?.district) districtCount += 1;
