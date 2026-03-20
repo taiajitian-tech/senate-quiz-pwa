@@ -235,6 +235,32 @@ function extractGroup($, listInfo) {
   return "";
 }
 
+function normalizeDistrict(value) {
+  const s = normText(value);
+  if (!s) return "";
+  if (/比例代表/.test(s)) return "比例代表";
+  return s.replace(/選挙区$/u, "").trim() || s;
+}
+
+function extractDistrict($) {
+  const value = scanByLabel($, ["選挙区", "選出選挙区"]);
+  return normalizeDistrict(value);
+}
+
+function extractTerms($) {
+  const value = scanByLabel($, ["当選回数", "当選"]);
+  const digits = value.replace(/[^0-9０-９]/g, "");
+  if (!digits) return undefined;
+  const normalized = digits.replace(/[０-９]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0));
+  const n = Number(normalized);
+  return Number.isFinite(n) ? n : undefined;
+}
+
+function extractParty($) {
+  const value = scanByLabel($, ["所属党派", "党派", "政党"]);
+  return normText(value);
+}
+
 function extractPhoto(profileUrl, id, $) {
   if (id) {
     return `https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g${id}.jpg`;
@@ -295,12 +321,18 @@ async function main() {
 
       const listInfo = listInfoMap.get(profileUrl);
       const group = extractGroup($, listInfo);
+      const party = extractParty($) || group;
+      const district = extractDistrict($);
+      const terms = extractTerms($);
       const photoUrl = extractPhoto(profileUrl, idStr, $);
 
       senators.push({
         id,
         name,
         group,
+        party,
+        district,
+        terms,
         nextElectionYear: listInfo?.nextElectionYear,
         images: photoUrl ? [photoUrl] : [],
       });
