@@ -319,7 +319,11 @@ async function main() {
       const party = group;
       const { district, terms } = extractProfileElectionInfo($);
       const photoUrl = extractPhoto(profileUrl, idStr, $);
-      const nextElectionYear = listInfo?.nextElectionYear;
+      const bodyText = normText($("body").text());
+      const nextElectionYear = (() => {
+        const m = bodyText.match(/任期満了日[^0-9]*(\d{4})年/u);
+        return m ? Number(m[1]) : listInfo?.nextElectionYear;
+      })();
 
       if (district || listInfo?.district) districtCount += 1;
       if (typeof terms === "number") termsCount += 1;
