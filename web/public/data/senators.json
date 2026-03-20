@@ -4,8 +4,8 @@
     "name": "中曽根 弘文（なかそね ひろふみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（群馬県）選出／昭和61年、平成4年、10年、16年、22年、28年、令和4年／当選 7 回",
-    "terms": 6141016222847,
+    "district": "選挙区（群馬県）",
+    "terms": 7,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5986024.jpg"
     ]
@@ -15,8 +15,8 @@
     "name": "山崎 正昭（やまざき まさあき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福井県）選出／平成4年、10年、16年、22年、28年、令和4年／当選 6 回",
-    "terms": 41016222846,
+    "district": "選挙区（福井県）",
+    "terms": 6,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5992051.jpg"
     ]
@@ -26,8 +26,8 @@
     "name": "橋本 聖子（はしもと せいこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 713192576,
+    "district": "比例",
+    "terms": 6,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5995054.jpg"
     ]
@@ -37,8 +37,8 @@
     "name": "浅尾 慶一郎（あさお けいいちろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（神奈川県）選出／平成10年、16年、令和4年／当選 3 回",
-    "terms": 101643,
+    "district": "選挙区（神奈川県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998003.jpg"
     ]
@@ -48,8 +48,8 @@
     "name": "小池 晃（こいけ あきら）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例代表",
-    "terms": 10162575,
+    "district": "比例",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998022.jpg"
     ]
@@ -59,8 +59,8 @@
     "name": "櫻井 充（さくらい みつる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（宮城県）選出／平成10年、16年、22年、28年、令和4年／当選 5 回",
-    "terms": 1016222845,
+    "district": "選挙区（宮城県）",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998030.jpg"
     ]
@@ -70,8 +70,8 @@
     "name": "鶴保 庸介（つるほ ようすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（和歌山県）選出／平成10年、16年、22年、28年、令和4年／当選 5 回",
-    "terms": 1016222845,
+    "district": "選挙区（和歌山県）",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998036.jpg"
     ]
@@ -81,8 +81,8 @@
     "name": "福島 みずほ（ふくしま みずほ）",
     "group": "社会民主党",
     "party": "社会民主党",
-    "district": "比例代表",
-    "terms": 1016222845,
+    "district": "比例",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998049.jpg"
     ]
@@ -92,8 +92,8 @@
     "name": "福山 哲郎（ふくやま てつろう）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（京都府）選出／平成10年、16年、22年、28年、令和4年／当選 5 回",
-    "terms": 1016222845,
+    "district": "選挙区（京都府）",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998050.jpg"
     ]
@@ -103,8 +103,8 @@
     "name": "大門 実紀史（だいもん みきし）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例代表",
-    "terms": 1316222865,
+    "district": "比例",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001001.jpg"
     ]
@@ -114,8 +114,8 @@
     "name": "有村 治子（ありむら はるこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 13192575,
+    "district": "比例",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001006.jpg"
     ]
@@ -125,8 +125,8 @@
     "name": "榛葉 賀津也（しんば かづや）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（静岡県）選出／平成13年、19年、25年、令和元年、7年／当選 5 回",
-    "terms": 13192575,
+    "district": "選挙区（静岡県）",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001027.jpg"
     ]
@@ -136,8 +136,8 @@
     "name": "野上 浩太郎（のがみ こうたろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（富山県）選出／平成13年、22年、28年、令和4年／当選 4 回",
-    "terms": 13222844,
+    "district": "選挙区（富山県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001037.jpg"
     ]
@@ -147,8 +147,8 @@
     "name": "松山 政司（まつやま まさじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福岡県）選出／平成13年、19年、25年、令和元年、7年／当選 5 回",
-    "terms": 13192575,
+    "district": "選挙区（福岡県）",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001046.jpg"
     ]
@@ -158,8 +158,8 @@
     "name": "森 ゆうこ（もり ゆうこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 13192874,
+    "district": "比例",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001047.jpg"
     ]
@@ -169,8 +169,8 @@
     "name": "関口 昌一（せきぐち まさかず）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（埼玉県）選出／平成15年、16年、22年、28年、令和4年／当選 5 回",
-    "terms": 1516222845,
+    "district": "選挙区（埼玉県）",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7003005.jpg"
     ]
@@ -180,8 +180,8 @@
     "name": "岡田 直樹（おかだ なおき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（石川県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（石川県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004012.jpg"
     ]
@@ -191,8 +191,8 @@
     "name": "山谷 えり子（やまたに えりこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 16222844,
+    "district": "比例",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004013.jpg"
     ]
@@ -202,8 +202,8 @@
     "name": "末松 信介（すえまつ しんすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（兵庫県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（兵庫県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004033.jpg"
     ]
@@ -213,8 +213,8 @@
     "name": "谷合 正明（たにあい まさあき）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 16222844,
+    "district": "比例",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004036.jpg"
     ]
@@ -224,8 +224,8 @@
     "name": "西田 実仁（にしだ まこと）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（埼玉県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（埼玉県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004043.jpg"
     ]
@@ -235,8 +235,8 @@
     "name": "仁比 聡平（にひ そうへい）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例代表",
-    "terms": 162543,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004045.jpg"
     ]
@@ -246,8 +246,8 @@
     "name": "野村 哲郎（のむら てつろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（鹿児島県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（鹿児島県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004046.jpg"
     ]
@@ -257,8 +257,8 @@
     "name": "広田 一（ひろた はじめ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（徳島県・高知県）選出／平成16年、22年、令和5年、7年／当選 4 回",
-    "terms": 1622574,
+    "district": "選挙区（徳島県・高知県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004050.jpg"
     ]
@@ -268,8 +268,8 @@
     "name": "松下 新平（まつした しんぺい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（宮崎県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（宮崎県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004056.jpg"
     ]
@@ -279,8 +279,8 @@
     "name": "松村 祥史（まつむら よしふみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（熊本県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（熊本県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004057.jpg"
     ]
@@ -290,8 +290,8 @@
     "name": "水岡 俊一（みずおか しゅんいち）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 162274,
+    "district": "比例",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004058.jpg"
     ]
@@ -301,8 +301,8 @@
     "name": "蓮舫（れんほう）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 162228475,
+    "district": "比例",
+    "terms": 5,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004060.jpg"
     ]
@@ -312,8 +312,8 @@
     "name": "山本 順三（やまもと じゅんぞう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（愛媛県）選出／平成16年、22年、28年、令和4年／当選 4 回",
-    "terms": 16222844,
+    "district": "選挙区（愛媛県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004062.jpg"
     ]
@@ -323,8 +323,8 @@
     "name": "青木 愛（あおき あい）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 192843,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007006.jpg"
     ]
@@ -334,8 +334,8 @@
     "name": "石井 準一（いしい じゅんいち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（千葉県）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（千葉県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007007.jpg"
     ]
@@ -345,8 +345,8 @@
     "name": "大島 九州男（おおしま くすお）",
     "group": "れいわ新選組",
     "party": "れいわ新選組",
-    "district": "比例代表",
-    "terms": 192553,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007017.jpg"
     ]
@@ -356,8 +356,8 @@
     "name": "川合 孝典（かわい たかのり）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 192843,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007022.jpg"
     ]
@@ -367,8 +367,8 @@
     "name": "長浜 博行（ながはま ひろゆき）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（千葉県）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（千葉県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007041.jpg"
     ]
@@ -378,8 +378,8 @@
     "name": "西田 昌司（にしだ しょうじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（京都府）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（京都府）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007044.jpg"
     ]
@@ -389,8 +389,8 @@
     "name": "舟山 康江（ふなやま やすえ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（山形県）選出／平成19年、28年、令和4年／当選 3 回",
-    "terms": 192843,
+    "district": "選挙区（山形県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007052.jpg"
     ]
@@ -400,8 +400,8 @@
     "name": "古川 俊治（ふるかわ としはる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（埼玉県）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（埼玉県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
     ]
@@ -411,8 +411,8 @@
     "name": "牧野 たかお（まきの たかお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（静岡県）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（静岡県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007054.jpg"
     ]
@@ -422,8 +422,8 @@
     "name": "牧山 ひろえ（まきやま ひろえ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（神奈川県）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（神奈川県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007055.jpg"
     ]
@@ -433,8 +433,8 @@
     "name": "森 まさこ（もり まさこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福島県）選出／平成19年、25年、令和元年、7年／当選 4 回",
-    "terms": 192574,
+    "district": "選挙区（福島県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007061.jpg"
     ]
@@ -444,8 +444,8 @@
     "name": "吉川 沙織（よしかわ さおり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 192574,
+    "district": "比例",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007071.jpg"
     ]
@@ -455,8 +455,8 @@
     "name": "青木 一彦（あおき かずひこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（鳥取県・島根県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（鳥取県・島根県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010001.jpg"
     ]
@@ -466,8 +466,8 @@
     "name": "秋野 公造（あきの こうぞう）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（福岡県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（福岡県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010003.jpg"
     ]
@@ -477,8 +477,8 @@
     "name": "石井 浩郎（いしい ひろお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（秋田県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（秋田県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010005.jpg"
     ]
@@ -488,8 +488,8 @@
     "name": "石川 博崇（いしかわ ひろたか）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（大阪府）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（大阪府）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010006.jpg"
     ]
@@ -499,8 +499,8 @@
     "name": "石橋 通宏（いしばし みちひろ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 222843,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010007.jpg"
     ]
@@ -510,8 +510,8 @@
     "name": "磯崎 仁彦（いそざき よしひこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（香川県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（香川県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010008.jpg"
     ]
@@ -521,8 +521,8 @@
     "name": "猪口 邦子（いのぐち くにこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（千葉県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（千葉県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010009.jpg"
     ]
@@ -532,8 +532,8 @@
     "name": "上野 通子（うえの みちこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（栃木県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（栃木県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010013.jpg"
     ]
@@ -543,8 +543,8 @@
     "name": "大家 敏志（おおいえ さとし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福岡県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（福岡県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010018.jpg"
     ]
@@ -554,8 +554,8 @@
     "name": "片山 さつき（かたやま さつき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 222843,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010020.jpg"
     ]
@@ -565,8 +565,8 @@
     "name": "小西 洋之（こにし ひろゆき）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（千葉県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（千葉県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010024.jpg"
     ]
@@ -576,8 +576,8 @@
     "name": "斎藤 嘉隆（さいとう よしたか）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（愛知県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（愛知県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010027.jpg"
     ]
@@ -587,8 +587,8 @@
     "name": "柴田 巧（しばた たくみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 2273,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010029.jpg"
     ]
@@ -598,8 +598,8 @@
     "name": "竹谷 とし子（たけや としこ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（東京都）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（東京都）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010033.jpg"
     ]
@@ -609,8 +609,8 @@
     "name": "徳永 エリ（とくなが えり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（北海道）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（北海道）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010036.jpg"
     ]
@@ -620,8 +620,8 @@
     "name": "中西 祐介（なかにし ゆうすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（徳島県・高知県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（徳島県・高知県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010038.jpg"
     ]
@@ -631,8 +631,8 @@
     "name": "長谷川 岳（はせがわ がく）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（北海道）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010043.jpg"
     ]
@@ -642,8 +642,8 @@
     "name": "福岡 資麿（ふくおか たかまろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（佐賀県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（佐賀県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010045.jpg"
     ]
@@ -653,8 +653,8 @@
     "name": "藤川 政人（ふじかわ まさひと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（愛知県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（愛知県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010046.jpg"
     ]
@@ -664,8 +664,8 @@
     "name": "三原 じゅん子（みはら じゅんこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（神奈川県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（神奈川県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010048.jpg"
     ]
@@ -675,8 +675,8 @@
     "name": "宮沢 洋一（みやざわ よういち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（広島県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（広島県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010050.jpg"
     ]
@@ -686,8 +686,8 @@
     "name": "横山 信一（よこやま しんいち）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 222843,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010052.jpg"
     ]
@@ -697,8 +697,8 @@
     "name": "吉田 忠智（よしだ ただとも）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（大分県）選出／平成22年、令和元年、7年／当選 3 回",
-    "terms": 2273,
+    "district": "選挙区（大分県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010053.jpg"
     ]
@@ -708,8 +708,8 @@
     "name": "渡辺 猛之（わたなべ たけゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岐阜県）選出／平成22年、28年、令和4年／当選 3 回",
-    "terms": 222843,
+    "district": "選挙区（岐阜県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010055.jpg"
     ]
@@ -719,8 +719,8 @@
     "name": "山田 太郎（やまだ たろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2473,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7012005.jpg"
     ]
@@ -730,8 +730,8 @@
     "name": "江島 潔（えじま きよし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（山口県）選出／平成25年、28年、令和4年／当選 3 回",
-    "terms": 252843,
+    "district": "選挙区（山口県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013001.jpg"
     ]
@@ -741,8 +741,8 @@
     "name": "井上 義行（いのうえ よしゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2542,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013006.jpg"
     ]
@@ -752,8 +752,8 @@
     "name": "石田 昌宏（いしだ まさひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2573,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013010.jpg"
     ]
@@ -763,8 +763,8 @@
     "name": "礒崎 哲史（いそざき てつじ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 2573,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013011.jpg"
     ]
@@ -774,8 +774,8 @@
     "name": "木村 義雄（きむら よしお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2582,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013016.jpg"
     ]
@@ -785,8 +785,8 @@
     "name": "吉良 よし子（きら よしこ）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "選挙区（東京都）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（東京都）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013017.jpg"
     ]
@@ -796,8 +796,8 @@
     "name": "北村 経夫（きたむら つねお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（山口県）選出／平成25年、令和元年、3年、7年／当選 4 回",
-    "terms": 25374,
+    "district": "選挙区（山口県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013019.jpg"
     ]
@@ -807,8 +807,8 @@
     "name": "古賀 友一郎（こが ゆういちろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（長崎県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（長崎県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013021.jpg"
     ]
@@ -818,8 +818,8 @@
     "name": "上月 良祐（こうづき りょうすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（茨城県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（茨城県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013022.jpg"
     ]
@@ -829,8 +829,8 @@
     "name": "酒井 庸行（さかい やすゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（愛知県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（愛知県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013024.jpg"
     ]
@@ -840,8 +840,8 @@
     "name": "杉 久武（すぎ ひさたけ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（大阪府）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（大阪府）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013028.jpg"
     ]
@@ -851,8 +851,8 @@
     "name": "高橋 克法（たかはし かつのり）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（栃木県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（栃木県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013030.jpg"
     ]
@@ -862,8 +862,8 @@
     "name": "滝波 宏文（たきなみ ひろふみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福井県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（福井県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013032.jpg"
     ]
@@ -873,8 +873,8 @@
     "name": "馬場 成志（ばば せいし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（熊本県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（熊本県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013044.jpg"
     ]
@@ -884,8 +884,8 @@
     "name": "浜野 喜史（はまの よしふみ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 2573,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013045.jpg"
     ]
@@ -895,8 +895,8 @@
     "name": "平木 大作（ひらき だいさく）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 2573,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013046.jpg"
     ]
@@ -906,8 +906,8 @@
     "name": "堀井 巌（ほりい いわお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（奈良県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（奈良県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013048.jpg"
     ]
@@ -917,8 +917,8 @@
     "name": "舞立 昇治（まいたち しょうじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2573,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013049.jpg"
     ]
@@ -928,8 +928,8 @@
     "name": "松沢 成文（まつざわ しげふみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（神奈川県）選出／平成25年、令和元年、4年／当選 3 回",
-    "terms": 2543,
+    "district": "選挙区（神奈川県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013050.jpg"
     ]
@@ -939,8 +939,8 @@
     "name": "宮本 周司（みやもと しゅうじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（石川県）選出／平成25年、令和元年、4年、7年／当選 4 回",
-    "terms": 25474,
+    "district": "選挙区（石川県）",
+    "terms": 4,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013053.jpg"
     ]
@@ -950,8 +950,8 @@
     "name": "森本 真治（もりもと しんじ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（広島県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（広島県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013054.jpg"
     ]
@@ -961,8 +961,8 @@
     "name": "山下 雄平（やました ゆうへい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（佐賀県）選出／平成25年、令和元年、7年／当選 3 回",
-    "terms": 2573,
+    "district": "選挙区（佐賀県）",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013060.jpg"
     ]
@@ -972,8 +972,8 @@
     "name": "阿達 雅志（あだち まさし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 262843,
+    "district": "比例",
+    "terms": 3,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7014002.jpg"
     ]
@@ -983,8 +983,8 @@
     "name": "浅田 均（あさだ ひとし）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（大阪府）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016003.jpg"
     ]
@@ -994,8 +994,8 @@
     "name": "朝日 健太郎（あさひ けんたろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（東京都）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（東京都）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016004.jpg"
     ]
@@ -1005,8 +1005,8 @@
     "name": "伊藤 孝江（いとう たかえ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（兵庫県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（兵庫県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016005.jpg"
     ]
@@ -1016,8 +1016,8 @@
     "name": "伊藤 孝恵（いとう たかえ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（愛知県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（愛知県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016006.jpg"
     ]
@@ -1027,8 +1027,8 @@
     "name": "伊波 洋一（いは よういち）",
     "group": "沖縄の風",
     "party": "沖縄の風",
-    "district": "選挙区（沖縄県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（沖縄県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016007.jpg"
     ]
@@ -1038,8 +1038,8 @@
     "name": "石井 苗子（いしい みつこ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016009.jpg"
     ]
@@ -1049,8 +1049,8 @@
     "name": "今井 絵理子（いまい えりこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016010.jpg"
     ]
@@ -1060,8 +1060,8 @@
     "name": "岩渕 友（いわぶち とも）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016011.jpg"
     ]
@@ -1071,8 +1071,8 @@
     "name": "小川 克巳（おがわ かつみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2872,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016012.jpg"
     ]
@@ -1082,8 +1082,8 @@
     "name": "小野田 紀美（おのだ きみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岡山県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（岡山県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016013.jpg"
     ]
@@ -1093,8 +1093,8 @@
     "name": "片山 大介（かたやま だいすけ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（兵庫県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（兵庫県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016014.jpg"
     ]
@@ -1104,8 +1104,8 @@
     "name": "木戸口 英司（きどぐち えいじ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（岩手県）選出／平成28年、令和6年／当選 2 回",
-    "terms": 2862,
+    "district": "選挙区（岩手県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016015.jpg"
     ]
@@ -1115,8 +1115,8 @@
     "name": "こやり 隆史（こやり たかし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（滋賀県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（滋賀県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016017.jpg"
     ]
@@ -1126,8 +1126,8 @@
     "name": "古賀 之士（こが ゆきひと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（福岡県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（福岡県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016018.jpg"
     ]
@@ -1137,8 +1137,8 @@
     "name": "佐藤 啓（さとう けい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（奈良県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（奈良県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016019.jpg"
     ]
@@ -1148,8 +1148,8 @@
     "name": "里見 隆治（さとみ りゅうじ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（愛知県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（愛知県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016020.jpg"
     ]
@@ -1159,8 +1159,8 @@
     "name": "自見 はなこ（じみ はなこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016021.jpg"
     ]
@@ -1170,8 +1170,8 @@
     "name": "進藤 金日子（しんどう かねひこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016022.jpg"
     ]
@@ -1181,8 +1181,8 @@
     "name": "杉尾 秀哉（すぎお ひでや）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（長野県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（長野県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016023.jpg"
     ]
@@ -1192,8 +1192,8 @@
     "name": "田名部 匡代（たなぶ まさよ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（青森県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（青森県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016025.jpg"
     ]
@@ -1203,8 +1203,8 @@
     "name": "高木 かおり（たかぎ かおり）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（大阪府）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016026.jpg"
     ]
@@ -1214,8 +1214,8 @@
     "name": "浜口 誠（はまぐち まこと）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016032.jpg"
     ]
@@ -1225,8 +1225,8 @@
     "name": "平山 佐知子（ひらやま さちこ）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（静岡県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（静岡県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016033.jpg"
     ]
@@ -1236,8 +1236,8 @@
     "name": "藤木 眞也（ふじき しんや）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016034.jpg"
     ]
@@ -1247,8 +1247,8 @@
     "name": "松川 るい（まつかわ るい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（大阪府）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（大阪府）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016035.jpg"
     ]
@@ -1258,8 +1258,8 @@
     "name": "三浦 信祐（みうら のぶひろ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（神奈川県）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（神奈川県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016036.jpg"
     ]
@@ -1269,8 +1269,8 @@
     "name": "宮崎 勝（みやざき まさる）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016037.jpg"
     ]
@@ -1280,8 +1280,8 @@
     "name": "山添 拓（やまぞえ たく）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "選挙区（東京都）選出／平成28年、令和4年／当選 2 回",
-    "terms": 2842,
+    "district": "選挙区（東京都）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016042.jpg"
     ]
@@ -1291,8 +1291,8 @@
     "name": "山田 宏（やまだ ひろし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 2842,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016043.jpg"
     ]
@@ -1302,8 +1302,8 @@
     "name": "竹内 真二（たけうち しんじ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 2942,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7017001.jpg"
     ]
@@ -1313,8 +1313,8 @@
     "name": "石垣 のりこ（いしがき のりこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（宮城県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（宮城県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019003.jpg"
     ]
@@ -1324,8 +1324,8 @@
     "name": "岩本 剛人（いわもと つよひと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（北海道）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019005.jpg"
     ]
@@ -1335,8 +1335,8 @@
     "name": "打越 さく良（うちこし さくら）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（新潟県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（新潟県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019006.jpg"
     ]
@@ -1346,8 +1346,8 @@
     "name": "梅村 みずほ（うめむら みずほ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019007.jpg"
     ]
@@ -1357,8 +1357,8 @@
     "name": "小沢 雅仁（おざわ まさひと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019008.jpg"
     ]
@@ -1368,8 +1368,8 @@
     "name": "加田 裕之（かだ ひろゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（兵庫県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（兵庫県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019011.jpg"
     ]
@@ -1379,8 +1379,8 @@
     "name": "嘉田 由紀子（かだ ゆきこ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019012.jpg"
     ]
@@ -1390,8 +1390,8 @@
     "name": "勝部 賢志（かつべ けんじ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（北海道）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（北海道）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019013.jpg"
     ]
@@ -1401,8 +1401,8 @@
     "name": "木村 英子（きむら えいこ）",
     "group": "れいわ新選組",
     "party": "れいわ新選組",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019015.jpg"
     ]
@@ -1412,8 +1412,8 @@
     "name": "岸 真紀子（きし まきこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019016.jpg"
     ]
@@ -1423,8 +1423,8 @@
     "name": "熊谷 裕人（くまがい ひろと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（埼玉県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（埼玉県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019017.jpg"
     ]
@@ -1434,8 +1434,8 @@
     "name": "清水 真人（しみず まさと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（群馬県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（群馬県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019018.jpg"
     ]
@@ -1445,8 +1445,8 @@
     "name": "塩村 あやか（しおむら あやか）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（東京都）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（東京都）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019020.jpg"
     ]
@@ -1456,8 +1456,8 @@
     "name": "下野 六太（しもの ろくた）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（福岡県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（福岡県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019021.jpg"
     ]
@@ -1467,8 +1467,8 @@
     "name": "鈴木 宗男（すずき むねお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019023.jpg"
     ]
@@ -1478,8 +1478,8 @@
     "name": "田島 麻衣子（たじま まいこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（愛知県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（愛知県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019024.jpg"
     ]
@@ -1489,8 +1489,8 @@
     "name": "田村 まみ（たむら まみ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019025.jpg"
     ]
@@ -1500,8 +1500,8 @@
     "name": "高橋 はるみ（たかはし はるみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（北海道）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019026.jpg"
     ]
@@ -1511,8 +1511,8 @@
     "name": "高橋 光男（たかはし みつお）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（兵庫県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（兵庫県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019027.jpg"
     ]
@@ -1522,8 +1522,8 @@
     "name": "寺田 静（てらた しずか）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（秋田県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（秋田県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019030.jpg"
     ]
@@ -1533,8 +1533,8 @@
     "name": "ながえ 孝子（ながえ たかこ）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（愛媛県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（愛媛県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019031.jpg"
     ]
@@ -1544,8 +1544,8 @@
     "name": "芳賀 道也（はが みちや）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（山形県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（山形県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019032.jpg"
     ]
@@ -1555,8 +1555,8 @@
     "name": "本田 顕子（ほんだ あきこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 72,
+    "district": "比例",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019034.jpg"
     ]
@@ -1566,8 +1566,8 @@
     "name": "横沢 高徳（よこさわ たかのり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（岩手県）選出／令和元年、7年／当選 2 回",
-    "terms": 72,
+    "district": "選挙区（岩手県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019040.jpg"
     ]
@@ -1577,8 +1577,8 @@
     "name": "上田 清司（うえだ きよし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（埼玉県）選出／令和元年、4年／当選 2 回",
-    "terms": 42,
+    "district": "選挙区（埼玉県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019042.jpg"
     ]
@@ -1588,8 +1588,8 @@
     "name": "羽田 次郎（はた じろう）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（長野県）選出／令和3年、7年／当選 2 回",
-    "terms": 372,
+    "district": "選挙区（長野県）",
+    "terms": 2,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7021002.jpg"
     ]
@@ -1599,8 +1599,8 @@
     "name": "青島 健太（あおしま けんた）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022002.jpg"
     ]
@@ -1610,8 +1610,8 @@
     "name": "赤松 健（あかまつ けん）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022003.jpg"
     ]
@@ -1621,8 +1621,8 @@
     "name": "生稲 晃子（いくいな あきこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（東京都）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（東京都）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022004.jpg"
     ]
@@ -1632,8 +1632,8 @@
     "name": "猪瀬 直樹（いのせ なおき）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022005.jpg"
     ]
@@ -1643,8 +1643,8 @@
     "name": "上田 勇（うえだ いさむ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022006.jpg"
     ]
@@ -1654,8 +1654,8 @@
     "name": "臼井 正一（うすい しょういち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（千葉県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（千葉県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022007.jpg"
     ]
@@ -1665,8 +1665,8 @@
     "name": "越智 俊之（おち としゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022008.jpg"
     ]
@@ -1676,8 +1676,8 @@
     "name": "鬼木 誠（おにき まこと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022009.jpg"
     ]
@@ -1687,8 +1687,8 @@
     "name": "加藤 明良（かとう あきよし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（茨城県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（茨城県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022010.jpg"
     ]
@@ -1698,8 +1698,8 @@
     "name": "梶原 大介（かじはら だいすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022012.jpg"
     ]
@@ -1709,8 +1709,8 @@
     "name": "金子 道仁（かねこ みちひと）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022013.jpg"
     ]
@@ -1720,8 +1720,8 @@
     "name": "神谷 宗幣（かみや そうへい）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022014.jpg"
     ]
@@ -1731,8 +1731,8 @@
     "name": "神谷 政幸（かみや まさゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022015.jpg"
     ]
@@ -1742,8 +1742,8 @@
     "name": "串田 誠一（くしだ せいいち）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022016.jpg"
     ]
@@ -1753,8 +1753,8 @@
     "name": "窪田 哲也（くぼた てつや）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022017.jpg"
     ]
@@ -1764,8 +1764,8 @@
     "name": "小林 一大（こばやし かずひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（新潟県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（新潟県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022018.jpg"
     ]
@@ -1775,8 +1775,8 @@
     "name": "古賀 千景（こが ちかげ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022019.jpg"
     ]
@@ -1786,8 +1786,8 @@
     "name": "古庄 玄知（こしょう はるとも）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（大分県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（大分県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022020.jpg"
     ]
@@ -1797,8 +1797,8 @@
     "name": "柴 愼一（しば しんいち）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022021.jpg"
     ]
@@ -1808,8 +1808,8 @@
     "name": "高木 真理（たかぎ まり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（埼玉県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（埼玉県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022023.jpg"
     ]
@@ -1819,8 +1819,8 @@
     "name": "竹詰 仁（たけづめ ひとし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022024.jpg"
     ]
@@ -1830,8 +1830,8 @@
     "name": "辻元 清美（つじもと きよみ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022025.jpg"
     ]
@@ -1841,8 +1841,8 @@
     "name": "天畠 大輔（てんばた だいすけ）",
     "group": "れいわ新選組",
     "party": "れいわ新選組",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022026.jpg"
     ]
@@ -1852,8 +1852,8 @@
     "name": "堂込 麻紀子（どうごみ まきこ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（茨城県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（茨城県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022027.jpg"
     ]
@@ -1863,8 +1863,8 @@
     "name": "友納 理緒（とものう りお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022028.jpg"
     ]
@@ -1874,8 +1874,8 @@
     "name": "中条 きよし（なかじょう きよし）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022029.jpg"
     ]
@@ -1885,8 +1885,8 @@
     "name": "永井 学（ながい まなぶ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（山梨県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（山梨県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022030.jpg"
     ]
@@ -1896,8 +1896,8 @@
     "name": "長谷川 英晴（はせがわ ひではる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022031.jpg"
     ]
@@ -1907,8 +1907,8 @@
     "name": "藤井 一博（ふじい かずひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022033.jpg"
     ]
@@ -1918,8 +1918,8 @@
     "name": "船橋 利実（ふなはし としみつ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（北海道）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022034.jpg"
     ]
@@ -1929,8 +1929,8 @@
     "name": "星 北斗（ほし ほくと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福島県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（福島県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022035.jpg"
     ]
@@ -1940,8 +1940,8 @@
     "name": "松野 明美（まつの あけみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022036.jpg"
     ]
@@ -1951,8 +1951,8 @@
     "name": "三上 えり（みかみ えり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（広島県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（広島県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022037.jpg"
     ]
@@ -1962,8 +1962,8 @@
     "name": "村田 享子（むらた きょうこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 41,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022039.jpg"
     ]
@@ -1973,8 +1973,8 @@
     "name": "山本 啓介（やまもと けいすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（長崎県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（長崎県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022040.jpg"
     ]
@@ -1984,8 +1984,8 @@
     "name": "山本 佐知子（やまもと さちこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（三重県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（三重県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022041.jpg"
     ]
@@ -1995,8 +1995,8 @@
     "name": "吉井 章（よしい あきら）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（京都府）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（京都府）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022042.jpg"
     ]
@@ -2006,8 +2006,8 @@
     "name": "若林 洋平（わかばやし ようへい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（静岡県）選出／令和4年／当選 1 回",
-    "terms": 41,
+    "district": "選挙区（静岡県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022043.jpg"
     ]
@@ -2017,8 +2017,8 @@
     "name": "齊藤 健一郎（さいとう けんいちろう）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "比例代表",
-    "terms": 51,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7023002.jpg"
     ]
@@ -2028,8 +2028,8 @@
     "name": "足立 康史（あだち やすし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025002.jpg"
     ]
@@ -2039,8 +2039,8 @@
     "name": "安達 悠司（あだち ゆうじ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025003.jpg"
     ]
@@ -2050,8 +2050,8 @@
     "name": "安藤 裕（あんどう ひろし）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025004.jpg"
     ]
@@ -2061,8 +2061,8 @@
     "name": "安野 貴博（あんの たかひろ）",
     "group": "チームみらい・無所属の会",
     "party": "チームみらい・無所属の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025005.jpg"
     ]
@@ -2072,8 +2072,8 @@
     "name": "ラサール石井（らさーるいしい）",
     "group": "社会民主党",
     "party": "社会民主党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025006.jpg"
     ]
@@ -2083,8 +2083,8 @@
     "name": "泉 房穂（いずみ ふさほ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（兵庫県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（兵庫県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025007.jpg"
     ]
@@ -2094,8 +2094,8 @@
     "name": "伊勢崎 賢治（いせざき けんじ）",
     "group": "れいわ新選組",
     "party": "れいわ新選組",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025008.jpg"
     ]
@@ -2105,8 +2105,8 @@
     "name": "伊藤 辰夫（いとう たつお）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025009.jpg"
     ]
@@ -2116,8 +2116,8 @@
     "name": "いんどう 周作（いんどう しゅうさく）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025010.jpg"
     ]
@@ -2127,8 +2127,8 @@
     "name": "江原 くみ子（えはら くみこ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（埼玉県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（埼玉県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025011.jpg"
     ]
@@ -2138,8 +2138,8 @@
     "name": "奥田 ふみよ（おくだ ふみよ）",
     "group": "れいわ新選組",
     "party": "れいわ新選組",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025012.jpg"
     ]
@@ -2149,8 +2149,8 @@
     "name": "大津 力（おおつ つとむ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（埼玉県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（埼玉県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025013.jpg"
     ]
@@ -2160,8 +2160,8 @@
     "name": "岡崎 太（おかざき ふとし）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（大阪府）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025014.jpg"
     ]
@@ -2171,8 +2171,8 @@
     "name": "奥村 祥大（おくむら よしひろ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（東京都）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（東京都）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025015.jpg"
     ]
@@ -2182,8 +2182,8 @@
     "name": "かごしま 彰宏（かごしま あきひろ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（神奈川県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（神奈川県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025016.jpg"
     ]
@@ -2193,8 +2193,8 @@
     "name": "かまやち 敏（かまやち さとし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025017.jpg"
     ]
@@ -2204,8 +2204,8 @@
     "name": "川村 雄大（かわむら ゆうだい）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（東京都）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（東京都）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025018.jpg"
     ]
@@ -2215,8 +2215,8 @@
     "name": "石 平（せき へい）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025019.jpg"
     ]
@@ -2226,8 +2226,8 @@
     "name": "北村 晴男（きたむら はるお）",
     "group": "日本保守党",
     "party": "日本保守党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025020.jpg"
     ]
@@ -2237,8 +2237,8 @@
     "name": "見坂 茂範（けんざか しげのり）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025021.jpg"
     ]
@@ -2248,8 +2248,8 @@
     "name": "郡山 りょう（こおりやま りょう）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025022.jpg"
     ]
@@ -2259,8 +2259,8 @@
     "name": "小島 とも子（こじま ともこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（三重県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（三重県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025023.jpg"
     ]
@@ -2270,8 +2270,8 @@
     "name": "後藤 翔太（ごとう しょうた）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025024.jpg"
     ]
@@ -2281,8 +2281,8 @@
     "name": "後藤 斎（ごとう ひとし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（山梨県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（山梨県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025025.jpg"
     ]
@@ -2292,8 +2292,8 @@
     "name": "小林 孝一郎（こばやし こういちろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岡山県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（岡山県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025026.jpg"
     ]
@@ -2303,8 +2303,8 @@
     "name": "高良 沙哉（たから さちか）",
     "group": "沖縄の風",
     "party": "沖縄の風",
-    "district": "選挙区（沖縄県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（沖縄県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025027.jpg"
     ]
@@ -2314,8 +2314,8 @@
     "name": "櫻井 祥子（さくらい しょうこ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（茨城県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（茨城県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025028.jpg"
     ]
@@ -2325,8 +2325,8 @@
     "name": "佐々木 雅文（ささき まさふみ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025029.jpg"
     ]
@@ -2336,8 +2336,8 @@
     "name": "塩入 清香（しおいり さやか）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（東京都）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（東京都）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025030.jpg"
     ]
@@ -2347,8 +2347,8 @@
     "name": "白川 容子（しらかわ ようこ）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025031.jpg"
     ]
@@ -2358,8 +2358,8 @@
     "name": "尾辻 朋実（おつじ ともみ）",
     "group": "チームみらい・無所属の会",
     "party": "チームみらい・無所属の会",
-    "district": "選挙区（鹿児島県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（鹿児島県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025032.jpg"
     ]
@@ -2369,8 +2369,8 @@
     "name": "杉本 純子（すぎもと じゅんこ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（愛知県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（愛知県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025033.jpg"
     ]
@@ -2380,8 +2380,8 @@
     "name": "鈴木 大地（すずき だいち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（東京都）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（東京都）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025034.jpg"
     ]
@@ -2391,8 +2391,8 @@
     "name": "牛田 茉友（うしだ まゆ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（東京都）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（東京都）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025035.jpg"
     ]
@@ -2402,8 +2402,8 @@
     "name": "司 隆史（つかさ たかし）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025036.jpg"
     ]
@@ -2413,8 +2413,8 @@
     "name": "出川 桃子（でがわ ももこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（鳥取県・島根県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（鳥取県・島根県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025037.jpg"
     ]
@@ -2424,8 +2424,8 @@
     "name": "岩本 麻奈（いわもと まな）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025038.jpg"
     ]
@@ -2435,8 +2435,8 @@
     "name": "中田 優子（なかだ ゆうこ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（福岡県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（福岡県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025039.jpg"
     ]
@@ -2446,8 +2446,8 @@
     "name": "佐々木 りえ（ささき りえ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（大阪府）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025040.jpg"
     ]
@@ -2457,8 +2457,8 @@
     "name": "小林 さやか（こばやし さやか）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（千葉県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（千葉県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025041.jpg"
     ]
@@ -2468,8 +2468,8 @@
     "name": "新実 彰平（にいみ しょうへい）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（京都府）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（京都府）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025042.jpg"
     ]
@@ -2479,8 +2479,8 @@
     "name": "西田 英範（にした ひでのり）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（広島県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（広島県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025043.jpg"
     ]
@@ -2490,8 +2490,8 @@
     "name": "庭田 幸恵（にわた ゆきえ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（富山県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（富山県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025044.jpg"
     ]
@@ -2501,8 +2501,8 @@
     "name": "石井 めぐみ（いしい めぐみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025045.jpg"
     ]
@@ -2512,8 +2512,8 @@
     "name": "初鹿野 裕樹（はじかの ひろき）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（神奈川県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（神奈川県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025046.jpg"
     ]
@@ -2523,8 +2523,8 @@
     "name": "原田 大二郎（はらだ だいじろう）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025047.jpg"
     ]
@@ -2534,8 +2534,8 @@
     "name": "原田 秀一（はらだ ひでかず）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（香川県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（香川県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025048.jpg"
     ]
@@ -2545,8 +2545,8 @@
     "name": "東野 秀樹（ひがしの ひでき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025049.jpg"
     ]
@@ -2556,8 +2556,8 @@
     "name": "百田 尚樹（ひゃくた なおき）",
     "group": "日本保守党",
     "party": "日本保守党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025050.jpg"
     ]
@@ -2567,8 +2567,8 @@
     "name": "平戸 航太（ひらど こうた）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025051.jpg"
     ]
@@ -2578,8 +2578,8 @@
     "name": "福士 珠美（ふくし ますみ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（青森県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（青森県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025052.jpg"
     ]
@@ -2589,8 +2589,8 @@
     "name": "福山 守（ふくやま まもる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025053.jpg"
     ]
@@ -2600,8 +2600,8 @@
     "name": "松田 学（まつだ まなぶ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025054.jpg"
     ]
@@ -2611,8 +2611,8 @@
     "name": "水野 孝一（みずの こういち）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（愛知県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（愛知県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025055.jpg"
     ]
@@ -2622,8 +2622,8 @@
     "name": "宮出 千慧（みやで ちさと）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（大阪府）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（大阪府）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025056.jpg"
     ]
@@ -2633,8 +2633,8 @@
     "name": "宮本 和宏（みやもと かずひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（滋賀県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（滋賀県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025057.jpg"
     ]
@@ -2644,8 +2644,8 @@
     "name": "望月 良男（もちづき よしお）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（和歌山県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（和歌山県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025058.jpg"
     ]
@@ -2655,8 +2655,8 @@
     "name": "山内 佳菜子（やまうち かなこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（宮崎県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（宮崎県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025059.jpg"
     ]
@@ -2666,8 +2666,8 @@
     "name": "山田 吉彦（やまだ よしひこ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025060.jpg"
     ]
@@ -2677,8 +2677,8 @@
     "name": "山中 泉（やまなか せん）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025061.jpg"
     ]
@@ -2688,8 +2688,8 @@
     "name": "若井 敦子（わかい あつこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岐阜県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（岐阜県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025062.jpg"
     ]
@@ -2699,8 +2699,8 @@
     "name": "脇 雅昭（わき まさあき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（神奈川県）選出／令和7年／当選 1 回",
-    "terms": 71,
+    "district": "選挙区（神奈川県）",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025063.jpg"
     ]
@@ -2710,8 +2710,8 @@
     "name": "上野 ほたる（うえの ほたる）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例代表",
-    "terms": 71,
+    "district": "比例",
+    "terms": 1,
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025064.jpg"
     ]

@@ -11,7 +11,6 @@ const ENTRY_URL =
 
 const OUTPUT_PATH = path.resolve(__dirname, "../public/data/senators.json");
 
-// UA を固定（ブロック回避の保険）
 const UA =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122 Safari/537.36";
 
@@ -36,7 +35,6 @@ async function fetchText(url) {
   return { html, finalUrl: res.url || url };
 }
 
-// current/ が「中継HTML」になった場合、HTML内の実体URLを拾って追従
 function resolveRealListUrl(entryHtml, entryUrl, finalUrl) {
   if (finalUrl && finalUrl !== entryUrl) return finalUrl;
 
@@ -55,6 +53,13 @@ function normText(s) {
 
 function normalizeCompact(s) {
   return normText(s).replace(/[\s\u3000]+/g, "");
+}
+
+function normalizeDistrict(text) {
+  const value = normText(text);
+  if (!value) return "";
+  if (value.includes("比例")) return "比例";
+  return value.replace(/選出$/u, "").replace(/選挙区$/u, "").trim();
 }
 
 function extractProfileLinks(listHtml, listUrl) {
@@ -103,70 +108,53 @@ function toGregorianYear(text) {
   return undefined;
 }
 
-function parseListRowInfo(listHtml, listUrl) {
+function parseListRowsFromText(listHtml, listUrl) {
   const $ = cheerio.load(listHtml);
   const infoMap = new Map();
-
-  const commit = (profileUrl, rawName, rawGroup, rawTermEnd) => {
-    if (!profileUrl) return;
-    const cleanUrl = profileUrl.replace(/\?.*$/, "");
-    const name = normalizeNameForMatch(rawName);
-    const group = normText(rawGroup);
-    const termEnd = normText(rawTermEnd);
-    const nextElectionYear = toGregorianYear(termEnd);
-    if (!name) return;
-
-    infoMap.set(cleanUrl, {
-      name,
-      shortGroup: group,
-      termEnd,
-      nextElectionYear,
-    });
-  };
-
-  $("tr").each((_, tr) => {
-    const cells = $(tr).find("th, td");
-    if (cells.length < 4) return;
-    const firstLink = $(cells.get(0)).find('a[href*="/profile/"]').first();
-    if (!firstLink.length) return;
-
-    const profileUrl = absUrl(listUrl, firstLink.attr("href") || "");
-    const rawName = normText(firstLink.text() || $(cells.get(0)).text());
-    const rawGroup = normText($(cells.get(2)).text());
-    const rawTermEnd = normText($(cells.get(cells.length - 1)).text());
-    commit(profileUrl, rawName, rawGroup, rawTermEnd);
-  });
-
-  if (infoMap.size) return infoMap;
-
-  // DOM 構造が変わった場合の保険: 本文テキストを1行ずつ走査
-  const bodyLines = $("body")
+  const lines = $("body")
     .text()
     .split(/\r?\n/u)
     .map((line) => normText(line))
     .filter(Boolean);
 
-  const profileLinks = extractProfileLinks(listHtml, listUrl);
-  const urlById = new Map(profileLinks.map((url) => [extractIdFromProfileUrl(url), url]));
+  const queue = extractProfileLinks(listHtml, listUrl);
+  let linkIndex = 0;
 
-  for (const line of bodyLines) {
-    const m = line.match(/^(.*?)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
-    if (!m) continue;
-    const rawName = m[1];
-    const group = m[3];
-    const termEnd = m[4];
-    const cleanName = normalizeNameForMatch(rawName);
+  for (const line of lines) {
+    if (!queue[linkIndex]) break;
+    if (!/令和\d+年\d+月\d+日/u.test(line)) continue;
+    if (/議員氏名|読み方|会派|選挙区|任期満了|正字|現在|正式な会派名|クリック/u.test(line)) continue;
 
-    for (const [id, profileUrl] of urlById.entries()) {
-      if (!id) continue;
-      if (!profileUrl) continue;
-      if (infoMap.has(profileUrl)) continue;
-      if (cleanName === normalizeNameForMatch(rawName)) {
-        commit(profileUrl, rawName, group, termEnd);
-      }
-    }
+    const cleanedLine = line.replace(/\s*＜正字＞.*/u, "");
+    const dateMatch = cleanedLine.match(/(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
+    if (!dateMatch) continue;
+
+    const termEnd = dateMatch[1];
+    const head = normText(cleanedLine.slice(0, cleanedLine.length - termEnd.length));
+    const tokens = head.split(/\s+/u).filter(Boolean);
+    if (tokens.length < 4) continue;
+
+    const district = tokens[tokens.length - 1];
+    const shortGroup = tokens[tokens.length - 2];
+    const kana = tokens[tokens.length - 3];
+    const rawName = normText(tokens.slice(0, -3).join(" "));
+    const profileUrl = queue[linkIndex++].replace(/\?.*$/, "");
+
+    infoMap.set(profileUrl, {
+      name: normalizeNameForMatch(rawName),
+      kana: normalizeCompact(kana),
+      shortGroup: normText(shortGroup),
+      district: normalizeDistrict(district),
+      termEnd,
+      nextElectionYear: toGregorianYear(termEnd),
+    });
   }
 
+  return infoMap;
+}
+
+function parseListRowInfo(listHtml, listUrl) {
+  const infoMap = parseListRowsFromText(listHtml, listUrl);
   return infoMap;
 }
 
@@ -193,7 +181,7 @@ function scanByLabel($, labelVariants) {
 
   const body = normText($("body").text());
   for (const label of labels) {
-    const re = new RegExp(`${label}\\s*[：:]\\s*([^\\n\\r]{1,80})`);
+    const re = new RegExp(`${label}\\s*[：:]?\\s*([^\\n\\r]{1,120})`);
     const m = body.match(re);
     if (m?.[1]) {
       const v = normText(m[1]);
@@ -213,6 +201,16 @@ function looksLikeGroup(v) {
 
 function expandGroupShortName(v) {
   const s = normText(v);
+  if (s === "自民") return "自由民主党・無所属の会";
+  if (s === "立憲") return "立憲民主・社民・無所属";
+  if (s === "民主") return "国民民主党・新緑風会";
+  if (s === "公明") return "公明党";
+  if (s === "維新") return "日本維新の会";
+  if (s === "共産") return "日本共産党";
+  if (s === "れ新") return "れいわ新選組";
+  if (s === "参政") return "参政党";
+  if (s === "保守") return "日本保守党";
+  if (s === "みら") return "みらい";
   if (s === "沖縄") return "沖縄の風";
   return s;
 }
@@ -235,30 +233,23 @@ function extractGroup($, listInfo) {
   return "";
 }
 
-function normalizeDistrict(value) {
-  const s = normText(value);
-  if (!s) return "";
-  if (/比例代表/.test(s)) return "比例代表";
-  return s.replace(/選挙区$/u, "").trim() || s;
-}
+function extractProfileElectionInfo($) {
+  const combined = scanByLabel($, ["選挙区・比例区／当選年／当選回数", "選挙区・比例区/当選年/当選回数"]);
+  if (combined) {
+    const parts = combined.split(/[／/]/u).map((v) => normText(v)).filter(Boolean);
+    const district = normalizeDistrict(parts[0] ?? "");
+    const termsMatch = combined.match(/当選\s*(\d+)\s*回/u);
+    const terms = termsMatch ? Number(termsMatch[1]) : undefined;
+    return { district, terms };
+  }
 
-function extractDistrict($) {
-  const value = scanByLabel($, ["選挙区", "選出選挙区"]);
-  return normalizeDistrict(value);
-}
+  const districtRaw = scanByLabel($, ["選挙区", "選挙区・比例区"]);
+  const district = normalizeDistrict(districtRaw);
+  const termsRaw = scanByLabel($, ["当選回数"]);
+  const termsMatch = termsRaw.match(/(\d+)/u);
+  const terms = termsMatch ? Number(termsMatch[1]) : undefined;
 
-function extractTerms($) {
-  const value = scanByLabel($, ["当選回数", "当選"]);
-  const digits = value.replace(/[^0-9０-９]/g, "");
-  if (!digits) return undefined;
-  const normalized = digits.replace(/[０-９]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0));
-  const n = Number(normalized);
-  return Number.isFinite(n) ? n : undefined;
-}
-
-function extractParty($) {
-  const value = scanByLabel($, ["所属党派", "党派", "政党"]);
-  return normText(value);
+  return { district, terms };
 }
 
 function extractPhoto(profileUrl, id, $) {
@@ -305,6 +296,9 @@ async function main() {
   console.log("list row info extracted:", listInfoMap.size);
 
   const senators = [];
+  let districtCount = 0;
+  let termsCount = 0;
+
   for (const profileUrl of links) {
     try {
       const { html } = await fetchText(profileUrl);
@@ -321,17 +315,19 @@ async function main() {
 
       const listInfo = listInfoMap.get(profileUrl);
       const group = extractGroup($, listInfo);
-      const party = extractParty($) || group;
-      const district = extractDistrict($);
-      const terms = extractTerms($);
+      const party = group;
+      const { district, terms } = extractProfileElectionInfo($);
       const photoUrl = extractPhoto(profileUrl, idStr, $);
+
+      if (district) districtCount += 1;
+      if (typeof terms === "number") termsCount += 1;
 
       senators.push({
         id,
         name,
         group,
         party,
-        district,
+        district: district || listInfo?.district || undefined,
         terms,
         nextElectionYear: listInfo?.nextElectionYear,
         images: photoUrl ? [photoUrl] : [],
@@ -341,6 +337,8 @@ async function main() {
     }
   }
 
+  console.log("district extracted:", districtCount);
+  console.log("terms extracted:", termsCount);
   console.log("parsed senators:", senators.length);
   if (!senators.length) {
     console.error("Error: parsed senators is empty (0).");
