@@ -115,6 +115,28 @@ function parseListRowsFromLinks(listHtml, listUrl) {
   const $ = cheerio.load(listHtml);
   const infoMap = new Map();
 
+  const bodyLines = $("body")
+    .text()
+    .split(/?
+/)
+    .map((s) => normText(s))
+    .filter(Boolean);
+
+  const lineMap = new Map();
+  for (const line of bodyLines) {
+    const m = line.match(/^(.+?)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
+    if (!m) continue;
+    const rawName = m[1].replace(/\s*\[[^\]]+\]\s*/gu, " ").replace(/\s*＜正字＞\s*/gu, " ").trim();
+    const nameOnly = normalizeNameForMatch(rawName);
+    lineMap.set(nameOnly, {
+      kana: normalizeCompact(m[2]),
+      shortGroup: normText(m[3]),
+      district: normalizeDistrict(m[4]),
+      termEnd: normText(m[5]),
+      nextElectionYear: toGregorianYear(m[5]),
+    });
+  }
+
   $("a[href]").each((_, a) => {
     const href = $(a).attr("href") || "";
     if (!/\/profile\/\d+\.htm/i.test(href)) return;
@@ -125,33 +147,17 @@ function parseListRowsFromLinks(listHtml, listUrl) {
     const rawName = normText($(a).text());
     if (!rawName) return;
 
-    const parentText = normText($(a).parent().text()) || normText($(a).closest("li, td, p, div").text());
-    const rowText = parentText
-      .replace(/\s*＜正字＞.*/u, "")
-      .replace(/\s*\[[^\]]+\]/gu, "")
-      .trim();
-
     const nameOnly = normalizeNameForMatch(rawName);
-    let trailing = rowText;
-    if (trailing.startsWith(nameOnly)) {
-      trailing = normText(trailing.slice(nameOnly.length));
-    }
-
-    const m = trailing.match(/^(.+?)\s+([^\s]+)\s+([^\s]+)\s+(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
-    if (!m) return;
-
-    const kana = normalizeCompact(m[1]);
-    const shortGroup = normText(m[2]);
-    const district = normalizeDistrict(m[3]);
-    const termEnd = normText(m[4]);
+    const lineInfo = lineMap.get(nameOnly);
+    if (!lineInfo) return;
 
     infoMap.set(profileUrl, {
       name: nameOnly,
-      kana,
-      shortGroup,
-      district,
-      termEnd,
-      nextElectionYear: toGregorianYear(termEnd),
+      kana: lineInfo.kana,
+      shortGroup: lineInfo.shortGroup,
+      district: lineInfo.district,
+      termEnd: lineInfo.termEnd,
+      nextElectionYear: lineInfo.nextElectionYear,
     });
   });
 
@@ -321,15 +327,15 @@ async function main() {
       const photoUrl = extractPhoto(profileUrl, idStr, $);
       const bodyText = normText($("body").text());
       const nextElectionYear = (() => {
-        const termEndRaw = scanByLabel($, ["任期満了日"]);
-        const fromLabel = toGregorianYear(termEndRaw);
+        const termEndLabel = scanByLabel($, ["任期満了日", "任期満了"]);
+        const fromLabel = toGregorianYear(termEndLabel);
         if (typeof fromLabel === "number") return fromLabel;
 
-        const western = bodyText.match(/任期満了日[^]*?(20\d{2})年/u);
-        if (western) return Number(western[1]);
+        let m = bodyText.match(/任期満了日[^]*?(20\d{2})年/u);
+        if (m) return Number(m[1]);
 
-        const reiwa = bodyText.match(/任期満了日[^]*?令和\s*(\d+)\s*年/u);
-        if (reiwa) return 2018 + Number(reiwa[1]);
+        m = bodyText.match(/任期満了日[^]*?令和\s*(\d+)年/u);
+        if (m) return 2018 + Number(m[1]);
 
         return listInfo?.nextElectionYear;
       })();
