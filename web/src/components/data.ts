@@ -76,34 +76,6 @@ function toImages(value: unknown): string[] {
   return [];
 }
 
-function toYear(value: unknown): number | undefined {
-  if (typeof value === "number" && Number.isFinite(value)) {
-    return Math.trunc(value);
-  }
-  if (typeof value === "string") {
-    const digits = value.match(/\d{4}/)?.[0];
-    if (digits) {
-      const year = Number(digits);
-      if (Number.isFinite(year)) return year;
-    }
-  }
-  return undefined;
-}
-
-function toCount(value: unknown): number | undefined {
-  if (typeof value === "number" && Number.isFinite(value)) {
-    return Math.trunc(value);
-  }
-  if (typeof value === "string") {
-    const digits = value.replace(/[^\d]/g, "");
-    if (digits) {
-      const count = Number(digits);
-      if (Number.isFinite(count)) return count;
-    }
-  }
-  return undefined;
-}
-
 function normalizeCompact(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
 }
@@ -144,11 +116,13 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const split = splitNameAndKana(rawName);
   const cleanName = split.name;
   const kana = deriveKana(v, cleanName, split.kana);
-  const group = toText(v.group) || toText(v.role);
-  const party = toText(v.party) || group;
-  const district = toText(v.district) || toText(v.constituency) || toText(v.area) || toText(v.electoralDistrict);
-  const terms = toCount(v.terms ?? v.termCount ?? v.electedCount ?? v.wins);
-  const nextElectionYear = toYear(v.nextElectionYear ?? v.next_election_year ?? v.termEndYear);
+  const group = toText(v.group) || toText(v.party) || toText(v.role);
+  const party = toText(v.party) || toText(v.group) || toText(v.role);
+  const district = toText(v.district) || toText(v.electoralDistrict) || toText(v.constituency);
+  const rawTerms = Number(v.terms ?? v.wins ?? v.electedCount);
+  const terms = Number.isFinite(rawTerms) && rawTerms > 0 ? rawTerms : undefined;
+  const rawNextElectionYear = Number(v.nextElectionYear ?? v.nextElection ?? v.electionYear);
+  const nextElectionYear = Number.isFinite(rawNextElectionYear) && rawNextElectionYear > 0 ? rawNextElectionYear : undefined;
   const images = toImages(v.images ?? v.image);
   const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
   const safeImages = aiGuess && BAD_GUESS_IMAGE_NAMES.has(cleanName) ? [] : images;

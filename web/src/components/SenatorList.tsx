@@ -11,53 +11,58 @@ type Props = {
 
 type SortKey = "name_asc" | "name_desc" | "party" | "district" | "terms" | "year_asc" | "year_desc";
 
-function sortText(value: string | undefined): string {
-  return value?.trim() ?? "";
+function textValue(value?: string): string {
+  return (value ?? "").trim();
 }
 
-function districtRank(value: string | undefined): number {
-  const text = value ?? "";
-  if (!text) return 2;
-  if (text.includes("比例")) return 1;
+function numberValue(value?: number, fallback = Number.MAX_SAFE_INTEGER): number {
+  return typeof value === "number" && Number.isFinite(value) ? value : fallback;
+}
+
+function districtRank(value?: string): number {
+  const v = textValue(value);
+  if (!v) return 2;
+  if (v.includes("比例")) return 1;
   return 0;
 }
 
-function sortItems(items: Person[], sortKey: SortKey): Person[] {
-  return [...items].sort((a, b) => {
-    switch (sortKey) {
-      case "name_asc":
-        return a.name.localeCompare(b.name, "ja");
-      case "name_desc":
-        return b.name.localeCompare(a.name, "ja");
-      case "party": {
-        const diff = sortText(a.party ?? a.group).localeCompare(sortText(b.party ?? b.group), "ja");
-        return diff !== 0 ? diff : a.name.localeCompare(b.name, "ja");
-      }
-      case "district": {
-        const rankDiff = districtRank(a.district) - districtRank(b.district);
-        if (rankDiff !== 0) return rankDiff;
-        const diff = sortText(a.district).localeCompare(sortText(b.district), "ja");
-        return diff !== 0 ? diff : a.name.localeCompare(b.name, "ja");
-      }
-      case "terms": {
-        const av = a.terms ?? Number.MAX_SAFE_INTEGER;
-        const bv = b.terms ?? Number.MAX_SAFE_INTEGER;
-        return av - bv || a.name.localeCompare(b.name, "ja");
-      }
-      case "year_asc": {
-        const av = a.nextElectionYear ?? Number.MAX_SAFE_INTEGER;
-        const bv = b.nextElectionYear ?? Number.MAX_SAFE_INTEGER;
-        return av - bv || a.name.localeCompare(b.name, "ja");
-      }
-      case "year_desc": {
-        const av = a.nextElectionYear ?? -1;
-        const bv = b.nextElectionYear ?? -1;
-        return bv - av || a.name.localeCompare(b.name, "ja");
-      }
-      default:
-        return 0;
+function compareByName(a: Person, b: Person, desc = false): number {
+  const left = textValue(a.name);
+  const right = textValue(b.name);
+  return desc ? right.localeCompare(left, "ja") : left.localeCompare(right, "ja");
+}
+
+function comparePersons(a: Person, b: Person, sortKey: SortKey): number {
+  switch (sortKey) {
+    case "name_asc":
+      return compareByName(a, b, false);
+    case "name_desc":
+      return compareByName(a, b, true);
+    case "party": {
+      const cmp = textValue(a.party || a.group).localeCompare(textValue(b.party || b.group), "ja");
+      return cmp || compareByName(a, b, false);
     }
-  });
+    case "district": {
+      const rank = districtRank(a.district) - districtRank(b.district);
+      if (rank !== 0) return rank;
+      const cmp = textValue(a.district).localeCompare(textValue(b.district), "ja");
+      return cmp || compareByName(a, b, false);
+    }
+    case "terms": {
+      const cmp = numberValue(a.terms) - numberValue(b.terms);
+      return cmp || compareByName(a, b, false);
+    }
+    case "year_asc": {
+      const cmp = numberValue(a.nextElectionYear) - numberValue(b.nextElectionYear);
+      return cmp || compareByName(a, b, false);
+    }
+    case "year_desc": {
+      const cmp = numberValue(b.nextElectionYear, Number.MIN_SAFE_INTEGER) - numberValue(a.nextElectionYear, Number.MIN_SAFE_INTEGER);
+      return cmp || compareByName(a, b, false);
+    }
+    default:
+      return 0;
+  }
 }
 
 export default function SenatorList(props: Props) {
@@ -97,21 +102,16 @@ export default function SenatorList(props: Props) {
     const key = q.trim().toLowerCase();
     if (!key) return items;
     return items.filter((s) => {
-      const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
-      const termsText = typeof s.terms === "number" ? String(s.terms) : "";
-      return (
-        s.name.toLowerCase().includes(key) ||
-        (s.kana ?? "").toLowerCase().includes(key) ||
-        (s.party ?? s.group ?? "").toLowerCase().includes(key) ||
-        (s.district ?? "").toLowerCase().includes(key) ||
-        termsText.includes(key) ||
-        nextElectionText.includes(key)
-      );
+      return s.name.toLowerCase().includes(key)
+        || (s.kana ?? "").toLowerCase().includes(key)
+        || (s.party ?? s.group ?? "").toLowerCase().includes(key)
+        || (s.district ?? "").toLowerCase().includes(key);
     });
   }, [q, items]);
 
-  const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
-  const isSenators = props.target === "senators";
+  const sorted = useMemo(() => {
+    return [...filtered].sort((a, b) => comparePersons(a, b, sortKey));
+  }, [filtered, sortKey]);
 
   return (
     <div style={styles.wrap}>
@@ -122,18 +122,16 @@ export default function SenatorList(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索" style={styles.search} />
-        {isSenators ? (
-          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
-            <option value="name_asc">名前（昇順）</option>
-            <option value="name_desc">名前（降順）</option>
-            <option value="party">政党</option>
-            <option value="district">選挙区</option>
-            <option value="terms">当選回数</option>
-            <option value="year_asc">次の改選年（昇順）</option>
-            <option value="year_desc">次の改選年（降順）</option>
-          </select>
-        ) : null}
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区で検索" style={styles.search} />
+        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
+          <option value="name_asc">名前（昇順）</option>
+          <option value="name_desc">名前（降順）</option>
+          <option value="party">政党</option>
+          <option value="district">選挙区</option>
+          <option value="terms">当選回数</option>
+          <option value="year_asc">次の改選年（昇順）</option>
+          <option value="year_desc">次の改選年（降順）</option>
+        </select>
         <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
@@ -153,22 +151,16 @@ export default function SenatorList(props: Props) {
                 </div>
               </div>
               {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
-              {isSenators ? (
-                <div style={styles.infoGrid}>
-                  <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
-                  <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
-                  <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
-                  <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
-                </div>
-              ) : (
-                <div style={styles.group}>{s.group ?? ""}</div>
-              )}
+              <div style={styles.detail}>政党：{s.party || s.group || "不明"}</div>
+              <div style={styles.detail}>選挙区：{s.district || "不明"}</div>
+              <div style={styles.detail}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
+              <div style={styles.detail}>次の改選年：{typeof s.nextElectionYear === "number" ? `${s.nextElectionYear}年` : "不明"}</div>
             </div>
           </div>
         ))}
       </div>
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（一覧）">
-        <p>名前、政党、選挙区、当選回数、改選年で検索できます。</p>
+        <p>名前、政党、選挙区で検索できます。一覧はソート切替にも対応しています。</p>
       </HelpModal>
     </div>
   );
@@ -189,13 +181,11 @@ const styles: Record<string, React.CSSProperties> = {
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
-  meta: { flex: 1, display: "flex", flexDirection: "column", gap: 6 },
+  meta: { flex: 1, display: "flex", flexDirection: "column", gap: 4 },
   nameRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   name: { fontSize: 18, fontWeight: 800 },
   kana: { fontSize: 14, color: "#666" },
-  group: { fontSize: 15, color: "#444" },
-  infoGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 6 },
-  infoLine: { fontSize: 14, color: "#444" },
+  detail: { fontSize: 15, color: "#444" },
   badges: { display: "flex", gap: 6, alignItems: "center" },
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
