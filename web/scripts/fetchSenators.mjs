@@ -111,59 +111,27 @@ function toGregorianYear(text) {
   return undefined;
 }
 
-function collectAnchorLineText($, a) {
-  const parts = [normText($(a).text())];
-  let node = a.nextSibling;
-
-  while (node) {
-    if (node.type === "tag") {
-      if (node.name === "br") break;
-      if (node.name === "a") {
-        const anchorText = normText($(node).text());
-        if (anchorText && !anchorText.includes("正字")) break;
-      }
-    }
-
-    const piece = node.type === "text" ? normText(node.data || "") : normText($(node).text());
-    if (piece && !piece.includes("正字")) parts.push(piece);
-    node = node.nextSibling;
-  }
-
-  return normText(parts.join(" "));
-}
-
 function parseListRowsFromLinks(listHtml, listUrl) {
   const $ = cheerio.load(listHtml);
   const infoMap = new Map();
 
-  $("a[href]").each((_, a) => {
-    const href = $(a).attr("href") || "";
-    if (!/\/profile\/\d+\.htm/i.test(href)) return;
+  $("table tr").each((_, tr) => {
+    const row = $(tr);
+    const link = row.find('a[href*="/profile/"]').first();
+    if (!link.length) return;
 
-    const profileUrl = absUrl(listUrl, href).replace(/\?.*$/, "");
+    const profileUrl = absUrl(listUrl, link.attr("href") || "").replace(/\?.*$/, "");
     if (!profileUrl) return;
 
-    const rawName = normText($(a).text());
-    if (!rawName) return;
+    const tds = row.find("td");
+    if (tds.length < 4) return;
 
-    const lineText = collectAnchorLineText($, a)
-      .replace(/\s*＜正字＞.*/u, "")
-      .replace(/\s*\[[^\]]+\]/gu, "")
-      .trim();
-
-    const nameOnly = normalizeNameForMatch(rawName);
-    let trailing = lineText;
-    if (trailing.startsWith(nameOnly)) {
-      trailing = normText(trailing.slice(nameOnly.length));
-    }
-
-    const m = trailing.match(/^(.*?)\s+(\S+)\s+(\S+)\s+(令和\d+年\d+月\d+日|20\d{2}年\d+月\d+日)$/u);
-    if (!m) return;
-
-    const kana = normalizeCompact(m[1]);
-    const shortGroup = normText(m[2]);
-    const district = normalizeDistrict(m[3]);
-    const termEnd = normText(m[4]);
+    const nameOnly = normalizeNameForMatch(link.text());
+    const kana = normalizeCompact($(tds[0]).text().replace(link.text(), ""));
+    const shortGroup = normText($(tds[1]).text());
+    const district = normalizeDistrict($(tds[2]).text());
+    const termEnd = normText($(tds[3]).text());
+    const nextElectionYear = toGregorianYear(termEnd);
 
     infoMap.set(profileUrl, {
       name: nameOnly,
@@ -171,7 +139,7 @@ function parseListRowsFromLinks(listHtml, listUrl) {
       shortGroup,
       district,
       termEnd,
-      nextElectionYear: toGregorianYear(termEnd),
+      nextElectionYear,
     });
   });
 
@@ -341,9 +309,11 @@ async function main() {
       const photoUrl = extractPhoto(profileUrl, idStr, $);
       const bodyText = normText($("body").text());
       const nextElectionYear = (() => {
-        const termEndRaw = scanByLabel($, ["任期満了日"]);
-        const fromLabel = toGregorianYear(termEndRaw);
-        if (typeof fromLabel === "number") return fromLabel;
+        if (typeof listInfo?.nextElectionYear === "number") return listInfo.nextElectionYear;
+
+        const labelValue = scanByLabel($, ["任期満了日"]);
+        const byLabel = toGregorianYear(labelValue);
+        if (typeof byLabel === "number") return byLabel;
 
         const western = bodyText.match(/任期満了日[^]*?(20\d{2})年/u);
         if (western) return Number(western[1]);
@@ -351,7 +321,7 @@ async function main() {
         const reiwa = bodyText.match(/任期満了日[^]*?令和\s*(\d+)年/u);
         if (reiwa) return 2018 + Number(reiwa[1]);
 
-        return listInfo?.nextElectionYear;
+        return undefined;
       })();
 
       if (district || listInfo?.district) districtCount += 1;
