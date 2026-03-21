@@ -12,7 +12,6 @@ type Props = {
 type SortKey =
   | "name_asc"
   | "name_desc"
-  | "party"
   | "district_geo"
   | "terms_asc"
   | "terms_desc"
@@ -103,11 +102,6 @@ function compareName(a: Person, b: Person): number {
   return JA_COLLATOR.compare(a.name, b.name);
 }
 
-function compareParty(a: Person, b: Person): number {
-  const diff = JA_COLLATOR.compare(sortText(a.party ?? a.group), sortText(b.party ?? b.group));
-  return diff !== 0 ? diff : compareName(a, b);
-}
-
 function compareDistrictGeo(a: Person, b: Person): number {
   const rankDiff = getDistrictGeoRank(a.district) - getDistrictGeoRank(b.district);
   if (rankDiff !== 0) return rankDiff;
@@ -142,8 +136,6 @@ function sortItems(items: Person[], sortKey: SortKey): Person[] {
         return compareName(a, b);
       case "name_desc":
         return compareName(b, a);
-      case "party":
-        return compareParty(a, b);
       case "district_geo":
         return compareDistrictGeo(a, b);
       case "terms_asc":
@@ -167,6 +159,7 @@ export default function SenatorList(props: Props) {
   const [q, setQ] = useState("");
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
+  const [showFloatingButtons, setShowFloatingButtons] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
@@ -189,6 +182,13 @@ export default function SenatorList(props: Props) {
       }
     })();
   }, [dataUrl]);
+
+  useEffect(() => {
+    const onScroll = () => setShowFloatingButtons(window.scrollY > 200);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const wrongSet = useMemo(() => new Set(loadWrongIds(props.target)), [props.target]);
   const masteredSet = useMemo(() => new Set(loadMasteredIds(props.target)), [props.target]);
@@ -227,7 +227,6 @@ export default function SenatorList(props: Props) {
           <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
             <option value="name_asc">名前（昇順）</option>
             <option value="name_desc">名前（降順）</option>
-            <option value="party">政党</option>
             <option value="district_geo">選挙区</option>
             <option value="terms_asc">当選回数（昇順）</option>
             <option value="terms_desc">当選回数（降順）</option>
@@ -268,6 +267,20 @@ export default function SenatorList(props: Props) {
           </div>
         ))}
       </div>
+      {showFloatingButtons ? (
+        <div style={styles.floatingButtons}>
+          <button type="button" style={styles.floatingBackButton} onClick={props.onBack}>戻る</button>
+          <button
+            type="button"
+            style={styles.scrollTopButton}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="一番上に戻る"
+            title="一番上に戻る"
+          >
+            ↑
+          </button>
+        </div>
+      ) : null}
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（一覧）">
         <p>名前、政党、選挙区、当選回数、改選年で検索できます。</p>
       </HelpModal>
@@ -301,4 +314,7 @@ const styles: Record<string, React.CSSProperties> = {
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
   badgeGuess: { padding: "4px 8px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
+  floatingButtons: { position: "fixed", right: 20, bottom: 20, zIndex: 1000, display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" },
+  floatingBackButton: { padding: "10px 14px", borderRadius: 10, border: "1px solid #999", background: "#fff", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", fontWeight: 700 },
+  scrollTopButton: { width: 46, height: 46, borderRadius: 999, border: "1px solid #999", background: "#fff", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", fontSize: 22, fontWeight: 800, lineHeight: 1 },
 };
