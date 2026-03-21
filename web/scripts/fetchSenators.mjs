@@ -117,20 +117,64 @@ function parseListRowsFromLinks(listHtml, listUrl) {
 
   $("table tr").each((_, tr) => {
     const row = $(tr);
-    const link = row.find('a[href*="/profile/"]').first();
+    const link = row.find('a[href]').first();
     if (!link.length) return;
 
-    const profileUrl = absUrl(listUrl, link.attr("href") || "").replace(/\?.*$/, "");
+    const href = link.attr("href") || "";
+    if (!/\/profile\/|\/giin\.htm/i.test(href)) return;
+
+    const profileUrl = absUrl(listUrl, href).replace(/\?.*$/, "");
     if (!profileUrl) return;
 
     const tds = row.find("td");
-    if (tds.length < 4) return;
+    if (!tds.length) return;
 
-    const nameOnly = normalizeNameForMatch(link.text());
-    const kana = normalizeCompact($(tds[0]).text().replace(link.text(), ""));
-    const shortGroup = normText($(tds[1]).text());
-    const district = normalizeDistrict($(tds[2]).text());
-    const termEnd = normText($(tds[3]).text());
+    const texts = tds
+      .toArray()
+      .map((td) => normText($(td).text()))
+      .filter(Boolean);
+
+    const linkText = normText(link.text());
+    const nameOnly = normalizeNameForMatch(linkText);
+    if (!nameOnly) return;
+
+    let kana = "";
+    let shortGroup = "";
+    let district = "";
+    let termEnd = "";
+
+    for (const v of texts) {
+      if (!kana && /[ぁ-ゖァ-ヺー]/u.test(v) && !/[一-龯]/u.test(v)) {
+        const cleaned = normalizeCompact(v.replace(linkText, ""));
+        if (cleaned) {
+          kana = cleaned;
+          continue;
+        }
+      }
+
+      if (!termEnd && /(?:20\d{2})年|令和\s*\d+年/u.test(v)) {
+        termEnd = v;
+        continue;
+      }
+
+      if (!district && /(選挙区|比例)/u.test(v)) {
+        district = normalizeDistrict(v);
+        continue;
+      }
+    }
+
+    for (const v of texts) {
+      if (!v) continue;
+      if (v === linkText || normalizeNameForMatch(v) === nameOnly) continue;
+      if (v === termEnd) continue;
+      if (district && normalizeDistrict(v) === district) continue;
+      if (kana && normalizeCompact(v) === kana) continue;
+      if (!shortGroup) {
+        shortGroup = normText(v);
+        break;
+      }
+    }
+
     const nextElectionYear = toGregorianYear(termEnd);
 
     infoMap.set(profileUrl, {
