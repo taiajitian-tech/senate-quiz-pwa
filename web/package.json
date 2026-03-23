@@ -18,12 +18,13 @@
     "check:representatives": "node scripts/validateRepresentatives.mjs",
     "gen:representatives:images": "node scripts/autoImageFetch.mjs",
     "report:representatives:images": "node scripts/imageReport.mjs",
-    "gen:representatives:images:nhk": "node scripts/fetchRepresentativesNhkPhotoOnly.mjs"
+    "gen:representatives:images:nhk-browser": "node scripts/fetchNhkWinnersImages.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^24.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
