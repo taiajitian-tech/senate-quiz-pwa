@@ -1,0 +1,412 @@
+{
+  "startedAt": "2026-03-23T02:48:56.026Z",
+  "pageCount": 100,
+  "scannedPages": 2,
+  "candidateCount": 0,
+  "pages": [
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_senkyoku.html",
+      "candidates": 0
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_hirei.html",
+      "candidates": 0
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/01/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/01/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/02/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 500"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/02/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/03/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/03/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/04/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/04/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/05/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/05/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/06/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 500"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/06/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/07/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/07/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/08/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/08/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/09/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 500"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/09/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/10/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/10/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/11/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/11/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/12/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/12/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/13/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/13/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/14/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/14/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/15/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/15/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/16/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/16/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/17/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/17/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/18/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/18/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/19/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/19/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/20/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/20/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/21/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/21/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/22/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/22/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/23/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/23/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/24/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/24/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/25/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/25/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/26/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/26/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/27/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/27/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/28/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/28/tousen_toukaku_hirei.html",
+      "error": "HTTP 500"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/29/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/29/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/30/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/30/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/31/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/31/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/32/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/32/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/33/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/33/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/34/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/34/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/35/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/35/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/36/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/36/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/37/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/37/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/38/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/38/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/39/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/39/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/40/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 500"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/40/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/41/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/41/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/42/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/42/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/43/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/43/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/44/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/44/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/45/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/45/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/46/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/46/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/47/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/47/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/48/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/48/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/49/tousen_toukaku_senkyoku.html",
+      "error": "HTTP 404"
+    },
+    {
+      "pageUrl": "https://news.web.nhk/senkyo/database/shugiin/49/tousen_toukaku_hirei.html",
+      "error": "HTTP 404"
+    }
+  ],
+  "applied": 0,
+  "reviewCount": 0,
+  "missingCount": 465,
+  "finishedAt": "2026-03-23T02:49:43.537Z"
+}
