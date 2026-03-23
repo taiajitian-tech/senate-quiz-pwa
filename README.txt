@@ -1,7 +1,9 @@
-上書き対象:
-web/scripts/fetchNhkAnyway.mjs
-web/public/data/representatives-image-fix-targets.json
-web/public/data/representatives-image-fix-targets.csv
+このZIPの中身は次です。
 
-件数: 96
-fix モードではファイルではなくコード内の 96 件を使います。
+web/scripts/mergeIshinImages.mjs
+
+実行場所:
+senate-quiz-pwa/web
+
+実行:
+node scripts/mergeIshinImages.mjs
