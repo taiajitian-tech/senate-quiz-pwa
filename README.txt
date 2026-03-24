@@ -1,18 +1,14 @@
 差し替え対象
-web/scripts/buildImagePool.mjs
 web/src/components/TitleView.tsx
+web/scripts/buildImagePool.mjs
 
 修正内容
-1. buildImagePool.mjs を追加
-2. 「最初に」と「学習」が同じ色だった問題を修正
-   - 「学習」だけ青系
-   - 「最初に」は通常色
-3. 「おすすめの順番」をメニューの後ろへ移動
-   - 「オプション」の後ろに表示される位置へ変更
+- 「最初に」だけ色変更（黄色系）
+- 「学習」はそのまま主ボタン
+- 「最初に」と「学習」を最上段の「まず使う場所」に整理
+- 「おすすめの順番」をオプションの後ろ、メニューの下へ移動
+- buildImagePool.mjs を同梱
 
 実行
-作業場所が senate-quiz-pwa/web のとき:
+senate-quiz-pwa/web にいる状態で:
 node scripts/buildImagePool.mjs
-
-出力
-web/public/data/image_pool.json
