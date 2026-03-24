@@ -1,13 +1,18 @@
 差し替え対象
-web/scripts/rejectWikipediaImages.mjs
+web/scripts/buildImagePool.mjs
+web/src/components/TitleView.tsx
 
-実行場所
-senate-quiz-pwa/web
+修正内容
+1. buildImagePool.mjs を追加
+2. 「最初に」と「学習」が同じ色だった問題を修正
+   - 「学習」だけ青系
+   - 「最初に」は通常色
+3. 「おすすめの順番」をメニューの後ろへ移動
+   - 「オプション」の後ろに表示される位置へ変更
 
 実行
-node scripts/rejectWikipediaImages.mjs
+作業場所が senate-quiz-pwa/web のとき:
+node scripts/buildImagePool.mjs
 
-内容
-- representatives.json の image が Wikipedia / Wikimedia 画像なら空にする
-- imageCandidates 内の Wikipedia / Wikimedia URL を削除する
-- image が空になった後は、候補ありなら review、候補なしなら missing にする
+出力
+web/public/data/image_pool.json

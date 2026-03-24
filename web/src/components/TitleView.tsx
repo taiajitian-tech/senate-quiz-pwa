@@ -60,6 +60,18 @@ export default function TitleView(props: Props) {
         </div>
         <div style={styles.targetLabel}>{targetLabels[props.target]}</div>
 
+        <div style={styles.menu}>
+          <MenuButton label="最初に（使い方）" sub="各モードの順番と覚え方を見る" onClick={props.onOpenFirstGuide} />
+          <MenuButton primary label="学習（顔→名前）" sub="基本モード。顔から名前を引く力を付ける" onClick={props.onStartLearn} />
+          <MenuButton label="逆学習（名前→顔）" sub="名前を見て顔を思い出す力を付ける" onClick={props.onStartReverse} />
+          <MenuButton label="復習（忘れかけだけ）" sub="今ちょうど忘れかけの議員だけを出して固める" onClick={props.onStartReview} />
+          <MenuButton label="自動再生" sub="最初の大量インプットに使う（おすすめ: 顔2秒・名前2秒）" onClick={props.onOpenAutoplay} />
+          <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
+          <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認の人数を見る" onClick={props.onOpenStats} />
+          <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
+          <MenuButton label="オプション" sub="表示や動作を調整する" onClick={props.onOpenOptions} />
+        </div>
+
         <div style={styles.guideBox}>
           <div style={styles.guideTitle}>おすすめの順番</div>
           <div style={styles.stepGrid}>
@@ -72,18 +84,6 @@ export default function TitleView(props: Props) {
             <div style={styles.memoryTitle}>記憶が定着する流れ</div>
             <div style={styles.memoryText}>最初に多くの顔を見て全体像を作り、その後に短い間隔で思い出す回数を増やすと、顔と名前が結び付きやすくなります。</div>
           </div>
-        </div>
-
-        <div style={styles.menu}>
-          <MenuButton primary label="最初に（使い方）" sub="各モードの順番と覚え方を見る" onClick={props.onOpenFirstGuide} />
-          <MenuButton primary label="学習（顔→名前）" sub="基本モード。顔から名前を引く力を付ける" onClick={props.onStartLearn} />
-          <MenuButton label="逆学習（名前→顔）" sub="名前を見て顔を思い出す力を付ける" onClick={props.onStartReverse} />
-          <MenuButton label="復習（忘れかけだけ）" sub="今ちょうど忘れかけの議員だけを出して固める" onClick={props.onStartReview} />
-          <MenuButton label="自動再生" sub="最初の大量インプットに使う（おすすめ: 顔2秒・名前2秒）" onClick={props.onOpenAutoplay} />
-          <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
-          <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認の人数を見る" onClick={props.onOpenStats} />
-          <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
-          <MenuButton label="オプション" sub="表示や動作を調整する" onClick={props.onOpenOptions} />
         </div>
       </div>
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（アプリ）">
