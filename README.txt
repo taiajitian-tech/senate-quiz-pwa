@@ -1,14 +1,13 @@
 差し替え対象
-web/scripts/probeIshinPage.mjs
+web/scripts/rejectWikipediaImages.mjs
 
 実行場所
 senate-quiz-pwa/web
 
 実行
-node scripts/probeIshinPage.mjs
+node scripts/rejectWikipediaImages.mjs
 
-出力
-web/public/data/ishin-page-anchors.json
-web/public/data/ishin-page-memberlike-anchors.json
-web/public/data/ishin-page-images.json
-web/public/data/ishin-page-html.txt
+内容
+- representatives.json の image が Wikipedia / Wikimedia 画像なら空にする
+- imageCandidates 内の Wikipedia / Wikimedia URL を削除する
+- image が空になった後は、候補ありなら review、候補なしなら missing にする

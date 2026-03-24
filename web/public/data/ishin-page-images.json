@@ -1,0 +1,610 @@
+[
+  {
+    "src": "https://o-ishin.jp/images/shuin2021_pc.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "衆議院選挙2021",
+    "tag": "<img src=\"https://o-ishin.jp/images/shuin2021_pc.png\" class=\"nosp\" alt=\"衆議院選挙2021\">"
+  },
+  {
+    "src": "https://o-ishin.jp/images/shuin2021_sp.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "衆議院選挙2021",
+    "tag": "<img src=\"https://o-ishin.jp/images/shuin2021_sp.png\" class=\"nopc\" alt=\"衆議院選挙2021\">"
+  },
+  {
+    "src": "https://o-ishin.jp/images/sangiin2022_sp.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "参議院選挙2022",
+    "tag": "<img src=\"https://o-ishin.jp/images/sangiin2022_sp.jpg\" class=\"nopc\" alt=\"参議院選挙2022\">"
+  },
+  {
+    "src": "https://o-ishin.jp/images/EXPOba_nihon2.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "2025年大阪万博開催決定",
+    "tag": "<img src=\"https://o-ishin.jp/images/EXPOba_nihon2.png\" class=\"nosp\" alt=\"2025年大阪万博開催決定\">"
+  },
+  {
+    "src": "https://o-ishin.jp/images/EXPOba_sp_osaka2.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "2025年大阪万博開催決定",
+    "tag": "<img src=\"https://o-ishin.jp/images/EXPOba_sp_osaka2.png\" class=\"nopc\" alt=\"2025年大阪万博開催決定\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/logo.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "日本維新の会ロゴマーク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/logo.png\" alt=\"日本維新の会ロゴマーク\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/icon_menu_b.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "メニューボタン",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/icon_menu_b.png\" alt=\"メニューボタン\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/icon_search_w.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "検索ボタン",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/icon_search_w.png\" alt=\"検索ボタン\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/icon_mail.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "お問い合わせへのリンク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/icon_mail.png\" alt=\"お問い合わせへのリンク\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about01.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "日本維新の会について",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about01.png\" alt=\"日本維新の会について\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about02.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "代表メッセージ",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about02.png\" alt=\"代表メッセージ\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about03.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "網領・基本方針",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about03.png\" alt=\"網領・基本方針\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about04.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "党規約",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about04.png\" alt=\"党規約\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about05.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "都道府県総支部",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about05.png\" alt=\"都道府県総支部\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about06.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "一般党員募集",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about06.png\" alt=\"一般党員募集\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_about07.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "個人寄附について",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_about07.png\" alt=\"個人寄附について\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_news01.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "ニュース",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_news01.png\" alt=\"ニュース\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_news05.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "維新活動中",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_news05.png\" alt=\"維新活動中\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_news03.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "調査研究広報滞在費",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_news03.png\" alt=\"調査研究広報滞在費\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_news04.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "ライブラリ",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_news04.png\" alt=\"ライブラリ\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_ele01.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "公認・推薦候補予定者",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_ele01.png\" alt=\"公認・推薦候補予定者\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_ele02.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "公募",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_ele02.png\" alt=\"公募\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/pullthum_ele03.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "選挙結果",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/pullthum_ele03.png\" alt=\"選挙結果\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/join02.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "政策目安箱",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/join02.jpg\" alt=\"政策目安箱\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/join05.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "個人寄附について",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/join05.jpg\" alt=\"個人寄附について\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/join06.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "入党のご案内",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/join06.jpg\" alt=\"入党のご案内\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/join07.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "党職員募集",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/join07.jpg\" alt=\"党職員募集\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/icon_building.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/icon_building.png\" alt=\"\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/icon_memo.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/icon_memo.png\" alt=\"\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/icon_map.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/icon_map.png\" alt=\"\">"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/kashiwakura_yuuji.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/kashiwakura_yuuji.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_26.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_26.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/kanemura_ryuna.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/kanemura_ryuna.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_57.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_57.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1143.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1143.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1145.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1145.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1330.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1330.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1333.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1333.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/inoue_hidetaka.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/inoue_hidetaka.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/takami_ryo.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/takami_ryo.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/member_azuma.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/member_azuma.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/minobe_teruo.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/minobe_teruo.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/umemura_satoshi.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/umemura_satoshi.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_685.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_685.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/okushita_takemitsu.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/okushita_takemitsu.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/uruma_joji.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/uruma_joji.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_874.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_874.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/ikeshita_taku_jp.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/ikeshita_taku_jp.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_29.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_29.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/fujita_fumitake.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/fujita_fumitake.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_30.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_30.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_124.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_124.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/urano_yasuto.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/urano_yasuto.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_746.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_746.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/baba_nobuyuki.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/baba_nobuyuki.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/endo_takashi.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/endo_takashi.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/itou_nobuhisa.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/itou_nobuhisa.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_47.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_47.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1174.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1174.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/ichimura_koichiro.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/ichimura_koichiro.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/miki_kee.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/miki_kee.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/sumiyoshi_hiroki.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/sumiyoshi_hiroki.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_171.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_171.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/harayama_daisuke.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/harayama_daisuke.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1218.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1218.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/member/images/member/post_1439.jpg",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "",
+    "tag": "<img src=\"https://o-ishin.jp/member/images/member/post_1439.jpg\" />"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/totop.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "上へ戻る",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/totop.png\" alt=\"上へ戻る\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_icon_fb.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "日本維新の会Facebookへのリンク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_icon_fb.png\" alt=\"日本維新の会Facebookへのリンク\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_icon_tw.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "日本維新の会Twitterへのリンク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_icon_tw.png\" alt=\"日本維新の会Twitterへのリンク\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_icon_yt.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "YouTube日本維新の会チャンネルへのリンク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_icon_yt.png\" alt=\"YouTube日本維新の会チャンネルへのリンク\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_icon_nico.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "ニコニコ維新の会ちゃんねるへのリンク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_icon_nico.png\" alt=\"ニコニコ維新の会ちゃんねるへのリンク\">"
+  },
+  {
+    "src": "/common/img/f_ba05.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "個人寄附についてへのリンク",
+    "tag": "<img src=\"/common/img/f_ba05.png\" alt=\"個人寄附についてへのリンク\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_ba01.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "維新政治塾へのリンクバナー",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_ba01.png\" alt=\"維新政治塾へのリンクバナー\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_ba02.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "大阪維新の会へのリンクバナー",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_ba02.png\" alt=\"大阪維新の会へのリンクバナー\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_ba08.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "ダイバーシティ推進局",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_ba08.png\" alt=\"ダイバーシティ推進局\">"
+  },
+  {
+    "src": "https://o-ishin.jp/common/img/f_logo.png",
+    "dataSrc": "",
+    "srcset": "",
+    "dataSrcset": "",
+    "alt": "日本維新の会ロゴマーク",
+    "tag": "<img src=\"https://o-ishin.jp/common/img/f_logo.png\" alt=\"日本維新の会ロゴマーク\" width=\"50%\">"
+  }
+]

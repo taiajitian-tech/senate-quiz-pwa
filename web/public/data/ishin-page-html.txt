@@ -1,0 +1,2078 @@
+<!DOCTYPE HTML>
+<html><!-- InstanceBegin template="/Templates/temprate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<meta name="title" content="衆議院議員｜役員・議員・支部長｜日本維新の会">
+<meta name="description" content="日本維新の会ウェブサイト">
+<meta name="keywords" content="日本維新の会,維新,いしん,政党,政治,選挙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="衆議院議員｜役員・議員・支部長｜日本維新の会">
+<meta property="og:description" content="日本維新の会ウェブサイト">
+<meta property="og:url" content="https://o-ishin.jp/member/shugiin/">
+<meta property="og:image" content="https://o-ishin.jp/common/img/ogimg.jpg">
+<meta property="og:site_name" content="日本維新の会">
+<meta property="og:locale" content="ja_JP">
+<meta property="fb:app_id" content="1665184287099614">
+<title>衆議院議員｜役員・議員・支部長｜日本維新の会</title>
+<link rel="canonical" href="https://o-ishin.jp/member/shugiin/">
+<link rel="shortcut icon" href="/common/img/favicon.ico">
+<link rel="apple-touch-icon" href="/img/common/nihonishin_icon.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/img/common/nihonishin_icon.png" sizes="192x192">
+<link rel="manifest" href="/manifest.json?v=1">
+<!-- InstanceEndEditable -->
+<link rel="stylesheet" type="text/css" href="https://o-ishin.jp/common/css/import.css" />
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<!-- InstanceParam name="id" type="text" value="member" -->
+<!-- InstanceParam name="class" type="text" value="member" -->
+<!-- InstanceParam name="newslist" type="boolean" value="false" -->
+<!-- InstanceParam name="member" type="boolean" value="false" -->
+<!-- InstanceParam name="aboutlist" type="boolean" value="false" -->
+<script type="text/javascript">(function(d,u){var b=d.getElementsByTagName("script")[0],j=d.createElement("script");j.async=true;j.src=u;b.parentNode.insertBefore(j,b);})(document,"//img.ak.impact-ad.jp/ut/87d0f7f1a0a558c8_3029.js");</script><noscript><iframe src="//nspt.unitag.jp/87d0f7f1a0a558c8_3029.php" width="0" height="0" frameborder="0"></iframe></noscript>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MFHL4J3');</script>
+<!-- End Google Tag Manager -->
+</head>
+
+<body id="member" class="member">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFHL4J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="wrapper">
+<header>
+    <!--<style type="text/css">@media screen and (min-width:481px) { header section:nth-of-type(2){margin-top:-42px;}}</style>
+</section>-->
+
+<!--<p class="special-right"><a href="/shuin2021/results/" target=”_blank”><img src="https://o-ishin.jp/images/shuin2021_pc.png" class="nosp" alt="衆議院選挙2021"><img src="https://o-ishin.jp/images/shuin2021_sp.png" class="nopc" alt="衆議院選挙2021"></a></p>-->
+<p class="special-right"><a href="/sangiin2022/candidate/" target=”_blank”><img src="https://o-ishin.jp/images/sangiin2022_sp.jpg" class="nopc" alt="参議院選挙2022"></a></p>
+
+
+<!-- 181123上記バナーと差し替え/リンク先は日本維新の会のニュース（動画含む）が更新されてから -->
+<!--<p class="special-right"><a href="https://o-ishin.jp/news/2018/11/24/4656.html"><img src="https://o-ishin.jp/images/EXPOba_nihon2.png" class="nosp" alt="2025年大阪万博開催決定"><img src="https://o-ishin.jp/images/EXPOba_sp_osaka2.png" class="nopc" alt="2025年大阪万博開催決定"></a></p>--><!-- 181123上記バナーと差し替えここまで -->
+
+<section class="inner1 inner cf">
+<h1><a href="https://o-ishin.jp/"><img src="https://o-ishin.jp/common/img/logo.png" alt="日本維新の会ロゴマーク"></a></h1>
+<p id="sp_menu" class="nopc"><img src="https://o-ishin.jp/common/img/icon_menu_b.png" alt="メニューボタン"></p>
+<nav class="sp_menulist">
+<ul>
+<li class="h_nav02"><a href="https://o-ishin.jp/about/">日本維新の会について</a></li>
+<li class="h_nav03"><a href="https://o-ishin.jp/policy/">政　策</a></li>
+<li class="h_nav04"><a href="https://o-ishin.jp/news/">活動情報</a></li>
+<li class="h_nav05"><a href="https://o-ishin.jp/election/">選挙情報</a></li>
+<li class="h_nav06"><a href="https://o-ishin.jp/member/">役員・議員・支部長</a></li>
+  <li class="h_nav07"><a href="https://o-ishin.jp/join_ishin/">JOIN維新</a></li>
+</ul>
+</nav>
+<div class="head-float nosp">
+<ul>
+<li class="head_search"><img src="https://o-ishin.jp/common/img/icon_search_w.png" alt="検索ボタン"></li>
+<li><a href="https://o-ishin.jp/contact_new/"><img src="https://o-ishin.jp/common/img/icon_mail.png" alt="お問い合わせへのリンク"></a></li>
+</ul>
+</div>
+<div id="g_search"><gcse:searchbox-only></gcse:searchbox-only></div>
+</section>
+<div class="pull_down" id="pull_about">
+<div class="inner1 inner">
+<p>日本維新の会について<a href="https://o-ishin.jp/about/" class="button01">日本維新の会についてトップへ</a></p>
+<ul>
+<li><a href="https://o-ishin.jp/about/">
+<img src="https://o-ishin.jp/common/img/pullthum_about01.png" alt="日本維新の会について">
+<p>日本維新の会について</p>
+</a></li>
+<!--<li><a href="https://o-ishin.jp/about/#message">
+<img src="https://o-ishin.jp/common/img/pullthum_about02.png" alt="代表メッセージ">
+<p>代表メッセージ</p>
+</a></li>-->
+<li><a href="https://o-ishin.jp/about/outline/">
+<img src="https://o-ishin.jp/common/img/pullthum_about03.png" alt="網領・基本方針">
+<p>網領・基本方針</p>
+</a></li>
+<li><a href="https://o-ishin.jp/about/agreement/">
+<img src="https://o-ishin.jp/common/img/pullthum_about04.png" alt="党規約">
+<p>党規約</p>
+</a></li>
+<li><a href="https://o-ishin.jp/about/branch/">
+<img src="https://o-ishin.jp/common/img/pullthum_about05.png" alt="都道府県総支部">
+<p>都道府県総支部</p>
+</a></li>
+<li><a href="https://o-ishin.jp/about/joinus/">
+<img src="https://o-ishin.jp/common/img/pullthum_about06.png" alt="一般党員募集">
+<p>一般党員募集</p>
+</a></li>
+<li><a href="https://o-ishin.jp/about/donation/">
+<img src="https://o-ishin.jp/common/img/pullthum_about07.png" alt="個人寄附について">
+<p>個人寄附について</p>
+</a></li>
+</ul>
+</div>
+</div>
+<div class="pull_down" id="pull_news">
+<div class="inner1 inner">
+<p>活動情報<a href="https://o-ishin.jp/news/" class="button01">活動情報トップへ</a></p>
+<ul>
+<li><a href="https://o-ishin.jp/news/">
+<img src="https://o-ishin.jp/common/img/pullthum_news01.png" alt="ニュース">
+<p>ニュース</p>
+</a></li>
+<li><a href="https://o-ishin.jp/activity/" target="_blank">
+<img src="https://o-ishin.jp/common/img/pullthum_news05.png" alt="維新活動中">
+<p>維新活動中</p>
+</a></li>
+<li><a href="https://o-ishin.jp/news/bunsho/">
+<img src="https://o-ishin.jp/common/img/pullthum_news03.png" alt="調査研究広報滞在費">
+<p>調査研究広報滞在費</p>
+</a></li>
+<li><a href="https://o-ishin.jp/news/library/">
+<img src="https://o-ishin.jp/common/img/pullthum_news04.png" alt="ライブラリ">
+<p>ライブラリ</p>
+</a></li>
+</ul>
+</div>
+</div>
+<div class="pull_down" id="pull_ele">
+<div class="inner1 inner">
+<p>選挙情報<a href="https://o-ishin.jp/election/" class="button01">選挙情報トップへ</a></p>
+<ul>
+<li><a href="https://o-ishin.jp/election/#recognize">
+<img src="https://o-ishin.jp/common/img/pullthum_ele01.png" alt="公認・推薦候補予定者">
+<p>公認・推薦候補予定者</p>
+</a></li>
+<li><a href="https://o-ishin.jp/election/#kobo">
+<img src="https://o-ishin.jp/common/img/pullthum_ele02.png" alt="公募">
+<p>公募</p>
+</a></li>
+<li><a href="https://o-ishin.jp/election/#result">
+<img src="https://o-ishin.jp/common/img/pullthum_ele03.png" alt="選挙結果">
+<p>選挙結果</p>
+</a></li>
+</ul>
+</div>
+</div>
+<div class="pull_down" id="pull_join">
+  <div class="inner1 inner">
+    <p>JOIN維新<a href="https://o-ishin.jp/join_ishin/" class="button01">JOIN維新トップへ</a></p>
+    <ul>
+    <li><a href="https://o-ishin.jp//contact_new/">
+        <img src="https://o-ishin.jp/common/img/join02.jpg" alt="政策目安箱">
+        <p>政策目安箱</p>
+        </a></li>
+      <li><a href="https://o-ishin.jp/about/donation/">
+        <img src="https://o-ishin.jp/common/img/join05.jpg" alt="個人寄附について">
+        <p>個人寄附について</p>
+        </a></li>
+      <li><a href="https://o-ishin.jp/about/joinus/">
+        <img src="https://o-ishin.jp/common/img/join06.jpg" alt="入党のご案内">
+        <p>入党のご案内</p>
+        </a></li>
+      <li><a href="https://o-ishin.jp/staffmember/">
+        <img src="https://o-ishin.jp/common/img/join07.jpg" alt="党職員募集">
+        <p>党職員募集</p>
+        </a></li>
+    </ul>
+  </div>
+</div>
+
+</header>
+<!-- InstanceBeginEditable name="contents" -->
+<div class="pankuzu">
+
+  
+    
+  
+
+<nav>
+  <ul>
+    <li><a href="https://o-ishin.jp/">トップ</a></li>
+    <li><a href="https://o-ishin.jp/member/" class="link-under">役員・議員・支部長</a></li>
+    
+    <li>衆議院議員</li>
+  </ul>
+</nav>
+</div>
+<article>
+  <h2 class="h2border member_bg">Members<br><span>役員・議員・支部長</span></h2>
+  <div class="inner">
+  <!--<h3 class="h3title">議員を探す</h3>
+  <div class="member-search__button"></div>-->
+  <div class="search_menu"><a class="button01">メンバーを探す</a></div>
+  
+    <section class="searchBox01">
+    
+      
+        
+        
+        <!--
+        
+        -->
+          
+
+    
+      
+        
+            <dl class="search01">
+              <dt><img src="https://o-ishin.jp/common/img/icon_building.png" alt="">所属から探す</dt>
+                      
+            <dd><a href="https://o-ishin.jp/member/directorate/">常任役員</a></dd>
+                      
+            <dd><a href="https://o-ishin.jp/member/nonparm_dir/">非常任役員</a></dd>
+                      
+            <dd><a href="https://o-ishin.jp/member/official/">役員</a></dd>
+                      
+            <dd><a href="https://o-ishin.jp/member/shugiin/">衆議院議員</a></dd>
+                      
+            <dd><a href="https://o-ishin.jp/member/sangiin/">参議院議員</a></dd>
+                      
+            <dd><a href="https://o-ishin.jp/member/sibucho/">選挙区支部長</a></dd>
+                      
+            </dl>
+        
+        
+        <!--
+        
+        -->
+          
+
+    
+      
+        
+        
+            <dl class="search02">
+              <dt><img src="https://o-ishin.jp/common/img/icon_memo.png" alt="">50音から探す</dt>
+            
+              <dd><a href="https://o-ishin.jp/member/a/">あ行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/ka/">か行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/sa/">さ行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/ta/">た行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/na/">な行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/ha/">は行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/ma/">ま行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/ya/">や行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/ra/">ら行</a></dd>
+            
+              <dd><a href="https://o-ishin.jp/member/wa/">わ行</a></dd>
+            
+            </dl>
+        
+        <!--
+        
+        -->
+          
+
+    
+      
+        
+        
+        <!--
+        
+        -->
+          
+            <dl class="search03">
+            <dt><img src="https://o-ishin.jp/common/img/icon_map.png" alt="">都道府県から探す</dt>
+            <dd class="member-search__box__select">
+              <div class="member-search__box__select__box">
+                <select name="prefecture" id="seach18">
+                <option value="">選択してください</option>
+              
+                <option value="https://o-ishin.jp/member/01_hokkaido/">北海道</option>
+              
+                <option value="https://o-ishin.jp/member/02_aomori/">青森県</option>
+              
+                <option value="https://o-ishin.jp/member/03_iwate/">岩手県</option>
+              
+                <option value="https://o-ishin.jp/member/04_miyagi/">宮城県</option>
+              
+                <option value="https://o-ishin.jp/member/05_akita/">秋田県</option>
+              
+                <option value="https://o-ishin.jp/member/06_yamagata/">山形県</option>
+              
+                <option value="https://o-ishin.jp/member/07_fukushima/">福島県</option>
+              
+                <option value="https://o-ishin.jp/member/08_ibaraki/">茨城県</option>
+              
+                <option value="https://o-ishin.jp/member/09_tochigi/">栃木県</option>
+              
+                <option value="https://o-ishin.jp/member/10_gunma/">群馬県</option>
+              
+                <option value="https://o-ishin.jp/member/11_saitama/">埼玉県</option>
+              
+                <option value="https://o-ishin.jp/member/12_chiba/">千葉県</option>
+              
+                <option value="https://o-ishin.jp/member/13_tokyo/">東京都</option>
+              
+                <option value="https://o-ishin.jp/member/14_kanagawa/">神奈川県</option>
+              
+                <option value="https://o-ishin.jp/member/15_nigata/">新潟県</option>
+              
+                <option value="https://o-ishin.jp/member/16_toyama/">富山県</option>
+              
+                <option value="https://o-ishin.jp/member/17_ishikawa/">石川県</option>
+              
+                <option value="https://o-ishin.jp/member/18_fukui/">福井県</option>
+              
+                <option value="https://o-ishin.jp/member/19_yamanashi/">山梨県</option>
+              
+                <option value="https://o-ishin.jp/member/20_nagano/">長野県</option>
+              
+                <option value="https://o-ishin.jp/member/21_gifu/">岐阜県</option>
+              
+                <option value="https://o-ishin.jp/member/22_shizuoka/">静岡県</option>
+              
+                <option value="https://o-ishin.jp/member/23_aichi/">愛知県</option>
+              
+                <option value="https://o-ishin.jp/member/24_mie/">三重県</option>
+              
+                <option value="https://o-ishin.jp/member/25_shiga/">滋賀県</option>
+              
+                <option value="https://o-ishin.jp/member/26_kyoto/">京都府</option>
+              
+                <option value="https://o-ishin.jp/member/27_osaka/">大阪府</option>
+              
+                <option value="https://o-ishin.jp/member/28_hyougo/">兵庫県</option>
+              
+                <option value="https://o-ishin.jp/member/29_nara/">奈良県</option>
+              
+                <option value="https://o-ishin.jp/member/30_wakayama/">和歌山県</option>
+              
+                <option value="https://o-ishin.jp/member/31_shimane/">島根県</option>
+              
+                <option value="https://o-ishin.jp/member/32_tottori/">鳥取県</option>
+              
+                <option value="https://o-ishin.jp/member/33_okayama/">岡山県</option>
+              
+                <option value="https://o-ishin.jp/member/34_hiroshima/">広島県</option>
+              
+                <option value="https://o-ishin.jp/member/35_yamaguchi/">山口県</option>
+              
+                <option value="https://o-ishin.jp/member/36_tokushima/">徳島県</option>
+              
+                <option value="https://o-ishin.jp/member/37_kagawa/">香川県</option>
+              
+                <option value="https://o-ishin.jp/member/38_ehime/">愛媛県</option>
+              
+                <option value="https://o-ishin.jp/member/39_kochi/">高知県</option>
+              
+                <option value="https://o-ishin.jp/member/40_fukuoka/">福岡県</option>
+              
+                <option value="https://o-ishin.jp/member/41_saga/">佐賀県</option>
+              
+                <option value="https://o-ishin.jp/member/42_nagasaki/">長崎県</option>
+              
+                <option value="https://o-ishin.jp/member/43_kumamoto/">熊本県</option>
+              
+                <option value="https://o-ishin.jp/member/44_ooita/">大分県</option>
+              
+                <option value="https://o-ishin.jp/member/45_miyazaki/">宮崎県</option>
+              
+                <option value="https://o-ishin.jp/member/46_kagoshima/">鹿児島県</option>
+              
+                <option value="https://o-ishin.jp/member/47_okinawa/">沖縄県</option>
+              
+                <option value="https://o-ishin.jp/member/99_hirei/">比例区</option>
+              
+                </select>
+            </div>
+            </dd>
+            </dl>
+        
+
+    
+      
+        
+        
+        <!--
+        
+        -->
+          
+
+    
+      
+        
+        
+        <!--
+        
+        -->
+          
+
+    
+    </section>
+  
+  <h3 class="h3title">所属議員一覧</h3>
+  <section class="search_member01">
+				    
+						
+
+				<h4 class="h4title">衆議院議員</h4>
+				<section class="search_member01">
+
+
+          
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+						
+						
+						
+                            
+                                    
+                            
+                                    
+                                            
+                                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+							
+					        
+					    
+					
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/kashiwakura_yuuji.jpg" />
+									
+									<dl>
+										<dt>柏倉　ゆうじ<span>かしわくら　ゆうじ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">栃木1区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/kashiwakura_yuuji.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_26.jpg" />
+									
+									<dl>
+										<dt>阿部　司<span>あべ　つかさ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">東京12区 </li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_26.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/kanemura_ryuna.jpg" />
+									
+									<dl>
+										<dt>金村　りゅうな<span>かねむら　りゅうな</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">神奈川10区</li>
+												<li class="block">常任役員<br>幹事長代理</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_39.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_57.jpg" />
+									
+									<dl>
+										<dt>横田　光弘<span>よこた　みつひろ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">神奈川18区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_57.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1143.jpg" />
+									
+									<dl>
+										<dt>わかさ　清史<span>わかさ　きよし</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">長野1区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1143.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1145.jpg" />
+									
+									<dl>
+										<dt>せき　健一郎<span>せき　けんいちろう </span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">愛知15区 </li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1145.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1330.jpg" />
+									
+									<dl>
+										<dt>斎藤　アレックス<span>さいとう　あれっくす</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">滋賀1区</li>
+												<li class="block">政務調査会長<br>維新政治塾長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1330.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1333.jpg" />
+									
+									<dl>
+										<dt>まえはら　誠司<span>まえはら　せいじ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">京都2区</li>
+												<li class="block">顧問</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1333.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/inoue_hidetaka.jpg" />
+									
+									<dl>
+										<dt>井上　英孝<span>いのうえ　ひでたか</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪1区</li>
+												<li class="block">常任役員<br>選挙対策委員長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/inoue_hidetaka.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/takami_ryo.jpg" />
+									
+									<dl>
+										<dt>高見　りょう<span>たかみ　りょう</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪2区</li>
+												<li class="block">会計監査人</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/takami_ryo.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/member_azuma.jpg" />
+									
+									<dl>
+										<dt>東　徹<span>あずま　とおる</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪3区 </li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/azuma_toru.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/minobe_teruo.jpg" />
+									
+									<dl>
+										<dt>ミノベ　テルオ<span>みのべ　てるお</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪4区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/minobe_teruo.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/umemura_satoshi.jpg" />
+									
+									<dl>
+										<dt>梅村　さとし<span>うめむら　さとし</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪5区</li>
+												<li class="block">ハラスメント対策委員長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/umemura_satoshi.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_685.jpg" />
+									
+									<dl>
+										<dt>西田　薫<span>にしだ　かおる</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪6区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_685.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/okushita_takemitsu.jpg" />
+									
+									<dl>
+										<dt>奥下　たけみつ<span>おくした　たけみつ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪7区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/okushita_takemitsu.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/uruma_joji.jpg" />
+									
+									<dl>
+										<dt>うるま　譲司<span>うるま　じょうじ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪8区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_74.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_874.jpg" />
+									
+									<dl>
+										<dt>はぎ原　けい<span>はぎはら　けい</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪9区</li>
+												<li class="block">会計監査人</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_874.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/ikeshita_taku_jp.jpg" />
+									
+									<dl>
+										<dt>池下　卓<span>いけした　たく</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪10区</li>
+												<li class="block">財務局長（総務会委員）</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/ikeshita_taku.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_29.jpg" />
+									
+									<dl>
+										<dt>中司　宏<span>なかつか　ひろし</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪11区</li>
+												<li class="block">幹事長<br>選挙対策本部長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_29.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/fujita_fumitake.jpg" />
+									
+									<dl>
+										<dt>藤田　文武<span>ふじた　ふみたけ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪12区</li>
+												<li class="block">共同代表<br>国会議員団の長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/fujita_fumitake.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_30.jpg" />
+									
+									<dl>
+										<dt>岩谷　良平<span>いわたに　りょうへい </span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪13区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_30.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_124.jpg" />
+									
+									<dl>
+										<dt>あおやぎ　仁士<span>あおやぎ　ひとし</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪14区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_124.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/urano_yasuto.jpg" />
+									
+									<dl>
+										<dt>うらの　靖人<span>うらの　やすと</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪15区</li>
+												<li class="block">選挙対策委員長代行</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/urano_yasuto.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_746.jpg" />
+									
+									<dl>
+										<dt>黒田　征樹<span>くろだ　まさき</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪16区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_746.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/baba_nobuyuki.jpg" />
+									
+									<dl>
+										<dt>馬場　伸幸<span>ばば　のぶゆき</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪17区</li>
+												<li class="block">顧問</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/baba_nobuyuki.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/endo_takashi.jpg" />
+									
+									<dl>
+										<dt>遠藤　たかし<span>えんどう　たかし</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪18区</li>
+												<li class="block">常任役員<br>国会対策委員長<br>衆議院　安全保障委員長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/endo_takashi.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/itou_nobuhisa.jpg" />
+									
+									<dl>
+										<dt>いとう　信久<span>いとう　のぶひさ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">大阪19区</li>
+												<li class="block">選挙対策副委員長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/itou_nobuhisa.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_47.jpg" />
+									
+									<dl>
+										<dt>一谷　勇一郎<span>いちたに　ゆういちろう</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">兵庫1区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_47.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1174.jpg" />
+									
+									<dl>
+										<dt>阿部　けいし<span>あべ　けいし</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">兵庫2区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1174.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/ichimura_koichiro.jpg" />
+									
+									<dl>
+										<dt>いちむら　浩一郎<span>いちむら　こういちろう</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">兵庫6区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/ichimura_kouichiro.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/miki_kee.jpg" />
+									
+									<dl>
+										<dt>三木　けえ<span>みき　けえ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">兵庫7区	</li>
+												<li class="block">ダイバーシティ推進局長</li>
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/miki_kee.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/sumiyoshi_hiroki.jpg" />
+									
+									<dl>
+										<dt>住吉　ひろき<span>すみよし　ひろき</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">兵庫11区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_68.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_171.jpg" />
+									
+									<dl>
+										<dt>池畑　こうたろう<span>いけはた　こうたろう</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">兵庫12区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_171.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/harayama_daisuke.jpg" />
+									
+									<dl>
+										<dt>原山　だいすけ<span>はらやま　だいすけ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">奈良3区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1218.jpg" />
+									
+									<dl>
+										<dt>村上　とものぶ<span>むらかみ　とものぶ</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">福岡11区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1218.html"></a>
+								</div>
+					        
+					
+					        
+								<div>
+									
+										<img src="https://o-ishin.jp/member/images/member/post_1439.jpg" />
+									
+									<dl>
+										<dt>喜多　義典<span>きた　よしのり</span></dt>
+										<dd>
+											<ul>
+												
+												
+												
+					                            
+					 								<li class="member_label02">衆議院議員</li>
+					                            
+												<li class="member_label04">比例区</li>
+												
+											</ul>
+										</dd>
+									</dl>
+									<a href="https://o-ishin.jp/member/detail/post_1439.html"></a>
+								</div>
+					        
+					
+				
+
+		        
+                
+				</section>
+
+  
+
+  
+  </section>
+  
+  
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="option_under" -->
+
+</div>
+</article>
+
+<!-- InstanceEndEditable -->
+<span id="totop"><a href="#"><img src="https://o-ishin.jp/common/img/totop.png" alt="上へ戻る"></a></span>
+<footer>
+  <div class="inner">
+    	<nav>
+      <dl class="f_nav01 acMenu">
+        <dt><a href="https://o-ishin.jp/about/">日本維新の会について</a></dt>
+        <dd class="nopc"><a href="https://o-ishin.jp/about/">日本維新の会について</a></dd>
+        <dd><a href="https://o-ishin.jp/about/outline/">綱領・基本方針</a></dd>
+        <dd><a href="https://o-ishin.jp/about/agreement/">党規約</a></dd>
+        <dd><a href="https://o-ishin.jp/about/joinus/">一般党員募集</a></dd>
+        <dd><a href="https://o-ishin.jp/about/branch/">都道府県総支部</a></dd>
+      </dl>
+      <dl class="f_nav02">
+        <dt><a href="https://o-ishin.jp/policy/">政　策</a></dt>
+      </dl>
+      <dl class="f_nav03 acMenu">
+        <dt><a href="https://o-ishin.jp/news/">活動情報</a></dt>
+        <dd class="nopc"><a href="https://o-ishin.jp/news/">活動情報</a></dd>
+        <dd><a href="https://o-ishin.jp/news/notice/">ニュース</a></dd>
+
+        <dd><a href="https://o-ishin.jp/news/bunsho/">調査研究広報滞在費</a></dd>
+        <dd><a href="https://o-ishin.jp/news/library/">ライブラリ</a></dd>
+        <dd><a href="https://o-ishin.jp/miwokiru/">身を切る改革</a></dd>
+      </dl>
+      <dl class="f_nav04 acMenu">
+        <dt><a href="https://o-ishin.jp/election/">選挙情報</a></dt>
+        <dd class="nopc"><a href="https://o-ishin.jp/election/">選挙情報</a></dd>
+        <dd><a href="https://o-ishin.jp/election/#recognize">公認・推薦候補予定者</a></dd>
+        <dd><a href="https://koubo.o-ishin.jp/?t=national" target="_blank">衆議院・参議院選挙区支部長 公募</a></dd>
+        <dd><a href="https://o-ishin.jp//election/koubo/chihou/">地方議会議員選挙 公募</a></dd>
+      </dl>
+      <dl class="f_nav05">
+        <dt><a href="https://o-ishin.jp/member/">役員・議員・支部長</a></dt>
+      </dl>
+      <dl class="f_nav06 acMenu">
+        <dt><a href="https://o-ishin.jp/about/joinus/">入党のご案内</a></dt>
+        <dd class="nopc"><a href="https://o-ishin.jp/about/joinus/">入党のご案内</a></dd>
+        <dd class="mb20"><a href="https://o-ishin.jp/about/joinus/request/">入党希望フォーム</a></dd>
+        <dt class="nosp"><a href="https://o-ishin.jp/schedule/">演説スケジュール</a></dt>
+      </dl>
+    </nav>
+    <div class="footer-right">
+    <ul class="f_ba01">
+      <li><a href="https://www.facebook.com/nipponishinnokai/" target="_blank"><img src="https://o-ishin.jp/common/img/f_icon_fb.png" alt="日本維新の会Facebookへのリンク"></a></li>
+      <li><a href="https://twitter.com/osaka_ishin" target="_blank"><img src="https://o-ishin.jp/common/img/f_icon_tw.png" alt="日本維新の会Twitterへのリンク"></a></li>
+      <li><a href="https://www.youtube.com/c/OishinJpn" target="_blank"><img src="https://o-ishin.jp/common/img/f_icon_yt.png" alt="YouTube日本維新の会チャンネルへのリンク"></a></li>
+      <!--<li><a href="http://ch.nicovideo.jp/oneosaka" target="_blank"><img src="https://o-ishin.jp/common/img/f_icon_nico.png" alt="ニコニコ維新の会ちゃんねるへのリンク"></a></li>-->
+    </ul>
+	<ul class="f_ba02">
+      <li><a href="/about/donation/"><img src="/common/img/f_ba05.png" alt="個人寄附についてへのリンク"></a></li>
+      <li><a href="/seijijuku/" target="_blank"><img src="https://o-ishin.jp/common/img/f_ba01.png" alt="維新政治塾へのリンクバナー"></a></li>
+      <li><a href="http://oneosaka.jp/" target="_blank"><img src="https://o-ishin.jp/common/img/f_ba02.png" alt="大阪維新の会へのリンクバナー"></a></li>
+      <li><a href="/diversity/"><img src="https://o-ishin.jp/common/img/f_ba08.png" alt="ダイバーシティ推進局"></a></li>
+  </ul>	
+    <p class="txtright nosp"><script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=o-ishin.jp&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=ja"></script></p>
+    </div>
+    <div class="footer-left">
+    <div class="footbox01"><a href="https://o-ishin.jp/"><img src="https://o-ishin.jp/common/img/f_logo.png" alt="日本維新の会ロゴマーク" width="50%"></a>
+      <p>日本維新の会<br>
+        〒542-0082 大阪市中央区島之内1-17-16三栄長堀ビル<br>
+        TEL：06-4963-8800FAX：06-4963-8801</p>
+    </div>
+    <p class="nopc"><script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=o-ishin.jp&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=ja"></script></p>
+    </div>
+  </div>
+    <div class="footbox02"> 
+      <ul>
+        <li><a href="https://o-ishin.jp/contact_new/">政策目安箱</a></li>
+        <li><a href="https://o-ishin.jp/privacypolicy/">プライバシーポリシー</a></li>
+        <li><a href="https://o-ishin.jp/sitepolicy/">サイトのご利用について</a></li>
+      </ul>
+      <p>Copyright © Nippon Ishin (Japan Innovation Party)  All Rights Reserved.</p>
+    </div>
+
+</footer>
+<script type="text/javascript" src="https://o-ishin.jp/common/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="https://o-ishin.jp/common/js/script.js"></script>
+<script type="text/javascript" src="https://o-ishin.jp/common/js/fadein.js"></script>
+<script>
+	$('#keyword').load('/common/inc/pickup_keywords.html');
+</script>
+<script type="text/javascript">
+;(function($) {
+	/* 役員・議員絞り込み追加JS */
+		$(".member-search__box__select select").on("change",function(e){
+			if($(this).val() != ""){
+				location.href = $(this).val();
+			}
+		});
+		//PC版プルダウンメニュー作成
+		if(!$sp){
+			$(".member-search__box__select").each(function(number,box){
+				var tag_p = $("<p></p>");
+				var tag_ul = $("<ul></ul>");
+				$(box).find("option").each(function(key,value){
+					var href_link = $(value).val();
+					href_link = (href_link == "") ? '#' : href_link;
+					tag_ul.append('<li><a href="'+href_link+'">'+$(value).text()+'</a></li>');
+				});
+				$(box).append(tag_p);
+				$(box).append(tag_ul);
+			});
+		}
+})(jQuery);
+
+</script>
+<script>
+  (function() {
+    var cx = '000677203549666215026:naiesrqeixe';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+</div>
+</body>
+<!-- InstanceEnd --></html>
