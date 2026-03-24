@@ -1,0 +1,18 @@
+[
+  {
+    "source": "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_senkyoku.html",
+    "bodyLength": 86697,
+    "imageCount": 1,
+    "sample": [
+      "https://news.web.nhk/senkyo-data/database/shugiin/2026/ogp/og_image.jpg"
+    ]
+  },
+  {
+    "source": "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_hirei.html",
+    "bodyLength": 86368,
+    "imageCount": 1,
+    "sample": [
+      "https://news.web.nhk/senkyo-data/database/shugiin/2026/ogp/og_image.jpg"
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_senkyoku.html",
+    "ok": true,
+    "status": 200,
+    "statusText": "OK",
+    "elapsedMs": 581,
+    "bodyLength": 86697,
+    "bodyHead": "<!DOCTYPE html><html lang=\"ja\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/77187865140d825a.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/97f8cecc2452cffc.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/849751aefbc323a4.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/9b75feafcd0360c7.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/b45026ae5f652a23.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/75b1b3dca22c4992.css"
+  },
+  {
+    "url": "https://news.web.nhk/senkyo/database/shugiin/00/tousen_toukaku_hirei.html",
+    "ok": true,
+    "status": 200,
+    "statusText": "OK",
+    "elapsedMs": 377,
+    "bodyLength": 86669,
+    "bodyHead": "<!DOCTYPE html><html lang=\"ja\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/77187865140d825a.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/97f8cecc2452cffc.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/849751aefbc323a4.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/9b75feafcd0360c7.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/b45026ae5f652a23.css?dpl=267f13c36fd69495f520b67fb31ef6705289af96\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"https://www.web.nhk/_next/static/css/75b1b3dca22c4992.css"
+  }
+]

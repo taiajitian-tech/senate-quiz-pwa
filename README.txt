@@ -1,14 +1,15 @@
-差し替え対象
-web/src/components/TitleView.tsx
-web/scripts/buildImagePool.mjs
+■ 実行場所
+C:\Users\some3\Documents\GitHub\senate-quiz-pwa\web
 
-修正内容
-- 「最初に」だけ色変更（黄色系）
-- 「学習」はそのまま主ボタン
-- 「最初に」と「学習」を最上段の「まず使う場所」に整理
-- 「おすすめの順番」をオプションの後ろ、メニューの下へ移動
-- buildImagePool.mjs を同梱
+■ 事前条件
+- yomiuri_list_pairs_direct.json が存在する
 
-実行
-senate-quiz-pwa/web にいる状態で:
-node scripts/buildImagePool.mjs
+■ 実行コマンド
+node scripts/mergeYomiuriImages.mjs
+
+■ 出力
+web\public\data\representatives.yomiuri.merged.json
+
+■ 内容
+- imageが空の議員だけ埋める
+- 既存imageは上書きしない

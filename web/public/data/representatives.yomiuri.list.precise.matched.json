@@ -11,8 +11,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA33001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA33001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA33XXXXXX000/135331/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135331/"
+    ]
   },
   {
     "name": "青山繁晴",
@@ -20,14 +29,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28008XXX013K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9D%92%E5%B1%B1%E7%B9%81%E6%99%B4",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "青山 繁晴",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/138843/",
+    "imageMatchedDistrict": "兵庫８区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "青山周平",
@@ -80,14 +94,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04002XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E8%91%89%E8%B3%A2%E4%B9%9F",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "秋葉 賢也",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135471/",
+    "imageMatchedDistrict": "比例・東北",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "浅田眞澄美",
@@ -122,8 +141,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01006XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01006XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135868/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135868/"
+    ]
   },
   {
     "name": "畦元将吾",
@@ -137,8 +165,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13006XXX007K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13006XXX007K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/138981/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/138981/"
+    ]
   },
   {
     "name": "麻生太郎",
@@ -146,14 +183,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40008XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BA%BB%E7%94%9F%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "麻生 太郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA40XXXXXX000/135404/",
+    "imageMatchedDistrict": "福岡８区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "あべ俊子",
@@ -222,8 +264,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09002XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09002XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA09XXXXXX000/135508/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135508/"
+    ]
   },
   {
     "name": "石井拓",
@@ -237,8 +288,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23013XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23013XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135739/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135739/"
+    ]
   },
   {
     "name": "石川昭政",
@@ -246,14 +306,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA08005XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E6%98%AD%E6%94%BF",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "石川 昭政",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135583/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "石坂太",
@@ -279,8 +344,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88001XXX036K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E7%9C%9F%E6%95%8F",
     "profileUrl": "",
     "aiGuess": false,
@@ -288,8 +353,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "石田 真敏",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135376/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "石破茂",
@@ -303,8 +373,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA31001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA31001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA31XXXXXX000/135324/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135324/"
+    ]
   },
   {
     "name": "石橋林太郎",
@@ -318,8 +397,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX018K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX018K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA34XXXXXX000/135382/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135382/"
+    ]
   },
   {
     "name": "石原宏高",
@@ -333,8 +421,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135716/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135716/"
+    ]
   },
   {
     "name": "石原正敬",
@@ -363,8 +460,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA20XXXXXX000/135778/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135778/"
+    ]
   },
   {
     "name": "伊藤聡",
@@ -390,14 +496,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04004XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E4%BF%A1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "伊藤 信太郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135521/",
+    "imageMatchedDistrict": "比例・東北",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "伊藤忠彦",
@@ -411,8 +522,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23008XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23008XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135735/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135735/"
+    ]
   },
   {
     "name": "伊藤達也",
@@ -426,8 +546,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13022XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13022XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135665/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135665/"
+    ]
   },
   {
     "name": "伊東良孝",
@@ -435,14 +564,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E8%89%AF%E5%AD%9D",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "伊東 良孝",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135656/",
+    "imageMatchedDistrict": "比例・北海道",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "稲田朋美",
@@ -456,8 +590,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA18001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA18001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA18XXXXXX000/135230/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135230/"
+    ]
   },
   {
     "name": "稲葉大輔",
@@ -486,8 +629,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10002XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10002XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA10XXXXXX000/135644/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135644/"
+    ]
   },
   {
     "name": "井上信治",
@@ -501,8 +653,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13025XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13025XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135700/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135700/"
+    ]
   },
   {
     "name": "井上貴博",
@@ -516,8 +677,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA40XXXXXX000/135390/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135390/"
+    ]
   },
   {
     "name": "井林辰憲",
@@ -531,8 +701,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135566/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135566/"
+    ]
   },
   {
     "name": "井原巧",
@@ -546,8 +725,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA38002XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA38002XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA38XXXXXX000/135360/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135360/"
+    ]
   },
   {
     "name": "井原隆",
@@ -576,8 +764,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23014XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23014XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135503/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135503/"
+    ]
   },
   {
     "name": "今岡植",
@@ -591,8 +788,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13026XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13026XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135612/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135612/"
+    ]
   },
   {
     "name": "岩崎比菜",
@@ -600,8 +806,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84001XXX052K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E6%AF%94%E8%8F%9C",
     "profileUrl": "",
     "aiGuess": false,
@@ -609,8 +815,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "岩崎 比菜",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/137839/",
+    "imageMatchedDistrict": "比例・南関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "岩田和親",
@@ -624,8 +835,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41001XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41001XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA41XXXXXX000/135409/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135409/"
+    ]
   },
   {
     "name": "岩屋毅",
@@ -639,8 +859,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA44003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA44003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA44XXXXXX000/135423/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135423/"
+    ]
   },
   {
     "name": "上杉謙太郎",
@@ -654,8 +883,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX010K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX010K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA07XXXXXX000/135488/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135488/"
+    ]
   },
   {
     "name": "上田英俊",
@@ -669,8 +907,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA16002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA16002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA16XXXXXX000/135497/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135497/"
+    ]
   },
   {
     "name": "上野賢一郎",
@@ -684,8 +931,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA25XXXXXX000/135234/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135234/"
+    ]
   },
   {
     "name": "上野宏史",
@@ -693,8 +949,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91001XXX058K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%AE%8F%E5%8F%B2",
     "profileUrl": "",
     "aiGuess": false,
@@ -702,8 +958,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "上野 宏史",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/139242/",
+    "imageMatchedDistrict": "比例・九州",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "上原正裕",
@@ -741,14 +1002,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX022K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%B8%A1%E8%81%A1%E5%BE%B3",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "江渡 聡徳",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135888/",
+    "imageMatchedDistrict": "比例・東北",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "江藤拓",
@@ -765,8 +1031,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135426/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135426/"
+    ]
   },
   {
     "name": "衛藤博昭",
@@ -795,8 +1070,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12005XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12005XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135605/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135605/"
+    ]
   },
   {
     "name": "遠藤寛明",
@@ -825,8 +1109,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA25XXXXXX000/135232/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135232/"
+    ]
   },
   {
     "name": "大串正樹",
@@ -840,8 +1133,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135300/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135300/"
+    ]
   },
   {
     "name": "大空幸星",
@@ -870,8 +1172,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11009XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11009XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135724/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135724/"
+    ]
   },
   {
     "name": "大西洋平",
@@ -930,8 +1241,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA39002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA39002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA39XXXXXX000/135364/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135364/"
+    ]
   },
   {
     "name": "長田紘一郎",
@@ -939,8 +1259,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87001XXX060K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E7%94%B0%E7%B4%98%E4%B8%80%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
@@ -948,8 +1268,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "長田 紘一郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/139255/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "小里泰弘",
@@ -966,8 +1291,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA46XXXXXX000/135432/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135432/"
+    ]
   },
   {
     "name": "小田原潔",
@@ -981,8 +1315,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13021XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13021XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135668/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135668/"
+    ]
   },
   {
     "name": "鬼木誠",
@@ -1011,8 +1354,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04005XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04005XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA04XXXXXX000/135524/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135524/"
+    ]
   },
   {
     "name": "尾花瑛仁",
@@ -1050,14 +1402,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83001XXX059K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E8%BA%AB%E6%9C%9D%E5%AD%90",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "尾身 朝子",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/138953/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "鹿嶋祐介",
@@ -1116,8 +1473,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26001XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26001XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135239/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135239/"
+    ]
   },
   {
     "name": "門寛子",
@@ -1335,14 +1701,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX047K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%85%E5%AE%B6%E4%B8%80%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "菅家 一郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/139249/",
+    "imageMatchedDistrict": "比例・東北",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "神田潤一",
@@ -1371,8 +1742,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22007XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22007XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135578/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135578/"
+    ]
   },
   {
     "name": "黄川田仁志",
@@ -1416,8 +1796,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA34XXXXXX000/135339/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135339/"
+    ]
   },
   {
     "name": "北神圭朗",
@@ -1431,8 +1820,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26004XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26004XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135243/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135243/"
+    ]
   },
   {
     "name": "木原誠二",
@@ -1554,8 +1952,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135226/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135226/"
+    ]
   },
   {
     "name": "栗原渉",
@@ -1608,14 +2015,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14011XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B3%89%E9%80%B2%E6%AC%A1%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "小泉 進次郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135549/",
+    "imageMatchedDistrict": "神奈川１１区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "小泉龍司",
@@ -1623,14 +2035,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11011XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B3%89%E9%BE%8D%E5%8F%B8",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "小泉 龍司",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135836/",
+    "imageMatchedDistrict": "埼玉１１区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "河野太郎",
@@ -1644,8 +2061,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14015XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14015XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135464/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135464/"
+    ]
   },
   {
     "name": "高村正大",
@@ -1713,14 +2139,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88001XXX035K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AF%BA%E8%A3%95%E9%9B%84",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "小寺 裕雄",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135372/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "後藤茂之",
@@ -1860,8 +2291,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12007XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12007XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135562/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135562/"
+    ]
   },
   {
     "name": "斎藤洋明",
@@ -1983,8 +2423,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14016XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14016XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135561/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135561/"
+    ]
   },
   {
     "name": "塩崎彰久",
@@ -1998,8 +2447,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA38001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA38001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA38XXXXXX000/135357/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135357/"
+    ]
   },
   {
     "name": "繁本護",
@@ -2013,8 +2471,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26003XXX006K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26003XXX006K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/138553/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/138553/"
+    ]
   },
   {
     "name": "柴山昌彦",
@@ -2028,8 +2495,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11008XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11008XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135834/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135834/"
+    ]
   },
   {
     "name": "島尻安伊子",
@@ -2073,8 +2549,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13011XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13011XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135634/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135634/"
+    ]
   },
   {
     "name": "白坂亜紀",
@@ -2166,8 +2651,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14007XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14007XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135538/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135538/"
+    ]
   },
   {
     "name": "鈴木俊一",
@@ -2196,8 +2690,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23007XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23007XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135515/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135515/"
+    ]
   },
   {
     "name": "鈴木貴子",
@@ -2211,8 +2714,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01007XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01007XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135711/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135711/"
+    ]
   },
   {
     "name": "鈴木拓海",
@@ -2301,14 +2813,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA30002XXX006K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%96%E8%80%95%E5%BC%98%E6%88%90",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "世耕 弘成",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA30XXXXXX000/137501/",
+    "imageMatchedDistrict": "和歌山２区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "瀬戸隆一",
@@ -2322,8 +2839,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37002XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37002XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135355/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135355/"
+    ]
   },
   {
     "name": "園崎弘道",
@@ -2337,8 +2863,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26006XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26006XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135860/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135860/"
+    ]
   },
   {
     "name": "平将明",
@@ -2361,14 +2896,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA29002XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "高市 早苗",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA29XXXXXX000/135318/",
+    "imageMatchedDistrict": "奈良２区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "高階恵美子",
@@ -2382,8 +2922,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX019K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX019K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA32XXXXXX000/135383/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135383/"
+    ]
   },
   {
     "name": "高木啓",
@@ -2397,8 +2946,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13012XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13012XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/136067/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/136067/"
+    ]
   },
   {
     "name": "高木宏壽",
@@ -2472,8 +3030,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135424/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135424/"
+    ]
   },
   {
     "name": "武田良太",
@@ -2571,14 +3138,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84001XXX069K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%98%8C%E5%8F%B2",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "田中 昌史",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/139238/",
+    "imageMatchedDistrict": "比例・東京",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "田中良生",
@@ -2637,8 +3209,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27019XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27019XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135286/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135286/"
+    ]
   },
   {
     "name": "田野瀬太道",
@@ -2661,14 +3242,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA16001XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E7%95%91%E8%A3%95%E6%98%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "田畑 裕明",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135494/",
+    "imageMatchedDistrict": "比例・北陸信越",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "田宮寿人",
@@ -2697,8 +3283,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA24001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA24001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA24XXXXXX000/135742/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135742/"
+    ]
   },
   {
     "name": "俵田祐児",
@@ -2778,8 +3373,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA02001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA02001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA02XXXXXX000/135760/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135760/"
+    ]
   },
   {
     "name": "土田慎",
@@ -2817,14 +3421,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34004XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AF%BA%E7%94%B0%E7%A8%94",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "寺田 稔",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135343/",
+    "imageMatchedDistrict": "比例・中国",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "土井亨",
@@ -2847,14 +3456,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28010XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E6%B5%B7%E7%B4%80%E4%B8%89%E6%9C%97",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "渡海 紀三朗",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135308/",
+    "imageMatchedDistrict": "兵庫１０区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "冨樫博之",
@@ -2868,8 +3482,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA05XXXXXX000/135589/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135589/"
+    ]
   },
   {
     "name": "とかしきなおみ",
@@ -2901,8 +3524,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA08007XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA08007XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA08XXXXXX000/135533/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135533/"
+    ]
   },
   {
     "name": "中川こういち",
@@ -2925,14 +3557,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23002XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E8%B2%B4%E5%85%83",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "中川 貴元",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135228/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "長坂康正",
@@ -3036,8 +3673,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA39001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA39001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA39XXXXXX000/135362/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135362/"
+    ]
   },
   {
     "name": "中谷真一",
@@ -3075,14 +3721,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11006XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%A0%B9%E4%B8%80%E5%B9%B8",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "中根 一幸",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135829/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "中野英幸",
@@ -3138,14 +3789,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14009XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B1%B1%E5%B1%95%E5%AE%8F",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "中山 展宏",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135547/",
+    "imageMatchedDistrict": "比例・四国",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "中山泰秀",
@@ -3159,8 +3815,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27004XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27004XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135253/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135253/"
+    ]
   },
   {
     "name": "仁木博文",
@@ -3174,8 +3839,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA36XXXXXX000/135348/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135348/"
+    ]
   },
   {
     "name": "西田昭二",
@@ -3339,8 +4013,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135502/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135502/"
+    ]
   },
   {
     "name": "野田聖子",
@@ -3384,8 +4067,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13024XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13024XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135546/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135546/"
+    ]
   },
   {
     "name": "橋本岳",
@@ -3459,8 +4151,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12012XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12012XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135788/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135788/"
+    ]
   },
   {
     "name": "林芳正",
@@ -3507,8 +4208,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135351/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135351/"
+    ]
   },
   {
     "name": "平口洋",
@@ -3546,14 +4256,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX021K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B2%BC%E6%AD%A3%E4%BA%8C%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "平沼 正二郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135385/",
+    "imageMatchedDistrict": "比例・中国",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "広瀬建",
@@ -3582,8 +4297,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22004XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22004XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135570/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135570/"
+    ]
   },
   {
     "name": "福田かおる",
@@ -3612,8 +4336,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10004XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10004XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA10XXXXXX000/135642/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135642/"
+    ]
   },
   {
     "name": "福原淳嗣",
@@ -3627,8 +4360,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05002XXX004K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05002XXX004K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA05XXXXXX000/136324/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/136324/"
+    ]
   },
   {
     "name": "藤井比早之",
@@ -3708,8 +4450,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26002XXX007K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26002XXX007K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/138556/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/138556/"
+    ]
   },
   {
     "name": "藤丸敏",
@@ -3738,8 +4489,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA03003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA03003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA03XXXXXX000/135687/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135687/"
+    ]
   },
   {
     "name": "文月涼",
@@ -3771,8 +4531,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA09XXXXXX000/135505/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135505/"
+    ]
   },
   {
     "name": "古井康介",
@@ -3834,8 +4603,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135428/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135428/"
+    ]
   },
   {
     "name": "古屋圭司",
@@ -3879,8 +4657,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14012XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14012XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135554/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135554/"
+    ]
   },
   {
     "name": "細田健一",
@@ -3888,14 +4675,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87001XXX059K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%81%A5%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "細田 健一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/139247/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "細野豪志",
@@ -3909,8 +4701,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22005XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22005XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135573/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135573/"
+    ]
   },
   {
     "name": "堀内詔子",
@@ -3972,8 +4773,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14017XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14017XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135563/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135563/"
+    ]
   },
   {
     "name": "松下英樹",
@@ -4002,8 +4812,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13014XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13014XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135807/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135807/"
+    ]
   },
   {
     "name": "松野博一",
@@ -4062,8 +4881,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13019XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13019XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135594/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135594/"
+    ]
   },
   {
     "name": "丸尾なつ子",
@@ -4137,8 +4965,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA46XXXXXX000/135430/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135430/"
+    ]
   },
   {
     "name": "三谷英弘",
@@ -4152,8 +4989,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14008XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14008XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135545/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135545/"
+    ]
   },
   {
     "name": "三ッ林裕巳",
@@ -4182,8 +5028,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA05XXXXXX000/135598/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135598/"
+    ]
   },
   {
     "name": "三原朝利",
@@ -4260,8 +5115,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20005XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20005XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA20XXXXXX000/135783/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135783/"
+    ]
   },
   {
     "name": "向山淳",
@@ -4305,8 +5169,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27013XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27013XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135275/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135275/"
+    ]
   },
   {
     "name": "村井英樹",
@@ -4329,14 +5202,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC90001XXX011K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E8%AA%A0%E4%B8%80%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "村上 誠一郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135396/",
+    "imageMatchedDistrict": "比例・四国",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "村木汀",
@@ -4344,8 +5222,8 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX023K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%9C%A8%E6%B1%80",
     "profileUrl": "",
     "aiGuess": false,
@@ -4353,8 +5231,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "村木 汀",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/139235/",
+    "imageMatchedDistrict": "比例・北海道",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "茂木敏充",
@@ -4383,8 +5266,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX021K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX021K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA04XXXXXX000/135877/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135877/"
+    ]
   },
   {
     "name": "森原紀代子",
@@ -4464,8 +5356,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA09XXXXXX000/135509/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135509/"
+    ]
   },
   {
     "name": "山際大志郎",
@@ -4488,14 +5389,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E4%BF%8A%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "山口 俊一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA36XXXXXX000/135350/",
+    "imageMatchedDistrict": "徳島２区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "山口晋",
@@ -4608,14 +5514,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87001XXX033K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%B7%A6%E8%BF%91",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "山本 左近",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135842/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "山本深",
@@ -4668,14 +5579,19 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA35003XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E7%9C%9F%E6%AC%A1",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "吉田 真次",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135387/",
+    "imageMatchedDistrict": "比例・中国",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "吉田有理",
@@ -4740,8 +5656,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA20XXXXXX000/135774/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135774/"
+    ]
   },
   {
     "name": "若宮健嗣",
@@ -4785,8 +5710,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15004XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15004XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA15XXXXXX000/135219/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135219/"
+    ]
   },
   {
     "name": "和田義明",
@@ -4800,8 +5734,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01005XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01005XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135867/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135867/"
+    ]
   },
   {
     "name": "渡辺勝幸",
@@ -4830,8 +5773,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135655/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135655/"
+    ]
   },
   {
     "name": "渡辺博道",
@@ -4854,14 +5806,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28002XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%BE%BD%E4%B8%80%E5%98%89",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "赤羽 一嘉",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135291/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "有田芳生",
@@ -4869,14 +5826,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13024XXX004K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%89%E7%94%B0%E8%8A%B3%E7%94%9F",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "有田 芳生",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/137302/",
+    "imageMatchedDistrict": "比例・東北",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "伊佐進一",
@@ -4884,14 +5846,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27006XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E4%BD%90%E9%80%B2%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "伊佐 進一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135261/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "泉健太",
@@ -4905,8 +5872,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26003XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26003XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135241/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135241/"
+    ]
   },
   {
     "name": "犬飼明佳",
@@ -4932,14 +5908,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88003XXX008K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%AE%E5%B3%B6%E6%99%BA%E5%AD%90",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "浮島 智子",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135378/",
+    "imageMatchedDistrict": "比例・北海道",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "大島敦",
@@ -4953,8 +5934,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11006XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11006XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135830/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135830/"
+    ]
   },
   {
     "name": "大森江里子",
@@ -4962,8 +5952,8 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84003XXX004K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A3%AE%E6%B1%9F%E9%87%8C%E5%AD%90",
     "profileUrl": "",
     "aiGuess": false,
@@ -4971,8 +5961,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "大森 江里子",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/136472/",
+    "imageMatchedDistrict": "比例・東京",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "岡本三成",
@@ -4980,14 +5975,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13029XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%9C%AC%E4%B8%89%E6%88%90",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "岡本 三成",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135615/",
+    "imageMatchedDistrict": "比例・東京",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "小川淳也",
@@ -5001,8 +6001,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37001XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37001XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135352/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135352/"
+    ]
   },
   {
     "name": "落合貴之",
@@ -5016,8 +6025,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13006XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13006XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135682/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135682/"
+    ]
   },
   {
     "name": "河西宏一",
@@ -5025,14 +6043,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84003XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E8%A5%BF%E5%AE%8F%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "河西 宏一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135884/",
+    "imageMatchedDistrict": "比例・東京",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "金子恵美",
@@ -5046,8 +6069,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA07001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA07001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA07XXXXXX000/135473/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135473/"
+    ]
   },
   {
     "name": "神谷裕",
@@ -5061,8 +6093,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01010XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01010XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135699/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135699/"
+    ]
   },
   {
     "name": "河野義博",
@@ -5070,14 +6111,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91023XXX021K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E9%87%8E%E7%BE%A9%E5%8D%9A_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "河野 義博",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/139136/",
+    "imageMatchedDistrict": "比例・九州",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "菊田真紀子",
@@ -5091,8 +6137,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA15XXXXXX000/135211/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135211/"
+    ]
   },
   {
     "name": "金城泰邦",
@@ -5100,14 +6155,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91003XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%9F%8E%E6%B3%B0%E9%82%A6",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "金城 泰邦",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135446/",
+    "imageMatchedDistrict": "比例・九州",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "國重徹",
@@ -5130,14 +6190,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83003XXX005K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BC%BF%E6%B0%B4%E6%81%B5%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "輿水 恵一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/136412/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "後藤祐一",
@@ -5154,8 +6219,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14016XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14016XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135558/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135558/"
+    ]
   },
   {
     "name": "近藤和也",
@@ -5172,8 +6246,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17003XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17003XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA17XXXXXX000/135855/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135855/"
+    ]
   },
   {
     "name": "斉藤鉄夫",
@@ -5181,14 +6264,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34003XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E9%89%84%E5%A4%AB",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "斉藤 鉄夫",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135341/",
+    "imageMatchedDistrict": "比例・中国",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "佐藤英道",
@@ -5196,14 +6284,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81003XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E8%8B%B1%E9%81%93",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "佐藤 英道",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135658/",
+    "imageMatchedDistrict": "比例・北海道",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "重徳和彦",
@@ -5220,8 +6313,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23012XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23012XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135738/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135738/"
+    ]
   },
   {
     "name": "階猛",
@@ -5235,8 +6337,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA03001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA03001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA03XXXXXX000/135678/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135678/"
+    ]
   },
   {
     "name": "庄子賢一",
@@ -5244,14 +6355,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82003XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%84%E5%AD%90%E8%B3%A2%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "庄子 賢一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135741/",
+    "imageMatchedDistrict": "比例・東北",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "田嶋要",
@@ -5265,8 +6381,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135467/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135467/"
+    ]
   },
   {
     "name": "角田秀穂",
@@ -5274,14 +6399,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC85003XXX003K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A7%92%E7%94%B0%E7%A7%80%E7%A9%82",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "角田 秀穂",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135798/",
+    "imageMatchedDistrict": "比例・南関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "中川宏昌",
@@ -5307,14 +6437,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87003XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E5%BA%B7%E6%B4%8B",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "中川 康洋",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135840/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "長妻昭",
@@ -5328,8 +6463,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13027XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13027XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135684/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135684/"
+    ]
   },
   {
     "name": "中野洋昌",
@@ -5337,14 +6481,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28008XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E9%87%8E%E6%B4%8B%E6%98%8C",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "中野 洋昌",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135305/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "西園勝秀",
@@ -5352,14 +6501,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87003XXX004K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%9C%92%E5%8B%9D%E7%A7%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "西園 勝秀",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/136189/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "西村智奈美",
@@ -5373,8 +6527,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA15XXXXXX000/135205/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135205/"
+    ]
   },
   {
     "name": "沼崎満子",
@@ -5400,14 +6563,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12014XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E4%BD%B3%E5%BD%A6",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "野田 佳彦",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135795/",
+    "imageMatchedDistrict": "千葉１４区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "野間健",
@@ -5424,8 +6592,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46003XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46003XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA46XXXXXX000/135433/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135433/"
+    ]
   },
   {
     "name": "浜地雅一",
@@ -5433,14 +6610,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91003XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%9C%B0%E9%9B%85%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "浜地 雅一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135445/",
+    "imageMatchedDistrict": "比例・九州",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "原田直樹",
@@ -5508,8 +6690,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01009XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01009XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135765/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135765/"
+    ]
   },
   {
     "name": "山崎正恭",
@@ -5535,14 +6726,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27016XXX003K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E9%A6%99%E8%8B%97",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "山本 香苗",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135323/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "吉田宣弘",
@@ -5550,14 +6746,19 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91003XXX004K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E5%AE%A3%E5%BC%98",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "吉田 宣弘",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135448/",
+    "imageMatchedDistrict": "比例・九州",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "笠浩史",
@@ -5571,8 +6772,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14009XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14009XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135527/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135527/"
+    ]
   },
   {
     "name": "早稲田ゆき",
@@ -5604,8 +6814,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45001XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45001XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135425/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135425/"
+    ]
   },
   {
     "name": "青柳仁士",
@@ -5622,8 +6841,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27014XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27014XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135277/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135277/"
+    ]
   },
   {
     "name": "東徹",
@@ -5637,8 +6865,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27003XXX005K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27003XXX005K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/136126/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136126/"
+    ]
   },
   {
     "name": "阿部圭史",
@@ -5652,8 +6889,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28002XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28002XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/136140/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136140/"
+    ]
   },
   {
     "name": "阿部司",
@@ -5667,8 +6913,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13012XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13012XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135636/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135636/"
+    ]
   },
   {
     "name": "池下卓",
@@ -5721,8 +6976,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28001XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28001XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135290/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135290/"
+    ]
   },
   {
     "name": "市村浩一郎",
@@ -5736,8 +7000,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135302/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135302/"
+    ]
   },
   {
     "name": "伊東信久",
@@ -5751,8 +7024,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27019XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27019XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135287/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135287/"
+    ]
   },
   {
     "name": "井上英孝",
@@ -5766,8 +7048,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27001XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27001XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135248/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135248/"
+    ]
   },
   {
     "name": "岩谷良平",
@@ -5781,8 +7072,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27013XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27013XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135276/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135276/"
+    ]
   },
   {
     "name": "梅村聡",
@@ -5796,8 +7096,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27005XXX005K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27005XXX005K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/136264/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136264/"
+    ]
   },
   {
     "name": "浦野靖人",
@@ -5811,8 +7120,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27015XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27015XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135278/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135278/"
+    ]
   },
   {
     "name": "うるま譲司",
@@ -5841,8 +7159,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27018XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27018XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135285/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135285/"
+    ]
   },
   {
     "name": "奥下剛光",
@@ -5892,8 +7219,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14010XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14010XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135630/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135630/"
+    ]
   },
   {
     "name": "喜多義典",
@@ -5925,8 +7261,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27016XXX005K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27016XXX005K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/136127/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136127/"
+    ]
   },
   {
     "name": "斎藤アレックス",
@@ -5940,8 +7285,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25001XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25001XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA25XXXXXX000/135233/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135233/"
+    ]
   },
   {
     "name": "住吉寛紀",
@@ -5973,8 +7327,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/136328/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/136328/"
+    ]
   },
   {
     "name": "高見亮",
@@ -6006,8 +7369,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27011XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27011XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135272/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135272/"
+    ]
   },
   {
     "name": "西田薫",
@@ -6051,14 +7423,19 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27017XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A6%AC%E5%A0%B4%E4%BC%B8%E5%B9%B8",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "馬場 伸幸",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135282/",
+    "imageMatchedDistrict": "大阪１７区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "原山大亮",
@@ -6084,14 +7461,19 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27012XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%96%87%E6%AD%A6",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "藤田 文武",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135273/",
+    "imageMatchedDistrict": "大阪１２区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "前原誠司",
@@ -6105,8 +7487,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26002XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26002XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135240/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135240/"
+    ]
   },
   {
     "name": "三木圭恵",
@@ -6156,8 +7547,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40011XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40011XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA40XXXXXX000/136542/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/136542/"
+    ]
   },
   {
     "name": "横田光弘",
@@ -6222,8 +7622,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX004K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX004K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA36XXXXXX000/137298/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/137298/"
+    ]
   },
   {
     "name": "井戸まさえ",
@@ -6255,8 +7664,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81013XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81013XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/137660/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/137660/"
+    ]
   },
   {
     "name": "岡野純子",
@@ -6270,8 +7688,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12005XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12005XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135607/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135607/"
+    ]
   },
   {
     "name": "小竹凱",
@@ -6375,8 +7802,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX001K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX001K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135839/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135839/"
+    ]
   },
   {
     "name": "高沢一基",
@@ -6408,8 +7844,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22004XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22004XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135571/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135571/"
+    ]
   },
   {
     "name": "玉木雄一郎",
@@ -6417,14 +7862,19 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37002XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%8E%89%E6%9C%A8%E9%9B%84%E4%B8%80%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "玉木 雄一郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135354/",
+    "imageMatchedDistrict": "香川２区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "丹野みどり",
@@ -6501,8 +7951,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14018XXX006K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14018XXX006K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/137045/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/137045/"
+    ]
   },
   {
     "name": "野村美穂",
@@ -6534,8 +7993,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11013XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11013XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/136073/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/136073/"
+    ]
   },
   {
     "name": "日野紗里亜",
@@ -6564,8 +8032,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14019XXX002K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14019XXX002K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135679/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135679/"
+    ]
   },
   {
     "name": "福田徹",
@@ -6579,8 +8056,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23016XXX003K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23016XXX003K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135814/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135814/"
+    ]
   },
   {
     "name": "古川元久",
@@ -6612,8 +8098,17 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28003XXX005K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28003XXX005K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/136846/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136846/"
+    ]
   },
   {
     "name": "村岡敏英",
@@ -6675,8 +8170,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27007XXX005K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27007XXX005K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/138028/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/138028/"
+    ]
   },
   {
     "name": "伊藤恵介",
@@ -6708,8 +8212,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17001XXX008K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17001XXX008K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA17XXXXXX000/138088/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/138088/"
+    ]
   },
   {
     "name": "木下敏之",
@@ -6804,14 +8317,19 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83858XXX032K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B1%8A%E7%94%B0%E7%9C%9F%E7%94%B1%E5%AD%90",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "豊田 真由子",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/139273/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "なかやめぐ",
@@ -6861,8 +8379,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13001XXX005K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13001XXX005K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/136497/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/136497/"
+    ]
   },
   {
     "name": "和田政宗",
@@ -6876,8 +8403,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04002XXX006K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04002XXX006K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA04XXXXXX000/139013/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/139013/"
+    ]
   },
   {
     "name": "渡辺藍理",
@@ -6957,8 +8493,8 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "profile-page",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87033XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A0%88%E7%94%B0%E8%8B%B1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
@@ -6966,8 +8502,13 @@
     "imageMaskBottom": false,
     "imageMaskMode": "none",
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "須田 英太郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/139002/",
+    "imageMatchedDistrict": "比例・東海",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "高山聡史",
@@ -6975,14 +8516,19 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84033XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B1%B1%E8%81%A1%E5%8F%B2",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "高山 聡史",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/138852/",
+    "imageMatchedDistrict": "比例・東京",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "土橋章宏",
@@ -7098,14 +8644,19 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83005XXX007K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E5%B7%9D%E9%89%84%E4%B9%9F",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "塩川 鉄也",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135848/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "辰巳孝太郎",
@@ -7113,14 +8664,19 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88005XXX022K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BE%B0%E5%B7%B3%E5%AD%9D%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "辰巳 孝太郎",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136366/",
+    "imageMatchedDistrict": "比例・近畿",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "田村智子",
@@ -7128,14 +8684,19 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84005XXX010K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%9D%91%E6%99%BA%E5%AD%90",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "田村 智子",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135922/",
+    "imageMatchedDistrict": "比例・東京",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "畑野君枝",
@@ -7143,14 +8704,19 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC85005XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%95%91%E9%87%8E%E5%90%9B%E6%9E%9D",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "畑野 君枝",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135694/",
+    "imageMatchedDistrict": "比例・南関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "石井啓一",
@@ -7158,14 +8724,19 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX002K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E5%95%93%E4%B8%80",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "石井 啓一",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135841/",
+    "imageMatchedDistrict": "比例・北関東",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "緒方林太郎",
@@ -7197,8 +8768,17 @@
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-ambiguous",
+    "imageCandidates": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23001XXX004K_0.jpg",
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23001XXX004K_0.jpg"
+    ],
+    "imageCandidateUrls": [
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/137482/",
+      "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/137482/"
+    ]
   },
   {
     "name": "中村はやと",
@@ -7224,14 +8804,19 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "",
-    "imageSource": "wikipedia",
+    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12011XXX001K_0.jpg",
+    "imageSource": "yomiuri",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E8%8B%B1%E4%BB%8B",
     "profileUrl": "",
     "aiGuess": false,
     "imageCandidatesNhk": [],
-    "imageStatus": "missing",
-    "imageScore": 0
+    "imageStatus": "review",
+    "imageScore": 0,
+    "imageMatchedBy": "yomiuri-list-precise-name",
+    "imageMatchedName": "森 英介",
+    "imageMatchedUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135782/",
+    "imageMatchedDistrict": "千葉１１区",
+    "imageMatchedStatus": "result__tosen"
   },
   {
     "name": "山本ジョージ",
