@@ -74,17 +74,41 @@ function stableId(prefix, subRole, name) {
 }
 
 function buildImageMap() {
-  const map = new Map();
+  const byName = new Map();
+  const byKanaChamber = new Map();
+
+  const setUnique = (map, key, value) => {
+    if (!key) return;
+    const existing = map.get(key);
+    if (!existing) {
+      map.set(key, value);
+      return;
+    }
+    if (existing.name !== value.name || existing.image !== value.image || existing.chamber !== value.chamber) {
+      map.set(key, null);
+    }
+  };
+
   const add = (rawName, kana, image, chamber, party) => {
-    const key = normalizeCompact(rawName);
-    if (!key || !image) return;
-    if (!map.has(key)) {
-      map.set(key, {
-        image,
-        kana: normalizeKana(kana),
-        chamber: normalizeWhitespace(chamber),
-        party: normalizeWhitespace(party),
-      });
+    const cleanName = toPlainName(rawName);
+    const nameKey = normalizeCompact(cleanName);
+    if (!nameKey) return;
+
+    const value = {
+      name: cleanName,
+      image: image || '',
+      kana: normalizeKana(kana),
+      chamber: normalizeWhitespace(chamber),
+      party: normalizeWhitespace(party),
+    };
+
+    if (value.image && !byName.has(nameKey)) {
+      byName.set(nameKey, value);
+    }
+
+    const kanaKey = `${value.chamber}:${value.kana}`;
+    if (value.kana && value.chamber) {
+      setUnique(byKanaChamber, kanaKey, value);
     }
   };
 
@@ -104,7 +128,22 @@ function buildImageMap() {
     add(clean, '', item.images?.[0] ?? '', chamber, '');
   }
 
-  return map;
+  return { byName, byKanaChamber };
+}
+
+function resolveMatchedPerson(entry, imageMap) {
+  const nameKey = normalizeCompact(entry.name);
+  const direct = imageMap.byName.get(nameKey);
+  if (direct) return direct;
+
+  const kana = normalizeKana(entry.kana);
+  const chamber = normalizeWhitespace(entry.chamber);
+  if (kana && chamber) {
+    const kanaMatch = imageMap.byKanaChamber.get(`${chamber}:${kana}`);
+    if (kanaMatch) return kanaMatch;
+  }
+
+  return null;
 }
 
 async function fetchText(url) {
@@ -228,14 +267,14 @@ function parseHouseOfficers(html) {
 
 function withImages(entries, category, imageMap, sourceUrl) {
   return entries.map((entry) => {
-    const key = normalizeCompact(entry.name);
-    const matched = imageMap.get(key);
+    const matched = resolveMatchedPerson(entry, imageMap);
     const chamber = entry.chamber || matched?.chamber || '';
-    const kana = entry.kana || matched?.kana || '';
+    const kana = normalizeKana(entry.kana || matched?.kana || '');
+    const displayName = matched?.name || toPlainName(entry.name);
     const groupParts = [entry.subRole, chamber].filter(Boolean);
     return {
-      id: stableId(category, entry.subRole, entry.name),
-      name: toPlainName(entry.name),
+      id: stableId(category, entry.subRole, displayName),
+      name: displayName,
       kana,
       group: groupParts.join(' / '),
       role: category,
