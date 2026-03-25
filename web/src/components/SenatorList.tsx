@@ -135,6 +135,7 @@ export default function SenatorList(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editName, setEditName] = useState("");
   const [editKana, setEditKana] = useState("");
@@ -143,9 +144,6 @@ export default function SenatorList(props: Props) {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
   const isSenators = props.target === "senators";
-  const searchPlaceholder = isSenators
-    ? "名前 / 政党 / 選挙区 / 回数 / 改選年で検索"
-    : "名前 / フリガナ / 役職 / 会派で検索";
   const overrideMap = useMemo(() => getPersonNameKanaOverrides(props.target), [props.target, overrideVersion]);
 
   useEffect(() => {
@@ -175,6 +173,7 @@ export default function SenatorList(props: Props) {
   }, []);
 
   useEffect(() => {
+    setEditMode(false);
     setEditingId(null);
     setEditName("");
     setEditKana("");
@@ -202,7 +201,22 @@ export default function SenatorList(props: Props) {
 
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
 
+  const openEditMode = () => {
+    setEditMode(true);
+    setEditingId(null);
+    setEditName("");
+    setEditKana("");
+  };
+
+  const closeEditMode = () => {
+    setEditMode(false);
+    setEditingId(null);
+    setEditName("");
+    setEditKana("");
+  };
+
   const startEdit = (person: Person) => {
+    if (!editMode) return;
     setEditingId(person.id);
     setEditName(person.name);
     setEditKana(person.kana ?? "");
@@ -244,7 +258,7 @@ export default function SenatorList(props: Props) {
         </div>
         {props.onChangeTarget ? (
           <div style={styles.targetSelectWrap}>
-            <label htmlFor="list-target-select" style={styles.targetSelectLabel}>一覧区分</label>
+            <label htmlFor="list-target-select" style={styles.targetSelectLabel}>区分選択</label>
             <select
               id="list-target-select"
               value={props.target}
@@ -263,7 +277,7 @@ export default function SenatorList(props: Props) {
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder={searchPlaceholder}
+          placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索"
           style={styles.search}
         />
         <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
@@ -277,16 +291,23 @@ export default function SenatorList(props: Props) {
         </select>
         <div style={styles.actionsRow}>
           <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
-          <button type="button" style={hasAnyOverrides ? styles.resetAllBtn : styles.resetAllBtnDisabled} onClick={resetAll} disabled={!hasAnyOverrides}>
-            この一覧の編集を全部デフォルトに戻す
-          </button>
+          <div style={styles.actionsButtonGroup}>
+            {editMode ? (
+              <button type="button" style={styles.editModeActiveBtn} onClick={closeEditMode}>編集モード終了</button>
+            ) : (
+              <button type="button" style={styles.editModeBtn} onClick={openEditMode}>編集モード</button>
+            )}
+            <button type="button" style={hasAnyOverrides ? styles.resetAllBtn : styles.resetAllBtnDisabled} onClick={resetAll} disabled={!hasAnyOverrides}>
+              この一覧の編集を全部デフォルトに戻す
+            </button>
+          </div>
         </div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
       <div style={styles.list}>
         {sorted.map((s) => {
-          const isEditing = editingId === s.id;
+          const isEditing = editMode && editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
           return (
             <div key={s.id} style={styles.item}>
@@ -314,19 +335,21 @@ export default function SenatorList(props: Props) {
                   </>
                 )}
 
-                <div style={styles.editButtons}>
-                  {isEditing ? (
-                    <>
-                      <button type="button" style={styles.saveBtn} onClick={() => saveEdit(s)}>保存</button>
-                      <button type="button" style={styles.smallBtn} onClick={cancelEdit}>取消</button>
-                    </>
-                  ) : (
-                    <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>編集</button>
-                  )}
-                  <button type="button" style={hasOverride ? styles.resetBtn : styles.resetBtnDisabled} onClick={() => resetPerson(s)} disabled={!hasOverride}>
-                    デフォルトに戻す
-                  </button>
-                </div>
+                {editMode || hasOverride ? (
+                  <div style={styles.editButtons}>
+                    {isEditing ? (
+                      <>
+                        <button type="button" style={styles.saveBtn} onClick={() => saveEdit(s)}>保存</button>
+                        <button type="button" style={styles.smallBtn} onClick={cancelEdit}>取消</button>
+                      </>
+                    ) : editMode ? (
+                      <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>この議員を編集</button>
+                    ) : null}
+                    <button type="button" style={hasOverride ? styles.resetBtn : styles.resetBtnDisabled} onClick={() => resetPerson(s)} disabled={!hasOverride}>
+                      デフォルトに戻す
+                    </button>
+                  </div>
+                ) : null}
 
                 {isSenators ? (
                   <div style={styles.infoGrid}>
@@ -373,12 +396,15 @@ const styles: Record<string, React.CSSProperties> = {
   backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 22, fontWeight: 800 },
-  targetSelectWrap: { display: "flex", flexDirection: "column", gap: 6 },
+  targetSelectWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 6 },
   targetSelectLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
   search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
   actionsRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" },
+  actionsButtonGroup: { display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" },
+  editModeBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", color: "#0969da", fontWeight: 800 },
+  editModeActiveBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #111", background: "#111", color: "#fff", fontWeight: 800 },
   resetAllBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
   resetAllBtnDisabled: { padding: "10px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
