@@ -5,14 +5,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg/500px-Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%80%A2%E6%B2%A2%E4%B8%80%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "青山繁晴",
@@ -20,11 +21,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Aoyama_shigeharu.jpg/500px-Aoyama_shigeharu.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9D%92%E5%B1%B1%E7%B9%81%E6%99%B4",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "青山周平",
@@ -32,11 +34,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/aoyama-shyuhei.jpg",
+    "image": "",
     "imageSource": "official-manual",
     "imageSourceUrl": "https://www.jimin.jp/member/102126.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "赤澤亮正",
@@ -44,11 +47,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/akazawa-ryosei.jpg",
+    "image": "",
     "imageSource": "official-manual",
     "imageSourceUrl": "https://www.jimin.jp/member/100478.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "あかま二郎",
@@ -56,11 +60,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/akama-jiro.jpg",
+    "image": "",
     "imageSource": "official-manual",
     "imageSourceUrl": "https://www.jimin.jp/member/102081.html",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "秋葉賢也",
@@ -68,11 +73,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Kenya_Akiba_20190911.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E8%91%89%E8%B3%A2%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "浅田眞澄美",
@@ -80,14 +86,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "http://asada-masumi.com/wordpress/wp-content/uploads/2011/07/sotsu2.jpg",
+    "image": "",
     "imageSource": "official-manual",
     "imageSourceUrl": "https://asada-masumi.com/about-us/",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "東国幹",
@@ -95,14 +102,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg/1280px-Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "畦元将吾",
@@ -110,11 +118,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Sh%C5%8Dgo_Azemoto_20220816_%28cropped%29.jpg/1920px-Sh%C5%8Dgo_Azemoto_20220816_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%95%A6%E5%85%83%E5%B0%86%E5%90%BE",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "麻生太郎",
@@ -122,11 +131,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Tar%C5%8D_As%C5%8D_20170920_%28cropped%29.jpg/1280px-Tar%C5%8D_As%C5%8D_20170920_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BA%BB%E7%94%9F%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "あべ俊子",
@@ -134,11 +144,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Toshiko_Abe_20200604_%28cropped%29.jpg/1920px-Toshiko_Abe_20200604_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%82%E3%81%B9%E4%BF%8A%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "阿部弘樹",
@@ -146,14 +157,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg/330px-Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%BC%98%E6%A8%B9",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "安藤たかお",
@@ -161,14 +173,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/andou-takao.jpg",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://www.jimin.jp/member/135980.html",
     "profileUrl": "https://www.jimin.jp/member/135980.html",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "五十嵐清",
@@ -176,11 +189,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Kiyoshi_Igarashi_20241122.jpg/500px-Kiyoshi_Igarashi_20241122.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%94%E5%8D%81%E5%B5%90%E6%B8%85_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石井拓",
@@ -188,11 +202,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Taku_Ishii_20211125.jpg/330px-Taku_Ishii_20211125.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石川昭政",
@@ -200,11 +215,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Akimasa_Ishikawa.jpg/250px-Akimasa_Ishikawa.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E6%98%AD%E6%94%BF",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石坂太",
@@ -212,14 +228,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/ishizaka-masaru.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212407.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "石田真敏",
@@ -227,11 +244,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Masatoshi_Ishida_2024-12-23.jpg/500px-Masatoshi_Ishida_2024-12-23.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E7%9C%9F%E6%95%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石破茂",
@@ -239,11 +257,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ishiba_Shigeru_20241001_%28cropped%29.jpg/1920px-Ishiba_Shigeru_20241001_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%A0%B4%E8%8C%82",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石橋林太郎",
@@ -251,11 +270,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Rintaro_Ishibashi_202.jpg/250px-Rintaro_Ishibashi_202.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E6%A9%8B%E6%9E%97%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石原宏高",
@@ -263,11 +283,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Hirotaka_Ishihara_20211115.jpg/500px-Hirotaka_Ishihara_20211115.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%8E%9F%E5%AE%8F%E9%AB%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石原正敬",
@@ -275,14 +296,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://i.ytimg.com/vi/EMhINL32r1o/hqdefault.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/202134.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "井出庸生",
@@ -290,11 +312,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Yosei_Ide_20220812.jpg/250px-Yosei_Ide_20220812.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E5%87%BA%E5%BA%B8%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "伊藤聡",
@@ -302,14 +325,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_4.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/4/4",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "伊藤信太郎",
@@ -317,11 +341,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Shintar%C5%8D_It%C5%8D.2023.jpg/250px-Shintar%C5%8D_It%C5%8D.2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E4%BF%A1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "伊藤忠彦",
@@ -329,11 +354,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tadahiko_It%C5%8D%2C_Minister_for_Reconstruction.jpg/250px-Tadahiko_It%C5%8D%2C_Minister_for_Reconstruction.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E5%BF%A0%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "伊藤達也",
@@ -341,11 +367,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Tatsuya_Ito_20240312.jpg/500px-Tatsuya_Ito_20240312.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E9%81%94%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "伊東良孝",
@@ -353,11 +380,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Yoshitaka_It%C5%8D%2C_Minister_of_State_for_Special_Missions_%28cropped_2%29.jpg/1920px-Yoshitaka_It%C5%8D%2C_Minister_of_State_for_Special_Missions_%28cropped_2%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E8%89%AF%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "稲田朋美",
@@ -365,11 +393,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Tomomi_Inada_20241212.jpg/500px-Tomomi_Inada_20241212.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A8%B2%E7%94%B0%E6%9C%8B%E7%BE%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "稲葉大輔",
@@ -377,14 +406,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/inaba-daisuke.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/209124.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "井野俊郎",
@@ -392,11 +422,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Toshiro_Ino_20220812.jpg/250px-Toshiro_Ino_20220812.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E9%87%8E%E4%BF%8A%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井上信治",
@@ -404,11 +435,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Shinji_Inoue_2020.jpg/960px-Shinji_Inoue_2020.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E4%BF%A1%E6%B2%BB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井上貴博",
@@ -416,11 +448,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Takahiro_Inoue%2C_Special_Advisor_to_the_Prime_Minister_of_Japan.jpg/250px-Takahiro_Inoue%2C_Special_Advisor_to_the_Prime_Minister_of_Japan.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%B2%B4%E5%8D%9A_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井林辰憲",
@@ -428,11 +461,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Tatsunori_Ibayashi_20220112_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E6%9E%97%E8%BE%B0%E6%86%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井原巧",
@@ -440,11 +474,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ihara_takumi.jpg/120px-Ihara_takumi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E5%8E%9F%E5%B7%A7",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井原隆",
@@ -452,14 +487,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/ihara-yutaka.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212408.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "今枝宗一郎",
@@ -467,11 +503,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/S%C5%8Dichir%C5%8D_Imaeda.jpg/1280px-S%C5%8Dichir%C5%8D_Imaeda.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E6%9E%9D%E5%AE%97%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "今岡植",
@@ -479,11 +516,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/%E4%BB%8A%E5%B2%A1%E3%81%86%E3%81%88%E3%81%8D.jpg/250px-%E4%BB%8A%E5%B2%A1%E3%81%86%E3%81%88%E3%81%8D.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E5%B2%A1%E6%A4%8D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岩崎比菜",
@@ -491,14 +529,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Hina_Iwasaki.png/500px-Hina_Iwasaki.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E6%AF%94%E8%8F%9C",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "岩田和親",
@@ -506,11 +545,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Kazuchika_Iwata_20241003.jpg/330px-Kazuchika_Iwata_20241003.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E7%94%B0%E5%92%8C%E8%A6%AA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岩屋毅",
@@ -518,11 +558,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Takeshi_Iwaya_20241003_%28cropped%29.jpg/500px-Takeshi_Iwaya_20241003_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B1%8B%E6%AF%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "上杉謙太郎",
@@ -530,11 +571,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/20211006uesugi_kentaro.jpg/250px-20211006uesugi_kentaro.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%9D%89%E8%AC%99%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "上田英俊",
@@ -542,14 +584,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg/250px-Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "上野賢一郎",
@@ -557,11 +600,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Kenichiro_Ueno_2026.jpg/250px-Kenichiro_Ueno_2026.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E8%B3%A2%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "上野宏史",
@@ -569,11 +613,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hiroshi_Ueno.jpg/250px-Hiroshi_Ueno.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%AE%8F%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "上原正裕",
@@ -581,14 +626,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/uehara-masahiro.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212419.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "内山こう",
@@ -596,14 +642,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/uchiyama-koh.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212420.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "江渡聡徳",
@@ -611,11 +658,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Akinori_Eto.jpg/330px-Akinori_Eto.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%B8%A1%E8%81%A1%E5%BE%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "江藤拓",
@@ -623,11 +671,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Taku_Eto_20210311.jpg/1920px-Taku_Eto_20210311.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E8%97%A4%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "衛藤博昭",
@@ -635,14 +684,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/etou-hiroaki.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/209066.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "英利アルフィヤ",
@@ -650,11 +700,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Arfiya_Eri_2025_%28cropped%29.jpg/1280px-Arfiya_Eri_2025_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8B%B1%E5%88%A9%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A3%E3%83%A4",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "遠藤寛明",
@@ -662,14 +713,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/3942/7fe6164f-bd3a-4ff6-b155-300ff86dd5ec.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://go2senkyo.com/seijika/165903/posts/1273929",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "大岡敏孝",
@@ -677,11 +729,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ooka_Toshitaka.jpg/500px-Ooka_Toshitaka.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B2%A1%E6%95%8F%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大串正樹",
@@ -689,11 +742,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Masaki_%C5%8Cgushi_20241121.jpg/1280px-Masaki_%C5%8Cgushi_20241121.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E4%B8%B2%E6%AD%A3%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大空幸星",
@@ -701,11 +755,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C5%8Dki_%C5%8Czora_June_2024.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q108776690",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大塚拓",
@@ -713,11 +768,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Taku_%C5%8Ctsuka_2019.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%A1%9A%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大西洋平",
@@ -725,11 +781,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%A4%A7%E8%A5%BF%E6%B4%8B%E5%B9%B3241220.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q130727259",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大野敬太郎",
@@ -737,11 +794,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Keitar%C5%8D_Oono_2021.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%87%8E%E6%95%AC%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岡本康宏",
@@ -749,14 +807,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/news/information/img/212361_01.png",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/news/information/212361.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "尾崎正直",
@@ -764,11 +823,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Masanao_Ozaki_2022.png",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q656644",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "長田紘一郎",
@@ -776,14 +836,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1_%E9%95%B7%E7%94%B0_%E7%B4%98%E4%B8%80%E9%83%8E_%E6%B0%8F_%EF%BC%92%EF%BC%90%E6%97%A5_%E8%A1%86%E8%AD%B0%E9%99%A2%E6%9C%AC%E4%BC%9A%E8%AD%B0%E5%A0%B4.jpg/1280px-%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1_%E9%95%B7%E7%94%B0_%E7%B4%98%E4%B8%80%E9%83%8E_%E6%B0%8F_%EF%BC%92%EF%BC%90%E6%97%A5_%E8%A1%86%E8%AD%B0%E9%99%A2%E6%9C%AC%E4%BC%9A%E8%AD%B0%E5%A0%B4.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E7%94%B0%E7%B4%98%E4%B8%80%E9%83%8E",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "小里泰弘",
@@ -791,11 +852,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Yasuhiro_Ozato.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q8049988",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小田原潔",
@@ -803,11 +865,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Kiyoshi_Odawara.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E7%94%B0%E5%8E%9F%E6%BD%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鬼木誠",
@@ -815,11 +878,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/20211006oniki_makoto.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q11673487",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小野寺五典",
@@ -827,11 +891,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Itsunori_Onodera_20170803_2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E9%87%8E%E5%AF%BA%E4%BA%94%E5%85%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "尾花瑛仁",
@@ -839,14 +904,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/obana-akihito.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212410.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "小渕優子",
@@ -854,11 +920,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Y%C5%ABko_Obuchi_20121113.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B8%95%E5%84%AA%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "尾身朝子",
@@ -866,11 +933,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Asako_Omi_20170912.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E8%BA%AB%E6%9C%9D%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鹿嶋祐介",
@@ -878,14 +946,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kashima-yusuke.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212412.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "梶山弘志",
@@ -893,11 +962,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Hiroshi_Kajiyama_20191028_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A2%B6%E5%B1%B1%E5%BC%98%E5%BF%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "勝俣孝明",
@@ -905,11 +975,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Takaaki_Katsumata_20220812.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8B%9D%E4%BF%A3%E5%AD%9D%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "勝目康",
@@ -917,11 +988,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Yasushi_Katsume_20241122.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8B%9D%E7%9B%AE%E5%BA%B7",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "門寛子",
@@ -929,14 +1001,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kado-hiroko.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/209047.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "加藤鮎子",
@@ -944,11 +1017,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Ayuko_Kato_20231222.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8A%A0%E8%97%A4%E9%AE%8E%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "加藤勝信",
@@ -956,11 +1030,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Katsunobu_Kat%C5%8D_20241001_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8A%A0%E8%97%A4%E5%8B%9D%E4%BF%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "加藤貴弘",
@@ -968,11 +1043,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/34/Takahiro_Kato_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8A%A0%E8%97%A4%E8%B2%B4%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "加藤大博",
@@ -980,14 +1056,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kato-tomohiro.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212422.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "加藤竜祥",
@@ -995,11 +1072,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/Ryusho_Kato.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8A%A0%E8%97%A4%E7%AB%9C%E7%A5%A5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "門山宏哲",
@@ -1007,11 +1085,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Hiroaki_Kadoyama.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%96%80%E5%B1%B1%E5%AE%8F%E5%93%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "金澤結衣",
@@ -1019,14 +1098,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kanazawa-yui.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212417.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "金子恭之",
@@ -1034,11 +1114,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Yasushi_Kaneko%2C_Minister_of_Land%2C_Infrastructure%2C_Transport_and_Tourism.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%AD%90%E6%81%AD%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "金子容三",
@@ -1046,11 +1127,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Yozo_Kaneko_202411.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%AD%90%E5%AE%B9%E4%B8%89",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "上川陽子",
@@ -1058,11 +1140,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Yoko_Kamikawa_20240716_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E5%B7%9D%E9%99%BD%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "川崎ひでと",
@@ -1070,14 +1153,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg/500px-Hideto_Kawasaki%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B4%8E%E3%81%B2%E3%81%A7%E3%81%A8",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "河野正美",
@@ -1085,14 +1169,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kawano-masami.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/202194.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "川松真一朗",
@@ -1100,14 +1185,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kawamatsu-shinichiro.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212413.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "菅家一郎",
@@ -1115,11 +1201,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Kanke_ichiro.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%85%E5%AE%B6%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "神田潤一",
@@ -1127,11 +1214,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/42/Junichi_Kanda_20250106.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A5%9E%E7%94%B0%E6%BD%A4%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "城内実",
@@ -1139,11 +1227,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Minoru_Kiuchi_20241001.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9F%8E%E5%86%85%E5%AE%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "黄川田仁志",
@@ -1151,11 +1240,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Official_portrait_of_Hitoshi_Kikawada%2C_Minister_of_State_for_Special_Missions.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BB%84%E5%B7%9D%E7%94%B0%E4%BB%81%E5%BF%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岸信千世",
@@ -1163,11 +1253,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/52/Nobuchiyo_Kishi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%B8%E4%BF%A1%E5%8D%83%E4%B8%96",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岸田文雄",
@@ -1175,11 +1266,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Fumio_Kishida_20211005_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%B8%E7%94%B0%E6%96%87%E9%9B%84",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "北神圭朗",
@@ -1187,11 +1279,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Keiro_Kitagami_2012.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8C%97%E7%A5%9E%E5%9C%AD%E6%9C%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "木原誠二",
@@ -1199,11 +1292,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/20211004kihara_seiji.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%A8%E5%8E%9F%E8%AA%A0%E4%BA%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "木原稔",
@@ -1211,11 +1305,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Minoru_Kihara_20230914.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%A8%E5%8E%9F%E7%A8%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "木村次郎",
@@ -1223,11 +1318,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/20211006kimura_jiro.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E6%AC%A1%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "草間剛",
@@ -1235,14 +1331,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kusama-tsuyoshi.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/209052.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "工藤彰三",
@@ -1250,11 +1347,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/80/Sh%C5%8Dz%C5%8D_Kud%C5%8D_20130310_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%A5%E8%97%A4%E5%BD%B0%E4%B8%89",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "国定勇人",
@@ -1262,11 +1360,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Kunisada_Isato_20191204.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9B%BD%E5%AE%9A%E5%8B%87%E4%BA%BA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "国光あやの",
@@ -1274,11 +1373,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Ayano_Kunimitsu_2025_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9B%BD%E5%85%89%E3%81%82%E3%82%84%E3%81%AE",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "熊田裕通",
@@ -1286,11 +1386,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hiromichi_Kumada.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%86%8A%E7%94%B0%E8%A3%95%E9%80%9A",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "栗原渉",
@@ -1298,11 +1399,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/48/Wataru_Kurihara_20251022.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A0%97%E5%8E%9F%E6%B8%89",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "黒崎祐一",
@@ -1310,14 +1412,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/kurosaki-yuuichi.jpg",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://www.jimin.jp/member/209050.html",
     "profileUrl": "https://www.jimin.jp/member/209050.html",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "小池正昭",
@@ -1325,14 +1428,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/7164/e43f626d-28a7-4873-9aff-e891a616ac3f.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://go2senkyo.com/seijika/50408/posts/1323702",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "小泉進次郎",
@@ -1340,11 +1444,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Shinjir%C5%8D_Koizumi_202511_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B3%89%E9%80%B2%E6%AC%A1%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小泉龍司",
@@ -1352,11 +1457,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Ry%C5%ABji_Koizumi_20111227.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B3%89%E9%BE%8D%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "河野太郎",
@@ -1364,11 +1470,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Tar%C5%8D_K%C5%8Dno_20100712_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E9%87%8E%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高村正大",
@@ -1376,11 +1483,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/59/Komura_Masahiro_in_November_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9D%91%E6%AD%A3%E5%A4%A7",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "こうらい啓一郎",
@@ -1388,14 +1496,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/korai-keiichiro.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/202151.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "古賀篤",
@@ -1403,11 +1512,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/20211006koga_atsushi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E8%B3%80%E7%AF%A4",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "國場幸之助",
@@ -1415,11 +1525,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Konosuke_Kokuba.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%8B%E5%A0%B4%E5%B9%B8%E4%B9%8B%E5%8A%A9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小寺裕雄",
@@ -1427,11 +1538,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/20211006kotera_hiroo.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AF%BA%E8%A3%95%E9%9B%84",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "後藤茂之",
@@ -1439,11 +1551,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Shigeyuki_Got%C5%8D_20160328.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BE%8C%E8%97%A4%E8%8C%82%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小林茂樹",
@@ -1451,11 +1564,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Shigeki_Kobayashi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%9E%97%E8%8C%82%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小林鷹之",
@@ -1463,11 +1577,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Takayuki_Kobayashi_cropped_1_20251111_jimin-teigen_1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%9E%97%E9%B7%B9%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小林史明",
@@ -1475,11 +1590,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Fumiaki_Kobayashi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%9E%97%E5%8F%B2%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小森卓郎",
@@ -1487,11 +1603,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Somuseimukan.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%A3%AE%E5%8D%93%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "今洋佑",
@@ -1499,14 +1616,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_6.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/6/4",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "斉木武志",
@@ -1514,14 +1632,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://saikitakeshi.jp/backyard/wp-content/themes/saikitakeshi/assets/img/profile/profile_img%402x.jpg",
+    "image": "",
     "imageSource": "official-site",
     "imageSourceUrl": "https://saikitakeshi.jp/profile/",
     "profileUrl": "https://saikitakeshi.jp/profile/",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "西條昌良",
@@ -1544,11 +1663,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Ken_Sait%C5%8D_20231214.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BD%8B%E8%97%A4%E5%81%A5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "斎藤洋明",
@@ -1556,11 +1676,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Hiroaki_Saito_20240129.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%8E%E8%97%A4%E6%B4%8B%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "斉藤りえ",
@@ -1568,14 +1689,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Rie_Saito_2019-07_at_Kobe_Sannomiya.jpg/500px-Rie_Saito_2019-07_at_Kobe_Sannomiya.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E3%82%8A%E3%81%88",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "坂井学",
@@ -1583,11 +1705,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Manabu_Sakai%2C_Minister_of_State_for_Special_Missions_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9D%82%E4%BA%95%E5%AD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "坂本哲志",
@@ -1595,11 +1718,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Tetsushi_Sakamoto_20220928_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9D%82%E6%9C%AC%E5%93%B2%E5%BF%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "坂本竜太郎",
@@ -1607,14 +1731,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/5363/c9857e8a-721e-47a6-b82e-a7594e3a74b1.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://go2senkyo.com/seijika/30364",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "笹川博義",
@@ -1622,11 +1747,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Hiroyoshi_Sasagawa%2C_State_Minister_of_Agriculture%2C_Forestry_and_Fisheries.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%AC%B9%E5%B7%9D%E5%8D%9A%E7%BE%A9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "佐々木紀",
@@ -1634,11 +1760,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Hajime_Sasaki.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E3%80%85%E6%9C%A8%E7%B4%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "佐藤主迪",
@@ -1646,14 +1773,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Masashi_sat%C5%8D_cropped_1_20260220shu_san_honkaigi5.jpg/250px-Masashi_sat%C5%8D_cropped_1_20260220shu_san_honkaigi5.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E4%B8%BB%E8%BF%AA",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "塩崎彰久",
@@ -1661,11 +1789,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Akihisa_Shiozaki.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E5%B4%8E%E5%BD%B0%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "繁本護",
@@ -1673,11 +1802,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ad/20211006shigemoto_mamoru.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B9%81%E6%9C%AC%E8%AD%B7",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "柴山昌彦",
@@ -1685,11 +1815,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/96/Masahiko_Shibayama.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9F%B4%E5%B1%B1%E6%98%8C%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "島尻安伊子",
@@ -1697,11 +1828,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Aiko_Shimajiri_%283x4_crop%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B3%B6%E5%B0%BB%E5%AE%89%E4%BC%8A%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "島田智明",
@@ -1709,11 +1841,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Tomoaki_Shimada_3.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B3%B6%E7%94%B0%E6%99%BA%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "下村博文",
@@ -1721,11 +1854,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Hakubun_Shimomura_20130110.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8B%E6%9D%91%E5%8D%9A%E6%96%87",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "白坂亜紀",
@@ -1733,11 +1867,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/65/Aki_Shirasaka_2023-10-22_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%99%BD%E5%9D%82%E4%BA%9C%E7%B4%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "新谷正義",
@@ -1745,11 +1880,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Masayoshi_Shintani_20211005.JPG",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%B0%E8%B0%B7%E6%AD%A3%E7%BE%A9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "新藤義孝",
@@ -1757,11 +1893,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Yoshitaka_Shind%C5%8D.2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%B0%E8%97%A4%E7%BE%A9%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "菅原一秀",
@@ -1769,11 +1906,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Sugawara_Isshu_2019.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%85%E5%8E%9F%E4%B8%80%E7%A7%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木英敬",
@@ -1781,11 +1919,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Eikei_Suzuki_20210731_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E8%8B%B1%E6%95%AC",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木馨祐",
@@ -1793,11 +1932,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Keisuke_Suzuki%2C_Minister_of_Justice_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E9%A6%A8%E7%A5%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木俊一",
@@ -1805,11 +1945,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Shunichi_Suzuki_20211004.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q3482658",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木淳司",
@@ -1817,11 +1958,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Junji_Suzuki_20180925.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E6%B7%B3%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木貴子",
@@ -1829,11 +1971,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Takako_Suzuki_20200408.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E8%B2%B4%E5%AD%90_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木拓海",
@@ -1841,14 +1984,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/ogp_image/7221/6bef5f0f-083c-4712-b5a8-09b4a6cb0cc0.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://go2senkyo.com/seijika/198072",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木憲和",
@@ -1856,11 +2000,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/80/Norikazu_Suzuki_20230526.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E6%86%B2%E5%92%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鈴木隼人",
@@ -1868,11 +2013,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/20200918suzuki_hayato.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E9%9A%BC%E4%BA%BA_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "関芳弘",
@@ -1880,11 +2026,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/82/Yoshihiro_Seki.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%96%A2%E8%8A%B3%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "世古万美子",
@@ -1907,11 +2054,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Hiroshige_Sek%C5%8D_20160928_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%96%E8%80%95%E5%BC%98%E6%88%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "瀬戸隆一",
@@ -1919,11 +2067,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Takakazu_Seto_20240329.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%80%AC%E6%88%B8%E9%9A%86%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "園崎弘道",
@@ -1931,11 +2080,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Sonosaki_Hiromichi_cropped.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%92%E5%B4%8E%E5%BC%98%E9%81%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "平将明",
@@ -1943,11 +2093,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Masaaki_Taira_20220404.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%B0%86%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高市早苗",
@@ -1955,11 +2106,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Official_portrait_of_Sanae_Takaichi%2C_Prime_Minister_of_Japan_%28HD%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高階恵美子",
@@ -1967,11 +2119,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Takagai_Emiko_%282018%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E9%9A%8E%E6%81%B5%E7%BE%8E%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高木啓",
@@ -1979,11 +2132,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Kei_Takagi_20220812_2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%95%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高木宏壽",
@@ -1991,11 +2145,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Hirohisa_Takagi_20230915.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%AE%8F%E5%A3%BD",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高鳥修一",
@@ -2003,11 +2158,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Shuichi_Takatori.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E9%B3%A5%E4%BF%AE%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高橋祐介",
@@ -2015,14 +2171,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://prod-cdn.go2senkyo.com/uploads/cms/politician_profile/portrait/6170/ef255400-68e9-4957-a5ce-428aadc4e2f7.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://go2senkyo.com/seijika/182725",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "高見康裕",
@@ -2030,11 +2187,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Yasuhiro_Takami_20240112.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E8%A6%8B%E5%BA%B7%E8%A3%95",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "武井俊輔",
@@ -2042,11 +2200,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Shunsuke_Takei_20220812.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E4%BA%95%E4%BF%8A%E8%BC%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "武田良太",
@@ -2054,11 +2213,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Ry%C5%8Dta_Takeda_20191224.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B0%E8%89%AF%E5%A4%AA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "武部新",
@@ -2066,11 +2226,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Takebe_Arata_20211006_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E9%83%A8%E6%96%B0",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "武村展英",
@@ -2078,11 +2239,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/75/Takemura_nobuhide.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E6%9D%91%E5%B1%95%E8%8B%B1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "橘慶一郎",
@@ -2090,11 +2252,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Keichiro_Tachibana_20240602.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A9%98%E6%85%B6%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田所嘉徳",
@@ -2102,11 +2265,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Yoshinori_Tadokoro_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%89%80%E5%98%89%E5%BE%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田中和徳",
@@ -2114,11 +2278,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Tanaka_Kazunori_%282019%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E5%92%8C%E5%BE%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田中昌史",
@@ -2126,11 +2291,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Masashi_Tanaka_20250418moushiire.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%98%8C%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田中良生",
@@ -2138,11 +2304,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/73/Ryosei_Tanaka.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E8%89%AF%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "棚橋泰文",
@@ -2150,11 +2317,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/20210625_Tanahashi_Yasufumi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%9A%E6%A9%8B%E6%B3%B0%E6%96%87",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "谷公一",
@@ -2162,11 +2330,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/Kohichi_Tani_20191216.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B0%B7%E5%85%AC%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "谷川とむ",
@@ -2174,11 +2343,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a0/20200918tanigawa_tom.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B0%B7%E5%B7%9D%E3%81%A8%E3%82%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田野瀬太道",
@@ -2186,11 +2356,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Taido_Tanose.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E9%87%8E%E7%80%AC%E5%A4%AA%E9%81%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田畑裕明",
@@ -2198,11 +2369,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ce/20211006tabata_hiroaki2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E7%95%91%E8%A3%95%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田宮寿人",
@@ -2210,14 +2382,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/tamiya-hisato.jpg",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://www.jimin.jp/member/209045.html",
     "profileUrl": "https://www.jimin.jp/member/209045.html",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "田村憲久",
@@ -2225,11 +2398,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Norihisa_Tamura_2025_cropped_20251111_jimin-teigen_1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%9D%91%E6%86%B2%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "俵田祐児",
@@ -2237,14 +2411,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://shugiin.go2senkyo.com/51/img/ogp/hirei_9.jpg",
+    "image": "",
     "imageSource": "trusted-fallback",
     "imageSourceUrl": "https://shugiin.go2senkyo.com/51/hirei/9/4",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "辻清人",
@@ -2252,11 +2427,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Kiyoto_Tsuji%2C_State_Minister_of_Cabinet_Office_%28cropped%29.jpg/960px-Kiyoto_Tsuji%2C_State_Minister_of_Cabinet_Office_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BE%BB%E6%B8%85%E4%BA%BA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "辻秀樹",
@@ -2264,14 +2440,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/tsuji-hideki.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212424.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "辻由布子",
@@ -2291,11 +2468,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Jun_Tsushima_20140510.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B4%A5%E5%B3%B6%E6%B7%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "土田慎",
@@ -2303,11 +2481,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Shin_Tsuchida_2023_portrait_%28crop%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%9F%E7%94%B0%E6%85%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "土屋品子",
@@ -2315,11 +2494,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/68/Shinako_Tsuchiya_2023_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%93%81%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "寺田稔",
@@ -2327,11 +2507,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Terada_minoru.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AF%BA%E7%94%B0%E7%A8%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "土井亨",
@@ -2339,11 +2520,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0f/T%C5%8Dru_Doi_20150726%281%29.JPG",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%9F%E4%BA%95%E4%BA%A8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "渡海紀三朗",
@@ -2351,11 +2533,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Kisabur%C5%8D_Tokai_20240123.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E6%B5%B7%E7%B4%80%E4%B8%89%E6%9C%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "冨樫博之",
@@ -2363,11 +2546,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/01/Hiroyuki_Togashi_20230817.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%86%A8%E6%A8%AB%E5%8D%9A%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "とかしきなおみ",
@@ -2375,11 +2559,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/03/Naomi_Tokashiki_Jimin_IMG_5317_20130706.JPG",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%A8%E3%81%8B%E3%81%97%E3%81%8D%E3%81%AA%E3%81%8A%E3%81%BF",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "永岡桂子",
@@ -2387,11 +2572,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Keiko_Nagaoka_2023_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B0%B8%E5%B2%A1%E6%A1%82%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中川こういち",
@@ -2399,14 +2585,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/nakagawa-koichi.jpg",
+    "image": "",
     "imageSource": "party-site",
     "imageSourceUrl": "https://www.jimin.jp/member/212402.html",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": true,
-    "imageMaskMode": "pixelate-bottom"
+    "imageMaskMode": "pixelate-bottom",
+    "imageStatus": "missing"
   },
   {
     "name": "中川貴元",
@@ -2414,11 +2601,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Takamoto_Nakagawa_20220812_%28original%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E8%B2%B4%E5%85%83",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "長坂康正",
@@ -2426,11 +2614,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Yasumasa_Nagasaka.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%9D%82%E5%BA%B7%E6%AD%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "長澤興祐",
@@ -2438,14 +2627,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.jimin.jp/member/img/nagasawa-kosuke.jpg",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://www.jimin.jp/member/212414.html",
     "profileUrl": "https://www.jimin.jp/member/212414.html",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "長島昭久",
@@ -2453,11 +2643,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Akihisa_Nagashima_20241011.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B3%B6%E6%98%AD%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中曽根康隆",
@@ -2465,11 +2656,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/96/20211111nakasone_yasutaka.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%9B%BD%E6%A0%B9%E5%BA%B7%E9%9A%86",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中田宏",
@@ -2477,11 +2669,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Hiroshi_Nakada_20241122.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E7%94%B0%E5%AE%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "永田磨梨奈",
@@ -2489,11 +2682,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/Marina_Nagata.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B0%B8%E7%94%B0%E7%A3%A8%E6%A2%A8%E5%A5%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中谷元",
@@ -2501,11 +2695,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Gen_Nakatani_20241003.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%B0%B7%E5%85%83",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中谷真一",
@@ -2513,11 +2708,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/76/%E4%B8%AD%E8%B0%B7%E7%9C%9F%E4%B8%80%E6%B0%8F%E3%81%AE%E8%82%96%E5%83%8F.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%B0%B7%E7%9C%9F%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中西健治",
@@ -2525,11 +2721,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a0/%E4%B8%AD%E8%A5%BF%E5%81%A5%E6%B2%BB.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%A5%BF%E5%81%A5%E6%B2%BB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中根一幸",
@@ -2537,11 +2734,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Kazuyuki_Nakane.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%A0%B9%E4%B8%80%E5%B9%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中野英幸",
@@ -2549,11 +2747,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Hideyuki_Nakano_20220812_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E9%87%8E%E8%8B%B1%E5%B9%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "長野春信",
@@ -2573,11 +2772,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/34/Hiroyuki_Nakamura.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%9D%91%E8%A3%95%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中山展宏",
@@ -2585,11 +2785,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Nakayama_Norihiro_%282019%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B1%B1%E5%B1%95%E5%AE%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中山泰秀",
@@ -2597,11 +2798,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Yasuhide_Nakayama.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B1%B1%E6%B3%B0%E7%A7%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "仁木博文",
@@ -2609,11 +2811,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Hirobumi_Niki_2024.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BB%81%E6%9C%A8%E5%8D%9A%E6%96%87",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西田昭二",
@@ -2621,11 +2824,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Shoji_Nishida_20220812.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E7%94%B0%E6%98%AD%E4%BA%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西野太亮",
@@ -2633,11 +2837,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Daisuke_Nishino.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E9%87%8E%E5%A4%AA%E4%BA%AE",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西村明宏",
@@ -2645,11 +2850,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/86/Akihiro_Nishimura_20120612.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%98%8E%E5%AE%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西村康稔",
@@ -2657,11 +2863,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Yasutoshi_Nishimura_20190911.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E5%BA%B7%E7%A8%94",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西銘恒三郎",
@@ -2669,11 +2876,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Kosabur%C5%8D_Nishime_20211004.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E9%8A%98%E6%81%92%E4%B8%89%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西山尚利",
@@ -2705,11 +2913,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/99_niwa_hideki.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%B9%E7%BE%BD%E7%A7%80%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "額賀福志郎",
@@ -2717,11 +2926,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5c/%E9%A1%8D%E8%B3%80%E7%A6%8F%E5%BF%97%E9%83%8E20251222.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A1%8D%E8%B3%80%E7%A6%8F%E5%BF%97%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "根本拓",
@@ -2741,11 +2951,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/45/Yukinori_Nemoto_201608.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A0%B9%E6%9C%AC%E5%B9%B8%E5%85%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "野田聖子",
@@ -2753,11 +2964,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/59/Seiko_Noda_20171209_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E8%81%96%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "野中厚",
@@ -2765,11 +2977,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Nonaka_atsushi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E4%B8%AD%E5%8E%9A",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "萩生田光一",
@@ -2777,11 +2990,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/K%C5%8Dichi_Hagiuda_20211004.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%90%A9%E7%94%9F%E7%94%B0%E5%85%89%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "橋本岳",
@@ -2789,11 +3003,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/%E6%A9%8B%E6%9C%AC%E5%B2%B3%E6%B0%8F%E3%81%AE%E8%BF%91%E5%BD%B1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E5%B2%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "長谷川淳二",
@@ -2801,11 +3016,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/Hasegawa_junji.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E8%B0%B7%E5%B7%9D%E6%B7%B3%E4%BA%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鳩山二郎",
@@ -2813,11 +3029,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/81/Jir%C5%8D_Hatoyama%2C_State_Minister_of_Cabinet_Office.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%B3%A9%E5%B1%B1%E4%BA%8C%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "葉梨康弘",
@@ -2825,11 +3042,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/Yasuhiro_Hanashi_20160212.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%91%89%E6%A2%A8%E5%BA%B7%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "浜田靖一",
@@ -2837,11 +3055,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Yasukazu_Hamada_20220810.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%9C%E7%94%B0%E9%9D%96%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "林芳正",
@@ -2849,11 +3068,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Hayashi_Yoshimasa_MIAC_portrait.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9E%97%E8%8A%B3%E6%AD%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "東田淳平",
@@ -2873,11 +3093,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Takuya_Hirai_20200131_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E4%BA%95%E5%8D%93%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "平口洋",
@@ -2885,11 +3106,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Hiroshi_Hiraguchi_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%8F%A3%E6%B4%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "平沢勝栄",
@@ -2897,11 +3119,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Hirasawa_katsuei_%282020%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B2%A2%E5%8B%9D%E6%A0%84",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "平沼正二郎",
@@ -2909,11 +3132,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Sh%C5%8Djir%C5%8D_Hiranuma_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B2%BC%E6%AD%A3%E4%BA%8C%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "広瀬建",
@@ -2921,14 +3145,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg/250px-Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%83%E7%80%AC%E5%BB%BA",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "深澤陽一",
@@ -2936,11 +3161,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/20211111fukazawa_yoichi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E6%BE%A4%E9%99%BD%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "福田かおる",
@@ -2948,11 +3174,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Kaoru_Fukuda_2024-11-17%282%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E3%81%8B%E3%81%8A%E3%82%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "福田達夫",
@@ -2960,11 +3187,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/98_fukuda_tatsuo.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E9%81%94%E5%A4%AB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "福原淳嗣",
@@ -2972,11 +3200,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/%E7%A7%8B%E7%94%B0%E7%9C%8C%E5%A4%A7%E9%A4%A8%E5%B8%82_%E5%B8%82%E9%95%B7_%E7%A6%8F%E5%8E%9F%E6%B7%B3%E5%97%A3.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E5%8E%9F%E6%B7%B3%E5%97%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "藤井比早之",
@@ -2984,11 +3213,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Hisayuki_Fujii_2024.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E4%BA%95%E6%AF%94%E6%97%A9%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "藤沢忠盛",
@@ -3020,14 +3250,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://i0.wp.com/fujitamakoto.com/wp-content/uploads/2026/01/Fujita_S142.jpg?resize=1024%2C768&ssl=1",
+    "image": "",
     "imageSource": "official-site",
     "imageSourceUrl": "https://fujitamakoto.com/",
     "profileUrl": "https://fujitamakoto.com/",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "藤田洋司",
@@ -3035,11 +3266,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Y%C5%8Dji_Fujita_cropped_1_20260220shu_san_honkaigi5.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%B4%8B%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "藤丸敏",
@@ -3047,11 +3279,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/63/Satoshi_Fujimaru_20121119.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E4%B8%B8%E6%95%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "藤原崇",
@@ -3059,11 +3292,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/58/Fujiwara_Takashi_%282019%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E5%8E%9F%E5%B4%87",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "文月涼",
@@ -3083,11 +3317,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Hajime_Funada_20230712_1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%88%B9%E7%94%B0%E5%85%83",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "古井康介",
@@ -3107,11 +3342,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Naoki_Furukawa_20210430_%28cropped%29.jpg/960px-Naoki_Furukawa_20210430_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E7%9B%B4%E5%AD%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "古川康",
@@ -3119,11 +3355,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Yasushi_Furukawa%2C_State_Minister_of_Land%2C_Infrastructure%2C_Transport_and_Tourism.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E5%BA%B7",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "古川禎久",
@@ -3131,11 +3368,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Yoshihisa_Furukawa_20211004.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E7%A6%8E%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "古屋圭司",
@@ -3143,11 +3381,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Keiji_Furuya_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B1%8B%E5%9C%AD%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "穂坂泰",
@@ -3155,11 +3394,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Yasushi_Hosaka%2C_State_Minister_for_Digital_Transformation.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A9%82%E5%9D%82%E6%B3%B0",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "星野剛士",
@@ -3167,11 +3407,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Tsuyoshi_Hoshino_20170321.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%98%9F%E9%87%8E%E5%89%9B%E5%A3%AB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "細田健一",
@@ -3179,11 +3420,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/20211006hosoda_kenichi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%81%A5%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "細野豪志",
@@ -3191,11 +3433,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/65/Goshi_Hosono_%28Naoto_Kan_Cabinet%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B4%B0%E9%87%8E%E8%B1%AA%E5%BF%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "堀内詔子",
@@ -3203,11 +3446,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Noriko_Horiuchi%2C_State_Minister_for_Internal_Affairs_and_Communications.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A0%80%E5%86%85%E8%A9%94%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "本田太郎",
@@ -3215,11 +3459,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Taro_Honda_202411.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%AC%E7%94%B0%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "前川恵",
@@ -3239,11 +3484,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/98/Karen_Makishima_20130904.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%89%A7%E5%B3%B6%E3%81%8B%E3%82%8C%E3%82%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "松下英樹",
@@ -3263,11 +3509,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/48/Midori_Matsushima_20250519_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B3%B6%E3%81%BF%E3%81%A9%E3%82%8A",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "松野博一",
@@ -3275,11 +3522,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Hirokazu_Matsuno_20211110.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E9%87%8E%E5%8D%9A%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "松本泉",
@@ -3299,11 +3547,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hisashi_Matsumoto_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E5%B0%9A",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "松本洋平",
@@ -3311,11 +3560,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Y%C5%8Dhei_Matsumoto_2019_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E6%B4%8B%E5%B9%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "丸尾なつ子",
@@ -3335,11 +3585,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Tamayo_Murakawa_20210218.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%B8%E5%B7%9D%E7%8F%A0%E4%BB%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "丸田康一郎",
@@ -3371,11 +3622,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Official_portrait_of_Satoshi_Mitazono.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%8F%8D%E5%9C%92%E8%A8%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "三谷英弘",
@@ -3383,11 +3635,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Hidehiro_Mitani%2C_State_Minister_of_Justice_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%89%E8%B0%B7%E8%8B%B1%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "三ッ林裕巳",
@@ -3395,11 +3648,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Hiromi_Mitsubayashi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%89%E3%83%83%E6%9E%97%E8%A3%95%E5%B7%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "御法川信英",
@@ -3407,11 +3661,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Nobuhide_Minorikawa_on_August_6%2C_2024.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E6%B3%95%E5%B7%9D%E4%BF%A1%E8%8B%B1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "三原朝利",
@@ -3431,11 +3686,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hideki_Miyauchi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E5%86%85%E7%A7%80%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "宮崎政久",
@@ -3443,11 +3699,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Masahisa_Miyazaki_20251024_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E5%B4%8E%E6%94%BF%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "宮路拓馬",
@@ -3455,11 +3712,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Takuma_Miyaji_20210330.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E8%B7%AF%E6%8B%93%E9%A6%AC",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "宮下一郎",
@@ -3467,11 +3725,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Ichiro_Miyashita_20200410_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E4%B8%8B%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "向山淳",
@@ -3479,14 +3738,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg/250px-Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E6%B7%B3",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "武藤容治",
@@ -3494,11 +3754,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Minister_of_Economy%2C_Trade_and_Industry_Y%C5%8Dji_Mut%C5%8D.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E8%97%A4%E5%AE%B9%E6%B2%BB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "宗清皇一",
@@ -3506,11 +3767,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/K%C5%8Dichi_Munekiyo_20150502.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%97%E6%B8%85%E7%9A%87%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "村井英樹",
@@ -3518,11 +3780,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/87/Hideki_Murai_2021.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%BA%95%E8%8B%B1%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "村上誠一郎",
@@ -3530,11 +3793,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Seiichir%C5%8D_Murakami%2C_Minister_for_Internal_Affairs_and_Communications.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E8%AA%A0%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "村木汀",
@@ -3542,14 +3806,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg/250px-Nagisa_Muraki_cropped_1_20260220shu_san_honkaigi5.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%9C%A8%E6%B1%80",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "茂木敏充",
@@ -3557,11 +3822,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Official_portrait_of_Toshimitsu_Motegi_2024_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8C%82%E6%9C%A8%E6%95%8F%E5%85%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "森下千里",
@@ -3569,11 +3835,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/49/Chisato_Morishita.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E4%B8%8B%E5%8D%83%E9%87%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "森原紀代子",
@@ -3593,11 +3860,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/14/Hiroshi_Moriyama_20240604.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E5%B1%B1%E8%A3%95",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "盛山正仁",
@@ -3605,11 +3873,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Masahito_Moriyama_20230218_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9B%9B%E5%B1%B1%E6%AD%A3%E4%BB%81",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "保岡宏武",
@@ -3629,11 +3898,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/80/98_yana_kazuo.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B0%97%E5%92%8C%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山際大志郎",
@@ -3641,11 +3911,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/Daishir%C5%8D_Yamagiwa_20211004.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E9%9A%9B%E5%A4%A7%E5%BF%97%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山口俊一",
@@ -3653,11 +3924,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Shunichi_Yamaguchi_on_September_4%2C_2025_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E4%BF%8A%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山口晋",
@@ -3665,14 +3937,15 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Susumu_Yamaguchi_20230123shiseihoshin_a_06.jpg/120px-Susumu_Yamaguchi_20230123shiseihoshin_a_06.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E6%99%8B_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "山口壯",
@@ -3680,11 +3953,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Tsuyoshi_Yamaguchi_20190303.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E5%A3%AF",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山下史守朗",
@@ -3692,11 +3966,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%B0%8F%E7%89%A7%E5%B8%82_%E5%B8%82%E9%95%B7_%E5%B1%B1%E4%B8%8B%E5%8F%B2%E5%AE%88%E6%9C%97.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%8B%E5%8F%B2%E5%AE%88%E6%9C%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山下貴司",
@@ -3704,11 +3979,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Takashi_Yamashita_2018.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%8B%E8%B2%B4%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山田賢司",
@@ -3716,11 +3992,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/YAMADA%2C_Kenji.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E8%B3%A2%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山田美樹",
@@ -3728,11 +4005,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Miki_Yamada_20200216.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E7%BE%8E%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山田基靖",
@@ -3752,11 +4030,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Sakon_Yamamoto_20220818.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%B7%A6%E8%BF%91",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山本深",
@@ -3776,11 +4055,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Daichi_Yamamoto.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%A4%A7%E5%9C%B0",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山本裕三",
@@ -3800,11 +4080,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Shinji_Yoshida_20251027_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E7%9C%9F%E6%AC%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "吉田有理",
@@ -3848,11 +4129,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Wakabayasi_kenta.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E6%9E%97%E5%81%A5%E5%A4%AA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "若宮健嗣",
@@ -3860,11 +4142,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Kenji_Wakamiya_20241119.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E5%AE%AE%E5%81%A5%E5%97%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "若山慎司",
@@ -3872,11 +4155,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Shinji_Wakayama.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E5%B1%B1%E6%85%8E%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "鷲尾英一郎",
@@ -3884,11 +4168,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Washio_Eiichirou.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%B7%B2%E5%B0%BE%E8%8B%B1%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "和田義明",
@@ -3896,11 +4181,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Yoshiaki_Wada_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E7%BE%A9%E6%98%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "渡辺勝幸",
@@ -3920,11 +4206,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Watanabe_Kouichi_%282019%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%AD%9D%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "渡辺博道",
@@ -3932,11 +4219,12 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Hiromichi_Watanabe_20221227.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%8D%9A%E9%81%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "赤羽一嘉",
@@ -3944,11 +4232,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/12/Kazuyoshi_Akaba_20120521.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%BE%BD%E4%B8%80%E5%98%89",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "有田芳生",
@@ -3956,11 +4245,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/Yoshifu_Arita_2024-10-14%281%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%89%E7%94%B0%E8%8A%B3%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "伊佐進一",
@@ -3968,11 +4258,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Shinichi_Isa_20161030.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E4%BD%90%E9%80%B2%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "泉健太",
@@ -3980,11 +4271,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Kenta_Izumi_2022-6-26_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%81%A5%E5%A4%AA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "犬飼明佳",
@@ -4004,11 +4296,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/47/Ukishima_Tomoko_%282018%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%AE%E5%B3%B6%E6%99%BA%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大島敦",
@@ -4016,11 +4309,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/02/Oshima_Atsushi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B3%B6%E6%95%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "大森江里子",
@@ -4028,11 +4322,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Centrist_Reform_Alliance_politicians_2026-01-25%2808%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A3%AE%E6%B1%9F%E9%87%8C%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岡本三成",
@@ -4040,11 +4335,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Mitsunari_Okamoto_on_May_29%2C_2025_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%9C%AC%E4%B8%89%E6%88%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小川淳也",
@@ -4052,11 +4348,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Junya_Ogawa_20250703_1_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%B7%9D%E6%B7%B3%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "落合貴之",
@@ -4064,11 +4361,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/2025%E5%B9%B44%E6%9C%8815%E6%97%A5%E9%A3%9F%E6%96%99%E5%93%81%E3%81%AE%E6%B6%88%E8%B2%BB%E7%A8%8E%E3%82%BC%E3%83%AD%EF%BC%85%E3%82%92%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E4%BC%9A_%E8%90%BD%E5%90%88%E8%B2%B4%E4%B9%8B_%E8%A1%86%E8%AD%B0%E9%99%A2%E7%AC%AC%E4%BA%8C%E8%AD%B0%E5%93%A1%E4%BC%9A%E9%A4%A8_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%90%BD%E5%90%88%E8%B2%B4%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "河西宏一",
@@ -4076,11 +4374,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/K%C5%8Dichi_Kasai_2024-11-07.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E8%A5%BF%E5%AE%8F%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "金子恵美",
@@ -4088,11 +4387,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaneko_Emi.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q5371065",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "神谷裕",
@@ -4100,11 +4400,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a0/2022%E5%B9%B46%E6%9C%8821%E6%97%A5%E7%B2%98%E8%99%95%E9%95%B7%E6%8B%9C%E6%9C%83%E7%9C%BE%E8%AD%B0%E9%99%A2%E7%A5%9E%E8%B0%B7%E8%A3%95%E8%AD%B0%E5%93%A1_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A5%9E%E8%B0%B7%E8%A3%95",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "河野義博",
@@ -4112,11 +4413,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Kawano_Yoshihiro_%282019%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E9%87%8E%E7%BE%A9%E5%8D%9A_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "菊田真紀子",
@@ -4124,11 +4426,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Makiko_Kikuta_20240623enzetsu.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%8A%E7%94%B0%E7%9C%9F%E7%B4%80%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "金城泰邦",
@@ -4136,11 +4439,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/df/Yasukuni_Kinjou_2024.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%9F%8E%E6%B3%B0%E9%82%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "國重徹",
@@ -4148,11 +4452,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/52/Toru_Kunishige.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%8B%E9%87%8D%E5%BE%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "輿水恵一",
@@ -4160,11 +4465,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/96/Keiichi_Koshimizu_20241003.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BC%BF%E6%B0%B4%E6%81%B5%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "後藤祐一",
@@ -4172,11 +4478,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Y%C5%ABichi_Got%C5%8D.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q11488572",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "近藤和也",
@@ -4184,11 +4491,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Kazuya_Kondo_20200808_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E5%92%8C%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "斉藤鉄夫",
@@ -4196,11 +4504,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Tetsuo_Saito_20211004.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E9%89%84%E5%A4%AB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "佐藤英道",
@@ -4208,11 +4517,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/20211111sato_hidemichi.jpg/250px-20211111sato_hidemichi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E8%8B%B1%E9%81%93",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "重徳和彦",
@@ -4220,11 +4530,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Kazuhiko_Shigetoku_%282014.03.23%29_2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8D%E5%BE%B3%E5%92%8C%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "階猛",
@@ -4232,11 +4543,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Takeshi_Shina_20201205_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9A%8E%E7%8C%9B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "庄子賢一",
@@ -4244,11 +4556,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Kenichi_Shoji_2024.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%84%E5%AD%90%E8%B3%A2%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田嶋要",
@@ -4256,11 +4569,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Tajima_Kaname.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E5%B6%8B%E8%A6%81",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "角田秀穂",
@@ -4268,11 +4582,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Hideho_Tsunoda_20170926.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A7%92%E7%94%B0%E7%A7%80%E7%A9%82",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中川宏昌",
@@ -4292,11 +4607,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/20211111nakagawa_yasuhiro.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E5%BA%B7%E6%B4%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "長妻昭",
@@ -4304,11 +4620,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Akira_Nagatsuma_2024-10-19%282%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%A6%BB%E6%98%AD",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中野洋昌",
@@ -4316,11 +4633,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Hiromasa_Nakano_20241206.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E9%87%8E%E6%B4%8B%E6%98%8C",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西園勝秀",
@@ -4328,11 +4646,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E3%83%BB%E8%A5%BF%E5%9C%92_%E5%8B%9D%E7%A7%80%EF%BC%88%E3%81%AB%E3%81%97%E3%81%9E%E3%81%AE_%E3%81%8B%E3%81%A4%E3%81%B2%E3%81%A7%EF%BC%89.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%9C%92%E5%8B%9D%E7%A7%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西村智奈美",
@@ -4340,11 +4659,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Chinami_Nishimura_20230911.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%99%BA%E5%A5%88%E7%BE%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "沼崎満子",
@@ -4364,11 +4684,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Yoshihiko_Noda_with_Yoshio_Tezuka_2025-07-19%283%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E4%BD%B3%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "野間健",
@@ -4376,11 +4697,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Takeshi_Noma_20221015.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E9%96%93%E5%81%A5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "浜地雅一",
@@ -4388,11 +4710,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Hamachi_Masakazu.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%9C%B0%E9%9B%85%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "原田直樹",
@@ -4436,11 +4759,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Tatsumaru-Yamaoka-MJP-20230704.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%B2%A1%E9%81%94%E4%B8%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山崎正恭",
@@ -4460,11 +4784,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/Kanae_Yamamoto_20240530.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E9%A6%99%E8%8B%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "吉田宣弘",
@@ -4472,11 +4797,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nobuhiro_Yoshida_20180820.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E5%AE%A3%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "笠浩史",
@@ -4484,11 +4810,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/29/Hirofumi_Ryu.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%AC%A0%E6%B5%A9%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "早稲田ゆき",
@@ -4508,11 +4835,12 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%89%B5",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "青柳仁士",
@@ -4520,11 +4848,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Hitoshiaoyagi.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%9F%B3%E4%BB%81%E5%A3%AB",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "東徹",
@@ -4532,11 +4861,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/df/T%C5%8Dru_Azuma_20250522menkai.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%BE%B9_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "阿部圭史",
@@ -4544,11 +4874,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Keishi_Abe_cropped_1_Ry%C5%8Dsei_Akazawa%2C_Fumitake_Fujita_and_Keishi_Abe_and_Tomonobu_Murakami_and_Rie_Sasaki_20251114_1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%9C%AD%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "阿部司",
@@ -4556,11 +4887,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Tsukasa_Abe_cropped_1_20251111_ishin-teigen_1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "池下卓",
@@ -4580,14 +4912,15 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://o-ishin.jp/member/images/member/post_171.jpg",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://o-ishin.jp/member/detail/post_171.html",
     "profileUrl": "https://o-ishin.jp/member/detail/post_171.html",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "一谷勇一郎",
@@ -4595,11 +4928,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%80%E8%B0%B7%E5%8B%87%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "市村浩一郎",
@@ -4607,11 +4941,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C5%8Dichir%C5%8D_Ichimura.jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q6426248",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "伊東信久",
@@ -4619,11 +4954,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Nobuhisa_It%C5%8D_cropped_1_20251204_shakaihoshou_3.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E4%BF%A1%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井上英孝",
@@ -4631,11 +4967,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Hidetaka_Inoue_in_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%8B%B1%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岩谷良平",
@@ -4643,11 +4980,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Ry%C5%8Dhei_Iwatani_2025-06-21%283%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E8%B0%B7%E8%89%AF%E5%B9%B3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "梅村聡",
@@ -4655,11 +4993,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/82/Satoshi_Umemura_IMG_5913_20130714.JPG",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A2%85%E6%9D%91%E8%81%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "浦野靖人",
@@ -4667,11 +5006,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Yasuto_Urano_20241223.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%A6%E9%87%8E%E9%9D%96%E4%BA%BA",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "うるま譲司",
@@ -4679,11 +5019,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Gthumb.svg/langja-250px-Gthumb.svg.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%86%E3%82%8B%E3%81%BE%E8%AD%B2%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "遠藤敬",
@@ -4691,11 +5032,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/99/Takashi_End%C5%8D%2C_Special_Advisor_to_the_Prime_Minister_of_Japan_2025.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%81%A0%E8%97%A4%E6%95%AC",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "奥下剛光",
@@ -4727,11 +5069,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Ryuna_Kanamura_2022-6-26%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%9D%91%E9%BE%8D%E9%82%A3",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "喜多義典",
@@ -4751,11 +5094,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/24/Masaki_Kuroda_2026-01-31_%281%29.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BB%92%E7%94%B0%E5%BE%81%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "斎藤アレックス",
@@ -4763,11 +5107,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Alexsaito.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%8E%E8%97%A4%E3%82%A2%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "住吉寛紀",
@@ -4787,11 +5132,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/%E9%96%A2%E5%81%A5%E4%B8%80%E9%83%8E.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%96%A2%E5%81%A5%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高見亮",
@@ -4811,11 +5157,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Hiroshi_Nakatsuka_cropped_1_20251111_ishin-teigen_2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%8F%B8%E5%AE%8F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西田薫",
@@ -4847,11 +5194,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Nobuyuki_Baba_on_October_23%2C_2023.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A6%AC%E5%A0%B4%E4%BC%B8%E5%B9%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "原山大亮",
@@ -4871,11 +5219,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Fumitake_Fujita_20251204.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%96%87%E6%AD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "前原誠司",
@@ -4883,11 +5232,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Seiji_Maehara_2025-06-15%281%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%89%8D%E5%8E%9F%E8%AA%A0%E5%8F%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "三木圭恵",
@@ -4919,11 +5269,12 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Tomonobu_Murakami_cropped_1_Ry%C5%8Dsei_Akazawa%2C_Fumitake_Fujita_and_Keishi_Abe_and_Tomonobu_Murakami_and_Rie_Sasaki_20251114_1.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E6%99%BA%E4%BF%A1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "横田光弘",
@@ -4955,11 +5306,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Satoshi_Asano_2025-2-15%282%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%85%E9%87%8E%E5%93%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "飯泉嘉門",
@@ -4967,11 +5319,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/eb/%E5%BE%B3%E5%B3%B6%E7%9C%8C_%E7%9F%A5%E4%BA%8B_%E9%A3%AF%E6%B3%89%E5%98%89%E9%96%80.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E6%B3%89%E5%98%89%E9%96%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "井戸まさえ",
@@ -4979,11 +5332,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/59/Japanese_general_election_2012_Masae_Ido_in_Motomachi_IMG_0076_20121209.JPG",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E6%88%B8%E3%81%BE%E3%81%95%E3%81%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "臼木秀剛",
@@ -4991,11 +5345,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Hidetake_Usuki_20241118.jpg/250px-Hidetake_Usuki_20241118.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%87%BC%E6%9C%A8%E7%A7%80%E5%89%9B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "岡野純子",
@@ -5003,11 +5358,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/45/Junko_Okano_2025-04-27%281%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E9%87%8E%E7%B4%94%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "小竹凱",
@@ -5015,14 +5371,15 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://new-kokumin.jp/wp-content/uploads/2024/03/4d6205449a9126cb5aac85362ac92860.jpg",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://new-kokumin.jp/member/odake-kai",
     "profileUrl": "https://new-kokumin.jp/member/odake-kai",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "河井昭成",
@@ -5078,11 +5435,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Yoshihiro_Suzuki_2025-05-05_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E7%BE%A9%E5%BC%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高沢一基",
@@ -5102,11 +5460,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/24/Ken_Tanaka_20221020.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E5%81%A5_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "玉木雄一郎",
@@ -5114,11 +5473,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Yuichiro_Tamaki_20251112.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%8E%89%E6%9C%A8%E9%9B%84%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "丹野みどり",
@@ -5162,11 +5522,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/Hideko_Nishioka.20221209.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B2%A1%E7%A7%80%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "西岡義高",
@@ -5174,11 +5535,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Yoshitaka_Nishioka_2025-02-08%281%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B2%A1%E7%BE%A9%E9%AB%98",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "野村美穂",
@@ -5198,11 +5560,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hashimoto_mikihiko20241207.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E5%B9%B9%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "日野紗里亜",
@@ -5222,11 +5585,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Fukasaku_Jes%C3%BAs_2025-02-08%282%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E4%BD%9C%E3%83%98%E3%82%B9%E3%82%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "福田徹",
@@ -5234,11 +5598,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/2025%E5%B9%B411%E6%9C%8815%E6%97%A5_%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%E5%89%8D%E3%81%A7%E8%A1%97%E9%A0%AD%E6%BC%94%E8%AA%AC%E3%82%92%E8%A1%8C%E3%81%86%E7%A6%8F%E7%94%B0%E5%BE%B9.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E5%BE%B9",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "古川元久",
@@ -5246,11 +5611,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Motohisa_Furukawa_20251112.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E5%85%83%E4%B9%85",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "向山好一",
@@ -5258,11 +5624,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/d/de/Japanese_general_election_2012_Kouichi_Mukoyama_in_Motomachi_IMG_0074_20121209.JPG",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E5%A5%BD%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "村岡敏英",
@@ -5270,11 +5637,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Mura_wiki.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E5%B2%A1%E6%95%8F%E8%8B%B1",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "森ようすけ",
@@ -5282,11 +5650,12 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Yosuke_Mori_2025-5-25(4)_(cropped).jpg",
+    "image": "",
     "imageSource": "wikidata-commons",
     "imageSourceUrl": "https://www.wikidata.org/wiki/Q130736349",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "青木ひとみ",
@@ -5294,14 +5663,15 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://sanseito.jp/election_member/wp-content/uploads/2025/05/A10a_aoki-hitomi-photo01.png",
+    "image": "",
     "imageSource": "official-party",
     "imageSourceUrl": "https://sanseito.jp/election_member/aokihitomi/",
     "profileUrl": "https://sanseito.jp/election_member/aokihitomi/",
     "aiGuess": false,
     "sourceType": "verified",
     "imageMaskBottom": false,
-    "imageMaskMode": "none"
+    "imageMaskMode": "none",
+    "imageStatus": "missing"
   },
   {
     "name": "石川勝",
@@ -5333,11 +5703,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/%E5%85%9A%E4%BB%A3%E8%A1%A8%E9%81%B8%E4%BC%9A%E8%A6%8B_%E5%B7%9D%E8%A3%95%E4%B8%80%E9%83%8E.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E8%A3%95%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "木下敏之",
@@ -5405,11 +5776,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Mayuko_Toyota_cropped_1_Mayuko_Toyota_201510.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B1%8A%E7%94%B0%E7%9C%9F%E7%94%B1%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "なかやめぐ",
@@ -5441,11 +5813,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/14/%E8%A1%97%E9%A0%AD%E6%BC%94%E8%AA%AC_%E5%90%89%E5%B7%9D%E3%82%8A%E3%81%AA%E2%91%A2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E5%B7%9D%E9%87%8C%E5%A5%88",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "和田政宗",
@@ -5453,11 +5826,12 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/Masamune_Wada_20130328.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E6%94%BF%E5%AE%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "渡辺藍理",
@@ -5513,11 +5887,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/%E9%A0%88%E7%94%B0%E3%81%88%E3%81%84%E3%81%9F%E3%82%8D%E3%81%86_7%E6%9C%8819%E6%97%A5.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A0%88%E7%94%B0%E8%8B%B1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "高山聡史",
@@ -5525,11 +5900,12 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/%E9%AB%98%E5%B1%B1%E8%81%A1%E5%8F%B2%EF%BC%882025%E5%B9%B410%E6%9C%8812%E6%97%A5%E3%83%BB%E7%B8%A6%E7%94%BB%E5%83%8F%EF%BC%89.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B1%B1%E8%81%A1%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "土橋章宏",
@@ -5609,11 +5985,12 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Shiokawatetsuya202108JCP.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E5%B7%9D%E9%89%84%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "辰巳孝太郎",
@@ -5621,11 +5998,12 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Kotaro_Tatsumi_2014.png",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BE%B0%E5%B7%B3%E5%AD%9D%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "田村智子",
@@ -5633,11 +6011,12 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Tomoko_Tamura_2024-10-26%284%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%9D%91%E6%99%BA%E5%AD%90",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "畑野君枝",
@@ -5645,11 +6024,12 @@
     "house": "衆議院",
     "party": "日本共産党",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Kimie_Hatano_2024-10-26%282%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%95%91%E9%87%8E%E5%90%9B%E6%9E%9D",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "石井啓一",
@@ -5657,11 +6037,12 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Keiichi_Ishii_20230315teigen_komei2.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E5%95%93%E4%B8%80",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "緒方林太郎",
@@ -5681,11 +6062,12 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/15/Takashi_Kawamura_20241116.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E6%9D%91%E3%81%9F%E3%81%8B%E3%81%97",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "中村はやと",
@@ -5705,11 +6087,12 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Eisuke_Mori_20221214uhyoukei_1_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E8%8B%B1%E4%BB%8B",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "山本ジョージ",
@@ -5717,11 +6100,12 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/J%C5%8Dji_Yamamoto_2025-07-19%281%29_%28cropped%29.jpg",
+    "image": "",
     "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8",
     "profileUrl": "",
-    "aiGuess": false
+    "aiGuess": false,
+    "imageStatus": "missing"
   },
   {
     "name": "渡辺真太朗",
