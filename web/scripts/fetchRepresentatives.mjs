@@ -74,6 +74,15 @@ function cleanWins(value) {
   return normalizeSpace(value).replace(/\s+/g, "");
 }
 
+function stableRepresentativeId(name, kana) {
+  const seed = `${cleanName(name)}__${cleanKana(kana)}__衆議院`;
+  let hash = 0;
+  for (const ch of seed) {
+    hash = (hash * 31 + (ch.codePointAt(0) || 0)) % 1000000000;
+  }
+  return 100000000 + hash;
+}
+
 function decodeHtml(buffer, contentType = "") {
   const ctype = String(contentType).toLowerCase();
   const candidates = [];
@@ -187,6 +196,7 @@ function addRecord(results, seen, record) {
   seen.add(key);
 
   results.push({
+    id: stableRepresentativeId(name, kana),
     name,
     kana,
     house: "衆議院",

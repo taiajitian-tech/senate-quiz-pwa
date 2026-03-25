@@ -21,11 +21,19 @@ if (data.length > MAX_EXPECTED) {
 }
 
 const seen = new Set();
+const seenIds = new Set();
 
 for (const [index, item] of data.entries()) {
   if (!item || typeof item !== "object") {
     throw new Error(`invalid row at ${index}`);
   }
+  if (!Number.isInteger(item.id) || item.id <= 0) {
+    throw new Error(`missing id at ${index}`);
+  }
+  if (seenIds.has(item.id)) {
+    throw new Error(`duplicate representative id: ${item.id}`);
+  }
+  seenIds.add(item.id);
   if (!item.name || typeof item.name !== "string") {
     throw new Error(`missing name at ${index}`);
   }
