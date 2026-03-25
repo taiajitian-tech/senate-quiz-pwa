@@ -98,14 +98,12 @@ function getDistrictGeoRank(value: string | undefined): number {
   return 9998;
 }
 
-function compareKana(value: string | undefined): string {
-  return sortText(value).replace(/[\s　]+/gu, "");
-}
-
 function compareName(a: Person, b: Person): number {
-  const kanaDiff = JA_COLLATOR.compare(compareKana(a.kana), compareKana(b.kana));
+  const ak = (a.kana ?? "").trim();
+  const bk = (b.kana ?? "").trim();
+  const kanaDiff = JA_COLLATOR.compare(ak, bk);
   if (kanaDiff !== 0) return kanaDiff;
-  return JA_COLLATOR.compare(sortText(a.name), sortText(b.name));
+  return JA_COLLATOR.compare(a.name, b.name);
 }
 
 function compareDistrictGeo(a: Person, b: Person): number {
@@ -229,15 +227,17 @@ export default function SenatorList(props: Props) {
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索" style={styles.search} />
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
-          <option value="name_asc">名前（昇順）</option>
-          <option value="name_desc">名前（降順）</option>
-          {isSenators ? <option value="district_geo">選挙区</option> : null}
-          {isSenators ? <option value="terms_asc">当選回数（昇順）</option> : null}
-          {isSenators ? <option value="terms_desc">当選回数（降順）</option> : null}
-          {isSenators ? <option value="year_asc">次の改選年（昇順）</option> : null}
-          {isSenators ? <option value="year_desc">次の改選年（降順）</option> : null}
-        </select>
+        {isSenators ? (
+          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
+            <option value="name_asc">名前（昇順）</option>
+            <option value="name_desc">名前（降順）</option>
+            <option value="district_geo">選挙区</option>
+            <option value="terms_asc">当選回数（昇順）</option>
+            <option value="terms_desc">当選回数（降順）</option>
+            <option value="year_asc">次の改選年（昇順）</option>
+            <option value="year_desc">次の改選年（降順）</option>
+          </select>
+        ) : null}
         <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
