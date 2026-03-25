@@ -135,6 +135,7 @@ export default function SenatorList(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editName, setEditName] = useState("");
   const [editKana, setEditKana] = useState("");
@@ -172,6 +173,7 @@ export default function SenatorList(props: Props) {
   }, []);
 
   useEffect(() => {
+    setEditMode(false);
     setEditingId(null);
     setEditName("");
     setEditKana("");
@@ -199,7 +201,22 @@ export default function SenatorList(props: Props) {
 
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
 
+  const openEditMode = () => {
+    setEditMode(true);
+    setEditingId(null);
+    setEditName("");
+    setEditKana("");
+  };
+
+  const closeEditMode = () => {
+    setEditMode(false);
+    setEditingId(null);
+    setEditName("");
+    setEditKana("");
+  };
+
   const startEdit = (person: Person) => {
+    if (!editMode) return;
     setEditingId(person.id);
     setEditName(person.name);
     setEditKana(person.kana ?? "");
@@ -271,10 +288,20 @@ export default function SenatorList(props: Props) {
         </select>
         <div style={styles.actionsRow}>
           <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
-          <button type="button" style={hasAnyOverrides ? styles.resetAllBtn : styles.resetAllBtnDisabled} onClick={resetAll} disabled={!hasAnyOverrides}>
-            この一覧の編集を全部デフォルトに戻す
-          </button>
+          <div style={styles.topButtons}>
+            <button type="button" style={editMode ? styles.editModeActiveBtn : styles.editModeBtn} onClick={editMode ? closeEditMode : openEditMode}>
+              {editMode ? "編集モード終了" : "編集モード"}
+            </button>
+            <button type="button" style={hasAnyOverrides ? styles.resetAllBtn : styles.resetAllBtnDisabled} onClick={resetAll} disabled={!hasAnyOverrides}>
+              この一覧の編集を全部デフォルトに戻す
+            </button>
+          </div>
         </div>
+        {editMode ? (
+          <div style={styles.modeNotice}>
+            編集したい議員を選ぶと、名前とフリガナを変更できます。
+          </div>
+        ) : null}
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
@@ -282,8 +309,13 @@ export default function SenatorList(props: Props) {
         {sorted.map((s) => {
           const isEditing = editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
+          const itemStyle = editMode
+            ? isEditing
+              ? { ...styles.item, ...styles.itemEditing }
+              : { ...styles.item, ...styles.itemEditable }
+            : styles.item;
           return (
-            <div key={s.id} style={styles.item}>
+            <div key={s.id} style={itemStyle}>
               <div style={styles.avatarBox}>
                 <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
@@ -299,6 +331,7 @@ export default function SenatorList(props: Props) {
                       <div style={styles.name}>{s.name}</div>
                       <div style={styles.badges}>
                         {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
+                        {editMode ? <span style={styles.badgeSelect}>選択で編集</span> : null}
                         {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
                         {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
                         {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
@@ -314,9 +347,9 @@ export default function SenatorList(props: Props) {
                       <button type="button" style={styles.saveBtn} onClick={() => saveEdit(s)}>保存</button>
                       <button type="button" style={styles.smallBtn} onClick={cancelEdit}>取消</button>
                     </>
-                  ) : (
-                    <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>編集</button>
-                  )}
+                  ) : editMode ? (
+                    <button type="button" style={styles.selectEditBtn} onClick={() => startEdit(s)}>この議員を編集</button>
+                  ) : null}
                   <button type="button" style={hasOverride ? styles.resetBtn : styles.resetBtnDisabled} onClick={() => resetPerson(s)} disabled={!hasOverride}>
                     デフォルトに戻す
                   </button>
@@ -354,7 +387,7 @@ export default function SenatorList(props: Props) {
       ) : null}
 
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（一覧）">
-        <p>議員名とフリガナだけをこの端末で編集できます。デフォルトに戻すと元の表示に戻ります。</p>
+        <p>一覧上部の編集モードを押すと、選んだ議員の名前とフリガナだけをこの端末で編集できます。デフォルトに戻すと元の表示に戻ります。</p>
       </HelpModal>
     </div>
   );
@@ -374,10 +407,16 @@ const styles: Record<string, React.CSSProperties> = {
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
   actionsRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" },
+  topButtons: { display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" },
+  editModeBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #1d4ed8", background: "#eff6ff", color: "#1d4ed8", fontWeight: 800 },
+  editModeActiveBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #1d4ed8", background: "#1d4ed8", color: "#fff", fontWeight: 800 },
+  modeNotice: { padding: "10px 12px", borderRadius: 10, background: "#f8fafc", border: "1px solid #cbd5e1", color: "#334155", fontSize: 14 },
   resetAllBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
   resetAllBtnDisabled: { padding: "10px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
+  itemEditable: { borderColor: "#93c5fd", background: "#f8fbff" },
+  itemEditing: { borderColor: "#1d4ed8", background: "#eff6ff", boxShadow: "0 0 0 2px rgba(29, 78, 216, 0.12)" },
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
@@ -393,9 +432,11 @@ const styles: Record<string, React.CSSProperties> = {
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
   badgeGuess: { padding: "4px 8px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
   badgeEdit: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1d4ed8", background: "#eff6ff", fontSize: 12, fontWeight: 800, color: "#1d4ed8" },
+  badgeSelect: { padding: "4px 8px", borderRadius: 999, border: "1px solid #7c3aed", background: "#f5f3ff", fontSize: 12, fontWeight: 800, color: "#6d28d9" },
   editInput: { width: "100%", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
   editButtons: { display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" },
   smallBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 700 },
+  selectEditBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #7c3aed", background: "#f5f3ff", color: "#6d28d9", fontWeight: 800 },
   saveBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #1d4ed8", background: "#eff6ff", color: "#1d4ed8", fontWeight: 800 },
   resetBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
   resetBtnDisabled: { padding: "8px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
