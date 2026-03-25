@@ -53,17 +53,20 @@ export default function TitleView(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
 
-        <div style={styles.segment}>
-          {(Object.keys(targetTabs) as Target[]).map((target) => (
-            <button
-              key={target}
-              type="button"
-              style={props.target === target ? styles.segmentActive : styles.segmentBtn}
-              onClick={() => props.onChangeTarget(target)}
-            >
-              {targetTabs[target]}
-            </button>
-          ))}
+        <div style={styles.targetSelectWrap}>
+          <label htmlFor="title-target-select" style={styles.targetSelectLabel}>区分選択</label>
+          <select
+            id="title-target-select"
+            value={props.target}
+            onChange={(e) => props.onChangeTarget(e.target.value as Target)}
+            style={styles.targetSelect}
+          >
+            {(Object.keys(targetTabs) as Target[]).map((target) => (
+              <option key={target} value={target}>
+                {targetTabs[target]}
+              </option>
+            ))}
+          </select>
         </div>
         <div style={styles.targetLabel}>{targetLabels[props.target]}</div>
 
@@ -136,9 +139,9 @@ const styles: Record<string, CSSProperties> = {
   title: { fontSize: 40, fontWeight: 800, letterSpacing: 1 },
   titleSub: { fontSize: 14, color: "#555", marginTop: 4 },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
-  segment: { width: "100%", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: 8 },
-  segmentBtn: { ...commonBtn, border: "1px solid #999", background: "#fff", fontSize: 16 },
-  segmentActive: { ...commonBtn, border: "1px solid #0969da", background: "#eef6ff", fontSize: 16, fontWeight: 700 },
+  targetSelectWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 6 },
+  targetSelectLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
+  targetSelect: { ...commonBtn, border: "1px solid #999", background: "#fff", fontSize: 16, appearance: "auto" },
   targetLabel: { fontSize: 14, color: "#444", alignSelf: "flex-start" },
   quickStartBox: { width: "100%", border: "1px solid #d9e2f2", background: "#fff", borderRadius: 16, padding: 14, display: "flex", flexDirection: "column", gap: 12 },
   quickStartTitle: { fontSize: 18, fontWeight: 800 },

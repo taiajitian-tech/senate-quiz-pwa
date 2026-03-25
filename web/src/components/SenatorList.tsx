@@ -243,17 +243,20 @@ export default function SenatorList(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         {props.onChangeTarget ? (
-          <div style={styles.segment}>
-            {(Object.keys(targetTabs) as Target[]).map((target) => (
-              <button
-                key={target}
-                type="button"
-                style={props.target === target ? styles.segmentActive : styles.segmentBtn}
-                onClick={() => props.onChangeTarget?.(target)}
-              >
-                {targetTabs[target]}
-              </button>
-            ))}
+          <div style={styles.targetSelectWrap}>
+            <label htmlFor="list-target-select" style={styles.targetSelectLabel}>一覧区分</label>
+            <select
+              id="list-target-select"
+              value={props.target}
+              onChange={(e) => props.onChangeTarget?.(e.target.value as Target)}
+              style={styles.select}
+            >
+              {(Object.keys(targetTabs) as Target[]).map((target) => (
+                <option key={target} value={target}>
+                  {targetTabs[target]}
+                </option>
+              ))}
+            </select>
           </div>
         ) : null}
         <div style={styles.sub}>{targetLabels[props.target]}</div>
@@ -370,9 +373,8 @@ const styles: Record<string, React.CSSProperties> = {
   backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 22, fontWeight: 800 },
-  segment: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: 8 },
-  segmentBtn: { padding: "12px 10px", borderRadius: 12, border: "1px solid #bbb", background: "#fff", fontWeight: 700 },
-  segmentActive: { padding: "12px 10px", borderRadius: 12, border: "1px solid #111", background: "#111", color: "#fff", fontWeight: 800 },
+  targetSelectWrap: { display: "flex", flexDirection: "column", gap: 6 },
+  targetSelectLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
   search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
