@@ -98,16 +98,14 @@ function getDistrictGeoRank(value: string | undefined): number {
   return 9998;
 }
 
-function normalizeKanaSort(value: string | undefined): string {
-  return (value ?? "").replace(/[\s　]+/gu, "").trim();
+function compareKana(value: string | undefined): string {
+  return sortText(value).replace(/[\s　]+/gu, "");
 }
 
 function compareName(a: Person, b: Person): number {
-  const ak = normalizeKanaSort(a.kana);
-  const bk = normalizeKanaSort(b.kana);
-  const kanaDiff = JA_COLLATOR.compare(ak, bk);
+  const kanaDiff = JA_COLLATOR.compare(compareKana(a.kana), compareKana(b.kana));
   if (kanaDiff !== 0) return kanaDiff;
-  return JA_COLLATOR.compare(a.name, b.name);
+  return JA_COLLATOR.compare(sortText(a.name), sortText(b.name));
 }
 
 function compareDistrictGeo(a: Person, b: Person): number {
