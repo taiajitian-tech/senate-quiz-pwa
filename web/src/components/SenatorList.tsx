@@ -1,11 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { loadMasteredIds, loadWrongIds } from "./progress";
-import { clearAllPersonNameKanaOverrides, clearPersonNameKanaOverride, parsePersonsJson, savePersonNameKanaOverride, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import {
+  clearAllPersonNameKanaOverrides,
+  clearPersonNameKanaOverride,
+  getPersonNameKanaOverrides,
+  parsePersonsJson,
+  savePersonNameKanaOverride,
+  targetDataPath,
+  targetLabels,
+  targetTabs,
+  type Person,
+  type Target,
+} from "./data";
 import SafeImage from "./SafeImage";
 
 type Props = {
   target: Target;
+  onChangeTarget?: (target: Target) => void;
   onBack: () => void;
 };
 
@@ -21,53 +33,10 @@ type SortKey =
 const JA_COLLATOR = new Intl.Collator("ja");
 
 const PREFECTURE_ORDER = [
-  "北海道",
-  "青森",
-  "岩手",
-  "宮城",
-  "秋田",
-  "山形",
-  "福島",
-  "茨城",
-  "栃木",
-  "群馬",
-  "埼玉",
-  "千葉",
-  "東京",
-  "神奈川",
-  "新潟",
-  "富山",
-  "石川",
-  "福井",
-  "山梨",
-  "長野",
-  "岐阜",
-  "静岡",
-  "愛知",
-  "三重",
-  "滋賀",
-  "京都",
-  "大阪",
-  "兵庫",
-  "奈良",
-  "和歌山",
-  "鳥取",
-  "島根",
-  "岡山",
-  "広島",
-  "山口",
-  "徳島",
-  "香川",
-  "愛媛",
-  "高知",
-  "福岡",
-  "佐賀",
-  "長崎",
-  "熊本",
-  "大分",
-  "宮崎",
-  "鹿児島",
-  "沖縄",
+  "北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島", "茨城", "栃木", "群馬", "埼玉", "千葉", "東京", "神奈川",
+  "新潟", "富山", "石川", "福井", "山梨", "長野", "岐阜", "静岡", "愛知", "三重", "滋賀", "京都", "大阪", "兵庫",
+  "奈良", "和歌山", "鳥取", "島根", "岡山", "広島", "山口", "徳島", "香川", "愛媛", "高知", "福岡", "佐賀", "長崎",
+  "熊本", "大分", "宮崎", "鹿児島", "沖縄",
 ] as const;
 
 const PREFECTURE_ORDER_MAP = new Map(PREFECTURE_ORDER.map((name, index) => [name, index]));
@@ -98,7 +67,13 @@ function getDistrictGeoRank(value: string | undefined): number {
   return 9998;
 }
 
+function getNameSortText(person: Person): string {
+  return (person.kana || person.name || "").trim();
+}
+
 function compareName(a: Person, b: Person): number {
+  const byKana = JA_COLLATOR.compare(getNameSortText(a), getNameSortText(b));
+  if (byKana !== 0) return byKana;
   return JA_COLLATOR.compare(a.name, b.name);
 }
 
@@ -161,11 +136,14 @@ export default function SenatorList(props: Props) {
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [draftName, setDraftName] = useState("");
-  const [draftKana, setDraftKana] = useState("");
+  const [editName, setEditName] = useState("");
+  const [editKana, setEditKana] = useState("");
+  const [overrideVersion, setOverrideVersion] = useState(0);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
+  const isSenators = props.target === "senators";
+  const overrideMap = useMemo(() => getPersonNameKanaOverrides(props.target), [props.target, overrideVersion]);
 
   useEffect(() => {
     (async () => {
@@ -184,7 +162,7 @@ export default function SenatorList(props: Props) {
         setLoading(false);
       }
     })();
-  }, [dataUrl]);
+  }, [dataUrl, props.target, overrideVersion]);
 
   useEffect(() => {
     const onScroll = () => setShowFloatingButtons(window.scrollY > 200);
@@ -192,6 +170,12 @@ export default function SenatorList(props: Props) {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setEditingId(null);
+    setEditName("");
+    setEditKana("");
+  }, [props.target]);
 
   const wrongSet = useMemo(() => new Set(loadWrongIds(props.target)), [props.target]);
   const masteredSet = useMemo(() => new Set(loadMasteredIds(props.target)), [props.target]);
@@ -214,68 +198,38 @@ export default function SenatorList(props: Props) {
   }, [q, items]);
 
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
-  const isSenators = props.target === "senators";
 
-  function startEdit(person: Person) {
+  const startEdit = (person: Person) => {
     setEditingId(person.id);
-    setDraftName(person.name);
-    setDraftKana(person.kana ?? "");
-  }
+    setEditName(person.name);
+    setEditKana(person.kana ?? "");
+  };
 
-  function cancelEdit() {
+  const cancelEdit = () => {
     setEditingId(null);
-    setDraftName("");
-    setDraftKana("");
-  }
+    setEditName("");
+    setEditKana("");
+  };
 
-  function saveEdit(person: Person) {
-    const nextName = draftName.trim();
-    const nextKana = draftKana.trim();
-    if (!nextName) return;
-    savePersonNameKanaOverride(props.target, person.id, { name: nextName, kana: nextKana });
-    setItems((prev) => prev.map((item) => (item.id === person.id ? { ...item, name: nextName, kana: nextKana } : item)));
+  const saveEdit = (person: Person) => {
+    savePersonNameKanaOverride(props.target, person.id, { name: editName, kana: editKana });
+    setOverrideVersion((value) => value + 1);
     cancelEdit();
-  }
+  };
 
-  function resetPerson(person: Person) {
+  const resetPerson = (person: Person) => {
     clearPersonNameKanaOverride(props.target, person.id);
-    setLoading(true);
-    setError(null);
-    void (async () => {
-      try {
-        const res = await fetch(dataUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-        const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json, props.target));
-      } catch (e) {
-        console.error(e);
-        setError(String(e));
-      } finally {
-        setLoading(false);
-      }
-    })();
+    setOverrideVersion((value) => value + 1);
     if (editingId === person.id) cancelEdit();
-  }
+  };
 
-  function resetAllEdits() {
+  const resetAll = () => {
     clearAllPersonNameKanaOverrides(props.target);
-    setLoading(true);
-    setError(null);
+    setOverrideVersion((value) => value + 1);
     cancelEdit();
-    void (async () => {
-      try {
-        const res = await fetch(dataUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-        const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json, props.target));
-      } catch (e) {
-        console.error(e);
-        setError(String(e));
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }
+  };
+
+  const hasAnyOverrides = Object.keys(overrideMap).length > 0;
 
   return (
     <div style={styles.wrap}>
@@ -285,67 +239,89 @@ export default function SenatorList(props: Props) {
           <div style={styles.h1}>一覧</div>
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
-        <div style={styles.sub}>{targetLabels[props.target]}</div>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索" style={styles.search} />
-        {isSenators ? (
-          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
-            <option value="name_asc">名前（昇順）</option>
-            <option value="name_desc">名前（降順）</option>
-            <option value="district_geo">選挙区</option>
-            <option value="terms_asc">当選回数（昇順）</option>
-            <option value="terms_desc">当選回数（降順）</option>
-            <option value="year_asc">次の改選年（昇順）</option>
-            <option value="year_desc">次の改選年（降順）</option>
-          </select>
+        {props.onChangeTarget ? (
+          <div style={styles.segment}>
+            {(["senators", "representatives", "ministers"] as const).map((target) => (
+              <button
+                key={target}
+                type="button"
+                style={props.target === target ? styles.segmentActive : styles.segmentBtn}
+                onClick={() => props.onChangeTarget?.(target)}
+              >
+                {targetTabs[target]}
+              </button>
+            ))}
+          </div>
         ) : null}
-        <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
-        <div style={styles.editNoteRow}>
-          <div style={styles.sub}>名前とフリガナは、この端末だけ変更できます。デフォルトに戻すこともできます。</div>
-          <button type="button" style={styles.resetAllBtn} onClick={resetAllEdits}>この一覧の編集を全部デフォルトに戻す</button>
+        <div style={styles.sub}>{targetLabels[props.target]}</div>
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索"
+          style={styles.search}
+        />
+        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
+          <option value="name_asc">名前（昇順）</option>
+          <option value="name_desc">名前（降順）</option>
+          {isSenators ? <option value="district_geo">選挙区</option> : null}
+          {isSenators ? <option value="terms_asc">当選回数（昇順）</option> : null}
+          {isSenators ? <option value="terms_desc">当選回数（降順）</option> : null}
+          {isSenators ? <option value="year_asc">次の改選年（昇順）</option> : null}
+          {isSenators ? <option value="year_desc">次の改選年（降順）</option> : null}
+        </select>
+        <div style={styles.actionsRow}>
+          <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
+          <button type="button" style={hasAnyOverrides ? styles.resetAllBtn : styles.resetAllBtnDisabled} onClick={resetAll} disabled={!hasAnyOverrides}>
+            この一覧の編集を全部デフォルトに戻す
+          </button>
         </div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
+
       <div style={styles.list}>
         {sorted.map((s) => {
           const isEditing = editingId === s.id;
+          const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
           return (
             <div key={s.id} style={styles.item}>
               <div style={styles.avatarBox}>
                 <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
               <div style={styles.meta}>
-                <div style={styles.nameRow}>
-                  {isEditing ? (
-                    <div style={styles.editFields}>
-                      <input value={draftName} onChange={(e) => setDraftName(e.target.value)} placeholder="議員名" style={styles.editInput} />
-                      <input value={draftKana} onChange={(e) => setDraftKana(e.target.value)} placeholder="フリガナ" style={styles.editInput} />
-                    </div>
-                  ) : (
-                    <div>
+                {isEditing ? (
+                  <>
+                    <input value={editName} onChange={(e) => setEditName(e.target.value)} placeholder="議員名" style={styles.editInput} />
+                    <input value={editKana} onChange={(e) => setEditKana(e.target.value)} placeholder="フリガナ" style={styles.editInput} />
+                  </>
+                ) : (
+                  <>
+                    <div style={styles.nameRow}>
                       <div style={styles.name}>{s.name}</div>
-                      {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
+                      <div style={styles.badges}>
+                        {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
+                        {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
+                        {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
+                        {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
+                      </div>
                     </div>
-                  )}
-                  <div style={styles.badges}>
-                    {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
-                    {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
-                    {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
-                  </div>
-                </div>
-                <div style={styles.editBtnRow}>
+                    {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
+                  </>
+                )}
+
+                <div style={styles.editButtons}>
                   {isEditing ? (
                     <>
-                      <button type="button" style={styles.smallPrimaryBtn} onClick={() => saveEdit(s)}>保存</button>
+                      <button type="button" style={styles.saveBtn} onClick={() => saveEdit(s)}>保存</button>
                       <button type="button" style={styles.smallBtn} onClick={cancelEdit}>取消</button>
-                      <button type="button" style={styles.smallBtn} onClick={() => resetPerson(s)}>デフォルトに戻す</button>
                     </>
                   ) : (
-                    <>
-                      <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>編集</button>
-                      <button type="button" style={styles.smallBtn} onClick={() => resetPerson(s)}>デフォルトに戻す</button>
-                    </>
+                    <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>編集</button>
                   )}
+                  <button type="button" style={hasOverride ? styles.resetBtn : styles.resetBtnDisabled} onClick={() => resetPerson(s)} disabled={!hasOverride}>
+                    デフォルトに戻す
+                  </button>
                 </div>
+
                 {isSenators ? (
                   <div style={styles.infoGrid}>
                     <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
@@ -361,6 +337,7 @@ export default function SenatorList(props: Props) {
           );
         })}
       </div>
+
       {showFloatingButtons ? (
         <div style={styles.floatingButtons}>
           <button type="button" style={styles.floatingBackButton} onClick={props.onBack}>戻る</button>
@@ -375,8 +352,9 @@ export default function SenatorList(props: Props) {
           </button>
         </div>
       ) : null}
+
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（一覧）">
-        <p>名前、政党、選挙区、当選回数、改選年で検索できます。</p>
+        <p>議員名とフリガナだけをこの端末で編集できます。デフォルトに戻すと元の表示に戻ります。</p>
       </HelpModal>
     </div>
   );
@@ -389,11 +367,15 @@ const styles: Record<string, React.CSSProperties> = {
   backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 22, fontWeight: 800 },
+  segment: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 },
+  segmentBtn: { padding: "12px 10px", borderRadius: 12, border: "1px solid #bbb", background: "#fff", fontWeight: 700 },
+  segmentActive: { padding: "12px 10px", borderRadius: 12, border: "1px solid #111", background: "#111", color: "#fff", fontWeight: 800 },
   search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
-  editNoteRow: { display: "flex", flexDirection: "column", gap: 8 },
-  resetAllBtn: { alignSelf: "flex-start", padding: "8px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 13 },
+  actionsRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" },
+  resetAllBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
+  resetAllBtnDisabled: { padding: "10px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
@@ -403,18 +385,20 @@ const styles: Record<string, React.CSSProperties> = {
   nameRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   name: { fontSize: 18, fontWeight: 800 },
   kana: { fontSize: 14, color: "#666" },
-  editFields: { display: "flex", flexDirection: "column", gap: 8, flex: 1 },
-  editInput: { width: "100%", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 15, boxSizing: "border-box" },
-  editBtnRow: { display: "flex", flexWrap: "wrap", gap: 8 },
-  smallBtn: { padding: "8px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 13 },
-  smallPrimaryBtn: { padding: "8px 10px", borderRadius: 10, border: "1px solid #0b57d0", background: "#e8f0fe", fontSize: 13, fontWeight: 700 },
   group: { fontSize: 15, color: "#444" },
   infoGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 6 },
   infoLine: { fontSize: 14, color: "#444" },
-  badges: { display: "flex", gap: 6, alignItems: "center" },
+  badges: { display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" },
   badgeOk: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1a7f37", background: "#eafff0", fontSize: 12, fontWeight: 800 },
   badgeNg: { padding: "4px 8px", borderRadius: 999, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 12, fontWeight: 800 },
   badgeGuess: { padding: "4px 8px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
+  badgeEdit: { padding: "4px 8px", borderRadius: 999, border: "1px solid #1d4ed8", background: "#eff6ff", fontSize: 12, fontWeight: 800, color: "#1d4ed8" },
+  editInput: { width: "100%", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
+  editButtons: { display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" },
+  smallBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 700 },
+  saveBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #1d4ed8", background: "#eff6ff", color: "#1d4ed8", fontWeight: 800 },
+  resetBtn: { padding: "8px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
+  resetBtnDisabled: { padding: "8px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   floatingButtons: { position: "fixed", right: 20, bottom: 20, zIndex: 1000, display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" },
   floatingBackButton: { padding: "10px 14px", borderRadius: 10, border: "1px solid #999", background: "#fff", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", fontWeight: 700 },
   scrollTopButton: { width: 46, height: 46, borderRadius: 999, border: "1px solid #999", background: "#fff", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", fontSize: 22, fontWeight: 800, lineHeight: 1 },

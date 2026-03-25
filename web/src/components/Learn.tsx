@@ -86,7 +86,7 @@ export default function Learn(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json, props.target));
+        setItems(parsePersonsJson(json));
       } catch (e) {
         console.error(e);
         setItems([]);

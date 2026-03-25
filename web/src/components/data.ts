@@ -103,43 +103,6 @@ export function formatNameWithKana(person: Pick<Person, "name" | "kana">): strin
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
 }
 
-function normalizePerson(value: unknown, index: number): Person | null {
-  if (!value || typeof value !== "object") return null;
-  const v = value as RawPerson;
-
-  const rawName = toText(v.name);
-  if (!rawName) return null;
-
-  const rawId = Number(v.id);
-  const id = Number.isFinite(rawId) && rawId > 0 ? rawId : index + 1;
-
-  const split = splitNameAndKana(rawName);
-  const cleanName = split.name;
-  const kana = deriveKana(v, cleanName, split.kana);
-  const group = toText(v.group) || toText(v.party) || toText(v.role);
-  const party = toText(v.party) || toText(v.group) || toText(v.role);
-  const district = toText(v.district) || toText(v.electoralDistrict) || toText(v.constituency);
-  const rawTerms = Number(v.terms ?? v.wins ?? v.electedCount);
-  const terms = Number.isFinite(rawTerms) && rawTerms > 0 ? rawTerms : undefined;
-  const rawNextElectionYear = Number(v.nextElectionYear ?? v.nextElection ?? v.electionYear);
-  const nextElectionYear = Number.isFinite(rawNextElectionYear) && rawNextElectionYear > 0 ? rawNextElectionYear : undefined;
-  const images = toImages(v.images ?? v.image);
-  const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
-  const safeImages = aiGuess && BAD_GUESS_IMAGE_NAMES.has(cleanName) ? [] : images;
-
-  return {
-    id,
-    name: cleanName,
-    kana,
-    group,
-    party,
-    district,
-    terms,
-    nextElectionYear,
-    images: safeImages,
-    aiGuess,
-  };
-}
 
 export type PersonNameKanaOverride = {
   name?: string;
@@ -226,6 +189,44 @@ function applyNameKanaOverride(person: Person, target?: Target): Person {
     ...person,
     name: override.name || person.name,
     kana: override.kana || person.kana,
+  };
+}
+
+function normalizePerson(value: unknown, index: number): Person | null {
+  if (!value || typeof value !== "object") return null;
+  const v = value as RawPerson;
+
+  const rawName = toText(v.name);
+  if (!rawName) return null;
+
+  const rawId = Number(v.id);
+  const id = Number.isFinite(rawId) && rawId > 0 ? rawId : index + 1;
+
+  const split = splitNameAndKana(rawName);
+  const cleanName = split.name;
+  const kana = deriveKana(v, cleanName, split.kana);
+  const group = toText(v.group) || toText(v.party) || toText(v.role);
+  const party = toText(v.party) || toText(v.group) || toText(v.role);
+  const district = toText(v.district) || toText(v.electoralDistrict) || toText(v.constituency);
+  const rawTerms = Number(v.terms ?? v.wins ?? v.electedCount);
+  const terms = Number.isFinite(rawTerms) && rawTerms > 0 ? rawTerms : undefined;
+  const rawNextElectionYear = Number(v.nextElectionYear ?? v.nextElection ?? v.electionYear);
+  const nextElectionYear = Number.isFinite(rawNextElectionYear) && rawNextElectionYear > 0 ? rawNextElectionYear : undefined;
+  const images = toImages(v.images ?? v.image);
+  const aiGuess = v.aiGuess === true || toText(v.imageSource) === "web-fallback";
+  const safeImages = aiGuess && BAD_GUESS_IMAGE_NAMES.has(cleanName) ? [] : images;
+
+  return {
+    id,
+    name: cleanName,
+    kana,
+    group,
+    party,
+    district,
+    terms,
+    nextElectionYear,
+    images: safeImages,
+    aiGuess,
   };
 }
 
