@@ -1,12 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { loadMasteredIds, loadWrongIds } from "./progress";
-import { parsePersonsJson, targetDataPath, targetLabels, targetTabs, type Person, type Target } from "./data";
+import { clearAllPersonNameKanaOverrides, clearPersonNameKanaOverride, parsePersonsJson, savePersonNameKanaOverride, targetDataPath, targetLabels, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Props = {
   target: Target;
-  onChangeTarget: (target: Target) => void;
   onBack: () => void;
 };
 
@@ -100,8 +99,6 @@ function getDistrictGeoRank(value: string | undefined): number {
 }
 
 function compareName(a: Person, b: Person): number {
-  const kanaDiff = JA_COLLATOR.compare(a.kana ?? "", b.kana ?? "");
-  if (kanaDiff !== 0) return kanaDiff;
   return JA_COLLATOR.compare(a.name, b.name);
 }
 
@@ -163,6 +160,9 @@ export default function SenatorList(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [draftName, setDraftName] = useState("");
+  const [draftKana, setDraftKana] = useState("");
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
@@ -175,7 +175,7 @@ export default function SenatorList(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json));
+        setItems(parsePersonsJson(json, props.target));
       } catch (e) {
         console.error(e);
         setItems([]);
@@ -216,6 +216,67 @@ export default function SenatorList(props: Props) {
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
   const isSenators = props.target === "senators";
 
+  function startEdit(person: Person) {
+    setEditingId(person.id);
+    setDraftName(person.name);
+    setDraftKana(person.kana ?? "");
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setDraftName("");
+    setDraftKana("");
+  }
+
+  function saveEdit(person: Person) {
+    const nextName = draftName.trim();
+    const nextKana = draftKana.trim();
+    if (!nextName) return;
+    savePersonNameKanaOverride(props.target, person.id, { name: nextName, kana: nextKana });
+    setItems((prev) => prev.map((item) => (item.id === person.id ? { ...item, name: nextName, kana: nextKana } : item)));
+    cancelEdit();
+  }
+
+  function resetPerson(person: Person) {
+    clearPersonNameKanaOverride(props.target, person.id);
+    setLoading(true);
+    setError(null);
+    void (async () => {
+      try {
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+        const json = (await res.json()) as unknown;
+        setItems(parsePersonsJson(json, props.target));
+      } catch (e) {
+        console.error(e);
+        setError(String(e));
+      } finally {
+        setLoading(false);
+      }
+    })();
+    if (editingId === person.id) cancelEdit();
+  }
+
+  function resetAllEdits() {
+    clearAllPersonNameKanaOverrides(props.target);
+    setLoading(true);
+    setError(null);
+    cancelEdit();
+    void (async () => {
+      try {
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+        const json = (await res.json()) as unknown;
+        setItems(parsePersonsJson(json, props.target));
+      } catch (e) {
+        console.error(e);
+        setError(String(e));
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }
+
   return (
     <div style={styles.wrap}>
       <div style={styles.header}>
@@ -226,70 +287,79 @@ export default function SenatorList(props: Props) {
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索" style={styles.search} />
-        <div style={styles.targetSwitch}>
-          <button
-            type="button"
-            style={props.target === "senators" ? styles.targetSwitchActive : styles.targetSwitchBtn}
-            onClick={() => props.onChangeTarget("senators")}
-          >
-            {targetTabs.senators}
-          </button>
-          <button
-            type="button"
-            style={props.target === "representatives" ? styles.targetSwitchActive : styles.targetSwitchBtn}
-            onClick={() => props.onChangeTarget("representatives")}
-          >
-            {targetTabs.representatives}
-          </button>
-          <button
-            type="button"
-            style={props.target === "ministers" ? styles.targetSwitchActive : styles.targetSwitchBtn}
-            onClick={() => props.onChangeTarget("ministers")}
-          >
-            {targetTabs.ministers}
-          </button>
-        </div>
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
-          <option value="name_asc">名前（昇順）</option>
-          <option value="name_desc">名前（降順）</option>
-          {isSenators ? <option value="district_geo">選挙区</option> : null}
-          {isSenators ? <option value="terms_asc">当選回数（昇順）</option> : null}
-          {isSenators ? <option value="terms_desc">当選回数（降順）</option> : null}
-          {isSenators ? <option value="year_asc">次の改選年（昇順）</option> : null}
-          {isSenators ? <option value="year_desc">次の改選年（降順）</option> : null}
-        </select>
+        {isSenators ? (
+          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
+            <option value="name_asc">名前（昇順）</option>
+            <option value="name_desc">名前（降順）</option>
+            <option value="district_geo">選挙区</option>
+            <option value="terms_asc">当選回数（昇順）</option>
+            <option value="terms_desc">当選回数（降順）</option>
+            <option value="year_asc">次の改選年（昇順）</option>
+            <option value="year_desc">次の改選年（降順）</option>
+          </select>
+        ) : null}
         <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
+        <div style={styles.editNoteRow}>
+          <div style={styles.sub}>名前とフリガナは、この端末だけ変更できます。デフォルトに戻すこともできます。</div>
+          <button type="button" style={styles.resetAllBtn} onClick={resetAllEdits}>この一覧の編集を全部デフォルトに戻す</button>
+        </div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
       <div style={styles.list}>
-        {sorted.map((s) => (
-          <div key={s.id} style={styles.item}>
-            <div style={styles.avatarBox}>
-              <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
-            </div>
-            <div style={styles.meta}>
-              <div style={styles.nameRow}>
-                <div style={styles.name}>{s.name}</div>
-                <div style={styles.badges}>
-                  {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
-                  {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
-                  {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
-                </div>
+        {sorted.map((s) => {
+          const isEditing = editingId === s.id;
+          return (
+            <div key={s.id} style={styles.item}>
+              <div style={styles.avatarBox}>
+                <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
-              {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
-              {isSenators ? (
-                <div style={styles.infoGrid}>
-                  <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
-                  <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
-                  <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
-                  <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
+              <div style={styles.meta}>
+                <div style={styles.nameRow}>
+                  {isEditing ? (
+                    <div style={styles.editFields}>
+                      <input value={draftName} onChange={(e) => setDraftName(e.target.value)} placeholder="議員名" style={styles.editInput} />
+                      <input value={draftKana} onChange={(e) => setDraftKana(e.target.value)} placeholder="フリガナ" style={styles.editInput} />
+                    </div>
+                  ) : (
+                    <div>
+                      <div style={styles.name}>{s.name}</div>
+                      {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
+                    </div>
+                  )}
+                  <div style={styles.badges}>
+                    {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
+                    {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
+                    {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
+                  </div>
                 </div>
-              ) : (
-                <div style={styles.group}>{s.group ?? ""}</div>
-              )}
+                <div style={styles.editBtnRow}>
+                  {isEditing ? (
+                    <>
+                      <button type="button" style={styles.smallPrimaryBtn} onClick={() => saveEdit(s)}>保存</button>
+                      <button type="button" style={styles.smallBtn} onClick={cancelEdit}>取消</button>
+                      <button type="button" style={styles.smallBtn} onClick={() => resetPerson(s)}>デフォルトに戻す</button>
+                    </>
+                  ) : (
+                    <>
+                      <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>編集</button>
+                      <button type="button" style={styles.smallBtn} onClick={() => resetPerson(s)}>デフォルトに戻す</button>
+                    </>
+                  )}
+                </div>
+                {isSenators ? (
+                  <div style={styles.infoGrid}>
+                    <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
+                    <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
+                    <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
+                    <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
+                  </div>
+                ) : (
+                  <div style={styles.group}>{s.group ?? ""}</div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       {showFloatingButtons ? (
         <div style={styles.floatingButtons}>
@@ -320,11 +390,10 @@ const styles: Record<string, React.CSSProperties> = {
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 22, fontWeight: 800 },
   search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
-  targetSwitch: { width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 },
-  targetSwitchBtn: { width: "100%", padding: "12px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 16 },
-  targetSwitchActive: { width: "100%", padding: "12px 10px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 16, fontWeight: 700 },
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
+  editNoteRow: { display: "flex", flexDirection: "column", gap: 8 },
+  resetAllBtn: { alignSelf: "flex-start", padding: "8px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 13 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
@@ -334,6 +403,11 @@ const styles: Record<string, React.CSSProperties> = {
   nameRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   name: { fontSize: 18, fontWeight: 800 },
   kana: { fontSize: 14, color: "#666" },
+  editFields: { display: "flex", flexDirection: "column", gap: 8, flex: 1 },
+  editInput: { width: "100%", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 15, boxSizing: "border-box" },
+  editBtnRow: { display: "flex", flexWrap: "wrap", gap: 8 },
+  smallBtn: { padding: "8px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 13 },
+  smallPrimaryBtn: { padding: "8px 10px", borderRadius: 10, border: "1px solid #0b57d0", background: "#e8f0fe", fontSize: 13, fontWeight: 700 },
   group: { fontSize: 15, color: "#444" },
   infoGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 6 },
   infoLine: { fontSize: 14, color: "#444" },

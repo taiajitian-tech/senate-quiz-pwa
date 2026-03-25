@@ -33,7 +33,7 @@ export default function StatsView(props: Props) {
         const res = await fetch(dataUrl, { cache: "no-store" });
         if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
         const json = (await res.json()) as unknown;
-        const parsed = parsePersonsJson(json);
+        const parsed = parsePersonsJson(json, props.target);
         if (!cancelled) setItems(parsed);
       } catch (error) {
         console.error(error);

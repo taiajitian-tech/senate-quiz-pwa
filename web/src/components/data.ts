@@ -141,11 +141,100 @@ function normalizePerson(value: unknown, index: number): Person | null {
   };
 }
 
-export function parsePersonsJson(value: unknown): Person[] {
+export type PersonNameKanaOverride = {
+  name?: string;
+  kana?: string;
+};
+
+const PERSON_NAME_KANA_OVERRIDES_KEY = "person_name_kana_overrides_v1";
+
+type OverrideMap = Record<string, PersonNameKanaOverride>;
+
+function normalizeOverrideText(value: string | undefined): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function getOverrideStorageKey(target: Target, id: number): string {
+  return `${target}:${id}`;
+}
+
+function readOverrideMap(): OverrideMap {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(PERSON_NAME_KANA_OVERRIDES_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as unknown;
+    return parsed && typeof parsed === "object" ? (parsed as OverrideMap) : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeOverrideMap(map: OverrideMap) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(PERSON_NAME_KANA_OVERRIDES_KEY, JSON.stringify(map));
+}
+
+export function getPersonNameKanaOverrides(target: Target): Record<number, PersonNameKanaOverride> {
+  const map = readOverrideMap();
+  const out: Record<number, PersonNameKanaOverride> = {};
+  for (const [key, value] of Object.entries(map)) {
+    const [storedTarget, rawId] = key.split(":");
+    if (storedTarget !== target) continue;
+    const id = Number(rawId);
+    if (!Number.isFinite(id) || id <= 0) continue;
+    out[id] = {
+      name: normalizeOverrideText(value?.name),
+      kana: normalizeOverrideText(value?.kana),
+    };
+  }
+  return out;
+}
+
+export function savePersonNameKanaOverride(target: Target, id: number, value: PersonNameKanaOverride) {
+  const map = readOverrideMap();
+  const key = getOverrideStorageKey(target, id);
+  const nextName = normalizeOverrideText(value.name);
+  const nextKana = normalizeOverrideText(value.kana);
+  if (!nextName && !nextKana) {
+    delete map[key];
+  } else {
+    map[key] = { name: nextName, kana: nextKana };
+  }
+  writeOverrideMap(map);
+}
+
+export function clearPersonNameKanaOverride(target: Target, id: number) {
+  const map = readOverrideMap();
+  delete map[getOverrideStorageKey(target, id)];
+  writeOverrideMap(map);
+}
+
+export function clearAllPersonNameKanaOverrides(target: Target) {
+  const map = readOverrideMap();
+  for (const key of Object.keys(map)) {
+    if (key.startsWith(`${target}:`)) delete map[key];
+  }
+  writeOverrideMap(map);
+}
+
+function applyNameKanaOverride(person: Person, target?: Target): Person {
+  if (!target) return person;
+  const override = getPersonNameKanaOverrides(target)[person.id];
+  if (!override) return person;
+  return {
+    ...person,
+    name: override.name || person.name,
+    kana: override.kana || person.kana,
+  };
+}
+
+export function parsePersonsJson(value: unknown, target?: Target): Person[] {
   if (!Array.isArray(value)) return [];
 
   return value
     .map((item, index) => normalizePerson(item, index))
     .filter((item): item is Person => item !== null)
-    .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name);
+    .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name)
+    .map((item) => applyNameKanaOverride(item, target));
 }
