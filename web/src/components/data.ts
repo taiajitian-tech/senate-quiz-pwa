@@ -1,4 +1,4 @@
-export type Target = "senators" | "representatives" | "ministers";
+export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "houseOfficers" | "councilorsOfficers";
 
 export type Person = {
   id: number;
@@ -17,18 +17,30 @@ export const targetLabels: Record<Target, string> = {
   senators: "現職参議院議員",
   representatives: "現職衆議院議員",
   ministers: "現職大臣",
+  viceMinisters: "副大臣",
+  parliamentarySecretaries: "大臣政務官",
+  houseOfficers: "衆議院役員",
+  councilorsOfficers: "参議院役員",
 };
 
 export const targetTabs: Record<Target, string> = {
   senators: "参議院",
   representatives: "衆議院",
   ministers: "現職大臣",
+  viceMinisters: "副大臣",
+  parliamentarySecretaries: "大臣政務官",
+  houseOfficers: "衆議院役員",
+  councilorsOfficers: "参議院役員",
 };
 
 export const targetDataPath: Record<Target, string> = {
   senators: "data/senators.json",
   representatives: "data/representatives.json",
   ministers: "data/ministers.json",
+  viceMinisters: "data/vice-ministers.json",
+  parliamentarySecretaries: "data/parliamentary-secretaries.json",
+  houseOfficers: "data/house-officers.json",
+  councilorsOfficers: "data/councilors-officers.json",
 };
 
 type RawPerson = Record<string, unknown>;
@@ -110,7 +122,6 @@ export type PersonNameKanaOverride = {
 };
 
 const PERSON_NAME_KANA_OVERRIDES_KEY = "person_name_kana_overrides_v1";
-const REPRESENTATIVE_STABLE_ID_MIGRATION_KEY = "senateQuiz:representatives:stable-id-migrated:v1";
 
 type OverrideMap = Record<string, PersonNameKanaOverride>;
 
@@ -182,135 +193,6 @@ export function clearAllPersonNameKanaOverrides(target: Target) {
   writeOverrideMap(map);
 }
 
-function remapNumberArray(value: unknown, idMap: Map<number, number>): number[] {
-  if (!Array.isArray(value)) return [];
-  const out: number[] = [];
-  const seen = new Set<number>();
-  for (const raw of value) {
-    const id = Number(raw);
-    if (!Number.isFinite(id)) continue;
-    const next = idMap.get(id) ?? id;
-    if (!Number.isFinite(next) || seen.has(next)) continue;
-    seen.add(next);
-    out.push(next);
-  }
-  return out;
-}
-
-function migrateRepresentativeProgressMap(idMap: Map<number, number>, raw: string) {
-  try {
-    const parsed = JSON.parse(raw) as Record<string, unknown>;
-    if (!parsed || typeof parsed !== "object") return raw;
-    const next: Record<string, unknown> = {};
-    for (const [key, value] of Object.entries(parsed)) {
-      const id = Number(key);
-      if (!Number.isFinite(id)) continue;
-      next[String(idMap.get(id) ?? id)] = value;
-    }
-    return JSON.stringify(next);
-  } catch {
-    return raw;
-  }
-}
-
-function migrateRepresentativeHistory(idMap: Map<number, number>, raw: string) {
-  try {
-    const parsed = JSON.parse(raw) as Array<Record<string, unknown>>;
-    if (!Array.isArray(parsed)) return raw;
-    return JSON.stringify(
-      parsed.map((item) => {
-        const id = Number(item?.id);
-        return {
-          ...item,
-          id: Number.isFinite(id) ? (idMap.get(id) ?? id) : item?.id,
-        };
-      })
-    );
-  } catch {
-    return raw;
-  }
-}
-
-function migrateRepresentativeOverrides(idMap: Map<number, number>, raw: string) {
-  try {
-    const parsed = JSON.parse(raw) as Record<string, PersonNameKanaOverride>;
-    if (!parsed || typeof parsed !== "object") return raw;
-    const next: Record<string, PersonNameKanaOverride> = {};
-    for (const [key, value] of Object.entries(parsed)) {
-      const [target, rawId] = key.split(":");
-      if (target !== "representatives") {
-        next[key] = value;
-        continue;
-      }
-      const id = Number(rawId);
-      const nextId = Number.isFinite(id) ? (idMap.get(id) ?? id) : id;
-      next[`representatives:${nextId}`] = value;
-    }
-    return JSON.stringify(next);
-  } catch {
-    return raw;
-  }
-}
-
-function migrateRepresentativeStorageIfNeeded(value: unknown) {
-  if (typeof window === "undefined") return;
-  if (!Array.isArray(value) || value.length === 0) return;
-  if (window.localStorage.getItem(REPRESENTATIVE_STABLE_ID_MIGRATION_KEY) === "1") return;
-
-  const idMap = new Map<number, number>();
-  for (let index = 0; index < value.length; index += 1) {
-    const row = value[index];
-    if (!row || typeof row !== "object") continue;
-    const nextId = Number((row as RawPerson).id);
-    if (!Number.isInteger(nextId) || nextId <= 0) continue;
-    idMap.set(index + 1, nextId);
-  }
-
-  if (idMap.size === 0) return;
-
-  const progressKey = "senateQuiz:representatives:progress:v1";
-  const historyKey = "senateQuiz:representatives:history:v1";
-  const wrongIdsKey = "senateQuiz:representatives:wrongIds:v1";
-  const masteredIdsKey = "senateQuiz:representatives:masteredIds:v1";
-
-  const progressRaw = window.localStorage.getItem(progressKey);
-  if (progressRaw) {
-    window.localStorage.setItem(progressKey, migrateRepresentativeProgressMap(idMap, progressRaw));
-  }
-
-  const historyRaw = window.localStorage.getItem(historyKey);
-  if (historyRaw) {
-    window.localStorage.setItem(historyKey, migrateRepresentativeHistory(idMap, historyRaw));
-  }
-
-  const wrongIdsRaw = window.localStorage.getItem(wrongIdsKey);
-  if (wrongIdsRaw) {
-    try {
-      const parsed = JSON.parse(wrongIdsRaw) as unknown;
-      window.localStorage.setItem(wrongIdsKey, JSON.stringify(remapNumberArray(parsed, idMap)));
-    } catch {
-      // ignore broken data
-    }
-  }
-
-  const masteredIdsRaw = window.localStorage.getItem(masteredIdsKey);
-  if (masteredIdsRaw) {
-    try {
-      const parsed = JSON.parse(masteredIdsRaw) as unknown;
-      window.localStorage.setItem(masteredIdsKey, JSON.stringify(remapNumberArray(parsed, idMap)));
-    } catch {
-      // ignore broken data
-    }
-  }
-
-  const overrideRaw = window.localStorage.getItem(PERSON_NAME_KANA_OVERRIDES_KEY);
-  if (overrideRaw) {
-    window.localStorage.setItem(PERSON_NAME_KANA_OVERRIDES_KEY, migrateRepresentativeOverrides(idMap, overrideRaw));
-  }
-
-  window.localStorage.setItem(REPRESENTATIVE_STABLE_ID_MIGRATION_KEY, "1");
-}
-
 function applyNameKanaOverride(person: Person, target?: Target): Person {
   if (!target) return person;
   const override = getPersonNameKanaOverrides(target)[person.id];
@@ -362,9 +244,6 @@ function normalizePerson(value: unknown, index: number): Person | null {
 
 export function parsePersonsJson(value: unknown, target?: Target): Person[] {
   if (!Array.isArray(value)) return [];
-  if (target === "representatives") {
-    migrateRepresentativeStorageIfNeeded(value);
-  }
 
   return value
     .map((item, index) => normalizePerson(item, index))

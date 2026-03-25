@@ -1,0 +1,386 @@
+[
+  {
+    "id": 65541347,
+    "name": "今枝 宗一郎",
+    "kana": "いまえだそういちろう",
+    "group": "デジタル副大臣 / 兼内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "デジタル副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23014XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 99819658,
+    "name": "たどころ よしのり",
+    "kana": "たどころよしのり",
+    "group": "復興副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "復興副大臣",
+    "chamber": "衆議院",
+    "party": "",
+    "images": [],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 49423945,
+    "name": "瀬戸 隆一",
+    "kana": "せとたかかず",
+    "group": "復興副大臣 / 兼内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "復興副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37002XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 79139145,
+    "name": "岩田 和親",
+    "kana": "いわたかずちか",
+    "group": "内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41001XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 46617996,
+    "name": "鈴木 隼人",
+    "kana": "すずきはやと",
+    "group": "内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13010XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 22114214,
+    "name": "津島 淳",
+    "kana": "つしまじゅん",
+    "group": "内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA02001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 60530343,
+    "name": "堀内 詔子",
+    "kana": "ほりうちのりこ",
+    "group": "総務副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "総務副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA19002XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 28663371,
+    "name": "高橋 克法",
+    "kana": "たかはしかつのり",
+    "group": "総務副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "総務副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013030.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 42373339,
+    "name": "三谷 英弘",
+    "kana": "みたにひでひろ",
+    "group": "法務副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "法務副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14008XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 67451557,
+    "name": "国光 あやの",
+    "kana": "くにみつあやの",
+    "group": "外務副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "外務副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.jimin.jp/member/img/kunimitsu-ayano.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 42713114,
+    "name": "堀井 巌",
+    "kana": "ほりいいわお",
+    "group": "外務副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "外務副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013048.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 32629853,
+    "name": "中谷 真一",
+    "kana": "なかたにしんいち",
+    "group": "財務副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "財務副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA19001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 61028141,
+    "name": "舞立 昇治",
+    "kana": "まいたちしょうじ",
+    "group": "財務副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "財務副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013049.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 41670159,
+    "name": "小林 茂樹",
+    "kana": "こばやししげき",
+    "group": "文部科学副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "文部科学副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA29001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 21772726,
+    "name": "中村 裕之",
+    "kana": "なかむらひろゆき",
+    "group": "文部科学副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "文部科学副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01004XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 74199113,
+    "name": "長坂 康正",
+    "kana": "ながさかやすまさ",
+    "group": "厚生労働副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "厚生労働副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23009XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 65976962,
+    "name": "仁木 博文",
+    "kana": "にきひろぶみ",
+    "group": "厚生労働副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "厚生労働副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 19847347,
+    "name": "根本 幸典",
+    "kana": "ねもとゆきのり",
+    "group": "農林水産副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "農林水産副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 48007503,
+    "name": "山下 雄平",
+    "kana": "やましたゆうへい",
+    "group": "農林水産副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "農林水産副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013060.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 97431195,
+    "name": "井野 俊郎",
+    "kana": "いのとしろう",
+    "group": "経済産業副大臣 / 兼内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "経済産業副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10002XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 85669503,
+    "name": "山田 賢司",
+    "kana": "やまだけんじ",
+    "group": "経済産業副大臣 / 兼内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "経済産業副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28007XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 42464781,
+    "name": "佐々木 紀",
+    "kana": "ささきはじめ",
+    "group": "国土交通副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "国土交通副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17002XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 80340444,
+    "name": "酒井 庸行",
+    "kana": "さかいやすゆき",
+    "group": "国土交通副大臣 / 兼内閣府副大臣 / 兼復興副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "国土交通副大臣 / 兼内閣府副大臣 / 兼復興副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013024.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 47282735,
+    "name": "青山 繁晴",
+    "kana": "あおやましげはる",
+    "group": "環境副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "環境副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28008XXX013K_0.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 22874802,
+    "name": "つじ きよと",
+    "kana": "つじきよと",
+    "group": "環境副大臣 / 兼内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "環境副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "",
+    "images": [],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  },
+  {
+    "id": 81272839,
+    "name": "みやざき まさひさ",
+    "kana": "みやざきまさひさ",
+    "group": "防衛副大臣 / 兼内閣府副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "防衛副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "party": "",
+    "images": [],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "seed"
+  }
+]

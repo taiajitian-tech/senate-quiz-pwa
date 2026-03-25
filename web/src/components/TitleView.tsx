@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
-import type { Target } from "./data";
-import { targetLabels, targetTabs } from "./data";
+import { targetLabels, targetTabs, type Target } from "./data";
 import HelpModal from "./HelpModal";
 
 type Props = {
@@ -55,15 +54,16 @@ export default function TitleView(props: Props) {
         </div>
 
         <div style={styles.segment}>
-          <button type="button" style={props.target === "senators" ? styles.segmentActive : styles.segmentBtn} onClick={() => props.onChangeTarget("senators")}>
-            {targetTabs.senators}
-          </button>
-          <button type="button" style={props.target === "representatives" ? styles.segmentActive : styles.segmentBtn} onClick={() => props.onChangeTarget("representatives")}>
-            {targetTabs.representatives}
-          </button>
-          <button type="button" style={props.target === "ministers" ? styles.segmentActive : styles.segmentBtn} onClick={() => props.onChangeTarget("ministers")}>
-            {targetTabs.ministers}
-          </button>
+          {(Object.keys(targetTabs) as Target[]).map((target) => (
+            <button
+              key={target}
+              type="button"
+              style={props.target === target ? styles.segmentActive : styles.segmentBtn}
+              onClick={() => props.onChangeTarget(target)}
+            >
+              {targetTabs[target]}
+            </button>
+          ))}
         </div>
         <div style={styles.targetLabel}>{targetLabels[props.target]}</div>
 
@@ -136,7 +136,7 @@ const styles: Record<string, CSSProperties> = {
   title: { fontSize: 40, fontWeight: 800, letterSpacing: 1 },
   titleSub: { fontSize: 14, color: "#555", marginTop: 4 },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
-  segment: { width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 },
+  segment: { width: "100%", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: 8 },
   segmentBtn: { ...commonBtn, border: "1px solid #999", background: "#fff", fontSize: 16 },
   segmentActive: { ...commonBtn, border: "1px solid #0969da", background: "#eef6ff", fontSize: 16, fontWeight: 700 },
   targetLabel: { fontSize: 14, color: "#444", alignSelf: "flex-start" },

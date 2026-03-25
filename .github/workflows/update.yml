@@ -35,6 +35,9 @@ jobs:
       - name: Generate ministers data
         run: npm run gen:ministers
 
+      - name: Generate role panel data
+        run: npm run gen:role-panels
+
       - name: Validate data
         run: npm run check:data
 
@@ -44,14 +47,22 @@ jobs:
           set -euo pipefail
           test -f web/public/data/senators.json
           test -f web/public/data/ministers.json
+          test -f web/public/data/vice-ministers.json
+          test -f web/public/data/parliamentary-secretaries.json
+          test -f web/public/data/house-officers.json
+          test -f web/public/data/councilors-officers.json
           node -e "const a=require('./web/public/data/senators.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/ministers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
-          if [ -z "$(git status --porcelain -- web/public/data/senators.json web/public/data/ministers.json)" ]; then
+          node -e "const a=require('./web/public/data/vice-ministers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
+          node -e "const a=require('./web/public/data/parliamentary-secretaries.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
+          node -e "const a=require('./web/public/data/house-officers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
+          node -e "const a=require('./web/public/data/councilors-officers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
+          if [ -z "$(git status --porcelain -- web/public/data/senators.json web/public/data/ministers.json web/public/data/vice-ministers.json web/public/data/parliamentary-secretaries.json web/public/data/house-officers.json web/public/data/councilors-officers.json)" ]; then
             echo "No changes in generated data"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/public/data/senators.json web/public/data/ministers.json
-          git commit -m "chore: update senators and ministers data"
+          git add web/public/data/senators.json web/public/data/ministers.json web/public/data/vice-ministers.json web/public/data/parliamentary-secretaries.json web/public/data/house-officers.json web/public/data/councilors-officers.json
+          git commit -m "chore: update senators ministers and role panels data"
           git push
