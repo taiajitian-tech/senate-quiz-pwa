@@ -46,7 +46,7 @@ export default function App() {
   } else if (screen === "stats") {
     content = <StatsView target={target} onBack={() => setScreen("title")} />;
   } else if (screen === "list") {
-    content = <SenatorList target={target} onBack={() => setScreen("title")} />;
+    content = <SenatorList target={target} onChangeTarget={setTarget} onBack={() => setScreen("title")} />;
   } else if (screen === "learn") {
     content = <Learn target={target} mode="learn" onBackTitle={() => setScreen("title")} />;
   } else if (screen === "reverse") {

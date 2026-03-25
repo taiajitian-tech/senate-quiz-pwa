@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { loadMasteredIds, loadWrongIds } from "./progress";
-import { parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { parsePersonsJson, targetDataPath, targetLabels, targetTabs, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Props = {
   target: Target;
+  onChangeTarget: (target: Target) => void;
   onBack: () => void;
 };
 
@@ -99,9 +100,7 @@ function getDistrictGeoRank(value: string | undefined): number {
 }
 
 function compareName(a: Person, b: Person): number {
-  const ak = (a.kana ?? "").trim();
-  const bk = (b.kana ?? "").trim();
-  const kanaDiff = JA_COLLATOR.compare(ak, bk);
+  const kanaDiff = JA_COLLATOR.compare(a.kana ?? "", b.kana ?? "");
   if (kanaDiff !== 0) return kanaDiff;
   return JA_COLLATOR.compare(a.name, b.name);
 }
@@ -227,17 +226,38 @@ export default function SenatorList(props: Props) {
         </div>
         <div style={styles.sub}>{targetLabels[props.target]}</div>
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索" style={styles.search} />
-        {isSenators ? (
-          <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
-            <option value="name_asc">名前（昇順）</option>
-            <option value="name_desc">名前（降順）</option>
-            <option value="district_geo">選挙区</option>
-            <option value="terms_asc">当選回数（昇順）</option>
-            <option value="terms_desc">当選回数（降順）</option>
-            <option value="year_asc">次の改選年（昇順）</option>
-            <option value="year_desc">次の改選年（降順）</option>
-          </select>
-        ) : null}
+        <div style={styles.targetSwitch}>
+          <button
+            type="button"
+            style={props.target === "senators" ? styles.targetSwitchActive : styles.targetSwitchBtn}
+            onClick={() => props.onChangeTarget("senators")}
+          >
+            {targetTabs.senators}
+          </button>
+          <button
+            type="button"
+            style={props.target === "representatives" ? styles.targetSwitchActive : styles.targetSwitchBtn}
+            onClick={() => props.onChangeTarget("representatives")}
+          >
+            {targetTabs.representatives}
+          </button>
+          <button
+            type="button"
+            style={props.target === "ministers" ? styles.targetSwitchActive : styles.targetSwitchBtn}
+            onClick={() => props.onChangeTarget("ministers")}
+          >
+            {targetTabs.ministers}
+          </button>
+        </div>
+        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
+          <option value="name_asc">名前（昇順）</option>
+          <option value="name_desc">名前（降順）</option>
+          {isSenators ? <option value="district_geo">選挙区</option> : null}
+          {isSenators ? <option value="terms_asc">当選回数（昇順）</option> : null}
+          {isSenators ? <option value="terms_desc">当選回数（降順）</option> : null}
+          {isSenators ? <option value="year_asc">次の改選年（昇順）</option> : null}
+          {isSenators ? <option value="year_desc">次の改選年（降順）</option> : null}
+        </select>
         <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
@@ -300,6 +320,9 @@ const styles: Record<string, React.CSSProperties> = {
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
   h1: { fontSize: 22, fontWeight: 800 },
   search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
+  targetSwitch: { width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 },
+  targetSwitchBtn: { width: "100%", padding: "12px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 16 },
+  targetSwitchActive: { width: "100%", padding: "12px 10px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", fontSize: 16, fontWeight: 700 },
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
