@@ -156,80 +156,38 @@ async function fetchText(url) {
 }
 
 function parseCouncilorsOfficers(html) {
-  const lines = cheerio.load(html)('body').text().split('\n').map((line) => normalizeWhitespace(line)).filter(Boolean);
-  const start = lines.findIndex((line) => line.includes('令和8年3月20日現在'));
-  if (start === -1) throw new Error('参議院役員一覧の開始位置を特定できませんでした');
+  const lines = cheerio
+    .load(html)('body')
+    .text()
+    .split('
+')
+    .map((line) => normalizeWhitespace(line))
+    .filter(Boolean);
+
   const out = [];
-  let currentLabel = '';
-  for (let i = start + 1; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (line === '事務総長 伊藤 文靖' || line.includes('利用案内')) break;
-    if (!line) continue;
+
+  for (const line of lines) {
+    if (line.includes('利用案内')) break;
 
     if (/^(議長|副議長)\s+/.test(line)) {
       const m = line.match(/^(議長|副議長)\s+(.+)$/u);
-      if (!m) continue;
-      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '' });
-      currentLabel = '';
+      if (m) {
+        out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '' });
+      }
       continue;
     }
-    if (/^(常任委員長|特別委員長|調査会長)\s+/.test(line)) {
-      const m = line.match(/^(常任委員長|特別委員長|調査会長)\s+(.+)$/u);
-      if (!m) continue;
-      const text = m[2];
-      const lastSpace = text.lastIndexOf(' ');
-      if (lastSpace === -1) continue;
-      out.push({ subRole: text.slice(0, lastSpace).trim(), name: toPlainName(text.slice(lastSpace + 1)), kana: '' });
-      currentLabel = m[1];
-      continue;
-    }
-    if (/^(憲法審査会会長|情報監視審査会会長|政治倫理審査会会長)\s+/.test(line)) {
-      const m = line.match(/^(憲法審査会会長|情報監視審査会会長|政治倫理審査会会長)\s+(.+)$/u);
-      if (!m) continue;
-      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '' });
-      currentLabel = '';
-      continue;
-    }
-    if (currentLabel && /委員長 /.test(line)) {
+
+    if (/(委員長|会長)/.test(line)) {
       const lastSpace = line.lastIndexOf(' ');
       if (lastSpace !== -1) {
-        out.push({ subRole: line.slice(0, lastSpace).trim(), name: toPlainName(line.slice(lastSpace + 1)), kana: '' });
+        out.push({
+          subRole: line.slice(0, lastSpace).trim(),
+          name: toPlainName(line.slice(lastSpace + 1)),
+          kana: '',
+        });
       }
-    }
-  }
-  return out;
-}
-
-function parseKanteiRolePage(html) {
-  const lines = cheerio.load(html)('body').text().split('\n').map((line) => normalizeWhitespace(line)).filter(Boolean);
-  const start = lines.findIndex((line) => line === '職名 氏名 備考');
-  if (start === -1) throw new Error('官邸ページの開始位置を特定できませんでした');
-  const out = [];
-  let roleLines = [];
-
-  for (let i = start + 1; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (line.includes('内閣ページに戻る')) break;
-    if (!line || line === '職名 氏名 備考') continue;
-
-    const personMatch = line.match(/^(.+?)(衆議院|参議院)$/u);
-    if (personMatch && /[（(]/u.test(personMatch[1])) {
-      const raw = personMatch[1].trim();
-      const m = raw.match(/^(.*?)（([^）]+)）$/u) ?? raw.match(/^(.*?)\(([^)]+)\)$/u);
-      const name = toPlainName(m ? m[1] : raw);
-      const kana = normalizeKana(m ? m[2] : '');
-      out.push({
-        subRole: roleLines.join(' / ').replace(/・\s*/gu, '').trim(),
-        name,
-        kana,
-        chamber: personMatch[2],
-      });
-      roleLines = [];
       continue;
     }
-
-    if (line === '衆議院' || line === '参議院') continue;
-    roleLines.push(line.replace(/^・\s*/u, ''));
   }
 
   return out;
