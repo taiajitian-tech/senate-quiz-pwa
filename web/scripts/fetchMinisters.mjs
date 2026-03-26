@@ -1,82 +1,145 @@
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA_FILE = path.resolve(__dirname, "../public/data/ministers.json");
 const URL = "https://www.kantei.go.jp/jp/105/meibo/index.html";
 
-async function main() {
-  const res = await fetch(URL);
-  const html = await res.text();
+function normalizeWhitespace(text) {
+  return String(text ?? "")
+    .replace(/\u00a0/g, " ")
+    .replace(/[\t\r]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizeCompact(text) {
+  return normalizeWhitespace(text)
+    .replace(/[（(][^）)]*[）)]/gu, "")
+    .replace(/[\s\u3000]+/gu, "")
+    .trim();
+}
+
+function toPlainName(text) {
+  return normalizeWhitespace(text)
+    .replace(/[（(][^）)]*[）)]/gu, "")
+    .replace(/君$/u, "")
+    .trim();
+}
+
+function stableId(name) {
+  const seed = `ministers:${name}`;
+  let hash = 0;
+  for (const ch of seed) hash = (hash * 131 + ch.codePointAt(0)) % 90000000;
+  return 10000000 + hash;
+}
+
+function readExisting() {
+  const raw = fs.readFileSync(DATA_FILE, "utf8");
+  const parsed = JSON.parse(raw);
+  return Array.isArray(parsed) ? parsed : [];
+}
+
+function buildExistingMap(items) {
+  const byName = new Map();
+  for (const item of items) {
+    const key = normalizeCompact(item?.name);
+    if (!key) continue;
+    byName.set(key, item);
+  }
+  return byName;
+}
+
+function extractCandidates(html) {
   const $ = cheerio.load(html);
+  const out = [];
 
-  const results = [];
-
-  // ▼ 安定取得：画像と名前セットで全探索
   $("img").each((_, el) => {
-    const img = $(el).attr("src");
+    const src = $(el).attr("src") || "";
+    if (!src) return;
+    if (!/\/content\//.test(src) && !/\.(jpe?g|png|webp)$/i.test(src)) return;
 
-    if (!img) return;
-
-    const parent = $(el).closest("li, div, section");
-
-    const text = parent.text().trim();
-
+    const container = $(el).closest("li, section, div");
+    const text = normalizeWhitespace(container.text());
     if (!text) return;
 
-    // 名前っぽい行だけ抽出（簡易）
-    const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
+    const parts = text
+      .split(/\n+/)
+      .map((s) => normalizeWhitespace(s))
+      .filter(Boolean);
 
-    if (lines.length === 0) return;
+    const role = parts.find((p) => /(内閣総理大臣|大臣)/.test(p)) || "";
+    const name = parts.find((p) => /[一-龯ぁ-んァ-ン]/.test(p) && !/(内閣|官邸|一覧|ページ|大臣|総理)/.test(p)) || "";
 
-    const name = lines[0];
+    if (!name) return;
 
-    // 明らかに不要なものを除外
-    if (
-      name.includes("内閣") ||
-      name.includes("官邸") ||
-      name.length > 20
-    ) {
-      return;
-    }
-
-    results.push({
-      id: name,
-      name,
-      kana: "",
-      role: "",
-      image: img.startsWith("http")
-        ? img
-        : "https://www.kantei.go.jp" + img
+    out.push({
+      name: toPlainName(name),
+      group: role || "",
+      image: src.startsWith("http") ? src : `https://www.kantei.go.jp${src}`,
     });
   });
 
-  // ▼ 重複除去
   const unique = [];
   const seen = new Set();
-
-  for (const r of results) {
-    if (!seen.has(r.name)) {
-      seen.add(r.name);
-      unique.push(r);
-    }
+  for (const item of out) {
+    const key = normalizeCompact(item.name);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    unique.push(item);
   }
+  return unique;
+}
 
-  // ▼ フォールバック（空なら既存維持）
-  if (unique.length === 0) {
-    console.log("⚠ ministers empty → skip overwrite");
+async function main() {
+  const existing = readExisting();
+  const existingByName = buildExistingMap(existing);
+
+  let parsed = [];
+  try {
+    const res = await fetch(URL, {
+      headers: {
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      },
+      redirect: "follow",
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const html = await res.text();
+    parsed = extractCandidates(html);
+  } catch (err) {
+    console.warn("ministers fetch failed, keep existing:", err?.message || err);
+    console.log(`ministers kept: ${existing.length}`);
     return;
   }
 
-  fs.writeFileSync(
-    "public/data/ministers.json",
-    JSON.stringify(unique, null, 2),
-    "utf-8"
-  );
+  // 安全装置: 件数が少なすぎる場合は既存を維持
+  if (parsed.length < 10) {
+    console.warn(`ministers parse suspicious (${parsed.length}), keep existing`);
+    console.log(`ministers kept: ${existing.length}`);
+    return;
+  }
 
-  console.log("ministers:", unique.length);
+  const merged = parsed.map((item) => {
+    const key = normalizeCompact(item.name);
+    const prev = existingByName.get(key);
+    return {
+      id: Number(prev?.id) || stableId(item.name),
+      name: item.name,
+      group: item.group || prev?.group || "",
+      images: item.image ? [item.image] : Array.isArray(prev?.images) ? prev.images : [],
+    };
+  });
+
+  fs.writeFileSync(DATA_FILE, `${JSON.stringify(merged, null, 2)}\n`, "utf8");
+  console.log(`ministers: ${merged.length}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err);
-  process.exit(0); // ← 落とさない
+  process.exit(1);
 });
