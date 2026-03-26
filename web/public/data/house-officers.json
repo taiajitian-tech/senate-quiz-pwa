@@ -1,215 +1,5 @@
 [
   {
-    "id": 55491319,
-    "name": "森英介",
-    "kana": "もりえいすけ",
-    "group": "議長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "議長",
-    "chamber": "衆議院",
-    "party": "無所属",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12011XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 38681713,
-    "name": "石井啓一",
-    "kana": "いしいけいいち",
-    "group": "副議長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "副議長",
-    "chamber": "衆議院",
-    "party": "無所属",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX002K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 69653684,
-    "name": "古屋圭司",
-    "kana": "ふるやけいじ",
-    "group": "憲法審査会会長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "憲法審査会会長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA21005XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 75730750,
-    "name": "山下貴司",
-    "kana": "やましたたかし",
-    "group": "内閣委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "内閣委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA33002XXX002K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 53248162,
-    "name": "古川康",
-    "kana": "ふるかわやすし",
-    "group": "総務委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "総務委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41002XXX002K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 84909059,
-    "name": "井上英孝",
-    "kana": "いのうえひでたか",
-    "group": "法務委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "法務委員長",
-    "chamber": "衆議院",
-    "party": "日本維新の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27001XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 84194920,
-    "name": "國場幸之助",
-    "kana": "こくばこうのすけ",
-    "group": "外務委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "外務委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Konosuke_Kokuba.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 10254145,
-    "name": "武村展英",
-    "kana": "たけむらのぶひで",
-    "group": "財務金融委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "財務金融委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25003XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 91927109,
-    "name": "斎藤洋明",
-    "kana": "さいとうひろあき",
-    "group": "文部科学委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "文部科学委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15003XXX002K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 17534041,
-    "name": "大串正樹",
-    "kana": "おおぐしまさき",
-    "group": "厚生労働委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "厚生労働委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 73955615,
-    "name": "藤井比早之",
-    "kana": "ふじいひさゆき",
-    "group": "農林水産委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "農林水産委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28004XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 45180416,
-    "name": "工藤彰三",
-    "kana": "くどうしょうぞう",
-    "group": "経済産業委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "経済産業委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23004XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 33806202,
-    "name": "冨樫博之",
-    "kana": "とがしひろゆき",
-    "group": "国土交通委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "国土交通委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 24584259,
-    "name": "宮路拓馬",
-    "kana": "みやじたくま",
-    "group": "環境委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "環境委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46001XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
     "id": 55756191,
     "name": "西村明宏",
     "kana": "にしむらあきひろ",
@@ -220,36 +10,6 @@
     "party": "自由民主党・無所属の会",
     "images": [
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04003XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 46987048,
-    "name": "坂本哲志",
-    "kana": "さかもとてつし",
-    "group": "予算委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "予算委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA43003XXX001K_0.jpg"
-    ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "fallback"
-  },
-  {
-    "id": 23617623,
-    "name": "山口俊一",
-    "kana": "やまぐちしゅんいち",
-    "group": "議院運営委員長 / 衆議院",
-    "role": "衆議院役員",
-    "subRole": "議院運営委員長",
-    "chamber": "衆議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
@@ -270,6 +30,141 @@
     "sourceMode": "fallback"
   },
   {
+    "id": 84194920,
+    "name": "國場幸之助",
+    "kana": "こくばこうのすけ",
+    "group": "外務委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "外務委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Konosuke_Kokuba.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 24584259,
+    "name": "宮路拓馬",
+    "kana": "みやじたくま",
+    "group": "環境委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "環境委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 23617623,
+    "name": "山口俊一",
+    "kana": "やまぐちしゅんいち",
+    "group": "議院運営委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "議院運営委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 55491319,
+    "name": "森英介",
+    "kana": "もりえいすけ",
+    "group": "議長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "議長",
+    "chamber": "衆議院",
+    "party": "無所属",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12011XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 45180416,
+    "name": "工藤彰三",
+    "kana": "くどうしょうぞう",
+    "group": "経済産業委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "経済産業委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23004XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 69653684,
+    "name": "古屋圭司",
+    "kana": "ふるやけいじ",
+    "group": "憲法審査会会長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "憲法審査会会長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA21005XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 17534041,
+    "name": "大串正樹",
+    "kana": "おおぐしまさき",
+    "group": "厚生労働委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "厚生労働委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 33806202,
+    "name": "冨樫博之",
+    "kana": "とがしひろゆき",
+    "group": "国土交通委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "国土交通委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 10254145,
+    "name": "武村展英",
+    "kana": "たけむらのぶひで",
+    "group": "財務金融委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "財務金融委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25003XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
     "id": 90096906,
     "name": "美延映夫",
     "kana": "みのべてるお",
@@ -280,6 +175,36 @@
     "party": "日本維新の会",
     "images": [
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27004XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 88847142,
+    "name": "田中和徳",
+    "kana": "たなかかずのり",
+    "group": "政治倫理審査会会長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "政治倫理審査会会長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14010XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 53248162,
+    "name": "古川康",
+    "kana": "ふるかわやすし",
+    "group": "総務委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "総務委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41002XXX002K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
@@ -300,16 +225,91 @@
     "sourceMode": "fallback"
   },
   {
-    "id": 88847142,
-    "name": "田中和徳",
-    "kana": "たなかかずのり",
-    "group": "政治倫理審査会会長 / 衆議院",
+    "id": 75730750,
+    "name": "山下貴司",
+    "kana": "やましたたかし",
+    "group": "内閣委員長 / 衆議院",
     "role": "衆議院役員",
-    "subRole": "政治倫理審査会会長",
+    "subRole": "内閣委員長",
     "chamber": "衆議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14010XXX001K_0.jpg"
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA33002XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 73955615,
+    "name": "藤井比早之",
+    "kana": "ふじいひさゆき",
+    "group": "農林水産委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "農林水産委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28004XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 38681713,
+    "name": "石井啓一",
+    "kana": "いしいけいいち",
+    "group": "副議長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "副議長",
+    "chamber": "衆議院",
+    "party": "無所属",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 91927109,
+    "name": "斎藤洋明",
+    "kana": "さいとうひろあき",
+    "group": "文部科学委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "文部科学委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15003XXX002K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 84909059,
+    "name": "井上英孝",
+    "kana": "いのうえひでたか",
+    "group": "法務委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "法務委員長",
+    "chamber": "衆議院",
+    "party": "日本維新の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27001XXX001K_0.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 46987048,
+    "name": "坂本哲志",
+    "kana": "さかもとてつし",
+    "group": "予算委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "予算委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA43003XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
