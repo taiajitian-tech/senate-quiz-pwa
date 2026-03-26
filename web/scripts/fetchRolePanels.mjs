@@ -159,8 +159,7 @@ function parseCouncilorsOfficers(html) {
   const lines = cheerio
     .load(html)('body')
     .text()
-    .split('
-')
+    .split('\n')
     .map((line) => normalizeWhitespace(line))
     .filter(Boolean);
 
@@ -188,6 +187,41 @@ function parseCouncilorsOfficers(html) {
       }
       continue;
     }
+  }
+
+  return out;
+}
+
+function parseKanteiRolePage(html) {
+  const lines = cheerio.load(html)('body').text().split('\n').map((line) => normalizeWhitespace(line)).filter(Boolean);
+  const start = lines.findIndex((line) => line === '職名 氏名 備考');
+  if (start === -1) throw new Error('官邸ページの開始位置を特定できませんでした');
+  const out = [];
+  let roleLines = [];
+
+  for (let i = start + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (line.includes('内閣ページに戻る')) break;
+    if (!line || line === '職名 氏名 備考') continue;
+
+    const personMatch = line.match(/^(.+?)(衆議院|参議院)$/u);
+    if (personMatch && /[（(]/u.test(personMatch[1])) {
+      const raw = personMatch[1].trim();
+      const m = raw.match(/^(.*?)（([^）]+)）$/u) ?? raw.match(/^(.*?)\(([^)]+)\)$/u);
+      const name = toPlainName(m ? m[1] : raw);
+      const kana = normalizeKana(m ? m[2] : '');
+      out.push({
+        subRole: roleLines.join(' / ').replace(/・\s*/gu, '').trim(),
+        name,
+        kana,
+        chamber: personMatch[2],
+      });
+      roleLines = [];
+      continue;
+    }
+
+    if (line === '衆議院' || line === '参議院') continue;
+    roleLines.push(line.replace(/^・\s*/u, ''));
   }
 
   return out;
