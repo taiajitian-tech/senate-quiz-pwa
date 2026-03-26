@@ -1,6 +1,6 @@
 [
   {
-    "id": 86427081,
+    "id": 55491319,
     "name": "森英介",
     "kana": "もりえいすけ",
     "group": "議長 / 衆議院",
@@ -12,10 +12,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12011XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 63271425,
+    "id": 38681713,
     "name": "石井啓一",
     "kana": "いしいけいいち",
     "group": "副議長 / 衆議院",
@@ -27,10 +27,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX002K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 62328766,
+    "id": 69653684,
     "name": "古屋圭司",
     "kana": "ふるやけいじ",
     "group": "憲法審査会会長 / 衆議院",
@@ -42,10 +42,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA21005XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 85062322,
+    "id": 75730750,
     "name": "山下貴司",
     "kana": "やましたたかし",
     "group": "内閣委員長 / 衆議院",
@@ -57,10 +57,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA33002XXX002K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 92361304,
+    "id": 53248162,
     "name": "古川康",
     "kana": "ふるかわやすし",
     "group": "総務委員長 / 衆議院",
@@ -72,10 +72,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41002XXX002K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 69732681,
+    "id": 84909059,
     "name": "井上英孝",
     "kana": "いのうえひでたか",
     "group": "法務委員長 / 衆議院",
@@ -87,10 +87,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27001XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 54579092,
+    "id": 84194920,
     "name": "國場幸之助",
     "kana": "こくばこうのすけ",
     "group": "外務委員長 / 衆議院",
@@ -102,10 +102,10 @@
       "https://upload.wikimedia.org/wikipedia/commons/2/2e/Konosuke_Kokuba.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 86946307,
+    "id": 10254145,
     "name": "武村展英",
     "kana": "たけむらのぶひで",
     "group": "財務金融委員長 / 衆議院",
@@ -117,10 +117,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25003XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 94211601,
+    "id": 91927109,
     "name": "斎藤洋明",
     "kana": "さいとうひろあき",
     "group": "文部科学委員長 / 衆議院",
@@ -132,10 +132,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15003XXX002K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 75801703,
+    "id": 17534041,
     "name": "大串正樹",
     "kana": "おおぐしまさき",
     "group": "厚生労働委員長 / 衆議院",
@@ -147,10 +147,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 70631497,
+    "id": 73955615,
     "name": "藤井比早之",
     "kana": "ふじいひさゆき",
     "group": "農林水産委員長 / 衆議院",
@@ -162,10 +162,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28004XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 60509678,
+    "id": 45180416,
     "name": "工藤彰三",
     "kana": "くどうしょうぞう",
     "group": "経済産業委員長 / 衆議院",
@@ -177,10 +177,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23004XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 63169884,
+    "id": 33806202,
     "name": "冨樫博之",
     "kana": "とがしひろゆき",
     "group": "国土交通委員長 / 衆議院",
@@ -192,10 +192,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 45130911,
+    "id": 24584259,
     "name": "宮路拓馬",
     "kana": "みやじたくま",
     "group": "環境委員長 / 衆議院",
@@ -207,10 +207,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46001XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 66637323,
+    "id": 55756191,
     "name": "西村明宏",
     "kana": "にしむらあきひろ",
     "group": "安全保障委員長 / 衆議院",
@@ -222,10 +222,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04003XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 72328510,
+    "id": 46987048,
     "name": "坂本哲志",
     "kana": "さかもとてつし",
     "group": "予算委員長 / 衆議院",
@@ -237,10 +237,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA43003XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 94007145,
+    "id": 23617623,
     "name": "山口俊一",
     "kana": "やまぐちしゅんいち",
     "group": "議院運営委員長 / 衆議院",
@@ -252,10 +252,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 78935637,
+    "id": 57190865,
     "name": "島尻安伊子",
     "kana": "しまじりあいこ",
     "group": "沖縄及び北方問題に関する特別委員長 / 衆議院",
@@ -267,10 +267,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA47003XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 65044008,
+    "id": 90096906,
     "name": "美延映夫",
     "kana": "みのべてるお",
     "group": "政治改革に関する特別委員長 / 衆議院",
@@ -282,10 +282,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27004XXX002K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 34267399,
+    "id": 67847667,
     "name": "丹羽秀樹",
     "kana": "にわひでき",
     "group": "地域活性化・こども政策・デジタル社会形成に関する特別委員長 / 衆議院",
@@ -297,10 +297,10 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23006XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   },
   {
-    "id": 67742564,
+    "id": 88847142,
     "name": "田中和徳",
     "kana": "たなかかずのり",
     "group": "政治倫理審査会会長 / 衆議院",
@@ -312,6 +312,6 @@
       "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14010XXX001K_0.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
-    "sourceMode": "seed"
+    "sourceMode": "fallback"
   }
 ]
