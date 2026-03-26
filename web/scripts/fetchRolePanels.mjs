@@ -44,10 +44,6 @@ function readJson(fileName) {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, fileName), 'utf8'));
 }
 
-function writeJson(fileName, data) {
-  fs.writeFileSync(path.join(DATA_DIR, fileName), `${JSON.stringify(data, null, 2)}\n`, 'utf8');
-}
-
 function normalizeWhitespace(text) {
   return String(text ?? '').replace(/\u00a0/g, ' ').replace(/[\t\r]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -155,26 +151,8 @@ async function fetchText(url) {
     headers: { 'user-agent': USER_AGENT },
     redirect: 'follow',
   });
-  if (!res.ok) {
-    throw new Error(`Fetch failed ${res.status}: ${url}`);
-  }
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return await res.text();
-}
-
-function parseHouseOfficers(html) {
-  const lines = cheerio.load(html)('body').text().split('\n').map((line) => normalizeWhitespace(line)).filter(Boolean);
-  const start = lines.findIndex((line) => line.includes('衆議院役員等一覧'));
-  if (start === -1) throw new Error('衆議院役員一覧の開始位置を特定できませんでした');
-  const out = [];
-  for (let i = start + 1; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (line.includes('衆議院トップページ')) break;
-    const m = line.match(/^(.+?(?:議長|副議長|委員長|会長))\s+(.+)$/u);
-    if (!m) continue;
-    out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '' });
-  }
-  if (out.length === 0) throw new Error('衆議院役員一覧の結果が空です');
-  return out;
 }
 
 function parseCouncilorsOfficers(html) {
@@ -190,22 +168,44 @@ function parseCouncilorsOfficers(html) {
   for (const rawLine of lines) {
     const line = rawLine.replace(/＜正字＞/g, '').trim();
     if (!line) continue;
+    if (/^令和\d+年\d+月\d+日現在$/.test(line)) continue;
+    if (/^第\d+回国会/u.test(line)) continue;
+    if (/議員の名前をクリックすると/.test(line)) continue;
+    if (/正確な表記が表示されます/.test(line)) continue;
+    if (/^事務総長\s+/.test(line)) continue;
+    if (/^利用案内/.test(line)) continue;
 
     let m = line.match(/^(議長|副議長)\s+(.+)$/u);
     if (m) {
-      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '', chamber: '参議院' });
+      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '', chamber: '参議院', sourceMode: 'live' });
       continue;
     }
 
-    m = line.match(/^(常任委員長|特別委員長|調査会長)\s+(.+?(?:委員長|会長))\s+(.+)$/u);
+    m = line.match(/^(常任委員長|特別委員長|調査会長)\s+(.+)$/u);
     if (m) {
-      out.push({ subRole: m[2], name: toPlainName(m[3]), kana: '', chamber: '参議院' });
+      const body = m[2];
+      const lastSpace = body.lastIndexOf(' ');
+      if (lastSpace !== -1) {
+        out.push({
+          subRole: body.slice(0, lastSpace).trim(),
+          name: toPlainName(body.slice(lastSpace + 1)),
+          kana: '',
+          chamber: '参議院',
+          sourceMode: 'live',
+        });
+      }
       continue;
     }
 
     m = line.match(/^(.+?(?:委員長|会長))\s+(.+)$/u);
-    if (m && !line.startsWith('事務総長')) {
-      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '', chamber: '参議院' });
+    if (m) {
+      out.push({
+        subRole: m[1],
+        name: toPlainName(m[2]),
+        kana: '',
+        chamber: '参議院',
+        sourceMode: 'live',
+      });
       continue;
     }
   }
@@ -217,10 +217,6 @@ function parseCouncilorsOfficers(html) {
     if (seen.has(key)) continue;
     seen.add(key);
     unique.push(item);
-  }
-
-  if (unique.length < 20) {
-    throw new Error(`参議院役員 の結果が少なすぎます (${unique.length})`);
   }
 
   return unique;
@@ -236,43 +232,112 @@ function parseKanteiRolePage(html) {
   for (let i = start + 1; i < lines.length; i += 1) {
     const line = lines[i];
     if (line.includes('内閣ページに戻る')) break;
-    if (!line) continue;
+    if (!line || line === '職名 氏名 備考') continue;
 
-    if (/^(第.+内閣|令和\d+年)/u.test(line)) continue;
-    if (line === '職名 氏名 備考') continue;
-
-    if (/^[*・]\s*/u.test(line) || /担当|大臣|委員長|長官/u.test(line)) {
-      roleLines.push(line.replace(/^[*・]\s*/u, '').trim());
+    const personMatch = line.match(/^(.+?)(衆議院|参議院)$/u);
+    if (personMatch && /[（(]/u.test(personMatch[1])) {
+      const raw = personMatch[1].trim();
+      const m = raw.match(/^(.*?)（([^）]+)）$/u) ?? raw.match(/^(.*?)\(([^)]+)\)$/u);
+      const name = toPlainName(m ? m[1] : raw);
+      const kana = normalizeKana(m ? m[2] : '');
+      out.push({
+        subRole: roleLines.join(' / ').replace(/・\s*/gu, '').trim(),
+        name,
+        kana,
+        chamber: personMatch[2],
+      });
+      roleLines = [];
       continue;
     }
 
-    const m = line.match(/^(.+?)(?:（[^）]+）)?(?:\s+(衆議院|参議院))?$/u);
-    if (m && roleLines.length > 0) {
-      out.push({
-        subRole: roleLines.join(' / '),
-        name: toPlainName(m[1]),
-        kana: '',
-        chamber: m[2] ?? '',
-      });
-      roleLines = [];
-    }
+    if (line === '衆議院' || line === '参議院') continue;
+    roleLines.push(line.replace(/^・\s*/u, ''));
   }
 
   return out;
 }
 
-function withImages(entries, label, imageMap, sourceUrl) {
+function parseHouseOfficers(html) {
+  if (/ただいまメンテナンス中/.test(html)) {
+    return FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
+  }
+
+  const lines = cheerio.load(html)('body').text().split('\n').map((line) => normalizeWhitespace(line)).filter(Boolean);
+  const start = lines.findIndex((line) => line.includes('役員等一覧'));
+  if (start === -1) {
+    return FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
+  }
+
+  const out = [];
+  for (let i = start + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (/事務総長/.test(line)) break;
+    if (/^(議長|副議長|.+委員長|.+会長)\s+/.test(line)) {
+      const lastSpace = line.lastIndexOf(' ');
+      if (lastSpace === -1) continue;
+      out.push({
+        subRole: line.slice(0, lastSpace).trim(),
+        name: toPlainName(line.slice(lastSpace + 1)),
+        kana: '',
+        chamber: '衆議院',
+        sourceMode: 'live',
+      });
+    }
+  }
+  return out.length > 0 ? out : FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
+}
+
+function withImages(entries, category, imageMap, sourceUrl) {
   return entries.map((entry) => {
     const matched = resolveMatchedPerson(entry, imageMap);
+    const chamber = entry.chamber || matched?.chamber || '';
+    const kana = normalizeKana(entry.kana || matched?.kana || '');
+    const displayName = matched?.name || toPlainName(entry.name);
+    const groupParts = [entry.subRole, chamber].filter(Boolean);
     return {
-      id: stableId(label, entry.subRole, entry.name),
-      name: matched?.name ?? entry.name,
+      id: stableId(category, entry.subRole, displayName),
+      name: displayName,
+      kana,
+      group: groupParts.join(' / '),
+      role: category,
       subRole: entry.subRole,
-      chamber: entry.chamber || matched?.chamber || '',
-      sourceUrl,
+      chamber,
+      party: matched?.party || '',
       images: matched?.image ? [matched.image] : [],
+      sourceUrl,
+      sourceMode: entry.sourceMode || 'live',
     };
   });
+}
+
+function writeJson(fileName, data) {
+  fs.writeFileSync(path.join(DATA_DIR, fileName), `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+}
+
+function readExistingArray(fileName) {
+  try {
+    const parsed = readJson(fileName);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+async function safeGenerate({ label, parser, url, category, imageMap, sourceUrl, fileName, minCount = 1 }) {
+  try {
+    const parsed = await safeParse(label, parser, url);
+    if (parsed.length < minCount) {
+      throw new Error(`${label} の結果が少なすぎます (${parsed.length})`);
+    }
+    return withImages(parsed, category, imageMap, sourceUrl);
+  } catch (error) {
+    const existing = readExistingArray(fileName);
+    if (existing.length > 0) {
+      console.warn(`${label}: keep existing ${existing.length} because ${error.message}`);
+      return existing;
+    }
+    throw error;
+  }
 }
 
 async function safeParse(label, parser, url) {
@@ -286,26 +351,38 @@ async function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   const imageMap = buildImageMap();
 
-  const councilorsOfficers = withImages(
-    await safeParse('参議院役員', parseCouncilorsOfficers, URLS.councilorsOfficers),
-    '参議院役員',
+  const councilorsOfficers = await safeGenerate({
+    label: '参議院役員',
+    parser: parseCouncilorsOfficers,
+    url: URLS.councilorsOfficers,
+    category: '参議院役員',
     imageMap,
-    URLS.councilorsOfficers,
-  );
+    sourceUrl: URLS.councilorsOfficers,
+    fileName: 'councilors-officers.json',
+    minCount: 20,
+  });
 
-  const viceMinisters = withImages(
-    await safeParse('副大臣', parseKanteiRolePage, URLS.viceMinisters),
-    '副大臣',
+  const viceMinisters = await safeGenerate({
+    label: '副大臣',
+    parser: parseKanteiRolePage,
+    url: URLS.viceMinisters,
+    category: '副大臣',
     imageMap,
-    URLS.viceMinisters,
-  );
+    sourceUrl: URLS.viceMinisters,
+    fileName: 'vice-ministers.json',
+    minCount: 5,
+  });
 
-  const parliamentarySecretaries = withImages(
-    await safeParse('大臣政務官', parseKanteiRolePage, URLS.parliamentarySecretaries),
-    '大臣政務官',
+  const parliamentarySecretaries = await safeGenerate({
+    label: '大臣政務官',
+    parser: parseKanteiRolePage,
+    url: URLS.parliamentarySecretaries,
+    category: '大臣政務官',
     imageMap,
-    URLS.parliamentarySecretaries,
-  );
+    sourceUrl: URLS.parliamentarySecretaries,
+    fileName: 'parliamentary-secretaries.json',
+    minCount: 5,
+  });
 
   let houseOfficersEntries;
   try {
