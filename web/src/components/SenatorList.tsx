@@ -7,14 +7,17 @@ import {
   getPersonNameKanaOverrides,
   loadPersonsForTarget,
   savePersonNameKanaOverride,
-  targetLabels,
-  targetTabs,
+  getAvailableTargets,
+  getTargetLabels,
+  getTargetTabs,
+  type AppMode,
   type Person,
   type Target,
 } from "./data";
 import SafeImage from "./SafeImage";
 
 type Props = {
+  appMode: AppMode;
   target: Target;
   onChangeTarget?: (target: Target) => void;
   onBack: () => void;
@@ -143,13 +146,16 @@ export default function SenatorList(props: Props) {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const isSenators = props.target === "senators";
   const overrideMap = useMemo(() => getPersonNameKanaOverrides(props.target), [props.target, overrideVersion]);
+  const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
+  const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
+  const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
 
   useEffect(() => {
     (async () => {
       setLoading(true);
       setError(null);
       try {
-        setItems(await loadPersonsForTarget(baseUrl, props.target));
+        setItems(await loadPersonsForTarget(baseUrl, props.target, props.appMode));
       } catch (e) {
         console.error(e);
         setItems([]);
@@ -158,7 +164,7 @@ export default function SenatorList(props: Props) {
         setLoading(false);
       }
     })();
-  }, [baseUrl, props.target, overrideVersion]);
+  }, [baseUrl, props.appMode, props.target, overrideVersion]);
 
   useEffect(() => {
     const onScroll = () => setShowFloatingButtons(window.scrollY > 200);
@@ -174,8 +180,8 @@ export default function SenatorList(props: Props) {
     setEditKana("");
   }, [props.target]);
 
-  const wrongSet = useMemo(() => new Set(loadWrongIds(props.target)), [props.target]);
-  const masteredSet = useMemo(() => new Set(loadMasteredIds(props.target)), [props.target]);
+  const wrongSet = useMemo(() => new Set(loadWrongIds(props.appMode, props.target)), [props.appMode, props.target]);
+  const masteredSet = useMemo(() => new Set(loadMasteredIds(props.appMode, props.target)), [props.appMode, props.target]);
 
   const filtered = useMemo(() => {
     const key = q.trim().toLowerCase();
@@ -260,7 +266,7 @@ export default function SenatorList(props: Props) {
               onChange={(e) => props.onChangeTarget?.(e.target.value as Target)}
               style={styles.select}
             >
-              {(Object.keys(targetTabs) as Target[]).map((target) => (
+              {availableTargets.map((target) => (
                 <option key={target} value={target}>
                   {targetTabs[target]}
                 </option>

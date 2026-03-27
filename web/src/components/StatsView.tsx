@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { loadProgress } from "./learnStorage";
-import { loadPersonsForTarget, targetLabels, type Person, type Target } from "./data";
+import { getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import { loadMasteredIds, loadWrongIds } from "./progress";
 import { resetStats } from "./stats";
 
 type Props = {
+  appMode: AppMode;
   target: Target;
   onBack: () => void;
 };
@@ -29,7 +30,7 @@ export default function StatsView(props: Props) {
     (async () => {
       try {
         setLoadError(null);
-        const parsed = await loadPersonsForTarget(baseUrl, props.target);
+        const parsed = await loadPersonsForTarget(baseUrl, props.target, props.appMode);
         if (!cancelled) setItems(parsed);
       } catch (error) {
         console.error(error);
@@ -43,19 +44,19 @@ export default function StatsView(props: Props) {
     return () => {
       cancelled = true;
     };
-  }, [baseUrl, props.target]);
+  }, [baseUrl, props.appMode, props.target]);
 
   const summary = useMemo<Summary>(() => {
     const validIds = new Set(items.map((item) => item.id));
-    const progress = loadProgress(props.target);
+    const progress = loadProgress(props.appMode, props.target);
     const seenIds = new Set(
       Object.keys(progress)
         .map((key) => Number(key))
         .filter((id) => Number.isFinite(id) && validIds.has(id))
     );
 
-    const rememberedIds = new Set(loadMasteredIds(props.target).filter((id) => validIds.has(id)));
-    const wrongIds = new Set(loadWrongIds(props.target).filter((id) => validIds.has(id) && !rememberedIds.has(id)));
+    const rememberedIds = new Set(loadMasteredIds(props.appMode, props.target).filter((id) => validIds.has(id)));
+    const wrongIds = new Set(loadWrongIds(props.appMode, props.target).filter((id) => validIds.has(id) && !rememberedIds.has(id)));
 
     let hazy = 0;
     for (const id of seenIds) {
@@ -75,14 +76,14 @@ export default function StatsView(props: Props) {
       notRemembered,
       notChecked,
     };
-  }, [items, props.target]);
+  }, [items, props.appMode, props.target]);
 
   return (
     <div style={styles.wrap}>
       <div style={styles.header}>
         <button type="button" style={styles.backBtn} onClick={props.onBack}>タイトルへ戻る</button>
         <div style={styles.h1}>成績確認</div>
-        <div style={styles.sub}>{targetLabels[props.target]}</div>
+        <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]}</div>
         <div style={styles.desc}>合計が総人数と一致するように集計しています。</div>
         {loadError ? <div style={{ ...styles.sub, color: "#cf222e" }}>{loadError}</div> : null}
       </div>
@@ -94,7 +95,7 @@ export default function StatsView(props: Props) {
         <div style={styles.row}><div style={styles.k}>覚えてない人数</div><div style={styles.v}>{summary.notRemembered}</div></div>
         <div style={styles.row}><div style={styles.k}>まだ確認してない人数</div><div style={styles.v}>{summary.notChecked}</div></div>
         <div style={styles.totalCheck}>内訳合計：{summary.remembered + summary.hazy + summary.notRemembered + summary.notChecked}</div>
-        <button type="button" style={styles.dangerBtn} onClick={() => { resetStats(props.target); location.reload(); }}>成績リセット</button>
+        <button type="button" style={styles.dangerBtn} onClick={() => { resetStats(props.appMode, props.target); location.reload(); }}>成績リセット</button>
       </div>
     </div>
   );

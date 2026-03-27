@@ -1,3 +1,5 @@
+export type AppMode = "basic" | "entrance";
+
 export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "councilorsOfficersList" | "houseOfficersList";
 
 export type Person = {
@@ -13,7 +15,7 @@ export type Person = {
   aiGuess?: boolean;
 };
 
-export const targetLabels: Record<Target, string> = {
+const BASIC_TARGET_LABELS: Record<Target, string> = {
   senators: "現職参議院議員",
   representatives: "現職衆議院議員",
   ministers: "現職大臣",
@@ -23,7 +25,7 @@ export const targetLabels: Record<Target, string> = {
   houseOfficersList: "衆議院役員一覧",
 };
 
-export const targetTabs: Record<Target, string> = {
+const BASIC_TARGET_TABS: Record<Target, string> = {
   senators: "参議院",
   representatives: "衆議院",
   ministers: "現職大臣",
@@ -32,6 +34,52 @@ export const targetTabs: Record<Target, string> = {
   councilorsOfficersList: "参議院役員一覧",
   houseOfficersList: "衆議院役員一覧",
 };
+
+const ENTRANCE_TARGETS: Target[] = [
+  "senators",
+  "councilorsOfficersList",
+  "ministers",
+  "viceMinisters",
+  "parliamentarySecretaries",
+  "representatives",
+];
+
+const ENTRANCE_TARGET_LABELS: Record<Target, string> = {
+  senators: "参議院一般議員",
+  representatives: "衆議院議員",
+  ministers: "大臣",
+  viceMinisters: "副大臣",
+  parliamentarySecretaries: "衆議院政務官",
+  councilorsOfficersList: "参議院役員",
+  houseOfficersList: "衆議院役員一覧",
+};
+
+const ENTRANCE_TARGET_TABS: Record<Target, string> = {
+  senators: "参議院一般議員",
+  representatives: "衆議院議員",
+  ministers: "大臣",
+  viceMinisters: "副大臣",
+  parliamentarySecretaries: "衆議院政務官",
+  councilorsOfficersList: "参議院役員",
+  houseOfficersList: "衆議院役員一覧",
+};
+
+export const targetLabels = BASIC_TARGET_LABELS;
+export const targetTabs = BASIC_TARGET_TABS;
+
+export function getTargetLabels(mode: AppMode): Record<Target, string> {
+  return mode === "entrance" ? ENTRANCE_TARGET_LABELS : BASIC_TARGET_LABELS;
+}
+
+export function getTargetTabs(mode: AppMode): Record<Target, string> {
+  return mode === "entrance" ? ENTRANCE_TARGET_TABS : BASIC_TARGET_TABS;
+}
+
+export function getAvailableTargets(mode: AppMode): Target[] {
+  return mode === "entrance"
+    ? ENTRANCE_TARGETS
+    : (["senators", "representatives", "ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"] as Target[]);
+}
 
 export const targetDataPath: Record<Target, string> = {
   senators: "data/senators.json",
@@ -242,19 +290,55 @@ function normalizePerson(value: unknown, index: number): Person | null {
   };
 }
 
-function filterByTarget(items: Person[], target?: Target): Person[] {
-  if (!target) return items;
+function hasName(person: Person, names: Set<string>): boolean {
+  return names.has(normalizeCompact(person.name));
+}
 
+async function loadRawPersons(baseUrl: string, target: Target): Promise<Person[]> {
+  const res = await fetch(`${baseUrl}${targetDataPath[target]}`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+  const json = (await res.json()) as unknown;
+  if (!Array.isArray(json)) return [];
+  return json
+    .map((item, index) => normalizePerson(item, index))
+    .filter((item): item is Person => item !== null)
+    .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name);
+}
+
+function filterEntranceMode(items: Person[], target: Target, related: Partial<Record<Target, Person[]>> = {}): Person[] {
   switch (target) {
-    case "councilorsOfficersList":
+    case "senators": {
+      const officerNames = new Set((related.councilorsOfficersList ?? []).map((item) => normalizeCompact(item.name)));
+      return items.filter((item) => !hasName(item, officerNames));
+    }
+    case "representatives": {
+      const excludedNames = new Set<string>();
+      for (const sourceTarget of ["ministers", "viceMinisters", "parliamentarySecretaries"] as const) {
+        for (const item of related[sourceTarget] ?? []) {
+          const text = normalizeCompact([item.group, item.party, item.district].filter(Boolean).join(" / "));
+          if (sourceTarget === "parliamentarySecretaries" || sourceTarget === "viceMinisters" || text.includes("衆議院")) {
+            excludedNames.add(normalizeCompact(item.name));
+          }
+        }
+      }
+      return items.filter((item) => !hasName(item, excludedNames));
+    }
+    case "parliamentarySecretaries":
+      return items.filter((item) => normalizeCompact([item.group, item.party].filter(Boolean).join(" / ")).includes("衆議院"));
     case "houseOfficersList":
-      return items;
+      return [];
     default:
       return items;
   }
 }
 
-export function parsePersonsJson(value: unknown, target?: Target): Person[] {
+function filterByTarget(items: Person[], target?: Target, mode: AppMode = "basic", related: Partial<Record<Target, Person[]>> = {}): Person[] {
+  if (!target) return items;
+  if (mode === "entrance") return filterEntranceMode(items, target, related);
+  return items;
+}
+
+export function parsePersonsJson(value: unknown, target?: Target, mode: AppMode = "basic", related: Partial<Record<Target, Person[]>> = {}): Person[] {
   if (!Array.isArray(value)) return [];
 
   const items = value
@@ -263,12 +347,27 @@ export function parsePersonsJson(value: unknown, target?: Target): Person[] {
     .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name)
     .map((item) => applyNameKanaOverride(item, target));
 
-  return filterByTarget(items, target);
+  return filterByTarget(items, target, mode, related);
 }
 
-export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
+export async function loadPersonsForTarget(baseUrl: string, target: Target, mode: AppMode = "basic"): Promise<Person[]> {
+  const related: Partial<Record<Target, Person[]>> = {};
+  if (mode === "entrance") {
+    if (target === "senators") related.councilorsOfficersList = await loadRawPersons(baseUrl, "councilorsOfficersList");
+    if (target === "representatives") {
+      const [ministers, viceMinisters, parliamentarySecretaries] = await Promise.all([
+        loadRawPersons(baseUrl, "ministers"),
+        loadRawPersons(baseUrl, "viceMinisters"),
+        loadRawPersons(baseUrl, "parliamentarySecretaries"),
+      ]);
+      related.ministers = ministers;
+      related.viceMinisters = viceMinisters;
+      related.parliamentarySecretaries = parliamentarySecretaries;
+    }
+  }
+
   const res = await fetch(`${baseUrl}${targetDataPath[target]}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
   const json = (await res.json()) as unknown;
-  return parsePersonsJson(json, target);
+  return parsePersonsJson(json, target, mode, related);
 }

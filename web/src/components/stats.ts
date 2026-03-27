@@ -1,4 +1,4 @@
-import type { Target } from "./data";
+import type { AppMode, Target } from "./data";
 
 export type Stats = {
   playedTotal: number;
@@ -7,7 +7,7 @@ export type Stats = {
   masteredCount: number;
 };
 
-const key = (target: Target) => `senateQuiz:${target}:stats:v1`;
+const key = (mode: AppMode, target: Target) => `senateQuiz:${mode}:${target}:stats:v1`;
 
 const cleanNum = (v: unknown) => {
   const n = Number(v);
@@ -15,9 +15,9 @@ const cleanNum = (v: unknown) => {
   return Math.floor(n);
 };
 
-export const loadStats = (target: Target): Stats => {
+export const loadStats = (mode: AppMode, target: Target): Stats => {
   try {
-    const raw = localStorage.getItem(key(target));
+    const raw = localStorage.getItem(key(mode, target));
     if (!raw) return { playedTotal: 0, correctTotal: 0, wrongTotal: 0, masteredCount: 0 };
     const p = JSON.parse(raw) as Partial<Stats>;
     return {
@@ -31,26 +31,26 @@ export const loadStats = (target: Target): Stats => {
   }
 };
 
-export const saveStats = (target: Target, s: Stats) => {
+export const saveStats = (mode: AppMode, target: Target, s: Stats) => {
   try {
-    localStorage.setItem(key(target), JSON.stringify(s));
+    localStorage.setItem(key(mode, target), JSON.stringify(s));
   } catch {
     // ignore
   }
 };
 
-export const bumpStats = (target: Target, delta: Partial<Stats>) => {
-  const s = loadStats(target);
+export const bumpStats = (mode: AppMode, target: Target, delta: Partial<Stats>) => {
+  const s = loadStats(mode, target);
   const next: Stats = {
     playedTotal: s.playedTotal + cleanNum(delta.playedTotal ?? 0),
     correctTotal: s.correctTotal + cleanNum(delta.correctTotal ?? 0),
     wrongTotal: s.wrongTotal + cleanNum(delta.wrongTotal ?? 0),
     masteredCount: s.masteredCount + cleanNum(delta.masteredCount ?? 0),
   };
-  saveStats(target, next);
+  saveStats(mode, target, next);
   return next;
 };
 
-export const resetStats = (target: Target) => {
-  saveStats(target, { playedTotal: 0, correctTotal: 0, wrongTotal: 0, masteredCount: 0 });
+export const resetStats = (mode: AppMode, target: Target) => {
+  saveStats(mode, target, { playedTotal: 0, correctTotal: 0, wrongTotal: 0, masteredCount: 0 });
 };

@@ -59,8 +59,8 @@ export default function Quiz(props: Props) {
   const dataUrl = `${baseUrl}data/senators.json`;
 
   // 成績（永続）
-  const [stats, setStats] = useState(() => loadStats(target));
-  const [masteredSet, setMasteredSet] = useState<Set<number>>(() => new Set(loadMasteredIds(target)));
+  const [stats, setStats] = useState(() => loadStats("basic", target));
+  const [masteredSet, setMasteredSet] = useState<Set<number>>(() => new Set(loadMasteredIds("basic", target)));
 
   // 初期ロード
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function Quiz(props: Props) {
         setSenators(arr);
 
         // 永続の間違いリストを復元
-        const wrongIds = loadWrongIds(target);
+        const wrongIds = loadWrongIds("basic", target);
         setReviewWrongSet(new Set(wrongIds));
 
         // normal 出題を生成
@@ -93,8 +93,8 @@ export default function Quiz(props: Props) {
         setMode(props.initialMode);
 
         // 成績と完全正解の復元
-        setStats(loadStats(target));
-        setMasteredSet(new Set(loadMasteredIds(target)));
+        setStats(loadStats("basic", target));
+        setMasteredSet(new Set(loadMasteredIds("basic", target)));
       } catch (e) {
         console.error(e);
         setSenators([]);
@@ -177,7 +177,7 @@ export default function Quiz(props: Props) {
   };
 
   const startReview = () => {
-    const setTo = new Set(loadWrongIds(target));
+    const setTo = new Set(loadWrongIds("basic", target));
     setReviewWrongSet(setTo);
     setMode("review");
     setSelected(null);
@@ -186,7 +186,7 @@ export default function Quiz(props: Props) {
   };
 
   const resetAll = () => {
-    saveWrongIds(target, []);
+    saveWrongIds("basic", target, []);
     setReviewWrongSet(new Set());
     setReviewCurrentId(null);
     startNormal();
@@ -198,38 +198,38 @@ export default function Quiz(props: Props) {
   };
 
   const addWrong = (id: number) => {
-    const nextIds = new Set<number>(loadWrongIds(target));
+    const nextIds = new Set<number>(loadWrongIds("basic", target));
     nextIds.add(id);
     const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
-    saveWrongIds(target, arr);
+    saveWrongIds("basic", target, arr);
     setReviewWrongSet(new Set(arr));
   };
 
   const removeWrong = (id: number) => {
-    const nextIds = new Set<number>(loadWrongIds(target));
+    const nextIds = new Set<number>(loadWrongIds("basic", target));
     nextIds.delete(id);
     const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
-    saveWrongIds(target, arr);
+    saveWrongIds("basic", target, arr);
     const nextSet = new Set(arr);
     setReviewWrongSet(nextSet);
     return nextSet;
   };
 
   const addMastered = (id: number) => {
-    const nextIds = new Set<number>(loadMasteredIds(target));
+    const nextIds = new Set<number>(loadMasteredIds("basic", target));
     if (nextIds.has(id)) return;
     nextIds.add(id);
     const arr = Array.from(nextIds.values()).sort((a, b) => a - b);
-    saveMasteredIds(target, arr);
+    saveMasteredIds("basic", target, arr);
     setMasteredSet(new Set(arr));
-    setStats(bumpStats(target, { masteredCount: 1 }));
+    setStats(bumpStats("basic", target, { masteredCount: 1 }));
   };
 
   const onGotItByChoices = () => {
     // 正解はしているが、四択を見て分かった → 復習へ回す
     if (!current) return;
     addWrong(current.id);
-    setStats(bumpStats(target, { playedTotal: 1, correctTotal: 1 }));
+    setStats(bumpStats("basic", target, { playedTotal: 1, correctTotal: 1 }));
     setSelected(null);
     setImgError(false);
     if (mode === "normal") setNormalPos(normalPos + 1);
@@ -241,7 +241,7 @@ export default function Quiz(props: Props) {
     addMastered(current.id);
     // 復習に入っているなら外す
     removeWrong(current.id);
-    setStats(bumpStats(target, { playedTotal: 1, correctTotal: 1 }));
+    setStats(bumpStats("basic", target, { playedTotal: 1, correctTotal: 1 }));
     setSelected(null);
     setImgError(false);
     if (mode === "normal") setNormalPos(normalPos + 1);
@@ -255,11 +255,11 @@ export default function Quiz(props: Props) {
       const wrongNow = selected !== current.id;
       if (wrongNow) {
         addWrong(current.id);
-        setStats(bumpStats(target, { playedTotal: 1, wrongTotal: 1 }));
+        setStats(bumpStats("basic", target, { playedTotal: 1, wrongTotal: 1 }));
       } else if (mode === "review") {
         // reviewで正解したら、そのIDを間違いリストから外す
         const nextSet = removeWrong(current.id);
-        setStats(bumpStats(target, { playedTotal: 1, correctTotal: 1 }));
+        setStats(bumpStats("basic", target, { playedTotal: 1, correctTotal: 1 }));
         setSelected(null);
         setImgError(false);
         setTimeout(() => ensureReviewCurrent(nextSet), 0);
@@ -279,7 +279,7 @@ export default function Quiz(props: Props) {
     if (mode === "review") {
       setSelected(null);
       setImgError(false);
-      const setTo = new Set(loadWrongIds(target));
+      const setTo = new Set(loadWrongIds("basic", target));
       setReviewWrongSet(setTo);
       // 「違う問題」を優先
       const ids = Array.from(setTo.values()).filter((id) => id !== current?.id);
@@ -332,7 +332,7 @@ export default function Quiz(props: Props) {
 
   // normal終了画面
   if (isNormalFinished) {
-    const wrongCount = loadWrongIds(target).length;
+    const wrongCount = loadWrongIds("basic", target).length;
     return (
       <>
         <BackBar />

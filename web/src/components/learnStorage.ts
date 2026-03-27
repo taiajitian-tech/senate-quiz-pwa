@@ -1,4 +1,4 @@
-import type { Target } from "./data";
+import type { AppMode, Target } from "./data";
 import type { Grade, ProgressItem } from "./srs";
 
 export type HistoryItem = {
@@ -7,11 +7,11 @@ export type HistoryItem = {
   grade: Grade;
 };
 
-const key = (target: Target, suffix: string) => `senateQuiz:${target}:${suffix}:v1`;
+const key = (mode: AppMode, target: Target, suffix: string) => `senateQuiz:${mode}:${target}:${suffix}:v1`;
 
-export function loadProgress(target: Target): Record<number, ProgressItem> {
+export function loadProgress(mode: AppMode, target: Target): Record<number, ProgressItem> {
   try {
-    const raw = localStorage.getItem(key(target, "progress"));
+    const raw = localStorage.getItem(key(mode, target, "progress"));
     if (!raw) return {};
     const parsed = JSON.parse(raw) as Record<number, ProgressItem>;
     return parsed && typeof parsed === "object" ? parsed : {};
@@ -20,13 +20,13 @@ export function loadProgress(target: Target): Record<number, ProgressItem> {
   }
 }
 
-export function saveProgress(target: Target, map: Record<number, ProgressItem>) {
-  localStorage.setItem(key(target, "progress"), JSON.stringify(map));
+export function saveProgress(mode: AppMode, target: Target, map: Record<number, ProgressItem>) {
+  localStorage.setItem(key(mode, target, "progress"), JSON.stringify(map));
 }
 
-export function loadHistory(target: Target): HistoryItem[] {
+export function loadHistory(mode: AppMode, target: Target): HistoryItem[] {
   try {
-    const raw = localStorage.getItem(key(target, "history"));
+    const raw = localStorage.getItem(key(mode, target, "history"));
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? (parsed as HistoryItem[]) : [];
@@ -35,18 +35,18 @@ export function loadHistory(target: Target): HistoryItem[] {
   }
 }
 
-export function appendHistory(target: Target, item: HistoryItem) {
-  const list = loadHistory(target);
+export function appendHistory(mode: AppMode, target: Target, item: HistoryItem) {
+  const list = loadHistory(mode, target);
   list.push(item);
-  localStorage.setItem(key(target, "history"), JSON.stringify(list));
+  localStorage.setItem(key(mode, target, "history"), JSON.stringify(list));
 }
 
-export function resetLearning(target: Target) {
-  localStorage.removeItem(key(target, "progress"));
-  localStorage.removeItem(key(target, "history"));
-  localStorage.removeItem(key(target, "wrongIds"));
-  localStorage.removeItem(key(target, "masteredIds"));
-  localStorage.removeItem(key(target, "stats"));
+export function resetLearning(mode: AppMode, target: Target) {
+  localStorage.removeItem(key(mode, target, "progress"));
+  localStorage.removeItem(key(mode, target, "history"));
+  localStorage.removeItem(key(mode, target, "wrongIds"));
+  localStorage.removeItem(key(mode, target, "masteredIds"));
+  localStorage.removeItem(key(mode, target, "stats"));
 }
 
 export function exportAllLearningData() {

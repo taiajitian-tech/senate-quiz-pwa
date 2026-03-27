@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import { targetLabels, targetTabs, type Target } from "./data";
+import { getAvailableTargets, getTargetLabels, getTargetTabs, type AppMode, type Target } from "./data";
 import HelpModal from "./HelpModal";
 
 type Props = {
+  appMode: AppMode;
+  onChangeAppMode: (mode: AppMode) => void;
   target: Target;
   onChangeTarget: (target: Target) => void;
   onOpenFirstGuide: () => void;
@@ -41,6 +43,9 @@ function MenuButton(props: MenuButtonProps) {
 
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
+  const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
+  const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
+  const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
 
   return (
     <div style={styles.wrap}>
@@ -53,6 +58,15 @@ export default function TitleView(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
 
+        <div style={styles.modeSwitchWrap}>
+          <div style={styles.modeSwitchLabel}>モード</div>
+          <div style={styles.modeSwitchRow}>
+            <button type="button" style={{ ...styles.modeBtn, ...(props.appMode === "basic" ? styles.modeBtnActive : null) }} onClick={() => props.onChangeAppMode("basic")}>基本</button>
+            <button type="button" style={{ ...styles.modeBtn, ...(props.appMode === "entrance" ? styles.modeBtnActive : null) }} onClick={() => props.onChangeAppMode("entrance")}>玄関</button>
+          </div>
+          <div style={styles.modeHelpText}>{props.appMode === "basic" ? "通常の学習用です。" : "玄関対応に必要な対象だけを出します。"}</div>
+        </div>
+
         <div style={styles.targetSelectWrap}>
           <label htmlFor="title-target-select" style={styles.targetSelectLabel}>区分選択</label>
           <select
@@ -61,7 +75,7 @@ export default function TitleView(props: Props) {
             onChange={(e) => props.onChangeTarget(e.target.value as Target)}
             style={styles.targetSelect}
           >
-            {(Object.keys(targetTabs) as Target[]).map((target) => (
+            {availableTargets.map((target) => (
               <option key={target} value={target}>
                 {targetTabs[target]}
               </option>
@@ -74,7 +88,7 @@ export default function TitleView(props: Props) {
           <div style={styles.quickStartTitle}>まず使う場所</div>
           <div style={styles.quickStartGrid}>
             <MenuButton tone="guide" label="最初に" sub="使い方と覚え方を先に確認する" onClick={props.onOpenFirstGuide} />
-            <MenuButton tone="primary" label="学習" sub="基本モード。顔から名前を思い出す" onClick={props.onStartLearn} />
+            <MenuButton tone="primary" label="学習" sub={props.appMode === "basic" ? "基本モード。顔から名前を思い出す" : "玄関モード。玄関用の対象だけを学習する"} onClick={props.onStartLearn} />
           </div>
         </div>
 
@@ -103,6 +117,8 @@ export default function TitleView(props: Props) {
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <div><b>最初にやること</b></div>
           <div>最初にで流れを確認し、そのあと自動再生か学習へ入ると迷いにくくなります。</div>
+          <div><b>モードの違い</b></div>
+          <div>基本は従来どおり、玄関は玄関対応に必要な対象だけを絞って学習します。</div>
           <div><b>迷ったときの基準</b></div>
           <div>3秒以内に出なければ考え込まず、答えを見て次へ進めた方が効率が上がります。</div>
           <div><b>復習の役割</b></div>
@@ -139,6 +155,12 @@ const styles: Record<string, CSSProperties> = {
   title: { fontSize: 40, fontWeight: 800, letterSpacing: 1 },
   titleSub: { fontSize: 14, color: "#555", marginTop: 4 },
   helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
+  modeSwitchWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 8, border: "1px solid #d9e2f2", background: "#fff", borderRadius: 16, padding: 14 },
+  modeSwitchLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
+  modeSwitchRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },
+  modeBtn: { ...commonBtn, border: "1px solid #c7ccd1", background: "#fff", fontSize: 16, fontWeight: 800 },
+  modeBtnActive: { border: "1px solid #0969da", background: "#eef6ff", color: "#0969da" },
+  modeHelpText: { fontSize: 13, color: "#555" },
   targetSelectWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 6 },
   targetSelectLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
   targetSelect: { ...commonBtn, border: "1px solid #999", background: "#fff", fontSize: 16, appearance: "auto" },

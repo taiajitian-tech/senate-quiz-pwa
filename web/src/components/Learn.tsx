@@ -4,12 +4,13 @@ import { applyGrade, type Grade, type ProgressItem } from "./srs";
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatNameWithKana, loadPersonsForTarget, targetLabels, type Person, type Target } from "./data";
+import { formatNameWithKana, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
 
 type Props = {
+  appMode: AppMode;
   mode: Mode;
   target: Target;
   onBackTitle: () => void;
@@ -62,7 +63,7 @@ export default function Learn(props: Props) {
   const [error, setError] = useState<string | null>(null);
   const [items, setItems] = useState<Person[]>([]);
   const [revealed, setRevealed] = useState(false);
-  const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.target));
+  const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
   const [askedIds, setAskedIds] = useState<number[]>([]);
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionDone, setSessionDone] = useState(false);
@@ -70,19 +71,19 @@ export default function Learn(props: Props) {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
   useEffect(() => {
-    setProgress(loadProgress(props.target));
+    setProgress(loadProgress(props.appMode, props.target));
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionDone(false);
     setRevealed(false);
-  }, [props.target, props.mode]);
+  }, [props.appMode, props.target, props.mode]);
 
   useEffect(() => {
     (async () => {
       setLoading(true);
       setError(null);
       try {
-        setItems(await loadPersonsForTarget(baseUrl, props.target));
+        setItems(await loadPersonsForTarget(baseUrl, props.target, props.appMode));
       } catch (e) {
         console.error(e);
         setItems([]);
@@ -91,7 +92,7 @@ export default function Learn(props: Props) {
         setLoading(false);
       }
     })();
-  }, [baseUrl, props.target]);
+  }, [baseUrl, props.appMode, props.target]);
 
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
   const current = useMemo(() => {
@@ -114,21 +115,21 @@ export default function Learn(props: Props) {
     const next = applyGrade(prev, current.id, grade, now);
     const nextMap = { ...progress, [current.id]: next };
     setProgress(nextMap);
-    saveProgress(props.target, nextMap);
-    appendHistory(props.target, { at: now, id: current.id, grade });
-    bumpStats(props.target, {
+    saveProgress(props.appMode, props.target, nextMap);
+    appendHistory(props.appMode, props.target, { at: now, id: current.id, grade });
+    bumpStats(props.appMode, props.target, {
       playedTotal: 1,
       correctTotal: grade === "again" ? 0 : 1,
       wrongTotal: grade === "again" ? 1 : 0,
       masteredCount: grade === "good" && next.reps >= 4 ? 1 : 0,
     });
 
-    const wrong = new Set(loadWrongIds(props.target));
-    const mastered = new Set(loadMasteredIds(props.target));
+    const wrong = new Set(loadWrongIds(props.appMode, props.target));
+    const mastered = new Set(loadMasteredIds(props.appMode, props.target));
     if (grade === "again") wrong.add(current.id); else wrong.delete(current.id);
     if (grade === "good" && next.reps >= 4) mastered.add(current.id);
-    saveWrongIds(props.target, [...wrong]);
-    saveMasteredIds(props.target, [...mastered]);
+    saveWrongIds(props.appMode, props.target, [...wrong]);
+    saveMasteredIds(props.appMode, props.target, [...mastered]);
 
     setAskedIds((prevAsked) => [...prevAsked, current.id]);
     setSessionResult((prevResult) => ({
@@ -169,7 +170,7 @@ export default function Learn(props: Props) {
           </div>
           <div style={styles.h1}>{titleMap[props.mode]}</div>
           <div style={styles.subRow}>
-            <div style={styles.sub}>{targetLabels[props.target]}</div>
+            <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]}</div>
             <div style={styles.progressBox}>{Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
           </div>
           <div style={styles.modeDesc}>{modeHelp[props.mode]}</div>

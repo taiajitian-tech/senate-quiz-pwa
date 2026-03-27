@@ -1,6 +1,6 @@
-import type { Target } from "./data";
+import type { AppMode, Target } from "./data";
 
-const key = (target: Target, suffix: string) => `senateQuiz:${target}:${suffix}:v1`;
+const key = (mode: AppMode, target: Target, suffix: string) => `senateQuiz:${mode}:${target}:${suffix}:v1`;
 
 const loadIds = (storageKey: string): number[] => {
   try {
@@ -22,8 +22,8 @@ const saveIds = (storageKey: string, ids: number[]) => {
   }
 };
 
-export const loadWrongIds = (target: Target) => loadIds(key(target, "wrongIds"));
-export const saveWrongIds = (target: Target, ids: number[]) => saveIds(key(target, "wrongIds"), ids);
+export const loadWrongIds = (mode: AppMode, target: Target) => loadIds(key(mode, target, "wrongIds"));
+export const saveWrongIds = (mode: AppMode, target: Target, ids: number[]) => saveIds(key(mode, target, "wrongIds"), ids);
 
-export const loadMasteredIds = (target: Target) => loadIds(key(target, "masteredIds"));
-export const saveMasteredIds = (target: Target, ids: number[]) => saveIds(key(target, "masteredIds"), ids);
+export const loadMasteredIds = (mode: AppMode, target: Target) => loadIds(key(mode, target, "masteredIds"));
+export const saveMasteredIds = (mode: AppMode, target: Target, ids: number[]) => saveIds(key(mode, target, "masteredIds"), ids);

@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatNameWithKana, loadPersonsForTarget, targetLabels, type Person, type Target } from "./data";
+import { formatNameWithKana, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
+  appMode: AppMode;
   target: Target;
   onBack: () => void;
 };
@@ -19,7 +20,7 @@ type SavedState = {
   random: boolean;
 };
 
-const storageKey = (target: Target) => `autoplay-state:${target}`;
+const storageKey = (mode: AppMode, target: Target) => `autoplay-state:${mode}:${target}`;
 
 function shuffleIndices(length: number) {
   const arr = Array.from({ length }, (_, i) => i);
@@ -30,9 +31,9 @@ function shuffleIndices(length: number) {
   return arr;
 }
 
-function readSavedState(target: Target): SavedState | null {
+function readSavedState(mode: AppMode, target: Target): SavedState | null {
   try {
-    const raw = localStorage.getItem(storageKey(target));
+    const raw = localStorage.getItem(storageKey(mode, target));
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<SavedState>;
     if (!Array.isArray(parsed.sequence)) return null;
@@ -48,9 +49,9 @@ function readSavedState(target: Target): SavedState | null {
   }
 }
 
-function writeSavedState(target: Target, state: SavedState) {
+function writeSavedState(mode: AppMode, target: Target, state: SavedState) {
   try {
-    localStorage.setItem(storageKey(target), JSON.stringify(state));
+    localStorage.setItem(storageKey(mode, target), JSON.stringify(state));
   } catch {
     // ignore storage errors
   }
@@ -71,10 +72,10 @@ export default function AutoPlayView(props: Props) {
   useEffect(() => {
     (async () => {
       try {
-        const parsed = await loadPersonsForTarget(baseUrl, props.target);
+        const parsed = await loadPersonsForTarget(baseUrl, props.target, props.appMode);
         setItems(parsed);
 
-        const saved = readSavedState(props.target);
+        const saved = readSavedState(props.appMode, props.target);
         const maxIndex = parsed.length - 1;
         const validSequence =
           saved &&
@@ -95,21 +96,21 @@ export default function AutoPlayView(props: Props) {
         setError(String(e));
       }
     })();
-  }, [baseUrl, props.target]);
+  }, [baseUrl, props.appMode, props.target]);
 
   const currentIndex = sequence[position] ?? 0;
   const current = useMemo(() => items[currentIndex] ?? null, [items, currentIndex]);
 
   useEffect(() => {
     if (items.length === 0 || sequence.length === 0) return;
-    writeSavedState(props.target, {
+    writeSavedState(props.appMode, props.target, {
       sequence,
       position,
       phase,
       paused,
       random: randomMode,
     });
-  }, [items.length, sequence, position, phase, paused, randomMode, props.target]);
+  }, [items.length, sequence, position, phase, paused, randomMode, props.appMode, props.target]);
 
   useEffect(() => {
     if (!current || paused) return;
@@ -165,7 +166,7 @@ export default function AutoPlayView(props: Props) {
           <div style={styles.h1}>自動再生</div>
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
-        <div style={styles.sub}>{targetLabels[props.target]} / 顔 {options.faceSeconds}秒 → 名前 {options.answerSeconds}秒</div>
+        <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]} / 顔 {options.faceSeconds}秒 → 名前 {options.answerSeconds}秒</div>
         <div style={styles.sub}>再生順：{randomMode ? "ランダム" : "通常"} / 保存位置：{sequence.length === 0 ? 0 : position + 1} / {sequence.length}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
