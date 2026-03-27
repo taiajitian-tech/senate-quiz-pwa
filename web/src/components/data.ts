@@ -276,3 +276,12 @@ export function parsePersonsJson(value: unknown, target?: Target): Person[] {
 
   return filterByTarget(items, target);
 }
+
+export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
+  const path = targetDataPath[target];
+  const root = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const res = await fetch(`${root}${path}`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+  const json = (await res.json()) as unknown;
+  return parsePersonsJson(json, target);
+}
