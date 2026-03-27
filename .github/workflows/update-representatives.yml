@@ -37,46 +37,5 @@ jobs:
       - name: Generate representative image reports (before image update)
         run: npm run report:representatives:images
 
-      - name: Fill only missing representative images from NHK HTML
-        env:
-          REP_IMAGE_TARGET_MODE: "missing"
-        run: node scripts/fetchNhkAnyway.mjs
-
-      - name: Generate representative image reports (after missing fill)
         run: npm run report:representatives:images
 
-      - name: Replace only bad or distant representative images from NHK HTML
-        env:
-          REP_IMAGE_TARGET_MODE: "fix"
-        run: node scripts/fetchNhkAnyway.mjs
-
-      - name: Generate representative image reports (final)
-        run: npm run report:representatives:images
-
-      - name: Validate representatives data
-        run: npm run check:representatives
-
-      - name: Check generated file status
-        id: changes
-        run: |
-          set -euxo pipefail
-          test -f public/data/representatives.json
-          test -f public/data/missing-images.json
-          test -f public/data/representatives-image-review.json
-          test -f public/data/representatives-image-search-targets.json
-          test -f public/data/representatives-image-fix-targets.json
-          if [ -z "$(git status --porcelain -- public/data/representatives.json public/data/missing-images.json public/data/representatives-image-review.json public/data/representatives-image-search-targets.json public/data/representatives-image-search-targets.csv public/data/representatives-image-fix-targets.json public/data/representatives-image-fix-targets.csv)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Commit generated file
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          set -euxo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/representatives.json                   public/data/missing-images.json                   public/data/representatives-image-review.json                   public/data/representatives-image-search-targets.json                   public/data/representatives-image-search-targets.csv                   public/data/representatives-image-fix-targets.json                   public/data/representatives-image-fix-targets.csv
-          git commit -m "Update representative images from NHK HTML"
-          git push
