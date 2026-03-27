@@ -4,7 +4,7 @@ import { applyGrade, type Grade, type ProgressItem } from "./srs";
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatNameWithKana, parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { formatNameWithKana, loadPersonsForTarget, targetLabels, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -68,7 +68,6 @@ export default function Learn(props: Props) {
   const [sessionDone, setSessionDone] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
-  const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
     setProgress(loadProgress(props.target));
@@ -83,10 +82,7 @@ export default function Learn(props: Props) {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(dataUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-        const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json));
+        setItems(await loadPersonsForTarget(baseUrl, props.target));
       } catch (e) {
         console.error(e);
         setItems([]);
@@ -95,7 +91,7 @@ export default function Learn(props: Props) {
         setLoading(false);
       }
     })();
-  }, [dataUrl]);
+  }, [baseUrl, props.target]);
 
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
   const current = useMemo(() => {

@@ -142,7 +142,6 @@ export default function SenatorList(props: Props) {
   const [overrideVersion, setOverrideVersion] = useState(0);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
-  const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
   const isSenators = props.target === "senators";
   const overrideMap = useMemo(() => getPersonNameKanaOverrides(props.target), [props.target, overrideVersion]);
 
@@ -151,10 +150,7 @@ export default function SenatorList(props: Props) {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(dataUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-        const json = (await res.json()) as unknown;
-        setItems(parsePersonsJson(json, props.target));
+        setItems(await loadPersonsForTarget(baseUrl, props.target));
       } catch (e) {
         console.error(e);
         setItems([]);
@@ -163,7 +159,7 @@ export default function SenatorList(props: Props) {
         setLoading(false);
       }
     })();
-  }, [dataUrl, props.target, overrideVersion]);
+  }, [baseUrl, props.target, overrideVersion]);
 
   useEffect(() => {
     const onScroll = () => setShowFloatingButtons(window.scrollY > 200);

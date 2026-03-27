@@ -1,4 +1,4 @@
-export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "houseOfficers" | "councilorsOfficers";
+export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "speakersAndDeputies" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
 
 export type Person = {
   id: number;
@@ -11,6 +11,9 @@ export type Person = {
   nextElectionYear?: number;
   images: string[];
   aiGuess?: boolean;
+  role?: string;
+  subRole?: string;
+  chamber?: string;
 };
 
 export const targetLabels: Record<Target, string> = {
@@ -19,8 +22,9 @@ export const targetLabels: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  houseOfficers: "衆議院役員",
-  councilorsOfficers: "参議院役員",
+  speakersAndDeputies: "衆参議長副議長",
+  councilorsCommitteeChairs: "参議院委員長",
+  houseCommitteeChairs: "衆議院委員長",
 };
 
 export const targetTabs: Record<Target, string> = {
@@ -29,18 +33,20 @@ export const targetTabs: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  houseOfficers: "衆議院役員",
-  councilorsOfficers: "参議院役員",
+  speakersAndDeputies: "衆参議長副議長",
+  councilorsCommitteeChairs: "参議院委員長",
+  houseCommitteeChairs: "衆議院委員長",
 };
 
-export const targetDataPath: Record<Target, string> = {
-  senators: "data/senators.json",
-  representatives: "data/representatives.json",
-  ministers: "data/ministers.json",
-  viceMinisters: "data/vice-ministers.json",
-  parliamentarySecretaries: "data/parliamentary-secretaries.json",
-  houseOfficers: "data/house-officers.json",
-  councilorsOfficers: "data/councilors-officers.json",
+export const targetDataPaths: Record<Target, string[]> = {
+  senators: ["data/senators.json"],
+  representatives: ["data/representatives.json"],
+  ministers: ["data/ministers.json"],
+  viceMinisters: ["data/vice-ministers.json"],
+  parliamentarySecretaries: ["data/parliamentary-secretaries.json"],
+  speakersAndDeputies: ["data/house-officers.json", "data/councilors-officers.json"],
+  councilorsCommitteeChairs: ["data/councilors-officers.json"],
+  houseCommitteeChairs: ["data/house-officers.json"],
 };
 
 type RawPerson = Record<string, unknown>;
@@ -239,7 +245,28 @@ function normalizePerson(value: unknown, index: number): Person | null {
     nextElectionYear,
     images: safeImages,
     aiGuess,
+    role: toText(v.role),
+    subRole: toText(v.subRole),
+    chamber: toText(v.chamber),
   };
+}
+
+function isRoleMatch(person: Person, keyword: string): boolean {
+  const fields = [person.subRole, person.group, person.role].filter(Boolean).join(" / ");
+  return fields.includes(keyword);
+}
+
+function filterPersonForTarget(person: Person, target?: Target): boolean {
+  switch (target) {
+    case "speakersAndDeputies":
+      return isRoleMatch(person, "議長") || isRoleMatch(person, "副議長");
+    case "councilorsCommitteeChairs":
+      return person.chamber === "参議院" && isRoleMatch(person, "委員長");
+    case "houseCommitteeChairs":
+      return person.chamber === "衆議院" && isRoleMatch(person, "委員長");
+    default:
+      return true;
+  }
 }
 
 export function parsePersonsJson(value: unknown, target?: Target): Person[] {
@@ -249,5 +276,19 @@ export function parsePersonsJson(value: unknown, target?: Target): Person[] {
     .map((item, index) => normalizePerson(item, index))
     .filter((item): item is Person => item !== null)
     .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name)
+    .filter((item) => filterPersonForTarget(item, target))
     .map((item) => applyNameKanaOverride(item, target));
+}
+
+export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
+  const paths = targetDataPaths[target];
+  const results = await Promise.all(
+    paths.map(async (path) => {
+      const res = await fetch(`${baseUrl}${path}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+      const json = (await res.json()) as unknown;
+      return parsePersonsJson(json, target);
+    })
+  );
+  return results.flat();
 }

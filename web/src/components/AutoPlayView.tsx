@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatNameWithKana, parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { formatNameWithKana, loadPersonsForTarget, targetLabels, type Person, type Target } from "./data";
 
 type Props = {
   target: Target;
@@ -67,15 +67,11 @@ export default function AutoPlayView(props: Props) {
   const [error, setError] = useState<string | null>(null);
   const options = loadOptions();
   const baseUrl = import.meta.env.BASE_URL ?? "/";
-  const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(dataUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-        const json = (await res.json()) as unknown;
-        const parsed = parsePersonsJson(json, props.target);
+        const parsed = await loadPersonsForTarget(baseUrl, props.target);
         setItems(parsed);
 
         const saved = readSavedState(props.target);
@@ -99,7 +95,7 @@ export default function AutoPlayView(props: Props) {
         setError(String(e));
       }
     })();
-  }, [dataUrl, props.target]);
+  }, [baseUrl, props.target]);
 
   const currentIndex = sequence[position] ?? 0;
   const current = useMemo(() => items[currentIndex] ?? null, [items, currentIndex]);

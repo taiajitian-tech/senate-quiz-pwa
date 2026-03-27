@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { loadProgress } from "./learnStorage";
-import { parsePersonsJson, targetDataPath, targetLabels, type Person, type Target } from "./data";
+import { loadPersonsForTarget, targetLabels, type Person, type Target } from "./data";
 import { loadMasteredIds, loadWrongIds } from "./progress";
 import { resetStats } from "./stats";
 
@@ -22,7 +22,6 @@ export default function StatsView(props: Props) {
   const [loadError, setLoadError] = useState<string | null>(null);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
-  const dataUrl = `${baseUrl}${targetDataPath[props.target]}`;
 
   useEffect(() => {
     let cancelled = false;
@@ -30,10 +29,7 @@ export default function StatsView(props: Props) {
     (async () => {
       try {
         setLoadError(null);
-        const res = await fetch(dataUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-        const json = (await res.json()) as unknown;
-        const parsed = parsePersonsJson(json, props.target);
+        const parsed = await loadPersonsForTarget(baseUrl, props.target);
         if (!cancelled) setItems(parsed);
       } catch (error) {
         console.error(error);
@@ -47,7 +43,7 @@ export default function StatsView(props: Props) {
     return () => {
       cancelled = true;
     };
-  }, [dataUrl]);
+  }, [baseUrl, props.target]);
 
   const summary = useMemo<Summary>(() => {
     const validIds = new Set(items.map((item) => item.id));
