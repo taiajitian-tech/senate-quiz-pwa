@@ -1,4 +1,4 @@
-export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "councilorsOfficers" | "houseOfficers" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
+export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "councilorsOfficersList" | "houseOfficersList" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
 
 export type Person = {
   id: number;
@@ -19,8 +19,8 @@ export const targetLabels: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  councilorsOfficers: "参議院役員一覧",
-  houseOfficers: "衆議院役員一覧",
+  councilorsOfficersList: "参議院役員一覧",
+  houseOfficersList: "衆議院役員一覧",
   councilorsCommitteeChairs: "参議院委員長",
   houseCommitteeChairs: "衆議院委員長",
 };
@@ -31,8 +31,8 @@ export const targetTabs: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  councilorsOfficers: "参議院役員一覧",
-  houseOfficers: "衆議院役員一覧",
+  councilorsOfficersList: "参議院役員一覧",
+  houseOfficersList: "衆議院役員一覧",
   councilorsCommitteeChairs: "参議院委員長",
   houseCommitteeChairs: "衆議院委員長",
 };
@@ -43,8 +43,8 @@ export const targetDataPath: Record<Target, string> = {
   ministers: "data/ministers.json",
   viceMinisters: "data/vice-ministers.json",
   parliamentarySecretaries: "data/parliamentary-secretaries.json",
-  councilorsOfficers: "data/councilors-officers.json",
-  houseOfficers: "data/house-officers.json",
+  councilorsOfficersList: "data/councilors-officers.json",
+  houseOfficersList: "data/house-officers.json",
   councilorsCommitteeChairs: "data/councilors-officers.json",
   houseCommitteeChairs: "data/house-officers.json",
 };
@@ -248,45 +248,31 @@ function normalizePerson(value: unknown, index: number): Person | null {
   };
 }
 
+function filterByTarget(items: Person[], target?: Target): Person[] {
+  if (!target) return items;
+
+  switch (target) {
+    case "councilorsOfficersList":
+      return items.filter((item) => !((item.group ?? "").includes("委員長")));
+    case "houseOfficersList":
+      return items.filter((item) => !((item.group ?? "").includes("委員長")));
+    case "councilorsCommitteeChairs":
+      return items.filter((item) => (item.group ?? "").includes("委員長"));
+    case "houseCommitteeChairs":
+      return items.filter((item) => (item.group ?? "").includes("委員長"));
+    default:
+      return items;
+  }
+}
+
 export function parsePersonsJson(value: unknown, target?: Target): Person[] {
   if (!Array.isArray(value)) return [];
 
-  return value
+  const items = value
     .map((item, index) => normalizePerson(item, index))
     .filter((item): item is Person => item !== null)
     .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name)
     .map((item) => applyNameKanaOverride(item, target));
-}
 
-
-function filterRolePanelItems(value: unknown, target: Target): unknown {
-  if (!Array.isArray(value)) return value;
-  if (
-    target !== "councilorsOfficers" &&
-    target !== "houseOfficers" &&
-    target !== "councilorsCommitteeChairs" &&
-    target !== "houseCommitteeChairs"
-  ) {
-    return value;
-  }
-
-  return value.filter((item) => {
-    if (!item || typeof item !== "object") return false;
-    const row = item as RawPerson;
-    const subRole = toText(row.subRole);
-    const isCommitteeChair = subRole.includes("委員長");
-
-    if (target === "councilorsCommitteeChairs" || target === "houseCommitteeChairs") {
-      return isCommitteeChair;
-    }
-
-    return !isCommitteeChair;
-  });
-}
-
-export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
-  const res = await fetch(`${baseUrl}${targetDataPath[target]}`, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-  const json = (await res.json()) as unknown;
-  return parsePersonsJson(filterRolePanelItems(json, target), target);
+  return filterByTarget(items, target);
 }
