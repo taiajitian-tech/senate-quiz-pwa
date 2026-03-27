@@ -1,4 +1,4 @@
-export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "speakersAndDeputies" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
+export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "officerSpeakers" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
 
 export type Person = {
   id: number;
@@ -11,9 +11,6 @@ export type Person = {
   nextElectionYear?: number;
   images: string[];
   aiGuess?: boolean;
-  role?: string;
-  subRole?: string;
-  chamber?: string;
 };
 
 export const targetLabels: Record<Target, string> = {
@@ -22,7 +19,7 @@ export const targetLabels: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  speakersAndDeputies: "衆参議長副議長",
+  officerSpeakers: "衆参議長副議長",
   councilorsCommitteeChairs: "参議院委員長",
   houseCommitteeChairs: "衆議院委員長",
 };
@@ -33,21 +30,21 @@ export const targetTabs: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  speakersAndDeputies: "衆参議長副議長",
+  officerSpeakers: "衆参議長副議長",
   councilorsCommitteeChairs: "参議院委員長",
   houseCommitteeChairs: "衆議院委員長",
 };
 
-export const targetDataPaths: Record<Target, string[]> = {
+export const targetDataPaths = {
   senators: ["data/senators.json"],
   representatives: ["data/representatives.json"],
   ministers: ["data/ministers.json"],
   viceMinisters: ["data/vice-ministers.json"],
   parliamentarySecretaries: ["data/parliamentary-secretaries.json"],
-  speakersAndDeputies: ["data/house-officers.json", "data/councilors-officers.json"],
+  officerSpeakers: ["data/house-officers.json", "data/councilors-officers.json"],
   councilorsCommitteeChairs: ["data/councilors-officers.json"],
   houseCommitteeChairs: ["data/house-officers.json"],
-};
+} as const satisfies Record<Target, readonly string[]>;
 
 type RawPerson = Record<string, unknown>;
 
@@ -245,28 +242,7 @@ function normalizePerson(value: unknown, index: number): Person | null {
     nextElectionYear,
     images: safeImages,
     aiGuess,
-    role: toText(v.role),
-    subRole: toText(v.subRole),
-    chamber: toText(v.chamber),
   };
-}
-
-function isRoleMatch(person: Person, keyword: string): boolean {
-  const fields = [person.subRole, person.group, person.role].filter(Boolean).join(" / ");
-  return fields.includes(keyword);
-}
-
-function filterPersonForTarget(person: Person, target?: Target): boolean {
-  switch (target) {
-    case "speakersAndDeputies":
-      return isRoleMatch(person, "議長") || isRoleMatch(person, "副議長");
-    case "councilorsCommitteeChairs":
-      return person.chamber === "参議院" && isRoleMatch(person, "委員長");
-    case "houseCommitteeChairs":
-      return person.chamber === "衆議院" && isRoleMatch(person, "委員長");
-    default:
-      return true;
-  }
 }
 
 export function parsePersonsJson(value: unknown, target?: Target): Person[] {
@@ -276,19 +252,36 @@ export function parsePersonsJson(value: unknown, target?: Target): Person[] {
     .map((item, index) => normalizePerson(item, index))
     .filter((item): item is Person => item !== null)
     .filter((item) => Number.isFinite(item.id) && item.id > 0 && !!item.name)
-    .filter((item) => filterPersonForTarget(item, target))
     .map((item) => applyNameKanaOverride(item, target));
 }
 
+
+function filterPersonsForTarget(items: Person[], target: Target): Person[] {
+  if (target === "officerSpeakers") {
+    return items.filter((item) => /(?:^|\s|\/)副?議長(?:$|\s|\/)/u.test(item.group ?? ""));
+  }
+
+  if (target === "councilorsCommitteeChairs") {
+    return items.filter((item) => (item.group ?? "").includes("参議院") && (item.group ?? "").includes("委員長"));
+  }
+
+  if (target === "houseCommitteeChairs") {
+    return items.filter((item) => (item.group ?? "").includes("衆議院") && (item.group ?? "").includes("委員長"));
+  }
+
+  return items;
+}
+
 export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
-  const paths = targetDataPaths[target];
+  const urls = targetDataPaths[target].map((path) => `${baseUrl}${path}`);
   const results = await Promise.all(
-    paths.map(async (path) => {
-      const res = await fetch(`${baseUrl}${path}`, { cache: "no-store" });
+    urls.map(async (url) => {
+      const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-      const json = (await res.json()) as unknown;
-      return parsePersonsJson(json, target);
+      return res.json() as Promise<unknown>;
     })
   );
-  return results.flat();
+
+  const merged = results.flatMap((json) => parsePersonsJson(json, target));
+  return filterPersonsForTarget(merged, target);
 }
