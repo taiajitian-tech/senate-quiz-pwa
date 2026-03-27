@@ -71,7 +71,6 @@ export default function AutoPlayView(props: Props) {
   useEffect(() => {
     (async () => {
       try {
-        setError(null);
         const parsed = await loadPersonsForTarget(baseUrl, props.target);
         setItems(parsed);
 
@@ -93,8 +92,6 @@ export default function AutoPlayView(props: Props) {
         setRandomMode(saved?.random ?? false);
       } catch (e) {
         console.error(e);
-        setItems([]);
-        setSequence([]);
         setError(String(e));
       }
     })();

@@ -1,4 +1,4 @@
-export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "officerSpeakers" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
+export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "councilorsOfficers" | "houseOfficers" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
 
 export type Person = {
   id: number;
@@ -19,7 +19,8 @@ export const targetLabels: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  officerSpeakers: "衆参議長副議長",
+  councilorsOfficers: "参議院役員一覧",
+  houseOfficers: "衆議院役員一覧",
   councilorsCommitteeChairs: "参議院委員長",
   houseCommitteeChairs: "衆議院委員長",
 };
@@ -30,21 +31,23 @@ export const targetTabs: Record<Target, string> = {
   ministers: "現職大臣",
   viceMinisters: "副大臣",
   parliamentarySecretaries: "大臣政務官",
-  officerSpeakers: "衆参議長副議長",
+  councilorsOfficers: "参議院役員一覧",
+  houseOfficers: "衆議院役員一覧",
   councilorsCommitteeChairs: "参議院委員長",
   houseCommitteeChairs: "衆議院委員長",
 };
 
-export const targetDataPaths = {
-  senators: ["data/senators.json"],
-  representatives: ["data/representatives.json"],
-  ministers: ["data/ministers.json"],
-  viceMinisters: ["data/vice-ministers.json"],
-  parliamentarySecretaries: ["data/parliamentary-secretaries.json"],
-  officerSpeakers: ["data/house-officers.json", "data/councilors-officers.json"],
-  councilorsCommitteeChairs: ["data/councilors-officers.json"],
-  houseCommitteeChairs: ["data/house-officers.json"],
-} as const satisfies Record<Target, readonly string[]>;
+export const targetDataPath: Record<Target, string> = {
+  senators: "data/senators.json",
+  representatives: "data/representatives.json",
+  ministers: "data/ministers.json",
+  viceMinisters: "data/vice-ministers.json",
+  parliamentarySecretaries: "data/parliamentary-secretaries.json",
+  councilorsOfficers: "data/councilors-officers.json",
+  houseOfficers: "data/house-officers.json",
+  councilorsCommitteeChairs: "data/councilors-officers.json",
+  houseCommitteeChairs: "data/house-officers.json",
+};
 
 type RawPerson = Record<string, unknown>;
 
@@ -256,32 +259,34 @@ export function parsePersonsJson(value: unknown, target?: Target): Person[] {
 }
 
 
-function filterPersonsForTarget(items: Person[], target: Target): Person[] {
-  if (target === "officerSpeakers") {
-    return items.filter((item) => /(?:^|\s|\/)副?議長(?:$|\s|\/)/u.test(item.group ?? ""));
+function filterRolePanelItems(value: unknown, target: Target): unknown {
+  if (!Array.isArray(value)) return value;
+  if (
+    target !== "councilorsOfficers" &&
+    target !== "houseOfficers" &&
+    target !== "councilorsCommitteeChairs" &&
+    target !== "houseCommitteeChairs"
+  ) {
+    return value;
   }
 
-  if (target === "councilorsCommitteeChairs") {
-    return items.filter((item) => (item.group ?? "").includes("参議院") && (item.group ?? "").includes("委員長"));
-  }
+  return value.filter((item) => {
+    if (!item || typeof item !== "object") return false;
+    const row = item as RawPerson;
+    const subRole = toText(row.subRole);
+    const isCommitteeChair = subRole.includes("委員長");
 
-  if (target === "houseCommitteeChairs") {
-    return items.filter((item) => (item.group ?? "").includes("衆議院") && (item.group ?? "").includes("委員長"));
-  }
+    if (target === "councilorsCommitteeChairs" || target === "houseCommitteeChairs") {
+      return isCommitteeChair;
+    }
 
-  return items;
+    return !isCommitteeChair;
+  });
 }
 
 export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
-  const urls = targetDataPaths[target].map((path) => `${baseUrl}${path}`);
-  const results = await Promise.all(
-    urls.map(async (url) => {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
-      return res.json() as Promise<unknown>;
-    })
-  );
-
-  const merged = results.flatMap((json) => parsePersonsJson(json, target));
-  return filterPersonsForTarget(merged, target);
+  const res = await fetch(`${baseUrl}${targetDataPath[target]}`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+  const json = (await res.json()) as unknown;
+  return parsePersonsJson(filterRolePanelItems(json, target), target);
 }
