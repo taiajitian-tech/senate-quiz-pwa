@@ -1,4 +1,4 @@
-export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "councilorsOfficersList" | "houseOfficersList" | "councilorsCommitteeChairs" | "houseCommitteeChairs";
+export type Target = "senators" | "representatives" | "ministers" | "viceMinisters" | "parliamentarySecretaries" | "councilorsOfficersList" | "houseOfficersList";
 
 export type Person = {
   id: number;
@@ -21,8 +21,6 @@ export const targetLabels: Record<Target, string> = {
   parliamentarySecretaries: "大臣政務官",
   councilorsOfficersList: "参議院役員一覧",
   houseOfficersList: "衆議院役員一覧",
-  councilorsCommitteeChairs: "参議院委員長",
-  houseCommitteeChairs: "衆議院委員長",
 };
 
 export const targetTabs: Record<Target, string> = {
@@ -33,8 +31,6 @@ export const targetTabs: Record<Target, string> = {
   parliamentarySecretaries: "大臣政務官",
   councilorsOfficersList: "参議院役員一覧",
   houseOfficersList: "衆議院役員一覧",
-  councilorsCommitteeChairs: "参議院委員長",
-  houseCommitteeChairs: "衆議院委員長",
 };
 
 export const targetDataPath: Record<Target, string> = {
@@ -45,8 +41,6 @@ export const targetDataPath: Record<Target, string> = {
   parliamentarySecretaries: "data/parliamentary-secretaries.json",
   councilorsOfficersList: "data/councilors-officers.json",
   houseOfficersList: "data/house-officers.json",
-  councilorsCommitteeChairs: "data/councilors-officers.json",
-  houseCommitteeChairs: "data/house-officers.json",
 };
 
 type RawPerson = Record<string, unknown>;
@@ -253,13 +247,8 @@ function filterByTarget(items: Person[], target?: Target): Person[] {
 
   switch (target) {
     case "councilorsOfficersList":
-      return items.filter((item) => !((item.group ?? "").includes("委員長")));
     case "houseOfficersList":
-      return items.filter((item) => !((item.group ?? "").includes("委員長")));
-    case "councilorsCommitteeChairs":
-      return items.filter((item) => (item.group ?? "").includes("委員長"));
-    case "houseCommitteeChairs":
-      return items.filter((item) => (item.group ?? "").includes("委員長"));
+      return items;
     default:
       return items;
   }
@@ -278,9 +267,7 @@ export function parsePersonsJson(value: unknown, target?: Target): Person[] {
 }
 
 export async function loadPersonsForTarget(baseUrl: string, target: Target): Promise<Person[]> {
-  const path = targetDataPath[target];
-  const root = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-  const res = await fetch(`${root}${path}`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl}${targetDataPath[target]}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
   const json = (await res.json()) as unknown;
   return parsePersonsJson(json, target);
