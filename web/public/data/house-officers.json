@@ -129,7 +129,7 @@
     "chamber": "衆議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/e/ef/Masaki_%C5%8Cgushi_20241121.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
@@ -144,7 +144,7 @@
     "chamber": "衆議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/0/01/Hiroyuki_Togashi_20230817.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
@@ -174,7 +174,7 @@
     "chamber": "衆議院",
     "party": "日本維新の会",
     "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27004XXX002K_0.jpg"
+      "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
