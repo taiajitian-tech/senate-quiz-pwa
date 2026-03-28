@@ -34,8 +34,35 @@ jobs:
       - name: Generate representatives data
         run: npm run gen:representatives
 
-      - name: Generate representative image reports (before image update)
+      - name: Generate representative image reports
         run: npm run report:representatives:images
 
-        run: npm run report:representatives:images
+      - name: Validate representatives data
+        run: npm run check:representatives
 
+      - name: Check generated file status
+        id: changes
+        working-directory: .
+        run: |
+          set -euo pipefail
+          test -f web/public/data/representatives.json
+          test -f web/public/data/missing-images.json
+          test -f web/public/data/representatives-image-review.json
+          test -f web/public/data/representatives-image-search-targets.json
+          test -f web/public/data/representatives-image-fix-targets.json
+          if [ -z "$(git status --porcelain -- web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit generated file
+        if: steps.changes.outputs.changed == 'true'
+        working-directory: .
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/public/data/representatives.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv
+          git commit -m "chore: update representatives data"
+          git push
