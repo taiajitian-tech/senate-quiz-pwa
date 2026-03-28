@@ -95,12 +95,24 @@ export default function TitleView(props: Props) {
   return (
     <div style={styles.wrap}>
       <div style={styles.card}>
-        <div style={styles.titleRow}>
-          <div>
-            <div style={styles.title}>議員集</div>
-            <div style={styles.titleSub}>まず見て、次に思い出す。順番どおりに覚える学習アプリ</div>
-          </div>
-          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
+        <div style={styles.topControlRow}>
+          <button
+            type="button"
+            style={styles.noticeIconBtn}
+            onClick={props.onOpenUpdates}
+            aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : "お知らせ"}
+            title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : "お知らせ"}
+          >
+            <span style={styles.noticeIconText}>お</span>
+            {updatesMeta.totalChanges > 0 ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
+          </button>
+          <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)} aria-label="ヘルプ" title="ヘルプ">？</button>
+        </div>
+
+        <div style={styles.titleBlock}>
+          <div style={styles.title}>議員集</div>
+          <div style={styles.titleSub}>まず見て、次に思い出す。順番どおりに覚える学習アプリ</div>
+          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `更新あり ${updatesMeta.totalChanges} 件` : `更新確認 ${formatGeneratedAt(updatesMeta.generatedAt)}`}</div>
         </div>
 
         <div style={styles.modeSwitchWrap}>
@@ -145,7 +157,6 @@ export default function TitleView(props: Props) {
           <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
           <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認を確認する" onClick={props.onOpenStats} />
           <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
-          <MenuButton label="お知らせ" sub={updatesMeta.totalChanges > 0 ? `自動更新の差分 ${updatesMeta.totalChanges} 件 / ${formatGeneratedAt(updatesMeta.generatedAt)}` : `現在の変更点なし / ${formatGeneratedAt(updatesMeta.generatedAt)}`} onClick={props.onOpenUpdates} />
           <MenuButton label="オプション" sub="表示や動作を調整する" onClick={props.onOpenOptions} />
         </div>
 
@@ -197,10 +208,15 @@ const styles: Record<string, CSSProperties> = {
     gap: 16,
     alignItems: "center",
   },
-  titleRow: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 },
+  topControlRow: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 },
+  titleBlock: { width: "100%", display: "flex", flexDirection: "column", gap: 4 },
   title: { fontSize: 40, fontWeight: 800, letterSpacing: 1 },
   titleSub: { fontSize: 14, color: "#555", marginTop: 4 },
-  helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
+  noticeHint: { fontSize: 12, color: "#555", marginTop: 2 },
+  helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" },
+  noticeIconBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" },
+  noticeIconText: { fontSize: 18, fontWeight: 800, lineHeight: 1 },
+  noticeBadge: { position: "absolute", top: -6, right: -6, minWidth: 18, height: 18, padding: "0 4px", borderRadius: 999, background: "#d1242f", color: "#fff", fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #f7f8fa" },
   modeSwitchWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 8, border: "1px solid #d9e2f2", background: "#fff", borderRadius: 16, padding: 14 },
   modeSwitchLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
   modeSwitchRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },
