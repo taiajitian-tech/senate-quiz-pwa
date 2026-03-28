@@ -9,9 +9,10 @@ import { loadOptions, type Options } from "./components/optionsStore";
 import TitleView from "./components/TitleView";
 import ErrorBoundary from "./components/ErrorBoundary";
 import FirstGuide, { FIRST_GUIDE_SEEN_KEY } from "./components/FirstGuide";
+import UpdatesView from "./components/UpdatesView";
 import { getAvailableTargets, type AppMode, type Target } from "./components/data";
 
-type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "options" | "list" | "backup";
+type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "options" | "list" | "backup" | "updates";
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>("title");
@@ -51,6 +52,7 @@ export default function App() {
         onOpenOptions={() => setScreen("options")}
         onOpenList={() => setScreen("list")}
         onOpenBackup={() => setScreen("backup")}
+        onOpenUpdates={() => setScreen("updates")}
       />
     );
   } else if (screen === "options") {
@@ -69,6 +71,8 @@ export default function App() {
     content = <AutoPlayView appMode={appMode} target={target} onBack={() => setScreen("title")} />;
   } else if (screen === "backup") {
     content = <BackupView onBack={() => setScreen("title")} />;
+  } else if (screen === "updates") {
+    content = <UpdatesView onBack={() => setScreen("title")} />;
   }
 
   return (

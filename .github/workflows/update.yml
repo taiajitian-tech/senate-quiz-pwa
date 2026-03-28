@@ -29,6 +29,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Snapshot previous data
+        run: |
+          set -euo pipefail
+          mkdir -p .cache/previous-data
+          cp -f public/data/senators.json .cache/previous-data/senators.json
+          cp -f public/data/ministers.json .cache/previous-data/ministers.json
+          cp -f public/data/vice-ministers.json .cache/previous-data/vice-ministers.json
+          cp -f public/data/parliamentary-secretaries.json .cache/previous-data/parliamentary-secretaries.json
+          cp -f public/data/house-officers.json .cache/previous-data/house-officers.json
+          cp -f public/data/councilors-officers.json .cache/previous-data/councilors-officers.json
+          cp -f public/data/representatives.json .cache/previous-data/representatives.json
+
       - name: Generate senators data
         run: npm run gen:senators
 
@@ -37,6 +49,9 @@ jobs:
 
       - name: Generate role panel data
         run: npm run gen:role-panels
+
+      - name: Generate updates data
+        run: npm run gen:updates
 
       - name: Validate data
         run: npm run check:data
@@ -51,18 +66,19 @@ jobs:
           test -f web/public/data/parliamentary-secretaries.json
           test -f web/public/data/house-officers.json
           test -f web/public/data/councilors-officers.json
+          test -f web/public/data/updates.json
           node -e "const a=require('./web/public/data/senators.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/ministers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/vice-ministers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/parliamentary-secretaries.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/house-officers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
           node -e "const a=require('./web/public/data/councilors-officers.json'); if(!Array.isArray(a)||a.length===0){process.exit(1)}"
-          if [ -z "$(git status --porcelain -- web/public/data/senators.json web/public/data/ministers.json web/public/data/vice-ministers.json web/public/data/parliamentary-secretaries.json web/public/data/house-officers.json web/public/data/councilors-officers.json)" ]; then
+          if [ -z "$(git status --porcelain -- web/public/data/senators.json web/public/data/ministers.json web/public/data/vice-ministers.json web/public/data/parliamentary-secretaries.json web/public/data/house-officers.json web/public/data/councilors-officers.json web/public/data/updates.json)" ]; then
             echo "No changes in generated data"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/public/data/senators.json web/public/data/ministers.json web/public/data/vice-ministers.json web/public/data/parliamentary-secretaries.json web/public/data/house-officers.json web/public/data/councilors-officers.json
-          git commit -m "chore: update senators ministers and role panels data"
+          git add web/public/data/senators.json web/public/data/ministers.json web/public/data/vice-ministers.json web/public/data/parliamentary-secretaries.json web/public/data/house-officers.json web/public/data/councilors-officers.json web/public/data/updates.json
+          git commit -m "chore: update senators ministers role panels and notices data"
           git push

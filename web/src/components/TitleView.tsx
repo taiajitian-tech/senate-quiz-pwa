@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { getAvailableTargets, getTargetLabels, getTargetTabs, type AppMode, type Target } from "./data";
 import HelpModal from "./HelpModal";
@@ -17,7 +17,27 @@ type Props = {
   onOpenOptions: () => void;
   onOpenList: () => void;
   onOpenBackup: () => void;
+  onOpenUpdates: () => void;
 };
+
+
+
+type UpdatesMeta = {
+  totalChanges: number;
+  generatedAt: string;
+};
+
+function formatGeneratedAt(value: string): string {
+  if (!value) return "未生成";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("ja-JP", {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+}
 
 type MenuButtonProps = {
   label: string;
@@ -43,9 +63,34 @@ function MenuButton(props: MenuButtonProps) {
 
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
+  const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, generatedAt: "" });
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const baseUrl = import.meta.env.BASE_URL ?? "/";
+
+    (async () => {
+      try {
+        const response = await fetch(`${baseUrl}data/updates.json`, { cache: "no-store" });
+        if (!response.ok) return;
+        const json = await response.json() as Partial<UpdatesMeta>;
+        if (cancelled) return;
+        setUpdatesMeta({
+          totalChanges: typeof json.totalChanges === "number" ? json.totalChanges : 0,
+          generatedAt: typeof json.generatedAt === "string" ? json.generatedAt : "",
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div style={styles.wrap}>
@@ -100,6 +145,7 @@ export default function TitleView(props: Props) {
           <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
           <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認を確認する" onClick={props.onOpenStats} />
           <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
+          <MenuButton label="お知らせ" sub={updatesMeta.totalChanges > 0 ? `自動更新の差分 ${updatesMeta.totalChanges} 件 / ${formatGeneratedAt(updatesMeta.generatedAt)}` : `現在の変更点なし / ${formatGeneratedAt(updatesMeta.generatedAt)}`} onClick={props.onOpenUpdates} />
           <MenuButton label="オプション" sub="表示や動作を調整する" onClick={props.onOpenOptions} />
         </div>
 
