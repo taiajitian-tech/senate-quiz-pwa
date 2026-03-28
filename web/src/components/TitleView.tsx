@@ -103,7 +103,7 @@ export default function TitleView(props: Props) {
             aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : "お知らせ"}
             title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : "お知らせ"}
           >
-            <span style={styles.noticeIconText}>お</span>
+            <span style={styles.noticeIconText}>🔔</span>
             {updatesMeta.totalChanges > 0 ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
           </button>
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)} aria-label="ヘルプ" title="ヘルプ">？</button>
