@@ -117,5 +117,28 @@
     "checkedSources": [],
     "candidatePageUrls": [],
     "notes": ""
+  },
+  {
+    "name": "広瀬建",
+    "party": "自由民主党・無所属の会",
+    "status": "review",
+    "reason": "building_image",
+    "profileUrl": "",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Ken_Hirose%2C_Parliamentary_Secretary_for_Agriculture%2C_Forestry_and_Fisheries_2025.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%83%E7%80%AC%E5%BB%BA",
+    "aiGuess": false,
+    "preferredSourceType": "official_or_party",
+    "searchHints": [
+      "衆議院",
+      "自由民主党・無所属の会",
+      "議員",
+      "広瀬建",
+      "プロフィール",
+      "顔写真"
+    ],
+    "checkedSources": [],
+    "candidatePageUrls": [],
+    "notes": ""
   }
 ]
