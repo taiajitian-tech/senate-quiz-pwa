@@ -99,9 +99,9 @@ export default function UpdatesView(props: Props) {
   }, [baseUrl]);
 
   const totalsText = useMemo(() => {
-    if (!payload.hasUpdates || payload.totalChanges <= 0) return '現在は変更点なし';
+    if (!payload.hasUpdates || payload.totalChanges <= 0) return `変更なし（${formatDateTime(payload.generatedAt)} 確認）`;
     return `変更 ${payload.totalChanges} 件`;
-  }, [payload.hasUpdates, payload.totalChanges]);
+  }, [payload.generatedAt, payload.hasUpdates, payload.totalChanges]);
 
   return (
     <div style={styles.wrap}>
@@ -111,6 +111,18 @@ export default function UpdatesView(props: Props) {
         <div style={styles.sub}>最終生成：{formatDateTime(payload.generatedAt)}</div>
         <div style={styles.desc}>{totalsText}</div>
         {error ? <div style={{ ...styles.sub, color: '#cf222e' }}>{error}</div> : null}
+      </div>
+
+      <div style={styles.card}>
+        <div style={styles.sectionTitle}>更新状態</div>
+        <div style={payload.hasUpdates && payload.totalChanges > 0 ? styles.statusChanged : styles.statusNoChanges}>
+          <div style={styles.statusTitle}>{payload.hasUpdates && payload.totalChanges > 0 ? '更新あり' : '変更なし'}</div>
+          <div style={styles.statusText}>
+            {payload.hasUpdates && payload.totalChanges > 0
+              ? `今回の自動更新で ${payload.totalChanges} 件の変更を検出しました。`
+              : `最終確認 ${formatDateTime(payload.generatedAt)} の時点では変更を検出していません。`}
+          </div>
+        </div>
       </div>
 
       <div style={styles.card}>

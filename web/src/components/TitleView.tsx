@@ -100,8 +100,8 @@ export default function TitleView(props: Props) {
             type="button"
             style={styles.noticeIconBtn}
             onClick={props.onOpenUpdates}
-            aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : "お知らせ"}
-            title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : "お知らせ"}
+            aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
+            title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
           >
             <span style={styles.noticeIconText}>🔔</span>
             {updatesMeta.totalChanges > 0 ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
@@ -112,7 +112,7 @@ export default function TitleView(props: Props) {
         <div style={styles.titleBlock}>
           <div style={styles.title}>議員集</div>
           <div style={styles.titleSub}>まず見て、次に思い出す。順番どおりに覚える学習アプリ</div>
-          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `更新あり ${updatesMeta.totalChanges} 件` : `更新確認 ${formatGeneratedAt(updatesMeta.generatedAt)}`}</div>
+          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `更新あり ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}</div>
         </div>
 
         <div style={styles.modeSwitchWrap}>
