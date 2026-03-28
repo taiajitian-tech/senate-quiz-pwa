@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
+import { resolveKanteiMeiboUrls } from './kanteiMeibo.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,10 +11,8 @@ const DATA_DIR = path.resolve(__dirname, '../public/data');
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36';
 
 const URLS = {
-  councilorsOfficers: 'https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm',
+  councilorsOfficers: 'https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/yakuin.htm',
   houseOfficers: 'https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm',
-  viceMinisters: 'https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html',
-  parliamentarySecretaries: 'https://www.kantei.go.jp/jp/105/meibo/seimukan.html',
 };
 
 const MIN_COUNTS = {
@@ -520,6 +519,8 @@ async function safeGenerate({ label, parser, url, category, imageMap, sourceUrl,
 async function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   const imageMap = buildImageMap();
+  const kanteiUrls = await resolveKanteiMeiboUrls();
+  console.log(`role panels sources: vice=${kanteiUrls.viceMinistersUrl} seimukan=${kanteiUrls.parliamentarySecretariesUrl}`);
 
   const councilorsOfficers = await safeGenerate({
     label: '参議院役員',
@@ -537,20 +538,20 @@ async function main() {
   const viceMinisters = await safeGenerate({
     label: '副大臣',
     parser: (html) => parseKanteiRolePage(html, '副大臣'),
-    url: URLS.viceMinisters,
+    url: kanteiUrls.viceMinistersUrl,
     category: '副大臣',
     imageMap,
-    sourceUrl: URLS.viceMinisters,
+    sourceUrl: kanteiUrls.viceMinistersUrl,
     fileName: 'vice-ministers.json',
   });
 
   const parliamentarySecretaries = await safeGenerate({
     label: '大臣政務官',
     parser: (html) => parseKanteiRolePage(html, '大臣政務官'),
-    url: URLS.parliamentarySecretaries,
+    url: kanteiUrls.parliamentarySecretariesUrl,
     category: '大臣政務官',
     imageMap,
-    sourceUrl: URLS.parliamentarySecretaries,
+    sourceUrl: kanteiUrls.parliamentarySecretariesUrl,
     fileName: 'parliamentary-secretaries.json',
   });
 
