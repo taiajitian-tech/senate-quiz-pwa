@@ -140,5 +140,28 @@
     "checkedSources": [],
     "candidatePageUrls": [],
     "notes": ""
+  },
+  {
+    "name": "向山淳",
+    "party": "自由民主党・無所属の会",
+    "status": "review",
+    "reason": "building_image",
+    "profileUrl": "",
+    "currentImage": "https://upload.wikimedia.org/wikipedia/commons/6/65/Jun_Muk%C5%8Dyama%2C_Parliamentary_Vice-Minister_for_Internal_Affairs_and_Communications_2025.jpg",
+    "imageSource": "wikipedia",
+    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E6%B7%B3",
+    "aiGuess": false,
+    "preferredSourceType": "official_or_party",
+    "searchHints": [
+      "衆議院",
+      "自由民主党・無所属の会",
+      "議員",
+      "向山淳",
+      "プロフィール",
+      "顔写真"
+    ],
+    "checkedSources": [],
+    "candidatePageUrls": [],
+    "notes": ""
   }
 ]
