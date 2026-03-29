@@ -1,24 +1,87 @@
 {
-  "generatedAt": "2026-03-29T05:20:15.311Z",
-  "totalChanges": 1,
+  "generatedAt": "2026-03-29T05:26:43.946Z",
+  "totalChanges": 10,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "houseOfficersList",
-      "label": "衆議院役員一覧",
+      "target": "representatives",
+      "label": "衆議院議員",
       "added": 0,
       "removed": 0,
-      "changed": 1,
-      "total": 1
+      "changed": 10,
+      "total": 10
     }
   ],
   "items": [
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "大串正樹",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "勝俣孝明",
       "type": "changed",
-      "summary": "大串正樹：画像更新"
+      "summary": "勝俣孝明：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "国定勇人",
+      "type": "changed",
+      "summary": "国定勇人：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "高鳥修一",
+      "type": "changed",
+      "summary": "高鳥修一：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "谷公一",
+      "type": "changed",
+      "summary": "谷公一：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "藤丸敏",
+      "type": "changed",
+      "summary": "藤丸敏：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "細田健一",
+      "type": "changed",
+      "summary": "細田健一：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "丸川珠代",
+      "type": "changed",
+      "summary": "丸川珠代：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "鷲尾英一郎",
+      "type": "changed",
+      "summary": "鷲尾英一郎：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "菊田真紀子",
+      "type": "changed",
+      "summary": "菊田真紀子：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "西村智奈美",
+      "type": "changed",
+      "summary": "西村智奈美：画像更新"
     }
   ]
 }
