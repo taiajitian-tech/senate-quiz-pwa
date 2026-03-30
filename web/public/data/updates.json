@@ -1,31 +1,66 @@
 {
-  "generatedAt": "2026-03-30T16:13:00.737Z",
-  "totalChanges": 2,
+  "generatedAt": "2026-03-30T16:35:43.421Z",
+  "totalChanges": 7,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "houseOfficersList",
-      "label": "衆議院役員一覧",
+      "target": "representatives",
+      "label": "衆議院議員",
       "added": 0,
       "removed": 0,
-      "changed": 2,
-      "total": 2
+      "changed": 7,
+      "total": 7
     }
   ],
   "items": [
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "田中和徳",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "小田原潔",
       "type": "changed",
-      "summary": "田中和徳：画像更新"
+      "summary": "小田原潔：画像更新"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "古川康",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "木原稔",
       "type": "changed",
-      "summary": "古川康：画像更新"
+      "summary": "木原稔：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "星野剛士",
+      "type": "changed",
+      "summary": "星野剛士：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "三谷英弘",
+      "type": "changed",
+      "summary": "三谷英弘：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "宗清皇一",
+      "type": "changed",
+      "summary": "宗清皇一：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "青柳仁士",
+      "type": "changed",
+      "summary": "青柳仁士：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "阿部司",
+      "type": "changed",
+      "summary": "阿部司：画像更新"
     }
   ]
 }
