@@ -249,7 +249,7 @@
     "chamber": "衆議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28004XXX001K_0.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Hisayuki_Fujii_2024.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
@@ -309,7 +309,7 @@
     "chamber": "衆議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA43003XXX001K_0.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/d/d0/Tetsushi_Sakamoto_20220928_%28cropped%29.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"

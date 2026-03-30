@@ -1,80 +1,31 @@
 {
-  "generatedAt": "2026-03-29T15:58:05.614Z",
-  "totalChanges": 9,
+  "generatedAt": "2026-03-30T05:33:23.891Z",
+  "totalChanges": 2,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "representatives",
-      "label": "衆議院議員",
+      "target": "houseOfficersList",
+      "label": "衆議院役員一覧",
       "added": 0,
       "removed": 0,
-      "changed": 9,
-      "total": 9
+      "changed": 2,
+      "total": 2
     }
   ],
   "items": [
     {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "大塚拓",
-      "type": "changed",
-      "summary": "大塚拓：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "金子恭之",
-      "type": "changed",
-      "summary": "金子恭之：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "坂本哲志",
-      "type": "changed",
-      "summary": "坂本哲志：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "鈴木貴子",
-      "type": "changed",
-      "summary": "鈴木貴子：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "武井俊輔",
-      "type": "changed",
-      "summary": "武井俊輔：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "長島昭久",
-      "type": "changed",
-      "summary": "長島昭久：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
       "name": "藤井比早之",
       "type": "changed",
       "summary": "藤井比早之：画像更新"
     },
     {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "向山淳",
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "坂本哲志",
       "type": "changed",
-      "summary": "向山淳：画像更新"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "森下千里",
-      "type": "changed",
-      "summary": "森下千里：画像更新"
+      "summary": "坂本哲志：画像更新"
     }
   ]
 }
