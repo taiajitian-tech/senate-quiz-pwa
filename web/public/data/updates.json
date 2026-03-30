@@ -1,31 +1,87 @@
 {
-  "generatedAt": "2026-03-30T05:33:23.891Z",
-  "totalChanges": 2,
+  "generatedAt": "2026-03-30T05:39:55.258Z",
+  "totalChanges": 10,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "houseOfficersList",
-      "label": "衆議院役員一覧",
+      "target": "representatives",
+      "label": "衆議院議員",
       "added": 0,
       "removed": 0,
-      "changed": 2,
-      "total": 2
+      "changed": 10,
+      "total": 10
     }
   ],
   "items": [
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "藤井比早之",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "梶山弘志",
       "type": "changed",
-      "summary": "藤井比早之：画像更新"
+      "summary": "梶山弘志：画像更新"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "坂本哲志",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "加藤勝信",
       "type": "changed",
-      "summary": "坂本哲志：画像更新"
+      "summary": "加藤勝信：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "木原誠二",
+      "type": "changed",
+      "summary": "木原誠二：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "繁本護",
+      "type": "changed",
+      "summary": "繁本護：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "瀬戸隆一",
+      "type": "changed",
+      "summary": "瀬戸隆一：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "田所嘉徳",
+      "type": "changed",
+      "summary": "田所嘉徳：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "田中和徳",
+      "type": "changed",
+      "summary": "田中和徳：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "額賀福志郎",
+      "type": "changed",
+      "summary": "額賀福志郎：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "古川康",
+      "type": "changed",
+      "summary": "古川康：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "浅野哲",
+      "type": "changed",
+      "summary": "浅野哲：画像更新"
     }
   ]
 }
