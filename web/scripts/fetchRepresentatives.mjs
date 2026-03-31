@@ -380,7 +380,19 @@ function loadExistingImageCache() {
 }
 
 function getOverrideImage(name) {
-  return MANUAL_IMAGE_OVERRIDES[cleanName(name)] || null;
+  const cleaned = cleanName(name);
+  const manual = MANUAL_IMAGE_OVERRIDES[cleaned];
+  if (manual) return manual;
+
+  const sourcePage = MANUAL_SOURCE_PAGES[cleaned] || null;
+  if (sourcePage?.directImageUrl) {
+    return {
+      image: sourcePage.directImageUrl,
+      imageSource: sourcePage.preferredSourceType === "official_or_party" ? "official-manual" : "manual",
+      imageSourceUrl: sourcePage.directSourceUrl || sourcePage.candidatePageUrls?.[0] || ""
+    };
+  }
+  return null;
 }
 
 function getCachedImage(cache, row) {
@@ -730,8 +742,17 @@ async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
     };
   }
 
+  const cached = getCachedImage(existingCache, rep);
+  if (cached?.image) {
+    return {
+      url: cached.image,
+      source: cached.imageSource || "cached",
+      sourceUrl: cached.imageSourceUrl || cached.profileUrl || ""
+    };
+  }
+
   const yomiuri = getYomiuriImage(yomiuriCache, rep);
-  if (yomiuri) return yomiuri;
+  if (yomiuri && yomiuri.status !== "review") return yomiuri;
 
   const official = await resolveOfficialImage(rep.profileUrl, rep.name);
   if (official) return official;
@@ -744,14 +765,7 @@ async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
   const wikipedia = await resolveWikipediaImage(rep.name);
   if (wikipedia) return wikipedia;
 
-  const cached = getCachedImage(existingCache, rep);
-  if (cached?.image) {
-    return {
-      url: cached.image,
-      source: cached.imageSource || "cached",
-      sourceUrl: cached.imageSourceUrl || cached.profileUrl || ""
-    };
-  }
+  if (yomiuri) return yomiuri;
 
   const webFallback = await resolveWebFallbackImage(rep.name);
   if (webFallback) return webFallback;

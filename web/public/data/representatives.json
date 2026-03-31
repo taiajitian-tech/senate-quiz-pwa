@@ -6,12 +6,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA33001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Ichir%C5%8D_Aisawa_20230116_geta_zoutei.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%80%A2%E6%B2%A2%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 295557773,
@@ -20,12 +19,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28008XXX013K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Aoyama_shigeharu.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9D%92%E5%B1%B1%E7%B9%81%E6%99%B4",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 895603808,
@@ -73,12 +71,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04002XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Kenya_Akiba_20190911.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E8%91%89%E8%B3%A2%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 586647556,
@@ -100,12 +97,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01006XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Kuniyoshi_Azuma%2C_Parliamentary_Secretary_for_Finance.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%9B%BD%E5%B9%B9",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1096367333,
@@ -114,12 +110,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13006XXX007K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/Sh%C5%8Dgo_Azemoto_20220816_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%95%A6%E5%85%83%E5%B0%86%E5%90%BE",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 796077987,
@@ -128,12 +123,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40008XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Tar%C5%8D_As%C5%8D_20170920_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BA%BB%E7%94%9F%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 143402856,
@@ -155,9 +149,9 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Hiroki_Abe_making_a_speech_in_front_of_Hakata_Station.jpg",
-    "imageSource": "wikipedia",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%BC%98%E6%A8%B9",
+    "image": "https://www.ntv.co.jp/election2024/research/candidate/400095.jpg",
+    "imageSource": "official-manual",
+    "imageSourceUrl": "https://www.ntv.co.jp/election2024/research/candidate/400095/",
     "profileUrl": "",
     "aiGuess": false
   },
@@ -169,11 +163,10 @@
     "party": "自由民主党・無所属の会",
     "role": "",
     "image": "https://www.jimin.jp/election/results/sen_shu50/candidate/img/s/andou-takao.jpg",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "imageSource": "official-manual",
+    "imageSourceUrl": "https://www.jimin.jp/election/results/sen_shu50/candidate/135980.html",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "official"
+    "aiGuess": false
   },
   {
     "id": 883216116,
@@ -182,12 +175,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09002XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kiyoshi_Igarashi_20241122.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%94%E5%8D%81%E5%B5%90%E6%B8%85_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 577504840,
@@ -196,12 +188,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23013XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Taku_Ishii_20211125.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1009732483,
@@ -210,12 +201,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA08005XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Akimasa_Ishikawa.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E6%98%AD%E6%94%BF",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 235175943,
@@ -238,12 +228,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88001XXX036K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Masatoshi_Ishida_2024-12-23.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E7%9C%9F%E6%95%8F",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 186227780,
@@ -252,12 +241,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA31001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/17/Ishiba_Shigeru_20241001_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%A0%B4%E8%8C%82",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 462950470,
@@ -266,12 +254,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX018K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Rintaro_Ishibashi_202.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E6%A9%8B%E6%9E%97%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 438725615,
@@ -280,12 +267,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13003XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/07/Hirotaka_Ishihara_20211115.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%8E%9F%E5%AE%8F%E9%AB%98",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 679779827,
@@ -308,12 +294,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20003XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Yosei_Ide_20220812.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E5%87%BA%E5%BA%B8%E7%94%9F",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 398887791,
@@ -336,12 +321,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04004XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Shintar%C5%8D_It%C5%8D.2023.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E4%BF%A1%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 898552692,
@@ -350,12 +334,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23008XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Tadahiko_It%C5%8D%2C_Minister_for_Reconstruction.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E5%BF%A0%E5%BD%A6",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 729830198,
@@ -364,12 +347,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13022XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Tatsuya_Ito_20240312.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E9%81%94%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1006333136,
@@ -378,12 +360,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/Yoshitaka_It%C5%8D%2C_Minister_of_State_for_Special_Missions_%28cropped_2%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E8%89%AF%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 198994924,
@@ -392,12 +373,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA18001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Tomomi_Inada_20241212.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A8%B2%E7%94%B0%E6%9C%8B%E7%BE%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 951941974,
@@ -420,12 +400,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10002XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Toshiro_Ino_20220812.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E9%87%8E%E4%BF%8A%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 776400887,
@@ -434,12 +413,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13025XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/82/Shinji_Inoue_2020.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E4%BF%A1%E6%B2%BB",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1024655722,
@@ -448,12 +426,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Takahiro_Inoue%2C_Special_Advisor_to_the_Prime_Minister_of_Japan.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%B2%B4%E5%8D%9A_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 186796116,
@@ -462,12 +439,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22002XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Tatsunori_Ibayashi_20220112_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E6%9E%97%E8%BE%B0%E6%86%B2",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 491312778,
@@ -476,12 +452,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA38002XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Ihara_takumi.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E5%8E%9F%E5%B7%A7",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1086962696,
@@ -504,12 +479,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23014XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/S%C5%8Dichir%C5%8D_Imaeda.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E6%9E%9D%E5%AE%97%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 770277534,
@@ -518,12 +492,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13026XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5e/%E4%BB%8A%E5%B2%A1%E3%81%86%E3%81%88%E3%81%8D.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E5%B2%A1%E6%A4%8D",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 222622224,
@@ -532,12 +505,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84001XXX052K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/14/Hina_Iwasaki.png",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E6%AF%94%E8%8F%9C",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 357532656,
@@ -546,12 +518,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA41001XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Kazuchika_Iwata_20241003.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E7%94%B0%E5%92%8C%E8%A6%AA",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 398962441,
@@ -560,12 +531,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA44003XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Takeshi_Iwaya_20241003_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B1%8B%E6%AF%85",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 952753559,
@@ -574,12 +544,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX010K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/40/20211006uesugi_kentaro.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%9D%89%E8%AC%99%E5%A4%AA%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1067556974,
@@ -588,12 +557,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA16002XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Eishun_Ueda%2C_Parliamentary_Vice-Minister_for_Land%2C_Infrastructure%2C_Transport_and_Tourism_2025.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E8%8B%B1%E4%BF%8A",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 969384416,
@@ -602,12 +570,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25002XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Kenichiro_Ueno_2026.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E8%B3%A2%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1005975585,
@@ -616,12 +583,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91001XXX058K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Hiroshi_Ueno.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%AE%8F%E5%8F%B2",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 760390915,
@@ -657,12 +623,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX022K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/Akinori_Eto.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%B8%A1%E8%81%A1%E5%BE%B3",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 303626768,
@@ -671,12 +636,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45002XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Taku_Eto_20210311.jpg/960px-Taku_Eto_20210311.jpg",
+    "imageSource": "profile-page",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E8%97%A4%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1048253928,
@@ -699,12 +663,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12005XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Arfiya_Eri_2025_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8B%B1%E5%88%A9%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A3%E3%83%A4",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 585721683,
@@ -727,12 +690,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Ooka_Toshitaka.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B2%A1%E6%95%8F%E5%AD%9D",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 212656074,
@@ -741,12 +703,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Masaki_%C5%8Cgushi_20241121.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E4%B8%B2%E6%AD%A3%E6%A8%B9",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 372791139,
@@ -769,12 +730,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11009XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Taku_%C5%8Ctsuka_2019.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%A1%9A%E6%8B%93",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 765051426,
@@ -838,12 +798,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87001XXX060K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E7%94%B0%E7%B4%98%E4%B8%80%E9%83%8E",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/139255/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 641490929,
@@ -852,12 +811,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46003XXX001K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E9%87%8C%E6%B3%B0%E5%BC%98",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA46XXXXXX000/135432/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 773936610,
@@ -868,10 +826,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13021XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E7%94%B0%E5%8E%9F%E6%BD%94",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135668/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 738868285,
@@ -896,10 +853,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04005XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E9%87%8E%E5%AF%BA%E4%BA%94%E5%85%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA04XXXXXX000/135524/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1074629068,
@@ -938,10 +894,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83001XXX059K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E8%BA%AB%E6%9C%9D%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/138953/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 436222197,
@@ -994,10 +949,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26001XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8B%9D%E7%9B%AE%E5%BA%B7",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135239/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 528000691,
@@ -1201,10 +1155,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX047K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%85%E5%AE%B6%E4%B8%80%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/139249/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 609170559,
@@ -1229,10 +1182,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22007XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9F%8E%E5%86%85%E5%AE%9F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135578/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 978611891,
@@ -1269,12 +1221,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Fumio_Kishida_20211005_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%B8%E7%94%B0%E6%96%87%E9%9B%84",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 399033718,
@@ -1285,10 +1236,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26004XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8C%97%E7%A5%9E%E5%9C%AD%E6%9C%97",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135243/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 700783981,
@@ -1396,10 +1346,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%86%8A%E7%94%B0%E8%A3%95%E9%80%9A",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135226/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 114522611,
@@ -1452,10 +1401,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14011XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B3%89%E9%80%B2%E6%AC%A1%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135549/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 540950608,
@@ -1466,10 +1414,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11011XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B3%89%E9%BE%8D%E5%8F%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135836/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 674999356,
@@ -1480,10 +1427,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14015XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E9%87%8E%E5%A4%AA%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135464/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 720935661,
@@ -1548,10 +1494,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88001XXX035K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AF%BA%E8%A3%95%E9%9B%84",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135372/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 795707141,
@@ -1784,10 +1729,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14016XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E4%B8%BB%E8%BF%AA",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135561/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 791065574,
@@ -1798,10 +1742,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA38001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E5%B4%8E%E5%BD%B0%E4%B9%85",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA38XXXXXX000/135357/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 499346910,
@@ -1812,10 +1755,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26003XXX006K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B9%81%E6%9C%AC%E8%AD%B7",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/138553/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 553136822,
@@ -1826,10 +1768,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11008XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9F%B4%E5%B1%B1%E6%98%8C%E5%BD%A6",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135834/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 137953194,
@@ -1865,12 +1806,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13011XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Hakubun_Shimomura_20130110.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%8B%E6%9D%91%E5%8D%9A%E6%96%87",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1029721340,
@@ -1950,10 +1890,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14007XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E9%A6%A8%E7%A5%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135538/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 321960632,
@@ -1978,10 +1917,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23007XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E6%B7%B3%E5%8F%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135515/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 503913229,
@@ -1992,10 +1930,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01007XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E8%B2%B4%E5%AD%90_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135711/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1076369533,
@@ -2076,10 +2013,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA30002XXX006K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%96%E8%80%95%E5%BC%98%E6%88%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA30XXXXXX000/137501/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 529872330,
@@ -2090,10 +2026,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37002XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%80%AC%E6%88%B8%E9%9A%86%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135355/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 887327611,
@@ -2104,10 +2039,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26006XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%9C%92%E5%B4%8E%E5%BC%98%E9%81%93",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135860/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 923094573,
@@ -2130,12 +2064,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA29002XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Official_portrait_of_Sanae_Takaichi%2C_Prime_Minister_of_Japan_%28HD%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 396403457,
@@ -2146,10 +2079,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX019K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E9%9A%8E%E6%81%B5%E7%BE%8E%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA32XXXXXX000/135383/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 133956038,
@@ -2160,10 +2092,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13012XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%95%93",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/136067/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 814769686,
@@ -2229,10 +2160,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E4%BA%95%E4%BF%8A%E8%BC%94",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135424/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 879443577,
@@ -2327,10 +2257,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84001XXX069K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%98%8C%E5%8F%B2",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/139238/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 936046169,
@@ -2383,10 +2312,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27019XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B0%B7%E5%B7%9D%E3%81%A8%E3%82%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135286/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 929389985,
@@ -2411,10 +2339,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA16001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E7%95%91%E8%A3%95%E6%98%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC86XXXXXX000/135494/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 243255550,
@@ -2439,10 +2366,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA24001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%9D%91%E6%86%B2%E4%B9%85",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA24XXXXXX000/135742/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 546519490,
@@ -2508,10 +2434,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA02001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B4%A5%E5%B3%B6%E6%B7%B3",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA02XXXXXX000/135760/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 931060790,
@@ -2550,10 +2475,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34004XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AF%BA%E7%94%B0%E7%A8%94",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135343/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 643624316,
@@ -2578,10 +2502,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28010XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E6%B5%B7%E7%B4%80%E4%B8%89%E6%9C%97",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135308/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 434752823,
@@ -2590,12 +2513,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05001XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/01/Hiroyuki_Togashi_20230817.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%86%A8%E6%A8%AB%E5%8D%9A%E4%B9%8B",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 666158072,
@@ -2619,10 +2541,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA08007XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B0%B8%E5%B2%A1%E6%A1%82%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA08XXXXXX000/135533/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1084995364,
@@ -2647,10 +2568,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E8%B2%B4%E5%85%83",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135228/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 823915837,
@@ -2745,10 +2665,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA39001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%B0%B7%E5%85%83",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA39XXXXXX000/135362/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 906384487,
@@ -2787,10 +2706,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11006XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%A0%B9%E4%B8%80%E5%B9%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135829/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 879106199,
@@ -2843,10 +2761,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14009XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B1%B1%E5%B1%95%E5%AE%8F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135547/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1030337215,
@@ -2855,12 +2772,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27004XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Yasuhide_Nakayama.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B1%B1%E6%B3%B0%E7%A7%80",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 237495390,
@@ -2871,10 +2787,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BB%81%E6%9C%A8%E5%8D%9A%E6%96%87",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA36XXXXXX000/135348/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1050804050,
@@ -3025,10 +2940,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A0%B9%E6%9C%AC%E5%B9%B8%E5%85%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135502/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 818807004,
@@ -3067,10 +2981,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13024XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%90%A9%E7%94%9F%E7%94%B0%E5%85%89%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135546/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 736346709,
@@ -3137,10 +3050,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12012XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%9C%E7%94%B0%E9%9D%96%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135788/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 667494839,
@@ -3179,10 +3091,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E4%BA%95%E5%8D%93%E4%B9%9F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135351/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 993060735,
@@ -3221,10 +3132,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC89001XXX021K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B2%BC%E6%AD%A3%E4%BA%8C%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135385/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 186567879,
@@ -3276,10 +3186,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA10004XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E9%81%94%E5%A4%AB",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA10XXXXXX000/135642/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 682112114,
@@ -3290,10 +3199,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05002XXX004K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E5%8E%9F%E6%B7%B3%E5%97%A3",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA05XXXXXX000/136324/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 960373458,
@@ -3358,12 +3266,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26002XXX007K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%B4%8B%E5%8F%B8",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/138556/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 837312127,
@@ -3388,10 +3295,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA03003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E5%8E%9F%E5%B4%87",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA03XXXXXX000/135687/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 806098705,
@@ -3416,10 +3322,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%88%B9%E7%94%B0%E5%85%83",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA09XXXXXX000/135505/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 854962564,
@@ -3472,10 +3377,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E7%A6%8E%E4%B9%85",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135428/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 965777839,
@@ -3514,10 +3418,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14012XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%98%9F%E9%87%8E%E5%89%9B%E5%A3%AB",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135554/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 142861558,
@@ -3528,10 +3431,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87001XXX059K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B4%B0%E7%94%B0%E5%81%A5%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/139247/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1032857460,
@@ -3542,10 +3444,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22005XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B4%B0%E9%87%8E%E8%B1%AA%E5%BF%97",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135573/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 702731180,
@@ -3598,10 +3499,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14017XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%89%A7%E5%B3%B6%E3%81%8B%E3%82%8C%E3%82%93",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135563/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 407589315,
@@ -3626,10 +3526,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13014XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B3%B6%E3%81%BF%E3%81%A9%E3%82%8A",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135807/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 543400668,
@@ -3682,10 +3581,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13019XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E6%B4%8B%E5%B9%B3",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135594/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 917124812,
@@ -3752,10 +3650,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%8F%8D%E5%9C%92%E8%A8%93",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA46XXXXXX000/135430/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1099043954,
@@ -3766,10 +3663,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14008XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%89%E8%B0%B7%E8%8B%B1%E5%BC%98",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135545/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 727590903,
@@ -3791,12 +3687,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA05003XXX001K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Nobuhide_Minorikawa_on_August_6%2C_2024.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E6%B3%95%E5%B7%9D%E4%BF%A1%E8%8B%B1",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 415497402,
@@ -3863,10 +3758,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20005XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E4%B8%8B%E4%B8%80%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA20XXXXXX000/135783/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 900987244,
@@ -3905,10 +3799,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27013XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%AE%97%E6%B8%85%E7%9A%87%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135275/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 301248335,
@@ -3933,10 +3826,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC90001XXX011K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E8%AA%A0%E4%B8%80%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC90XXXXXX000/135396/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 320730818,
@@ -3945,12 +3837,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX023K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%9C%A8%E6%B1%80",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/139235/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 541949590,
@@ -3975,10 +3866,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82001XXX021K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E4%B8%8B%E5%8D%83%E9%87%8C",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA04XXXXXX000/135877/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 202605278,
@@ -4045,10 +3935,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA09003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%B0%97%E5%92%8C%E7%94%9F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA09XXXXXX000/135509/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 827699611,
@@ -4073,10 +3962,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E4%BF%8A%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA36XXXXXX000/135350/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 530455964,
@@ -4184,10 +4072,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87001XXX033K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%B7%A6%E8%BF%91",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135842/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 846922886,
@@ -4240,10 +4127,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA35003XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E7%9C%9F%E6%AC%A1",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135387/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 636959611,
@@ -4296,10 +4182,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA20001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E6%9E%97%E5%81%A5%E5%A4%AA",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA20XXXXXX000/135774/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 684271306,
@@ -4336,12 +4221,11 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15004XXX003K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Washio_Eiichirou.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%B7%B2%E5%B0%BE%E8%8B%B1%E4%B8%80%E9%83%8E",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 590041924,
@@ -4352,10 +4236,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01005XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E7%BE%A9%E6%98%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135867/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 168429029,
@@ -4380,10 +4263,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%AD%9D%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135655/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 798649770,
@@ -4408,10 +4290,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%BE%BD%E4%B8%80%E5%98%89",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135291/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 758251926,
@@ -4422,10 +4303,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13024XXX004K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9C%89%E7%94%B0%E8%8A%B3%E7%94%9F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/137302/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 142997210,
@@ -4436,10 +4316,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27006XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E4%BD%90%E9%80%B2%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135261/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 786217302,
@@ -4450,10 +4329,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B3%89%E5%81%A5%E5%A4%AA",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135241/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 383531624,
@@ -4478,10 +4356,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88003XXX008K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%AE%E5%B3%B6%E6%99%BA%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135378/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 524147009,
@@ -4492,10 +4369,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11006XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B3%B6%E6%95%A6",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135830/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 744153643,
@@ -4504,12 +4380,11 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84003XXX004K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A3%AE%E6%B1%9F%E9%87%8C%E5%AD%90",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/136472/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 766319514,
@@ -4520,10 +4395,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13029XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%9C%AC%E4%B8%89%E6%88%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135615/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 424189895,
@@ -4532,12 +4406,11 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37001XXX002K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Junya_Ogawa_20250703_1_%28cropped%29.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%B7%9D%E6%B7%B3%E4%B9%9F",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 246662858,
@@ -4548,10 +4421,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13006XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%90%BD%E5%90%88%E8%B2%B4%E4%B9%8B",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135682/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 521378155,
@@ -4562,10 +4434,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84003XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E8%A5%BF%E5%AE%8F%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135884/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 739535688,
@@ -4576,10 +4447,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA07001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q5371065",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA07XXXXXX000/135473/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 716931248,
@@ -4590,10 +4460,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01010XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A5%9E%E8%B0%B7%E8%A3%95",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135699/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 807915024,
@@ -4604,10 +4473,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91023XXX021K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E9%87%8E%E7%BE%A9%E5%8D%9A_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/139136/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 795208744,
@@ -4618,10 +4486,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%8F%8A%E7%94%B0%E7%9C%9F%E7%B4%80%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA15XXXXXX000/135211/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 673462441,
@@ -4632,10 +4499,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91003XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%9F%8E%E6%B3%B0%E9%82%A6",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135446/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 217487581,
@@ -4659,10 +4525,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83003XXX005K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BC%BF%E6%B0%B4%E6%81%B5%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/136412/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 318275153,
@@ -4671,12 +4536,11 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14016XXX001K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q11488572",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135558/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 263906758,
@@ -4685,12 +4549,11 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17003XXX002K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E5%92%8C%E4%B9%9F",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA17XXXXXX000/135855/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 476963899,
@@ -4701,10 +4564,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA34003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%89%E8%97%A4%E9%89%84%E5%A4%AB",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC89XXXXXX000/135341/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 606795364,
@@ -4715,10 +4577,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E8%8B%B1%E9%81%93",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC81XXXXXX000/135658/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 704883718,
@@ -4727,12 +4588,11 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23012XXX002K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8D%E5%BE%B3%E5%92%8C%E5%BD%A6",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135738/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 949877715,
@@ -4743,10 +4603,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA03001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9A%8E%E7%8C%9B",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA03XXXXXX000/135678/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 572654413,
@@ -4757,10 +4616,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC82003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%BA%84%E5%AD%90%E8%B3%A2%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC82XXXXXX000/135741/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 160984405,
@@ -4771,10 +4629,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E5%B6%8B%E8%A6%81",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135467/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 931407833,
@@ -4785,10 +4642,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC85003XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A7%92%E7%94%B0%E7%A7%80%E7%A9%82",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135798/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 725117845,
@@ -4813,10 +4669,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87003XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B7%9D%E5%BA%B7%E6%B4%8B",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/135840/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 605445855,
@@ -4827,10 +4682,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13027XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%A6%BB%E6%98%AD",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135684/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1025563611,
@@ -4841,10 +4695,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28008XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E9%87%8E%E6%B4%8B%E6%98%8C",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135305/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 660691384,
@@ -4855,10 +4708,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87003XXX004K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%9C%92%E5%8B%9D%E7%A7%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/136189/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 678912037,
@@ -4869,10 +4721,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA15001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%99%BA%E5%A5%88%E7%BE%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA15XXXXXX000/135205/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 905436085,
@@ -4897,10 +4748,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12014XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E4%BD%B3%E5%BD%A6",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135795/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 773757027,
@@ -4909,12 +4759,11 @@
     "house": "衆議院",
     "party": "中道改革連合・無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA46003XXX002K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%8E%E9%96%93%E5%81%A5",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA46XXXXXX000/135433/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 293370127,
@@ -4925,10 +4774,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91003XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%9C%B0%E9%9B%85%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135445/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 448542811,
@@ -4981,10 +4829,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA01009XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%B2%A1%E9%81%94%E4%B8%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/135765/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 932041779,
@@ -5009,10 +4856,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27016XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E9%A6%99%E8%8B%97",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/135323/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 513024384,
@@ -5023,10 +4869,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC91003XXX004K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E5%AE%A3%E5%BC%98",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC91XXXXXX000/135448/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 243658385,
@@ -5037,10 +4882,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14009XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%AC%A0%E6%B5%A9%E5%8F%B2",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135527/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 290439819,
@@ -5065,10 +4909,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA45001XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E5%89%B5",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA45XXXXXX000/135425/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 966068404,
@@ -5077,12 +4920,11 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27014XXX001K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%9F%B3%E4%BB%81%E5%A3%AB",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135277/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 636455533,
@@ -5093,10 +4935,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27003XXX005K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%BE%B9_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/136126/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 680770489,
@@ -5107,10 +4948,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28002XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%9C%AD%E5%8F%B2",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/136140/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 237630512,
@@ -5121,10 +4961,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13012XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E5%8F%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/135636/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 367461707,
@@ -5161,12 +5000,11 @@
     "house": "衆議院",
     "party": "日本維新の会",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28001XXX003K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%80%E8%B0%B7%E5%8B%87%E4%B8%80%E9%83%8E",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135290/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 118598881,
@@ -5177,10 +5015,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28006XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q6426248",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/135302/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 308116726,
@@ -5191,10 +5028,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27019XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E6%9D%B1%E4%BF%A1%E4%B9%85",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135287/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1090423786,
@@ -5205,10 +5041,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27001XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%8B%B1%E5%AD%9D",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135248/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 256283372,
@@ -5219,10 +5054,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27013XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E8%B0%B7%E8%89%AF%E5%B9%B3",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135276/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 808155437,
@@ -5233,10 +5067,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27005XXX005K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A2%85%E6%9D%91%E8%81%A1",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/136264/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 537993508,
@@ -5247,10 +5080,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27015XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B5%A6%E9%87%8E%E9%9D%96%E4%BA%BA",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135278/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 523874685,
@@ -5274,10 +5106,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27018XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%81%A0%E8%97%A4%E6%95%AC",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135285/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 534156128,
@@ -5316,10 +5147,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14010XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%9D%91%E9%BE%8D%E9%82%A3",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135630/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 374233134,
@@ -5344,10 +5174,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27016XXX005K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%BB%92%E7%94%B0%E5%BE%81%E6%A8%B9",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/136127/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 297426959,
@@ -5358,10 +5187,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA25001XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%96%8E%E8%97%A4%E3%82%A2%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA25XXXXXX000/135233/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1055486618,
@@ -5386,10 +5214,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23015XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%96%A2%E5%81%A5%E4%B8%80%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/136328/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 527554471,
@@ -5414,10 +5241,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27011XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%8F%B8%E5%AE%8F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135272/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 382537734,
@@ -5456,10 +5282,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27017XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A6%AC%E5%A0%B4%E4%BC%B8%E5%B9%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135282/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 138927951,
@@ -5484,10 +5309,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27012XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%96%87%E6%AD%A6",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/135273/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 169346359,
@@ -5498,10 +5322,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA26002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%89%8D%E5%8E%9F%E8%AA%A0%E5%8F%B8",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA26XXXXXX000/135240/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 451628044,
@@ -5540,10 +5363,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA40011XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%9D%91%E4%B8%8A%E6%99%BA%E4%BF%A1",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA40XXXXXX000/136542/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 187843673,
@@ -5596,10 +5418,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA36002XXX004K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E6%B3%89%E5%98%89%E9%96%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA36XXXXXX000/137298/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 189782234,
@@ -5623,10 +5444,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC81013XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%87%BC%E6%9C%A8%E7%A7%80%E5%89%9B",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA01XXXXXX000/137660/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 234019111,
@@ -5637,10 +5457,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12005XXX003K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E9%87%8E%E7%B4%94%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135607/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 553640139,
@@ -5721,10 +5540,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E7%BE%A9%E5%BC%98",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/135839/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 547132762,
@@ -5749,10 +5567,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA22004XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E5%81%A5_(%E6%94%BF%E6%B2%BB%E5%AE%B6)",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA22XXXXXX000/135571/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 851436999,
@@ -5763,10 +5580,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA37002XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%8E%89%E6%9C%A8%E9%9B%84%E4%B8%80%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA37XXXXXX000/135354/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 816944775,
@@ -5833,10 +5649,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14018XXX006K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B2%A1%E7%BE%A9%E9%AB%98",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/137045/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 569366012,
@@ -5861,10 +5676,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11013XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E5%B9%B9%E5%BD%A6",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA11XXXXXX000/136073/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 243346565,
@@ -5889,10 +5703,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA14019XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E4%BD%9C%E3%83%98%E3%82%B9%E3%82%B9",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA14XXXXXX000/135679/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 511903100,
@@ -5901,12 +5714,11 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23016XXX003K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E5%BE%B9",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA23XXXXXX000/135814/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 220501306,
@@ -5929,12 +5741,11 @@
     "house": "衆議院",
     "party": "国民民主党・無所属クラブ",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA28003XXX005K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%91%E5%B1%B1%E5%A5%BD%E4%B8%80",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA28XXXXXX000/136846/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 1018776344,
@@ -5986,10 +5797,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA27007XXX005K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://www.wikidata.org/wiki/Q16264020",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA27XXXXXX000/138028/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 871861211,
@@ -6012,12 +5822,11 @@
     "house": "衆議院",
     "party": "参政党",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA17001XXX008K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E8%A3%95%E4%B8%80%E9%83%8E",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA17XXXXXX000/138088/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 507638490,
@@ -6098,10 +5907,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83858XXX032K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%B1%8A%E7%94%B0%E7%9C%9F%E7%94%B1%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/139273/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 705775864,
@@ -6140,10 +5948,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA13001XXX005K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%90%89%E5%B7%9D%E9%87%8C%E5%A5%88",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA13XXXXXX000/136497/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 608688455,
@@ -6154,10 +5961,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA04002XXX006K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E6%94%BF%E5%AE%97",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA04XXXXXX000/139013/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 204449025,
@@ -6222,12 +6028,11 @@
     "house": "衆議院",
     "party": "チームみらい",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC87033XXX001K_0.jpg",
-    "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%A0%88%E7%94%B0%E8%8B%B1%E5%A4%AA%E9%83%8E",
+    "image": "https://www.yomiuri.co.jp/media/2024/10/election-shugiin-ogp.jpg?type=ogp",
+    "imageSource": "profile-page",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC87XXXXXX000/139002/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 424386820,
@@ -6238,10 +6043,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84033XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B1%B1%E8%81%A1%E5%8F%B2",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/138852/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 130516477,
@@ -6336,10 +6140,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC83005XXX007K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E5%B7%9D%E9%89%84%E4%B9%9F",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135848/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 122041455,
@@ -6350,10 +6153,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC88005XXX022K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E8%BE%B0%E5%B7%B3%E5%AD%9D%E5%A4%AA%E9%83%8E",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC88XXXXXX000/136366/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 370889264,
@@ -6364,10 +6166,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC84005XXX010K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%94%B0%E6%9D%91%E6%99%BA%E5%AD%90",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC84XXXXXX000/135922/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 466322625,
@@ -6378,10 +6179,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYC85005XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%95%91%E9%87%8E%E5%90%9B%E6%9E%9D",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC85XXXXXX000/135694/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 814634278,
@@ -6392,10 +6192,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA11014XXX002K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E5%95%93%E4%B8%80",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YC83XXXXXX000/135841/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 815253426,
@@ -6418,12 +6217,11 @@
     "house": "衆議院",
     "party": "無所属",
     "role": "",
-    "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA23001XXX004K_0.jpg",
-    "imageSource": "yomiuri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/15/Takashi_Kawamura_20241116.jpg",
+    "imageSource": "wikipedia",
     "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E6%9D%91%E3%81%9F%E3%81%8B%E3%81%97",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 618333182,
@@ -6448,10 +6246,9 @@
     "role": "",
     "image": "https://www.yomiuri.co.jp/images/election/shugiin/2026/YRYA12011XXX001K_0.jpg",
     "imageSource": "yomiuri",
-    "imageSourceUrl": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E8%8B%B1%E4%BB%8B",
+    "imageSourceUrl": "https://www.yomiuri.co.jp/election/shugiin/2026/YA12XXXXXX000/135782/",
     "profileUrl": "",
-    "aiGuess": false,
-    "imageStatus": "review"
+    "aiGuess": false
   },
   {
     "id": 703501479,
