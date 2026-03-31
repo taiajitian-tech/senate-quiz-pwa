@@ -27,6 +27,8 @@ type UpdatesMeta = {
   generatedAt: string;
 };
 
+const UPDATES_LAST_SEEN_KEY = "updates_last_seen_generated_at";
+
 function formatGeneratedAt(value: string): string {
   if (!value) return "未生成";
   const date = new Date(value);
@@ -64,6 +66,10 @@ function MenuButton(props: MenuButtonProps) {
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, generatedAt: "" });
+  const [lastSeenGeneratedAt, setLastSeenGeneratedAt] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return window.localStorage.getItem(UPDATES_LAST_SEEN_KEY) ?? "";
+  });
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
@@ -92,6 +98,30 @@ export default function TitleView(props: Props) {
     };
   }, []);
 
+  const hasUnreadUpdates = useMemo(() => {
+    if (updatesMeta.totalChanges <= 0) return false;
+    if (!updatesMeta.generatedAt) return false;
+    return lastSeenGeneratedAt !== updatesMeta.generatedAt;
+  }, [lastSeenGeneratedAt, updatesMeta.generatedAt, updatesMeta.totalChanges]);
+
+  const noticeHintText = useMemo(() => {
+    if (updatesMeta.totalChanges <= 0) {
+      return `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`;
+    }
+    if (hasUnreadUpdates) {
+      return `更新あり ${updatesMeta.totalChanges} 件`;
+    }
+    return `確認済み ${formatGeneratedAt(updatesMeta.generatedAt)}`;
+  }, [hasUnreadUpdates, updatesMeta.generatedAt, updatesMeta.totalChanges]);
+
+  function handleOpenUpdates() {
+    if (updatesMeta.generatedAt) {
+      window.localStorage.setItem(UPDATES_LAST_SEEN_KEY, updatesMeta.generatedAt);
+      setLastSeenGeneratedAt(updatesMeta.generatedAt);
+    }
+    props.onOpenUpdates();
+  }
+
   return (
     <div style={styles.wrap}>
       <div style={styles.card}>
@@ -99,12 +129,12 @@ export default function TitleView(props: Props) {
           <button
             type="button"
             style={styles.noticeIconBtn}
-            onClick={props.onOpenUpdates}
-            aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
-            title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
+            onClick={handleOpenUpdates}
+            aria-label={hasUnreadUpdates ? `お知らせ 未確認 ${updatesMeta.totalChanges} 件` : `お知らせ ${noticeHintText}`}
+            title={hasUnreadUpdates ? `お知らせ 未確認 ${updatesMeta.totalChanges} 件` : `お知らせ ${noticeHintText}`}
           >
             <span style={styles.noticeIconText}>🔔</span>
-            {updatesMeta.totalChanges > 0 ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
+            {hasUnreadUpdates ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
           </button>
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)} aria-label="ヘルプ" title="ヘルプ">？</button>
         </div>
@@ -112,7 +142,7 @@ export default function TitleView(props: Props) {
         <div style={styles.titleBlock}>
           <div style={styles.title}>議員集</div>
           <div style={styles.titleSub}>まず見て、次に思い出す。順番どおりに覚える学習アプリ</div>
-          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `更新あり ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}</div>
+          <div style={styles.noticeHint}>{noticeHintText}</div>
         </div>
 
         <div style={styles.modeSwitchWrap}>
