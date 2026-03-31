@@ -1,9 +1,187 @@
 [
   {
-    "id": 1,
-    "name": "赤澤亮正",
-    "kana": "あかざわりょうせい",
-    "role": "経済産業大臣／原子力経済被害担当／GX実行推進担当／産業競争力担当／国際博覧会担当／中東情勢に伴う重要物資安定確保担当／内閣府特命担当大臣（原子力損害賠償・廃炉等支援機構）",
-    "house": "衆議院"
+    "id": 9683514,
+    "name": "高市 早苗",
+    "group": "内閣総理大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
+    ]
+  },
+  {
+    "id": 9761321,
+    "name": "林 芳正",
+    "group": "総務大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/hayashi_yoshimasa.jpg"
+    ]
+  },
+  {
+    "id": 9345622,
+    "name": "平口 洋",
+    "group": "法務大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/hiraguchi_hiroshi.jpg"
+    ]
+  },
+  {
+    "id": 9660806,
+    "name": "茂木 敏充",
+    "group": "外務大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/motegi_toshimitsu_r.jpg"
+    ]
+  },
+  {
+    "id": 9843847,
+    "name": "片山 さつき",
+    "group": "財務大臣 / 内閣府特命担当大臣（金融） / 租税特別措置・補助金見直し担当 / 参議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
+    ]
+  },
+  {
+    "id": 9878180,
+    "name": "松本 洋平",
+    "group": "文部科学大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/matsumoto_youhei.jpg"
+    ]
+  },
+  {
+    "id": 9954349,
+    "name": "上野 賢一郎",
+    "group": "厚生労働大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/ueno_kenichirou.jpg"
+    ]
+  },
+  {
+    "id": 9119422,
+    "name": "鈴木 憲和",
+    "group": "農林水産大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/suzuki_norikazu.jpg"
+    ]
+  },
+  {
+    "id": 9311591,
+    "name": "赤澤 亮正",
+    "group": "経済産業大臣 / 原子力経済被害担当 / ＧＸ実行推進担当 / 産業競争力担当 / 国際博覧会担当 / 中東情勢に伴う重要物資安定確保担当 / 内閣府特命担当大臣（原子力損害賠償・廃炉等支援機構） / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
+    ]
+  },
+  {
+    "id": 9884109,
+    "name": "金子 恭之",
+    "group": "国土交通大臣 / 水循環政策担当 / 国際園芸博覧会担当 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/kaneko_yasushi.jpg"
+    ]
+  },
+  {
+    "id": 9934680,
+    "name": "石原 宏高",
+    "group": "環境大臣 / 内閣府特命担当大臣（原子力防災） / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/000192617.jpg"
+    ]
+  },
+  {
+    "id": 9788371,
+    "name": "小泉 進次郎",
+    "group": "防衛大臣 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/koizumi_shinjirou.jpg"
+    ]
+  },
+  {
+    "id": 9365348,
+    "name": "木原 稔",
+    "group": "内閣官房長官 / 沖縄基地負担軽減担当 / 拉致問題担当 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
+    ]
+  },
+  {
+    "id": 9018309,
+    "name": "松本尚",
+    "group": "デジタル大臣 / デジタル行財政改革担当 / 行政改革担当 / 国家公務員制度担当 / サイバー安全保障担当 / 内閣府特命担当大臣（サイバー安全保障） / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/matsumoto_hisashi.jpg"
+    ],
+    "kana": "まつもとひさし"
+  },
+  {
+    "id": 9999210,
+    "name": "牧野 たかお",
+    "group": "復興大臣 / 福島原発事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 参議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/makino_takao.jpg"
+    ]
+  },
+  {
+    "id": 9320710,
+    "name": "あかま 二郎",
+    "group": "国家公安委員会委員長 / 領土問題担当 / 内閣府特命担当大臣（防災 海洋政策） / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/akama_jirou.jpg"
+    ]
+  },
+  {
+    "id": 9835518,
+    "name": "黄川田 仁志",
+    "group": "内閣府特命担当大臣（沖縄及び北方対策 消費者及び食品安全 こども政策 少子化対策 若者活躍 男女共同参画 地方創生 アイヌ施策 共生・共助） / 女性活躍担当 / 共生社会担当 / 地域未来戦略担当 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/kikawada_hitoshi.jpg"
+    ]
+  },
+  {
+    "id": 9359551,
+    "name": "城内 実",
+    "group": "日本成長戦略担当 / 賃上げ環境整備担当 / スタートアップ担当 / 全世代型社会保障改革担当 / 感染症危機管理担当 / 内閣府特命担当大臣（経済財政政策 規制改革） / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
+    ]
+  },
+  {
+    "id": 9509240,
+    "name": "小野田 紀美",
+    "group": "経済安全保障担当 / 外国人との秩序ある共生社会推進担当 / 内閣府特命担当大臣（クールジャパン戦略 知的財産戦略 科学技術政策 宇宙政策 人工知能戦略 経済安全保障） / 参議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
+    ]
+  },
+  {
+    "id": 9105432,
+    "name": "尾﨑 正直",
+    "group": "内閣官房副長官 / 衆議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/ozaki_masanao.jpg"
+    ]
+  },
+  {
+    "id": 9114248,
+    "name": "佐藤 啓",
+    "group": "内閣官房副長官 / 参議院",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/satou_kei2.jpg"
+    ]
+  },
+  {
+    "id": 9217760,
+    "name": "露木 康浩",
+    "group": "内閣官房副長官",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/tsuyuki_yasuhiro.jpg"
+    ]
+  },
+  {
+    "id": 9475722,
+    "name": "岩尾 信行",
+    "group": "内閣法制局長官",
+    "images": [
+      "https://www.kantei.go.jp/jp/content/iwao_nobuyuki.jpg"
+    ]
   }
 ]
