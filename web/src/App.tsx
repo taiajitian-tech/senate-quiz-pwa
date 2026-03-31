@@ -14,11 +14,17 @@ import { getAvailableTargets, type AppMode, type Target } from "./components/dat
 
 type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "options" | "list" | "backup" | "updates";
 
+type PendingPersonFocus = {
+  target: Target;
+  name: string;
+};
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>("title");
   const [appMode, setAppMode] = useState<AppMode>("basic");
   const [target, setTarget] = useState<Target>("senators");
   const [options, setOptions] = useState<Options>(() => loadOptions());
+  const [pendingPersonFocus, setPendingPersonFocus] = useState<PendingPersonFocus | null>(null);
   const [guideOpen, setGuideOpen] = useState(() => {
     const shouldOpen = !localStorage.getItem(FIRST_GUIDE_SEEN_KEY);
     if (shouldOpen) localStorage.setItem(FIRST_GUIDE_SEEN_KEY, "1");
@@ -60,7 +66,16 @@ export default function App() {
   } else if (screen === "stats") {
     content = <StatsView appMode={appMode} target={target} onBack={() => setScreen("title")} />;
   } else if (screen === "list") {
-    content = <SenatorList appMode={appMode} target={target} onChangeTarget={setTarget} onBack={() => setScreen("title")} />;
+    content = (
+      <SenatorList
+        appMode={appMode}
+        target={target}
+        onChangeTarget={setTarget}
+        initialFocusName={pendingPersonFocus?.target === target ? pendingPersonFocus.name : null}
+        onFocusConsumed={() => setPendingPersonFocus(null)}
+        onBack={() => setScreen("title")}
+      />
+    );
   } else if (screen === "learn") {
     content = <Learn appMode={appMode} target={target} mode="learn" onBackTitle={() => setScreen("title")} />;
   } else if (screen === "reverse") {
@@ -72,7 +87,16 @@ export default function App() {
   } else if (screen === "backup") {
     content = <BackupView onBack={() => setScreen("title")} />;
   } else if (screen === "updates") {
-    content = <UpdatesView onBack={() => setScreen("title")} />;
+    content = (
+      <UpdatesView
+        onBack={() => setScreen("title")}
+        onOpenPerson={(nextTarget, name) => {
+          setTarget(nextTarget);
+          setPendingPersonFocus({ target: nextTarget, name });
+          setScreen("list");
+        }}
+      />
+    );
   }
 
   return (

@@ -21,6 +21,8 @@ type Props = {
   target: Target;
   onChangeTarget?: (target: Target) => void;
   onBack: () => void;
+  initialFocusName?: string | null;
+  onFocusConsumed?: () => void;
 };
 
 type SortKey =
@@ -106,26 +108,6 @@ function compareYear(a: Person, b: Person, desc = false): number {
   return diff !== 0 ? diff : compareName(a, b);
 }
 
-function buildSearchText(person: Person, targetLabel: string): string {
-  return [
-    person.name,
-    person.kana,
-    person.role,
-    person.subRole,
-    person.group,
-    person.party,
-    person.district,
-    person.chamber,
-    targetLabel,
-    typeof person.terms === "number" ? `${person.terms}回` : "",
-    typeof person.nextElectionYear === "number" ? `${person.nextElectionYear}年` : "",
-    typeof person.nextElectionYear === "number" ? String(person.nextElectionYear) : "",
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-}
-
 function sortItems(items: Person[], sortKey: SortKey): Person[] {
   return [...items].sort((a, b) => {
     switch (sortKey) {
@@ -149,6 +131,10 @@ function sortItems(items: Person[], sortKey: SortKey): Person[] {
   });
 }
 
+function normalizeSearchText(value: string): string {
+  return value.toLowerCase().replace(/[\s\u3000]+/g, "");
+}
+
 export default function SenatorList(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [loading, setLoading] = useState(true);
@@ -162,6 +148,7 @@ export default function SenatorList(props: Props) {
   const [editName, setEditName] = useState("");
   const [editKana, setEditKana] = useState("");
   const [overrideVersion, setOverrideVersion] = useState(0);
+  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const isSenators = props.target === "senators";
@@ -204,13 +191,39 @@ export default function SenatorList(props: Props) {
   const masteredSet = useMemo(() => new Set(loadMasteredIds(props.appMode, props.target)), [props.appMode, props.target]);
 
   const filtered = useMemo(() => {
-    const key = q.trim().toLowerCase();
+    const key = normalizeSearchText(q.trim());
     if (!key) return items;
-    const currentTargetLabel = targetLabels[props.target] ?? "";
-    return items.filter((person) => buildSearchText(person, currentTargetLabel).includes(key));
-  }, [q, items, props.target, targetLabels]);
+    return items.filter((s) => {
+      const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
+      const termsText = typeof s.terms === "number" ? String(s.terms) : "";
+      const searchText = normalizeSearchText([
+        s.name,
+        s.kana ?? "",
+        s.party ?? "",
+        s.group ?? "",
+        s.role ?? "",
+        s.subRole ?? "",
+        s.chamber ?? "",
+        s.district ?? "",
+        termsText,
+        nextElectionText,
+      ].join(" "));
+      return searchText.includes(key);
+    });
+  }, [q, items]);
 
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
+
+  useEffect(() => {
+    if (!props.initialFocusName) return;
+    if (loading) return;
+    const normalizedName = normalizeSearchText(props.initialFocusName);
+    const matched = items.find((item) => normalizeSearchText(item.name) === normalizedName);
+    if (matched) {
+      setSelectedPerson(matched);
+    }
+    props.onFocusConsumed?.();
+  }, [items, loading, props.initialFocusName, props.onFocusConsumed]);
 
   const openEditMode = () => {
     setEditMode(true);
@@ -321,7 +334,7 @@ export default function SenatorList(props: Props) {
           const isEditing = editMode && editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
           return (
-            <div key={s.id} style={styles.item}>
+            <button key={s.id} type="button" style={styles.item} onClick={() => setSelectedPerson(s)}>
               <div style={styles.avatarBox}>
                 <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
@@ -350,13 +363,13 @@ export default function SenatorList(props: Props) {
                   <div style={styles.editButtons}>
                     {isEditing ? (
                       <>
-                        <button type="button" style={styles.saveBtn} onClick={() => saveEdit(s)}>保存</button>
-                        <button type="button" style={styles.smallBtn} onClick={cancelEdit}>取消</button>
+                        <button type="button" style={styles.saveBtn} onClick={(event) => { event.stopPropagation(); saveEdit(s); }}>保存</button>
+                        <button type="button" style={styles.smallBtn} onClick={(event) => { event.stopPropagation(); cancelEdit(); }}>取消</button>
                       </>
                     ) : editMode ? (
-                      <button type="button" style={styles.smallBtn} onClick={() => startEdit(s)}>この議員を編集</button>
+                      <button type="button" style={styles.smallBtn} onClick={(event) => { event.stopPropagation(); startEdit(s); }}>この議員を編集</button>
                     ) : null}
-                    <button type="button" style={hasOverride ? styles.resetBtn : styles.resetBtnDisabled} onClick={() => resetPerson(s)} disabled={!hasOverride}>
+                    <button type="button" style={hasOverride ? styles.resetBtn : styles.resetBtnDisabled} onClick={(event) => { event.stopPropagation(); resetPerson(s); }} disabled={!hasOverride}>
                       デフォルトに戻す
                     </button>
                   </div>
@@ -370,13 +383,36 @@ export default function SenatorList(props: Props) {
                     <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
                   </div>
                 ) : (
-                  <div style={styles.group}>{s.group ?? ""}</div>
+                  <div style={styles.group}>{[s.role, s.subRole, s.group].filter(Boolean).join(" / ") || s.group || ""}</div>
                 )}
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
+
+      {selectedPerson ? (
+        <div style={styles.detailOverlay} onClick={() => setSelectedPerson(null)}>
+          <div style={styles.detailCard} onClick={(event) => event.stopPropagation()}>
+            <button type="button" style={styles.detailCloseBtn} onClick={() => setSelectedPerson(null)}>閉じる</button>
+            <div style={styles.detailImageWrap}>
+              <SafeImage src={selectedPerson.images?.[0] ?? ""} alt={selectedPerson.name} style={styles.detailImage} fallbackStyle={styles.detailNoImage} fallbackText="画像なし" />
+            </div>
+            <div style={styles.detailName}>{selectedPerson.name}</div>
+            {selectedPerson.kana ? <div style={styles.detailKana}>{selectedPerson.kana}</div> : null}
+            <div style={styles.detailSection}>
+              {selectedPerson.role ? <div style={styles.detailLine}>役職：{selectedPerson.role}</div> : null}
+              {selectedPerson.subRole ? <div style={styles.detailLine}>詳細：{selectedPerson.subRole}</div> : null}
+              {selectedPerson.group ? <div style={styles.detailLine}>表示：{selectedPerson.group}</div> : null}
+              {selectedPerson.party ? <div style={styles.detailLine}>政党：{selectedPerson.party}</div> : null}
+              {selectedPerson.chamber ? <div style={styles.detailLine}>院：{selectedPerson.chamber}</div> : null}
+              {selectedPerson.district ? <div style={styles.detailLine}>選挙区：{selectedPerson.district}</div> : null}
+              {typeof selectedPerson.terms === "number" ? <div style={styles.detailLine}>当選回数：{selectedPerson.terms}回</div> : null}
+              {selectedPerson.nextElectionYear ? <div style={styles.detailLine}>次の改選年：{selectedPerson.nextElectionYear}年</div> : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {showFloatingButtons ? (
         <div style={styles.floatingButtons}>
@@ -419,7 +455,7 @@ const styles: Record<string, React.CSSProperties> = {
   resetAllBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
   resetAllBtnDisabled: { padding: "10px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
-  item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
+  item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center", background: "#fff", width: "100%", textAlign: "left", cursor: "pointer" },
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },
@@ -444,4 +480,14 @@ const styles: Record<string, React.CSSProperties> = {
   floatingButtons: { position: "fixed", right: 20, bottom: 20, zIndex: 1000, display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" },
   floatingBackButton: { padding: "10px 14px", borderRadius: 10, border: "1px solid #999", background: "#fff", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", fontWeight: 700 },
   scrollTopButton: { width: 46, height: 46, borderRadius: 999, border: "1px solid #999", background: "#fff", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", fontSize: 22, fontWeight: 800, lineHeight: 1 },
+  detailOverlay: { position: "fixed", inset: 0, background: "rgba(0, 0, 0, 0.6)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16, zIndex: 2000 },
+  detailCard: { width: "min(520px, 100%)", maxHeight: "90vh", overflowY: "auto", background: "#fff", borderRadius: 16, padding: 16, display: "flex", flexDirection: "column", gap: 12 },
+  detailCloseBtn: { alignSelf: "flex-end", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
+  detailImageWrap: { width: "100%", aspectRatio: "1 / 1", borderRadius: 16, overflow: "hidden", background: "#f3f3f3" },
+  detailImage: { width: "100%", height: "100%", objectFit: "cover" },
+  detailNoImage: { width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", fontSize: 16 },
+  detailName: { fontSize: 24, fontWeight: 800 },
+  detailKana: { fontSize: 16, color: "#555" },
+  detailSection: { display: "flex", flexDirection: "column", gap: 8 },
+  detailLine: { fontSize: 15, color: "#333" },
 };
