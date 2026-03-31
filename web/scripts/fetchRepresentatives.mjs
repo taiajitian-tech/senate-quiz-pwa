@@ -50,15 +50,15 @@ function getYomiuriImage(cache, row) {
   const key = `${cleanName(row?.name)}__${cleanKana(row?.kana)}`;
   const hit = cache.get(key) || null;
   if (!hit?.image) return null;
-  if (/yomiuri\.co\.jp/i.test(hit.image)) {
-    return {
-      url: hit.image,
-      source: "yomiuri",
-      sourceUrl: hit.imageSourceUrl || "",
-      status: hit.imageStatus || "review"
-    };
-  }
-  return null;
+  if (!/yomiuri\.co\.jp/i.test(hit.image)) return null;
+  if (isBlockedPlaceholderImage(hit.image)) return null;
+  if ((hit.imageStatus || "").toLowerCase() !== "ok") return null;
+  return {
+    url: hit.image,
+    source: "yomiuri",
+    sourceUrl: hit.imageSourceUrl || "",
+    status: hit.imageStatus || "ok"
+  };
 }
 
 const MANUAL_IMAGE_OVERRIDES = {
@@ -76,6 +76,41 @@ const MANUAL_IMAGE_OVERRIDES = {
     image: "https://www.jimin.jp/member/img/akama-jiro.jpg",
     imageSource: "official-manual",
     imageSourceUrl: "https://www.jimin.jp/member/102081.html"
+  },
+  "逢沢一郎": {
+    image: "https://www.jimin.jp/member/img/aisawa-i.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/100359.html"
+  },
+  "青木ひとみ": {
+    image: "https://sanseito.jp/election_member/wp-content/uploads/2025/05/A10a_aoki-hitomi-photo01.png",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://sanseito.jp/election_member/aokihitomi/"
+  },
+  "青柳仁士": {
+    image: "https://o-ishin.jp/member/images/member/post_124.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://o-ishin.jp/member/detail/post_124.html"
+  },
+  "青山繁晴": {
+    image: "https://www.jimin.jp/member/img/aoyama-shigeharu.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/132677.html"
+  },
+  "東国幹": {
+    image: "https://www.jimin.jp/member/img/azuma-kuniyoshi.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/202132.html"
+  },
+  "今岡植": {
+    image: "https://www.jimin.jp/member/img/imaoka-ueki.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/209049.html"
+  },
+  "岩崎比菜": {
+    image: "https://www.jimin.jp/member/img/iwasaki-hina.jpg",
+    imageSource: "official-manual",
+    imageSourceUrl: "https://www.jimin.jp/member/209209.html"
   }
 };
 
@@ -83,6 +118,13 @@ const MANUAL_BAD_IMAGE_REMOVALS = new Set([
   "安藤たかお"
 ]);
 
+
+
+function isBlockedPlaceholderImage(url) {
+  const s = String(url || "");
+  if (!s) return true;
+  return /(election-shugiin-ogp|member_blank\.png|noimage|no-image|placeholder)/i.test(s);
+}
 
 const PARTY_PATTERN =
   /(自由民主党・無所属の会|自由民主党|自民|立憲民主党・無所属|立憲民主党|立民|日本維新の会|維新|公明党|公明|国民民主党・無所属クラブ|国民民主党|国民|日本共産党|共産|れいわ新選組|れ新|参政党|参政|社民党|社民|有志の会|有志|日本保守党|保守|無所属)/u;
@@ -380,19 +422,7 @@ function loadExistingImageCache() {
 }
 
 function getOverrideImage(name) {
-  const cleaned = cleanName(name);
-  const manual = MANUAL_IMAGE_OVERRIDES[cleaned];
-  if (manual) return manual;
-
-  const sourcePage = MANUAL_SOURCE_PAGES[cleaned] || null;
-  if (sourcePage?.directImageUrl) {
-    return {
-      image: sourcePage.directImageUrl,
-      imageSource: sourcePage.preferredSourceType === "official_or_party" ? "official-manual" : "manual",
-      imageSourceUrl: sourcePage.directSourceUrl || sourcePage.candidatePageUrls?.[0] || ""
-    };
-  }
-  return null;
+  return MANUAL_IMAGE_OVERRIDES[cleanName(name)] || null;
 }
 
 function getCachedImage(cache, row) {
@@ -401,6 +431,7 @@ function getCachedImage(cache, row) {
   if (!hit) return null;
   if (MANUAL_BAD_IMAGE_REMOVALS.has(cleanName(row?.name))) return null;
   if (hit.imageSource === "web-fallback") return null;
+  if (isBlockedPlaceholderImage(hit.image)) return null;
   return hit;
 }
 
@@ -743,6 +774,28 @@ async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
   }
 
   const cached = getCachedImage(existingCache, rep);
+  if (cached?.image && cached.imageSource && cached.imageSource !== "yomiuri") {
+    return {
+      url: cached.image,
+      source: cached.imageSource || "cached",
+      sourceUrl: cached.imageSourceUrl || cached.profileUrl || ""
+    };
+  }
+
+  const official = await resolveOfficialImage(rep.profileUrl, rep.name);
+  if (official && !isBlockedPlaceholderImage(official.url)) return official;
+
+  if (String(rep.party || "").includes("自由民主党")) {
+    const jimin = await resolveJiminMemberImage(rep.name);
+    if (jimin && !isBlockedPlaceholderImage(jimin.url)) return jimin;
+  }
+
+  const wikipedia = await resolveWikipediaImage(rep.name);
+  if (wikipedia && !isBlockedPlaceholderImage(wikipedia.url)) return wikipedia;
+
+  const yomiuri = getYomiuriImage(yomiuriCache, rep);
+  if (yomiuri) return yomiuri;
+
   if (cached?.image) {
     return {
       url: cached.image,
@@ -751,24 +804,8 @@ async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
     };
   }
 
-  const yomiuri = getYomiuriImage(yomiuriCache, rep);
-  if (yomiuri && yomiuri.status !== "review") return yomiuri;
-
-  const official = await resolveOfficialImage(rep.profileUrl, rep.name);
-  if (official) return official;
-
-  if (String(rep.party || "").includes("自由民主党")) {
-    const jimin = await resolveJiminMemberImage(rep.name);
-    if (jimin) return jimin;
-  }
-
-  const wikipedia = await resolveWikipediaImage(rep.name);
-  if (wikipedia) return wikipedia;
-
-  if (yomiuri) return yomiuri;
-
   const webFallback = await resolveWebFallbackImage(rep.name);
-  if (webFallback) return webFallback;
+  if (webFallback && !isBlockedPlaceholderImage(webFallback.url)) return webFallback;
 
   return { url: "", source: "", sourceUrl: "" };
 }
