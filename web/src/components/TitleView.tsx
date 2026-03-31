@@ -27,6 +27,8 @@ type UpdatesMeta = {
   generatedAt: string;
 };
 
+const UPDATES_LAST_SEEN_KEY = "updates_last_seen";
+
 function formatGeneratedAt(value: string): string {
   if (!value) return "未生成";
   const date = new Date(value);
@@ -63,11 +65,11 @@ function MenuButton(props: MenuButtonProps) {
 
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
-  const [seenGeneratedAt, setSeenGeneratedAt] = useState(() => {
-    if (typeof window === "undefined") return "";
-    return window.localStorage.getItem("updates-last-seen-generated-at") ?? "";
-  });
   const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, generatedAt: "" });
+  const [lastSeenGeneratedAt, setLastSeenGeneratedAt] = useState<string>(() => {
+    if (typeof window === "undefined") return "";
+    return window.localStorage.getItem(UPDATES_LAST_SEEN_KEY) ?? "";
+  });
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
@@ -96,16 +98,12 @@ export default function TitleView(props: Props) {
     };
   }, []);
 
-  const hasUnreadUpdates = Boolean(
-    updatesMeta.totalChanges > 0
-    && updatesMeta.generatedAt
-    && seenGeneratedAt !== updatesMeta.generatedAt,
-  );
+  const hasUnreadUpdates = updatesMeta.totalChanges > 0 && !!updatesMeta.generatedAt && updatesMeta.generatedAt !== lastSeenGeneratedAt;
 
   const handleOpenUpdates = () => {
     if (updatesMeta.generatedAt) {
-      window.localStorage.setItem("updates-last-seen-generated-at", updatesMeta.generatedAt);
-      setSeenGeneratedAt(updatesMeta.generatedAt);
+      window.localStorage.setItem(UPDATES_LAST_SEEN_KEY, updatesMeta.generatedAt);
+      setLastSeenGeneratedAt(updatesMeta.generatedAt);
     }
     props.onOpenUpdates();
   };
@@ -118,8 +116,8 @@ export default function TitleView(props: Props) {
             type="button"
             style={styles.noticeIconBtn}
             onClick={handleOpenUpdates}
-            aria-label={hasUnreadUpdates ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
-            title={hasUnreadUpdates ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
+            aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
+            title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
           >
             <span style={styles.noticeIconText}>🔔</span>
             {hasUnreadUpdates ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
