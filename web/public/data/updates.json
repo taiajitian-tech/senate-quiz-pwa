@@ -1,4 +1,52 @@
 {
-  "updatedAt": "2026-03-31T12:07:00+09:00",
-  "changes": []
+  "generatedAt": "2026-03-31T05:19:57.792Z",
+  "totalChanges": 5,
+  "hasUpdates": true,
+  "summaries": [
+    {
+      "target": "houseOfficersList",
+      "label": "衆議院役員一覧",
+      "added": 0,
+      "removed": 0,
+      "changed": 5,
+      "total": 5
+    }
+  ],
+  "items": [
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "大串正樹",
+      "type": "changed",
+      "summary": "大串正樹：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "田中和徳",
+      "type": "changed",
+      "summary": "田中和徳：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "古川康",
+      "type": "changed",
+      "summary": "古川康：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "藤井比早之",
+      "type": "changed",
+      "summary": "藤井比早之：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "坂本哲志",
+      "type": "changed",
+      "summary": "坂本哲志：画像更新"
+    }
+  ]
 }
