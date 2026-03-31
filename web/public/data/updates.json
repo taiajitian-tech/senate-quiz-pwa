@@ -1,7 +1,136 @@
 {
-  "generatedAt": "2026-03-31T01:14:40.928Z",
-  "totalChanges": 0,
-  "hasUpdates": false,
-  "summaries": [],
-  "items": []
+  "generatedAt": "2026-03-31T01:17:12.176Z",
+  "totalChanges": 17,
+  "hasUpdates": true,
+  "summaries": [
+    {
+      "target": "representatives",
+      "label": "衆議院議員",
+      "added": 0,
+      "removed": 0,
+      "changed": 17,
+      "total": 17
+    }
+  ],
+  "items": [
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大西洋平",
+      "type": "changed",
+      "summary": "大西洋平：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大野敬太郎",
+      "type": "changed",
+      "summary": "大野敬太郎：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "尾崎正直",
+      "type": "changed",
+      "summary": "尾崎正直：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "長田紘一郎",
+      "type": "changed",
+      "summary": "長田紘一郎：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "門山宏哲",
+      "type": "changed",
+      "summary": "門山宏哲：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岸田文雄",
+      "type": "changed",
+      "summary": "岸田文雄：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "高村正大",
+      "type": "changed",
+      "summary": "高村正大：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "平将明",
+      "type": "changed",
+      "summary": "平将明：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "高市早苗",
+      "type": "changed",
+      "summary": "高市早苗：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "田中昌史",
+      "type": "changed",
+      "summary": "田中昌史：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "西村康稔",
+      "type": "changed",
+      "summary": "西村康稔：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "林芳正",
+      "type": "changed",
+      "summary": "林芳正：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "平井卓也",
+      "type": "changed",
+      "summary": "平井卓也：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岡本三成",
+      "type": "changed",
+      "summary": "岡本三成：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "金村龍那",
+      "type": "changed",
+      "summary": "金村龍那：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "深作ヘスス",
+      "type": "changed",
+      "summary": "深作ヘスス：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "高山聡史",
+      "type": "changed",
+      "summary": "高山聡史：画像更新"
+    }
+  ]
 }
