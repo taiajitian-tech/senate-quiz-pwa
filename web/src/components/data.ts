@@ -9,6 +9,9 @@ export type Person = {
   group?: string;
   party?: string;
   district?: string;
+  role?: string;
+  subRole?: string;
+  chamber?: string;
   terms?: number;
   nextElectionYear?: number;
   images: string[];
@@ -268,6 +271,9 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const group = toText(v.group) || toText(v.party) || toText(v.role);
   const party = toText(v.party) || toText(v.group) || toText(v.role);
   const district = toText(v.district) || toText(v.electoralDistrict) || toText(v.constituency);
+  const role = toText(v.role);
+  const subRole = toText(v.subRole) || toText(v.office) || toText(v.position);
+  const chamber = toText(v.chamber);
   const rawTerms = Number(v.terms ?? v.wins ?? v.electedCount);
   const terms = Number.isFinite(rawTerms) && rawTerms > 0 ? rawTerms : undefined;
   const rawNextElectionYear = Number(v.nextElectionYear ?? v.nextElection ?? v.electionYear);
@@ -283,6 +289,9 @@ function normalizePerson(value: unknown, index: number): Person | null {
     group,
     party,
     district,
+    role,
+    subRole,
+    chamber,
     terms,
     nextElectionYear,
     images: safeImages,

@@ -106,6 +106,26 @@ function compareYear(a: Person, b: Person, desc = false): number {
   return diff !== 0 ? diff : compareName(a, b);
 }
 
+function buildSearchText(person: Person, targetLabel: string): string {
+  return [
+    person.name,
+    person.kana,
+    person.role,
+    person.subRole,
+    person.group,
+    person.party,
+    person.district,
+    person.chamber,
+    targetLabel,
+    typeof person.terms === "number" ? `${person.terms}回` : "",
+    typeof person.nextElectionYear === "number" ? `${person.nextElectionYear}年` : "",
+    typeof person.nextElectionYear === "number" ? String(person.nextElectionYear) : "",
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
 function sortItems(items: Person[], sortKey: SortKey): Person[] {
   return [...items].sort((a, b) => {
     switch (sortKey) {
@@ -186,19 +206,9 @@ export default function SenatorList(props: Props) {
   const filtered = useMemo(() => {
     const key = q.trim().toLowerCase();
     if (!key) return items;
-    return items.filter((s) => {
-      const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
-      const termsText = typeof s.terms === "number" ? String(s.terms) : "";
-      return (
-        s.name.toLowerCase().includes(key) ||
-        (s.kana ?? "").toLowerCase().includes(key) ||
-        (s.party ?? s.group ?? "").toLowerCase().includes(key) ||
-        (s.district ?? "").toLowerCase().includes(key) ||
-        termsText.includes(key) ||
-        nextElectionText.includes(key)
-      );
-    });
-  }, [q, items]);
+    const currentTargetLabel = targetLabels[props.target] ?? "";
+    return items.filter((person) => buildSearchText(person, currentTargetLabel).includes(key));
+  }, [q, items, props.target, targetLabels]);
 
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
 
@@ -278,7 +288,7 @@ export default function SenatorList(props: Props) {
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="名前 / 政党 / 選挙区 / 回数 / 改選年で検索"
+          placeholder="名前 / 役職 / 政党 / 選挙区 / 回数 / 改選年で検索"
           style={styles.search}
         />
         <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
