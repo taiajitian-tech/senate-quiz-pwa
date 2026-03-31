@@ -20,47 +20,6 @@ const TIMEOUT_MS = 12000;
 
 const EXISTING_JSON_PATH = path.resolve("public/data/representatives.json");
 
-
-const YOMIURI_MERGED_PATH = path.resolve("public/data/representatives.yomiuri.merged.json");
-
-function loadYomiuriImageCache() {
-  try {
-    if (!fs.existsSync(YOMIURI_MERGED_PATH)) return new Map();
-    const parsed = JSON.parse(fs.readFileSync(YOMIURI_MERGED_PATH, "utf8"));
-    const out = new Map();
-    for (const row of Array.isArray(parsed) ? parsed : []) {
-      const key = `${cleanName(row?.name)}__${cleanKana(row?.kana)}`;
-      const image = String(row?.image || "").trim();
-      if (!key || !image) continue;
-      out.set(key, {
-        image,
-        imageSource: row.imageSource || "",
-        imageSourceUrl: row.imageSourceUrl || row.profileUrl || "",
-        imageStatus: row.imageStatus || ""
-      });
-    }
-    return out;
-  } catch (error) {
-    console.log(`yomiuri-cache-error: ${error.message}`);
-    return new Map();
-  }
-}
-
-function getYomiuriImage(cache, row) {
-  const key = `${cleanName(row?.name)}__${cleanKana(row?.kana)}`;
-  const hit = cache.get(key) || null;
-  if (!hit?.image) return null;
-  if (!/yomiuri\.co\.jp/i.test(hit.image)) return null;
-  if (isBlockedPlaceholderImage(hit.image)) return null;
-  if ((hit.imageStatus || "").toLowerCase() !== "ok") return null;
-  return {
-    url: hit.image,
-    source: "yomiuri",
-    sourceUrl: hit.imageSourceUrl || "",
-    status: hit.imageStatus || "ok"
-  };
-}
-
 const MANUAL_IMAGE_OVERRIDES = {
   "青山周平": {
     image: "https://www.jimin.jp/member/img/aoyama-shyuhei.jpg",
@@ -76,41 +35,6 @@ const MANUAL_IMAGE_OVERRIDES = {
     image: "https://www.jimin.jp/member/img/akama-jiro.jpg",
     imageSource: "official-manual",
     imageSourceUrl: "https://www.jimin.jp/member/102081.html"
-  },
-  "逢沢一郎": {
-    image: "https://www.jimin.jp/member/img/aisawa-i.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/100359.html"
-  },
-  "青木ひとみ": {
-    image: "https://sanseito.jp/election_member/wp-content/uploads/2025/05/A10a_aoki-hitomi-photo01.png",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://sanseito.jp/election_member/aokihitomi/"
-  },
-  "青柳仁士": {
-    image: "https://o-ishin.jp/member/images/member/post_124.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://o-ishin.jp/member/detail/post_124.html"
-  },
-  "青山繁晴": {
-    image: "https://www.jimin.jp/member/img/aoyama-shigeharu.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/132677.html"
-  },
-  "東国幹": {
-    image: "https://www.jimin.jp/member/img/azuma-kuniyoshi.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/202132.html"
-  },
-  "今岡植": {
-    image: "https://www.jimin.jp/member/img/imaoka-ueki.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/209049.html"
-  },
-  "岩崎比菜": {
-    image: "https://www.jimin.jp/member/img/iwasaki-hina.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/209209.html"
   }
 };
 
@@ -118,13 +42,6 @@ const MANUAL_BAD_IMAGE_REMOVALS = new Set([
   "安藤たかお"
 ]);
 
-
-
-function isBlockedPlaceholderImage(url) {
-  const s = String(url || "");
-  if (!s) return true;
-  return /(election-shugiin-ogp|member_blank\.png|noimage|no-image|placeholder)/i.test(s);
-}
 
 const PARTY_PATTERN =
   /(自由民主党・無所属の会|自由民主党|自民|立憲民主党・無所属|立憲民主党|立民|日本維新の会|維新|公明党|公明|国民民主党・無所属クラブ|国民民主党|国民|日本共産党|共産|れいわ新選組|れ新|参政党|参政|社民党|社民|有志の会|有志|日本保守党|保守|無所属)/u;
@@ -155,15 +72,6 @@ function cleanDistrict(value) {
 
 function cleanWins(value) {
   return normalizeSpace(value).replace(/\s+/g, "");
-}
-
-function stableRepresentativeId(name, kana) {
-  const seed = `${cleanName(name)}__${cleanKana(kana)}__衆議院`;
-  let hash = 0;
-  for (const ch of seed) {
-    hash = (hash * 31 + (ch.codePointAt(0) || 0)) % 1000000000;
-  }
-  return 100000000 + hash;
 }
 
 function decodeHtml(buffer, contentType = "") {
@@ -279,7 +187,6 @@ function addRecord(results, seen, record) {
   seen.add(key);
 
   results.push({
-    id: stableRepresentativeId(name, kana),
     name,
     kana,
     house: "衆議院",
@@ -431,7 +338,6 @@ function getCachedImage(cache, row) {
   if (!hit) return null;
   if (MANUAL_BAD_IMAGE_REMOVALS.has(cleanName(row?.name))) return null;
   if (hit.imageSource === "web-fallback") return null;
-  if (isBlockedPlaceholderImage(hit.image)) return null;
   return hit;
 }
 
@@ -759,7 +665,7 @@ async function resolveWebFallbackImage(name) {
   return null;
 }
 
-async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
+async function resolveImageForRepresentative(rep, existingCache) {
   if (MANUAL_BAD_IMAGE_REMOVALS.has(cleanName(rep.name))) {
     return { url: "", source: "", sourceUrl: "" };
   }
@@ -773,29 +679,18 @@ async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
     };
   }
 
-  const cached = getCachedImage(existingCache, rep);
-  if (cached?.image && cached.imageSource && cached.imageSource !== "yomiuri") {
-    return {
-      url: cached.image,
-      source: cached.imageSource || "cached",
-      sourceUrl: cached.imageSourceUrl || cached.profileUrl || ""
-    };
-  }
-
   const official = await resolveOfficialImage(rep.profileUrl, rep.name);
-  if (official && !isBlockedPlaceholderImage(official.url)) return official;
+  if (official) return official;
 
   if (String(rep.party || "").includes("自由民主党")) {
     const jimin = await resolveJiminMemberImage(rep.name);
-    if (jimin && !isBlockedPlaceholderImage(jimin.url)) return jimin;
+    if (jimin) return jimin;
   }
 
   const wikipedia = await resolveWikipediaImage(rep.name);
-  if (wikipedia && !isBlockedPlaceholderImage(wikipedia.url)) return wikipedia;
+  if (wikipedia) return wikipedia;
 
-  const yomiuri = getYomiuriImage(yomiuriCache, rep);
-  if (yomiuri) return yomiuri;
-
+  const cached = getCachedImage(existingCache, rep);
   if (cached?.image) {
     return {
       url: cached.image,
@@ -805,7 +700,7 @@ async function resolveImageForRepresentative(rep, existingCache, yomiuriCache) {
   }
 
   const webFallback = await resolveWebFallbackImage(rep.name);
-  if (webFallback && !isBlockedPlaceholderImage(webFallback.url)) return webFallback;
+  if (webFallback) return webFallback;
 
   return { url: "", source: "", sourceUrl: "" };
 }
@@ -827,12 +722,12 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
-async function enrichImages(rows, existingCache, yomiuriCache) {
+async function enrichImages(rows, existingCache) {
   const counts = { official: 0, wikipedia: 0, web: 0, cached: 0, empty: 0 };
   const enriched = await mapWithConcurrency(
     rows,
     async (row, i) => {
-      const image = await resolveImageForRepresentative(row, existingCache, yomiuriCache);
+      const image = await resolveImageForRepresentative(row, existingCache);
       const next = {
         ...row,
         image: image.url,
@@ -841,7 +736,6 @@ async function enrichImages(rows, existingCache, yomiuriCache) {
         aiGuess: image.source === "web-fallback"
       };
       if (image.source === "official") counts.official += 1;
-      else if (image.source === "yomiuri") counts.cached += 1;
       else if (image.source === "wikipedia") counts.wikipedia += 1;
       else if (image.source === "web-fallback") counts.web += 1;
       else if (image.source === "cached" || image.source === "official-manual") counts.cached += 1;
@@ -894,10 +788,8 @@ async function main() {
   }
 
   const existingCache = loadExistingImageCache();
-  const yomiuriCache = loadYomiuriImageCache();
   console.log(`existing-image-cache: ${existingCache.size}`);
-  console.log(`yomiuri-image-cache: ${yomiuriCache.size}`);
-  const finalWithImages = await enrichImages(finalRows, existingCache, yomiuriCache);
+  const finalWithImages = await enrichImages(finalRows, existingCache);
 
   const outDir = path.resolve("public/data");
   fs.mkdirSync(outDir, { recursive: true });
