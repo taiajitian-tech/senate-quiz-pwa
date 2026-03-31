@@ -27,8 +27,6 @@ type UpdatesMeta = {
   generatedAt: string;
 };
 
-const UPDATES_LAST_SEEN_KEY = "updates_last_seen_generated_at";
-
 function formatGeneratedAt(value: string): string {
   if (!value) return "未生成";
   const date = new Date(value);
@@ -65,11 +63,11 @@ function MenuButton(props: MenuButtonProps) {
 
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
-  const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, generatedAt: "" });
-  const [lastSeenGeneratedAt, setLastSeenGeneratedAt] = useState(() => {
+  const [seenGeneratedAt, setSeenGeneratedAt] = useState(() => {
     if (typeof window === "undefined") return "";
-    return window.localStorage.getItem(UPDATES_LAST_SEEN_KEY) ?? "";
+    return window.localStorage.getItem("updates-last-seen-generated-at") ?? "";
   });
+  const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, generatedAt: "" });
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
@@ -98,29 +96,19 @@ export default function TitleView(props: Props) {
     };
   }, []);
 
-  const hasUnreadUpdates = useMemo(() => {
-    if (updatesMeta.totalChanges <= 0) return false;
-    if (!updatesMeta.generatedAt) return false;
-    return lastSeenGeneratedAt !== updatesMeta.generatedAt;
-  }, [lastSeenGeneratedAt, updatesMeta.generatedAt, updatesMeta.totalChanges]);
+  const hasUnreadUpdates = Boolean(
+    updatesMeta.totalChanges > 0
+    && updatesMeta.generatedAt
+    && seenGeneratedAt !== updatesMeta.generatedAt,
+  );
 
-  const noticeHintText = useMemo(() => {
-    if (updatesMeta.totalChanges <= 0) {
-      return `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`;
-    }
-    if (hasUnreadUpdates) {
-      return `更新あり ${updatesMeta.totalChanges} 件`;
-    }
-    return `確認済み ${formatGeneratedAt(updatesMeta.generatedAt)}`;
-  }, [hasUnreadUpdates, updatesMeta.generatedAt, updatesMeta.totalChanges]);
-
-  function handleOpenUpdates() {
+  const handleOpenUpdates = () => {
     if (updatesMeta.generatedAt) {
-      window.localStorage.setItem(UPDATES_LAST_SEEN_KEY, updatesMeta.generatedAt);
-      setLastSeenGeneratedAt(updatesMeta.generatedAt);
+      window.localStorage.setItem("updates-last-seen-generated-at", updatesMeta.generatedAt);
+      setSeenGeneratedAt(updatesMeta.generatedAt);
     }
     props.onOpenUpdates();
-  }
+  };
 
   return (
     <div style={styles.wrap}>
@@ -130,8 +118,8 @@ export default function TitleView(props: Props) {
             type="button"
             style={styles.noticeIconBtn}
             onClick={handleOpenUpdates}
-            aria-label={hasUnreadUpdates ? `お知らせ 未確認 ${updatesMeta.totalChanges} 件` : `お知らせ ${noticeHintText}`}
-            title={hasUnreadUpdates ? `お知らせ 未確認 ${updatesMeta.totalChanges} 件` : `お知らせ ${noticeHintText}`}
+            aria-label={hasUnreadUpdates ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
+            title={hasUnreadUpdates ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
           >
             <span style={styles.noticeIconText}>🔔</span>
             {hasUnreadUpdates ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
@@ -142,7 +130,7 @@ export default function TitleView(props: Props) {
         <div style={styles.titleBlock}>
           <div style={styles.title}>議員集</div>
           <div style={styles.titleSub}>まず見て、次に思い出す。順番どおりに覚える学習アプリ</div>
-          <div style={styles.noticeHint}>{noticeHintText}</div>
+          <div style={styles.noticeHint}>{hasUnreadUpdates ? `更新あり ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}</div>
         </div>
 
         <div style={styles.modeSwitchWrap}>
