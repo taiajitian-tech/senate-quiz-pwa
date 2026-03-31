@@ -14,9 +14,10 @@ import { getAvailableTargets, type AppMode, type Target } from "./components/dat
 
 type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "options" | "list" | "backup" | "updates";
 
-type PendingPersonFocus = {
+type ListJump = {
   target: Target;
   name: string;
+  nonce: number;
 };
 
 export default function App() {
@@ -24,12 +25,12 @@ export default function App() {
   const [appMode, setAppMode] = useState<AppMode>("basic");
   const [target, setTarget] = useState<Target>("senators");
   const [options, setOptions] = useState<Options>(() => loadOptions());
-  const [pendingPersonFocus, setPendingPersonFocus] = useState<PendingPersonFocus | null>(null);
   const [guideOpen, setGuideOpen] = useState(() => {
     const shouldOpen = !localStorage.getItem(FIRST_GUIDE_SEEN_KEY);
     if (shouldOpen) localStorage.setItem(FIRST_GUIDE_SEEN_KEY, "1");
     return shouldOpen;
   });
+  const [listJump, setListJump] = useState<ListJump | null>(null);
 
   useEffect(() => {
     const availableTargets = getAvailableTargets(appMode);
@@ -39,6 +40,12 @@ export default function App() {
       });
     }
   }, [appMode, target]);
+
+  const openPersonFromUpdates = (nextTarget: Target, name: string) => {
+    setTarget(nextTarget);
+    setListJump({ target: nextTarget, name, nonce: Date.now() });
+    setScreen("list");
+  };
 
   let content: React.ReactNode = null;
 
@@ -71,9 +78,9 @@ export default function App() {
         appMode={appMode}
         target={target}
         onChangeTarget={setTarget}
-        initialFocusName={pendingPersonFocus?.target === target ? pendingPersonFocus.name : null}
-        onFocusConsumed={() => setPendingPersonFocus(null)}
         onBack={() => setScreen("title")}
+        focusPersonName={listJump && listJump.target === target ? listJump.name : undefined}
+        focusNonce={listJump && listJump.target === target ? listJump.nonce : undefined}
       />
     );
   } else if (screen === "learn") {
@@ -87,16 +94,7 @@ export default function App() {
   } else if (screen === "backup") {
     content = <BackupView onBack={() => setScreen("title")} />;
   } else if (screen === "updates") {
-    content = (
-      <UpdatesView
-        onBack={() => setScreen("title")}
-        onOpenPerson={(nextTarget, name) => {
-          setTarget(nextTarget);
-          setPendingPersonFocus({ target: nextTarget, name });
-          setScreen("list");
-        }}
-      />
-    );
+    content = <UpdatesView onBack={() => setScreen("title")} onOpenPerson={openPersonFromUpdates} />;
   }
 
   return (
