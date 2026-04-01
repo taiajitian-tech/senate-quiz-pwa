@@ -1,0 +1,40 @@
+// 既存ファイルに追加する差分のみ
+// ▼検索強化ロジック追加
+
+function shortenCompactRole(role?: string): string {
+  if (!role) return "";
+  return role
+    .replace(/内閣総理大臣/g, "総理")
+    .replace(/内閣官房長官/g, "官房")
+    .replace(/文部科学/g, "文科")
+    .replace(/厚生労働/g, "厚労")
+    .replace(/農林水産/g, "農水")
+    .replace(/経済産業/g, "経産")
+    .replace(/国土交通/g, "国交")
+    .replace(/沖縄及び北方問題に関する/g, "沖縄北方")
+    .replace(/消費者問題に関する/g, "消費者")
+    .replace(/政治倫理の確立及び公職選挙法改正に関する/g, "政治倫理")
+    .replace(/大臣/g, "")
+    .trim();
+}
+
+function getSearchTargets(person: any): string[] {
+  const role = person.role ?? "";
+  const shortRole = shortenCompactRole(role);
+
+  return [
+    person.name ?? "",
+    role,
+    shortRole,
+    person.party ?? "",
+  ];
+}
+
+// ▼検索部分をこれに置き換え
+// 例：filterの中
+
+const keyword = searchText.toLowerCase();
+
+return getSearchTargets(person).some((text) =>
+  (text || "").toLowerCase().includes(keyword)
+);
