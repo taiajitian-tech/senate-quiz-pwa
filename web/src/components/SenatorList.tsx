@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-type Props = {
-  data: any[];
+type Person = {
+  name: string;
+  images?: { url: string }[];
 };
 
-export default function SenatorList({ data }: Props) {
+type Props = {
+  data: Person[];
+} & Record<string, unknown>;
+
+export default function SenatorList(props: Props) {
+  const { data } = props;
   const [mode, setMode] = useState<'normal' | 'compact'>('normal');
 
   return (
@@ -24,11 +30,13 @@ export default function SenatorList({ data }: Props) {
           ))}
         </div>
       ) : (
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 10
-        }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 10
+          }}
+        >
           {data.map((item, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
               <img src={item.images?.[0]?.url} width={60} />
