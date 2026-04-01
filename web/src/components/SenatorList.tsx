@@ -25,6 +25,8 @@ type Props = {
   focusNonce?: number;
 };
 
+type ViewMode = "list" | "compact";
+
 type SortKey =
   | "name_asc"
   | "name_desc"
@@ -142,6 +144,7 @@ export default function SenatorList(props: Props) {
   const [q, setQ] = useState("");
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
+  const [viewMode, setViewMode] = useState<ViewMode>("list");
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -149,7 +152,7 @@ export default function SenatorList(props: Props) {
   const [editKana, setEditKana] = useState("");
   const [overrideVersion, setOverrideVersion] = useState(0);
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
-  const itemRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const itemRefs = useRef<Record<number, HTMLElement | null>>({});
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const isSenators = props.target === "senators";
@@ -188,6 +191,12 @@ export default function SenatorList(props: Props) {
     setEditKana("");
     setSelectedPerson(null);
   }, [props.target]);
+
+  useEffect(() => {
+    if (editMode && viewMode !== "list") {
+      setViewMode("list");
+    }
+  }, [editMode, viewMode]);
 
   useEffect(() => {
     if (!props.focusPersonName) return;
@@ -318,6 +327,23 @@ export default function SenatorList(props: Props) {
         <div style={styles.actionsRow}>
           <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
           <div style={styles.actionsButtonGroup}>
+            <div style={styles.viewModeGroup}>
+              <button
+                type="button"
+                style={viewMode === "list" ? styles.viewModeActiveBtn : styles.viewModeBtn}
+                onClick={() => setViewMode("list")}
+              >
+                通常
+              </button>
+              <button
+                type="button"
+                style={viewMode === "compact" ? styles.viewModeActiveBtn : styles.viewModeBtn}
+                onClick={() => setViewMode("compact")}
+                disabled={editMode}
+              >
+                小アイコン
+              </button>
+            </div>
             {editMode ? (
               <button type="button" style={styles.editModeActiveBtn} onClick={closeEditMode}>編集モード終了</button>
             ) : (
@@ -331,11 +357,42 @@ export default function SenatorList(props: Props) {
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
-      <div style={styles.list}>
+      <div style={viewMode === "compact" ? styles.compactList : styles.list}>
         {sorted.map((s) => {
           const isEditing = editMode && editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
-          return (
+          return viewMode === "compact" && !editMode ? (
+            <button
+              key={s.id}
+              type="button"
+              ref={(node) => {
+                itemRefs.current[s.id] = node as HTMLElement | null;
+              }}
+              style={{
+                ...styles.compactItem,
+                ...(selectedPerson?.id === s.id ? styles.compactItemFocused : null),
+              }}
+              onClick={() => setSelectedPerson(s)}
+            >
+              <div style={styles.compactAvatarBox}>
+                <SafeImage
+                  src={s.images?.[0] ?? ""}
+                  alt={s.name}
+                  style={styles.compactAvatar}
+                  fallbackStyle={styles.compactNoAvatar}
+                  fallbackText="画像なし"
+                />
+              </div>
+              <div style={styles.compactName}>{s.name}</div>
+              {s.kana ? <div style={styles.compactKana}>{s.kana}</div> : null}
+              <div style={styles.compactBadges}>
+                {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
+                {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
+                {masteredSet.has(s.id) ? <span style={styles.badgeOk}>完全</span> : null}
+                {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
+              </div>
+            </button>
+          ) : (
             <div
               key={s.id}
               ref={(node) => {
@@ -403,6 +460,8 @@ export default function SenatorList(props: Props) {
         })}
       </div>
 
+      </div>
+
       {showFloatingButtons ? (
         <div style={styles.floatingButtons}>
           <button type="button" style={styles.floatingBackButton} onClick={props.onBack}>戻る</button>
@@ -464,14 +523,26 @@ const styles: Record<string, React.CSSProperties> = {
   sub: { fontSize: 13, color: "#444" },
   actionsRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" },
   actionsButtonGroup: { display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" },
+  viewModeGroup: { display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" },
+  viewModeBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 700 },
+  viewModeActiveBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#0969da", color: "#fff", fontWeight: 800 },
   editModeBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #0969da", background: "#eef6ff", color: "#0969da", fontWeight: 800 },
   editModeActiveBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #111", background: "#111", color: "#fff", fontWeight: 800 },
   resetAllBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
   resetAllBtnDisabled: { padding: "10px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
+  compactList: { width: "min(820px, 100%)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
   itemClickable: { cursor: "pointer" },
   itemFocused: { border: "2px solid #0969da", background: "#eff6ff" },
+  compactItem: { display: "flex", flexDirection: "column", gap: 6, border: "1px solid #ddd", borderRadius: 12, padding: 10, background: "#fff", textAlign: "left" },
+  compactItemFocused: { border: "2px solid #0969da", background: "#eff6ff" },
+  compactAvatarBox: { width: "100%", aspectRatio: "3 / 4", borderRadius: 10, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center" },
+  compactAvatar: { width: "100%", height: "100%", objectFit: "cover" },
+  compactNoAvatar: { fontSize: 12, color: "#777" },
+  compactName: { fontSize: 14, fontWeight: 800, lineHeight: 1.4, wordBreak: "break-word" },
+  compactKana: { fontSize: 12, color: "#666", lineHeight: 1.4, wordBreak: "break-word" },
+  compactBadges: { display: "flex", gap: 4, alignItems: "center", flexWrap: "wrap" },
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
   noAvatar: { fontSize: 12, color: "#777" },

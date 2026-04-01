@@ -1,22 +1,14 @@
-実行場所
-C:\Users\some3\Documents\GitHub\senate-quiz-pwa\web
+差し替えファイル
+- web/src/components/SenatorList.tsx
 
-1. アプリに反映
-node scripts/applyYomiuriMergedToRepresentatives.mjs
+変更内容
+- 一覧画面に「通常 / 小アイコン」切替を追加
+- 小アイコン表示では一覧を3列前後のグリッドで表示
+- 編集モード中は通常表示に固定
 
-内容
-- public/data/representatives.yomiuri.merged.json を
-  public/data/representatives.json に反映
-- 反映前の representatives.json は
-  public/data/representatives.backup.before-yomiuri.json に保存
-
-2. 残り15件の検索用リスト作成
-node scripts/exportRemainingSearchList.mjs
-
-出力
-- web\remaining_no_match_search_list.json
-- web\remaining_no_match_search_queries.txt
-
-注意
-- アプリ反映後は開発サーバーを開き直すか、再読み込みして確認
-- GitHub Pages 反映まで行うなら、コミットして push が必要
+反映手順
+1. このZIPを展開
+2. 中の web フォルダを、作業中リポジトリの web フォルダに対して上書き
+3. ターミナルを web フォルダで開く
+4. 必要なら npm run build で確認
+5. frontend変更なので、web フォルダで git add/commit/push
