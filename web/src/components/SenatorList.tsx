@@ -26,6 +26,7 @@ type Props = {
 };
 
 type ViewMode = "list" | "compact";
+type CompactInfoMode = "role" | "party";
 
 type SortKey =
   | "name_asc"
@@ -114,6 +115,54 @@ function normalizePersonName(value: string): string {
   return value.replace(/[\s\u3000]+/gu, "").trim();
 }
 
+function normalizeCompactMetaText(value: string | undefined): string {
+  return (value ?? "")
+    .split("/")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .filter((part) => part !== "衆議院" && part !== "参議院")
+    .join(" / ");
+}
+
+function shortenCompactRole(value: string | undefined): string {
+  const text = normalizeCompactMetaText(value);
+  if (!text) return "";
+
+  return text
+    .replace(/内閣総理大臣/gu, "総理")
+    .replace(/内閣官房長官/gu, "官房長官")
+    .replace(/文部科学/gu, "文科")
+    .replace(/厚生労働/gu, "厚労")
+    .replace(/農林水産/gu, "農水")
+    .replace(/経済産業/gu, "経産")
+    .replace(/国土交通/gu, "国交")
+    .replace(/沖縄及び北方問題に関する/gu, "沖縄北方")
+    .replace(/消費者問題に関する/gu, "消費者")
+    .replace(/政治倫理の確立及び公職選挙法改正に関する/gu, "政治倫理")
+    .replace(/大臣政務官/gu, "政務官")
+    .replace(/副大臣/gu, "副大臣")
+    .replace(/大臣/gu, "大臣");
+}
+
+function getCompactRole(person: Person): string {
+  if (person.subRole) return shortenCompactRole(person.subRole);
+  if (person.role && person.role !== "副大臣" && person.role !== "大臣政務官" && !person.role.includes("役員")) {
+    return shortenCompactRole(person.role);
+  }
+  return shortenCompactRole(person.group ?? person.role ?? "");
+}
+
+function getCompactParty(person: Person): string {
+  return person.party ?? person.group ?? "不明";
+}
+
+function getCompactBadge(person: Person): string {
+  const source = `${person.chamber ?? ""} ${person.group ?? ""}`;
+  if (source.includes("衆議院")) return "衆";
+  if (source.includes("参議院")) return "参";
+  return "";
+}
+
 function sortItems(items: Person[], sortKey: SortKey): Person[] {
   return [...items].sort((a, b) => {
     switch (sortKey) {
@@ -145,6 +194,7 @@ export default function SenatorList(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
   const [viewMode, setViewMode] = useState<ViewMode>("list");
+  const [compactInfoMode, setCompactInfoMode] = useState<CompactInfoMode>("role");
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -160,6 +210,11 @@ export default function SenatorList(props: Props) {
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
+  const isHouseMembersTarget = props.target === "senators" || props.target === "representatives";
+  const isMixedTarget =
+    props.target === "ministers" ||
+    props.target === "viceMinisters" ||
+    props.target === "parliamentarySecretaries";
 
   useEffect(() => {
     (async () => {
@@ -343,6 +398,24 @@ export default function SenatorList(props: Props) {
               >
                 小アイコン
               </button>
+              {viewMode === "compact" && !editMode && isMixedTarget ? (
+                <>
+                  <button
+                    type="button"
+                    style={compactInfoMode === "role" ? styles.viewModeActiveBtn : styles.viewModeBtn}
+                    onClick={() => setCompactInfoMode("role")}
+                  >
+                    役職
+                  </button>
+                  <button
+                    type="button"
+                    style={compactInfoMode === "party" ? styles.viewModeActiveBtn : styles.viewModeBtn}
+                    onClick={() => setCompactInfoMode("party")}
+                  >
+                    政党
+                  </button>
+                </>
+              ) : null}
             </div>
             {editMode ? (
               <button type="button" style={styles.editModeActiveBtn} onClick={closeEditMode}>編集モード終了</button>
@@ -374,6 +447,7 @@ export default function SenatorList(props: Props) {
               }}
               onClick={() => setSelectedPerson(s)}
             >
+              {isMixedTarget && getCompactBadge(s) ? <div style={styles.compactHouseBadge}>{getCompactBadge(s)}</div> : null}
               <div style={styles.compactAvatarBox}>
                 <SafeImage
                   src={s.images?.[0] ?? ""}
@@ -384,7 +458,13 @@ export default function SenatorList(props: Props) {
                 />
               </div>
               <div style={styles.compactName}>{s.name}</div>
-              {s.kana ? <div style={styles.compactKana}>{s.kana}</div> : null}
+              <div style={styles.compactMeta}>
+                {isHouseMembersTarget
+                  ? getCompactParty(s)
+                  : isMixedTarget
+                    ? (compactInfoMode === "role" ? getCompactRole(s) : getCompactParty(s))
+                    : getCompactRole(s)}
+              </div>
               <div style={styles.compactBadges}>
                 {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
                 {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
@@ -530,17 +610,18 @@ const styles: Record<string, React.CSSProperties> = {
   resetAllBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #cf222e", background: "#fff0f0", fontWeight: 700 },
   resetAllBtnDisabled: { padding: "10px 12px", borderRadius: 10, border: "1px solid #ddd", background: "#f6f6f6", color: "#999", fontWeight: 700 },
   list: { width: "min(820px, 100%)", display: "flex", flexDirection: "column", gap: 10 },
-  compactList: { width: "min(820px, 100%)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10 },
+  compactList: { width: "min(820px, 100%)", display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 10 },
   item: { display: "flex", gap: 14, border: "1px solid #ddd", borderRadius: 12, padding: 12, alignItems: "center" },
   itemClickable: { cursor: "pointer" },
   itemFocused: { border: "2px solid #0969da", background: "#eff6ff" },
-  compactItem: { display: "flex", flexDirection: "column", gap: 6, border: "1px solid #ddd", borderRadius: 12, padding: 10, background: "#fff", textAlign: "left" },
+  compactItem: { position: "relative", display: "flex", flexDirection: "column", gap: 6, border: "1px solid #ddd", borderRadius: 12, padding: 10, background: "#fff", textAlign: "left" },
   compactItemFocused: { border: "2px solid #0969da", background: "#eff6ff" },
   compactAvatarBox: { width: "100%", aspectRatio: "3 / 4", borderRadius: 10, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center" },
   compactAvatar: { width: "100%", height: "100%", objectFit: "cover" },
   compactNoAvatar: { fontSize: 12, color: "#777" },
-  compactName: { fontSize: 14, fontWeight: 800, lineHeight: 1.4, wordBreak: "break-word" },
-  compactKana: { fontSize: 12, color: "#666", lineHeight: 1.4, wordBreak: "break-word" },
+  compactName: { fontSize: 14, fontWeight: 800, lineHeight: 1.35, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" },
+  compactMeta: { fontSize: 11, color: "#666", lineHeight: 1.3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minHeight: 15 },
+  compactHouseBadge: { position: "absolute", top: 8, right: 8, fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 999, border: "1px solid #999", background: "#fff", color: "#444", zIndex: 1 },
   compactBadges: { display: "flex", gap: 4, alignItems: "center", flexWrap: "wrap" },
   avatarBox: { width: 96, height: 96, borderRadius: 12, overflow: "hidden", background: "#f3f3f3", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 96px" },
   avatar: { width: "100%", height: "100%", objectFit: "cover" },
