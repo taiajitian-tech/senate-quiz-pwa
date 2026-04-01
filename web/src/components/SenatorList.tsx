@@ -211,8 +211,8 @@ export default function SenatorList(props: Props) {
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
   const isHouseMembersTarget = props.target === "senators" || props.target === "representatives";
+  const isMinisterTarget = props.target === "ministers";
   const isMixedTarget =
-    props.target === "ministers" ||
     props.target === "viceMinisters" ||
     props.target === "parliamentarySecretaries";
 
@@ -447,7 +447,7 @@ export default function SenatorList(props: Props) {
               }}
               onClick={() => setSelectedPerson(s)}
             >
-              {isMixedTarget && getCompactBadge(s) ? <div style={styles.compactHouseBadge}>{getCompactBadge(s)}</div> : null}
+              {(isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={styles.compactHouseBadge}>{getCompactBadge(s)}</div> : null}
               <div style={styles.compactAvatarBox}>
                 <SafeImage
                   src={s.images?.[0] ?? ""}
@@ -461,9 +461,11 @@ export default function SenatorList(props: Props) {
               <div style={styles.compactMeta}>
                 {isHouseMembersTarget
                   ? getCompactParty(s)
-                  : isMixedTarget
-                    ? (compactInfoMode === "role" ? getCompactRole(s) : getCompactParty(s))
-                    : getCompactRole(s)}
+                  : isMinisterTarget
+                    ? getCompactRole(s)
+                    : isMixedTarget
+                      ? (compactInfoMode === "role" ? getCompactRole(s) : getCompactParty(s))
+                      : getCompactRole(s)}
               </div>
               <div style={styles.compactBadges}>
                 {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
