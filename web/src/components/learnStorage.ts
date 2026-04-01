@@ -1,5 +1,5 @@
 import type { AppMode, Target } from "./data";
-import type { Grade, ProgressItem } from "./srs";
+import { sanitizeProgressItem, type Grade, type ProgressItem } from "./srs";
 
 export type HistoryItem = {
   at: number;
@@ -13,8 +13,17 @@ export function loadProgress(mode: AppMode, target: Target): Record<number, Prog
   try {
     const raw = localStorage.getItem(key(mode, target, "progress"));
     if (!raw) return {};
-    const parsed = JSON.parse(raw) as Record<number, ProgressItem>;
-    return parsed && typeof parsed === "object" ? parsed : {};
+    const parsed = JSON.parse(raw) as Record<string, Partial<ProgressItem>>;
+    if (!parsed || typeof parsed !== "object") return {};
+
+    const now = Date.now();
+    const next: Record<number, ProgressItem> = {};
+    for (const [idKey, value] of Object.entries(parsed)) {
+      const id = Number(idKey);
+      if (!Number.isFinite(id) || !value || typeof value !== "object") continue;
+      next[id] = sanitizeProgressItem(id, value, now);
+    }
+    return next;
   } catch {
     return {};
   }
@@ -38,7 +47,7 @@ export function loadHistory(mode: AppMode, target: Target): HistoryItem[] {
 export function appendHistory(mode: AppMode, target: Target, item: HistoryItem) {
   const list = loadHistory(mode, target);
   list.push(item);
-  localStorage.setItem(key(mode, target, "history"), JSON.stringify(list));
+  localStorage.setItem(key(mode, target, "history"), JSON.stringify(list.slice(-2000)));
 }
 
 export function resetLearning(mode: AppMode, target: Target) {

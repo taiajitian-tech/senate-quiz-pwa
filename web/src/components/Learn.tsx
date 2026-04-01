@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
-import { applyGrade, type Grade, type ProgressItem } from "./srs";
+import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressItem } from "./srs";
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
@@ -24,6 +24,15 @@ type SessionResult = {
 };
 
 const SESSION_SIZE = 30;
+const DAY = 24 * 60 * 60 * 1000;
+
+function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now: number) {
+  return [...items].sort((a, b) => {
+    const score = getForgettingScore(progress[b.id], now) - getForgettingScore(progress[a.id], now);
+    if (score !== 0) return score;
+    return a.id - b.id;
+  });
+}
 
 function pickNext(
   items: Person[],
@@ -34,27 +43,76 @@ function pickNext(
 ) {
   if (items.length === 0) return null;
 
-  const due: Person[] = [];
   const fresh: Person[] = [];
-  let nearest: { s: Person; due: number } | null = null;
+  const leech: Person[] = [];
+  const due: Person[] = [];
+  const upcoming: Person[] = [];
 
-  for (const s of items) {
-    if (askedIds.has(s.id)) continue;
+  for (const item of items) {
+    if (askedIds.has(item.id)) continue;
 
-    const p = progress[s.id];
-    if (!p) {
-      if (mode !== "review") fresh.push(s);
+    const state = progress[item.id];
+    if (!state) {
+      if (mode !== "review") fresh.push(item);
       continue;
     }
 
-    if (p.due <= now) due.push(s);
-    if (!nearest || p.due < nearest.due) nearest = { s, due: p.due };
+    if (isMastered(state, now)) {
+      continue;
+    }
+
+    if (state.status === "leech") {
+      leech.push(item);
+      continue;
+    }
+
+    if (state.due <= now) {
+      due.push(item);
+      continue;
+    }
+
+    const dueSoon = state.due - now <= DAY * Math.min(Math.max(state.stability, 1), 7);
+    const forgettingSoon = getForgettingScore(state, now) >= 0.55;
+    if (dueSoon || forgettingSoon) {
+      upcoming.push(item);
+    }
   }
 
-  if (due.length > 0) return due[Math.floor(Math.random() * due.length)];
-  if (mode === "review") return null;
+  const riskDue = sortByRisk(due, progress, now);
+  const riskUpcoming = sortByRisk(upcoming, progress, now);
+  const riskLeech = sortByRisk(leech, progress, now);
+
+  if (mode === "review") {
+    return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+  }
+
+  const askedCount = askedIds.size;
+  const cycle = askedCount % 20;
+
+  if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return riskLeech[0];
+  if (riskDue.length > 0 && cycle < 11) return riskDue[0];
+  if (riskUpcoming.length > 0 && cycle < 16) return riskUpcoming[0];
   if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
-  return nearest?.s ?? null;
+  return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+}
+
+function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
+  const validIds = new Set(items.map((item) => item.id));
+  let due = 0;
+  let leech = 0;
+  let mastered = 0;
+
+  for (const value of Object.values(progress)) {
+    if (!validIds.has(value.id)) continue;
+    if (isMastered(value, now)) {
+      mastered += 1;
+      continue;
+    }
+    if (value.status === "leech") leech += 1;
+    if (value.due <= now || getForgettingScore(value, now) >= 0.55) due += 1;
+  }
+
+  return { due, leech, mastered };
 }
 
 export default function Learn(props: Props) {
@@ -71,7 +129,8 @@ export default function Learn(props: Props) {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
   useEffect(() => {
-    setProgress(loadProgress(props.appMode, props.target));
+    const loaded = loadProgress(props.appMode, props.target);
+    setProgress(loaded);
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionDone(false);
@@ -79,7 +138,7 @@ export default function Learn(props: Props) {
   }, [props.appMode, props.target, props.mode]);
 
   useEffect(() => {
-    (async () => {
+    void (async () => {
       setLoading(true);
       setError(null);
       try {
@@ -95,6 +154,7 @@ export default function Learn(props: Props) {
   }, [baseUrl, props.appMode, props.target]);
 
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const focusSummary = useMemo(() => getFocusSummary(progress, items, Date.now()), [progress, items]);
   const current = useMemo(() => {
     if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
     return pickNext(items, progress, Date.now(), props.mode, askedIdSet);
@@ -102,7 +162,7 @@ export default function Learn(props: Props) {
 
   useEffect(() => {
     if (loading) return;
-    if (!sessionDone && askedIds.length > 0 && (askedIds.length >= SESSION_SIZE || !current)) {
+    if (!sessionDone && (askedIds.length >= SESSION_SIZE || (askedIds.length > 0 && !current))) {
       setSessionDone(true);
       setRevealed(false);
     }
@@ -117,17 +177,24 @@ export default function Learn(props: Props) {
     setProgress(nextMap);
     saveProgress(props.appMode, props.target, nextMap);
     appendHistory(props.appMode, props.target, { at: now, id: current.id, grade });
+
     bumpStats(props.appMode, props.target, {
       playedTotal: 1,
       correctTotal: grade === "again" ? 0 : 1,
       wrongTotal: grade === "again" ? 1 : 0,
-      masteredCount: grade === "good" && next.reps >= 4 ? 1 : 0,
+      masteredCount: next.status === "mastered" && (!prev || prev.status !== "mastered") ? 1 : 0,
+      leechCount: next.status === "leech" && (!prev || prev.status !== "leech") ? 1 : 0,
     });
 
     const wrong = new Set(loadWrongIds(props.appMode, props.target));
     const mastered = new Set(loadMasteredIds(props.appMode, props.target));
-    if (grade === "again") wrong.add(current.id); else wrong.delete(current.id);
-    if (grade === "good" && next.reps >= 4) mastered.add(current.id);
+
+    if (next.status === "mastered") mastered.add(current.id);
+    else mastered.delete(current.id);
+
+    if (grade === "again" || next.status === "leech") wrong.add(current.id);
+    else if (grade === "good" && next.consecutiveCorrect >= 2) wrong.delete(current.id);
+
     saveWrongIds(props.appMode, props.target, [...wrong]);
     saveMasteredIds(props.appMode, props.target, [...mastered]);
 
@@ -150,15 +217,20 @@ export default function Learn(props: Props) {
 
   const titleMap: Record<Mode, string> = {
     learn: "学習（顔→名前）",
-    review: "復習（忘れかけだけ）",
+    review: "復習（忘れそう・苦手優先）",
     reverse: "逆学習（名前→顔）",
   };
 
   const modeHelp: Record<Mode, string> = {
-    learn: "基本の学習です。顔を見て名前を思い出す力を付けます。",
-    review: "忘れかけだけを出します。短時間で定着しやすいモードです。",
-    reverse: "名前から顔も引けるようにして、記憶の結び付きを強くします。",
+    learn: "新規よりも、忘れそうな議員と苦手な議員を優先します。完全習得に入った議員は通常出題から外れます。",
+    review: "忘却しそうな議員と苦手な議員だけを集中的に出します。短時間で効率よく定着を維持するモードです。",
+    reverse: "名前から顔を引く練習です。通常学習と同じ記憶状態を使い、忘れそうな議員と苦手な議員を優先します。",
   };
+
+  const summaryText =
+    props.mode === "review"
+      ? `忘れそう ${focusSummary.due}人 / 苦手 ${focusSummary.leech}人 / 完全習得 ${focusSummary.mastered}人`
+      : `要復習 ${focusSummary.due}人 / 苦手 ${focusSummary.leech}人 / 完全習得 ${focusSummary.mastered}人`;
 
   return (
     <div style={styles.wrap}>
@@ -174,6 +246,7 @@ export default function Learn(props: Props) {
             <div style={styles.progressBox}>{Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
           </div>
           <div style={styles.modeDesc}>{modeHelp[props.mode]}</div>
+          <div style={styles.focusHint}>{summaryText}</div>
           {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
         </div>
 
@@ -181,12 +254,17 @@ export default function Learn(props: Props) {
           {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
             <div style={styles.doneWrap}>
               <div style={styles.doneTitle}>今回の出題は終了です</div>
-              <div style={styles.doneSub}>結果を確認して、次のセットへ進めます。</div>
+              <div style={styles.doneSub}>次は、忘れそうな議員と苦手な議員を優先して再構成されます。</div>
               <div style={styles.resultGrid}>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>うろ覚え</div><div style={styles.resultValue}>{sessionResult.hazy}</div></div>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていない</div><div style={styles.resultValue}>{sessionResult.notRemembered}</div></div>
+              </div>
+              <div style={styles.doneMeta}>
+                <div>次の復習候補：{focusSummary.due}人</div>
+                <div>苦手として追跡中：{focusSummary.leech}人</div>
+                <div>通常出題から外れた完全習得：{focusSummary.mastered}人</div>
               </div>
               <div style={styles.doneBtns}>
                 <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
@@ -194,7 +272,7 @@ export default function Learn(props: Props) {
               </div>
             </div>
           ) : !current ? (
-            <div style={styles.center}>{props.mode === "review" ? "今は忘れかけの復習がありません。" : "出題できるデータがありません。"}</div>
+            <div style={styles.center}>{props.mode === "review" ? "今は忘れそうな議員・苦手な議員がありません。" : "出題できるデータがありません。"}</div>
           ) : props.mode === "reverse" ? (
             <div style={styles.quizLayout}>
               <div style={styles.infoZone}>
@@ -270,8 +348,11 @@ export default function Learn(props: Props) {
           <div>覚えていた：3秒以内に出た</div>
           <div>うろ覚え：少し迷った、部分的に出た</div>
           <div>覚えていない：出ない、別人と混ざる</div>
+          <div><b>今回の改善点</b></div>
+          <div>忘れそうな議員を先に出し、苦手として落ち続ける議員は自動で優先度を上げます。</div>
+          <div>完全習得に入った議員は通常出題から外れ、苦手と復習対象を先に回す構成です。</div>
           <div><b>記憶の定着</b></div>
-          <div>答えを見た後に自己判定し、忘れかけのものが後でまた出ることで定着します。</div>
+          <div>答えを見た後に自己判定し、忘れかけのものを適切な時期に出し直すことで定着を伸ばします。</div>
         </div>
       </HelpModal>
     </div>
@@ -289,6 +370,7 @@ const styles: Record<string, React.CSSProperties> = {
   subRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   sub: { fontSize: 12, color: "#555" },
   modeDesc: { fontSize: 12, color: "#444", lineHeight: 1.5 },
+  focusHint: { fontSize: 12, color: "#0f4c81", lineHeight: 1.5, background: "#eef6ff", border: "1px solid #c8ddff", borderRadius: 10, padding: "6px 8px" },
   progressBox: { padding: "4px 10px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 12, color: "#0958b3", fontWeight: 700, whiteSpace: "nowrap" },
   card: { flex: 1, minHeight: 0, border: "1px solid #ddd", borderRadius: 14, padding: 10, background: "#fff", display: "flex", overflow: "hidden" },
   center: { margin: "auto", color: "#666", fontSize: 14, textAlign: "center" },
@@ -297,27 +379,28 @@ const styles: Record<string, React.CSSProperties> = {
   imgBox: { width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
   img: { width: "100%", height: "100%", maxHeight: "45vh", objectFit: "contain", borderRadius: 12, background: "#f3f3f3" },
   noImg: { width: "100%", height: "100%", maxHeight: "45vh", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
-  placeholderBox: { width: "100%", height: "100%", maxHeight: "45vh", borderRadius: 12, background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", fontSize: 14 },
-  infoZone: { display: "flex", flexDirection: "column", gap: 6, alignItems: "center", justifyContent: "center", textAlign: "center" },
-  promptBox: { width: "100%", display: "flex", flexDirection: "column", gap: 8, alignItems: "stretch" },
-  msg: { fontSize: 14, color: "#222", lineHeight: 1.5, textAlign: "center" },
-  primaryBtn: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #0969da", background: "#eef6ff", fontSize: 17, fontWeight: 700 },
-  answerName: { fontSize: 22, fontWeight: 800, lineHeight: 1.25 },
-  answerGroup: { fontSize: 13, color: "#555", lineHeight: 1.4 },
-  guessBadge: { padding: "4px 10px", borderRadius: 999, border: "1px solid #6b7280", background: "#f3f4f6", fontSize: 12, fontWeight: 800, color: "#374151" },
-  actionZone: { minHeight: 0 },
-  gradeBtns: { display: "flex", flexDirection: "column", gap: 8, width: "100%" },
-  actionSpacer: { minHeight: 0 },
-  btn: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #999", background: "#fff", fontSize: 17 },
-  btnRemembered: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #1a7f37", background: "#effcf3", fontSize: 17, fontWeight: 700 },
-  btnHazy: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #b26a00", background: "#fff6e8", fontSize: 17, fontWeight: 700 },
-  btnForgot: { width: "100%", padding: "12px 12px", borderRadius: 12, border: "1px solid #cf222e", background: "#fff0f0", fontSize: 17, fontWeight: 700 },
-  doneWrap: { display: "flex", flexDirection: "column", gap: 12, width: "100%", margin: "auto 0" },
-  doneTitle: { fontSize: 24, fontWeight: 800, textAlign: "center" },
+  placeholderBox: { width: "100%", height: "100%", maxHeight: "45vh", borderRadius: 12, background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", color: "#666", fontWeight: 700 },
+  infoZone: { display: "flex", flexDirection: "column", gap: 8, minHeight: 0 },
+  promptBox: { display: "flex", flexDirection: "column", gap: 10 },
+  msg: { fontSize: 14, lineHeight: 1.6, color: "#333" },
+  answerName: { fontSize: 28, fontWeight: 800, lineHeight: 1.25, wordBreak: "keep-all", overflowWrap: "anywhere" },
+  answerGroup: { fontSize: 14, color: "#555", lineHeight: 1.5 },
+  guessBadge: { alignSelf: "flex-start", padding: "4px 8px", borderRadius: 999, background: "#fff3cd", color: "#7a5d00", fontSize: 12, fontWeight: 700 },
+  actionZone: { display: "flex", flexDirection: "column", justifyContent: "flex-end" },
+  actionSpacer: { minHeight: 54 },
+  gradeBtns: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 8 },
+  primaryBtn: { padding: "12px 12px", borderRadius: 12, border: "1px solid #0d6efd", background: "#0d6efd", color: "#fff", fontWeight: 800, fontSize: 15 },
+  btn: { padding: "12px 12px", borderRadius: 12, border: "1px solid #999", background: "#fff", fontWeight: 700, fontSize: 14 },
+  btnRemembered: { padding: "12px 10px", borderRadius: 12, border: "1px solid #1f7a1f", background: "#e9f8ec", color: "#165c16", fontWeight: 800, fontSize: 14 },
+  btnHazy: { padding: "12px 10px", borderRadius: 12, border: "1px solid #8a6d1d", background: "#fff7e0", color: "#7a5d00", fontWeight: 800, fontSize: 14 },
+  btnForgot: { padding: "12px 10px", borderRadius: 12, border: "1px solid #b42318", background: "#fff1f1", color: "#a61b14", fontWeight: 800, fontSize: 14 },
+  doneWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 12, justifyContent: "center" },
+  doneTitle: { fontSize: 22, fontWeight: 800, textAlign: "center" },
   doneSub: { fontSize: 14, color: "#555", textAlign: "center" },
-  resultGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },
+  doneMeta: { display: "grid", gap: 6, padding: 12, borderRadius: 12, background: "#f8fafc", border: "1px solid #e5e7eb", fontSize: 13, color: "#444" },
+  resultGrid: { display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 },
   resultCard: { border: "1px solid #e5e7eb", borderRadius: 12, padding: 12, background: "#fafbfc" },
-  resultLabel: { fontSize: 13, color: "#666" },
-  resultValue: { fontSize: 24, fontWeight: 800, marginTop: 6 },
-  doneBtns: { display: "grid", gridTemplateColumns: "1fr", gap: 8 },
+  resultLabel: { fontSize: 13, color: "#666", marginBottom: 6 },
+  resultValue: { fontSize: 24, fontWeight: 800 },
+  doneBtns: { display: "grid", gap: 8 },
 };

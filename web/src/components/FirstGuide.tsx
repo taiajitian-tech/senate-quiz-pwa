@@ -11,14 +11,14 @@ export default function FirstGuide(props: Props) {
   return (
     <HelpModal open={props.open} onClose={props.onClose} title="最初に（使い方）">
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-        <div>このアプリは、顔と名前を何度も結び付けて、少しずつ定着させる構成です。</div>
+        <div>このアプリは、顔と名前を何度も結び付けて、忘れそうな議員と苦手な議員を優先しながら定着させる構成です。</div>
 
         <div style={styles.box}>
           <div style={styles.boxTitle}>おすすめの順番</div>
           <div style={styles.step}><b>1 自動再生</b><span>最初に多くの顔を一気に見ます。初回のインプットです。おすすめは <b>顔2秒・名前2秒</b> です。</span></div>
           <div style={styles.step}><b>2 学習（顔→名前）</b><span>顔を見て名前を思い出します。基本の練習です。</span></div>
           <div style={styles.step}><b>3 逆学習（名前→顔）</b><span>名前から顔も引けるようにして、結び付きを強くします。</span></div>
-          <div style={styles.step}><b>4 復習</b><span>忘れかけだけを出して、短い時間で定着させます。</span></div>
+          <div style={styles.step}><b>4 復習</b><span>忘れそうな議員と苦手な議員だけを出して、短い時間で定着させます。</span></div>
         </div>
 
         <div style={styles.box}>
@@ -27,9 +27,16 @@ export default function FirstGuide(props: Props) {
           <div>このアプリでは、次の流れで定着を作ります。</div>
           <div style={styles.step}><b>多くの顔を見る</b><span>最初に全体像を作ります。</span></div>
           <div style={styles.step}><b>すぐ思い出す</b><span>顔を見て名前を引く回数を増やします。</span></div>
-          <div style={styles.step}><b>忘れかけで復習する</b><span>少し忘れた頃にもう一度出すと、定着しやすくなります。</span></div>
+          <div style={styles.step}><b>忘れかけで復習する</b><span>少し忘れた頃にもう一度出し、苦手は優先して追うと、定着しやすくなります。</span></div>
         </div>
 
+
+        <div style={styles.box}>
+          <div style={styles.boxTitle}>今回からの出題ロジック</div>
+          <div style={styles.step}><b>忘れそうを優先</b><span>前回の成績と経過時間から、忘却しそうな議員を先に出します。</span></div>
+          <div style={styles.step}><b>苦手を追跡</b><span>何度も落ちる議員は苦手として記録し、通常より高い頻度で出します。</span></div>
+          <div style={styles.step}><b>完全習得は外す</b><span>十分に定着した議員は通常学習から外し、苦手と要復習へ時間を回します。</span></div>
+        </div>
         <div style={styles.box}>
           <div style={styles.boxTitle}>自動再生のおすすめ時間</div>
           <div style={styles.step}><b>最初の1周</b><span>顔2秒・名前2秒で全体像を作ります。</span></div>
