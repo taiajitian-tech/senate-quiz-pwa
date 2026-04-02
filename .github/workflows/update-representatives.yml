@@ -46,6 +46,46 @@ jobs:
       - name: Generate representatives data
         run: npm run gen:representatives
 
+      - name: Restore locked representative images
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+
+          const previous = JSON.parse(fs.readFileSync('.cache/previous-data/representatives.json', 'utf8'));
+          const current = JSON.parse(fs.readFileSync('public/data/representatives.json', 'utf8'));
+
+          const imageFields = [
+            'image',
+            'imageSource',
+            'imageSourceUrl',
+            'profileUrl',
+            'aiGuess',
+            'imageCandidatesNhk',
+            'imageStatus',
+            'imageScore',
+            'imageMatchedBy',
+            'imageMatchedName'
+          ];
+
+          const previousById = new Map(previous.filter((item) => item?.id).map((item) => [item.id, item]));
+          const previousByNameKana = new Map(previous.map((item) => [`${item.name}__${item.kana}`, item]));
+
+          const merged = current.map((item) => {
+            const locked = previousById.get(item.id) ?? previousByNameKana.get(`${item.name}__${item.kana}`);
+            if (!locked) {
+              throw new Error(`Locked representative not found: ${item.name} / ${item.kana}`);
+            }
+            const next = { ...item };
+            for (const field of imageFields) {
+              next[field] = locked[field];
+            }
+            return next;
+          });
+
+          fs.writeFileSync('public/data/representatives.json', `${JSON.stringify(merged, null, 2)}
+`);
+          EOF
+
       - name: Generate representative image reports
         run: npm run report:representatives:images
 
@@ -63,18 +103,40 @@ jobs:
           const previous = JSON.parse(fs.readFileSync('.cache/previous-data/representatives.json', 'utf8'));
           const current = JSON.parse(fs.readFileSync('public/data/representatives.json', 'utf8'));
 
-          const previousMap = new Map(previous.map((item) => [item.id, JSON.stringify(item.images ?? [])]));
+          const imageFields = [
+            'image',
+            'imageSource',
+            'imageSourceUrl',
+            'profileUrl',
+            'aiGuess',
+            'imageCandidatesNhk',
+            'imageStatus',
+            'imageScore',
+            'imageMatchedBy',
+            'imageMatchedName'
+          ];
+
+          const previousById = new Map(previous.filter((item) => item?.id).map((item) => [item.id, item]));
+          const previousByNameKana = new Map(previous.map((item) => [`${item.name}__${item.kana}`, item]));
           const changed = [];
 
           for (const item of current) {
-            const before = previousMap.get(item.id);
-            const after = JSON.stringify(item.images ?? []);
-            if (before === undefined) continue;
-            if (before !== after) changed.push(item.name ?? String(item.id));
+            const locked = previousById.get(item.id) ?? previousByNameKana.get(`${item.name}__${item.kana}`);
+            if (!locked) {
+              changed.push(`${item.name} (missing lock source)`);
+              continue;
+            }
+            for (const field of imageFields) {
+              const before = JSON.stringify(locked[field] ?? null);
+              const after = JSON.stringify(item[field] ?? null);
+              if (before !== after) {
+                changed.push(`${item.name} / ${field}`);
+              }
+            }
           }
 
           if (changed.length > 0) {
-            console.error('Representative images changed:', changed.join(', '));
+            console.error('Representative image fields changed:', changed.join(', '));
             process.exit(1);
           }
           EOF
@@ -93,5 +155,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add web/public/data/representatives.json web/public/data/updates.json web/public/data/missing-images.json web/public/data/representatives-image-review.json web/public/data/representatives-image-search-targets.json web/public/data/representatives-image-search-targets.csv web/public/data/representatives-image-fix-targets.json web/public/data/representatives-image-fix-targets.csv
-          git commit -m "chore: update representatives and notices data"
+          git commit -m "chore: lock representative images during updates"
           git push
