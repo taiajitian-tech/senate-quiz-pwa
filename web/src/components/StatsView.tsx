@@ -23,7 +23,7 @@ type Summary = {
 export default function StatsView(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [summaryNow] = useState<number>(() => Date.now());
+  const [summaryNow, setSummaryNow] = useState<number>(() => Date.now());
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
@@ -51,7 +51,7 @@ export default function StatsView(props: Props) {
 
   useEffect(() => {
     setSummaryNow(Date.now());
-  }, [items, props.appMode, props.target, summaryNow]);
+  }, [items, props.appMode, props.target]);
 
   const summary = useMemo<Summary>(() => {
     const validIds = new Set(items.map((item) => item.id));
