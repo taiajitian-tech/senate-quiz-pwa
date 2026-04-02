@@ -176,7 +176,7 @@ function extractProfileUrlFromRow($, row, baseUrl) {
   return normalizeUrl(href, baseUrl);
 }
 
-function addRecord(results, seen, record, existingMap = new Map()) {
+function addRecord(results, seen, record) {
   const name = cleanName(record.name);
   const kana = cleanKana(record.kana);
   const party = cleanParty(record.party);
@@ -186,23 +186,20 @@ function addRecord(results, seen, record, existingMap = new Map()) {
   if (seen.has(key)) return;
   seen.add(key);
 
-  const existing = existingMap.get(key) || null;
-
   results.push({
-    id: Number.isInteger(existing?.id) && existing.id > 0 ? existing.id : null,
     name,
     kana,
     house: "衆議院",
     party,
-    role: existing?.role || "",
-    image: existing?.image || "",
-    imageSource: existing?.imageSource || "",
-    imageSourceUrl: existing?.imageSourceUrl || "",
-    profileUrl: record.profileUrl || existing?.profileUrl || ""
+    role: "",
+    image: "",
+    imageSource: "",
+    imageSourceUrl: "",
+    profileUrl: record.profileUrl || ""
   });
 }
 
-function extractFromListPage(html, sourceUrl, existingMap = new Map()) {
+function extractFromListPage(html, sourceUrl) {
   const $ = load(html);
   const results = [];
   const seen = new Set();
@@ -233,7 +230,7 @@ function extractFromListPage(html, sourceUrl, existingMap = new Map()) {
         party: rawParty,
         profileUrl: extractProfileUrlFromRow($, row, sourceUrl),
         _source: sourceUrl
-      }, existingMap);
+      });
     }
   });
 
@@ -269,7 +266,7 @@ function extractPartyLinks(indexHtml) {
   return links;
 }
 
-function extractFromPartyPage(html, fallbackParty, sourceUrl, existingMap = new Map()) {
+function extractFromPartyPage(html, fallbackParty, sourceUrl) {
   const $ = load(html);
   const party = parsePartyNameFromDocument($, fallbackParty);
   const results = [];
@@ -300,7 +297,7 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl, existingMap = new 
         party,
         profileUrl: extractProfileUrlFromRow($, row, sourceUrl),
         _source: sourceUrl
-      }, existingMap);
+      });
     }
   });
 
@@ -308,31 +305,6 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl, existingMap = new 
   return results;
 }
 
-
-
-function loadExistingRepresentativeMap() {
-  try {
-    if (!fs.existsSync(EXISTING_JSON_PATH)) return new Map();
-    const parsed = JSON.parse(fs.readFileSync(EXISTING_JSON_PATH, "utf8"));
-    const out = new Map();
-    for (const row of Array.isArray(parsed) ? parsed : []) {
-      const key = `${cleanName(row?.name)}__${cleanKana(row?.kana)}`;
-      if (!key) continue;
-      out.set(key, {
-        id: Number.isInteger(row?.id) && row.id > 0 ? row.id : null,
-        role: row?.role || "",
-        image: row?.image || "",
-        imageSource: row?.imageSource || "",
-        imageSourceUrl: row?.imageSourceUrl || "",
-        profileUrl: row?.profileUrl || ""
-      });
-    }
-    return out;
-  } catch (error) {
-    console.log(`existing-representatives-error: ${error.message}`);
-    return new Map();
-  }
-}
 
 function loadExistingImageCache() {
   try {
@@ -485,16 +457,16 @@ function withinExpectedRange(count) {
   return count >= MIN_EXPECTED && count <= MAX_EXPECTED;
 }
 
-async function collectFromListPages(existingMap = new Map()) {
+async function collectFromListPages() {
   const all = [];
   const seen = new Set();
 
   for (const url of LIST_PAGE_URLS) {
     try {
       const html = await fetchPage(url);
-      const rows = extractFromListPage(html, url, existingMap);
+      const rows = extractFromListPage(html, url);
       console.log(`list-page-count: ${url} -> ${rows.length}`);
-      for (const row of rows) addRecord(all, seen, row, existingMap);
+      for (const row of rows) addRecord(all, seen, row);
     } catch (error) {
       console.log(`list-page-error: ${url} -> ${error.message}`);
     }
@@ -504,7 +476,7 @@ async function collectFromListPages(existingMap = new Map()) {
   return all;
 }
 
-async function collectFromPartyPages(existingMap = new Map()) {
+async function collectFromPartyPages() {
   const all = [];
   const seen = new Set();
 
@@ -520,9 +492,9 @@ async function collectFromPartyPages(existingMap = new Map()) {
   for (const { url, party } of links) {
     try {
       const html = await fetchPage(url);
-      const rows = extractFromPartyPage(html, party, url, existingMap);
+      const rows = extractFromPartyPage(html, party, url);
       console.log(`party-page-count: ${url} -> ${rows.length}`);
-      for (const row of rows) addRecord(all, seen, row, existingMap);
+      for (const row of rows) addRecord(all, seen, row);
     } catch (error) {
       console.log(`party-page-error: ${url} -> ${error.message}`);
     }
@@ -750,19 +722,6 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
-
-function assignRepresentativeIds(rows, existingMap = new Map()) {
-  let nextId = 1;
-  for (const existing of existingMap.values()) {
-    if (Number.isInteger(existing?.id) && existing.id >= nextId) nextId = existing.id + 1;
-  }
-
-  return rows.map((row) => {
-    if (Number.isInteger(row?.id) && row.id > 0) return row;
-    return { ...row, id: nextId++ };
-  });
-}
-
 async function enrichImages(rows, existingCache) {
   const counts = { official: 0, wikipedia: 0, web: 0, cached: 0, empty: 0 };
   const enriched = await mapWithConcurrency(
@@ -793,15 +752,13 @@ async function enrichImages(rows, existingCache) {
 }
 
 async function main() {
-  const existingRows = loadExistingRepresentativeMap();
-  console.log(`existing-representatives: ${existingRows.size}`);
-  const listRows = await collectFromListPages(existingRows);
+  const listRows = await collectFromListPages();
 
   let finalRows = listRows;
   let selectedRoute = "list";
 
   if (!withinExpectedRange(listRows.length)) {
-    const partyRows = await collectFromPartyPages(existingRows);
+    const partyRows = await collectFromPartyPages();
 
     if (withinExpectedRange(partyRows.length)) {
       finalRows = partyRows;
@@ -809,7 +766,7 @@ async function main() {
     } else {
       const merged = [];
       const seen = new Set();
-      for (const row of [...listRows, ...partyRows]) addRecord(merged, seen, row, existingRows);
+      for (const row of [...listRows, ...partyRows]) addRecord(merged, seen, row);
 
       console.log(`merged-route-total: ${merged.length}`);
       if (withinExpectedRange(merged.length)) {
@@ -833,13 +790,12 @@ async function main() {
   const existingCache = loadExistingImageCache();
   console.log(`existing-image-cache: ${existingCache.size}`);
   const finalWithImages = await enrichImages(finalRows, existingCache);
-  const finalWithIds = assignRepresentativeIds(finalWithImages, existingRows);
 
   const outDir = path.resolve("public/data");
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
     path.join(outDir, "representatives.json"),
-    JSON.stringify(finalWithIds, null, 2),
+    JSON.stringify(finalWithImages, null, 2),
     "utf8"
   );
 }
