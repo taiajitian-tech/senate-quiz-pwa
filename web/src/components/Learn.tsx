@@ -34,22 +34,41 @@ function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now
   });
 }
 
+type RetryEntry = {
+  availableAt: number;
+  priority: number;
+};
+
 function pickNext(
   items: Person[],
   progress: Record<number, ProgressItem>,
   now: number,
   mode: Mode,
-  askedIds: Set<number>
+  completedIds: Set<number>,
+  retryMap: Record<number, RetryEntry>,
+  sessionStep: number,
+  lastAskedId: number | null
 ) {
   if (items.length === 0) return null;
 
+  const retryAgain: Person[] = [];
+  const retryHard: Person[] = [];
   const fresh: Person[] = [];
   const leech: Person[] = [];
   const due: Person[] = [];
   const upcoming: Person[] = [];
 
   for (const item of items) {
-    if (askedIds.has(item.id)) continue;
+    if (completedIds.has(item.id)) continue;
+
+    const retry = retryMap[item.id];
+    if (retry) {
+      if (retry.availableAt > sessionStep) continue;
+      if (item.id === lastAskedId) continue;
+      if (retry.priority >= 2) retryAgain.push(item);
+      else retryHard.push(item);
+      continue;
+    }
 
     const state = progress[item.id];
     if (!state) {
@@ -82,18 +101,22 @@ function pickNext(
   const riskUpcoming = sortByRisk(upcoming, progress, now);
   const riskLeech = sortByRisk(leech, progress, now);
 
+  const riskRetryAgain = sortByRisk(retryAgain, progress, now);
+  const riskRetryHard = sortByRisk(retryHard, progress, now);
+
   if (mode === "review") {
-    return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+    return riskRetryAgain[0] ?? riskLeech[0] ?? riskDue[0] ?? riskRetryHard[0] ?? riskUpcoming[0] ?? null;
   }
 
-  const askedCount = askedIds.size;
-  const cycle = askedCount % 20;
+  const cycle = sessionStep % 20;
 
+  if (riskRetryAgain.length > 0) return riskRetryAgain[0];
   if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return riskLeech[0];
   if (riskDue.length > 0 && cycle < 11) return riskDue[0];
+  if (riskRetryHard.length > 0 && cycle < 14) return riskRetryHard[0];
   if (riskUpcoming.length > 0 && cycle < 16) return riskUpcoming[0];
   if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
-  return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+  return riskRetryHard[0] ?? riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
 }
 
 function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
@@ -123,6 +146,8 @@ export default function Learn(props: Props) {
   const [revealed, setRevealed] = useState(false);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
   const [askedIds, setAskedIds] = useState<number[]>([]);
+  const [completedIds, setCompletedIds] = useState<number[]>([]);
+  const [retryMap, setRetryMap] = useState<Record<number, RetryEntry>>({});
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionDone, setSessionDone] = useState(false);
 
@@ -132,6 +157,8 @@ export default function Learn(props: Props) {
     const loaded = loadProgress(props.appMode, props.target);
     setProgress(loaded);
     setAskedIds([]);
+    setCompletedIds([]);
+    setRetryMap({});
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionDone(false);
     setRevealed(false);
@@ -153,12 +180,12 @@ export default function Learn(props: Props) {
     })();
   }, [baseUrl, props.appMode, props.target]);
 
-  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const completedIdSet = useMemo(() => new Set(completedIds), [completedIds]);
   const focusSummary = useMemo(() => getFocusSummary(progress, items, Date.now()), [progress, items]);
   const current = useMemo(() => {
     if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
-    return pickNext(items, progress, Date.now(), props.mode, askedIdSet);
-  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone]);
+    return pickNext(items, progress, Date.now(), props.mode, completedIdSet, retryMap, askedIds.length, askedIds.at(-1) ?? null);
+  }, [items, progress, props.mode, completedIdSet, retryMap, askedIds, sessionDone]);
 
   useEffect(() => {
     if (loading) return;
@@ -198,7 +225,26 @@ export default function Learn(props: Props) {
     saveWrongIds(props.appMode, props.target, [...wrong]);
     saveMasteredIds(props.appMode, props.target, [...mastered]);
 
+    const nextStep = askedIds.length + 1;
     setAskedIds((prevAsked) => [...prevAsked, current.id]);
+    setCompletedIds((prevCompleted) => {
+      if (grade === "good") {
+        if (prevCompleted.includes(current.id)) return prevCompleted;
+        return [...prevCompleted, current.id];
+      }
+      return prevCompleted.filter((id) => id !== current.id);
+    });
+    setRetryMap((prevRetryMap) => {
+      const nextRetryMap = { ...prevRetryMap };
+      if (grade === "again") {
+        nextRetryMap[current.id] = { availableAt: nextStep + 3, priority: 2 };
+      } else if (grade === "hard") {
+        nextRetryMap[current.id] = { availableAt: nextStep + 8, priority: 1 };
+      } else {
+        delete nextRetryMap[current.id];
+      }
+      return nextRetryMap;
+    });
     setSessionResult((prevResult) => ({
       total: prevResult.total + 1,
       remembered: prevResult.remembered + (grade === "good" ? 1 : 0),
@@ -210,6 +256,8 @@ export default function Learn(props: Props) {
 
   const resetSession = () => {
     setAskedIds([]);
+    setCompletedIds([]);
+    setRetryMap({});
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionDone(false);
     setRevealed(false);

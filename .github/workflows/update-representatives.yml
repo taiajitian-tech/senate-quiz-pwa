@@ -55,6 +55,30 @@ jobs:
       - name: Validate representatives data
         run: npm run check:representatives
 
+      - name: Guard representative images
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+
+          const previous = JSON.parse(fs.readFileSync('.cache/previous-data/representatives.json', 'utf8'));
+          const current = JSON.parse(fs.readFileSync('public/data/representatives.json', 'utf8'));
+
+          const previousMap = new Map(previous.map((item) => [item.id, JSON.stringify(item.images ?? [])]));
+          const changed = [];
+
+          for (const item of current) {
+            const before = previousMap.get(item.id);
+            const after = JSON.stringify(item.images ?? []);
+            if (before === undefined) continue;
+            if (before !== after) changed.push(item.name ?? String(item.id));
+          }
+
+          if (changed.length > 0) {
+            console.error('Representative images changed:', changed.join(', '));
+            process.exit(1);
+          }
+          EOF
+
       - name: Commit and push if changed
         working-directory: .
         run: |

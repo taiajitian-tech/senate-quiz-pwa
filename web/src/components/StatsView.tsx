@@ -23,7 +23,7 @@ type Summary = {
 export default function StatsView(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [summaryNow] = useState<number>(() => Date.now());
+  const [summaryNow, setSummaryNow] = useState<number>(() => Date.now());
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
@@ -128,7 +128,7 @@ export default function StatsView(props: Props) {
           style={styles.dangerBtn}
           onClick={() => {
             resetStats(props.appMode, props.target);
-            location.reload();
+            setSummaryNow(Date.now());
           }}
         >
           成績リセット
