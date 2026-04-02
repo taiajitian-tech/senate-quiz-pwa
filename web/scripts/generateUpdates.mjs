@@ -19,6 +19,33 @@ const TARGETS = [
   { key: 'houseOfficersList', path: 'house-officers.json', label: '衆議院役員一覧' },
 ];
 
+const NEWS_TIMEOUT_MS = 4_000;
+const NEWS_MAX_ITEMS = 8;
+const NEWS_CONCURRENCY = 2;
+const NEWS_REASON_LIMIT = 12;
+const NEWS_USER_AGENT = 'senate-quiz-pwa-updates-bot/1.0';
+
+async function httpFetch(url, options = undefined) {
+  if (typeof fetch === 'function') return fetch(url, options);
+  const mod = await import('node-fetch');
+  return mod.default(url, options);
+}
+
+const REMOVED_REASON_PATTERNS = [
+  { key: '辞任', label: '辞任報道あり', regex: /(辞任|辞職|議員辞職|辞任届)/u },
+  { key: '更迭', label: '更迭報道あり', regex: /(更迭|罷免)/u },
+  { key: '失職', label: '失職報道あり', regex: /失職/u },
+  { key: '死去', label: '死去報道あり', regex: /(死去|逝去|死去へ)/u },
+  { key: '落選', label: '落選報道あり', regex: /落選/u },
+];
+
+const ADDED_REASON_PATTERNS = [
+  { key: '繰上げ当選', label: '繰上げ当選報道あり', regex: /(繰上げ当選|繰り上げ当選)/u },
+  { key: '補欠選挙', label: '補欠選挙報道あり', regex: /(補欠選挙|補選)/u },
+  { key: '当選', label: '当選報道あり', regex: /(初当選|当選|初登院)/u },
+  { key: '就任', label: '就任報道あり', regex: /(就任|任命|起用)/u },
+];
+
 function normalizeCompact(value) {
   return String(value ?? '').replace(/[\s\u3000]+/g, '').trim();
 }
@@ -149,10 +176,147 @@ function compareTarget(target) {
   };
 }
 
-function main() {
+function decodeXmlEntities(value) {
+  return String(value ?? '')
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/gu, '$1')
+    .replace(/&lt;/gu, '<')
+    .replace(/&gt;/gu, '>')
+    .replace(/&amp;/gu, '&')
+    .replace(/&quot;/gu, '"')
+    .replace(/&#39;/gu, "'")
+    .trim();
+}
+
+function stripHtml(value) {
+  return decodeXmlEntities(value).replace(/<[^>]+>/gu, ' ').replace(/\s+/gu, ' ').trim();
+}
+
+function extractTag(xml, tag) {
+  const match = xml.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, 'i'));
+  return match ? decodeXmlEntities(match[1]) : '';
+}
+
+function parseRssItems(xml) {
+  const matches = xml.match(/<item>([\s\S]*?)<\/item>/gu) ?? [];
+  return matches.slice(0, NEWS_MAX_ITEMS).map((entry) => {
+    const title = stripHtml(extractTag(entry, 'title'));
+    const link = extractTag(entry, 'link');
+    const description = stripHtml(extractTag(entry, 'description'));
+    const pubDate = extractTag(entry, 'pubDate');
+    const sourceTitle = title.includes(' - ') ? title.split(' - ').at(-1)?.trim() ?? '' : '';
+    return { title, link, description, pubDate, sourceTitle };
+  }).filter((entry) => entry.title && entry.link);
+}
+
+function buildReasonPatterns(item) {
+  return item.type === 'removed' ? REMOVED_REASON_PATTERNS : ADDED_REASON_PATTERNS;
+}
+
+function buildNewsQuery(item) {
+  const keywords = buildReasonPatterns(item).map((entry) => entry.key).join(' OR ');
+  const pieces = [item.name, item.targetLabel, keywords].filter(Boolean);
+  return pieces.join(' ');
+}
+
+function scoreReasonMatch(text, pattern) {
+  let score = 0;
+  if (pattern.regex.test(text)) score += 4;
+  if (/NHK|共同通信|時事通信|朝日新聞|読売新聞|毎日新聞|産経新聞|日経|東京新聞/u.test(text)) score += 1;
+  return score;
+}
+
+function pickReason(entries, item) {
+  const patterns = buildReasonPatterns(item);
+  if (patterns.length === 0 || entries.length === 0) return null;
+
+  const buckets = new Map();
+
+  for (const entry of entries) {
+    const haystack = `${entry.title} ${entry.description}`;
+    for (const pattern of patterns) {
+      const score = scoreReasonMatch(haystack, pattern);
+      if (score <= 0) continue;
+      const current = buckets.get(pattern.label) ?? { pattern, score: 0, sources: new Set(), entry };
+      current.score += score;
+      if (entry.sourceTitle) current.sources.add(entry.sourceTitle);
+      if (!current.entry || score > current.score) current.entry = entry;
+      buckets.set(pattern.label, current);
+    }
+  }
+
+  const ranked = [...buckets.values()].sort((a, b) => {
+    const sourceDiff = b.sources.size - a.sources.size;
+    if (sourceDiff !== 0) return sourceDiff;
+    return b.score - a.score;
+  });
+
+  const best = ranked[0];
+  if (!best) return null;
+
+  return {
+    label: best.pattern.label,
+    confidence: best.sources.size >= 2 ? 'confirmed' : 'candidate',
+    sourceTitle: best.entry?.sourceTitle ?? '',
+    sourceUrl: best.entry?.link ?? '',
+    publishedAt: best.entry?.pubDate ?? '',
+  };
+}
+
+async function fetchReasonForItem(item) {
+  if (item.type !== 'added' && item.type !== 'removed') return item;
+
+  const query = buildNewsQuery(item);
+  if (!query) return item;
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), NEWS_TIMEOUT_MS);
+
+  try {
+    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ja&gl=JP&ceid=JP:ja`;
+    const response = await httpFetch(url, {
+      headers: { 'user-agent': NEWS_USER_AGENT },
+      signal: controller.signal,
+    });
+    if (!response.ok) return item;
+    const xml = await response.text();
+    const entries = parseRssItems(xml);
+    const reason = pickReason(entries, item);
+    return reason ? { ...item, reason } : item;
+  } catch {
+    return item;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function mapWithConcurrency(items, worker, concurrency) {
+  const results = new Array(items.length);
+  let current = 0;
+
+  async function runOne() {
+    while (true) {
+      const index = current;
+      current += 1;
+      if (index >= items.length) return;
+      results[index] = await worker(items[index], index);
+    }
+  }
+
+  const size = Math.max(1, Math.min(concurrency, items.length || 1));
+  await Promise.all(Array.from({ length: size }, () => runOne()));
+  return results;
+}
+
+async function main() {
   const generatedAt = new Date().toISOString();
   const results = TARGETS.map(compareTarget);
   const items = results.flatMap((result) => result.items);
+  const limitedItems = items.slice(0, 80);
+  const itemsWithReasons = await mapWithConcurrency(
+    limitedItems,
+    async (item, index) => (index < NEWS_REASON_LIMIT ? fetchReasonForItem(item) : item),
+    NEWS_CONCURRENCY,
+  );
   const summaries = results
     .map((result) => ({
       target: result.target,
@@ -169,7 +333,7 @@ function main() {
     totalChanges: items.length,
     hasUpdates: items.length > 0,
     summaries,
-    items: items.slice(0, 80),
+    items: itemsWithReasons,
   };
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -177,4 +341,4 @@ function main() {
   console.log(`updates: ${payload.totalChanges}`);
 }
 
-main();
+await main();

@@ -115,88 +115,6 @@ function normalizePersonName(value: string): string {
   return value.replace(/[\s\u3000]+/gu, "").trim();
 }
 
-
-const FULLWIDTH_SPACE = String.fromCharCode(0x3000);
-
-function normalizeSearchText(value: string | undefined): string {
-  return (value ?? "")
-    .toLowerCase()
-    .replaceAll(FULLWIDTH_SPACE, " ")
-    .replace(/\s+/gu, "")
-    .trim();
-}
-
-function splitSearchTokens(value: string): string[] {
-  return value
-    .trim()
-    .replaceAll(FULLWIDTH_SPACE, " ")
-    .split(/\s+/u)
-    .map((token) => token.trim())
-    .filter(Boolean);
-}
-
-const SEARCH_ALIASES: Array<[string, string[]]> = [
-  ["自民", ["自由民主党"]],
-  ["立民", ["立憲民主党"]],
-  ["維新", ["日本維新の会"]],
-  ["公明", ["公明党"]],
-  ["共産", ["日本共産党"]],
-  ["国民", ["国民民主党"]],
-  ["れいわ", ["れいわ新選組"]],
-  ["参政", ["参政党"]],
-  ["保守", ["日本保守党"]],
-  ["社民", ["社会民主党"]],
-  ["総理", ["内閣総理大臣"]],
-  ["官房長官", ["内閣官房長官"]],
-  ["文科", ["文部科学"]],
-  ["厚労", ["厚生労働"]],
-  ["農水", ["農林水産"]],
-  ["経産", ["経済産業"]],
-  ["国交", ["国土交通"]],
-  ["政務官", ["大臣政務官"]],
-  ["衆", ["衆議院"]],
-  ["参", ["参議院"]],
-];
-
-function expandSearchToken(token: string): string[] {
-  const normalized = normalizeSearchText(token);
-  if (!normalized) return [];
-
-  const expanded = new Set<string>([normalized]);
-  for (const [alias, values] of SEARCH_ALIASES) {
-    const normalizedAlias = normalizeSearchText(alias);
-    const normalizedValues = values.map((value) => normalizeSearchText(value)).filter(Boolean);
-    if (normalized === normalizedAlias) {
-      for (const value of normalizedValues) expanded.add(value);
-      continue;
-    }
-    if (normalizedValues.includes(normalized)) {
-      expanded.add(normalizedAlias);
-    }
-  }
-  return [...expanded];
-}
-
-function getSearchTexts(person: Person): string[] {
-  return [
-    person.name,
-    person.kana ?? "",
-    person.party ?? "",
-    person.group ?? "",
-    person.district ?? "",
-    person.role ?? "",
-    person.subRole ?? "",
-    person.chamber ?? "",
-    getCompactRole(person),
-    getCompactParty(person),
-    getCompactBadge(person),
-    typeof person.terms === "number" ? String(person.terms) : "",
-    person.nextElectionYear ? String(person.nextElectionYear) : "",
-  ]
-    .map((value) => normalizeSearchText(value))
-    .filter(Boolean);
-}
-
 function normalizeCompactMetaText(value: string | undefined): string {
   return (value ?? "")
     .split("/")
@@ -243,6 +161,18 @@ function getCompactBadge(person: Person): string {
   if (source.includes("衆議院")) return "衆";
   if (source.includes("参議院")) return "参";
   return "";
+}
+
+function getCompactBadgeStyle(badge: string): React.CSSProperties {
+  if (badge === "参") {
+    return {
+      ...styles.compactHouseBadge,
+      border: "1px solid #1d4ed8",
+      background: "#eff6ff",
+      color: "#1d4ed8",
+    };
+  }
+  return styles.compactHouseBadge;
 }
 
 function sortItems(items: Person[], sortKey: SortKey): Person[] {
@@ -354,12 +284,20 @@ export default function SenatorList(props: Props) {
   const masteredSet = useMemo(() => new Set(loadMasteredIds(props.appMode, props.target)), [props.appMode, props.target]);
 
   const filtered = useMemo(() => {
-    const tokens = splitSearchTokens(q).map((token) => expandSearchToken(token));
-    if (tokens.length === 0) return items;
-
-    return items.filter((person) => {
-      const texts = getSearchTexts(person);
-      return tokens.every((variants) => variants.some((variant) => texts.some((text) => text.includes(variant))));
+    const key = q.trim().toLowerCase();
+    if (!key) return items;
+    return items.filter((s) => {
+      const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
+      const termsText = typeof s.terms === "number" ? String(s.terms) : "";
+      return (
+        s.name.toLowerCase().includes(key) ||
+        (s.kana ?? "").toLowerCase().includes(key) ||
+        (s.party ?? "").toLowerCase().includes(key) ||
+        (s.group ?? "").toLowerCase().includes(key) ||
+        (s.district ?? "").toLowerCase().includes(key) ||
+        termsText.includes(key) ||
+        nextElectionText.includes(key)
+      );
     });
   }, [items, q]);
 
@@ -441,7 +379,7 @@ export default function SenatorList(props: Props) {
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="名前 / 略称 / 役職 / 政党 / 選挙区 / 回数 / 改選年で検索"
+          placeholder="名前 / 役職 / 政党 / 選挙区 / 回数 / 改選年で検索"
           style={styles.search}
         />
         <select value={sortKey} onChange={(e) => setSortKey(e.target.value as SortKey)} style={styles.select}>
@@ -521,7 +459,7 @@ export default function SenatorList(props: Props) {
               }}
               onClick={() => setSelectedPerson(s)}
             >
-              {(isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={styles.compactHouseBadge}>{getCompactBadge(s)}</div> : null}
+              {(isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={getCompactBadgeStyle(getCompactBadge(s))}>{getCompactBadge(s)}</div> : null}
               <div style={styles.compactAvatarBox}>
                 <SafeImage
                   src={s.images?.[0] ?? ""}

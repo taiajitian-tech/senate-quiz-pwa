@@ -10,12 +10,21 @@ type UpdateSummary = {
   total: number;
 };
 
+type UpdateReason = {
+  label: string;
+  confidence: 'candidate' | 'confirmed';
+  sourceTitle?: string;
+  sourceUrl?: string;
+  publishedAt?: string;
+};
+
 type UpdateItem = {
   target: string;
   targetLabel: string;
   name: string;
   type: 'added' | 'removed' | 'changed';
   summary: string;
+  reason?: UpdateReason;
 };
 
 type UpdatesPayload = {
@@ -103,6 +112,12 @@ function saveHistoryEntry(payload: UpdatesPayload): HistoryEntry[] {
   const next = [nextEntry, ...existing].slice(0, 20);
   writeHistory(next);
   return next;
+}
+
+
+function getReasonLabel(reason: UpdateReason | undefined): string {
+  if (!reason?.label) return '';
+  return reason.confidence === 'confirmed' ? `理由：${reason.label}` : `理由候補：${reason.label}`;
 }
 
 function toTarget(value: string): Target | null {
@@ -251,6 +266,12 @@ export default function UpdatesView(props: Props) {
                   </div>
                   <div style={styles.itemName}>{item.name}</div>
                   <div style={styles.itemSummary}>{item.summary}</div>
+                  {item.reason ? (
+                    <div style={item.reason.confidence === 'confirmed' ? styles.itemReasonConfirmed : styles.itemReasonCandidate}>
+                      <div>{getReasonLabel(item.reason)}</div>
+                      {item.reason.sourceTitle ? <div style={styles.itemReasonMeta}>参照: {item.reason.sourceTitle}</div> : null}
+                    </div>
+                  ) : null}
                   <div style={styles.itemHint}>{canOpen ? '押すと一覧の該当議員へ移動します。' : '除外された項目のため移動できません。'}</div>
                 </button>
               );
