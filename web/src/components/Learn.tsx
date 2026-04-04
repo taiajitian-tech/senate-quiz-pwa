@@ -476,7 +476,7 @@ const styles: Record<string, React.CSSProperties> = {
   actionZone: { display: "flex", flexDirection: "column", justifyContent: "flex-end" },
   actionSpacer: { minHeight: 48 },
   gradeBtns: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 8 },
-  gradeBtnsCompact: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 6 },
+  gradeBtnsCompact: { display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 6 },
   primaryBtn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #0d6efd", background: "#0d6efd", color: "#fff", fontWeight: 800, fontSize: 14 },
   btn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #999", background: "#fff", fontWeight: 700, fontSize: 13 },
   btnRemembered: { padding: "10px 8px", borderRadius: 12, border: "1px solid #1f7a1f", background: "#e9f8ec", color: "#165c16", fontWeight: 800, fontSize: 13 },
