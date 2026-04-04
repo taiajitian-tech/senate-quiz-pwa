@@ -23,8 +23,16 @@ type SessionResult = {
   notRemembered: number;
 };
 
+type QueueEntry = {
+  id: number;
+  availableAfter: number;
+  priority: number;
+};
+
 const SESSION_SIZE = 30;
 const DAY = 24 * 60 * 60 * 1000;
+const STRONG_RECALL_MS = 2500;
+const RECENT_BLOCK_COUNT = 2;
 
 function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now: number) {
   return [...items].sort((a, b) => {
@@ -34,12 +42,20 @@ function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now
   });
 }
 
-function pickNext(
+function preferNonRecent(items: Person[], recentIds: number[]) {
+  if (items.length <= 1) return items;
+  const recentSet = new Set(recentIds);
+  const filtered = items.filter((item) => !recentSet.has(item.id));
+  return filtered.length > 0 ? filtered : items;
+}
+
+function pickRegularNext(
   items: Person[],
   progress: Record<number, ProgressItem>,
   now: number,
   mode: Mode,
-  askedIds: Set<number>
+  completedIds: Set<number>,
+  recentIds: number[]
 ) {
   if (items.length === 0) return null;
 
@@ -49,7 +65,7 @@ function pickNext(
   const upcoming: Person[] = [];
 
   for (const item of items) {
-    if (askedIds.has(item.id)) continue;
+    if (completedIds.has(item.id)) continue;
 
     const state = progress[item.id];
     if (!state) {
@@ -57,9 +73,7 @@ function pickNext(
       continue;
     }
 
-    if (isMastered(state, now)) {
-      continue;
-    }
+    if (isMastered(state, now)) continue;
 
     if (state.status === "leech") {
       leech.push(item);
@@ -73,27 +87,46 @@ function pickNext(
 
     const dueSoon = state.due - now <= DAY * Math.min(Math.max(state.stability, 1), 7);
     const forgettingSoon = getForgettingScore(state, now) >= 0.55;
-    if (dueSoon || forgettingSoon) {
-      upcoming.push(item);
-    }
+    if (dueSoon || forgettingSoon) upcoming.push(item);
   }
 
-  const riskDue = sortByRisk(due, progress, now);
-  const riskUpcoming = sortByRisk(upcoming, progress, now);
-  const riskLeech = sortByRisk(leech, progress, now);
+  const riskLeech = preferNonRecent(sortByRisk(leech, progress, now), recentIds);
+  const riskDue = preferNonRecent(sortByRisk(due, progress, now), recentIds);
+  const riskUpcoming = preferNonRecent(sortByRisk(upcoming, progress, now), recentIds);
+  const freshPool = preferNonRecent(fresh, recentIds);
 
-  if (mode === "review") {
-    return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
-  }
+  if (mode === "review") return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
 
-  const askedCount = askedIds.size;
-  const cycle = askedCount % 20;
+  const answeredCount = completedIds.size;
+  const cycle = answeredCount % 18;
 
-  if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return riskLeech[0];
-  if (riskDue.length > 0 && cycle < 11) return riskDue[0];
+  if (riskLeech.length > 0 && (cycle === 1 || cycle === 5 || cycle === 10 || cycle === 14)) return riskLeech[0];
+  if (riskDue.length > 0 && cycle < 12) return riskDue[0];
   if (riskUpcoming.length > 0 && cycle < 16) return riskUpcoming[0];
-  if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
+  if (freshPool.length > 0) return freshPool[Math.floor(Math.random() * freshPool.length)];
   return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+}
+
+function pickQueuedNext(
+  queue: QueueEntry[],
+  itemsById: Map<number, Person>,
+  turn: number,
+  recentIds: number[]
+) {
+  const available = queue
+    .filter((entry) => entry.availableAfter <= turn)
+    .sort((a, b) => (a.priority - b.priority) || (a.availableAfter - b.availableAfter) || (a.id - b.id));
+
+  if (available.length === 0) return null;
+
+  const recentSet = new Set(recentIds);
+  const candidate = available.find((entry) => !recentSet.has(entry.id)) ?? available[0];
+  return itemsById.get(candidate.id) ?? null;
+}
+
+function upsertQueue(entries: QueueEntry[], nextEntry: QueueEntry) {
+  const others = entries.filter((entry) => entry.id !== nextEntry.id);
+  return [...others, nextEntry];
 }
 
 function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
@@ -123,6 +156,9 @@ export default function Learn(props: Props) {
   const [revealed, setRevealed] = useState(false);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
   const [askedIds, setAskedIds] = useState<number[]>([]);
+  const [pendingQueue, setPendingQueue] = useState<QueueEntry[]>([]);
+  const [recentIds, setRecentIds] = useState<number[]>([]);
+  const [promptStartedAt, setPromptStartedAt] = useState<number>(() => Date.now());
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionDone, setSessionDone] = useState(false);
 
@@ -132,6 +168,9 @@ export default function Learn(props: Props) {
     const loaded = loadProgress(props.appMode, props.target);
     setProgress(loaded);
     setAskedIds([]);
+    setPendingQueue([]);
+    setRecentIds([]);
+    setPromptStartedAt(Date.now());
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionDone(false);
     setRevealed(false);
@@ -153,12 +192,22 @@ export default function Learn(props: Props) {
     })();
   }, [baseUrl, props.appMode, props.target]);
 
-  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const completedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const itemsById = useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const focusSummary = useMemo(() => getFocusSummary(progress, items, Date.now()), [progress, items]);
   const current = useMemo(() => {
     if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
-    return pickNext(items, progress, Date.now(), props.mode, askedIdSet);
-  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone]);
+    const turn = askedIds.length;
+    const queued = pickQueuedNext(pendingQueue, itemsById, turn, recentIds);
+    if (queued) return queued;
+    return pickRegularNext(items, progress, Date.now(), props.mode, completedIdSet, recentIds);
+  }, [items, itemsById, progress, props.mode, completedIdSet, askedIds.length, pendingQueue, recentIds, sessionDone]);
+
+  useEffect(() => {
+    if (!current) return;
+    setPromptStartedAt(Date.now());
+    setRevealed(false);
+  }, [current]);
 
   useEffect(() => {
     if (loading) return;
@@ -171,17 +220,19 @@ export default function Learn(props: Props) {
   const onGrade = (grade: Grade) => {
     if (!current) return;
     const now = Date.now();
+    const elapsed = Math.max(now - promptStartedAt, 0);
+    const effectiveGrade: Grade = grade === "good" && elapsed <= STRONG_RECALL_MS ? "strong" : grade;
     const prev = progress[current.id];
-    const next = applyGrade(prev, current.id, grade, now);
+    const next = applyGrade(prev, current.id, effectiveGrade, now);
     const nextMap = { ...progress, [current.id]: next };
     setProgress(nextMap);
     saveProgress(props.appMode, props.target, nextMap);
-    appendHistory(props.appMode, props.target, { at: now, id: current.id, grade });
+    appendHistory(props.appMode, props.target, { at: now, id: current.id, grade: effectiveGrade });
 
     bumpStats(props.appMode, props.target, {
       playedTotal: 1,
-      correctTotal: grade === "again" ? 0 : 1,
-      wrongTotal: grade === "again" ? 1 : 0,
+      correctTotal: effectiveGrade === "again" ? 0 : 1,
+      wrongTotal: effectiveGrade === "again" ? 1 : 0,
       masteredCount: next.status === "mastered" && (!prev || prev.status !== "mastered") ? 1 : 0,
       leechCount: next.status === "leech" && (!prev || prev.status !== "leech") ? 1 : 0,
     });
@@ -192,24 +243,41 @@ export default function Learn(props: Props) {
     if (next.status === "mastered") mastered.add(current.id);
     else mastered.delete(current.id);
 
-    if (grade === "again" || next.status === "leech") wrong.add(current.id);
-    else if (grade === "good" && next.consecutiveCorrect >= 2) wrong.delete(current.id);
+    if (effectiveGrade === "again" || next.status === "leech") wrong.add(current.id);
+    else if ((effectiveGrade === "good" || effectiveGrade === "strong") && next.consecutiveCorrect >= 2) wrong.delete(current.id);
 
     saveWrongIds(props.appMode, props.target, [...wrong]);
     saveMasteredIds(props.appMode, props.target, [...mastered]);
 
+    setPendingQueue((prevQueue) => {
+      let queue = prevQueue.filter((entry) => entry.id !== current.id);
+      const nextTurn = askedIds.length + 1;
+      if (effectiveGrade === "again") {
+        queue = upsertQueue(queue, { id: current.id, availableAfter: nextTurn + 2, priority: 0 });
+      } else if (effectiveGrade === "hard") {
+        queue = upsertQueue(queue, { id: current.id, availableAfter: nextTurn + 5, priority: 1 });
+      } else if (next.status === "leech") {
+        queue = upsertQueue(queue, { id: current.id, availableAfter: nextTurn + 3, priority: 0 });
+      }
+      return queue;
+    });
+
+    setRecentIds((prevRecent) => [...prevRecent.filter((id) => id !== current.id), current.id].slice(-RECENT_BLOCK_COUNT));
     setAskedIds((prevAsked) => [...prevAsked, current.id]);
     setSessionResult((prevResult) => ({
       total: prevResult.total + 1,
-      remembered: prevResult.remembered + (grade === "good" ? 1 : 0),
-      hazy: prevResult.hazy + (grade === "hard" ? 1 : 0),
-      notRemembered: prevResult.notRemembered + (grade === "again" ? 1 : 0),
+      remembered: prevResult.remembered + (effectiveGrade === "good" || effectiveGrade === "strong" ? 1 : 0),
+      hazy: prevResult.hazy + (effectiveGrade === "hard" ? 1 : 0),
+      notRemembered: prevResult.notRemembered + (effectiveGrade === "again" ? 1 : 0),
     }));
     setRevealed(false);
   };
 
   const resetSession = () => {
     setAskedIds([]);
+    setPendingQueue([]);
+    setRecentIds([]);
+    setPromptStartedAt(Date.now());
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionDone(false);
     setRevealed(false);
@@ -222,8 +290,8 @@ export default function Learn(props: Props) {
   };
 
   const modeHelp: Record<Mode, string> = {
-    learn: "新規よりも、忘れそうな議員と苦手な議員を優先します。完全習得に入った議員は通常出題から外れます。",
-    review: "忘却しそうな議員と苦手な議員だけを集中的に出します。短時間で効率よく定着を維持するモードです。",
+    learn: "忘れそうな議員と苦手な議員を優先します。『覚えていた』をすぐ押せたものは内部で強めに定着扱いになります。",
+    review: "忘却しそうな議員と苦手な議員だけを集中的に出します。苦手は数問後に再び出やすくなります。",
     reverse: "名前から顔を引く練習です。通常学習と同じ記憶状態を使い、忘れそうな議員と苦手な議員を優先します。",
   };
 
@@ -351,11 +419,11 @@ export default function Learn(props: Props) {
           <div><b>このモードの役割</b></div>
           <div>{modeHelp[props.mode]}</div>
           <div><b>判定の基準</b></div>
-          <div>覚えていた：見ずにすぐ出た</div>
+          <div>覚えていた：見ずに思い出せた。すぐ押せたものは内部で強めに定着扱いになります。</div>
           <div>うろ覚え：少し迷った、部分的に出た</div>
           <div>覚えていない：出ない、別人と混ざる</div>
           <div><b>今回の改善点</b></div>
-          <div>忘れそうな議員を先に出し、苦手として落ち続ける議員は自動で優先度を上げます。</div>
+          <div>忘れそうな議員を先に出し、苦手として落ち続ける議員は数問後に再び出やすくしています。</div>
           <div>完全習得に入った議員は通常出題から外れ、苦手と復習対象を先に回す構成です。</div>
           <div><b>記憶の定着</b></div>
           <div>答えを見た後に自己判定し、忘れかけのものを適切な時期に出し直すことで定着を伸ばします。</div>
@@ -364,7 +432,6 @@ export default function Learn(props: Props) {
     </div>
   );
 }
-
 const styles: Record<string, React.CSSProperties> = {
   wrap: { minHeight: "100dvh", background: "#f7f8fa", padding: 6, overflow: "hidden" },
   shell: { width: "min(720px, 100%)", margin: "0 auto", minHeight: "calc(100dvh - 12px)", display: "flex", flexDirection: "column", gap: 6 },
@@ -394,9 +461,9 @@ const styles: Record<string, React.CSSProperties> = {
   answerGroup: { fontSize: 13, color: "#555", lineHeight: 1.4 },
   guessBadge: { alignSelf: "flex-start", padding: "3px 7px", borderRadius: 999, background: "#fff3cd", color: "#7a5d00", fontSize: 11, fontWeight: 700 },
   actionZone: { display: "flex", flexDirection: "column", justifyContent: "flex-end" },
-  actionSpacer: { minHeight: 36 },
+  actionSpacer: { minHeight: 48 },
   gradeBtns: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 8 },
-  gradeBtnsCompact: { display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 6 },
+  gradeBtnsCompact: { display: "grid", gridTemplateColumns: "1fr", gap: 6 },
   primaryBtn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #0d6efd", background: "#0d6efd", color: "#fff", fontWeight: 800, fontSize: 14 },
   btn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #999", background: "#fff", fontWeight: 700, fontSize: 13 },
   btnRemembered: { padding: "10px 8px", borderRadius: 12, border: "1px solid #1f7a1f", background: "#e9f8ec", color: "#165c16", fontWeight: 800, fontSize: 13, width: "100%" },
