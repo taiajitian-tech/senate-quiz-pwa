@@ -1,4 +1,4 @@
-export type Grade = "good" | "hard" | "again";
+export type Grade = "strong" | "good" | "hard" | "again";
 export type CardStatus = "new" | "learning" | "review" | "mastered" | "leech";
 
 export type ProgressItem = {
@@ -56,7 +56,7 @@ export function sanitizeProgressItem(id: number, raw: Partial<ProgressItem>, now
     reps,
     intervalMin,
     due,
-    lastGrade: raw.lastGrade === "good" || raw.lastGrade === "hard" || raw.lastGrade === "again" ? raw.lastGrade : undefined,
+    lastGrade: raw.lastGrade === "strong" || raw.lastGrade === "good" || raw.lastGrade === "hard" || raw.lastGrade === "again" ? raw.lastGrade : undefined,
     updatedAt: Number.isFinite(raw.updatedAt) ? Number(raw.updatedAt) : now,
     stability: clamp(Number.isFinite(raw.stability) ? Number(raw.stability) : Math.max(intervalMin / (60 * 24), 0.3), 0.15, 3650),
     difficulty: clamp(Number.isFinite(raw.difficulty) ? Number(raw.difficulty) : 5, 1, 10),
@@ -102,6 +102,32 @@ export function applyGrade(prev: ProgressItem | undefined, id: number, grade: Gr
   const retentionBoost = 1 + (1 - retention) * 0.35;
   const learningBoost = 1 + Math.min(nextConsecutive, 8) * 0.08;
   const difficultyEase = (11 - base.difficulty) / 10;
+
+  if (grade === "strong") {
+    const stability = clamp(
+      base.reps === 0
+        ? 1.25
+        : stabilityBase * (2.05 + difficultyEase * 0.95) * retentionBoost * (learningBoost + 0.12),
+      0.8,
+      3650
+    );
+    const intervalMin = Math.max(24 * 60, Math.round(stability * DAY / MIN));
+    const mastered = nextConsecutive >= 5 && stability >= 35 && base.lapses <= 1;
+
+    return {
+      ...base,
+      reps: Math.min(base.reps + 1, 100),
+      intervalMin,
+      due: now + intervalMin * MIN,
+      lastGrade: grade,
+      updatedAt: now,
+      stability,
+      difficulty: clamp(base.difficulty - 0.18, 1, 10),
+      consecutiveCorrect: nextConsecutive,
+      status: mastered ? "mastered" : stability >= 7 ? "review" : "learning",
+      lastSeenAt: now,
+    };
+  }
 
   if (grade === "hard") {
     const stability = clamp(
