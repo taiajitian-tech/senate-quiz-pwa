@@ -98,6 +98,8 @@ export default function AutoPlayView(props: Props) {
     })();
   }, [baseUrl, props.appMode, props.target]);
 
+  const compactLayout = typeof window !== "undefined" && (window.innerHeight <= 820 || window.innerWidth <= 480);
+
   const currentIndex = sequence[position] ?? 0;
   const current = useMemo(() => items[currentIndex] ?? null, [items, currentIndex]);
 
@@ -167,11 +169,11 @@ export default function AutoPlayView(props: Props) {
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
         <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]} / 顔 {options.faceSeconds}秒 → 名前 {options.answerSeconds}秒</div>
-        <div style={styles.sub}>再生順：{randomMode ? "ランダム" : "通常"} / 保存位置：{sequence.length === 0 ? 0 : position + 1} / {sequence.length}</div>
+        <div style={styles.sub}>{compactLayout ? `再生順：${randomMode ? "ランダム" : "通常"} / ${sequence.length === 0 ? 0 : position + 1} / ${sequence.length}` : `再生順：${randomMode ? "ランダム" : "通常"} / 保存位置：${sequence.length === 0 ? 0 : position + 1} / ${sequence.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
       </div>
 
-      <div style={styles.controls}>
+      <div style={compactLayout ? styles.controlsCompact : styles.controls}>
         <button type="button" style={styles.ctrlBtn} onClick={() => move(-1)} disabled={sequence.length === 0}>前へ</button>
         <button type="button" style={styles.ctrlBtn} onClick={() => setPaused((prev) => !prev)} disabled={sequence.length === 0}>{paused ? "再開" : "一時停止"}</button>
         <button type="button" style={styles.ctrlBtn} onClick={() => move(1)} disabled={sequence.length === 0}>次へ</button>
@@ -203,23 +205,24 @@ export default function AutoPlayView(props: Props) {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  wrap: { minHeight: "100vh", padding: 16, display: "flex", flexDirection: "column", gap: 12, alignItems: "center" },
-  header: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 8 },
+  wrap: { minHeight: "100dvh", padding: 8, display: "flex", flexDirection: "column", gap: 8, alignItems: "center", background: "#f7f8fa", overflow: "hidden" },
+  header: { width: "min(720px, 100%)", display: "flex", flexDirection: "column", gap: 5, background: "#fff", border: "1px solid #ddd", borderRadius: 14, padding: 8 },
   headerRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 },
-  backBtn: { alignSelf: "flex-start", padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
-  helpBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 44 },
+  backBtn: { alignSelf: "flex-start", padding: "8px 11px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 12 },
+  helpBtn: { padding: "8px 11px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontWeight: 800, width: 40, fontSize: 14 },
   controls: { width: "min(720px, 100%)", display: "flex", flexWrap: "wrap", gap: 8 },
-  ctrlBtn: { padding: "10px 12px", borderRadius: 10, border: "1px solid #999", background: "#fff" },
+  controlsCompact: { width: "min(720px, 100%)", display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 6 },
+  ctrlBtn: { padding: "9px 10px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 12 },
   ctrlBtnActive: { background: "#e8f0fe", borderColor: "#8ab4f8" },
-  h1: { fontSize: 20, fontWeight: 800 },
-  sub: { fontSize: 13, color: "#666" },
-  card: { width: "min(720px, 100%)", border: "1px solid #ddd", borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, minHeight: 420 },
+  h1: { fontSize: "clamp(17px, 4.8vw, 20px)", fontWeight: 800 },
+  sub: { fontSize: 11, color: "#666", lineHeight: 1.4 },
+  card: { width: "min(720px, 100%)", flex: 1, minHeight: 0, border: "1px solid #ddd", borderRadius: 14, padding: 8, display: "flex", flexDirection: "column", gap: 8, background: "#fff", overflow: "hidden" },
   center: { margin: "auto", color: "#666", fontSize: 14 },
-  imgBox: { display: "flex", justifyContent: "center" },
-  img: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", objectFit: "cover", borderRadius: 12, background: "#f3f3f3" },
-  noImg: { width: "min(420px, 88vw)", height: "min(420px, 88vw)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
-  faceOnly: { fontSize: 18, fontWeight: 700, textAlign: "center" },
-  answerBox: { display: "flex", flexDirection: "column", gap: 6, textAlign: "center" },
-  name: { fontSize: 24, fontWeight: 800 },
-  group: { fontSize: 15, color: "#555" },
+  imgBox: { flex: 1, minHeight: 0, display: "flex", justifyContent: "center", alignItems: "center" },
+  img: { width: "100%", height: "100%", maxWidth: "min(420px, 88vw)", maxHeight: "min(44dvh, 380px)", objectFit: "contain", borderRadius: 12, background: "#f3f3f3" },
+  noImg: { width: "100%", height: "100%", maxWidth: "min(420px, 88vw)", maxHeight: "min(44dvh, 380px)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
+  faceOnly: { fontSize: "clamp(15px, 4.5vw, 18px)", fontWeight: 700, textAlign: "center", lineHeight: 1.4 },
+  answerBox: { display: "flex", flexDirection: "column", gap: 4, textAlign: "center", flex: "0 0 auto" },
+  name: { fontSize: "clamp(22px, 6vw, 24px)", fontWeight: 800, lineHeight: 1.2 },
+  group: { fontSize: 13, color: "#555", lineHeight: 1.4 },
 };
