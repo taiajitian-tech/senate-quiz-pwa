@@ -186,7 +186,7 @@ function buildFamilyNameCount(items: Person[]): Map<string, number> {
 }
 
 function getCouncilorsOfficerTitle(person: Person, displayBaseName: string): string {
-  const source = (person.subRole || person.group || "").replace(/\s*\/\s*参議院$/u, "").trim();
+  const source = (person.subRole || person.group || person.role || "").replace(/\s*\/\s*参議院$/u, "").trim();
 
   if (source.includes("懲罰委員長")) return person.name;
   if (source.includes("特別委員長")) return `${displayBaseName}特別委員長`;
