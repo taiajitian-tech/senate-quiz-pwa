@@ -4,13 +4,13 @@ import { loadMasteredIds, loadWrongIds } from "./progress";
 import {
   clearAllPersonNameKanaOverrides,
   clearPersonNameKanaOverride,
+  formatDisplayName,
   getPersonNameKanaOverrides,
   loadPersonsForTarget,
   savePersonNameKanaOverride,
   getAvailableTargets,
   getTargetLabels,
   getTargetTabs,
-  formatDisplayName,
   type AppMode,
   type Person,
   type Target,
@@ -464,7 +464,7 @@ export default function SenatorList(props: Props) {
               <div style={styles.compactAvatarBox}>
                 <SafeImage
                   src={s.images?.[0] ?? ""}
-                  alt={s.name}
+                  alt={formatDisplayName(s, props.target, props.appMode, sorted)}
                   style={styles.compactAvatar}
                   fallbackStyle={styles.compactNoAvatar}
                   fallbackText="画像なし"
@@ -500,7 +500,7 @@ export default function SenatorList(props: Props) {
               }}
             >
               <div style={styles.avatarBox}>
-                <SafeImage src={s.images?.[0] ?? ""} alt={s.name} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
+                <SafeImage src={s.images?.[0] ?? ""} alt={formatDisplayName(s, props.target, props.appMode, sorted)} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
               <div style={styles.meta}>
                 {isEditing ? (
@@ -571,7 +571,7 @@ export default function SenatorList(props: Props) {
         </div>
       ) : null}
 
-      <HelpModal open={selectedPerson !== null} onClose={() => setSelectedPerson(null)} title={(selectedPerson ? formatDisplayName(selectedPerson, props.target, props.appMode, sorted) : "詳細")}>
+      <HelpModal open={selectedPerson !== null} onClose={() => setSelectedPerson(null)} title={selectedPerson?.name ?? "詳細"}>
         {selectedPerson ? (
           <div style={styles.detailWrap}>
             <div style={styles.detailImageBox}>
@@ -583,7 +583,7 @@ export default function SenatorList(props: Props) {
                 fallbackText="画像なし"
               />
             </div>
-            <div style={styles.detailName}>{formatDisplayName(selectedPerson, props.target, props.appMode, sorted)}</div>
+            <div style={styles.detailName}>{selectedPerson.name}</div>
             {selectedPerson.kana ? <div style={styles.detailKana}>{selectedPerson.kana}</div> : null}
             <div style={styles.detailGrid}>
               <div style={styles.detailLine}>役職・所属：{selectedPerson.group ?? selectedPerson.party ?? "不明"}</div>

@@ -4,7 +4,7 @@ import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressIt
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatDisplayName, formatNameWithKana, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatDisplayName, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -349,7 +349,7 @@ export default function Learn(props: Props) {
           ) : props.mode === "reverse" ? (
             <div style={compactLayout ? styles.quizLayoutCompact : styles.quizLayout}>
               <div style={styles.infoZone}>
-                <div style={styles.answerName}>{props.appMode === "entrance" ? formatDisplayName(current, props.target, props.appMode, items) : formatNameWithKana(current)}</div>
+                <div style={styles.answerName}>{formatDisplayName(current, props.target, props.appMode, items)}</div>
                 <div style={styles.answerGroup}>{current.group ?? ""}</div>
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
@@ -393,7 +393,7 @@ export default function Learn(props: Props) {
                   </div>
                 ) : (
                   <>
-                    <div style={styles.answerName}>{props.appMode === "entrance" ? formatDisplayName(current, props.target, props.appMode, items) : formatNameWithKana(current)}</div>
+                    <div style={styles.answerName}>{formatDisplayName(current, props.target, props.appMode, items)}</div>
                     <div style={styles.answerGroup}>{current.group ?? ""}</div>
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                   </>
