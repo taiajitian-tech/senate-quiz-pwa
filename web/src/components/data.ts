@@ -167,6 +167,114 @@ export function formatNameWithKana(person: Pick<Person, "name" | "kana">): strin
 }
 
 
+const DISPLAY_SURNAME_OVERRIDES: Record<string, string> = {
+  "今枝宗一郎": "今枝",
+  "田所嘉徳": "田所",
+  "瀬戸隆一": "瀬戸",
+  "岩田和親": "岩田",
+  "鈴木隼人": "鈴木",
+  "津島淳": "津島",
+  "堀内詔子": "堀内",
+  "高橋克法": "高橋",
+  "高橋 克法": "高橋",
+  "三谷英弘": "三谷",
+  "国光あやの": "国光",
+  "堀井巌": "堀井",
+  "中谷真一": "中谷",
+  "舞立昇治": "舞立",
+  "小林茂樹": "小林",
+  "中村裕之": "中村",
+  "長坂康正": "長坂",
+  "仁木博文": "仁木",
+  "根本幸典": "根本",
+  "山下雄平": "山下",
+  "山下 雄平": "山下",
+  "井野俊郎": "井野",
+  "山田賢司": "山田",
+  "佐々木紀": "佐々木",
+  "酒井庸行": "酒井",
+  "青山繁晴": "青山",
+  "辻清人": "辻",
+  "宮崎政久": "宮崎",
+};
+
+function normalizeDisplayNameText(value: string | undefined): string {
+  return (value ?? "").replace(/[\s　]+/gu, " ").trim();
+}
+
+function getDisplaySurname(name: string): string | null {
+  const normalized = normalizeDisplayNameText(name);
+  if (!normalized) return null;
+  const override = DISPLAY_SURNAME_OVERRIDES[normalized.replace(/ /gu, "")] ?? DISPLAY_SURNAME_OVERRIDES[normalized];
+  if (override) return override;
+  const parts = normalized.split(" ").filter(Boolean);
+  if (parts.length >= 2) return parts[0];
+  return null;
+}
+
+function buildSurnameCountMap(items: Person[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const item of items) {
+    const surname = getDisplaySurname(item.name);
+    if (!surname) continue;
+    counts.set(surname, (counts.get(surname) ?? 0) + 1);
+  }
+  return counts;
+}
+
+function getCouncilorsOfficerDisplayName(person: Person, surnameCounts: Map<string, number>): string | null {
+  const subRole = normalizeDisplayNameText(person.subRole || person.group || person.role);
+  if (!subRole) return null;
+
+  if (subRole.endsWith("委員長") && !subRole.includes("特別")) {
+    return subRole;
+  }
+
+  const surname = getDisplaySurname(person.name);
+  const useFullName = !surname || (surnameCounts.get(surname) ?? 0) > 1;
+  const baseName = useFullName ? normalizeDisplayNameText(person.name).replace(/ /gu, "") : surname;
+
+  if (subRole.endsWith("特別委員長")) return `${baseName}特別委員長`;
+  if (subRole.endsWith("調査会長")) return `${baseName}調査会長`;
+  if (subRole.endsWith("審査会会長")) return `${baseName}審査会長`;
+  if (subRole.endsWith("会長")) return `${baseName}${subRole.replace(/^.*?(会長)$/u, "$1")}`;
+  return null;
+}
+
+function getViceMinisterDisplayName(person: Person, surnameCounts: Map<string, number>): string | null {
+  const surname = getDisplaySurname(person.name);
+  if (!surname) return null;
+  const useFullName = (surnameCounts.get(surname) ?? 0) > 1;
+  const baseName = useFullName ? normalizeDisplayNameText(person.name).replace(/ /gu, "") : surname;
+  return `${baseName}副大臣`;
+}
+
+export function getPersonDisplayName(person: Pick<Person, "name" | "group" | "role" | "subRole">, target: Target, appMode: AppMode, allItems: Person[] = []): string {
+  if (appMode !== "entrance") return person.name;
+
+  const surnameCounts = buildSurnameCountMap(allItems);
+
+  if (target === "councilorsOfficersList") {
+    return getCouncilorsOfficerDisplayName(person as Person, surnameCounts) ?? person.name;
+  }
+
+  if (target === "viceMinisters") {
+    return getViceMinisterDisplayName(person as Person, surnameCounts) ?? person.name;
+  }
+
+  return person.name;
+}
+
+export function formatDisplayName(person: Pick<Person, "name" | "group" | "role" | "subRole">, target: Target, appMode: AppMode, allItems: Person[] = []): string {
+  return getPersonDisplayName(person, target, appMode, allItems);
+}
+
+export function formatDisplayNameWithKana(person: Pick<Person, "name" | "kana" | "group" | "role" | "subRole">, target: Target, appMode: AppMode, allItems: Person[] = []): string {
+  const displayName = getPersonDisplayName(person, target, appMode, allItems);
+  if (displayName !== person.name) return displayName;
+  return person.kana ? `${person.name}（${person.kana}）` : person.name;
+}
+
 export type PersonNameKanaOverride = {
   name?: string;
   kana?: string;

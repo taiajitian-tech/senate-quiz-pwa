@@ -10,6 +10,7 @@ import {
   getAvailableTargets,
   getTargetLabels,
   getTargetTabs,
+  formatDisplayName,
   type AppMode,
   type Person,
   type Target,
@@ -469,7 +470,7 @@ export default function SenatorList(props: Props) {
                   fallbackText="画像なし"
                 />
               </div>
-              <div style={styles.compactName}>{s.name}</div>
+              <div style={styles.compactName}>{formatDisplayName(s, props.target, props.appMode, items)}</div>
               <div style={styles.compactMeta}>
                 {isHouseMembersTarget
                   ? getCompactParty(s)
@@ -510,7 +511,7 @@ export default function SenatorList(props: Props) {
                 ) : (
                   <>
                     <div style={styles.nameRow}>
-                      <div style={styles.name}>{s.name}</div>
+                      <div style={styles.name}>{formatDisplayName(s, props.target, props.appMode, items)}</div>
                       <div style={styles.badges}>
                         {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
                         {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
@@ -570,7 +571,7 @@ export default function SenatorList(props: Props) {
         </div>
       ) : null}
 
-      <HelpModal open={selectedPerson !== null} onClose={() => setSelectedPerson(null)} title={selectedPerson?.name ?? "詳細"}>
+      <HelpModal open={selectedPerson !== null} onClose={() => setSelectedPerson(null)} title={selectedPerson ? formatDisplayName(selectedPerson, props.target, props.appMode, items) : "詳細"}>
         {selectedPerson ? (
           <div style={styles.detailWrap}>
             <div style={styles.detailImageBox}>
@@ -582,7 +583,7 @@ export default function SenatorList(props: Props) {
                 fallbackText="画像なし"
               />
             </div>
-            <div style={styles.detailName}>{selectedPerson.name}</div>
+            <div style={styles.detailName}>{formatDisplayName(selectedPerson, props.target, props.appMode, items)}</div>
             {selectedPerson.kana ? <div style={styles.detailKana}>{selectedPerson.kana}</div> : null}
             <div style={styles.detailGrid}>
               <div style={styles.detailLine}>役職・所属：{selectedPerson.group ?? selectedPerson.party ?? "不明"}</div>
