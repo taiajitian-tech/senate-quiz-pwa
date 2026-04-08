@@ -166,119 +166,59 @@ export function formatNameWithKana(person: Pick<Person, "name" | "kana">): strin
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
 }
 
-
-function normalizePersonNameText(value: string): string {
-  return value.replace(/[\s\u3000]+/gu, "").trim();
+function normalizeDisplayNameBase(name: string): string {
+  return name.replace(/[\s\u3000]+/gu, " ").trim();
 }
 
-const FAMILY_NAME_MAP: Record<string, string> = {
-  今枝宗一郎: "今枝",
-  田所嘉徳: "田所",
-  瀬戸隆一: "瀬戸",
-  岩田和親: "岩田",
-  鈴木隼人: "鈴木",
-  津島淳: "津島",
-  堀内詔子: "堀内",
-  三谷英弘: "三谷",
-  国光あやの: "国光",
-  中谷真一: "中谷",
-  小林茂樹: "小林",
-  中村裕之: "中村",
-  長坂康正: "長坂",
-  仁木博文: "仁木",
-  根本幸典: "根本",
-  井野俊郎: "井野",
-  山田賢司: "山田",
-  佐々木紀: "佐々木",
-  青山繁晴: "青山",
-  辻清人: "辻",
-  宮崎政久: "宮崎",
-};
-
-function getFamilyName(name: string): string {
-  const trimmed = name.trim();
-  if (!trimmed) return "";
-
-  const compact = normalizePersonNameText(trimmed);
-  const mapped = FAMILY_NAME_MAP[compact];
-  if (mapped) return mapped;
-
-  const parts = trimmed.split(/[\s\u3000]+/u).filter(Boolean);
+function getSurname(name: string): string {
+  const normalized = normalizeDisplayNameBase(name);
+  if (!normalized) return "";
+  const parts = normalized.split(" ").filter(Boolean);
   if (parts.length >= 2) return parts[0];
-
-  return compact;
+  return normalized;
 }
 
-function getFamilyNameDuplicateSet(items: Person[]): Set<string> {
-  const counts = new Map<string, number>();
-  for (const item of items) {
-    const familyName = getFamilyName(item.name);
-    if (!familyName) continue;
-    counts.set(familyName, (counts.get(familyName) ?? 0) + 1);
-  }
-  return new Set(Array.from(counts.entries()).filter(([, count]) => count > 1).map(([familyName]) => familyName));
+function getRoleTail(role: string): string {
+  if (role.endsWith("特別委員長")) return "特別委員長";
+  if (role.endsWith("調査会長")) return "調査会長";
+  if (role.endsWith("審査会長") || role.endsWith("審査会会長")) return "審査会長";
+  if (role.endsWith("副大臣")) return "副大臣";
+  return "";
 }
 
-function getRoleText(person: Pick<Person, "subRole" | "role" | "group">): string {
-  return person.subRole?.trim() || person.role?.trim() || person.group?.trim() || "";
+function shouldUseFullNameForDuplicate(items: Person[], person: Person): boolean {
+  const surname = getSurname(person.name);
+  if (!surname) return true;
+  return items.filter((item) => getSurname(item.name) === surname).length > 1;
 }
 
-function getEntranceCardName(person: Pick<Person, "name" | "kana" | "subRole" | "role" | "group">, target: Target, items: Person[]): string | null {
-  const roleText = getRoleText(person);
-  if (!roleText) return null;
+export function formatDisplayName(person: Person, target: Target, appMode: AppMode, items: Person[] = []): string {
+  if (appMode !== "entrance") return person.name;
 
   if (target === "councilorsOfficersList") {
-    if (roleText.includes("懲罰委員長")) {
-      return normalizePersonNameText(person.name);
+    const role = (person.subRole || person.role || "").trim();
+
+    if (role === "懲罰委員長") return person.name;
+
+    if (role.endsWith("委員長")) {
+      return role;
     }
 
-    if (roleText.includes("特別委員長")) {
-      const familyName = getFamilyName(person.name);
-      const duplicateFamilies = getFamilyNameDuplicateSet(items);
-      const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
-      return `${labelName}特別委員長`;
+    const roleTail = getRoleTail(role);
+    if (roleTail) {
+      const baseName = shouldUseFullNameForDuplicate(items, person) ? person.name : getSurname(person.name);
+      return `${baseName}${roleTail}`;
     }
 
-    if (roleText.includes("調査会長")) {
-      const familyName = getFamilyName(person.name);
-      const duplicateFamilies = getFamilyNameDuplicateSet(items);
-      const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
-      return `${labelName}調査会長`;
-    }
-
-    if (roleText.includes("審査会長")) {
-      const familyName = getFamilyName(person.name);
-      const duplicateFamilies = getFamilyNameDuplicateSet(items);
-      const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
-      return `${labelName}審査会長`;
-    }
-
-    if (roleText.endsWith("委員長")) {
-      return roleText;
-    }
+    return person.name;
   }
 
   if (target === "viceMinisters") {
-    const familyName = getFamilyName(person.name);
-    const duplicateFamilies = getFamilyNameDuplicateSet(items);
-    const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
-    return `${labelName}副大臣`;
+    const baseName = shouldUseFullNameForDuplicate(items, person) ? person.name : getSurname(person.name);
+    return `${baseName}副大臣`;
   }
 
-  return null;
-}
-
-export function formatCardName(person: Pick<Person, "name" | "kana" | "subRole" | "role" | "group">, options?: { mode?: AppMode; target?: Target; items?: Person[] }): string {
-  const mode = options?.mode ?? "basic";
-  const target = options?.target;
-  const items = options?.items ?? [];
-
-  if (mode === "entrance" && target && items.length > 0) {
-    const entranceName = getEntranceCardName(person, target, items);
-    if (entranceName) return entranceName;
-  }
-
-  return person.kana ? `${person.name}（${person.kana}）` : person.name;
+  return person.name;
 }
 
 
