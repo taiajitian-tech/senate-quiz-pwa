@@ -199,7 +199,7 @@ const DISPLAY_SURNAME_OVERRIDES: Record<string, string> = {
 };
 
 function normalizeDisplayNameText(value: string | undefined): string {
-  return (value ?? "").replace(/[\s　]+/gu, " ").trim();
+  return (value ?? "").replace(/[\s\u3000]+/gu, " ").trim();
 }
 
 function getDisplaySurname(name: string): string | null {
