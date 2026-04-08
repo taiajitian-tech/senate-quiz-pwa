@@ -167,113 +167,120 @@ export function formatNameWithKana(person: Pick<Person, "name" | "kana">): strin
 }
 
 
-const DISPLAY_SURNAME_OVERRIDES: Record<string, string> = {
-  "今枝宗一郎": "今枝",
-  "田所嘉徳": "田所",
-  "瀬戸隆一": "瀬戸",
-  "岩田和親": "岩田",
-  "鈴木隼人": "鈴木",
-  "津島淳": "津島",
-  "堀内詔子": "堀内",
-  "高橋克法": "高橋",
-  "高橋 克法": "高橋",
-  "三谷英弘": "三谷",
-  "国光あやの": "国光",
-  "堀井巌": "堀井",
-  "中谷真一": "中谷",
-  "舞立昇治": "舞立",
-  "小林茂樹": "小林",
-  "中村裕之": "中村",
-  "長坂康正": "長坂",
-  "仁木博文": "仁木",
-  "根本幸典": "根本",
-  "山下雄平": "山下",
-  "山下 雄平": "山下",
-  "井野俊郎": "井野",
-  "山田賢司": "山田",
-  "佐々木紀": "佐々木",
-  "酒井庸行": "酒井",
-  "青山繁晴": "青山",
-  "辻清人": "辻",
-  "宮崎政久": "宮崎",
+function normalizePersonNameText(value: string): string {
+  return value.replace(/[\s\u3000]+/gu, "").trim();
+}
+
+const FAMILY_NAME_MAP: Record<string, string> = {
+  今枝宗一郎: "今枝",
+  田所嘉徳: "田所",
+  瀬戸隆一: "瀬戸",
+  岩田和親: "岩田",
+  鈴木隼人: "鈴木",
+  津島淳: "津島",
+  堀内詔子: "堀内",
+  三谷英弘: "三谷",
+  国光あやの: "国光",
+  中谷真一: "中谷",
+  小林茂樹: "小林",
+  中村裕之: "中村",
+  長坂康正: "長坂",
+  仁木博文: "仁木",
+  根本幸典: "根本",
+  井野俊郎: "井野",
+  山田賢司: "山田",
+  佐々木紀: "佐々木",
+  青山繁晴: "青山",
+  辻清人: "辻",
+  宮崎政久: "宮崎",
 };
 
-function normalizeDisplayNameText(value: string | undefined): string {
-  return (value ?? "").replace(/[\s\u3000]+/gu, " ").trim();
-}
+function getFamilyName(name: string): string {
+  const trimmed = name.trim();
+  if (!trimmed) return "";
 
-function getDisplaySurname(name: string): string | null {
-  const normalized = normalizeDisplayNameText(name);
-  if (!normalized) return null;
-  const override = DISPLAY_SURNAME_OVERRIDES[normalized.replace(/ /gu, "")] ?? DISPLAY_SURNAME_OVERRIDES[normalized];
-  if (override) return override;
-  const parts = normalized.split(" ").filter(Boolean);
+  const compact = normalizePersonNameText(trimmed);
+  const mapped = FAMILY_NAME_MAP[compact];
+  if (mapped) return mapped;
+
+  const parts = trimmed.split(/[\s\u3000]+/u).filter(Boolean);
   if (parts.length >= 2) return parts[0];
-  return null;
+
+  return compact;
 }
 
-function buildSurnameCountMap(items: Person[]): Map<string, number> {
+function getFamilyNameDuplicateSet(items: Person[]): Set<string> {
   const counts = new Map<string, number>();
   for (const item of items) {
-    const surname = getDisplaySurname(item.name);
-    if (!surname) continue;
-    counts.set(surname, (counts.get(surname) ?? 0) + 1);
+    const familyName = getFamilyName(item.name);
+    if (!familyName) continue;
+    counts.set(familyName, (counts.get(familyName) ?? 0) + 1);
   }
-  return counts;
+  return new Set(Array.from(counts.entries()).filter(([, count]) => count > 1).map(([familyName]) => familyName));
 }
 
-function getCouncilorsOfficerDisplayName(person: Person, surnameCounts: Map<string, number>): string | null {
-  const subRole = normalizeDisplayNameText(person.subRole || person.group || person.role);
-  if (!subRole) return null;
-
-  if (subRole.endsWith("委員長") && !subRole.includes("特別")) {
-    return subRole;
-  }
-
-  const surname = getDisplaySurname(person.name);
-  const useFullName = !surname || (surnameCounts.get(surname) ?? 0) > 1;
-  const baseName = useFullName ? normalizeDisplayNameText(person.name).replace(/ /gu, "") : surname;
-
-  if (subRole.endsWith("特別委員長")) return `${baseName}特別委員長`;
-  if (subRole.endsWith("調査会長")) return `${baseName}調査会長`;
-  if (subRole.endsWith("審査会会長")) return `${baseName}審査会長`;
-  if (subRole.endsWith("会長")) return `${baseName}${subRole.replace(/^.*?(会長)$/u, "$1")}`;
-  return null;
+function getRoleText(person: Pick<Person, "subRole" | "role" | "group">): string {
+  return person.subRole?.trim() || person.role?.trim() || person.group?.trim() || "";
 }
 
-function getViceMinisterDisplayName(person: Person, surnameCounts: Map<string, number>): string | null {
-  const surname = getDisplaySurname(person.name);
-  if (!surname) return null;
-  const useFullName = (surnameCounts.get(surname) ?? 0) > 1;
-  const baseName = useFullName ? normalizeDisplayNameText(person.name).replace(/ /gu, "") : surname;
-  return `${baseName}副大臣`;
-}
-
-export function getPersonDisplayName(person: Pick<Person, "name" | "group" | "role" | "subRole">, target: Target, appMode: AppMode, allItems: Person[] = []): string {
-  if (appMode !== "entrance") return person.name;
-
-  const surnameCounts = buildSurnameCountMap(allItems);
+function getEntranceCardName(person: Pick<Person, "name" | "kana" | "subRole" | "role" | "group">, target: Target, items: Person[]): string | null {
+  const roleText = getRoleText(person);
+  if (!roleText) return null;
 
   if (target === "councilorsOfficersList") {
-    return getCouncilorsOfficerDisplayName(person as Person, surnameCounts) ?? person.name;
+    if (roleText.includes("懲罰委員長")) {
+      return normalizePersonNameText(person.name);
+    }
+
+    if (roleText.includes("特別委員長")) {
+      const familyName = getFamilyName(person.name);
+      const duplicateFamilies = getFamilyNameDuplicateSet(items);
+      const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
+      return `${labelName}特別委員長`;
+    }
+
+    if (roleText.includes("調査会長")) {
+      const familyName = getFamilyName(person.name);
+      const duplicateFamilies = getFamilyNameDuplicateSet(items);
+      const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
+      return `${labelName}調査会長`;
+    }
+
+    if (roleText.includes("審査会長")) {
+      const familyName = getFamilyName(person.name);
+      const duplicateFamilies = getFamilyNameDuplicateSet(items);
+      const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
+      return `${labelName}審査会長`;
+    }
+
+    if (roleText.endsWith("委員長")) {
+      return roleText;
+    }
   }
 
   if (target === "viceMinisters") {
-    return getViceMinisterDisplayName(person as Person, surnameCounts) ?? person.name;
+    const familyName = getFamilyName(person.name);
+    const duplicateFamilies = getFamilyNameDuplicateSet(items);
+    const labelName = duplicateFamilies.has(familyName) ? normalizePersonNameText(person.name) : familyName;
+    return `${labelName}副大臣`;
   }
 
-  return person.name;
+  return null;
 }
 
-export function formatDisplayName(person: Pick<Person, "name" | "group" | "role" | "subRole">, target: Target, appMode: AppMode, allItems: Person[] = []): string {
-  return getPersonDisplayName(person, target, appMode, allItems);
-}
+export function formatCardName(person: Pick<Person, "name" | "kana" | "subRole" | "role" | "group">, options?: { mode?: AppMode; target?: Target; items?: Person[] }): string {
+  const mode = options?.mode ?? "basic";
+  const target = options?.target;
+  const items = options?.items ?? [];
 
-export function formatDisplayNameWithKana(person: Pick<Person, "name" | "kana" | "group" | "role" | "subRole">, target: Target, appMode: AppMode, allItems: Person[] = []): string {
-  const displayName = getPersonDisplayName(person, target, appMode, allItems);
-  if (displayName !== person.name) return displayName;
+  if (mode === "entrance" && target && items.length > 0) {
+    const entranceName = getEntranceCardName(person, target, items);
+    if (entranceName) return entranceName;
+  }
+
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
 }
+
 
 export type PersonNameKanaOverride = {
   name?: string;
