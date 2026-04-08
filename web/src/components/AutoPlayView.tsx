@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatDisplayName, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatDisplayName, formatNameWithKana, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -188,7 +188,7 @@ export default function AutoPlayView(props: Props) {
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
                 <div style={styles.name}>{formatDisplayName(current, props.target, props.appMode, items)}</div>
-                <div style={styles.group}>{props.appMode === "entrance" ? current.name : (current.group ?? "")}</div>
+                <div style={styles.group}>{formatNameWithKana(current)}</div>
               </div>
             )}
           </>
