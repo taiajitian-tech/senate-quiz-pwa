@@ -4,7 +4,7 @@ import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressIt
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatDisplayName, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatDisplayName, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -148,14 +148,6 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
   }
 
   return { due, leech, mastered };
-}
-
-
-function formatKanaAndParty(person: Person) {
-  const kana = (person.kana ?? "").trim();
-  const party = (person.party ?? person.group ?? "").trim();
-  if (kana && party) return `${kana} / ${party}`;
-  return kana || party || "";
 }
 
 export default function Learn(props: Props) {
@@ -358,7 +350,7 @@ export default function Learn(props: Props) {
             <div style={compactLayout ? styles.quizLayoutCompact : styles.quizLayout}>
               <div style={styles.infoZone}>
                 <div style={styles.answerName}>{formatDisplayName(current, props.target, props.appMode, items)}</div>
-                <div style={styles.answerGroup}>{formatKanaAndParty(current)}</div>
+                <div style={styles.answerGroup}>{formatLearningSubline(current, props.target, props.appMode)}</div>
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
                   <div style={styles.promptBox}>
@@ -402,7 +394,7 @@ export default function Learn(props: Props) {
                 ) : (
                   <>
                     <div style={styles.answerName}>{formatDisplayName(current, props.target, props.appMode, items)}</div>
-                    <div style={styles.answerGroup}>{formatKanaAndParty(current)}</div>
+                    <div style={styles.answerGroup}>{formatLearningSubline(current, props.target, props.appMode)}</div>
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                   </>
                 )}

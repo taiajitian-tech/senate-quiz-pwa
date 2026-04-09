@@ -215,6 +215,29 @@ export function formatDisplayName(person: Person, target: Target, mode: AppMode,
   return person.name;
 }
 
+
+function getRoleDetailForLearning(person: Person): string {
+  const source = (person.subRole || person.group || person.role || "").trim();
+  return source.replace(/\s*\/\s*(参議院|衆議院)$/u, "").trim();
+}
+
+export function formatLearningSubline(person: Person, target: Target, mode: AppMode): string {
+  const kana = person.kana ? normalizeCompact(person.kana) : "";
+  const partyOrGroup = person.party || person.group || "";
+
+  if (mode === "entrance" && ["ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"].includes(target)) {
+    const roleDetail = getRoleDetailForLearning(person);
+    if (kana && roleDetail) return `${kana} / ${roleDetail}`;
+    if (roleDetail) return roleDetail;
+    if (kana && partyOrGroup) return `${kana} / ${partyOrGroup}`;
+    if (kana) return kana;
+    return partyOrGroup;
+  }
+
+  if (kana && partyOrGroup) return `${kana} / ${partyOrGroup}`;
+  if (kana) return kana;
+  return partyOrGroup;
+}
 export function formatNameWithKana(person: Pick<Person, "name" | "kana">): string {
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
 }

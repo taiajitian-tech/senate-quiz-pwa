@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatDisplayName, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatDisplayName, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -55,14 +55,6 @@ function writeSavedState(mode: AppMode, target: Target, state: SavedState) {
   } catch {
     // ignore storage errors
   }
-}
-
-
-function formatKanaAndParty(person: Person) {
-  const kana = (person.kana ?? "").trim();
-  const party = (person.party ?? person.group ?? "").trim();
-  if (kana && party) return `${kana} / ${party}`;
-  return kana || party || "";
 }
 
 export default function AutoPlayView(props: Props) {
@@ -196,7 +188,7 @@ export default function AutoPlayView(props: Props) {
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
                 <div style={styles.name}>{formatDisplayName(current, props.target, props.appMode, items)}</div>
-                <div style={styles.group}>{formatKanaAndParty(current)}</div>
+                <div style={styles.group}>{formatLearningSubline(current, props.target, props.appMode)}</div>
               </div>
             )}
           </>
