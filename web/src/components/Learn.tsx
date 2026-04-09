@@ -34,6 +34,20 @@ function normalizePersonName(value: string): string {
 const SESSION_SIZE = 30;
 const DAY = 24 * 60 * 60 * 1000;
 
+function getSubline(person: Person): string {
+  return person.role || person.subRole || person.party || person.group || "";
+}
+
+function renderNameKana(person: Person) {
+  return (
+    <>
+      <span>{person.name}</span>
+      {person.kana ? <span style={{ fontSize: "0.72em", fontWeight: 800, marginLeft: 6 }}>{person.kana}</span> : null}
+    </>
+  );
+}
+
+
 function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now: number) {
   return [...items].sort((a, b) => {
     const score = getForgettingScore(progress[b.id], now) - getForgettingScore(progress[a.id], now);
@@ -349,8 +363,8 @@ export default function Learn(props: Props) {
           ) : props.mode === "reverse" ? (
             <div style={compactLayout ? styles.quizLayoutCompact : styles.quizLayout}>
               <div style={styles.infoZone}>
-                <div style={styles.answerNameRow}><span style={styles.answerName}>{current.name}</span>{current.kana ? <span style={styles.answerKana}>{current.kana}</span> : null}</div>
-                <div style={styles.answerGroup}>{current.role ?? ""}</div>
+                <div style={styles.answerName}>{renderNameKana(current)}</div>
+                {getSubline(current) ? <div style={styles.answerGroup}>{getSubline(current)}</div> : null}
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
                   <div style={styles.promptBox}>
@@ -393,8 +407,8 @@ export default function Learn(props: Props) {
                   </div>
                 ) : (
                   <>
-                    <div style={styles.answerNameRow}><span style={styles.answerName}>{current.name}</span>{current.kana ? <span style={styles.answerKana}>{current.kana}</span> : null}</div>
-                    <div style={styles.answerGroup}>{current.role ?? ""}</div>
+                    <div style={styles.answerName}>{renderNameKana(current)}</div>
+                    {getSubline(current) ? <div style={styles.answerGroup}>{getSubline(current)}</div> : null}
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                   </>
                 )}

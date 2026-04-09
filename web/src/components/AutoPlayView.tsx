@@ -22,6 +22,20 @@ type SavedState = {
 
 const storageKey = (mode: AppMode, target: Target) => `autoplay-state:${mode}:${target}`;
 
+function getSubline(person: Person): string {
+  return person.role || person.subRole || person.party || person.group || "";
+}
+
+function renderNameKana(person: Person) {
+  return (
+    <>
+      <span>{person.name}</span>
+      {person.kana ? <span style={{ fontSize: "0.72em", fontWeight: 800, marginLeft: 6 }}>{person.kana}</span> : null}
+    </>
+  );
+}
+
+
 function shuffleIndices(length: number) {
   const arr = Array.from({ length }, (_, i) => i);
   for (let i = arr.length - 1; i > 0; i -= 1) {
@@ -187,8 +201,8 @@ export default function AutoPlayView(props: Props) {
             <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
-                <div style={styles.nameRow}><span style={styles.name}>{current.name}</span>{current.kana ? <span style={styles.kana}>{current.kana}</span> : null}</div>
-                <div style={styles.group}>{current.role ?? ""}</div>
+                <div style={styles.name}>{renderNameKana(current)}</div>
+                {getSubline(current) ? <div style={styles.group}>{getSubline(current)}</div> : null}
               </div>
             )}
           </>
@@ -223,8 +237,6 @@ const styles: Record<string, React.CSSProperties> = {
   noImg: { width: "100%", height: "100%", maxWidth: "min(420px, 88vw)", maxHeight: "min(44dvh, 380px)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
   faceOnly: { fontSize: "clamp(15px, 4.5vw, 18px)", fontWeight: 700, textAlign: "center", lineHeight: 1.4 },
   answerBox: { display: "flex", flexDirection: "column", gap: 4, textAlign: "center", flex: "0 0 auto" },
-  nameRow: { display: "flex", alignItems: "baseline", justifyContent: "center", gap: 8, flexWrap: "wrap" },
   name: { fontSize: "clamp(22px, 6vw, 24px)", fontWeight: 800, lineHeight: 1.2 },
-  kana: { fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 800, lineHeight: 1.2 },
   group: { fontSize: 13, color: "#555", lineHeight: 1.4 },
 };
