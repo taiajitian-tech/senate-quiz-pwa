@@ -167,12 +167,67 @@ function splitJapaneseName(name: string): string[] {
   return name.trim().split(/[\s\u3000]+/u).filter(Boolean);
 }
 
+const FAMILY_NAME_OVERRIDES: Record<string, string> = {
+  // Vice ministers
+  "今枝宗一郎": "今枝",
+  "田所嘉徳": "田所",
+  "瀬戸隆一": "瀬戸",
+  "岩田和親": "岩田",
+  "鈴木隼人": "鈴木",
+  "津島淳": "津島",
+  "堀内詔子": "堀内",
+  "三谷英弘": "三谷",
+  "国光あやの": "国光",
+  "中谷真一": "中谷",
+  "小林茂樹": "小林",
+  "中村裕之": "中村",
+  "長坂康正": "長坂",
+  "仁木博文": "仁木",
+  "根本幸典": "根本",
+  "井野俊郎": "井野",
+  "山田賢司": "山田",
+  "佐々木紀": "佐々木",
+  "青山繁晴": "青山",
+  "辻清人": "辻",
+  "宮崎政久": "宮崎",
+  // Councilors officers
+  "関口昌一": "関口",
+  "下野六太": "下野",
+  // House officers
+  "西村明宏": "西村",
+  "島尻安伊子": "島尻",
+  "國場幸之助": "國場",
+  "宮路拓馬": "宮路",
+  "山口俊一": "山口",
+  "森英介": "森",
+  "工藤彰三": "工藤",
+  "古屋圭司": "古屋",
+  "大串正樹": "大串",
+  "冨樫博之": "冨樫",
+  "武村展英": "武村",
+  "美延映夫": "美延",
+  "田中和徳": "田中",
+  "古川康": "古川",
+  "丹羽秀樹": "丹羽",
+  "山下貴司": "山下",
+  "藤井比早之": "藤井",
+  "石井啓一": "石井",
+  "斎藤洋明": "斎藤",
+  "井上英孝": "井上",
+  "坂本哲志": "坂本",
+};
+
 function getFamilyName(name: string): string {
   const parts = splitJapaneseName(name);
   if (parts.length >= 2) return parts[0];
-  const compact = name.replace(/[\s\u3000]+/gu, "").trim();
+
+  const compact = normalizeCompact(name);
   if (!compact) return "";
-  return compact.slice(0, Math.min(2, compact.length));
+
+  const overridden = FAMILY_NAME_OVERRIDES[compact];
+  if (overridden) return overridden;
+
+  return "";
 }
 
 function buildFamilyNameCount(items: Person[]): Map<string, number> {
