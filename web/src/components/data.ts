@@ -212,6 +212,10 @@ export function formatDisplayName(person: Person, target: Target, mode: AppMode,
     return `${displayBaseName}副大臣`;
   }
 
+  if (target === "parliamentarySecretaries") {
+    return `${displayBaseName}大臣政務官`;
+  }
+
   return person.name;
 }
 
@@ -227,11 +231,12 @@ function getPartyOrGroupText(person: Person): string {
 function getRoleDetailText(person: Person, target: Target): string {
   switch (target) {
     case "ministers":
+      return stripChamberSuffix(person.role || person.subRole || person.group || person.party || "");
     case "viceMinisters":
     case "parliamentarySecretaries":
     case "councilorsOfficersList":
     case "houseOfficersList":
-      return stripChamberSuffix(person.role || person.subRole || person.party || person.group || "");
+      return stripChamberSuffix(person.subRole || person.role || person.group || person.party || "");
     default:
       return stripChamberSuffix(person.role || person.subRole || person.party || person.group || "");
   }
@@ -258,6 +263,32 @@ export function getLearningDetailText(person: Person, target: Target, mode: AppM
   }
 
   return getPartyOrGroupText(person);
+}
+
+export function getLearningAnswerLines(person: Person, target: Target, mode: AppMode): string[] {
+  const detail = getLearningDetailText(person, target, mode);
+  const partyOrGroup = getPartyOrGroupText(person);
+
+  if (mode !== "entrance") {
+    return [formatLearningSubline(person, target, mode)].filter(Boolean);
+  }
+
+  switch (target) {
+    case "senators":
+    case "representatives":
+      return [partyOrGroup].filter(Boolean);
+    case "ministers":
+      return [detail].filter(Boolean);
+    case "viceMinisters":
+    case "parliamentarySecretaries":
+      return [formatNameWithKana(person), detail].filter(Boolean);
+    case "councilorsOfficersList":
+    case "houseOfficersList":
+      if (detail === "懲罰委員長") return [detail];
+      return [formatNameWithKana(person), detail].filter(Boolean);
+    default:
+      return [detail || partyOrGroup].filter(Boolean);
+  }
 }
 
 export function formatNameWithKana(person: Pick<Person, "name" | "kana">): string {
