@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatLearningHeading, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatLearningHeading, formatLearningSubline, formatNameWithKana, getLearningDetailText, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -164,8 +164,24 @@ export default function AutoPlayView(props: Props) {
   const renderAnswerHeading = (person: Person) => (
     <div style={styles.nameLine}>
       <span style={styles.name}>{formatLearningHeading(person, props.target, props.appMode, items)}</span>
+      {person.kana ? <span style={styles.kana}>{person.kana}</span> : null}
     </div>
   );
+
+  const renderAnswerSubline = (person: Person) => {
+    const detail = getLearningDetailText(person, props.target, props.appMode);
+
+    if (props.appMode === "entrance") {
+      return (
+        <div style={styles.group}>
+          <div>{formatNameWithKana(person)}</div>
+          {detail ? <div>{detail}</div> : null}
+        </div>
+      );
+    }
+
+    return <div style={styles.group}>{formatLearningSubline(person, props.target, props.appMode)}</div>;
+  };
 
   return (
     <div style={styles.wrap}>
@@ -195,7 +211,7 @@ export default function AutoPlayView(props: Props) {
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
                 {renderAnswerHeading(current)}
-                <div style={styles.group}>{formatLearningSubline(current, props.target, props.appMode)}</div>
+                {renderAnswerSubline(current)}
               </div>
             )}
           </>
@@ -230,6 +246,8 @@ const styles: Record<string, React.CSSProperties> = {
   noImg: { width: "100%", height: "100%", maxWidth: "min(420px, 88vw)", maxHeight: "min(44dvh, 380px)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
   faceOnly: { fontSize: "clamp(15px, 4.5vw, 18px)", fontWeight: 700, textAlign: "center", lineHeight: 1.4 },
   answerBox: { display: "flex", flexDirection: "column", gap: 4, textAlign: "center", flex: "0 0 auto" },
+  nameLine: { display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "baseline", gap: 6 },
   name: { fontSize: "clamp(22px, 6vw, 24px)", fontWeight: 800, lineHeight: 1.2 },
-  group: { fontSize: 13, color: "#555", lineHeight: 1.4 },
+  kana: { fontSize: "clamp(13px, 3.6vw, 16px)", fontWeight: 700, lineHeight: 1.2, color: "#374151" },
+  group: { fontSize: 13, color: "#555", lineHeight: 1.5, display: "grid", gap: 2 },
 };

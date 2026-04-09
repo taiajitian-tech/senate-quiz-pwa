@@ -4,7 +4,7 @@ import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressIt
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatLearningHeading, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatLearningHeading, formatLearningSubline, formatNameWithKana, getLearningDetailText, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -309,8 +309,24 @@ export default function Learn(props: Props) {
   const renderAnswerHeading = (person: Person) => (
     <div style={styles.answerNameLine}>
       <span style={styles.answerName}>{formatLearningHeading(person, props.target, props.appMode, items)}</span>
+      {person.kana ? <span style={styles.answerKana}>{person.kana}</span> : null}
     </div>
   );
+
+  const renderAnswerSubline = (person: Person) => {
+    const detail = getLearningDetailText(person, props.target, props.appMode);
+
+    if (props.appMode === "entrance") {
+      return (
+        <div style={styles.answerGroup}>
+          <div>{formatNameWithKana(person)}</div>
+          {detail ? <div>{detail}</div> : null}
+        </div>
+      );
+    }
+
+    return <div style={styles.answerGroup}>{formatLearningSubline(person, props.target, props.appMode)}</div>;
+  };
 
   return (
     <div style={styles.wrap}>
@@ -357,7 +373,7 @@ export default function Learn(props: Props) {
             <div style={compactLayout ? styles.quizLayoutCompact : styles.quizLayout}>
               <div style={styles.infoZone}>
                 {renderAnswerHeading(current)}
-                <div style={styles.answerGroup}>{formatLearningSubline(current, props.target, props.appMode)}</div>
+                {renderAnswerSubline(current)}
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
                   <div style={styles.promptBox}>
@@ -401,7 +417,7 @@ export default function Learn(props: Props) {
                 ) : (
                   <>
                     {renderAnswerHeading(current)}
-                    <div style={styles.answerGroup}>{formatLearningSubline(current, props.target, props.appMode)}</div>
+                    {renderAnswerSubline(current)}
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                   </>
                 )}
@@ -464,8 +480,10 @@ const styles: Record<string, React.CSSProperties> = {
   infoZone: { display: "flex", flexDirection: "column", gap: 6, minHeight: 0 },
   promptBox: { display: "flex", flexDirection: "column", gap: 8 },
   msg: { fontSize: 13, lineHeight: 1.5, color: "#333" },
+  answerNameLine: { display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: 6 },
   answerName: { fontSize: "clamp(22px, 6.3vw, 28px)", fontWeight: 800, lineHeight: 1.2, wordBreak: "keep-all", overflowWrap: "anywhere" },
-  answerGroup: { fontSize: 13, color: "#555", lineHeight: 1.4 },
+  answerKana: { fontSize: "clamp(13px, 3.6vw, 16px)", fontWeight: 700, lineHeight: 1.2, color: "#374151" },
+  answerGroup: { fontSize: 13, color: "#555", lineHeight: 1.5, display: "grid", gap: 2 },
   guessBadge: { alignSelf: "flex-start", padding: "3px 7px", borderRadius: 999, background: "#fff3cd", color: "#7a5d00", fontSize: 11, fontWeight: 700 },
   actionZone: { display: "flex", flexDirection: "column", justifyContent: "flex-end" },
   actionSpacer: { minHeight: 48 },
