@@ -216,28 +216,41 @@ export function formatDisplayName(person: Person, target: Target, mode: AppMode,
 }
 
 
-function getRoleDetailForLearning(person: Person): string {
-  const source = (person.subRole || person.group || person.role || "").trim();
-  return source.replace(/\s*\/\s*(参議院|衆議院)$/u, "").trim();
+function stripChamberSuffix(value: string): string {
+  return value.replace(/\s*\/\s*(参議院|衆議院)$/u, "").trim();
+}
+
+function getPartyOrGroupText(person: Person): string {
+  return stripChamberSuffix(person.party || person.group || "");
+}
+
+function getRoleDetailText(person: Person, target: Target): string {
+  switch (target) {
+    case "ministers":
+      return stripChamberSuffix(person.subRole || person.group || person.role || "");
+    case "viceMinisters":
+    case "parliamentarySecretaries":
+    case "councilorsOfficersList":
+    case "houseOfficersList":
+      return stripChamberSuffix(person.subRole || person.group || person.role || "");
+    default:
+      return stripChamberSuffix(person.subRole || person.role || "");
+  }
 }
 
 export function formatLearningSubline(person: Person, target: Target, mode: AppMode): string {
-  const kana = person.kana ? normalizeCompact(person.kana) : "";
-  const partyOrGroup = person.party || person.group || "";
-
-  if (mode === "entrance" && ["ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"].includes(target)) {
-    const roleDetail = getRoleDetailForLearning(person);
-    if (kana && roleDetail) return `${kana} / ${roleDetail}`;
-    if (roleDetail) return roleDetail;
-    if (kana && partyOrGroup) return `${kana} / ${partyOrGroup}`;
-    if (kana) return kana;
-    return partyOrGroup;
+  const roleDetail = getRoleDetailText(person, target);
+  if (mode === "entrance") {
+    return roleDetail || getPartyOrGroupText(person);
   }
 
-  if (kana && partyOrGroup) return `${kana} / ${partyOrGroup}`;
-  if (kana) return kana;
-  return partyOrGroup;
+  if (["ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"].includes(target)) {
+    return roleDetail || getPartyOrGroupText(person);
+  }
+
+  return getPartyOrGroupText(person);
 }
+
 export function formatNameWithKana(person: Pick<Person, "name" | "kana">): string {
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
 }

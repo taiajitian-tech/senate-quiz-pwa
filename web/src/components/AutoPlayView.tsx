@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatDisplayName, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -21,20 +21,6 @@ type SavedState = {
 };
 
 const storageKey = (mode: AppMode, target: Target) => `autoplay-state:${mode}:${target}`;
-
-function getSubline(person: Person): string {
-  return person.role || person.subRole || person.party || person.group || "";
-}
-
-function renderNameKana(person: Person) {
-  return (
-    <>
-      <span>{person.name}</span>
-      {person.kana ? <span style={{ fontSize: "0.72em", fontWeight: 800, marginLeft: 6 }}>{person.kana}</span> : null}
-    </>
-  );
-}
-
 
 function shuffleIndices(length: number) {
   const arr = Array.from({ length }, (_, i) => i);
@@ -174,6 +160,19 @@ export default function AutoPlayView(props: Props) {
     setPhase("face");
   }
 
+
+  const renderAnswerHeading = (person: Person) => {
+    if (props.appMode === "entrance") {
+      return <div style={styles.name}>{formatDisplayName(person, props.target, props.appMode, items)}</div>;
+    }
+    return (
+      <div style={styles.nameLine}>
+        <span style={styles.name}>{person.name}</span>
+        {person.kana ? <span style={styles.kanaInline}>{person.kana}</span> : null}
+      </div>
+    );
+  };
+
   return (
     <div style={styles.wrap}>
       <div style={styles.header}>
@@ -201,8 +200,8 @@ export default function AutoPlayView(props: Props) {
             <div style={styles.imgBox}><SafeImage src={current.images?.[0] ?? ""} alt={current.name} style={styles.img} fallbackStyle={styles.noImg} fallbackText="画像なし" /></div>
             {phase === "face" ? <div style={styles.faceOnly}>顔を見て、すぐ思い出してください</div> : (
               <div style={styles.answerBox}>
-                <div style={styles.name}>{renderNameKana(current)}</div>
-                {getSubline(current) ? <div style={styles.group}>{getSubline(current)}</div> : null}
+                {renderAnswerHeading(current)}
+                <div style={styles.group}>{formatLearningSubline(current, props.target, props.appMode)}</div>
               </div>
             )}
           </>

@@ -4,7 +4,7 @@ import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressIt
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatDisplayName, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -33,20 +33,6 @@ function normalizePersonName(value: string): string {
 
 const SESSION_SIZE = 30;
 const DAY = 24 * 60 * 60 * 1000;
-
-function getSubline(person: Person): string {
-  return person.role || person.subRole || person.party || person.group || "";
-}
-
-function renderNameKana(person: Person) {
-  return (
-    <>
-      <span>{person.name}</span>
-      {person.kana ? <span style={{ fontSize: "0.72em", fontWeight: 800, marginLeft: 6 }}>{person.kana}</span> : null}
-    </>
-  );
-}
-
 
 function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now: number) {
   return [...items].sort((a, b) => {
@@ -319,6 +305,19 @@ export default function Learn(props: Props) {
     ? `忘れそう ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`
     : `要復習 ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`;
 
+
+  const renderAnswerHeading = (person: Person) => {
+    if (props.appMode === "entrance") {
+      return <div style={styles.answerName}>{formatDisplayName(person, props.target, props.appMode, items)}</div>;
+    }
+    return (
+      <div style={styles.answerNameLine}>
+        <span style={styles.answerName}>{person.name}</span>
+        {person.kana ? <span style={styles.answerKanaInline}>{person.kana}</span> : null}
+      </div>
+    );
+  };
+
   return (
     <div style={styles.wrap}>
       <div style={styles.shell}>
@@ -363,8 +362,8 @@ export default function Learn(props: Props) {
           ) : props.mode === "reverse" ? (
             <div style={compactLayout ? styles.quizLayoutCompact : styles.quizLayout}>
               <div style={styles.infoZone}>
-                <div style={styles.answerName}>{renderNameKana(current)}</div>
-                {getSubline(current) ? <div style={styles.answerGroup}>{getSubline(current)}</div> : null}
+                {renderAnswerHeading(current)}
+                <div style={styles.answerGroup}>{formatLearningSubline(current, props.target, props.appMode)}</div>
                 {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                 {!revealed ? (
                   <div style={styles.promptBox}>
@@ -407,8 +406,8 @@ export default function Learn(props: Props) {
                   </div>
                 ) : (
                   <>
-                    <div style={styles.answerName}>{renderNameKana(current)}</div>
-                    {getSubline(current) ? <div style={styles.answerGroup}>{getSubline(current)}</div> : null}
+                    {renderAnswerHeading(current)}
+                    <div style={styles.answerGroup}>{formatLearningSubline(current, props.target, props.appMode)}</div>
                     {current.aiGuess ? <div style={styles.guessBadge}>推定画像</div> : null}
                   </>
                 )}
