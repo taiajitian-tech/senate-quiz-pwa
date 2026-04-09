@@ -185,14 +185,15 @@ function buildFamilyNameCount(items: Person[]): Map<string, number> {
   return counts;
 }
 
-function getOfficerTitle(person: Person, displayBaseName: string): string {
-  const source = stripChamberSuffix(person.subRole || person.group || person.role || "").trim();
+function getCouncilorsOfficerTitle(person: Person, displayBaseName: string): string {
+  const source = (person.subRole || person.group || person.role || "").replace(/\s*\/\s*参議院$/u, "").trim();
 
-  if (!source) return person.name;
   if (source.includes("懲罰委員長")) return person.name;
+  if (source.includes("特別委員長")) return `${displayBaseName}特別委員長`;
   if (source.includes("調査会長")) return `${displayBaseName}調査会長`;
   if (source.includes("審査会会長") || source.includes("審査会長")) return `${displayBaseName}審査会会長`;
-  return source;
+  if (source.endsWith("委員長")) return source;
+  return person.name;
 }
 
 export function formatDisplayName(person: Person, target: Target, mode: AppMode, items: Person[] = []): string {
@@ -203,8 +204,8 @@ export function formatDisplayName(person: Person, target: Target, mode: AppMode,
   const shouldUseFullName = !familyName || (familyNameCounts.get(familyName) ?? 0) > 1;
   const displayBaseName = shouldUseFullName ? person.name : familyName;
 
-  if (target === "councilorsOfficersList" || target === "houseOfficersList") {
-    return getOfficerTitle(person, displayBaseName);
+  if (target === "councilorsOfficersList") {
+    return getCouncilorsOfficerTitle(person, displayBaseName);
   }
 
   if (target === "viceMinisters") {
@@ -245,11 +246,6 @@ export function formatLearningHeading(person: Person, target: Target, mode: AppM
   return mode === "entrance" ? formatDisplayName(person, target, mode, items) : person.name;
 }
 
-export function shouldShowLearningHeadingKana(target: Target, mode: AppMode): boolean {
-  if (mode !== "entrance") return true;
-  return target === "senators" || target === "representatives";
-}
-
 export function formatLearningSubline(person: Person, target: Target, mode: AppMode): string {
   const detail = getLearningDetailText(person, target, mode);
   return detail || formatNameWithKana(person);
@@ -272,8 +268,6 @@ export function getLearningDetailText(person: Person, target: Target, mode: AppM
 export function getLearningAnswerLines(person: Person, target: Target, mode: AppMode): string[] {
   const detail = getLearningDetailText(person, target, mode);
   const partyOrGroup = getPartyOrGroupText(person);
-  const nameWithKana = formatNameWithKana(person);
-  const heading = formatLearningHeading(person, target, mode);
 
   if (mode !== "entrance") {
     return [formatLearningSubline(person, target, mode)].filter(Boolean);
@@ -284,14 +278,17 @@ export function getLearningAnswerLines(person: Person, target: Target, mode: App
     case "representatives":
       return [partyOrGroup].filter(Boolean);
     case "ministers":
-      return [nameWithKana, detail].filter(Boolean);
+      return [detail].filter(Boolean);
     case "viceMinisters":
     case "parliamentarySecretaries":
-      return [nameWithKana, detail].filter(Boolean);
+      return [formatNameWithKana(person), detail].filter(Boolean);
     case "councilorsOfficersList":
-    case "houseOfficersList":
+    case "houseOfficersList": {
       if (detail === "懲罰委員長") return [detail];
-      return heading === detail ? [nameWithKana].filter(Boolean) : [nameWithKana, detail].filter(Boolean);
+      const heading = formatDisplayName(person, target, mode);
+      if (detail === heading) return [formatNameWithKana(person)].filter(Boolean);
+      return [formatNameWithKana(person), detail].filter(Boolean);
+    }
     default:
       return [detail || partyOrGroup].filter(Boolean);
   }
@@ -299,6 +296,11 @@ export function getLearningAnswerLines(person: Person, target: Target, mode: App
 
 export function formatNameWithKana(person: Pick<Person, "name" | "kana">): string {
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
+}
+
+export function shouldShowLearningHeadingKana(target: Target, mode: AppMode): boolean {
+  if (mode !== "entrance") return true;
+  return !["ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"].includes(target);
 }
 
 
