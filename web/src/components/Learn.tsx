@@ -4,7 +4,7 @@ import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressIt
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatDisplayName, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -306,17 +306,12 @@ export default function Learn(props: Props) {
     : `要復習 ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`;
 
 
-  const renderAnswerHeading = (person: Person) => {
-    if (props.appMode === "entrance") {
-      return <div style={styles.answerName}>{formatDisplayName(person, props.target, props.appMode, items)}</div>;
-    }
-    return (
-      <div style={styles.answerNameLine}>
-        <span style={styles.answerName}>{person.name}</span>
-        {person.kana ? <span style={styles.answerKanaInline}>{person.kana}</span> : null}
-      </div>
-    );
-  };
+  const renderAnswerHeading = (person: Person) => (
+    <div style={styles.answerNameLine}>
+      <span style={styles.answerName}>{person.name}</span>
+      {person.kana ? <span style={styles.answerKanaInline}>{person.kana}</span> : null}
+    </div>
+  );
 
   return (
     <div style={styles.wrap}>

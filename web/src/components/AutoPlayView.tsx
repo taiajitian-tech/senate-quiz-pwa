@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatDisplayName, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -161,17 +161,12 @@ export default function AutoPlayView(props: Props) {
   }
 
 
-  const renderAnswerHeading = (person: Person) => {
-    if (props.appMode === "entrance") {
-      return <div style={styles.name}>{formatDisplayName(person, props.target, props.appMode, items)}</div>;
-    }
-    return (
-      <div style={styles.nameLine}>
-        <span style={styles.name}>{person.name}</span>
-        {person.kana ? <span style={styles.kanaInline}>{person.kana}</span> : null}
-      </div>
-    );
-  };
+  const renderAnswerHeading = (person: Person) => (
+    <div style={styles.nameLine}>
+      <span style={styles.name}>{person.name}</span>
+      {person.kana ? <span style={styles.kanaInline}>{person.kana}</span> : null}
+    </div>
+  );
 
   return (
     <div style={styles.wrap}>

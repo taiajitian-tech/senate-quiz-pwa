@@ -227,14 +227,13 @@ function getPartyOrGroupText(person: Person): string {
 function getRoleDetailText(person: Person, target: Target): string {
   switch (target) {
     case "ministers":
-      return stripChamberSuffix(person.subRole || person.group || person.role || "");
     case "viceMinisters":
     case "parliamentarySecretaries":
     case "councilorsOfficersList":
     case "houseOfficersList":
-      return stripChamberSuffix(person.subRole || person.group || person.role || "");
+      return stripChamberSuffix(person.role || person.subRole || person.party || person.group || "");
     default:
-      return stripChamberSuffix(person.subRole || person.role || "");
+      return stripChamberSuffix(person.role || person.subRole || person.party || person.group || "");
   }
 }
 
