@@ -4,7 +4,7 @@ import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressIt
 import { appendHistory, loadProgress, saveProgress } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -309,7 +309,7 @@ export default function Learn(props: Props) {
   const renderAnswerHeading = (person: Person) => (
     <div style={styles.answerNameLine}>
       <span style={styles.answerName}>{formatLearningHeading(person, props.target, props.appMode, items)}</span>
-      {person.kana ? <span style={styles.answerKana}>{person.kana}</span> : null}
+      {shouldShowLearningHeadingKana(props.target, props.appMode) && person.kana ? <span style={styles.answerKana}>{person.kana}</span> : null}
     </div>
   );
 
