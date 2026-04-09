@@ -213,7 +213,7 @@ export function formatDisplayName(person: Person, target: Target, mode: AppMode,
   }
 
   if (target === "parliamentarySecretaries") {
-    return `${displayBaseName}大臣政務官`;
+    return person.name;
   }
 
   return person.name;
@@ -240,6 +240,24 @@ function getRoleDetailText(person: Person, target: Target): string {
     default:
       return stripChamberSuffix(person.role || person.subRole || person.party || person.group || "");
   }
+}
+
+function isOfficerRoleRedundant(person: Person): boolean {
+  const source = stripChamberSuffix(person.subRole || person.group || person.role || "");
+  if (!source) return false;
+  if (source.includes("懲罰委員長")) return false;
+  if (source.includes("特別委員長")) return false;
+  if (source.includes("調査会長")) return false;
+  if (source.includes("審査会会長") || source.includes("審査会長")) return false;
+  return source.endsWith("委員長");
+}
+
+export function shouldShowLearningHeadingKana(person: Person, target: Target, mode: AppMode, items: Person[] = []): boolean {
+  if (mode !== "entrance") return true;
+  if (target === "councilorsOfficersList" || target === "houseOfficersList") return false;
+  if (target === "viceMinisters") return false;
+  const heading = formatLearningHeading(person, target, mode, items);
+  return heading === person.name;
 }
 
 export function formatLearningHeading(person: Person, target: Target, mode: AppMode, items: Person[] = []): string {
@@ -280,11 +298,13 @@ export function getLearningAnswerLines(person: Person, target: Target, mode: App
     case "ministers":
       return [detail].filter(Boolean);
     case "viceMinisters":
-    case "parliamentarySecretaries":
       return [formatNameWithKana(person), detail].filter(Boolean);
+    case "parliamentarySecretaries":
+      return [detail].filter(Boolean);
     case "councilorsOfficersList":
     case "houseOfficersList":
       if (detail === "懲罰委員長") return [detail];
+      if (isOfficerRoleRedundant(person)) return [formatNameWithKana(person)].filter(Boolean);
       return [formatNameWithKana(person), detail].filter(Boolean);
     default:
       return [detail || partyOrGroup].filter(Boolean);
