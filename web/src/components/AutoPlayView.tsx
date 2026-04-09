@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
-import { formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
+import { formatLearningHeading, formatLearningSubline, getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -163,8 +163,7 @@ export default function AutoPlayView(props: Props) {
 
   const renderAnswerHeading = (person: Person) => (
     <div style={styles.nameLine}>
-      <span style={styles.name}>{person.name}</span>
-      {person.kana ? <span style={styles.kanaInline}>{person.kana}</span> : null}
+      <span style={styles.name}>{formatLearningHeading(person, props.target, props.appMode, items)}</span>
     </div>
   );
 

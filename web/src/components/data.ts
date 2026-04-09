@@ -237,12 +237,16 @@ function getRoleDetailText(person: Person, target: Target): string {
   }
 }
 
+export function formatLearningHeading(person: Person, target: Target, mode: AppMode, items: Person[] = []): string {
+  return mode === "entrance" ? formatDisplayName(person, target, mode, items) : person.name;
+}
+
 export function formatLearningSubline(person: Person, target: Target, mode: AppMode): string {
-  const roleDetail = getRoleDetailText(person, target);
   if (mode === "entrance") {
-    return roleDetail || getPartyOrGroupText(person);
+    return formatNameWithKana(person);
   }
 
+  const roleDetail = getRoleDetailText(person, target);
   if (["ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"].includes(target)) {
     return roleDetail || getPartyOrGroupText(person);
   }
