@@ -243,6 +243,9 @@ function getRoleDetailText(person: Person, target: Target): string {
 }
 
 export function formatLearningHeading(person: Person, target: Target, mode: AppMode, items: Person[] = []): string {
+  if (mode === "entrance" && target === "parliamentarySecretaries") {
+    return person.name;
+  }
   return mode === "entrance" ? formatDisplayName(person, target, mode, items) : person.name;
 }
 
@@ -280,15 +283,13 @@ export function getLearningAnswerLines(person: Person, target: Target, mode: App
     case "ministers":
       return [detail].filter(Boolean);
     case "viceMinisters":
+      return [formatNameWithKana(person), detail].filter(Boolean);
     case "parliamentarySecretaries":
-      return [formatNameWithKana(person), detail].filter(Boolean);
+      return [detail].filter(Boolean);
     case "councilorsOfficersList":
-    case "houseOfficersList": {
+    case "houseOfficersList":
       if (detail === "懲罰委員長") return [detail];
-      const heading = formatDisplayName(person, target, mode);
-      if (detail === heading) return [formatNameWithKana(person)].filter(Boolean);
       return [formatNameWithKana(person), detail].filter(Boolean);
-    }
     default:
       return [detail || partyOrGroup].filter(Boolean);
   }
@@ -296,11 +297,6 @@ export function getLearningAnswerLines(person: Person, target: Target, mode: App
 
 export function formatNameWithKana(person: Pick<Person, "name" | "kana">): string {
   return person.kana ? `${person.name}（${person.kana}）` : person.name;
-}
-
-export function shouldShowLearningHeadingKana(target: Target, mode: AppMode): boolean {
-  if (mode !== "entrance") return true;
-  return !["ministers", "viceMinisters", "parliamentarySecretaries", "councilorsOfficersList", "houseOfficersList"].includes(target);
 }
 
 
