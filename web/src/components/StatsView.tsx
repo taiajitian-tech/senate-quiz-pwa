@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { loadProgress } from "./learnStorage";
 import { estimateRecallProbability, isMastered } from "./srs";
 import { getTargetLabels, loadPersonsForTarget, type AppMode, type Person, type Target } from "./data";
-import { resetStats } from "./stats";
+import { resetLearning } from "./learnStorage";
 
 type Props = {
   appMode: AppMode;
@@ -127,7 +127,7 @@ export default function StatsView(props: Props) {
           type="button"
           style={styles.dangerBtn}
           onClick={() => {
-            resetStats(props.appMode, props.target);
+            resetLearning(props.appMode, props.target);
             setSummaryNow(Date.now());
           }}
         >
