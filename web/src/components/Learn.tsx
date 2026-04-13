@@ -160,6 +160,7 @@ export default function Learn(props: Props) {
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
   const [askedIds, setAskedIds] = useState<number[]>([]);
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+  const [sessionWrongIds, setSessionWrongIds] = useState<number[]>([]);
   const [sessionDone, setSessionDone] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
@@ -169,6 +170,7 @@ export default function Learn(props: Props) {
     setProgress(loaded);
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
   }, [props.appMode, props.target, props.mode]);
@@ -266,6 +268,10 @@ export default function Learn(props: Props) {
     saveMasteredIds(props.appMode, props.target, [...mastered]);
 
     setAskedIds((prevAsked) => [...prevAsked, current.id]);
+    if (grade === "hard" || grade === "again") {
+      setSessionWrongIds((prevWrongIds) => (prevWrongIds.includes(current.id) ? prevWrongIds : [...prevWrongIds, current.id]));
+    }
+
     setSessionResult((prevResult) => ({
       total: prevResult.total + 1,
       remembered: prevResult.remembered + (grade === "good" ? 1 : 0),
@@ -278,6 +284,7 @@ export default function Learn(props: Props) {
   const resetSession = () => {
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
   };
@@ -318,6 +325,10 @@ export default function Learn(props: Props) {
     return <div style={styles.answerGroup}>{lines.map((line) => <div key={line}>{line}</div>)}</div>;
   };
 
+  const sessionWrongPersons = sessionWrongIds
+    .map((id) => items.find((item) => item.id === id))
+    .filter((person): person is Person => person !== undefined);
+
   return (
     <div style={styles.wrap}>
       <div style={styles.shell}>
@@ -352,6 +363,30 @@ export default function Learn(props: Props) {
                 <div>苦手として追跡中：{focusSummary.leech}人</div>
                 <div>通常出題から外れた完全習得：{focusSummary.mastered}人</div>
               </div>
+              {sessionWrongPersons.length > 0 ? (
+                <div style={styles.wrongSection}>
+                  <div style={styles.wrongSectionTitle}>今回間違えた議員</div>
+                  <div style={styles.wrongList}>
+                    {sessionWrongPersons.map((person) => (
+                      <div key={person.id} style={styles.wrongCard}>
+                        <div style={styles.wrongImageWrap}>
+                          <SafeImage
+                            src={person.images?.[0] ?? ""}
+                            alt={person.name}
+                            style={styles.wrongImage}
+                            fallbackStyle={styles.wrongImageFallback}
+                            fallbackText="画像なし"
+                          />
+                        </div>
+                        <div style={styles.wrongInfo}>
+                          {renderAnswerHeading(person)}
+                          {renderAnswerSubline(person)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
               <div style={styles.doneBtns}>
                 <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
                 <button type="button" style={styles.btn} onClick={props.onBackTitle}>終了してタイトルへ戻る</button>
@@ -484,10 +519,18 @@ const styles: Record<string, React.CSSProperties> = {
   btnRemembered: { width: "100%", minHeight: 60, padding: "16px 12px", borderRadius: 14, border: "1px solid #1f7a1f", background: "#e9f8ec", color: "#165c16", fontWeight: 800, fontSize: 16 },
   btnHazy: { width: "100%", minHeight: 60, padding: "16px 12px", borderRadius: 14, border: "1px solid #8a6d1d", background: "#fff7e0", color: "#7a5d00", fontWeight: 800, fontSize: 16 },
   btnForgot: { width: "100%", minHeight: 60, padding: "16px 12px", borderRadius: 14, border: "1px solid #b42318", background: "#fff1f1", color: "#a61b14", fontWeight: 800, fontSize: 16 },
-  doneWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 10, justifyContent: "center" },
+  doneWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 10, justifyContent: "center", overflowY: "auto", paddingRight: 2 },
   doneTitle: { fontSize: 20, fontWeight: 800, textAlign: "center" },
   doneSub: { fontSize: 13, color: "#555", textAlign: "center", lineHeight: 1.5 },
   doneMeta: { display: "grid", gap: 5, padding: 10, borderRadius: 12, background: "#f8fafc", border: "1px solid #e5e7eb", fontSize: 12, color: "#444" },
+  wrongSection: { display: "grid", gap: 8 },
+  wrongSectionTitle: { fontSize: 16, fontWeight: 800, color: "#1f2937" },
+  wrongList: { display: "grid", gap: 8 },
+  wrongCard: { display: "grid", gridTemplateColumns: "84px minmax(0, 1fr)", gap: 10, alignItems: "center", border: "1px solid #e5e7eb", borderRadius: 12, padding: 10, background: "#fff" },
+  wrongImageWrap: { width: 84, height: 84, display: "flex", alignItems: "center", justifyContent: "center" },
+  wrongImage: { width: 84, height: 84, objectFit: "cover", borderRadius: 10, background: "#f3f3f3" },
+  wrongImageFallback: { width: 84, height: 84, display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 10, fontSize: 12 },
+  wrongInfo: { minWidth: 0, display: "grid", gap: 4 },
   resultGrid: { display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 8 },
   resultCard: { border: "1px solid #e5e7eb", borderRadius: 12, padding: 10, background: "#fafbfc" },
   resultLabel: { fontSize: 12, color: "#666", marginBottom: 4 },
