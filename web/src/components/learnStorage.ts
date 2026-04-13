@@ -50,12 +50,40 @@ export function appendHistory(mode: AppMode, target: Target, item: HistoryItem) 
   localStorage.setItem(key(mode, target, "history"), JSON.stringify(list.slice(-2000)));
 }
 
+export type FreshCycleState = {
+  order: number[];
+  cursor: number;
+};
+
+export function loadFreshCycle(mode: AppMode, target: Target): FreshCycleState | null {
+  try {
+    const raw = localStorage.getItem(key(mode, target, "freshCycle"));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<FreshCycleState>;
+    if (!parsed || !Array.isArray(parsed.order)) return null;
+    const order = parsed.order.filter((id): id is number => Number.isFinite(id)).map((id) => Math.trunc(id));
+    const cursor = Number.isFinite(parsed.cursor) ? Math.max(0, Math.trunc(parsed.cursor as number)) : 0;
+    return { order, cursor: Math.min(cursor, order.length) };
+  } catch {
+    return null;
+  }
+}
+
+export function saveFreshCycle(mode: AppMode, target: Target, state: FreshCycleState) {
+  localStorage.setItem(key(mode, target, "freshCycle"), JSON.stringify(state));
+}
+
+export function clearFreshCycle(mode: AppMode, target: Target) {
+  localStorage.removeItem(key(mode, target, "freshCycle"));
+}
+
 export function resetLearning(mode: AppMode, target: Target) {
   localStorage.removeItem(key(mode, target, "progress"));
   localStorage.removeItem(key(mode, target, "history"));
   localStorage.removeItem(key(mode, target, "wrongIds"));
   localStorage.removeItem(key(mode, target, "masteredIds"));
   localStorage.removeItem(key(mode, target, "stats"));
+  localStorage.removeItem(key(mode, target, "freshCycle"));
 }
 
 export function exportAllLearningData() {

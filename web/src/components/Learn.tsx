@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressItem } from "./srs";
-import { appendHistory, loadHistory, loadProgress, saveProgress } from "./learnStorage";
+import { appendHistory, loadFreshCycle, saveFreshCycle, loadProgress, saveProgress, type FreshCycleState } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
@@ -34,81 +34,60 @@ function normalizePersonName(value: string): string {
 const SESSION_SIZE = 30;
 const DAY = 24 * 60 * 60 * 1000;
 
-type RecentExposure = {
-  lastSeenAt: number;
-  last10Count: number;
-  last24hCount: number;
-  last72hCount: number;
-};
-
-function buildRecentExposureMap(history: Array<{ at: number; id: number }>, now: number) {
-  const map: Record<number, RecentExposure> = {};
-  const recent = history.slice(-40);
-
-  for (const item of recent) {
-    const existing = map[item.id] ?? { lastSeenAt: 0, last10Count: 0, last24hCount: 0, last72hCount: 0 };
-    const age = Math.max(now - item.at, 0);
-    existing.lastSeenAt = Math.max(existing.lastSeenAt, item.at);
-    existing.last10Count += 1;
-    if (age <= DAY) existing.last24hCount += 1;
-    if (age <= DAY * 3) existing.last72hCount += 1;
-    map[item.id] = existing;
+function shuffleIds(ids: number[]) {
+  const next = [...ids];
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [next[i], next[j]] = [next[j], next[i]];
   }
-
-  return map;
+  return next;
 }
 
-function getRecentPenalty(exposure: RecentExposure | undefined, now: number, mode: Mode) {
-  if (!exposure) return 0;
-
-  const hoursSinceLastSeen = Math.max((now - exposure.lastSeenAt) / (60 * 60 * 1000), 0);
-  const baseMultiplier = mode === "review" ? 0.45 : 1;
-
-  let penalty = 0;
-  if (hoursSinceLastSeen < 1) penalty += 2.8;
-  else if (hoursSinceLastSeen < 6) penalty += 1.9;
-  else if (hoursSinceLastSeen < 12) penalty += 1.15;
-  else if (hoursSinceLastSeen < 24) penalty += 0.55;
-
-  penalty += Math.max(exposure.last10Count - 1, 0) * 0.3;
-  penalty += Math.max(exposure.last24hCount - 1, 0) * 0.14;
-  penalty += Math.max(exposure.last72hCount - 2, 0) * 0.08;
-
-  return penalty * baseMultiplier;
+function hasAnyProgressForItems(progress: Record<number, ProgressItem>, items: Person[]) {
+  return items.some((item) => Boolean(progress[item.id]));
 }
 
-function sortByPriority(
-  items: Person[],
-  progress: Record<number, ProgressItem>,
-  recentExposure: Record<number, RecentExposure>,
-  now: number,
-  mode: Mode
-) {
+function sanitizeFreshCycle(state: FreshCycleState | null, items: Person[]) {
+  if (!state) return null;
+  const validIds = new Set(items.map((item) => item.id));
+  const order = state.order.filter((id) => validIds.has(id));
+  if (order.length === 0) return null;
+  const cursor = Math.min(Math.max(0, state.cursor), order.length);
+  return { order, cursor } satisfies FreshCycleState;
+}
+
+function getFreshCycleNextId(state: FreshCycleState | null, askedIds: Set<number>) {
+  if (!state) return null;
+  for (let index = state.cursor; index < state.order.length; index += 1) {
+    const id = state.order[index];
+    if (!askedIds.has(id)) return id;
+  }
+  return null;
+}
+
+function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now: number) {
   return [...items].sort((a, b) => {
-    const scoreA = getForgettingScore(progress[a.id], now) - getRecentPenalty(recentExposure[a.id], now, mode);
-    const scoreB = getForgettingScore(progress[b.id], now) - getRecentPenalty(recentExposure[b.id], now, mode);
-    const diff = scoreB - scoreA;
-    if (Math.abs(diff) > 0.001) return diff;
+    const score = getForgettingScore(progress[b.id], now) - getForgettingScore(progress[a.id], now);
+    if (score !== 0) return score;
     return a.id - b.id;
   });
-}
-
-function pickFromTopBand<T>(items: T[], maxBandSize = 3) {
-  if (items.length === 0) return null;
-  const bandSize = Math.min(maxBandSize, items.length);
-  return items[Math.floor(Math.random() * bandSize)];
 }
 
 function pickNext(
   items: Person[],
   progress: Record<number, ProgressItem>,
-  recentExposure: Record<number, RecentExposure>,
   now: number,
   mode: Mode,
   askedIds: Set<number>,
-  recentAddedNames: Set<string>
+  recentAddedNames: Set<string>,
+  forcedId?: number | null
 ) {
   if (items.length === 0) return null;
+
+  if (forcedId != null) {
+    const forced = items.find((item) => item.id === forcedId);
+    if (forced && !askedIds.has(forced.id)) return forced;
+  }
 
   const fresh: Person[] = [];
   const leech: Person[] = [];
@@ -162,31 +141,31 @@ function pickNext(
     }
   }
 
-  const riskDue = sortByPriority(due, progress, recentExposure, now, mode);
-  const riskUpcoming = sortByPriority(upcoming, progress, recentExposure, now, mode);
-  const riskLeech = sortByPriority(leech, progress, recentExposure, now, mode);
-  const recentAddedSorted = sortByPriority(recentAdded, progress, recentExposure, now, mode);
+  const riskDue = sortByRisk(due, progress, now);
+  const riskUpcoming = sortByRisk(upcoming, progress, now);
+  const riskLeech = sortByRisk(leech, progress, now);
+  const recentAddedSorted = sortByRisk(recentAdded, progress, now);
 
   if (mode === "review") {
-    return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 2) ?? pickFromTopBand(riskUpcoming, 2) ?? null;
+    return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
   }
 
   const askedCount = askedIds.size;
   const cycle = askedCount % 20;
 
   if (recentAddedSorted.length > 0 && (askedCount < 6 || cycle === 0 || cycle === 7 || cycle === 14)) {
-    return pickFromTopBand(recentAddedSorted, 2);
+    return recentAddedSorted[0];
   }
 
-  if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return pickFromTopBand(riskLeech, 2);
-  if (riskDue.length > 0 && cycle < 11) return pickFromTopBand(riskDue, 3);
-  if (riskUpcoming.length > 0 && cycle < 16) return pickFromTopBand(riskUpcoming, 3);
-  if (recentAddedSorted.length > 0) return pickFromTopBand(recentAddedSorted, 2);
+  if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return riskLeech[0];
+  if (riskDue.length > 0 && cycle < 11) return riskDue[0];
+  if (riskUpcoming.length > 0 && cycle < 16) return riskUpcoming[0];
+  if (recentAddedSorted.length > 0) return recentAddedSorted[0];
   if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
   if (masteredPool.length > 0 && Math.random() < 0.05) {
     return masteredPool[Math.floor(Math.random() * masteredPool.length)];
   }
-  return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 3) ?? pickFromTopBand(riskUpcoming, 3) ?? null;
+  return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
 }
 
 function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
@@ -216,23 +195,23 @@ export default function Learn(props: Props) {
   const [recentAddedNames, setRecentAddedNames] = useState<Set<string>>(new Set());
   const [revealed, setRevealed] = useState(false);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
+  const [freshCycle, setFreshCycle] = useState<FreshCycleState | null>(() => loadFreshCycle(props.appMode, props.target));
   const [askedIds, setAskedIds] = useState<number[]>([]);
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionWrongIds, setSessionWrongIds] = useState<number[]>([]);
   const [sessionDone, setSessionDone] = useState(false);
-  const [historyVersion, setHistoryVersion] = useState(0);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
   useEffect(() => {
     const loaded = loadProgress(props.appMode, props.target);
     setProgress(loaded);
+    setFreshCycle(loadFreshCycle(props.appMode, props.target));
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
-    setHistoryVersion(0);
   }, [props.appMode, props.target, props.mode]);
 
   useEffect(() => {
@@ -250,6 +229,30 @@ export default function Learn(props: Props) {
       }
     })();
   }, [baseUrl, props.appMode, props.target]);
+
+  useEffect(() => {
+    if (props.mode === "review") {
+      if (freshCycle !== null) setFreshCycle(null);
+      return;
+    }
+    if (items.length === 0) return;
+
+    const sanitized = sanitizeFreshCycle(freshCycle, items);
+    if (sanitized && (sanitized.cursor !== freshCycle?.cursor || sanitized.order.length !== freshCycle?.order.length)) {
+      setFreshCycle(sanitized);
+      saveFreshCycle(props.appMode, props.target, sanitized);
+      return;
+    }
+    if (sanitized) return;
+    if (hasAnyProgressForItems(progress, items)) return;
+
+    const created: FreshCycleState = {
+      order: shuffleIds(items.map((item) => item.id)),
+      cursor: 0,
+    };
+    setFreshCycle(created);
+    saveFreshCycle(props.appMode, props.target, created);
+  }, [freshCycle, items, progress, props.appMode, props.mode, props.target]);
 
   useEffect(() => {
     let cancelled = false;
@@ -283,15 +286,16 @@ export default function Learn(props: Props) {
   }, [baseUrl, props.target]);
 
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
-  const recentExposure = useMemo(() => {
-    void historyVersion;
-    return buildRecentExposureMap(loadHistory(props.appMode, props.target), Date.now());
-  }, [props.appMode, props.target, historyVersion]);
   const focusSummary = useMemo(() => getFocusSummary(progress, items, Date.now()), [progress, items]);
+  const activeFreshCycle = useMemo(() => sanitizeFreshCycle(freshCycle, items), [freshCycle, items]);
+  const forcedFreshCycleId = useMemo(() => {
+    if (props.mode === "review") return null;
+    return getFreshCycleNextId(activeFreshCycle, askedIdSet);
+  }, [activeFreshCycle, askedIdSet, props.mode]);
   const current = useMemo(() => {
     if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
-    return pickNext(items, progress, recentExposure, Date.now(), props.mode, askedIdSet, recentAddedNames);
-  }, [items, progress, recentExposure, props.mode, askedIdSet, askedIds.length, sessionDone, recentAddedNames]);
+    return pickNext(items, progress, Date.now(), props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId);
+  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone, recentAddedNames, forcedFreshCycleId]);
 
   useEffect(() => {
     if (loading) return;
@@ -310,7 +314,6 @@ export default function Learn(props: Props) {
     setProgress(nextMap);
     saveProgress(props.appMode, props.target, nextMap);
     appendHistory(props.appMode, props.target, { at: now, id: current.id, grade });
-    setHistoryVersion((prevVersion) => prevVersion + 1);
 
     bumpStats(props.appMode, props.target, {
       playedTotal: 1,
@@ -331,6 +334,15 @@ export default function Learn(props: Props) {
 
     saveWrongIds(props.appMode, props.target, [...wrong]);
     saveMasteredIds(props.appMode, props.target, [...mastered]);
+
+    if (activeFreshCycle && forcedFreshCycleId === current.id) {
+      const nextFreshCycle = {
+        order: activeFreshCycle.order,
+        cursor: Math.min(activeFreshCycle.cursor + 1, activeFreshCycle.order.length),
+      } satisfies FreshCycleState;
+      setFreshCycle(nextFreshCycle);
+      saveFreshCycle(props.appMode, props.target, nextFreshCycle);
+    }
 
     setAskedIds((prevAsked) => [...prevAsked, current.id]);
     if (grade === "hard" || grade === "again") {
