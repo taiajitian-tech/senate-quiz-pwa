@@ -38,6 +38,11 @@ type SortKey =
   | "year_asc"
   | "year_desc";
 
+type PartySummary = {
+  name: string;
+  count: number;
+};
+
 const JA_COLLATOR = new Intl.Collator("ja");
 
 const PREFECTURE_ORDER = [
@@ -123,6 +128,25 @@ function normalizeCompactMetaText(value: string | undefined): string {
     .filter(Boolean)
     .filter((part) => part !== "衆議院" && part !== "参議院")
     .join(" / ");
+}
+
+function getPartyFilterLabel(person: Person): string {
+  return (person.party ?? person.group ?? "無所属").trim() || "無所属";
+}
+
+function buildPartySummaries(items: Person[]): PartySummary[] {
+  const counts = new Map<string, number>();
+  for (const item of items) {
+    const label = getPartyFilterLabel(item);
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      return JA_COLLATOR.compare(a.name, b.name);
+    });
 }
 
 function shortenCompactRole(value: string | undefined): string {
@@ -214,6 +238,7 @@ export default function SenatorList(props: Props) {
   const [editName, setEditName] = useState("");
   const [editKana, setEditKana] = useState("");
   const [overrideVersion, setOverrideVersion] = useState(0);
+  const [selectedParty, setSelectedParty] = useState<string>("all");
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const itemRefs = useRef<Record<number, HTMLElement | null>>({});
 
@@ -224,6 +249,7 @@ export default function SenatorList(props: Props) {
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
   const isHouseMembersTarget = props.target === "senators" || props.target === "representatives";
+  const supportsPartyFilter = props.target === "senators" || props.target === "representatives";
   const isMinisterTarget = props.target === "ministers";
   const isMixedTarget =
     props.target === "viceMinisters" ||
@@ -257,6 +283,7 @@ export default function SenatorList(props: Props) {
     setEditingId(null);
     setEditName("");
     setEditKana("");
+    setSelectedParty("all");
     setSelectedPerson(null);
   }, [props.target]);
 
@@ -283,11 +310,17 @@ export default function SenatorList(props: Props) {
 
   const wrongSet = useMemo(() => new Set(loadWrongIds(props.appMode, props.target)), [props.appMode, props.target]);
   const masteredSet = useMemo(() => new Set(loadMasteredIds(props.appMode, props.target)), [props.appMode, props.target]);
+  const partySummaries = useMemo(() => (supportsPartyFilter ? buildPartySummaries(items) : []), [items, supportsPartyFilter]);
+
+  const partyFilteredItems = useMemo(() => {
+    if (!supportsPartyFilter || selectedParty === "all") return items;
+    return items.filter((person) => getPartyFilterLabel(person) === selectedParty);
+  }, [items, selectedParty, supportsPartyFilter]);
 
   const filtered = useMemo(() => {
     const key = q.trim().toLowerCase();
-    if (!key) return items;
-    return items.filter((s) => {
+    if (!key) return partyFilteredItems;
+    return partyFilteredItems.filter((s) => {
       const nextElectionText = s.nextElectionYear ? String(s.nextElectionYear) : "";
       const termsText = typeof s.terms === "number" ? String(s.terms) : "";
       return (
@@ -300,7 +333,7 @@ export default function SenatorList(props: Props) {
         nextElectionText.includes(key)
       );
     });
-  }, [items, q]);
+  }, [partyFilteredItems, q]);
 
   const sorted = useMemo(() => sortItems(filtered, sortKey), [filtered, sortKey]);
 
@@ -377,6 +410,37 @@ export default function SenatorList(props: Props) {
           </div>
         ) : null}
         <div style={styles.sub}>{targetLabels[props.target]}</div>
+        {supportsPartyFilter ? (
+          <div style={styles.partyPanel}>
+            <div style={styles.partyPanelHeader}>
+              <div style={styles.partyPanelTitle}>政党別一覧</div>
+              <div style={styles.partyPanelCount}>
+                {selectedParty === "all"
+                  ? `全 ${items.length}人`
+                  : `${selectedParty} ${partyFilteredItems.length}人`}
+              </div>
+            </div>
+            <div style={styles.partyButtons}>
+              <button
+                type="button"
+                style={selectedParty === "all" ? styles.partyFilterActiveBtn : styles.partyFilterBtn}
+                onClick={() => setSelectedParty("all")}
+              >
+                すべて ({items.length})
+              </button>
+              {partySummaries.map((party) => (
+                <button
+                  key={party.name}
+                  type="button"
+                  style={selectedParty === party.name ? styles.partyFilterActiveBtn : styles.partyFilterBtn}
+                  onClick={() => setSelectedParty(party.name)}
+                >
+                  {party.name} ({party.count})
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
@@ -393,7 +457,7 @@ export default function SenatorList(props: Props) {
           {isSenators ? <option value="year_desc">次の改選年（降順）</option> : null}
         </select>
         <div style={styles.actionsRow}>
-          <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${items.length}`}</div>
+          <div style={styles.sub}>{loading ? "読み込み中" : `表示：${sorted.length} / ${partyFilteredItems.length}${selectedParty === "all" ? ` / ${items.length}` : ""}`}</div>
           <div style={styles.actionsButtonGroup}>
             <div style={styles.viewModeGroup}>
               <button
@@ -613,6 +677,13 @@ const styles: Record<string, React.CSSProperties> = {
   targetSelectWrap: { width: "100%", display: "flex", flexDirection: "column", gap: 6 },
   targetSelectLabel: { fontSize: 14, fontWeight: 700, color: "#333" },
   search: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16 },
+  partyPanel: { width: "100%", display: "flex", flexDirection: "column", gap: 8, padding: 12, borderRadius: 12, border: "1px solid #d0d7de", background: "#f6f8fa" },
+  partyPanelHeader: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" },
+  partyPanelTitle: { fontSize: 14, fontWeight: 800, color: "#111827" },
+  partyPanelCount: { fontSize: 13, fontWeight: 700, color: "#374151" },
+  partyButtons: { display: "flex", gap: 8, flexWrap: "wrap" },
+  partyFilterBtn: { padding: "10px 12px", borderRadius: 999, border: "1px solid #c7d2fe", background: "#fff", color: "#1f2937", fontSize: 14, fontWeight: 700 },
+  partyFilterActiveBtn: { padding: "10px 12px", borderRadius: 999, border: "1px solid #1d4ed8", background: "#1d4ed8", color: "#fff", fontSize: 14, fontWeight: 800 },
   select: { width: "100%", padding: "12px 12px", borderRadius: 10, border: "1px solid #999", fontSize: 16, background: "#fff" },
   sub: { fontSize: 13, color: "#444" },
   actionsRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" },
