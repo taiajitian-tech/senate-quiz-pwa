@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressItem } from "./srs";
-import { appendHistory, loadFreshCycle, saveFreshCycle, loadProgress, saveProgress, type FreshCycleState } from "./learnStorage";
+import { appendHistory, clearFreshCycle, loadFreshCycle, saveFreshCycle, loadProgress, saveProgress, type FreshCycleState } from "./learnStorage";
+import { loadOptions } from "./optionsStore";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
@@ -31,7 +32,7 @@ function normalizePersonName(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
 }
 
-const SESSION_SIZE = 30;
+const DEFAULT_SESSION_SIZE = 30;
 const DAY = 24 * 60 * 60 * 1000;
 
 function shuffleIds(ids: number[]) {
@@ -41,6 +42,83 @@ function shuffleIds(ids: number[]) {
     [next[i], next[j]] = [next[j], next[i]];
   }
   return next;
+}
+
+function normalizePartyLabel(person: Person): string {
+  return (person.party ?? person.group ?? "無所属").trim() || "無所属";
+}
+
+function supportsPartyPractice(target: Target) {
+  return target === "senators" || target === "representatives";
+}
+
+type PartySummary = {
+  name: string;
+  count: number;
+};
+
+function buildPartySummaries(items: Person[]): PartySummary[] {
+  const counts = new Map<string, number>();
+  for (const item of items) {
+    const label = normalizePartyLabel(item);
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      return a.name.localeCompare(b.name, "ja");
+    });
+}
+
+function createBalancedFreshOrder(items: Person[], target: Target): number[] {
+  if (target !== "representatives") return shuffleIds(items.map((item) => item.id));
+
+  const buckets = new Map<string, number[]>();
+  for (const item of items) {
+    const party = normalizePartyLabel(item);
+    const list = buckets.get(party) ?? [];
+    list.push(item.id);
+    buckets.set(party, list);
+  }
+
+  const shuffledBuckets = [...buckets.entries()]
+    .map(([party, ids]) => ({ party, ids: shuffleIds(ids) }))
+    .sort((a, b) => {
+      if (b.ids.length !== a.ids.length) return b.ids.length - a.ids.length;
+      return a.party.localeCompare(b.party, "ja");
+    });
+
+  const order: number[] = [];
+  while (shuffledBuckets.some((bucket) => bucket.ids.length > 0)) {
+    for (const bucket of shuffledBuckets) {
+      const nextId = bucket.ids.shift();
+      if (nextId != null) order.push(nextId);
+    }
+  }
+
+  return order;
+}
+
+function chooseSessionCount(totalItems: number, preferredCount: number, retryMode: boolean) {
+  if (totalItems <= 0) return 0;
+  if (retryMode) return totalItems;
+  return Math.min(totalItems, Math.max(10, preferredCount || DEFAULT_SESSION_SIZE));
+}
+
+function clampProgressCount(askedCount: number, sessionCount: number) {
+  if (sessionCount <= 0) return 0;
+  return Math.min(askedCount, sessionCount);
+}
+
+function buildRetryOrder(items: Person[], wrongIds: number[]) {
+  const byId = new Map(items.map((item) => [item.id, item]));
+  return wrongIds.filter((id, index) => wrongIds.indexOf(id) === index && byId.has(id));
+}
+
+function formatWrongReplayLabel(count: number) {
+  return count <= 0 ? "今回間違えた議員" : `今回間違えた議員 ${count}人`;
 }
 
 function hasAnyProgressForItems(progress: Record<number, ProgressItem>, items: Person[]) {
@@ -194,6 +272,9 @@ export default function Learn(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [recentAddedNames, setRecentAddedNames] = useState<Set<string>>(new Set());
   const [revealed, setRevealed] = useState(false);
+  const [options, setOptions] = useState(() => loadOptions());
+  const [selectedParty, setSelectedParty] = useState<string>("all");
+  const [retryWrongIds, setRetryWrongIds] = useState<number[]>([]);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
   const [freshCycle, setFreshCycle] = useState<FreshCycleState | null>(() => loadFreshCycle(props.appMode, props.target));
   const [askedIds, setAskedIds] = useState<number[]>([]);
@@ -207,12 +288,31 @@ export default function Learn(props: Props) {
     const loaded = loadProgress(props.appMode, props.target);
     setProgress(loaded);
     setFreshCycle(loadFreshCycle(props.appMode, props.target));
+    setOptions(loadOptions());
+    setSelectedParty("all");
+    setRetryWrongIds([]);
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
   }, [props.appMode, props.target, props.mode]);
+
+  const partySummaries = useMemo(() => (supportsPartyPractice(props.target) ? buildPartySummaries(items) : []), [items, props.target]);
+  const partyFilteredItems = useMemo(() => {
+    if (!supportsPartyPractice(props.target) || selectedParty === "all") return items;
+    return items.filter((item) => normalizePartyLabel(item) === selectedParty);
+  }, [items, props.target, selectedParty]);
+  const retryMode = retryWrongIds.length > 0;
+  const retryOrder = useMemo(() => buildRetryOrder(partyFilteredItems, retryWrongIds), [partyFilteredItems, retryWrongIds]);
+  const practiceItems = useMemo(
+    () => (retryMode ? partyFilteredItems.filter((item) => retryOrder.includes(item.id)) : partyFilteredItems),
+    [retryMode, partyFilteredItems, retryOrder]
+  );
+  const sessionSize = useMemo(() => chooseSessionCount(practiceItems.length, options.quizCount, retryMode), [practiceItems.length, options.quizCount, retryMode]);
+  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const focusSummary = useMemo(() => getFocusSummary(progress, partyFilteredItems, Date.now()), [progress, partyFilteredItems]);
+  const activeFreshCycle = useMemo(() => sanitizeFreshCycle(freshCycle, practiceItems), [freshCycle, practiceItems]);
 
   useEffect(() => {
     void (async () => {
@@ -235,24 +335,24 @@ export default function Learn(props: Props) {
       if (freshCycle !== null) setFreshCycle(null);
       return;
     }
-    if (items.length === 0) return;
+    if (practiceItems.length === 0) return;
 
-    const sanitized = sanitizeFreshCycle(freshCycle, items);
+    const sanitized = sanitizeFreshCycle(freshCycle, practiceItems);
     if (sanitized && (sanitized.cursor !== freshCycle?.cursor || sanitized.order.length !== freshCycle?.order.length)) {
       setFreshCycle(sanitized);
       saveFreshCycle(props.appMode, props.target, sanitized);
       return;
     }
     if (sanitized) return;
-    if (hasAnyProgressForItems(progress, items)) return;
+    if (hasAnyProgressForItems(progress, practiceItems)) return;
 
     const created: FreshCycleState = {
-      order: shuffleIds(items.map((item) => item.id)),
+      order: createBalancedFreshOrder(practiceItems, props.target),
       cursor: 0,
     };
     setFreshCycle(created);
     saveFreshCycle(props.appMode, props.target, created);
-  }, [freshCycle, items, progress, props.appMode, props.mode, props.target]);
+  }, [freshCycle, practiceItems, progress, props.appMode, props.mode, props.target]);
 
   useEffect(() => {
     let cancelled = false;
@@ -285,25 +385,26 @@ export default function Learn(props: Props) {
     };
   }, [baseUrl, props.target]);
 
-  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
-  const focusSummary = useMemo(() => getFocusSummary(progress, items, Date.now()), [progress, items]);
-  const activeFreshCycle = useMemo(() => sanitizeFreshCycle(freshCycle, items), [freshCycle, items]);
   const forcedFreshCycleId = useMemo(() => {
-    if (props.mode === "review") return null;
+    if (props.mode === "review" || retryMode) return null;
     return getFreshCycleNextId(activeFreshCycle, askedIdSet);
-  }, [activeFreshCycle, askedIdSet, props.mode]);
+  }, [activeFreshCycle, askedIdSet, props.mode, retryMode]);
   const current = useMemo(() => {
-    if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
-    return pickNext(items, progress, Date.now(), props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId);
-  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone, recentAddedNames, forcedFreshCycleId]);
+    if (sessionDone || askedIds.length >= sessionSize) return null;
+    if (retryMode) {
+      const nextRetryId = retryOrder.find((id) => !askedIdSet.has(id));
+      return nextRetryId == null ? null : practiceItems.find((item) => item.id === nextRetryId) ?? null;
+    }
+    return pickNext(practiceItems, progress, Date.now(), props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId);
+  }, [sessionDone, askedIds.length, sessionSize, retryMode, retryOrder, askedIdSet, practiceItems, progress, props.mode, recentAddedNames, forcedFreshCycleId]);
 
   useEffect(() => {
     if (loading) return;
-    if (!sessionDone && (askedIds.length >= SESSION_SIZE || (askedIds.length > 0 && !current))) {
+    if (!sessionDone && (askedIds.length >= sessionSize || (askedIds.length > 0 && !current))) {
       setSessionDone(true);
       setRevealed(false);
     }
-  }, [askedIds.length, current, loading, sessionDone]);
+  }, [askedIds.length, current, loading, sessionDone, sessionSize]);
 
   const onGrade = (grade: Grade) => {
     if (!current) return;
@@ -359,11 +460,34 @@ export default function Learn(props: Props) {
   };
 
   const resetSession = () => {
+    setRetryWrongIds([]);
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
+  };
+
+  const startWrongReplay = () => {
+    if (sessionWrongIds.length === 0) return;
+    setRetryWrongIds(buildRetryOrder(partyFilteredItems, sessionWrongIds));
+    setAskedIds([]);
+    setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionWrongIds([]);
+    setSessionDone(false);
+    setRevealed(false);
+  };
+
+  const handlePartyChange = (nextParty: string) => {
+    setSelectedParty(nextParty);
+    setRetryWrongIds([]);
+    setAskedIds([]);
+    setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionWrongIds([]);
+    setSessionDone(false);
+    setRevealed(false);
+    setFreshCycle(null);
+    clearFreshCycle(props.appMode, props.target);
   };
 
   const titleMap: Record<Mode, string> = {
@@ -403,7 +527,7 @@ export default function Learn(props: Props) {
   };
 
   const sessionWrongPersons = sessionWrongIds
-    .map((id) => items.find((item) => item.id === id))
+    .map((id) => partyFilteredItems.find((item) => item.id === id))
     .filter((person): person is Person => person !== undefined);
 
   return (
@@ -417,10 +541,22 @@ export default function Learn(props: Props) {
           <div style={styles.h1}>{titleMap[props.mode]}</div>
           <div style={styles.subRow}>
             <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]}</div>
-            <div style={styles.progressBox}>{Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
+            <div style={styles.progressBox}>{clampProgressCount(askedIds.length, sessionSize)} / {sessionSize}</div>
           </div>
           {!compactLayout ? <div style={styles.modeDesc}>{modeHelp[props.mode]}</div> : null}
-          <div style={styles.focusHint}>{compactLayout ? summaryTextCompact : summaryText}</div>
+          <div style={styles.focusHint}>{retryMode ? `${formatWrongReplayLabel(retryOrder.length)}を復習中` : (compactLayout ? summaryTextCompact : summaryText)}</div>
+          {supportsPartyPractice(props.target) ? (
+            <div style={styles.partyPracticePanel}>
+              <label style={styles.partyPracticeLabel} htmlFor="learn-party-select">政党別に出題</label>
+              <select id="learn-party-select" value={selectedParty} style={styles.partyPracticeSelect} onChange={(e) => handlePartyChange(e.target.value)}>
+                <option value="all">すべて ({items.length})</option>
+                {partySummaries.map((party) => (
+                  <option key={party.name} value={party.name}>{party.name} ({party.count})</option>
+                ))}
+              </select>
+              <div style={styles.partyPracticeHint}>{selectedParty === "all" ? `対象 ${partyFilteredItems.length}人` : `${selectedParty} ${partyFilteredItems.length}人`}</div>
+            </div>
+          ) : null}
           {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
         </div>
 
@@ -428,7 +564,7 @@ export default function Learn(props: Props) {
           {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
             <div style={styles.doneWrap}>
               <div style={styles.doneTitle}>今回の出題は終了です</div>
-              <div style={styles.doneSub}>次は、忘れそうな議員と苦手な議員を優先して再構成されます。</div>
+              <div style={styles.doneSub}>{retryMode ? "今回の間違いだけを復習しました。まだ残っている議員はそのまま再挑戦できます。" : "次は、忘れそうな議員と苦手な議員を優先して再構成されます。"}</div>
               <div style={styles.resultGrid}>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
@@ -442,7 +578,7 @@ export default function Learn(props: Props) {
               </div>
               {sessionWrongPersons.length > 0 ? (
                 <div style={styles.wrongSection}>
-                  <div style={styles.wrongSectionTitle}>今回間違えた議員</div>
+                  <div style={styles.wrongSectionTitle}>{formatWrongReplayLabel(sessionWrongPersons.length)}</div>
                   <div style={styles.wrongList}>
                     {sessionWrongPersons.map((person) => (
                       <div key={person.id} style={styles.wrongCard}>
@@ -465,7 +601,8 @@ export default function Learn(props: Props) {
                 </div>
               ) : null}
               <div style={styles.doneBtns}>
-                <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
+                {sessionWrongPersons.length > 0 ? <button type="button" style={styles.secondaryBtn} onClick={startWrongReplay}>間違えた議員だけもう一度</button> : null}
+                <button type="button" style={styles.primaryBtn} onClick={resetSession}>{retryMode ? "通常の出題へ戻る" : "次の出題へ"}</button>
                 <button type="button" style={styles.btn} onClick={props.onBackTitle}>終了してタイトルへ戻る</button>
               </div>
             </div>
@@ -569,6 +706,10 @@ const styles: Record<string, React.CSSProperties> = {
   sub: { fontSize: 11, color: "#555" },
   modeDesc: { fontSize: 11, color: "#444", lineHeight: 1.4 },
   focusHint: { fontSize: 11, color: "#0f4c81", lineHeight: 1.35, background: "#eef6ff", border: "1px solid #c8ddff", borderRadius: 10, padding: "5px 7px" },
+  partyPracticePanel: { display: "flex", flexDirection: "column", gap: 6, background: "#f8fafc", border: "1px solid #d0d7de", borderRadius: 10, padding: 8 },
+  partyPracticeLabel: { fontSize: 12, fontWeight: 800, color: "#1f2937" },
+  partyPracticeSelect: { padding: "9px 10px", borderRadius: 10, border: "1px solid #94a3b8", background: "#fff", fontSize: 14 },
+  partyPracticeHint: { fontSize: 11, color: "#475569" },
   progressBox: { padding: "4px 8px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 11, color: "#0958b3", fontWeight: 700, whiteSpace: "nowrap" },
   card: { flex: 1, minHeight: 0, border: "1px solid #ddd", borderRadius: 14, padding: 8, background: "#fff", display: "flex", overflow: "hidden" },
   center: { margin: "auto", color: "#666", fontSize: 14, textAlign: "center" },
@@ -592,6 +733,7 @@ const styles: Record<string, React.CSSProperties> = {
   gradeBtns: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 8 },
   gradeBtnsCompact: { display: "grid", gridTemplateColumns: "1fr", gap: 8 },
   primaryBtn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #0d6efd", background: "#0d6efd", color: "#fff", fontWeight: 800, fontSize: 14 },
+  secondaryBtn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #7c3aed", background: "#f5f3ff", color: "#5b21b6", fontWeight: 800, fontSize: 14 },
   btn: { padding: "10px 10px", borderRadius: 12, border: "1px solid #999", background: "#fff", fontWeight: 700, fontSize: 13 },
   btnRemembered: { width: "100%", minHeight: 60, padding: "16px 12px", borderRadius: 14, border: "1px solid #1f7a1f", background: "#e9f8ec", color: "#165c16", fontWeight: 800, fontSize: 16 },
   btnHazy: { width: "100%", minHeight: 60, padding: "16px 12px", borderRadius: 14, border: "1px solid #8a6d1d", background: "#fff7e0", color: "#7a5d00", fontWeight: 800, fontSize: 16 },
