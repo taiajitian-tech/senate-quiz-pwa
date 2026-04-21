@@ -266,6 +266,7 @@ export default function Learn(props: Props) {
   const partySummaries = useMemo(() => (supportsPartySelection ? buildPartySummaries(items) : []), [items, supportsPartySelection]);
   const selectedPartySet = useMemo(() => new Set(selectedParties), [selectedParties]);
   const usePartyFilter = supportsPartySelection && filterMode === "party" && selectedParties.length > 0;
+  const useFreshCycle = props.mode !== "review" && !usePartyFilter;
   const activeItems = useMemo(() => {
     if (!usePartyFilter) return items;
     return items.filter((item) => selectedPartySet.has(getPartyName(item)));
@@ -327,7 +328,6 @@ export default function Learn(props: Props) {
 
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
   const focusSummary = useMemo(() => getFocusSummary(progress, activeItems, Date.now()), [progress, activeItems]);
-  const useFreshCycle = props.mode !== "review" && !usePartyFilter;
   const activeFreshCycle = useMemo(() => (useFreshCycle ? sanitizeFreshCycle(freshCycle, activeItems) : null), [freshCycle, activeItems, useFreshCycle]);
   const forcedFreshCycleId = useMemo(() => {
     if (!useFreshCycle) return null;
