@@ -5,8 +5,8 @@ import { appendHistory, loadFreshCycle, saveFreshCycle, loadProgress, saveProgre
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
-import SafeImage from "./SafeImage";
 import { loadOptions } from "./optionsStore";
+import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
 
@@ -28,11 +28,18 @@ type UpdatesPayload = {
   items?: Array<{ target?: string; name?: string; type?: string }>;
 };
 
+type PartySummary = {
+  name: string;
+  count: number;
+};
+
+const DAY = 24 * 60 * 60 * 1000;
+const PARTY_SELECTABLE_TARGETS: Target[] = ["senators", "representatives"];
+const JA_COLLATOR = new Intl.Collator("ja");
+
 function normalizePersonName(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
 }
-
-const DAY = 24 * 60 * 60 * 1000;
 
 function shuffleIds(ids: number[]) {
   const next = [...ids];
@@ -71,6 +78,60 @@ function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now
     if (score !== 0) return score;
     return a.id - b.id;
   });
+}
+
+function getPartyLabel(person: Person): string {
+  return (person.party ?? person.group ?? "無所属").trim() || "無所属";
+}
+
+function buildPartySummaries(items: Person[]): PartySummary[] {
+  const counts = new Map<string, number>();
+  for (const item of items) {
+    const label = getPartyLabel(item);
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      return JA_COLLATOR.compare(a.name, b.name);
+    });
+}
+
+function buildBalancedPartyCycle(items: Person[]): number[] {
+  if (items.length <= 1) return items.map((item) => item.id);
+
+  const buckets = buildPartySummaries(items)
+    .map((summary) => ({
+      name: summary.name,
+      ids: shuffleIds(items.filter((item) => getPartyLabel(item) === summary.name).map((item) => item.id)),
+    }))
+    .filter((bucket) => bucket.ids.length > 0);
+
+  const order: number[] = [];
+  while (buckets.some((bucket) => bucket.ids.length > 0)) {
+    for (const bucket of buckets) {
+      const nextId = bucket.ids.shift();
+      if (nextId != null) order.push(nextId);
+    }
+  }
+  return order;
+}
+
+function createScopedFreshCycle(items: Person[], target: Target) {
+  const ids = items.map((item) => item.id);
+  const order = target === "representatives" ? buildBalancedPartyCycle(items) : shuffleIds(ids);
+  return {
+    order,
+    cursor: 0,
+  } satisfies FreshCycleState;
+}
+
+function pickFromTopBand<T>(items: T[], bandSize: number) {
+  if (items.length === 0) return null;
+  const band = items.slice(0, Math.min(items.length, bandSize));
+  return band[Math.floor(Math.random() * band.length)] ?? null;
 }
 
 function pickNext(
@@ -147,25 +208,25 @@ function pickNext(
   const recentAddedSorted = sortByRisk(recentAdded, progress, now);
 
   if (mode === "review") {
-    return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+    return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 3) ?? pickFromTopBand(riskUpcoming, 3) ?? null;
   }
 
   const askedCount = askedIds.size;
   const cycle = askedCount % 20;
 
   if (recentAddedSorted.length > 0 && (askedCount < 6 || cycle === 0 || cycle === 7 || cycle === 14)) {
-    return recentAddedSorted[0];
+    return pickFromTopBand(recentAddedSorted, 2);
   }
 
-  if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return riskLeech[0];
-  if (riskDue.length > 0 && cycle < 11) return riskDue[0];
-  if (riskUpcoming.length > 0 && cycle < 16) return riskUpcoming[0];
-  if (recentAddedSorted.length > 0) return recentAddedSorted[0];
+  if (riskLeech.length > 0 && (cycle === 2 || cycle === 9 || cycle === 15)) return pickFromTopBand(riskLeech, 2);
+  if (riskDue.length > 0 && cycle < 11) return pickFromTopBand(riskDue, 3);
+  if (riskUpcoming.length > 0 && cycle < 16) return pickFromTopBand(riskUpcoming, 3);
+  if (recentAddedSorted.length > 0) return pickFromTopBand(recentAddedSorted, 2);
   if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
   if (masteredPool.length > 0 && Math.random() < 0.05) {
     return masteredPool[Math.floor(Math.random() * masteredPool.length)];
   }
-  return riskLeech[0] ?? riskDue[0] ?? riskUpcoming[0] ?? null;
+  return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 3) ?? pickFromTopBand(riskUpcoming, 3) ?? null;
 }
 
 function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
@@ -188,6 +249,9 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
 }
 
 export default function Learn(props: Props) {
+  const options = loadOptions();
+  const supportsPartySelection = PARTY_SELECTABLE_TARGETS.includes(props.target) && props.mode !== "review";
+
   const [helpOpen, setHelpOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -196,13 +260,16 @@ export default function Learn(props: Props) {
   const [revealed, setRevealed] = useState(false);
   const [progress, setProgress] = useState<Record<number, ProgressItem>>(() => loadProgress(props.appMode, props.target));
   const [freshCycle, setFreshCycle] = useState<FreshCycleState | null>(() => loadFreshCycle(props.appMode, props.target));
+  const [scopedFreshCycle, setScopedFreshCycle] = useState<FreshCycleState | null>(null);
+  const [scopedFreshCycleKey, setScopedFreshCycleKey] = useState("");
   const [askedIds, setAskedIds] = useState<number[]>([]);
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionWrongIds, setSessionWrongIds] = useState<number[]>([]);
   const [sessionDone, setSessionDone] = useState(false);
-
-  const quizCount = useMemo(() => loadOptions().quizCount, []);
-  const sessionLimit = useMemo(() => Math.max(1, Math.min(quizCount, items.length || quizCount)), [quizCount, items.length]);
+  const [sessionStarted, setSessionStarted] = useState(props.mode === "review");
+  const [usePartySelection, setUsePartySelection] = useState(false);
+  const [selectedParties, setSelectedParties] = useState<string[]>([]);
+  const [retryWrongIds, setRetryWrongIds] = useState<number[]>([]);
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
@@ -210,11 +277,17 @@ export default function Learn(props: Props) {
     const loaded = loadProgress(props.appMode, props.target);
     setProgress(loaded);
     setFreshCycle(loadFreshCycle(props.appMode, props.target));
+    setScopedFreshCycle(null);
+    setScopedFreshCycleKey("");
     setAskedIds([]);
     setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
     setSessionWrongIds([]);
+    setRetryWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
+    setSessionStarted(props.mode === "review");
+    setUsePartySelection(false);
+    setSelectedParties([]);
   }, [props.appMode, props.target, props.mode]);
 
   useEffect(() => {
@@ -232,30 +305,6 @@ export default function Learn(props: Props) {
       }
     })();
   }, [baseUrl, props.appMode, props.target]);
-
-  useEffect(() => {
-    if (props.mode === "review") {
-      if (freshCycle !== null) setFreshCycle(null);
-      return;
-    }
-    if (items.length === 0) return;
-
-    const sanitized = sanitizeFreshCycle(freshCycle, items);
-    if (sanitized && (sanitized.cursor !== freshCycle?.cursor || sanitized.order.length !== freshCycle?.order.length)) {
-      setFreshCycle(sanitized);
-      saveFreshCycle(props.appMode, props.target, sanitized);
-      return;
-    }
-    if (sanitized) return;
-    if (hasAnyProgressForItems(progress, items)) return;
-
-    const created: FreshCycleState = {
-      order: shuffleIds(items.map((item) => item.id)),
-      cursor: 0,
-    };
-    setFreshCycle(created);
-    saveFreshCycle(props.appMode, props.target, created);
-  }, [freshCycle, items, progress, props.appMode, props.mode, props.target]);
 
   useEffect(() => {
     let cancelled = false;
@@ -288,25 +337,167 @@ export default function Learn(props: Props) {
     };
   }, [baseUrl, props.target]);
 
-  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
-  const focusSummary = useMemo(() => getFocusSummary(progress, items, Date.now()), [progress, items]);
-  const activeFreshCycle = useMemo(() => sanitizeFreshCycle(freshCycle, items), [freshCycle, items]);
-  const forcedFreshCycleId = useMemo(() => {
-    if (props.mode === "review") return null;
-    return getFreshCycleNextId(activeFreshCycle, askedIdSet);
-  }, [activeFreshCycle, askedIdSet, props.mode]);
-  const current = useMemo(() => {
-    if (sessionDone || askedIds.length >= sessionLimit) return null;
-    return pickNext(items, progress, Date.now(), props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId);
-  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone, recentAddedNames, forcedFreshCycleId, sessionLimit]);
+  const partySummaries = useMemo(() => (supportsPartySelection ? buildPartySummaries(items) : []), [items, supportsPartySelection]);
+  const selectedPartySet = useMemo(() => new Set(selectedParties), [selectedParties]);
+  const retryWrongSet = useMemo(() => new Set(retryWrongIds), [retryWrongIds]);
+  const isWrongRetryMode = retryWrongIds.length > 0;
 
   useEffect(() => {
-    if (loading) return;
+    if (!supportsPartySelection || items.length === 0) return;
+    setSelectedParties((prev) => prev.filter((name) => partySummaries.some((summary) => summary.name === name)));
+  }, [items, partySummaries, supportsPartySelection]);
+
+  const practiceItems = useMemo(() => {
+    let next = items;
+    if (isWrongRetryMode) {
+      next = items.filter((item) => retryWrongSet.has(item.id));
+    } else if (supportsPartySelection && usePartySelection && selectedPartySet.size > 0) {
+      next = items.filter((item) => selectedPartySet.has(getPartyLabel(item)));
+    }
+    return next;
+  }, [isWrongRetryMode, items, retryWrongSet, selectedPartySet, supportsPartySelection, usePartySelection]);
+
+  const sessionLimit = useMemo(() => {
+    const count = options.quizCount;
+    if (practiceItems.length === 0) return count;
+    return Math.min(count, practiceItems.length);
+  }, [options.quizCount, practiceItems.length]);
+
+  const focusSummary = useMemo(() => getFocusSummary(progress, practiceItems, Date.now()), [progress, practiceItems]);
+  const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
+  const scopedModeKey = useMemo(() => {
+    if (!sessionStarted) return "";
+    if (props.mode === "review") return "review";
+    if (isWrongRetryMode) return `wrong:${retryWrongIds.slice().sort((a, b) => a - b).join(",")}`;
+    if (supportsPartySelection && usePartySelection) return `party:${selectedParties.slice().sort(JA_COLLATOR.compare).join("|")}`;
+    return "all";
+  }, [isWrongRetryMode, props.mode, retryWrongIds, selectedParties, sessionStarted, supportsPartySelection, usePartySelection]);
+  const useScopedCycle = props.mode !== "review" && sessionStarted && scopedModeKey !== "all";
+
+  useEffect(() => {
+    if (!sessionStarted || props.mode === "review") {
+      setScopedFreshCycle(null);
+      setScopedFreshCycleKey("");
+      return;
+    }
+
+    if (!useScopedCycle) {
+      setScopedFreshCycle(null);
+      setScopedFreshCycleKey("");
+      return;
+    }
+
+    if (practiceItems.length === 0) {
+      setScopedFreshCycle(null);
+      setScopedFreshCycleKey(scopedModeKey);
+      return;
+    }
+
+    if (hasAnyProgressForItems(progress, practiceItems)) {
+      setScopedFreshCycle(null);
+      setScopedFreshCycleKey(scopedModeKey);
+      return;
+    }
+
+    const sanitized = scopedFreshCycleKey === scopedModeKey ? sanitizeFreshCycle(scopedFreshCycle, practiceItems) : null;
+    if (sanitized) {
+      if (sanitized.cursor !== scopedFreshCycle?.cursor || sanitized.order.length !== scopedFreshCycle?.order.length) {
+        setScopedFreshCycle(sanitized);
+      }
+      return;
+    }
+
+    setScopedFreshCycle(createScopedFreshCycle(practiceItems, props.target));
+    setScopedFreshCycleKey(scopedModeKey);
+  }, [practiceItems, progress, props.mode, props.target, scopedFreshCycle, scopedFreshCycleKey, scopedModeKey, sessionStarted, useScopedCycle]);
+
+  useEffect(() => {
+    if (!sessionStarted || props.mode === "review" || useScopedCycle) return;
+    if (practiceItems.length === 0) return;
+
+    const sanitized = sanitizeFreshCycle(freshCycle, practiceItems);
+    if (sanitized && (sanitized.cursor !== freshCycle?.cursor || sanitized.order.length !== freshCycle?.order.length)) {
+      setFreshCycle(sanitized);
+      saveFreshCycle(props.appMode, props.target, sanitized);
+      return;
+    }
+    if (sanitized) return;
+    if (hasAnyProgressForItems(progress, practiceItems)) return;
+
+    const created = createScopedFreshCycle(practiceItems, props.target);
+    setFreshCycle(created);
+    saveFreshCycle(props.appMode, props.target, created);
+  }, [freshCycle, practiceItems, progress, props.appMode, props.mode, props.target, sessionStarted, useScopedCycle]);
+
+  const activeFreshCycle = useMemo(
+    () => (useScopedCycle ? sanitizeFreshCycle(scopedFreshCycle, practiceItems) : sanitizeFreshCycle(freshCycle, practiceItems)),
+    [useScopedCycle, scopedFreshCycle, freshCycle, practiceItems]
+  );
+  const forcedFreshCycleId = useMemo(() => {
+    if (props.mode === "review" || !sessionStarted) return null;
+    return getFreshCycleNextId(activeFreshCycle, askedIdSet);
+  }, [activeFreshCycle, askedIdSet, props.mode, sessionStarted]);
+  const current = useMemo(() => {
+    if (!sessionStarted || sessionDone || askedIds.length >= sessionLimit) return null;
+    return pickNext(practiceItems, progress, Date.now(), props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId);
+  }, [sessionStarted, sessionDone, askedIds.length, sessionLimit, practiceItems, progress, props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId]);
+
+  useEffect(() => {
+    if (loading || !sessionStarted) return;
     if (!sessionDone && (askedIds.length >= sessionLimit || (askedIds.length > 0 && !current))) {
       setSessionDone(true);
       setRevealed(false);
     }
-  }, [askedIds.length, current, loading, sessionDone, sessionLimit]);
+  }, [askedIds.length, current, loading, sessionDone, sessionLimit, sessionStarted]);
+
+  const resetSession = () => {
+    if (props.mode !== "review" && practiceItems.length > 0 && !hasAnyProgressForItems(progress, practiceItems)) {
+      const rerandomizedCycle = createScopedFreshCycle(practiceItems, props.target);
+      if (useScopedCycle) {
+        setScopedFreshCycle(rerandomizedCycle);
+        setScopedFreshCycleKey(scopedModeKey);
+      } else {
+        setFreshCycle(rerandomizedCycle);
+        saveFreshCycle(props.appMode, props.target, rerandomizedCycle);
+      }
+    }
+
+    setAskedIds([]);
+    setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
+    setSessionWrongIds([]);
+    setSessionDone(false);
+    setRevealed(false);
+  };
+
+  const startConfiguredSession = () => {
+    setRetryWrongIds([]);
+    resetSession();
+    setSessionStarted(true);
+  };
+
+  const startWrongRetrySession = () => {
+    if (sessionWrongIds.length === 0) return;
+    setRetryWrongIds(sessionWrongIds);
+    resetSession();
+    setSessionStarted(true);
+  };
+
+  const finishWrongRetrySession = () => {
+    setRetryWrongIds([]);
+    resetSession();
+  };
+
+  const toggleParty = (partyName: string) => {
+    setSelectedParties((prev) => (prev.includes(partyName) ? prev.filter((name) => name !== partyName) : [...prev, partyName]));
+  };
+
+  const selectedPartyCount = useMemo(() => {
+    if (!supportsPartySelection || !usePartySelection) return items.length;
+    if (selectedPartySet.size === 0) return 0;
+    return items.filter((item) => selectedPartySet.has(getPartyLabel(item))).length;
+  }, [items, selectedPartySet, supportsPartySelection, usePartySelection]);
+
+  const canStart = !loading && !error && practiceItems.length > 0 && (!usePartySelection || selectedParties.length > 0 || !supportsPartySelection);
 
   const onGrade = (grade: Grade) => {
     if (!current) return;
@@ -343,8 +534,13 @@ export default function Learn(props: Props) {
         order: activeFreshCycle.order,
         cursor: Math.min(activeFreshCycle.cursor + 1, activeFreshCycle.order.length),
       } satisfies FreshCycleState;
-      setFreshCycle(nextFreshCycle);
-      saveFreshCycle(props.appMode, props.target, nextFreshCycle);
+      if (useScopedCycle) {
+        setScopedFreshCycle(nextFreshCycle);
+        setScopedFreshCycleKey(scopedModeKey);
+      } else {
+        setFreshCycle(nextFreshCycle);
+        saveFreshCycle(props.appMode, props.target, nextFreshCycle);
+      }
     }
 
     setAskedIds((prevAsked) => [...prevAsked, current.id]);
@@ -358,23 +554,6 @@ export default function Learn(props: Props) {
       hazy: prevResult.hazy + (grade === "hard" ? 1 : 0),
       notRemembered: prevResult.notRemembered + (grade === "again" ? 1 : 0),
     }));
-    setRevealed(false);
-  };
-
-  const resetSession = () => {
-    if (props.mode !== "review" && items.length > 0 && !hasAnyProgressForItems(progress, items)) {
-      const nextFreshCycle: FreshCycleState = {
-        order: shuffleIds(items.map((item) => item.id)),
-        cursor: 0,
-      };
-      setFreshCycle(nextFreshCycle);
-      saveFreshCycle(props.appMode, props.target, nextFreshCycle);
-    }
-
-    setAskedIds([]);
-    setSessionResult({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
-    setSessionWrongIds([]);
-    setSessionDone(false);
     setRevealed(false);
   };
 
@@ -400,7 +579,6 @@ export default function Learn(props: Props) {
   const summaryTextCompact = props.mode === "review"
     ? `忘れそう ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`
     : `要復習 ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`;
-
 
   const renderAnswerHeading = (person: Person) => (
     <div style={styles.answerNameLine}>
@@ -437,10 +615,67 @@ export default function Learn(props: Props) {
         </div>
 
         <div style={styles.card}>
-          {loading ? <div style={styles.center}>読み込み中</div> : sessionDone ? (
+          {loading ? <div style={styles.center}>読み込み中</div> : !sessionStarted ? (
+            <div style={styles.setupWrap}>
+              <div style={styles.setupTitle}>開始前設定</div>
+              <div style={styles.setupSub}>問題数はオプション設定の {options.quizCount} 問です。対象が少ない場合は、その人数まで出題します。</div>
+              {supportsPartySelection ? (
+                <div style={styles.setupSection}>
+                  <div style={styles.setupLabel}>出題対象</div>
+                  <div style={styles.setupChoiceRow}>
+                    <button
+                      type="button"
+                      style={!usePartySelection ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      onClick={() => {
+                        setUsePartySelection(false);
+                        setSelectedParties([]);
+                      }}
+                    >
+                      すべてで出題
+                    </button>
+                    <button
+                      type="button"
+                      style={usePartySelection ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      onClick={() => setUsePartySelection(true)}
+                    >
+                      政党を選んで出題
+                    </button>
+                  </div>
+                  {usePartySelection ? (
+                    <>
+                      <div style={styles.partyHint}>複数選択できます。少数政党も混ぜられます。</div>
+                      <div style={styles.partyChipWrap}>
+                        {partySummaries.map((party) => {
+                          const active = selectedParties.includes(party.name);
+                          return (
+                            <button
+                              type="button"
+                              key={party.name}
+                              style={active ? styles.partyChipActive : styles.partyChip}
+                              onClick={() => toggleParty(party.name)}
+                            >
+                              {party.name} ({party.count})
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  ) : null}
+                </div>
+              ) : null}
+              <div style={styles.setupMeta}>
+                <div>対象人数：{usePartySelection ? selectedPartyCount : items.length}人</div>
+                <div>今回の出題数：{Math.min(options.quizCount, usePartySelection ? selectedPartyCount : items.length)}問</div>
+              </div>
+              <div style={styles.doneBtns}>
+                <button type="button" style={styles.primaryBtn} onClick={startConfiguredSession} disabled={!canStart}>この条件で開始</button>
+                <button type="button" style={styles.btn} onClick={props.onBackTitle}>タイトルへ戻る</button>
+              </div>
+            </div>
+          ) : sessionDone ? (
             <div style={styles.doneWrap}>
               <div style={styles.doneTitle}>今回の出題は終了です</div>
-              <div style={styles.doneSub}>次は、忘れそうな議員と苦手な議員を優先して再構成されます。</div>
+              <div style={styles.doneSub}>{isWrongRetryMode ? "間違えた議員だけを再確認しました。まだ残っていれば続けて繰り返せます。" : "次は、忘れそうな議員と苦手な議員を優先して再構成されます。"}</div>
               <div style={styles.resultGrid}>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
@@ -477,7 +712,8 @@ export default function Learn(props: Props) {
                 </div>
               ) : null}
               <div style={styles.doneBtns}>
-                <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>
+                {sessionWrongPersons.length > 0 ? <button type="button" style={styles.primaryBtn} onClick={startWrongRetrySession}>間違えた議員だけもう一度</button> : null}
+                {isWrongRetryMode ? <button type="button" style={styles.btn} onClick={finishWrongRetrySession}>通常出題に戻る</button> : <button type="button" style={styles.primaryBtn} onClick={resetSession}>次の出題へ</button>}
                 <button type="button" style={styles.btn} onClick={props.onBackTitle}>終了してタイトルへ戻る</button>
               </div>
             </div>
@@ -548,23 +784,22 @@ export default function Learn(props: Props) {
             </div>
           )}
         </div>
-      </div>
 
-      <HelpModal open={helpOpen} title="このモードの使い方" onClose={() => setHelpOpen(false)}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div><b>このモードの役割</b></div>
-          <div>{modeHelp[props.mode]}</div>
-          <div><b>判定の基準</b></div>
-          <div>覚えていた：見ずにすぐ出た</div>
-          <div>うろ覚え：少し迷った、部分的に出た</div>
-          <div>覚えていない：出ない、別人と混ざる</div>
-          <div><b>今回の改善点</b></div>
-          <div>忘れそうな議員を先に出し、苦手として落ち続ける議員は自動で優先度を上げます。</div>
-          <div>完全習得に入った議員は通常出題から外れ、苦手と復習対象を先に回す構成です。</div>
-          <div><b>記憶の定着</b></div>
-          <div>答えを見た後に自己判定し、忘れかけのものを適切な時期に出し直すことで定着を伸ばします。</div>
-        </div>
-      </HelpModal>
+        <HelpModal open={helpOpen} title="このモードの使い方" onClose={() => setHelpOpen(false)}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div><b>このモードの役割</b></div>
+            <div>{modeHelp[props.mode]}</div>
+            <div><b>判定の基準</b></div>
+            <div>覚えていた：見ずにすぐ出た</div>
+            <div>うろ覚え：少し迷った、部分的に出た</div>
+            <div>覚えていない：出ない、別人と混ざる</div>
+            <div><b>今回の改善点</b></div>
+            <div>開始前に問題数と出題政党を決められます。政党選択は複数選択でき、間違えた議員だけを何度もやり直せます。</div>
+            <div><b>記憶の定着</b></div>
+            <div>答えを見た後に自己判定し、忘れかけのものを適切な時期に出し直すことで定着を伸ばします。</div>
+          </div>
+        </HelpModal>
+      </div>
     </div>
   );
 }
@@ -584,6 +819,19 @@ const styles: Record<string, React.CSSProperties> = {
   progressBox: { padding: "4px 8px", borderRadius: 999, background: "#eef6ff", border: "1px solid #c8ddff", fontSize: 11, color: "#0958b3", fontWeight: 700, whiteSpace: "nowrap" },
   card: { flex: 1, minHeight: 0, border: "1px solid #ddd", borderRadius: 14, padding: 8, background: "#fff", display: "flex", overflow: "hidden" },
   center: { margin: "auto", color: "#666", fontSize: 14, textAlign: "center" },
+  setupWrap: { width: "100%", display: "grid", gap: 10, alignContent: "start", overflowY: "auto" },
+  setupTitle: { fontSize: 18, fontWeight: 800 },
+  setupSub: { fontSize: 13, color: "#444", lineHeight: 1.5 },
+  setupSection: { display: "grid", gap: 8, padding: 10, borderRadius: 12, background: "#f8fafc", border: "1px solid #e5e7eb" },
+  setupLabel: { fontSize: 13, fontWeight: 800, color: "#111827" },
+  setupChoiceRow: { display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 8 },
+  setupChoiceBtn: { padding: "10px 12px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", color: "#1f2937", fontWeight: 700, fontSize: 14 },
+  setupChoiceActiveBtn: { padding: "10px 12px", borderRadius: 12, border: "1px solid #1d4ed8", background: "#eff6ff", color: "#1d4ed8", fontWeight: 800, fontSize: 14 },
+  partyHint: { fontSize: 12, color: "#4b5563" },
+  partyChipWrap: { display: "flex", flexWrap: "wrap", gap: 8 },
+  partyChip: { padding: "8px 10px", borderRadius: 999, border: "1px solid #cbd5e1", background: "#fff", color: "#1f2937", fontWeight: 700, fontSize: 13 },
+  partyChipActive: { padding: "8px 10px", borderRadius: 999, border: "1px solid #2563eb", background: "#2563eb", color: "#fff", fontWeight: 800, fontSize: 13 },
+  setupMeta: { display: "grid", gap: 4, padding: 10, borderRadius: 12, background: "#f8fafc", border: "1px solid #e5e7eb", fontSize: 12, color: "#444" },
   quizLayout: { display: "grid", gridTemplateRows: "minmax(0, 1fr) auto auto", gap: 8, width: "100%", minHeight: 0 },
   quizLayoutCompact: { display: "grid", gridTemplateRows: "minmax(0, 1fr) auto auto", gap: 6, width: "100%", minHeight: 0 },
   imageZone: { minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center" },
