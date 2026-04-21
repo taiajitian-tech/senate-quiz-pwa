@@ -6,6 +6,7 @@ import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
+import { loadOptions } from "./optionsStore";
 
 type Mode = "learn" | "review" | "reverse";
 
@@ -31,7 +32,6 @@ function normalizePersonName(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
 }
 
-const SESSION_SIZE = 30;
 const DAY = 24 * 60 * 60 * 1000;
 
 function shuffleIds(ids: number[]) {
@@ -201,6 +201,9 @@ export default function Learn(props: Props) {
   const [sessionWrongIds, setSessionWrongIds] = useState<number[]>([]);
   const [sessionDone, setSessionDone] = useState(false);
 
+  const quizCount = useMemo(() => loadOptions().quizCount, []);
+  const sessionLimit = useMemo(() => Math.max(1, Math.min(quizCount, items.length || quizCount)), [quizCount, items.length]);
+
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
   useEffect(() => {
@@ -293,17 +296,17 @@ export default function Learn(props: Props) {
     return getFreshCycleNextId(activeFreshCycle, askedIdSet);
   }, [activeFreshCycle, askedIdSet, props.mode]);
   const current = useMemo(() => {
-    if (sessionDone || askedIds.length >= SESSION_SIZE) return null;
+    if (sessionDone || askedIds.length >= sessionLimit) return null;
     return pickNext(items, progress, Date.now(), props.mode, askedIdSet, recentAddedNames, forcedFreshCycleId);
-  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone, recentAddedNames, forcedFreshCycleId]);
+  }, [items, progress, props.mode, askedIdSet, askedIds.length, sessionDone, recentAddedNames, forcedFreshCycleId, sessionLimit]);
 
   useEffect(() => {
     if (loading) return;
-    if (!sessionDone && (askedIds.length >= SESSION_SIZE || (askedIds.length > 0 && !current))) {
+    if (!sessionDone && (askedIds.length >= sessionLimit || (askedIds.length > 0 && !current))) {
       setSessionDone(true);
       setRevealed(false);
     }
-  }, [askedIds.length, current, loading, sessionDone]);
+  }, [askedIds.length, current, loading, sessionDone, sessionLimit]);
 
   const onGrade = (grade: Grade) => {
     if (!current) return;
@@ -426,7 +429,7 @@ export default function Learn(props: Props) {
           <div style={styles.h1}>{titleMap[props.mode]}</div>
           <div style={styles.subRow}>
             <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]}</div>
-            <div style={styles.progressBox}>{Math.min(askedIds.length, SESSION_SIZE)} / {SESSION_SIZE}</div>
+            <div style={styles.progressBox}>{Math.min(askedIds.length, sessionLimit)} / {sessionLimit}</div>
           </div>
           {!compactLayout ? <div style={styles.modeDesc}>{modeHelp[props.mode]}</div> : null}
           <div style={styles.focusHint}>{compactLayout ? summaryTextCompact : summaryText}</div>
