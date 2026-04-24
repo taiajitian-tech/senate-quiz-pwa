@@ -507,6 +507,11 @@ function hasName(person: Person, names: Set<string>): boolean {
   return names.has(normalizeCompact(person.name));
 }
 
+function isCouncilorRolePerson(person: Person): boolean {
+  const text = normalizeCompact([person.group, person.party, person.district, person.role, person.subRole, person.chamber].filter(Boolean).join(" / "));
+  return text.includes("参議院");
+}
+
 async function loadRawPersons(baseUrl: string, target: Target): Promise<Person[]> {
   const res = await fetch(`${baseUrl}${targetDataPath[target]}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
@@ -521,8 +526,18 @@ async function loadRawPersons(baseUrl: string, target: Target): Promise<Person[]
 function filterEntranceMode(items: Person[], target: Target, related: Partial<Record<Target, Person[]>> = {}): Person[] {
   switch (target) {
     case "senators": {
-      const officerNames = new Set((related.councilorsOfficersList ?? []).map((item) => normalizeCompact(item.name)));
-      return items.filter((item) => !hasName(item, officerNames));
+      const excludedNames = new Set<string>();
+      for (const item of related.councilorsOfficersList ?? []) {
+        excludedNames.add(normalizeCompact(item.name));
+      }
+      for (const sourceTarget of ["ministers", "viceMinisters", "parliamentarySecretaries"] as const) {
+        for (const item of related[sourceTarget] ?? []) {
+          if (isCouncilorRolePerson(item)) {
+            excludedNames.add(normalizeCompact(item.name));
+          }
+        }
+      }
+      return items.filter((item) => !hasName(item, excludedNames));
     }
     case "representatives": {
       const excludedNames = new Set<string>();
@@ -566,7 +581,18 @@ export function parsePersonsJson(value: unknown, target?: Target, mode: AppMode 
 export async function loadPersonsForTarget(baseUrl: string, target: Target, mode: AppMode = "basic"): Promise<Person[]> {
   const related: Partial<Record<Target, Person[]>> = {};
   if (mode === "entrance") {
-    if (target === "senators") related.councilorsOfficersList = await loadRawPersons(baseUrl, "councilorsOfficersList");
+    if (target === "senators") {
+      const [councilorsOfficersList, ministers, viceMinisters, parliamentarySecretaries] = await Promise.all([
+        loadRawPersons(baseUrl, "councilorsOfficersList"),
+        loadRawPersons(baseUrl, "ministers"),
+        loadRawPersons(baseUrl, "viceMinisters"),
+        loadRawPersons(baseUrl, "parliamentarySecretaries"),
+      ]);
+      related.councilorsOfficersList = councilorsOfficersList;
+      related.ministers = ministers;
+      related.viceMinisters = viceMinisters;
+      related.parliamentarySecretaries = parliamentarySecretaries;
+    }
     if (target === "representatives") {
       const [ministers, viceMinisters, parliamentarySecretaries] = await Promise.all([
         loadRawPersons(baseUrl, "ministers"),
