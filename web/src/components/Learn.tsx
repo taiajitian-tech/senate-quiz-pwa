@@ -5,7 +5,7 @@ import { appendHistory, loadFreshCycle, saveFreshCycle, loadProgress, saveProgre
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
-import { loadOptions } from "./optionsStore";
+import { loadOptions, saveOptions } from "./optionsStore";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -35,6 +35,7 @@ type PartySummary = {
 
 const DAY = 24 * 60 * 60 * 1000;
 const PARTY_SELECTABLE_TARGETS: Target[] = ["senators", "representatives"];
+const QUIZ_COUNT_CHOICES = [10, 20, 30, 40, 50, 60, 80, 100, 150, 200];
 const JA_COLLATOR = new Intl.Collator("ja");
 
 function normalizePersonName(value: string): string {
@@ -249,7 +250,7 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
 }
 
 export default function Learn(props: Props) {
-  const options = loadOptions();
+  const [options, setOptions] = useState(() => loadOptions());
   const supportsPartySelection = PARTY_SELECTABLE_TARGETS.includes(props.target) && props.mode !== "review";
 
   const [helpOpen, setHelpOpen] = useState(false);
@@ -491,6 +492,12 @@ export default function Learn(props: Props) {
     setSelectedParties((prev) => (prev.includes(partyName) ? prev.filter((name) => name !== partyName) : [...prev, partyName]));
   };
 
+  const changeQuizCount = (quizCount: number) => {
+    const nextOptions = { ...options, quizCount };
+    setOptions(nextOptions);
+    saveOptions(nextOptions);
+  };
+
   const selectedPartyCount = useMemo(() => {
     if (!supportsPartySelection || !usePartySelection) return items.length;
     if (selectedPartySet.size === 0) return 0;
@@ -618,7 +625,20 @@ export default function Learn(props: Props) {
           {loading ? <div style={styles.center}>読み込み中</div> : !sessionStarted ? (
             <div style={styles.setupWrap}>
               <div style={styles.setupTitle}>開始前設定</div>
-              <div style={styles.setupSub}>問題数はオプション設定の {options.quizCount} 問です。対象が少ない場合は、その人数まで出題します。</div>
+              <div style={styles.setupSub}>ここで決めた問題数を、今回の出題上限・終了判定・進捗表示に使います。対象が少ない場合は、その人数まで出題します。</div>
+              <div style={styles.setupSection}>
+                <label style={styles.setupLabel} htmlFor="learn-quiz-count">問題数</label>
+                <select
+                  id="learn-quiz-count"
+                  value={options.quizCount}
+                  style={styles.setupSelect}
+                  onChange={(event) => changeQuizCount(Number(event.target.value))}
+                >
+                  {QUIZ_COUNT_CHOICES.map((count) => (
+                    <option key={count} value={count}>{count}問</option>
+                  ))}
+                </select>
+              </div>
               {supportsPartySelection ? (
                 <div style={styles.setupSection}>
                   <div style={styles.setupLabel}>出題対象</div>
@@ -827,6 +847,7 @@ const styles: Record<string, React.CSSProperties> = {
   setupChoiceRow: { display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 8 },
   setupChoiceBtn: { padding: "10px 12px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", color: "#1f2937", fontWeight: 700, fontSize: 14 },
   setupChoiceActiveBtn: { padding: "10px 12px", borderRadius: 12, border: "1px solid #1d4ed8", background: "#eff6ff", color: "#1d4ed8", fontWeight: 800, fontSize: 14 },
+  setupSelect: { width: "100%", padding: "10px 12px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", color: "#111827", fontWeight: 800, fontSize: 16 },
   partyHint: { fontSize: 12, color: "#4b5563" },
   partyChipWrap: { display: "flex", flexWrap: "wrap", gap: 8 },
   partyChip: { padding: "8px 10px", borderRadius: 999, border: "1px solid #cbd5e1", background: "#fff", color: "#1f2937", fontWeight: 700, fontSize: 13 },
