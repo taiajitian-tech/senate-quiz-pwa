@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
-import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
+import { formatLearningHeading, getLearningAnswerLines, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
   appMode: AppMode;
@@ -89,10 +89,6 @@ export default function AutoPlayView(props: Props) {
   const [answerSeconds, setAnswerSeconds] = useState(() => readSeconds(answerSecondsKey(props.appMode, props.target), 2));
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
-  useEffect(() => {
-    setFaceSeconds(readSeconds(faceSecondsKey(props.appMode, props.target), 2));
-    setAnswerSeconds(readSeconds(answerSecondsKey(props.appMode, props.target), 2));
-  }, [props.appMode, props.target]);
 
   useEffect(() => {
     (async () => {
