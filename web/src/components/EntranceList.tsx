@@ -1,28 +1,33 @@
-// 修正済み EntranceList.tsx（差し替え用）
-
-const getDisplaySub = (item: any) => {
-  if (item.role) return item.role;
-  if (item.subRole) return item.subRole;
-  if (item.party) return item.party;
-  if (item.group) return item.group;
-  return '';
+type EntranceListItem = {
+  id: number | string;
+  title?: string;
+  name: string;
+  kana?: string;
+  role?: string;
+  subRole?: string;
+  party?: string;
+  group?: string;
 };
 
-export default function EntranceList({ items }: any) {
+type EntranceListProps = {
+  items: EntranceListItem[];
+};
+
+function getDisplaySub(item: EntranceListItem): string {
+  return item.role || item.subRole || item.party || item.group || "";
+}
+
+export default function EntranceList({ items }: EntranceListProps) {
   return (
     <div>
-      {items.map((item: any) => (
+      {items.map((item) => (
         <div className="card" key={item.id}>
-          <div className="title">{item.title}</div>
-
+          <div className="title">{item.title || item.name}</div>
           <div className="name">
             {item.name}
-            {item.kana && <span className="kana">{item.kana}</span>}
+            {item.kana ? <span className="kana">{item.kana}</span> : null}
           </div>
-
-          <div className="sub">
-            {getDisplaySub(item)}
-          </div>
+          <div className="sub">{getDisplaySub(item)}</div>
         </div>
       ))}
     </div>

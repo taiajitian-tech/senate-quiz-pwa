@@ -5,6 +5,7 @@ import {
   clearAllPersonNameKanaOverrides,
   clearPersonNameKanaOverride,
   formatDisplayName,
+  getLearningAnswerLines,
   getPersonNameKanaOverrides,
   loadPersonsForTarget,
   savePersonNameKanaOverride,
@@ -511,6 +512,7 @@ export default function SenatorList(props: Props) {
         {sorted.map((s) => {
           const isEditing = editMode && editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
+          const entranceDetailLines = props.appMode === "entrance" ? getLearningAnswerLines(s, props.target, props.appMode) : [];
           return viewMode === "compact" && !editMode ? (
             <button
               key={s.id}
@@ -583,7 +585,12 @@ export default function SenatorList(props: Props) {
                         {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
                       </div>
                     </div>
-                    {s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
+                    {props.appMode !== "entrance" && s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
+                    {props.appMode === "entrance"
+                      ? entranceDetailLines.map((line) => (
+                          <div key={line} style={styles.group}>{line}</div>
+                        ))
+                      : null}
                   </>
                 )}
 
@@ -603,16 +610,16 @@ export default function SenatorList(props: Props) {
                   </div>
                 ) : null}
 
-                {isSenators ? (
+                {isSenators && props.appMode !== "entrance" ? (
                   <div style={styles.infoGrid}>
                     <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
                     <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
                     <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
                     <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
                   </div>
-                ) : (
+                ) : props.appMode !== "entrance" ? (
                   <div style={styles.group}>{s.group ?? ""}</div>
-                )}
+                ) : null}
               </div>
             </div>
           );
