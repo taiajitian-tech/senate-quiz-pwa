@@ -14,7 +14,6 @@ type Props = {
   onStartReview: () => void;
   onOpenAutoplay: () => void;
   onOpenStats: () => void;
-  onOpenOptions: () => void;
   onOpenList: () => void;
   onOpenBackup: () => void;
   onOpenUpdates: () => void;
@@ -127,7 +126,7 @@ export default function TitleView(props: Props) {
 
         <div style={styles.titleBlock}>
           <div style={styles.title}>議員集</div>
-          <div style={styles.titleSub}>まず見て、次に思い出す。順番どおりに覚える学習アプリ</div>
+          <div style={styles.titleSub}>まず見て、次に思い出す。開始前に条件を決めて覚える学習アプリ</div>
           <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `更新あり ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}</div>
         </div>
 
@@ -173,14 +172,13 @@ export default function TitleView(props: Props) {
           <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
           <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認を確認する" onClick={props.onOpenStats} />
           <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
-          <MenuButton label="オプション" sub="表示や動作を調整する" onClick={props.onOpenOptions} />
         </div>
 
         <div style={styles.guideBox}>
           <div style={styles.guideTitle}>おすすめの順番</div>
           <div style={styles.stepGrid}>
-            <div style={styles.stepCard}><div style={styles.stepNum}>1</div><div><b>自動再生</b><div style={styles.stepText}>まず多くの顔を一気に見る</div></div></div>
-            <div style={styles.stepCard}><div style={styles.stepNum}>2</div><div><b>学習</b><div style={styles.stepText}>顔を見て名前を思い出す</div></div></div>
+            <div style={styles.stepCard}><div style={styles.stepNum}>1</div><div><b>自動再生</b><div style={styles.stepText}>秒数を画面内で調整しながら顔を一気に見る</div></div></div>
+            <div style={styles.stepCard}><div style={styles.stepNum}>2</div><div><b>学習</b><div style={styles.stepText}>問題数と出題対象を決めて名前を思い出す</div></div></div>
             <div style={styles.stepCard}><div style={styles.stepNum}>3</div><div><b>逆学習</b><div style={styles.stepText}>名前から顔も引けるようにする</div></div></div>
             <div style={styles.stepCard}><div style={styles.stepNum}>4</div><div><b>復習</b><div style={styles.stepText}>忘れかけを戻して定着させる</div></div></div>
           </div>
@@ -195,7 +193,7 @@ export default function TitleView(props: Props) {
           <div><b>迷ったときの基準</b></div>
           <div>3秒以内に出なければ考え込まず、答えを見て次へ進めた方が効率が上がります。</div>
           <div><b>復習の役割</b></div>
-          <div>復習は、すでに見た議員の中から今ちょうど忘れかけの議員だけを出します。</div>
+          <div>復習は、開始前に問題数を決めて、忘れかけや苦手な議員を集中的に出します。</div>
         </div>
       </HelpModal>
     </div>

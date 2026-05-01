@@ -1,14 +1,25 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import { applyGrade, getForgettingScore, isMastered, type Grade, type ProgressItem } from "./srs";
-import { appendHistory, loadFreshCycle, saveFreshCycle, loadProgress, saveProgress, type FreshCycleState } from "./learnStorage";
+import {
+  appendHistory,
+  clearWrongMemory,
+  loadFreshCycle,
+  loadProgress,
+  loadWrongMemory,
+  rememberWrongMemory,
+  saveFreshCycle,
+  saveProgress,
+  type FreshCycleState,
+  type WrongMemoryItem,
+} from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
-import { loadOptions, saveOptions } from "./optionsStore";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
+type SetupMode = "all" | "party" | "wrongMemory";
 
 type Props = {
   appMode: AppMode;
@@ -37,6 +48,25 @@ const DAY = 24 * 60 * 60 * 1000;
 const PARTY_SELECTABLE_TARGETS: Target[] = ["senators", "representatives"];
 const QUIZ_COUNT_CHOICES = [10, 20, 30, 40, 50, 60, 80, 100, 150, 200];
 const JA_COLLATOR = new Intl.Collator("ja");
+const LEARN_QUIZ_COUNT_KEY = "learnQuizCount.v1";
+
+function loadLearnQuizCount() {
+  try {
+    const raw = localStorage.getItem(LEARN_QUIZ_COUNT_KEY);
+    const value = raw ? Number(raw) : 20;
+    return QUIZ_COUNT_CHOICES.includes(value) ? value : 20;
+  } catch {
+    return 20;
+  }
+}
+
+function saveLearnQuizCount(value: number) {
+  try {
+    localStorage.setItem(LEARN_QUIZ_COUNT_KEY, String(value));
+  } catch {
+    // ignore
+  }
+}
 
 function normalizePersonName(value: string): string {
   return value.replace(/[\s\u3000]+/g, "").trim();
@@ -250,7 +280,7 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
 }
 
 export default function Learn(props: Props) {
-  const [options, setOptions] = useState(() => loadOptions());
+  const [quizCount, setQuizCount] = useState(() => loadLearnQuizCount());
   const supportsPartySelection = PARTY_SELECTABLE_TARGETS.includes(props.target) && props.mode !== "review";
 
   const [helpOpen, setHelpOpen] = useState(false);
@@ -267,10 +297,11 @@ export default function Learn(props: Props) {
   const [sessionResult, setSessionResult] = useState<SessionResult>({ total: 0, remembered: 0, hazy: 0, notRemembered: 0 });
   const [sessionWrongIds, setSessionWrongIds] = useState<number[]>([]);
   const [sessionDone, setSessionDone] = useState(false);
-  const [sessionStarted, setSessionStarted] = useState(props.mode === "review");
-  const [usePartySelection, setUsePartySelection] = useState(false);
+  const [sessionStarted, setSessionStarted] = useState(false);
+  const [setupMode, setSetupMode] = useState<SetupMode>("all");
   const [selectedParties, setSelectedParties] = useState<string[]>([]);
   const [retryWrongIds, setRetryWrongIds] = useState<number[]>([]);
+  const [wrongMemoryItems, setWrongMemoryItems] = useState<WrongMemoryItem[]>(() => loadWrongMemory(props.appMode, props.target));
 
   const baseUrl = import.meta.env.BASE_URL ?? "/";
 
@@ -286,9 +317,10 @@ export default function Learn(props: Props) {
     setRetryWrongIds([]);
     setSessionDone(false);
     setRevealed(false);
-    setSessionStarted(props.mode === "review");
-    setUsePartySelection(false);
+    setSessionStarted(false);
+    setSetupMode("all");
     setSelectedParties([]);
+    setWrongMemoryItems(loadWrongMemory(props.appMode, props.target));
   }, [props.appMode, props.target, props.mode]);
 
   useEffect(() => {
@@ -341,7 +373,10 @@ export default function Learn(props: Props) {
   const partySummaries = useMemo(() => (supportsPartySelection ? buildPartySummaries(items) : []), [items, supportsPartySelection]);
   const selectedPartySet = useMemo(() => new Set(selectedParties), [selectedParties]);
   const retryWrongSet = useMemo(() => new Set(retryWrongIds), [retryWrongIds]);
+  const wrongMemoryIdSet = useMemo(() => new Set(wrongMemoryItems.map((item) => item.id)), [wrongMemoryItems]);
   const isWrongRetryMode = retryWrongIds.length > 0;
+  const usePartySelection = setupMode === "party";
+  const useWrongMemorySelection = setupMode === "wrongMemory";
 
   useEffect(() => {
     if (!supportsPartySelection || items.length === 0) return;
@@ -352,17 +387,18 @@ export default function Learn(props: Props) {
     let next = items;
     if (isWrongRetryMode) {
       next = items.filter((item) => retryWrongSet.has(item.id));
+    } else if (useWrongMemorySelection) {
+      next = items.filter((item) => wrongMemoryIdSet.has(item.id));
     } else if (supportsPartySelection && usePartySelection && selectedPartySet.size > 0) {
       next = items.filter((item) => selectedPartySet.has(getPartyLabel(item)));
     }
     return next;
-  }, [isWrongRetryMode, items, retryWrongSet, selectedPartySet, supportsPartySelection, usePartySelection]);
+  }, [isWrongRetryMode, items, retryWrongSet, selectedPartySet, supportsPartySelection, usePartySelection, useWrongMemorySelection, wrongMemoryIdSet]);
 
   const sessionLimit = useMemo(() => {
-    const count = options.quizCount;
-    if (practiceItems.length === 0) return count;
-    return Math.min(count, practiceItems.length);
-  }, [options.quizCount, practiceItems.length]);
+    if (practiceItems.length === 0) return quizCount;
+    return Math.min(quizCount, practiceItems.length);
+  }, [practiceItems.length, quizCount]);
 
   const focusSummary = useMemo(() => getFocusSummary(progress, practiceItems, Date.now()), [progress, practiceItems]);
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
@@ -370,9 +406,10 @@ export default function Learn(props: Props) {
     if (!sessionStarted) return "";
     if (props.mode === "review") return "review";
     if (isWrongRetryMode) return `wrong:${retryWrongIds.slice().sort((a, b) => a - b).join(",")}`;
+    if (useWrongMemorySelection) return `wrongMemory:${wrongMemoryItems.map((item) => item.id).sort((a, b) => a - b).join(",")}`;
     if (supportsPartySelection && usePartySelection) return `party:${selectedParties.slice().sort(JA_COLLATOR.compare).join("|")}`;
     return "all";
-  }, [isWrongRetryMode, props.mode, retryWrongIds, selectedParties, sessionStarted, supportsPartySelection, usePartySelection]);
+  }, [isWrongRetryMode, props.mode, retryWrongIds, selectedParties, sessionStarted, supportsPartySelection, usePartySelection, useWrongMemorySelection, wrongMemoryItems]);
   const useScopedCycle = props.mode !== "review" && sessionStarted && scopedModeKey !== "all";
 
   useEffect(() => {
@@ -471,6 +508,9 @@ export default function Learn(props: Props) {
   };
 
   const startConfiguredSession = () => {
+    if (setupMode === "wrongMemory") {
+      setWrongMemoryItems(loadWrongMemory(props.appMode, props.target));
+    }
     setRetryWrongIds([]);
     resetSession();
     setSessionStarted(true);
@@ -492,10 +532,9 @@ export default function Learn(props: Props) {
     setSelectedParties((prev) => (prev.includes(partyName) ? prev.filter((name) => name !== partyName) : [...prev, partyName]));
   };
 
-  const changeQuizCount = (quizCount: number) => {
-    const nextOptions = { ...options, quizCount };
-    setOptions(nextOptions);
-    saveOptions(nextOptions);
+  const changeQuizCount = (nextQuizCount: number) => {
+    setQuizCount(nextQuizCount);
+    saveLearnQuizCount(nextQuizCount);
   };
 
   const selectedPartyCount = useMemo(() => {
@@ -504,7 +543,15 @@ export default function Learn(props: Props) {
     return items.filter((item) => selectedPartySet.has(getPartyLabel(item))).length;
   }, [items, selectedPartySet, supportsPartySelection, usePartySelection]);
 
-  const canStart = !loading && !error && practiceItems.length > 0 && (!usePartySelection || selectedParties.length > 0 || !supportsPartySelection);
+  const wrongMemoryCount = useMemo(() => items.filter((item) => wrongMemoryIdSet.has(item.id)).length, [items, wrongMemoryIdSet]);
+
+  const targetCount = useWrongMemorySelection ? wrongMemoryCount : usePartySelection ? selectedPartyCount : items.length;
+  const canStart =
+    !loading &&
+    !error &&
+    practiceItems.length > 0 &&
+    (!usePartySelection || selectedParties.length > 0 || !supportsPartySelection) &&
+    (!useWrongMemorySelection || wrongMemoryCount > 0);
 
   const onGrade = (grade: Grade) => {
     if (!current) return;
@@ -532,6 +579,10 @@ export default function Learn(props: Props) {
 
     if (grade === "again" || next.status === "leech") wrong.add(current.id);
     else if (grade === "good" && next.consecutiveCorrect >= 2) wrong.delete(current.id);
+
+    if (grade === "hard" || grade === "again") {
+      setWrongMemoryItems(rememberWrongMemory(props.appMode, props.target, current.id, now));
+    }
 
     saveWrongIds(props.appMode, props.target, [...wrong]);
     saveMasteredIds(props.appMode, props.target, [...mastered]);
@@ -630,7 +681,7 @@ export default function Learn(props: Props) {
                 <label style={styles.setupLabel} htmlFor="learn-quiz-count">問題数</label>
                 <select
                   id="learn-quiz-count"
-                  value={options.quizCount}
+                  value={quizCount}
                   style={styles.setupSelect}
                   onChange={(event) => changeQuizCount(Number(event.target.value))}
                 >
@@ -645,9 +696,9 @@ export default function Learn(props: Props) {
                   <div style={styles.setupChoiceRow}>
                     <button
                       type="button"
-                      style={!usePartySelection ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      style={setupMode === "all" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
                       onClick={() => {
-                        setUsePartySelection(false);
+                        setSetupMode("all");
                         setSelectedParties([]);
                       }}
                     >
@@ -655,10 +706,22 @@ export default function Learn(props: Props) {
                     </button>
                     <button
                       type="button"
-                      style={usePartySelection ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
-                      onClick={() => setUsePartySelection(true)}
+                      style={setupMode === "party" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      onClick={() => setSetupMode("party")}
                     >
                       政党を選んで出題
+                    </button>
+                    <button
+                      type="button"
+                      style={setupMode === "wrongMemory" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      onClick={() => {
+                        setSetupMode("wrongMemory");
+                        setSelectedParties([]);
+                        setWrongMemoryItems(loadWrongMemory(props.appMode, props.target));
+                      }}
+                      disabled={wrongMemoryCount === 0}
+                    >
+                      蓄積ミスだけ復習 ({wrongMemoryCount})
                     </button>
                   </div>
                   {usePartySelection ? (
@@ -682,13 +745,50 @@ export default function Learn(props: Props) {
                     </>
                   ) : null}
                 </div>
-              ) : null}
+              ) : (
+                <div style={styles.setupSection}>
+                  <div style={styles.setupLabel}>出題対象</div>
+                  <div style={styles.setupChoiceRow}>
+                    <button
+                      type="button"
+                      style={setupMode === "all" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      onClick={() => setSetupMode("all")}
+                    >
+                      通常出題
+                    </button>
+                    <button
+                      type="button"
+                      style={setupMode === "wrongMemory" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                      onClick={() => {
+                        setSetupMode("wrongMemory");
+                        setWrongMemoryItems(loadWrongMemory(props.appMode, props.target));
+                      }}
+                      disabled={wrongMemoryCount === 0}
+                    >
+                      蓄積ミスだけ復習 ({wrongMemoryCount})
+                    </button>
+                  </div>
+                </div>
+              )}
               <div style={styles.setupMeta}>
-                <div>対象人数：{usePartySelection ? selectedPartyCount : items.length}人</div>
-                <div>今回の出題数：{Math.min(options.quizCount, usePartySelection ? selectedPartyCount : items.length)}問</div>
+                <div>対象人数：{targetCount}人</div>
+                <div>今回の出題数：{Math.min(quizCount, targetCount)}問</div>
               </div>
               <div style={styles.doneBtns}>
                 <button type="button" style={styles.primaryBtn} onClick={startConfiguredSession} disabled={!canStart}>この条件で開始</button>
+                {wrongMemoryCount > 0 ? (
+                  <button
+                    type="button"
+                    style={styles.btn}
+                    onClick={() => {
+                      clearWrongMemory(props.appMode, props.target);
+                      setWrongMemoryItems([]);
+                      if (setupMode === "wrongMemory") setSetupMode("all");
+                    }}
+                  >
+                    蓄積ミスを消去
+                  </button>
+                ) : null}
                 <button type="button" style={styles.btn} onClick={props.onBackTitle}>タイトルへ戻る</button>
               </div>
             </div>
@@ -814,7 +914,7 @@ export default function Learn(props: Props) {
             <div>うろ覚え：少し迷った、部分的に出た</div>
             <div>覚えていない：出ない、別人と混ざる</div>
             <div><b>今回の改善点</b></div>
-            <div>開始前に問題数と出題政党を決められます。政党選択は複数選択でき、間違えた議員だけを何度もやり直せます。</div>
+            <div>開始前に問題数・出題対象・蓄積ミス復習を決められます。政党選択は複数選択でき、間違えた議員は後から何度でも復習できます。</div>
             <div><b>記憶の定着</b></div>
             <div>答えを見た後に自己判定し、忘れかけのものを適切な時期に出し直すことで定着を伸ばします。</div>
           </div>

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import HelpModal from "./HelpModal";
 import SafeImage from "./SafeImage";
-import { loadOptions, saveOptions, type Options } from "./optionsStore";
 import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
 
 type Props = {
@@ -21,6 +20,26 @@ type SavedState = {
 };
 
 const storageKey = (mode: AppMode, target: Target) => `autoplay-state:${mode}:${target}`;
+const faceSecondsKey = (mode: AppMode, target: Target) => `autoplay-face-seconds:${mode}:${target}:v1`;
+const answerSecondsKey = (mode: AppMode, target: Target) => `autoplay-answer-seconds:${mode}:${target}:v1`;
+
+function readSeconds(storageKeyName: string, fallback: number) {
+  try {
+    const raw = localStorage.getItem(storageKeyName);
+    const value = raw ? Number(raw) : fallback;
+    return Number.isFinite(value) ? Math.max(1, Math.min(10, Math.round(value))) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeSeconds(storageKeyName: string, value: number) {
+  try {
+    localStorage.setItem(storageKeyName, String(value));
+  } catch {
+    // ignore
+  }
+}
 
 function shuffleIndices(length: number) {
   const arr = Array.from({ length }, (_, i) => i);
@@ -66,8 +85,14 @@ export default function AutoPlayView(props: Props) {
   const [randomMode, setRandomMode] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [options, setOptions] = useState<Options>(() => loadOptions());
+  const [faceSeconds, setFaceSeconds] = useState(() => readSeconds(faceSecondsKey(props.appMode, props.target), 2));
+  const [answerSeconds, setAnswerSeconds] = useState(() => readSeconds(answerSecondsKey(props.appMode, props.target), 2));
   const baseUrl = import.meta.env.BASE_URL ?? "/";
+
+  useEffect(() => {
+    setFaceSeconds(readSeconds(faceSecondsKey(props.appMode, props.target), 2));
+    setAnswerSeconds(readSeconds(answerSecondsKey(props.appMode, props.target), 2));
+  }, [props.appMode, props.target]);
 
   useEffect(() => {
     (async () => {
@@ -116,7 +141,7 @@ export default function AutoPlayView(props: Props) {
 
   useEffect(() => {
     if (!current || paused) return;
-    const ms = (phase === "face" ? options.faceSeconds : options.answerSeconds) * 1000;
+    const ms = (phase === "face" ? faceSeconds : answerSeconds) * 1000;
     const timer = window.setTimeout(() => {
       if (phase === "face") {
         setPhase("answer");
@@ -129,7 +154,7 @@ export default function AutoPlayView(props: Props) {
       });
     }, ms);
     return () => window.clearTimeout(timer);
-  }, [current, phase, paused, options.faceSeconds, options.answerSeconds, sequence.length]);
+  }, [current, phase, paused, faceSeconds, answerSeconds, sequence.length]);
 
   function move(delta: 1 | -1) {
     if (sequence.length === 0) return;
@@ -160,13 +185,18 @@ export default function AutoPlayView(props: Props) {
     setPhase("face");
   }
 
+  function changeFaceSeconds(delta: 1 | -1) {
+    setFaceSeconds((prev) => {
+      const next = Math.max(1, Math.min(10, prev + delta));
+      writeSeconds(faceSecondsKey(props.appMode, props.target), next);
+      return next;
+    });
+  }
 
-
-  function updateAutoPlaySeconds(key: "faceSeconds" | "answerSeconds", delta: 1 | -1) {
-    setOptions((prev) => {
-      const nextValue = Math.max(1, Math.min(10, prev[key] + delta));
-      const next = { ...prev, [key]: nextValue };
-      saveOptions(next);
+  function changeAnswerSeconds(delta: 1 | -1) {
+    setAnswerSeconds((prev) => {
+      const next = Math.max(1, Math.min(10, prev + delta));
+      writeSeconds(answerSecondsKey(props.appMode, props.target), next);
       return next;
     });
   }
@@ -191,18 +221,13 @@ export default function AutoPlayView(props: Props) {
           <div style={styles.h1}>自動再生</div>
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)}>？</button>
         </div>
-        <div style={styles.autoSecondsRow}>
-          <span style={styles.autoSecondsLabel}>{getTargetLabels(props.appMode)[props.target]}</span>
-          <span style={styles.secondsGroup}>
-            顔 {options.faceSeconds}秒
-            <button type="button" style={styles.secondsBtn} onClick={() => updateAutoPlaySeconds("faceSeconds", -1)} aria-label="顔表示を1秒短くする">−</button>
-            <button type="button" style={styles.secondsBtn} onClick={() => updateAutoPlaySeconds("faceSeconds", 1)} aria-label="顔表示を1秒長くする">＋</button>
-          </span>
-          <span style={styles.secondsGroup}>
-            名前 {options.answerSeconds}秒
-            <button type="button" style={styles.secondsBtn} onClick={() => updateAutoPlaySeconds("answerSeconds", -1)} aria-label="名前表示を1秒短くする">−</button>
-            <button type="button" style={styles.secondsBtn} onClick={() => updateAutoPlaySeconds("answerSeconds", 1)} aria-label="名前表示を1秒長くする">＋</button>
-          </span>
+        <div style={styles.inlineSecondsRow}>
+          <span>顔 {faceSeconds}秒</span>
+          <button type="button" style={styles.tinyBtn} onClick={() => changeFaceSeconds(-1)}>-</button>
+          <button type="button" style={styles.tinyBtn} onClick={() => changeFaceSeconds(1)}>+</button>
+          <span>名前 {answerSeconds}秒</span>
+          <button type="button" style={styles.tinyBtn} onClick={() => changeAnswerSeconds(-1)}>-</button>
+          <button type="button" style={styles.tinyBtn} onClick={() => changeAnswerSeconds(1)}>+</button>
         </div>
         <div style={styles.sub}>{compactLayout ? `再生順：${randomMode ? "ランダム" : "通常"} / ${sequence.length === 0 ? 0 : position + 1} / ${sequence.length}` : `再生順：${randomMode ? "ランダム" : "通常"} / 保存位置：${sequence.length === 0 ? 0 : position + 1} / ${sequence.length}`}</div>
         {error ? <div style={{ ...styles.sub, color: "#cf222e" }}>{error}</div> : null}
@@ -232,7 +257,7 @@ export default function AutoPlayView(props: Props) {
 
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} title="ヘルプ（自動再生）">
         <p>顔→名前を自動で流します。覚えた後の思い出す速さを鍛えるためのモードです。</p>
-        <p>一時停止・再開・前へ・次へ・最初からに対応しています。途中で閉じても保存位置から再開します。</p>
+        <p>一時停止・再開・前へ・次へ・最初からに対応しています。顔と名前の秒数はこの画面で変更できます。途中で閉じても保存位置から再開します。</p>
         <p>ランダム再生を押すと、現在の対象だけをランダム順で流します。ランダム順も保存されます。</p>
       </HelpModal>
     </div>
@@ -251,10 +276,8 @@ const styles: Record<string, React.CSSProperties> = {
   ctrlBtnActive: { background: "#e8f0fe", borderColor: "#8ab4f8" },
   h1: { fontSize: "clamp(17px, 4.8vw, 20px)", fontWeight: 800 },
   sub: { fontSize: 11, color: "#666", lineHeight: 1.4 },
-  autoSecondsRow: { display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6, fontSize: 11, color: "#666", lineHeight: 1.2 },
-  autoSecondsLabel: { marginRight: 2 },
-  secondsGroup: { display: "inline-flex", alignItems: "center", gap: 4, whiteSpace: "nowrap" },
-  secondsBtn: { width: 24, height: 22, padding: 0, borderRadius: 8, border: "1px solid #999", background: "#fff", fontSize: 13, fontWeight: 800, lineHeight: 1 },
+  inlineSecondsRow: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 5, fontSize: 11, color: "#555", lineHeight: 1.2 },
+  tinyBtn: { padding: "2px 7px", borderRadius: 8, border: "1px solid #999", background: "#fff", fontSize: 11, lineHeight: 1.2 },
   card: { width: "min(720px, 100%)", flex: 1, minHeight: 0, border: "1px solid #ddd", borderRadius: 14, padding: 8, display: "flex", flexDirection: "column", gap: 8, background: "#fff", overflow: "hidden" },
   center: { margin: "auto", color: "#666", fontSize: 14 },
   imgBox: { flex: 1, minHeight: 0, display: "flex", justifyContent: "center", alignItems: "center" },

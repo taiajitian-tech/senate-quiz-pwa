@@ -2,17 +2,15 @@ import { useEffect, useState } from "react";
 import Learn from "./components/Learn";
 import SenatorList from "./components/SenatorList";
 import StatsView from "./components/StatsView";
-import OptionsView from "./components/OptionsView";
 import BackupView from "./components/BackupView";
 import AutoPlayView from "./components/AutoPlayView";
-import { loadOptions, type Options } from "./components/optionsStore";
 import TitleView from "./components/TitleView";
 import ErrorBoundary from "./components/ErrorBoundary";
 import FirstGuide, { FIRST_GUIDE_SEEN_KEY } from "./components/FirstGuide";
 import UpdatesView from "./components/UpdatesView";
 import { getAvailableTargets, type AppMode, type Target } from "./components/data";
 
-type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "options" | "list" | "backup" | "updates";
+type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "list" | "backup" | "updates";
 
 type ListJump = {
   target: Target;
@@ -24,7 +22,6 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>("title");
   const [appMode, setAppMode] = useState<AppMode>("basic");
   const [target, setTarget] = useState<Target>("senators");
-  const [options, setOptions] = useState<Options>(() => loadOptions());
   const [guideOpen, setGuideOpen] = useState(() => {
     const shouldOpen = !localStorage.getItem(FIRST_GUIDE_SEEN_KEY);
     if (shouldOpen) localStorage.setItem(FIRST_GUIDE_SEEN_KEY, "1");
@@ -62,14 +59,11 @@ export default function App() {
         onStartReview={() => setScreen("review")}
         onOpenAutoplay={() => setScreen("autoplay")}
         onOpenStats={() => setScreen("stats")}
-        onOpenOptions={() => setScreen("options")}
         onOpenList={() => setScreen("list")}
         onOpenBackup={() => setScreen("backup")}
         onOpenUpdates={() => setScreen("updates")}
       />
     );
-  } else if (screen === "options") {
-    content = <OptionsView value={options} onChange={(v) => setOptions(v)} onBack={() => setScreen("title")} />;
   } else if (screen === "stats") {
     content = <StatsView appMode={appMode} target={target} onBack={() => setScreen("title")} />;
   } else if (screen === "list") {
