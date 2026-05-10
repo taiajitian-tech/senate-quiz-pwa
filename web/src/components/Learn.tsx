@@ -19,7 +19,7 @@ import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPer
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
-type SetupMode = "all" | "party" | "wrongMemory";
+type SetupMode = "all" | "party" | "wrongMemory" | "oneRound";
 
 type Props = {
   appMode: AppMode;
@@ -282,6 +282,7 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
 export default function Learn(props: Props) {
   const [quizCount, setQuizCount] = useState(() => loadLearnQuizCount());
   const supportsPartySelection = PARTY_SELECTABLE_TARGETS.includes(props.target) && props.mode !== "review";
+  const supportsOneRoundSelection = props.mode === "learn";
 
   const [helpOpen, setHelpOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -377,6 +378,7 @@ export default function Learn(props: Props) {
   const isWrongRetryMode = retryWrongIds.length > 0;
   const usePartySelection = setupMode === "party";
   const useWrongMemorySelection = setupMode === "wrongMemory";
+  const useOneRoundSelection = supportsOneRoundSelection && setupMode === "oneRound";
 
   useEffect(() => {
     if (!supportsPartySelection || items.length === 0) return;
@@ -387,29 +389,32 @@ export default function Learn(props: Props) {
     let next = items;
     if (isWrongRetryMode) {
       next = items.filter((item) => retryWrongSet.has(item.id));
+    } else if (useOneRoundSelection) {
+      next = items;
     } else if (useWrongMemorySelection) {
       next = items.filter((item) => wrongMemoryIdSet.has(item.id));
     } else if (supportsPartySelection && usePartySelection && selectedPartySet.size > 0) {
       next = items.filter((item) => selectedPartySet.has(getPartyLabel(item)));
     }
     return next;
-  }, [isWrongRetryMode, items, retryWrongSet, selectedPartySet, supportsPartySelection, usePartySelection, useWrongMemorySelection, wrongMemoryIdSet]);
+  }, [isWrongRetryMode, items, retryWrongSet, selectedPartySet, supportsPartySelection, useOneRoundSelection, usePartySelection, useWrongMemorySelection, wrongMemoryIdSet]);
 
   const sessionLimit = useMemo(() => {
     if (practiceItems.length === 0) return quizCount;
+    if (useOneRoundSelection) return practiceItems.length;
     return Math.min(quizCount, practiceItems.length);
-  }, [practiceItems.length, quizCount]);
+  }, [practiceItems.length, quizCount, useOneRoundSelection]);
 
   const focusSummary = useMemo(() => getFocusSummary(progress, practiceItems, Date.now()), [progress, practiceItems]);
   const askedIdSet = useMemo(() => new Set(askedIds), [askedIds]);
   const scopedModeKey = useMemo(() => {
-    if (!sessionStarted) return "";
     if (props.mode === "review") return "review";
     if (isWrongRetryMode) return `wrong:${retryWrongIds.slice().sort((a, b) => a - b).join(",")}`;
+    if (useOneRoundSelection) return `oneRound:${practiceItems.map((item) => item.id).sort((a, b) => a - b).join(",")}`;
     if (useWrongMemorySelection) return `wrongMemory:${wrongMemoryItems.map((item) => item.id).sort((a, b) => a - b).join(",")}`;
     if (supportsPartySelection && usePartySelection) return `party:${selectedParties.slice().sort(JA_COLLATOR.compare).join("|")}`;
     return "all";
-  }, [isWrongRetryMode, props.mode, retryWrongIds, selectedParties, sessionStarted, supportsPartySelection, usePartySelection, useWrongMemorySelection, wrongMemoryItems]);
+  }, [isWrongRetryMode, practiceItems, props.mode, retryWrongIds, selectedParties, supportsPartySelection, useOneRoundSelection, usePartySelection, useWrongMemorySelection, wrongMemoryItems]);
   const useScopedCycle = props.mode !== "review" && sessionStarted && scopedModeKey !== "all";
 
   useEffect(() => {
@@ -431,7 +436,7 @@ export default function Learn(props: Props) {
       return;
     }
 
-    if (hasAnyProgressForItems(progress, practiceItems)) {
+    if (!useOneRoundSelection && hasAnyProgressForItems(progress, practiceItems)) {
       setScopedFreshCycle(null);
       setScopedFreshCycleKey(scopedModeKey);
       return;
@@ -447,7 +452,7 @@ export default function Learn(props: Props) {
 
     setScopedFreshCycle(createScopedFreshCycle(practiceItems, props.target));
     setScopedFreshCycleKey(scopedModeKey);
-  }, [practiceItems, progress, props.mode, props.target, scopedFreshCycle, scopedFreshCycleKey, scopedModeKey, sessionStarted, useScopedCycle]);
+  }, [practiceItems, progress, props.mode, props.target, scopedFreshCycle, scopedFreshCycleKey, scopedModeKey, sessionStarted, useOneRoundSelection, useScopedCycle]);
 
   useEffect(() => {
     if (!sessionStarted || props.mode === "review" || useScopedCycle) return;
@@ -460,12 +465,12 @@ export default function Learn(props: Props) {
       return;
     }
     if (sanitized) return;
-    if (hasAnyProgressForItems(progress, practiceItems)) return;
+    if (!useOneRoundSelection && hasAnyProgressForItems(progress, practiceItems)) return;
 
     const created = createScopedFreshCycle(practiceItems, props.target);
     setFreshCycle(created);
     saveFreshCycle(props.appMode, props.target, created);
-  }, [freshCycle, practiceItems, progress, props.appMode, props.mode, props.target, sessionStarted, useScopedCycle]);
+  }, [freshCycle, practiceItems, progress, props.appMode, props.mode, props.target, sessionStarted, useOneRoundSelection, useScopedCycle]);
 
   const activeFreshCycle = useMemo(
     () => (useScopedCycle ? sanitizeFreshCycle(scopedFreshCycle, practiceItems) : sanitizeFreshCycle(freshCycle, practiceItems)),
@@ -489,9 +494,9 @@ export default function Learn(props: Props) {
   }, [askedIds.length, current, loading, sessionDone, sessionLimit, sessionStarted]);
 
   const resetSession = () => {
-    if (props.mode !== "review" && practiceItems.length > 0 && !hasAnyProgressForItems(progress, practiceItems)) {
+    if (props.mode !== "review" && practiceItems.length > 0 && (useOneRoundSelection || !hasAnyProgressForItems(progress, practiceItems))) {
       const rerandomizedCycle = createScopedFreshCycle(practiceItems, props.target);
-      if (useScopedCycle) {
+      if (useScopedCycle || scopedModeKey !== "all") {
         setScopedFreshCycle(rerandomizedCycle);
         setScopedFreshCycleKey(scopedModeKey);
       } else {
@@ -545,7 +550,7 @@ export default function Learn(props: Props) {
 
   const wrongMemoryCount = useMemo(() => items.filter((item) => wrongMemoryIdSet.has(item.id)).length, [items, wrongMemoryIdSet]);
 
-  const targetCount = useWrongMemorySelection ? wrongMemoryCount : usePartySelection ? selectedPartyCount : items.length;
+  const targetCount = useOneRoundSelection ? items.length : useWrongMemorySelection ? wrongMemoryCount : usePartySelection ? selectedPartyCount : items.length;
   const canStart =
     !loading &&
     !error &&
@@ -676,19 +681,23 @@ export default function Learn(props: Props) {
           {loading ? <div style={styles.center}>読み込み中</div> : !sessionStarted ? (
             <div style={styles.setupWrap}>
               <div style={styles.setupTitle}>開始前設定</div>
-              <div style={styles.setupSub}>ここで決めた問題数を、今回の出題上限・終了判定・進捗表示に使います。対象が少ない場合は、その人数まで出題します。</div>
+              <div style={styles.setupSub}>問題数・出題対象をここで選びます。「とりあえず一周」は問題数ではなく対象全員を1回ずつ出題します。</div>
               <div style={styles.setupSection}>
                 <label style={styles.setupLabel} htmlFor="learn-quiz-count">問題数</label>
-                <select
-                  id="learn-quiz-count"
-                  value={quizCount}
-                  style={styles.setupSelect}
-                  onChange={(event) => changeQuizCount(Number(event.target.value))}
-                >
-                  {QUIZ_COUNT_CHOICES.map((count) => (
-                    <option key={count} value={count}>{count}問</option>
-                  ))}
-                </select>
+                {useOneRoundSelection ? (
+                  <div style={styles.setupFixedValue}>対象全員を1回ずつ</div>
+                ) : (
+                  <select
+                    id="learn-quiz-count"
+                    value={quizCount}
+                    style={styles.setupSelect}
+                    onChange={(event) => changeQuizCount(Number(event.target.value))}
+                  >
+                    {QUIZ_COUNT_CHOICES.map((count) => (
+                      <option key={count} value={count}>{count}問</option>
+                    ))}
+                  </select>
+                )}
               </div>
               {supportsPartySelection ? (
                 <div style={styles.setupSection}>
@@ -704,6 +713,18 @@ export default function Learn(props: Props) {
                     >
                       すべてで出題
                     </button>
+                    {supportsOneRoundSelection ? (
+                      <button
+                        type="button"
+                        style={setupMode === "oneRound" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                        onClick={() => {
+                          setSetupMode("oneRound");
+                          setSelectedParties([]);
+                        }}
+                      >
+                        とりあえず一周
+                      </button>
+                    ) : null}
                     <button
                       type="button"
                       style={setupMode === "party" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
@@ -756,6 +777,15 @@ export default function Learn(props: Props) {
                     >
                       通常出題
                     </button>
+                    {supportsOneRoundSelection ? (
+                      <button
+                        type="button"
+                        style={setupMode === "oneRound" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                        onClick={() => setSetupMode("oneRound")}
+                      >
+                        とりあえず一周
+                      </button>
+                    ) : null}
                     <button
                       type="button"
                       style={setupMode === "wrongMemory" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
@@ -772,7 +802,8 @@ export default function Learn(props: Props) {
               )}
               <div style={styles.setupMeta}>
                 <div>対象人数：{targetCount}人</div>
-                <div>今回の出題数：{Math.min(quizCount, targetCount)}問</div>
+                <div>今回の出題数：{sessionLimit}問</div>
+                {useOneRoundSelection ? <div>全対象を1回ずつ出題します。</div> : null}
               </div>
               <div style={styles.doneBtns}>
                 <button type="button" style={styles.primaryBtn} onClick={startConfiguredSession} disabled={!canStart}>この条件で開始</button>
@@ -914,7 +945,7 @@ export default function Learn(props: Props) {
             <div>うろ覚え：少し迷った、部分的に出た</div>
             <div>覚えていない：出ない、別人と混ざる</div>
             <div><b>今回の改善点</b></div>
-            <div>開始前に問題数・出題対象・蓄積ミス復習を決められます。政党選択は複数選択でき、間違えた議員は後から何度でも復習できます。</div>
+            <div>開始前に問題数・出題対象・蓄積ミス復習・とりあえず一周を決められます。政党選択は複数選択でき、間違えた議員は後から何度でも復習できます。</div>
             <div><b>記憶の定着</b></div>
             <div>答えを見た後に自己判定し、忘れかけのものを適切な時期に出し直すことで定着を伸ばします。</div>
           </div>
@@ -948,6 +979,7 @@ const styles: Record<string, React.CSSProperties> = {
   setupChoiceBtn: { padding: "10px 12px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", color: "#1f2937", fontWeight: 700, fontSize: 14 },
   setupChoiceActiveBtn: { padding: "10px 12px", borderRadius: 12, border: "1px solid #1d4ed8", background: "#eff6ff", color: "#1d4ed8", fontWeight: 800, fontSize: 14 },
   setupSelect: { width: "100%", padding: "10px 12px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", color: "#111827", fontWeight: 800, fontSize: 16 },
+  setupFixedValue: { width: "100%", padding: "10px 12px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#eef6ff", color: "#0958b3", fontWeight: 800, fontSize: 15 },
   partyHint: { fontSize: 12, color: "#4b5563" },
   partyChipWrap: { display: "flex", flexWrap: "wrap", gap: 8 },
   partyChip: { padding: "8px 10px", borderRadius: 999, border: "1px solid #cbd5e1", background: "#fff", color: "#1f2937", fontWeight: 700, fontSize: 13 },
