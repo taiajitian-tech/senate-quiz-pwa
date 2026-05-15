@@ -15,6 +15,17 @@ const URLS = {
   houseOfficers: 'https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm',
 };
 
+const COUNCILORS_SUBCOMMITTEE_URLS = [
+  {
+    subRole: '議院運営委員会 庶務関係小委員長',
+    url: 'https://www.sangiin.go.jp/japanese/kon_kokkaijyoho/iinkai/giun-shomusho.html',
+  },
+  {
+    subRole: '議院運営委員会 図書館運営小委員長',
+    url: 'https://www.sangiin.go.jp/japanese/kon_kokkaijyoho/iinkai/giun-toshosho.html',
+  },
+];
+
 const MIN_COUNTS = {
   '参議院役員': 20,
   '衆議院役員': 10,
@@ -304,6 +315,51 @@ function parseCouncilorsOfficersFromDom(html) {
   return uniqueBy(out, (item) => `${item.subRole}:${normalizeCompact(item.name)}`);
 }
 
+
+function parseCouncilorsSubcommitteeChair(html, subRole, sourceUrl) {
+  const $ = cheerio.load(html);
+  const out = [];
+
+  $('tr').each((_, tr) => {
+    const cells = $(tr).find('th, td').map((__, cell) => normalizeWhitespace($(cell).text()).replace(/＜正字＞/g, '')).get();
+    const roleIndex = cells.findIndex((cell) => cell === '小委員長');
+    if (roleIndex === -1) return;
+    const nameCell = cells.slice(roleIndex + 1).find((cell) => cell && !/^（.+）$/u.test(cell) && cell !== '氏名' && cell !== '会派（略称）');
+    const name = toPlainName(nameCell ?? '');
+    if (!name) return;
+    out.push({ subRole, name, kana: '', chamber: '参議院', sourceMode: 'live', sourceUrl });
+  });
+
+  if (out.length === 0) {
+    const lines = linesFromBodyText(html).map((line) => line.replace(/＜正字＞/g, ''));
+    for (let index = 0; index < lines.length; index += 1) {
+      if (lines[index] !== '小委員長') continue;
+      const name = toPlainName(lines.slice(index + 1).find((line) => line && !/^（.+）$/u.test(line) && line !== '氏名' && line !== '会派（略称）') ?? '');
+      if (name) out.push({ subRole, name, kana: '', chamber: '参議院', sourceMode: 'live', sourceUrl });
+    }
+  }
+
+  return uniqueBy(out, (item) => `${normalizeWhitespace(item.subRole)}:${normalizeCompact(item.name)}`);
+}
+
+async function fetchCouncilorsSubcommitteeChairs() {
+  const out = [];
+  for (const item of COUNCILORS_SUBCOMMITTEE_URLS) {
+    try {
+      const html = await fetchText(item.url);
+      const parsed = parseCouncilorsSubcommitteeChair(html, item.subRole, item.url);
+      if (parsed.length === 0) {
+        console.warn(`参議院役員: ${item.subRole} not found`);
+        continue;
+      }
+      out.push(...parsed);
+    } catch (error) {
+      console.warn(`参議院役員: ${item.subRole} failed because ${error.message}`);
+    }
+  }
+  return uniqueBy(out, (item) => `${normalizeWhitespace(item.subRole)}:${normalizeCompact(item.name)}`);
+}
+
 function extractKanteiTextCandidates(lines, label) {
   const out = [];
   const roleLines = [];
@@ -435,7 +491,7 @@ function withImages(entries, category, imageMap, sourceUrl) {
       chamber,
       party: matched?.party || '',
       images: matched?.image ? [matched.image] : [],
-      sourceUrl,
+      sourceUrl: entry.sourceUrl || sourceUrl,
       sourceMode: entry.sourceMode || 'live',
     };
   });
@@ -522,7 +578,7 @@ async function main() {
   const kanteiUrls = await resolveKanteiMeiboUrls();
   console.log(`role panels sources: vice=${kanteiUrls.viceMinistersUrl} seimukan=${kanteiUrls.parliamentarySecretariesUrl}`);
 
-  const councilorsOfficers = await safeGenerate({
+  const baseCouncilorsOfficers = await safeGenerate({
     label: '参議院役員',
     parser: (html) => chooseBestCandidates('参議院役員', [
       { tag: 'text:body', entries: parseCouncilorsOfficersFromText(html) },
@@ -534,6 +590,14 @@ async function main() {
     sourceUrl: URLS.councilorsOfficers,
     fileName: 'councilors-officers.json',
   });
+
+  const councilorsSubcommitteeChairs = await fetchCouncilorsSubcommitteeChairs();
+  const councilorsOfficers = mergeByNameAndRole(
+    withImages(councilorsSubcommitteeChairs, '参議院役員', imageMap, ''),
+    baseCouncilorsOfficers,
+    '参議院役員',
+  );
+  console.log(`参議院役員: subcommittee chairs=${councilorsSubcommitteeChairs.length}, merged=${councilorsOfficers.length}`);
 
   const viceMinisters = await safeGenerate({
     label: '副大臣',
