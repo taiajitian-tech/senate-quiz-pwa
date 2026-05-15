@@ -244,6 +244,8 @@ function getCouncilorsOfficerTitle(person: Person, displayBaseName: string): str
   const source = (person.subRole || person.group || person.role || "").replace(/\s*\/\s*参議院$/u, "").trim();
 
   if (source.includes("懲罰委員長")) return person.name;
+  if (source.includes("図書館運営小委員長")) return `${displayBaseName}図書小委員長`;
+  if (source.includes("庶務関係小委員長")) return `${displayBaseName}庶務小委員長`;
   if (source.includes("特別委員長")) return `${displayBaseName}特別委員長`;
   if (source.includes("調査会長")) return `${displayBaseName}調査会長`;
   if (source.includes("審査会会長") || source.includes("審査会長")) return `${displayBaseName}審査会会長`;
