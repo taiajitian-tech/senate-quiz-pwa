@@ -19,7 +19,7 @@ import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPer
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
-type SetupMode = "all" | "party" | "wrongMemory" | "oneRound";
+type SetupMode = "all" | "party" | "wrongMemory" | "oneRound" | "partyOneRound";
 
 type Props = {
   appMode: AppMode;
@@ -282,7 +282,7 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
 export default function Learn(props: Props) {
   const [quizCount, setQuizCount] = useState(() => loadLearnQuizCount());
   const supportsPartySelection = PARTY_SELECTABLE_TARGETS.includes(props.target) && props.mode !== "review";
-  const supportsOneRoundSelection = props.mode === "learn";
+  const supportsOneRoundSelection = props.mode !== "review";
 
   const [helpOpen, setHelpOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -376,9 +376,9 @@ export default function Learn(props: Props) {
   const retryWrongSet = useMemo(() => new Set(retryWrongIds), [retryWrongIds]);
   const wrongMemoryIdSet = useMemo(() => new Set(wrongMemoryItems.map((item) => item.id)), [wrongMemoryItems]);
   const isWrongRetryMode = retryWrongIds.length > 0;
-  const usePartySelection = setupMode === "party";
+  const usePartySelection = setupMode === "party" || setupMode === "partyOneRound";
   const useWrongMemorySelection = setupMode === "wrongMemory";
-  const useOneRoundSelection = supportsOneRoundSelection && setupMode === "oneRound";
+  const useOneRoundSelection = supportsOneRoundSelection && (setupMode === "oneRound" || setupMode === "partyOneRound");
 
   useEffect(() => {
     if (!supportsPartySelection || items.length === 0) return;
@@ -732,6 +732,15 @@ export default function Learn(props: Props) {
                     >
                       政党を選んで出題
                     </button>
+                    {supportsOneRoundSelection ? (
+                      <button
+                        type="button"
+                        style={setupMode === "partyOneRound" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
+                        onClick={() => setSetupMode("partyOneRound")}
+                      >
+                        政党を選んで一周
+                      </button>
+                    ) : null}
                     <button
                       type="button"
                       style={setupMode === "wrongMemory" ? styles.setupChoiceActiveBtn : styles.setupChoiceBtn}
