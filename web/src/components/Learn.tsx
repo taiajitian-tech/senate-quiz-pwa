@@ -389,6 +389,8 @@ export default function Learn(props: Props) {
     let next = items;
     if (isWrongRetryMode) {
       next = items.filter((item) => retryWrongSet.has(item.id));
+    } else if (useOneRoundSelection && usePartySelection && selectedPartySet.size > 0) {
+      next = items.filter((item) => selectedPartySet.has(getPartyLabel(item)));
     } else if (useOneRoundSelection) {
       next = items;
     } else if (useWrongMemorySelection) {
@@ -1036,3 +1038,4 @@ const styles: Record<string, React.CSSProperties> = {
   resultValue: { fontSize: 22, fontWeight: 800 },
   doneBtns: { display: "grid", gap: 8 },
 };
+
