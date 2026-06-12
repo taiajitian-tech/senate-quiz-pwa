@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-06-12T13:19:33.796Z",
-  "totalChanges": 22,
+  "generatedAt": "2026-06-12T13:35:08.792Z",
+  "totalChanges": 81,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "houseOfficersList",
-      "label": "衆議院役員一覧",
+      "target": "representatives",
+      "label": "衆議院議員",
       "added": 0,
       "removed": 0,
-      "changed": 21,
-      "total": 21
+      "changed": 465,
+      "total": 465
     }
   ],
   "items": [
@@ -21,151 +21,564 @@
       "summary": "衆議院議員の顔写真を衆議院公式サイト掲載の画像に変更しました。"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "西村明宏",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "逢沢一郎",
       "type": "changed",
-      "summary": "西村明宏：画像更新"
+      "summary": "逢沢一郎：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "島尻安伊子",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "青山繁晴",
       "type": "changed",
-      "summary": "島尻安伊子：画像更新"
+      "summary": "青山繁晴：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "國場幸之助",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "青山周平",
       "type": "changed",
-      "summary": "國場幸之助：画像更新"
+      "summary": "青山周平：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "宮路拓馬",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "赤澤亮正",
       "type": "changed",
-      "summary": "宮路拓馬：画像更新"
+      "summary": "赤澤亮正：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "山口俊一",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "あかま二郎",
       "type": "changed",
-      "summary": "山口俊一：画像更新"
+      "summary": "あかま二郎：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "森英介",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "秋葉賢也",
       "type": "changed",
-      "summary": "森英介：画像更新"
+      "summary": "秋葉賢也：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "工藤彰三",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "浅田眞澄美",
       "type": "changed",
-      "summary": "工藤彰三：画像更新"
+      "summary": "浅田眞澄美：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "古屋圭司",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "東国幹",
       "type": "changed",
-      "summary": "古屋圭司：画像更新"
+      "summary": "東国幹：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "畦元将吾",
+      "type": "changed",
+      "summary": "畦元将吾：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "麻生太郎",
+      "type": "changed",
+      "summary": "麻生太郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "あべ俊子",
+      "type": "changed",
+      "summary": "あべ俊子：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "阿部弘樹",
+      "type": "changed",
+      "summary": "阿部弘樹：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "安藤たかお",
+      "type": "changed",
+      "summary": "安藤たかお：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "五十嵐清",
+      "type": "changed",
+      "summary": "五十嵐清：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石井拓",
+      "type": "changed",
+      "summary": "石井拓：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石川昭政",
+      "type": "changed",
+      "summary": "石川昭政：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石坂太",
+      "type": "changed",
+      "summary": "石坂太：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石田真敏",
+      "type": "changed",
+      "summary": "石田真敏：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石破茂",
+      "type": "changed",
+      "summary": "石破茂：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石橋林太郎",
+      "type": "changed",
+      "summary": "石橋林太郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石原宏高",
+      "type": "changed",
+      "summary": "石原宏高：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "石原正敬",
+      "type": "changed",
+      "summary": "石原正敬：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井出庸生",
+      "type": "changed",
+      "summary": "井出庸生：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "伊藤聡",
+      "type": "changed",
+      "summary": "伊藤聡：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "伊藤信太郎",
+      "type": "changed",
+      "summary": "伊藤信太郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "伊藤忠彦",
+      "type": "changed",
+      "summary": "伊藤忠彦：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "伊藤達也",
+      "type": "changed",
+      "summary": "伊藤達也：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "伊東良孝",
+      "type": "changed",
+      "summary": "伊東良孝：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "稲田朋美",
+      "type": "changed",
+      "summary": "稲田朋美：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "稲葉大輔",
+      "type": "changed",
+      "summary": "稲葉大輔：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井野俊郎",
+      "type": "changed",
+      "summary": "井野俊郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井上信治",
+      "type": "changed",
+      "summary": "井上信治：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井上貴博",
+      "type": "changed",
+      "summary": "井上貴博：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井林辰憲",
+      "type": "changed",
+      "summary": "井林辰憲：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井原巧",
+      "type": "changed",
+      "summary": "井原巧：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井原隆",
+      "type": "changed",
+      "summary": "井原隆：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "今枝宗一郎",
+      "type": "changed",
+      "summary": "今枝宗一郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "今岡植",
+      "type": "changed",
+      "summary": "今岡植：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岩崎比菜",
+      "type": "changed",
+      "summary": "岩崎比菜：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岩田和親",
+      "type": "changed",
+      "summary": "岩田和親：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岩屋毅",
+      "type": "changed",
+      "summary": "岩屋毅：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "上杉謙太郎",
+      "type": "changed",
+      "summary": "上杉謙太郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "上田英俊",
+      "type": "changed",
+      "summary": "上田英俊：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "上野賢一郎",
+      "type": "changed",
+      "summary": "上野賢一郎：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "上野宏史",
+      "type": "changed",
+      "summary": "上野宏史：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "上原正裕",
+      "type": "changed",
+      "summary": "上原正裕：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "内山こう",
+      "type": "changed",
+      "summary": "内山こう：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "江渡聡徳",
+      "type": "changed",
+      "summary": "江渡聡徳：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "江藤拓",
+      "type": "changed",
+      "summary": "江藤拓：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "衛藤博昭",
+      "type": "changed",
+      "summary": "衛藤博昭：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "英利アルフィヤ",
+      "type": "changed",
+      "summary": "英利アルフィヤ：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "遠藤寛明",
+      "type": "changed",
+      "summary": "遠藤寛明：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大岡敏孝",
+      "type": "changed",
+      "summary": "大岡敏孝：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
       "name": "大串正樹",
       "type": "changed",
-      "summary": "大串正樹：画像更新"
+      "summary": "大串正樹：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "冨樫博之",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大空幸星",
       "type": "changed",
-      "summary": "冨樫博之：画像更新"
+      "summary": "大空幸星：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "武村展英",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大塚拓",
       "type": "changed",
-      "summary": "武村展英：画像更新"
+      "summary": "大塚拓：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "美延映夫",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大西洋平",
       "type": "changed",
-      "summary": "美延映夫：画像更新"
+      "summary": "大西洋平：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "田中和徳",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "大野敬太郎",
       "type": "changed",
-      "summary": "田中和徳：画像更新"
+      "summary": "大野敬太郎：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "古川康",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岡本康宏",
       "type": "changed",
-      "summary": "古川康：画像更新"
+      "summary": "岡本康宏：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "丹羽秀樹",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "尾崎正直",
       "type": "changed",
-      "summary": "丹羽秀樹：画像更新"
+      "summary": "尾崎正直：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "山下貴司",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "長田紘一郎",
       "type": "changed",
-      "summary": "山下貴司：画像更新"
+      "summary": "長田紘一郎：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "藤井比早之",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "小里泰弘",
       "type": "changed",
-      "summary": "藤井比早之：画像更新"
+      "summary": "小里泰弘：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "石井啓一",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "小田原潔",
       "type": "changed",
-      "summary": "石井啓一：画像更新"
+      "summary": "小田原潔：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "斎藤洋明",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "鬼木誠",
       "type": "changed",
-      "summary": "斎藤洋明：画像更新"
+      "summary": "鬼木誠：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "井上英孝",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "小野寺五典",
       "type": "changed",
-      "summary": "井上英孝：画像更新"
+      "summary": "小野寺五典：選挙区変更"
     },
     {
-      "target": "houseOfficersList",
-      "targetLabel": "衆議院役員一覧",
-      "name": "坂本哲志",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "尾花瑛仁",
       "type": "changed",
-      "summary": "坂本哲志：画像更新"
+      "summary": "尾花瑛仁：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "小渕優子",
+      "type": "changed",
+      "summary": "小渕優子：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "尾身朝子",
+      "type": "changed",
+      "summary": "尾身朝子：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "鹿嶋祐介",
+      "type": "changed",
+      "summary": "鹿嶋祐介：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "梶山弘志",
+      "type": "changed",
+      "summary": "梶山弘志：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "勝俣孝明",
+      "type": "changed",
+      "summary": "勝俣孝明：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "勝目康",
+      "type": "changed",
+      "summary": "勝目康：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "門寛子",
+      "type": "changed",
+      "summary": "門寛子：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "加藤鮎子",
+      "type": "changed",
+      "summary": "加藤鮎子：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "加藤勝信",
+      "type": "changed",
+      "summary": "加藤勝信：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "加藤貴弘",
+      "type": "changed",
+      "summary": "加藤貴弘：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "加藤大博",
+      "type": "changed",
+      "summary": "加藤大博：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "加藤竜祥",
+      "type": "changed",
+      "summary": "加藤竜祥：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "門山宏哲",
+      "type": "changed",
+      "summary": "門山宏哲：選挙区変更"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "金澤結衣",
+      "type": "changed",
+      "summary": "金澤結衣：選挙区変更"
     }
   ]
 }
