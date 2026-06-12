@@ -554,6 +554,17 @@ function decodeURIComponentSafe(value) {
   }
 }
 
+function deriveShugiinImageUrl(profileUrl) {
+  if (!profileUrl) return null;
+  // https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/001.html
+  // -> https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/001.jpg/$File/001.jpg
+  const m = profileUrl.match(/\/profile\/([^/]+)\.html$/i);
+  if (!m) return null;
+  const id = m[1];
+  const base = profileUrl.replace(/\/[^/]+\.html$/i, "");
+  return `${base}/${id}.jpg/$File/${id}.jpg`;
+}
+
 async function resolveOfficialImage(profileUrl, name) {
   if (!profileUrl) return null;
   try {
@@ -706,6 +717,16 @@ async function resolveImageForRepresentative(rep, existingCache) {
       url: override.image,
       source: override.imageSource,
       sourceUrl: override.imageSourceUrl
+    };
+  }
+
+  // 衆議院公式サイトの画像URLを直接生成（最優先）
+  const shugiinImageUrl = deriveShugiinImageUrl(rep.profileUrl);
+  if (shugiinImageUrl) {
+    return {
+      url: shugiinImageUrl,
+      source: "official",
+      sourceUrl: rep.profileUrl
     };
   }
 
