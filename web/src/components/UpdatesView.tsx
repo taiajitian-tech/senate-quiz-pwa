@@ -272,7 +272,9 @@ export default function UpdatesView(props: Props) {
                       {item.reason.sourceTitle ? <div style={styles.itemReasonMeta}>参照: {item.reason.sourceTitle}</div> : null}
                     </div>
                   ) : null}
-                  <div style={styles.itemHint}>{canOpen ? '押すと一覧の該当議員へ移動します。' : '除外された項目のため移動できません。'}</div>
+                  {item.target === 'notice' ? null : (
+                    <div style={styles.itemHint}>{canOpen ? '押すと一覧の該当議員へ移動します。' : '除外された項目のため移動できません。'}</div>
+                  )}
                 </button>
               );
             })}
