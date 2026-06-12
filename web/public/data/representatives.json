@@ -162,9 +162,9 @@
     "house": "衆議院",
     "party": "自由民主党・無所属の会",
     "role": "",
-    "image": "",
-    "imageSource": "",
-    "imageSourceUrl": "",
+    "image": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/021.jpg/$File/021.jpg",
+    "imageSource": "official",
+    "imageSourceUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/021.html",
     "profileUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/021.html",
     "aiGuess": false
   },
