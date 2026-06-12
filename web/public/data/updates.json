@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-06-12T13:12:31.889Z",
-  "totalChanges": 4,
+  "generatedAt": "2026-06-12T13:19:33.796Z",
+  "totalChanges": 22,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "representatives",
-      "label": "衆議院議員",
+      "target": "houseOfficersList",
+      "label": "衆議院役員一覧",
       "added": 0,
       "removed": 0,
-      "changed": 3,
-      "total": 3
+      "changed": 21,
+      "total": 21
     }
   ],
   "items": [
@@ -21,25 +21,151 @@
       "summary": "衆議院議員の顔写真を衆議院公式サイト掲載の画像に変更しました。"
     },
     {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "青山周平",
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "西村明宏",
       "type": "changed",
-      "summary": "青山周平：画像更新"
+      "summary": "西村明宏：画像更新"
     },
     {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "赤澤亮正",
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "島尻安伊子",
       "type": "changed",
-      "summary": "赤澤亮正：画像更新"
+      "summary": "島尻安伊子：画像更新"
     },
     {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "あかま二郎",
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "國場幸之助",
       "type": "changed",
-      "summary": "あかま二郎：画像更新"
+      "summary": "國場幸之助：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "宮路拓馬",
+      "type": "changed",
+      "summary": "宮路拓馬：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "山口俊一",
+      "type": "changed",
+      "summary": "山口俊一：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "森英介",
+      "type": "changed",
+      "summary": "森英介：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "工藤彰三",
+      "type": "changed",
+      "summary": "工藤彰三：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "古屋圭司",
+      "type": "changed",
+      "summary": "古屋圭司：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "大串正樹",
+      "type": "changed",
+      "summary": "大串正樹：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "冨樫博之",
+      "type": "changed",
+      "summary": "冨樫博之：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "武村展英",
+      "type": "changed",
+      "summary": "武村展英：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "美延映夫",
+      "type": "changed",
+      "summary": "美延映夫：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "田中和徳",
+      "type": "changed",
+      "summary": "田中和徳：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "古川康",
+      "type": "changed",
+      "summary": "古川康：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "丹羽秀樹",
+      "type": "changed",
+      "summary": "丹羽秀樹：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "山下貴司",
+      "type": "changed",
+      "summary": "山下貴司：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "藤井比早之",
+      "type": "changed",
+      "summary": "藤井比早之：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "石井啓一",
+      "type": "changed",
+      "summary": "石井啓一：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "斎藤洋明",
+      "type": "changed",
+      "summary": "斎藤洋明：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "井上英孝",
+      "type": "changed",
+      "summary": "井上英孝：画像更新"
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "坂本哲志",
+      "type": "changed",
+      "summary": "坂本哲志：画像更新"
     }
   ]
 }
