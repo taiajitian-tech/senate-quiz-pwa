@@ -46,46 +46,6 @@ jobs:
       - name: Generate representatives data
         run: npm run gen:representatives
 
-      - name: Restore locked representative images
-        run: |
-          node --input-type=module <<'EOF'
-          import fs from 'node:fs';
-
-          const previous = JSON.parse(fs.readFileSync('.cache/previous-data/representatives.json', 'utf8'));
-          const current = JSON.parse(fs.readFileSync('public/data/representatives.json', 'utf8'));
-
-          const imageFields = [
-            'image',
-            'imageSource',
-            'imageSourceUrl',
-            'profileUrl',
-            'aiGuess',
-            'imageCandidatesNhk',
-            'imageStatus',
-            'imageScore',
-            'imageMatchedBy',
-            'imageMatchedName'
-          ];
-
-          const previousById = new Map(previous.filter((item) => item?.id).map((item) => [item.id, item]));
-          const previousByNameKana = new Map(previous.map((item) => [`${item.name}__${item.kana}`, item]));
-
-          const merged = current.map((item) => {
-            const locked = previousById.get(item.id) ?? previousByNameKana.get(`${item.name}__${item.kana}`);
-            if (!locked) {
-              throw new Error(`Locked representative not found: ${item.name} / ${item.kana}`);
-            }
-            const next = { ...item };
-            for (const field of imageFields) {
-              next[field] = locked[field];
-            }
-            return next;
-          });
-
-          fs.writeFileSync('public/data/representatives.json', `${JSON.stringify(merged, null, 2)}
-`);
-          EOF
-
       - name: Generate representative image reports
         run: npm run report:representatives:images
 
@@ -94,52 +54,6 @@ jobs:
 
       - name: Validate representatives data
         run: npm run check:representatives
-
-      - name: Guard representative images
-        run: |
-          node --input-type=module <<'EOF'
-          import fs from 'node:fs';
-
-          const previous = JSON.parse(fs.readFileSync('.cache/previous-data/representatives.json', 'utf8'));
-          const current = JSON.parse(fs.readFileSync('public/data/representatives.json', 'utf8'));
-
-          const imageFields = [
-            'image',
-            'imageSource',
-            'imageSourceUrl',
-            'profileUrl',
-            'aiGuess',
-            'imageCandidatesNhk',
-            'imageStatus',
-            'imageScore',
-            'imageMatchedBy',
-            'imageMatchedName'
-          ];
-
-          const previousById = new Map(previous.filter((item) => item?.id).map((item) => [item.id, item]));
-          const previousByNameKana = new Map(previous.map((item) => [`${item.name}__${item.kana}`, item]));
-          const changed = [];
-
-          for (const item of current) {
-            const locked = previousById.get(item.id) ?? previousByNameKana.get(`${item.name}__${item.kana}`);
-            if (!locked) {
-              changed.push(`${item.name} (missing lock source)`);
-              continue;
-            }
-            for (const field of imageFields) {
-              const before = JSON.stringify(locked[field] ?? null);
-              const after = JSON.stringify(item[field] ?? null);
-              if (before !== after) {
-                changed.push(`${item.name} / ${field}`);
-              }
-            }
-          }
-
-          if (changed.length > 0) {
-            console.error('Representative image fields changed:', changed.join(', '));
-            process.exit(1);
-          }
-          EOF
 
       - name: Commit and push if changed
         working-directory: .
