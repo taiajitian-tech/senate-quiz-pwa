@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-12T13:02:59.315Z",
-  "totalChanges": 1,
+  "generatedAt": "2026-06-12T13:12:31.889Z",
+  "totalChanges": 4,
   "hasUpdates": true,
   "summaries": [
     {
@@ -8,17 +8,38 @@
       "label": "衆議院議員",
       "added": 0,
       "removed": 0,
-      "changed": 1,
-      "total": 1
+      "changed": 3,
+      "total": 3
     }
   ],
   "items": [
     {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "衆議院議員の顔写真を更新",
+      "type": "changed",
+      "summary": "衆議院議員の顔写真を衆議院公式サイト掲載の画像に変更しました。"
+    },
+    {
       "target": "representatives",
       "targetLabel": "衆議院議員",
-      "name": "安藤たかお",
+      "name": "青山周平",
       "type": "changed",
-      "summary": "安藤たかお：画像更新"
+      "summary": "青山周平：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "赤澤亮正",
+      "type": "changed",
+      "summary": "赤澤亮正：画像更新"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "あかま二郎",
+      "type": "changed",
+      "summary": "あかま二郎：画像更新"
     }
   ]
 }
