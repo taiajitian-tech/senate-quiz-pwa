@@ -610,12 +610,14 @@ export default function SenatorList(props: Props) {
                   </div>
                 ) : null}
 
-                {isSenators && props.appMode !== "entrance" ? (
+                {(isSenators || props.target === "representatives") && props.appMode !== "entrance" ? (
                   <div style={styles.infoGrid}>
                     <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
                     <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
                     <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
-                    <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
+                    {isSenators ? (
+                      <div style={styles.infoLine}>次の改選年：{s.nextElectionYear ? `${s.nextElectionYear}年` : "不明"}</div>
+                    ) : null}
                   </div>
                 ) : props.appMode !== "entrance" ? (
                   <div style={styles.group}>{s.group ?? ""}</div>
@@ -661,7 +663,9 @@ export default function SenatorList(props: Props) {
               <div style={styles.detailLine}>政党：{selectedPerson.party ?? selectedPerson.group ?? "不明"}</div>
               <div style={styles.detailLine}>選挙区：{selectedPerson.district ?? "不明"}</div>
               <div style={styles.detailLine}>当選回数：{typeof selectedPerson.terms === "number" ? `${selectedPerson.terms}回` : "不明"}</div>
-              <div style={styles.detailLine}>次の改選年：{selectedPerson.nextElectionYear ? `${selectedPerson.nextElectionYear}年` : "不明"}</div>
+              {isSenators ? (
+                <div style={styles.detailLine}>次の改選年：{selectedPerson.nextElectionYear ? `${selectedPerson.nextElectionYear}年` : "不明"}</div>
+              ) : null}
             </div>
           </div>
         ) : null}
