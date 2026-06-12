@@ -170,12 +170,19 @@ function addRecord(results, seen, record, existingMap = new Map()) {
 
   const existing = existingMap.get(key) || null;
 
+  const district = cleanDistrict(record.district || "") || existing?.district || "";
+  const winsText = cleanWins(record.wins || "");
+  const winsNumber = Number.parseInt(winsText, 10);
+  const terms = Number.isInteger(winsNumber) && winsNumber > 0 ? winsNumber : (Number.isInteger(existing?.terms) ? existing.terms : undefined);
+
   results.push({
     id: Number.isInteger(existing?.id) && existing.id > 0 ? existing.id : null,
     name,
     kana,
     house: "衆議院",
     party,
+    district,
+    ...(terms !== undefined ? { terms } : {}),
     role: existing?.role || "",
     image: existing?.image || "",
     imageSource: existing?.imageSource || "",
@@ -213,6 +220,8 @@ function extractFromListPage(html, sourceUrl, existingMap = new Map()) {
         name: rawName,
         kana: rawKana,
         party: rawParty,
+        district: rawDistrict,
+        wins: rawWins,
         profileUrl: extractProfileUrlFromRow($, row, sourceUrl),
         _source: sourceUrl
       }, existingMap);
@@ -280,6 +289,8 @@ function extractFromPartyPage(html, fallbackParty, sourceUrl, existingMap = new 
         name: rawName,
         kana: rawKana,
         party,
+        district: rawDistrict,
+        wins: rawWins,
         profileUrl: extractProfileUrlFromRow($, row, sourceUrl),
         _source: sourceUrl
       }, existingMap);
