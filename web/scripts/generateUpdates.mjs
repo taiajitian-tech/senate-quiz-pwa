@@ -328,12 +328,22 @@ async function main() {
     }))
     .filter((result) => result.total > 0);
 
+  const manualNotices = (() => {
+    try {
+      const raw = JSON.parse(fs.readFileSync(path.resolve(DATA_DIR, 'manual-notices.json'), 'utf8'));
+      return Array.isArray(raw) ? raw : [];
+    } catch {
+      return [];
+    }
+  })();
+  const finalItems = [...manualNotices, ...itemsWithReasons];
+
   const payload = {
     generatedAt,
-    totalChanges: items.length,
-    hasUpdates: items.length > 0,
+    totalChanges: finalItems.length,
+    hasUpdates: finalItems.length > 0,
     summaries,
-    items: itemsWithReasons,
+    items: finalItems,
   };
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
