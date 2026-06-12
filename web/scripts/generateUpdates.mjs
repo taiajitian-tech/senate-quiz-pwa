@@ -350,8 +350,8 @@ async function main() {
 
   const payload = {
     generatedAt,
-    totalChanges: finalItems.length,
-    hasUpdates: finalItems.length > 0,
+    totalChanges: itemsWithReasons.length,
+    hasUpdates: itemsWithReasons.length > 0,
     summaries,
     items: finalItems,
   };
