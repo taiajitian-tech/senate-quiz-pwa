@@ -20,23 +20,7 @@ const TIMEOUT_MS = 12000;
 
 const EXISTING_JSON_PATH = path.resolve("public/data/representatives.json");
 
-const MANUAL_IMAGE_OVERRIDES = {
-  "青山周平": {
-    image: "https://www.jimin.jp/member/img/aoyama-shyuhei.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/102126.html"
-  },
-  "赤澤亮正": {
-    image: "https://www.jimin.jp/member/img/akazawa-ryosei.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/100478.html"
-  },
-  "あかま二郎": {
-    image: "https://www.jimin.jp/member/img/akama-jiro.jpg",
-    imageSource: "official-manual",
-    imageSourceUrl: "https://www.jimin.jp/member/102081.html"
-  }
-};
+const MANUAL_IMAGE_OVERRIDES = {};
 
 const MANUAL_BAD_IMAGE_REMOVALS = new Set([]);
 
