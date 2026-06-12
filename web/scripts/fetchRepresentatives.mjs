@@ -170,10 +170,14 @@ function addRecord(results, seen, record, existingMap = new Map()) {
 
   const existing = existingMap.get(key) || null;
 
-  const district = cleanDistrict(record.district || "") || existing?.district || "";
+  const district = cleanDistrict(record.district || "") || record.district || existing?.district || "";
   const winsText = cleanWins(record.wins || "");
   const winsNumber = Number.parseInt(winsText, 10);
-  const terms = Number.isInteger(winsNumber) && winsNumber > 0 ? winsNumber : (Number.isInteger(existing?.terms) ? existing.terms : undefined);
+  const terms = Number.isInteger(winsNumber) && winsNumber > 0
+    ? winsNumber
+    : (Number.isInteger(record.terms) && record.terms > 0
+        ? record.terms
+        : (Number.isInteger(existing?.terms) ? existing.terms : undefined));
 
   results.push({
     id: Number.isInteger(existing?.id) && existing.id > 0 ? existing.id : null,
