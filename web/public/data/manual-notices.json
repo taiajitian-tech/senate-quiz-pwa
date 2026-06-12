@@ -1,0 +1,9 @@
+[
+  {
+    "target": "notice",
+    "targetLabel": "お知らせ",
+    "name": "衆議院議員の顔写真を更新",
+    "type": "changed",
+    "summary": "衆議院議員の顔写真を衆議院公式サイト掲載の画像に変更しました。"
+  }
+]
