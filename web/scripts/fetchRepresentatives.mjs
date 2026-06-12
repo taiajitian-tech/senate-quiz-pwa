@@ -38,9 +38,7 @@ const MANUAL_IMAGE_OVERRIDES = {
   }
 };
 
-const MANUAL_BAD_IMAGE_REMOVALS = new Set([
-  "安藤たかお"
-]);
+const MANUAL_BAD_IMAGE_REMOVALS = new Set([]);
 
 
 const PARTY_PATTERN =
