@@ -85,6 +85,8 @@ function normalizeRecord(value, index) {
   const party = toText(source.party);
   const district = toText(source.district) || toText(source.electoralDistrict) || toText(source.constituency);
   const image = toImages(source.images ?? source.image)[0] ?? '';
+  const termsNumber = Number(source.terms ?? source.wins);
+  const terms = Number.isInteger(termsNumber) && termsNumber > 0 ? termsNumber : null;
   return {
     id,
     name,
@@ -92,6 +94,7 @@ function normalizeRecord(value, index) {
     role,
     party,
     district,
+    terms,
     image,
     key: `${id}:${normalizeCompact(name)}`,
   };
@@ -131,18 +134,25 @@ function compareTarget(target) {
         targetLabel: target.label,
         name: nextItem.name,
         type: 'added',
-        summary: `${nextItem.name} を追加`,
+        summary: `${nextItem.name} を新たに追加しました${nextItem.party ? `（${nextItem.party}）` : ''}`,
       });
       continue;
     }
 
+    const describe = (label, before, after) => {
+      const b = before || 'なし';
+      const a = after || 'なし';
+      return `${label}（${b} → ${a}）`;
+    };
+
     const fieldChanges = [];
-    if (prevItem.name !== nextItem.name) fieldChanges.push('氏名変更');
-    if (prevItem.kana !== nextItem.kana) fieldChanges.push('ふりがな変更');
-    if (prevItem.role !== nextItem.role) fieldChanges.push('役職変更');
-    if (prevItem.party !== nextItem.party) fieldChanges.push('所属変更');
-    if (prevItem.district !== nextItem.district) fieldChanges.push('選挙区変更');
-    if (prevItem.image !== nextItem.image) fieldChanges.push('画像更新');
+    if (prevItem.name !== nextItem.name) fieldChanges.push(describe('氏名変更', prevItem.name, nextItem.name));
+    if (prevItem.kana !== nextItem.kana) fieldChanges.push(describe('ふりがな変更', prevItem.kana, nextItem.kana));
+    if (prevItem.role !== nextItem.role) fieldChanges.push(describe('役職変更', prevItem.role, nextItem.role));
+    if (prevItem.party !== nextItem.party) fieldChanges.push(describe('所属変更', prevItem.party, nextItem.party));
+    if (prevItem.district !== nextItem.district) fieldChanges.push(describe('選挙区変更', prevItem.district, nextItem.district));
+    if (prevItem.terms !== nextItem.terms) fieldChanges.push(describe('当選回数変更', prevItem.terms ? `${prevItem.terms}回` : '', nextItem.terms ? `${nextItem.terms}回` : ''));
+    if (prevItem.image !== nextItem.image) fieldChanges.push('顔写真を更新');
 
     if (fieldChanges.length > 0) {
       changed += 1;
@@ -164,7 +174,7 @@ function compareTarget(target) {
       targetLabel: target.label,
       name: prevItem.name,
       type: 'removed',
-      summary: `${prevItem.name} を一覧から除外`,
+      summary: `${prevItem.name} を一覧から除外しました（辞職・落選・データ更新などの可能性）`,
     });
   }
 
