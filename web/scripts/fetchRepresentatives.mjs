@@ -539,6 +539,7 @@ function scoreImageCandidate(src, alt = "", name = "") {
   if (!/^https?:\/\//i.test(s)) return -100;
   if (!/\.(jpg|jpeg|png|webp)(\?|$)/i.test(s)) return -10;
   let score = 0;
+  if (/itdb_giinprof/i.test(s)) score += 10;
   if (/portrait|profile|face|kao|photo|member|giin|politician|article|upload|commons/i.test(s)) score += 2;
   if (/logo|icon|banner|spacer|line|pixel|print|btn|button|share/i.test(s)) score -= 4;
   if (name && (a.includes(name) || decodeURIComponentSafe(s).includes(name))) score += 3;
@@ -720,7 +721,7 @@ async function resolveImageForRepresentative(rep, existingCache) {
   if (wikipedia) return wikipedia;
 
   const cached = getCachedImage(existingCache, rep);
-  if (cached?.image) {
+  if (cached?.image && cached?.imageSource !== "yomiuri") {
     return {
       url: cached.image,
       source: cached.imageSource || "cached",
