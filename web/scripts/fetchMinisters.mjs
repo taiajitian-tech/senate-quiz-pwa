@@ -264,8 +264,31 @@ async function main() {
     return;
   }
 
-  fs.writeFileSync(DATA_FILE, `${JSON.stringify(merged, null, 2)}\n`, "utf8");
-  console.log(`ministers: ${merged.length}`);
+  // representatives.json / senators.json から district/terms をマージ
+  const dataDir = path.resolve(__dirname, "../public/data");
+  const memberMap = new Map();
+  for (const fname of ["representatives.json", "senators.json"]) {
+    try {
+      const members = JSON.parse(fs.readFileSync(path.join(dataDir, fname), "utf8"));
+      for (const m of members) {
+        const key = String(m.name || "").replace(/[（(][^）)]*[）)]/g, "").replace(/[\s\u3000]+/g, "").trim();
+        if (key) memberMap.set(key, { district: m.district || "", terms: m.terms ?? null });
+      }
+    } catch {}
+  }
+  const enriched = merged.map(item => {
+    const key = String(item.name || "").replace(/[（(][^）)]*[）)]/g, "").replace(/[\s\u3000]+/g, "").trim();
+    const info = memberMap.get(key);
+    if (!info) return item;
+    return {
+      ...item,
+      ...(info.district ? { district: info.district } : {}),
+      ...(typeof info.terms === "number" ? { terms: info.terms } : {}),
+    };
+  });
+
+  fs.writeFileSync(DATA_FILE, `${JSON.stringify(enriched, null, 2)}\n`, "utf8");
+  console.log(`ministers: ${enriched.length}`);
 }
 
 main().catch((err) => {
