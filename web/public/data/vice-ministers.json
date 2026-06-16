@@ -12,7 +12,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/059.jpg/$File/059.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "愛知14",
+    "terms": 6
   },
   {
     "id": 99819658,
@@ -27,7 +29,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/247.jpg/$File/247.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "茨城1",
+    "terms": 6
   },
   {
     "id": 49423945,
@@ -42,7 +46,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/227.jpg/$File/227.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "（比）四国",
+    "terms": 5
   },
   {
     "id": 79139145,
@@ -57,7 +63,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/062.jpg/$File/062.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "佐賀1",
+    "terms": 6
   },
   {
     "id": 46617996,
@@ -72,7 +80,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/218.jpg/$File/218.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "東京10",
+    "terms": 5
   },
   {
     "id": 22114214,
@@ -87,7 +97,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/267.jpg/$File/267.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "青森1",
+    "terms": 6
   },
   {
     "id": 60530343,
@@ -102,7 +114,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/379.jpg/$File/379.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "山梨2",
+    "terms": 6
   },
   {
     "id": 28663371,
@@ -117,7 +131,9 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013030.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "選挙区（栃木県）",
+    "terms": 3
   },
   {
     "id": 42373339,
@@ -132,7 +148,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/397.jpg/$File/397.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "神奈川8",
+    "terms": 5
   },
   {
     "id": 67451557,
@@ -147,7 +165,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/155.jpg/$File/155.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "茨城6",
+    "terms": 4
   },
   {
     "id": 42713114,
@@ -162,7 +182,9 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013048.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "選挙区（奈良県）",
+    "terms": 3
   },
   {
     "id": 32629853,
@@ -177,7 +199,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/290.jpg/$File/290.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "山梨1",
+    "terms": 6
   },
   {
     "id": 61028141,
@@ -192,7 +216,9 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013049.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "比例",
+    "terms": 3
   },
   {
     "id": 41670159,
@@ -207,7 +233,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/173.jpg/$File/173.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "奈良1",
+    "terms": 5
   },
   {
     "id": 21772726,
@@ -222,7 +250,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/300.jpg/$File/300.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "北海道4",
+    "terms": 6
   },
   {
     "id": 74199113,
@@ -237,7 +267,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/283.jpg/$File/283.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "愛知9",
+    "terms": 6
   },
   {
     "id": 65976962,
@@ -252,7 +284,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/305.jpg/$File/305.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "徳島1",
+    "terms": 4
   },
   {
     "id": 19847347,
@@ -267,7 +301,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/322.jpg/$File/322.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "愛知15",
+    "terms": 6
   },
   {
     "id": 48007503,
@@ -282,7 +318,9 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013060.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "選挙区（佐賀県）",
+    "terms": 3
   },
   {
     "id": 97431195,
@@ -297,7 +335,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/052.jpg/$File/052.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "群馬2",
+    "terms": 6
   },
   {
     "id": 85669503,
@@ -312,7 +352,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/435.jpg/$File/435.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "兵庫7",
+    "terms": 6
   },
   {
     "id": 42464781,
@@ -327,7 +369,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/192.jpg/$File/192.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "石川2",
+    "terms": 6
   },
   {
     "id": 80340444,
@@ -342,7 +386,9 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013024.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "選挙区（愛知県）",
+    "terms": 3
   },
   {
     "id": 47282735,
@@ -357,7 +403,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/004.jpg/$File/004.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "兵庫8",
+    "terms": 1
   },
   {
     "id": 22874802,
@@ -372,7 +420,9 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/264.jpg/$File/264.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "東京2",
+    "terms": 6
   },
   {
     "id": 81272839,
@@ -387,6 +437,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/404.jpg/$File/404.jpg"
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "seed"
+    "sourceMode": "seed",
+    "district": "沖縄2",
+    "terms": 6
   }
 ]
