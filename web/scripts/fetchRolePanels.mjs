@@ -632,9 +632,33 @@ async function main() {
     '衆議院役員',
   );
 
+  // representatives.json / senators.json から district/terms をマージ
+  const memberMap = new Map();
+  for (const fname of ['representatives.json', 'senators.json']) {
+    try {
+      const members = readJson(fname);
+      for (const m of members) {
+        const key = String(m.name || '').replace(/[（(][^）)]*[）)]/g, '').replace(/[\s\u3000]+/g, '').trim();
+        if (key) memberMap.set(key, { district: m.district || '', terms: m.terms ?? null });
+      }
+    } catch {}
+  }
+  function enrichWithMemberInfo(list) {
+    return list.map(item => {
+      const key = String(item.name || '').replace(/[（(][^）)]*[）)]/g, '').replace(/[\s\u3000]+/g, '').trim();
+      const info = memberMap.get(key);
+      if (!info) return item;
+      return {
+        ...item,
+        ...(info.district ? { district: info.district } : {}),
+        ...(typeof info.terms === 'number' ? { terms: info.terms } : {}),
+      };
+    });
+  }
+
   writeJson('councilors-officers.json', councilorsOfficers);
-  writeJson('vice-ministers.json', viceMinisters);
-  writeJson('parliamentary-secretaries.json', parliamentarySecretaries);
+  writeJson('vice-ministers.json', enrichWithMemberInfo(viceMinisters));
+  writeJson('parliamentary-secretaries.json', enrichWithMemberInfo(parliamentarySecretaries));
   writeJson('house-officers.json', houseOfficers);
 
   console.log(`councilors-officers.json generated (${councilorsOfficers.length})`);
