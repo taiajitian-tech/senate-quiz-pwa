@@ -258,12 +258,6 @@ async function main() {
     merged.push(item);
   }
 
-  if (merged.length < 20) {
-    console.warn(`ministers merged suspicious (${merged.length}), keep existing`);
-    console.log(`ministers kept: ${existing.length}`);
-    return;
-  }
-
   // representatives.json / senators.json から district/terms をマージ
   const dataDir = path.resolve(__dirname, "../public/data");
   const memberMap = new Map();
@@ -276,19 +270,28 @@ async function main() {
       }
     } catch {}
   }
-  const enriched = merged.map(item => {
-    const key = normalizeCompact(item.name);
-    const info = memberMap.get(key);
-    if (!info) return item;
-    return {
-      ...item,
-      ...(info.district ? { district: info.district } : {}),
-      ...(typeof info.terms === "number" ? { terms: info.terms } : {}),
-    };
-  });
+  function enrichList(list) {
+    return list.map(item => {
+      const key = normalizeCompact(item.name);
+      const info = memberMap.get(key);
+      if (!info) return item;
+      return {
+        ...item,
+        ...(info.district ? { district: info.district } : {}),
+        ...(typeof info.terms === "number" ? { terms: info.terms } : {}),
+      };
+    });
+  }
 
-  fs.writeFileSync(DATA_FILE, `${JSON.stringify(enriched, null, 2)}\n`, "utf8");
-  console.log(`ministers: ${enriched.length}`);
+  if (merged.length < 20) {
+    console.warn(`ministers merged suspicious (${merged.length}), keep existing`);
+    console.log(`ministers kept: ${existing.length}`);
+    fs.writeFileSync(DATA_FILE, `${JSON.stringify(enrichList(existing), null, 2)}\n`, "utf8");
+    return;
+  }
+
+  fs.writeFileSync(DATA_FILE, `${JSON.stringify(enrichList(merged), null, 2)}\n`, "utf8");
+  console.log(`ministers: ${merged.length}`);
 }
 
 main().catch((err) => {
