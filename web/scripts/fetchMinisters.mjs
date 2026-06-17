@@ -271,13 +271,13 @@ async function main() {
     try {
       const members = JSON.parse(fs.readFileSync(path.join(dataDir, fname), "utf8"));
       for (const m of members) {
-        const key = String(m.name || "").replace(/[（(][^）)]*[）)]/g, "").replace(/[\s\u3000　 ]+/g, "").trim();
+        const key = normalizeCompact(m.name);
         if (key) memberMap.set(key, { district: m.district || "", terms: m.terms ?? null });
       }
     } catch {}
   }
   const enriched = merged.map(item => {
-    const key = String(item.name || "").replace(/[（(][^）)]*[）)]/g, "").replace(/[\s\u3000　 ]+/g, "").trim();
+    const key = normalizeCompact(item.name);
     const info = memberMap.get(key);
     if (!info) return item;
     return {
