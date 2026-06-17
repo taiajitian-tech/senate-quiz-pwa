@@ -48,6 +48,7 @@ jobs:
         run: npm run gen:ministers
 
       - name: Generate role panel data
+        continue-on-error: true
         run: npm run gen:role-panels
 
       - name: Generate updates data
