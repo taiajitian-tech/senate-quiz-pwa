@@ -5,7 +5,9 @@
     "group": "内閣総理大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
-    ]
+    ],
+    "district": "奈良2",
+    "terms": 11
   },
   {
     "id": 9761321,
@@ -13,7 +15,9 @@
     "group": "総務大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/hayashi_yoshimasa.jpg"
-    ]
+    ],
+    "district": "山口3",
+    "terms": 3
   },
   {
     "id": 9345622,
@@ -21,7 +25,9 @@
     "group": "法務大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/hiraguchi_hiroshi.jpg"
-    ]
+    ],
+    "district": "広島2",
+    "terms": 7
   },
   {
     "id": 9660806,
@@ -29,7 +35,9 @@
     "group": "外務大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/motegi_toshimitsu_r.jpg"
-    ]
+    ],
+    "district": "栃木5",
+    "terms": 12
   },
   {
     "id": 9843847,
@@ -37,7 +45,9 @@
     "group": "財務大臣 / 内閣府特命担当大臣（金融） / 租税特別措置・補助金見直し担当 / 参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
-    ]
+    ],
+    "district": "比例",
+    "terms": 3
   },
   {
     "id": 9878180,
@@ -45,7 +55,9 @@
     "group": "文部科学大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/matsumoto_youhei.jpg"
-    ]
+    ],
+    "district": "東京19",
+    "terms": 7
   },
   {
     "id": 9954349,
@@ -53,7 +65,9 @@
     "group": "厚生労働大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/ueno_kenichirou.jpg"
-    ]
+    ],
+    "district": "滋賀2",
+    "terms": 7
   },
   {
     "id": 9119422,
@@ -61,7 +75,9 @@
     "group": "農林水産大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/suzuki_norikazu.jpg"
-    ]
+    ],
+    "district": "山形2",
+    "terms": 6
   },
   {
     "id": 9311591,
@@ -69,7 +85,9 @@
     "group": "経済産業大臣 / 原子力経済被害担当 / ＧＸ実行推進担当 / 産業競争力担当 / 国際博覧会担当 / 中東情勢に伴う重要物資安定確保担当 / 内閣府特命担当大臣（原子力損害賠償・廃炉等支援機構） / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
-    ]
+    ],
+    "district": "鳥取2",
+    "terms": 8
   },
   {
     "id": 9884109,
@@ -77,7 +95,9 @@
     "group": "国土交通大臣 / 水循環政策担当 / 国際園芸博覧会担当 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kaneko_yasushi.jpg"
-    ]
+    ],
+    "district": "熊本4",
+    "terms": 10
   },
   {
     "id": 9934680,
@@ -85,7 +105,9 @@
     "group": "環境大臣 / 内閣府特命担当大臣（原子力防災） / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/000192617.jpg"
-    ]
+    ],
+    "district": "東京3",
+    "terms": 7
   },
   {
     "id": 9788371,
@@ -93,7 +115,9 @@
     "group": "防衛大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/koizumi_shinjirou.jpg"
-    ]
+    ],
+    "district": "神奈川11",
+    "terms": 7
   },
   {
     "id": 9365348,
@@ -101,7 +125,9 @@
     "group": "内閣官房長官 / 沖縄基地負担軽減担当 / 拉致問題担当 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
-    ]
+    ],
+    "district": "熊本1",
+    "terms": 7
   },
   {
     "id": 9018309,
@@ -110,7 +136,9 @@
     "images": [
       "https://www.kantei.go.jp/jp/content/matsumoto_hisashi.jpg"
     ],
-    "kana": "まつもとひさし"
+    "kana": "まつもとひさし",
+    "district": "千葉13",
+    "terms": 3
   },
   {
     "id": 9999210,
@@ -118,7 +146,9 @@
     "group": "復興大臣 / 福島原発事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/makino_takao.jpg"
-    ]
+    ],
+    "district": "選挙区（静岡県）",
+    "terms": 4
   },
   {
     "id": 9320710,
@@ -126,7 +156,9 @@
     "group": "国家公安委員会委員長 / 領土問題担当 / 内閣府特命担当大臣（防災 海洋政策） / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/akama_jirou.jpg"
-    ]
+    ],
+    "district": "神奈川14",
+    "terms": 7
   },
   {
     "id": 9835518,
@@ -134,7 +166,9 @@
     "group": "内閣府特命担当大臣（沖縄及び北方対策 消費者及び食品安全 こども政策 少子化対策 若者活躍 男女共同参画 地方創生 アイヌ施策 共生・共助） / 女性活躍担当 / 共生社会担当 / 地域未来戦略担当 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kikawada_hitoshi.jpg"
-    ]
+    ],
+    "district": "埼玉3",
+    "terms": 6
   },
   {
     "id": 9359551,
@@ -142,7 +176,9 @@
     "group": "日本成長戦略担当 / 賃上げ環境整備担当 / スタートアップ担当 / 全世代型社会保障改革担当 / 感染症危機管理担当 / 内閣府特命担当大臣（経済財政政策 規制改革） / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
-    ]
+    ],
+    "district": "静岡7",
+    "terms": 8
   },
   {
     "id": 9509240,
@@ -150,7 +186,9 @@
     "group": "経済安全保障担当 / 外国人との秩序ある共生社会推進担当 / 内閣府特命担当大臣（クールジャパン戦略 知的財産戦略 科学技術政策 宇宙政策 人工知能戦略 経済安全保障） / 参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
-    ]
+    ],
+    "district": "選挙区（岡山県）",
+    "terms": 2
   },
   {
     "id": 9105432,
@@ -166,7 +204,9 @@
     "group": "内閣官房副長官 / 参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/satou_kei2.jpg"
-    ]
+    ],
+    "district": "選挙区（奈良県）",
+    "terms": 2
   },
   {
     "id": 9217760,
