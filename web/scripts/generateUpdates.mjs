@@ -81,7 +81,7 @@ function normalizeRecord(value, index) {
   const id = Number.isFinite(Number(source.id)) && Number(source.id) > 0 ? Number(source.id) : index + 1;
   const name = split.name;
   const kana = normalizeCompact(toText(source.kana) || toText(source.nameKana) || toText(source.kanaName) || split.kana);
-  const role = toText(source.role) || toText(source.group);
+  const role = toText(source.subRole) || toText(source.role) || toText(source.group);
   const party = toText(source.party);
   const district = toText(source.district) || toText(source.electoralDistrict) || toText(source.constituency);
   const image = toImages(source.images ?? source.image)[0] ?? '';
@@ -134,7 +134,7 @@ function compareTarget(target) {
         targetLabel: target.label,
         name: nextItem.name,
         type: 'added',
-        summary: `${nextItem.name} を新たに追加しました${nextItem.party ? `（${nextItem.party}）` : ''}`,
+        summary: `${nextItem.name} を新たに追加しました${nextItem.role ? `（${nextItem.role}）` : nextItem.party ? `（${nextItem.party}）` : ''}`,
       });
       continue;
     }
@@ -174,7 +174,7 @@ function compareTarget(target) {
       targetLabel: target.label,
       name: prevItem.name,
       type: 'removed',
-      summary: `${prevItem.name} を一覧から除外しました（辞職・落選・データ更新などの可能性）`,
+      summary: `${prevItem.name}${prevItem.role ? `（${prevItem.role}）` : ''} を一覧から除外しました`,
     });
   }
 
