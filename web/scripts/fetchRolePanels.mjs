@@ -266,15 +266,28 @@ function parseCouncilorsOfficersFromText(html) {
     m = line.match(/^(常任委員長|特別委員長|調査会長)\s+(.+)$/u);
     if (m) {
       const body = m[2];
-      const lastSpace = body.lastIndexOf(' ');
-      if (lastSpace !== -1) {
+      // 「役職名（委員長|会長で終わる）+ スペース + 氏名」で分割
+      // 氏名自体にもスペースが入るため、「委員長」or「会長」で終わる最長マッチで分割
+      const roleMatch = body.match(/^(.+?(?:委員長|会長))\s+(.+)$/u);
+      if (roleMatch) {
         out.push({
-          subRole: body.slice(0, lastSpace).trim(),
-          name: toPlainName(body.slice(lastSpace + 1)),
+          subRole: roleMatch[1].trim(),
+          name: toPlainName(roleMatch[2]),
           kana: '',
           chamber: '参議院',
           sourceMode: 'live',
         });
+      } else {
+        const lastSpace = body.lastIndexOf(' ');
+        if (lastSpace !== -1) {
+          out.push({
+            subRole: body.slice(0, lastSpace).trim(),
+            name: toPlainName(body.slice(lastSpace + 1)),
+            kana: '',
+            chamber: '参議院',
+            sourceMode: 'live',
+          });
+        }
       }
       continue;
     }
