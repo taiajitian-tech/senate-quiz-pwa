@@ -266,7 +266,6 @@ export default function UpdatesView(props: Props) {
     </div>
   );
 }
-
       <div style={styles.card}>
         <div style={styles.sectionTitle}>区分ごとの変更</div>
         {payload.summaries.length === 0 ? (
@@ -284,6 +283,7 @@ export default function UpdatesView(props: Props) {
           </div>
         )}
       </div>
+
 
 const styles: Record<string, React.CSSProperties> = {
   wrap: { minHeight: '100vh', padding: 16, display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center', background: '#f7f8fa' },
