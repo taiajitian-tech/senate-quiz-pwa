@@ -222,24 +222,6 @@ export default function UpdatesView(props: Props) {
       </div>
 
       <div style={styles.card}>
-        <div style={styles.sectionTitle}>区分ごとの変更</div>
-        {payload.summaries.length === 0 ? (
-          <div style={styles.empty}>現在は変更点がありません。</div>
-        ) : (
-          <div style={styles.summaryGrid}>
-            {payload.summaries.map((summary) => (
-              <div key={summary.target} style={styles.summaryCard}>
-                <div style={styles.summaryTitle}>{summary.label}</div>
-                <div style={styles.summaryRow}>追加 {summary.added} 件</div>
-                <div style={styles.summaryRow}>変更 {summary.changed} 件</div>
-                <div style={styles.summaryRow}>除外 {summary.removed} 件</div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div style={styles.card}>
         <div style={styles.sectionTitle}>変更一覧</div>
         {payload.items.length === 0 ? (
           <div style={styles.empty}>表示する変更はありません。</div>
@@ -317,3 +299,23 @@ const styles: Record<string, React.CSSProperties> = {
   statusTitle: { fontSize: 16, fontWeight: 800 },
   statusText: { fontSize: 14, color: '#333' },
 };
+
+      <div style={styles.card}>
+        <div style={styles.sectionTitle}>区分ごとの変更</div>
+        {payload.summaries.length === 0 ? (
+          <div style={styles.empty}>現在は変更点がありません。</div>
+        ) : (
+          <div style={styles.summaryGrid}>
+            {payload.summaries.map((summary) => (
+              <div key={summary.target} style={styles.summaryCard}>
+                <div style={styles.summaryTitle}>{summary.label}</div>
+                <div style={styles.summaryRow}>追加 {summary.added} 件</div>
+                <div style={styles.summaryRow}>変更 {summary.changed} 件</div>
+                <div style={styles.summaryRow}>除外 {summary.removed} 件</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      
