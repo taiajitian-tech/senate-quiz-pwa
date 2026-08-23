@@ -1,9 +1,16 @@
 {
-  "generatedAt": "2026-08-23T04:19:33.100Z",
+  "generatedAt": "2026-08-23T10:43:18.672Z",
   "totalChanges": 0,
   "hasUpdates": true,
   "summaries": [],
   "items": [
+    {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "れいわ新選組がいのちの党に改名",
+      "type": "changed",
+      "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
+    },
     {
       "target": "notice",
       "targetLabel": "お知らせ",
