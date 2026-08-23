@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -102,7 +103,6 @@ function normalizeRecord(value, index) {
 
 function readArrayFromGit(relPath) {
   try {
-    const { execSync } = await import('child_process');
     const sha = execSync(
       `git log --skip=1 -1 --format="%H" -- ${relPath}`,
       { cwd: WEB_DIR, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
