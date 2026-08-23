@@ -100,6 +100,25 @@ function normalizeRecord(value, index) {
   };
 }
 
+function readArrayFromGit(relPath) {
+  try {
+    const { execSync } = await import('child_process');
+    const sha = execSync(
+      `git log --skip=1 -1 --format="%H" -- ${relPath}`,
+      { cwd: WEB_DIR, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
+    ).trim();
+    if (!sha) return null;
+    const data = execSync(
+      `git show ${sha}:${relPath}`,
+      { cwd: WEB_DIR, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
+    );
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 function readArray(filePath) {
   if (!fs.existsSync(filePath)) return [];
   try {
@@ -111,7 +130,9 @@ function readArray(filePath) {
 }
 
 function compareTarget(target) {
-  const previousRaw = readArray(path.resolve(PREV_DIR, target.path));
+  const gitRelPath = `web/public/data/${target.path}`;
+  const gitPrev = readArrayFromGit(gitRelPath);
+  const previousRaw = gitPrev ?? readArray(path.resolve(PREV_DIR, target.path));
   const currentRaw = readArray(path.resolve(DATA_DIR, target.path));
 
   const previous = previousRaw.map(normalizeRecord).filter(Boolean);
