@@ -1,8 +1,17 @@
 {
-  "generatedAt": "2026-09-04T18:33:01.243Z",
-  "totalChanges": 0,
+  "generatedAt": "2026-09-05T07:36:59.337Z",
+  "totalChanges": 1,
   "hasUpdates": true,
-  "summaries": [],
+  "summaries": [
+    {
+      "target": "senators",
+      "label": "参議院一般議員",
+      "added": 0,
+      "removed": 0,
+      "changed": 1,
+      "total": 1
+    }
+  ],
   "items": [
     {
       "target": "notice",
@@ -10,6 +19,13 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
+    },
+    {
+      "target": "senators",
+      "targetLabel": "参議院一般議員",
+      "name": "泉 房穂",
+      "type": "changed",
+      "summary": "泉 房穂：役職変更（立憲民主・無所属 → 各派に属しない議員）・所属変更（立憲民主・無所属 → 各派に属しない議員）"
     }
   ]
 }
