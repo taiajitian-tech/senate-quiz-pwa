@@ -136,6 +136,7 @@ export default function UpdatesView(props: Props) {
   const [payload, setPayload] = useState<UpdatesPayload>(EMPTY_PAYLOAD);
   const [history, setHistory] = useState<HistoryEntry[]>(() => readHistory());
   const [error, setError] = useState<string | null>(null);
+  const [historyOpen, setHistoryOpen] = useState(false);
   const [dismissed, setDismissed] = useState<Set<string>>(() => {
     try {
       const raw = window.localStorage.getItem('updates_dismissed_v1');
@@ -218,22 +219,43 @@ export default function UpdatesView(props: Props) {
 
       {/* 履歴 */}
       <div style={styles.card}>
-        <div style={styles.sectionTitle}>履歴</div>
+        <button
+          type="button"
+          style={styles.sectionTitleBtn}
+          onClick={() => setHistoryOpen(v => !v)}
+        >
+          <span style={styles.sectionTitle}>履歴</span>
+          <span style={styles.toggleIcon}>{historyOpen ? '▲' : '▼'}</span>
+        </button>
         {history.length === 0 ? (
           <div style={styles.empty}>まだ履歴がありません。</div>
         ) : (
-          <div style={styles.historyList}>
-            {history.map(entry => (
-              <div key={entry.generatedAt} style={styles.historyCard}>
-                <div style={styles.historyTitle}>
-                  {entry.hasUpdates && entry.totalChanges > 0
-                    ? `変更 ${entry.totalChanges} 件` : '変更なし'}
-                </div>
-                <div style={styles.historyLine}>生成：{formatDateTime(entry.generatedAt)}</div>
-                <div style={styles.historyLine}>確認：{formatDateTime(entry.viewedAt)}</div>
+          <>
+            {/* 最新1件は常に表示 */}
+            <div style={styles.historyCard}>
+              <div style={styles.historyTitle}>
+                {history[0].hasUpdates && history[0].totalChanges > 0
+                  ? `変更 ${history[0].totalChanges} 件` : '変更なし'}
               </div>
-            ))}
-          </div>
+              <div style={styles.historyLine}>生成：{formatDateTime(history[0].generatedAt)}</div>
+              <div style={styles.historyLine}>確認：{formatDateTime(history[0].viewedAt)}</div>
+            </div>
+            {/* 残りは折りたたみ */}
+            {historyOpen && history.length > 1 && (
+              <div style={styles.historyList}>
+                {history.slice(1).map(entry => (
+                  <div key={entry.generatedAt} style={styles.historyCard}>
+                    <div style={styles.historyTitle}>
+                      {entry.hasUpdates && entry.totalChanges > 0
+                        ? `変更 ${entry.totalChanges} 件` : '変更なし'}
+                    </div>
+                    <div style={styles.historyLine}>生成：{formatDateTime(entry.generatedAt)}</div>
+                    <div style={styles.historyLine}>確認：{formatDateTime(entry.viewedAt)}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
 
@@ -349,4 +371,6 @@ const styles: Record<string, React.CSSProperties> = {
   statusText: { fontSize: 14, color: '#333' },
   itemWrap: { display: 'flex', flexDirection: 'column', gap: 4 },
   dismissBtn: { alignSelf: 'flex-end', padding: '4px 10px', fontSize: 12, color: '#888', background: 'transparent', border: '1px solid #ddd', borderRadius: 8, cursor: 'pointer' },
+  sectionTitleBtn: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'transparent', border: 'none', padding: 0, cursor: 'pointer', width: '100%' },
+  toggleIcon: { fontSize: 14, color: '#888' },
 };
