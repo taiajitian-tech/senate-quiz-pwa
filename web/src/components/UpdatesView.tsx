@@ -136,6 +136,21 @@ export default function UpdatesView(props: Props) {
   const [payload, setPayload] = useState<UpdatesPayload>(EMPTY_PAYLOAD);
   const [history, setHistory] = useState<HistoryEntry[]>(() => readHistory());
   const [error, setError] = useState<string | null>(null);
+  const [dismissed, setDismissed] = useState<Set<string>>(() => {
+    try {
+      const raw = window.localStorage.getItem('updates_dismissed_v1');
+      return new Set(raw ? JSON.parse(raw) as string[] : []);
+    } catch { return new Set(); }
+  });
+
+  const dismissItem = (key: string) => {
+    setDismissed(prev => {
+      const next = new Set(prev);
+      next.add(key);
+      window.localStorage.setItem('updates_dismissed_v1', JSON.stringify([...next]));
+      return next;
+    });
+  };
 
   const baseUrl = import.meta.env.BASE_URL ?? '/';
 
@@ -171,6 +186,10 @@ export default function UpdatesView(props: Props) {
     return `変更 ${payload.totalChanges} 件`;
   }, [payload.generatedAt, payload.hasUpdates, payload.totalChanges]);
 
+  const visibleItems = useMemo(
+    () => payload.items.filter((item, index) => !dismissed.has(`${item.target}-${item.name}-${index}`)),
+    [payload.items, dismissed]
+  );
   const hasRealChanges = payload.hasUpdates && payload.totalChanges > 0;
 
   return (
@@ -221,41 +240,49 @@ export default function UpdatesView(props: Props) {
       {/* 変更一覧 */}
       <div style={styles.card}>
         <div style={styles.sectionTitle}>変更一覧</div>
-        {payload.items.length === 0 ? (
+        {visibleItems.length === 0 ? (
           <div style={styles.empty}>表示する変更はありません。</div>
         ) : (
           <div style={styles.list}>
-            {payload.items.map((item, index) => {
+            {visibleItems.map((item, index) => {
+              const itemKey = `${item.target}-${item.name}-${index}`;
               const nextTarget = toTarget(item.target);
               const canOpen = item.type !== 'removed' && nextTarget !== null;
               return (
-                <button
-                  type="button"
-                  key={`${item.target}-${item.name}-${index}`}
-                  style={canOpen ? styles.itemCardButton : styles.itemCardDisabled}
-                  onClick={() => { if (canOpen && nextTarget) props.onOpenPerson(nextTarget, item.name); }}
-                  disabled={!canOpen}
-                >
-                  <div style={styles.itemMetaRow}>
-                    <div style={styles.itemTarget}>{item.targetLabel}</div>
-                    <div style={styles.itemType}>{getTypeLabel(item.type)}</div>
-                  </div>
-                  <div style={styles.itemName}>{item.name}</div>
-                  <div style={styles.itemSummary}>{item.summary}</div>
-                  {item.reason ? (
-                    <div style={item.reason.confidence === 'confirmed' ? styles.itemReasonConfirmed : styles.itemReasonCandidate}>
-                      <div>{getReasonLabel(item.reason)}</div>
-                      {item.reason.sourceTitle
-                        ? <div style={styles.itemReasonMeta}>参照: {item.reason.sourceTitle}</div>
-                        : null}
+                <div key={itemKey} style={styles.itemWrap}>
+                  <button
+                    type="button"
+                    style={canOpen ? styles.itemCardButton : styles.itemCardDisabled}
+                    onClick={() => { if (canOpen && nextTarget) props.onOpenPerson(nextTarget, item.name); }}
+                    disabled={!canOpen}
+                  >
+                    <div style={styles.itemMetaRow}>
+                      <div style={styles.itemTarget}>{item.targetLabel}</div>
+                      <div style={styles.itemType}>{getTypeLabel(item.type)}</div>
                     </div>
-                  ) : null}
-                  {item.target !== 'notice' ? (
-                    <div style={styles.itemHint}>
-                      {canOpen ? '押すと一覧の該当議員へ移動します。' : '除外された項目のため移動できません。'}
-                    </div>
-                  ) : null}
-                </button>
+                    <div style={styles.itemName}>{item.name}</div>
+                    <div style={styles.itemSummary}>{item.summary}</div>
+                    {item.reason ? (
+                      <div style={item.reason.confidence === 'confirmed' ? styles.itemReasonConfirmed : styles.itemReasonCandidate}>
+                        <div>{getReasonLabel(item.reason)}</div>
+                        {item.reason.sourceTitle
+                          ? <div style={styles.itemReasonMeta}>参照: {item.reason.sourceTitle}</div>
+                          : null}
+                      </div>
+                    ) : null}
+                    {item.target !== 'notice' ? (
+                      <div style={styles.itemHint}>
+                        {canOpen ? '押すと一覧の該当議員へ移動します。' : '除外された項目のため移動できません。'}
+                      </div>
+                    ) : null}
+                  </button>
+                  <button
+                    type="button"
+                    style={styles.dismissBtn}
+                    onClick={() => dismissItem(itemKey)}
+                    aria-label="この通知を消す"
+                  >✕ 確認済み</button>
+                </div>
               );
             })}
           </div>
@@ -320,4 +347,6 @@ const styles: Record<string, React.CSSProperties> = {
   statusNoChanges: { border: '1px solid #d1d5db', background: '#f9fafb', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 6 },
   statusTitle: { fontSize: 16, fontWeight: 800 },
   statusText: { fontSize: 14, color: '#333' },
+  itemWrap: { display: 'flex', flexDirection: 'column', gap: 4 },
+  dismissBtn: { alignSelf: 'flex-end', padding: '4px 10px', fontSize: 12, color: '#888', background: 'transparent', border: '1px solid #ddd', borderRadius: 8, cursor: 'pointer' },
 };
