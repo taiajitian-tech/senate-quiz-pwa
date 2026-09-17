@@ -1,9 +1,25 @@
 {
-  "generatedAt": "2026-09-17T22:06:58.527Z",
-  "totalChanges": 0,
+  "generatedAt": "2026-09-17T22:17:50.323Z",
+  "totalChanges": 44,
   "hasUpdates": true,
-  "summaries": [],
+  "summaries": [
+    {
+      "target": "ministers",
+      "label": "大臣",
+      "added": 21,
+      "removed": 23,
+      "changed": 0,
+      "total": 44
+    }
+  ],
   "items": [
+    {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "第2次高市改造内閣が発足",
+      "type": "changed",
+      "summary": "2026年9月17日、第2次高市改造内閣が発足しました。閣僚23人を更新しました。国家公安委員会委員長に葉梨康弘が就任しています。"
+    },
     {
       "target": "notice",
       "targetLabel": "お知らせ",
@@ -17,6 +33,398 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "高市 早苗",
+      "type": "added",
+      "summary": "高市 早苗 を新たに追加しました（第２次高市改造内閣 閣僚名簿 / 第２次高市改造内閣 内閣総理大臣補佐官名簿 / 内閣総理大臣 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqS2czYTdpb1V4TWw2OW94ckhHcmV2WGVrc1J0NXh4akF6S3R4NFZZUHVLN2lHcW1LeTVPRWJhV1BITzJrZ3ZhSzQ2VF9BNzdKQW5hUWpDcUpSdlZJWTRVdU1oV09tRVE?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 00:57:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "藤井 比早之",
+      "type": "added",
+      "summary": "藤井 比早之 を新たに追加しました（地域未来戦略担当 / 副首都整備等推進担当 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "candidate",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqS2czYTdpb1V4TWw2OW94ckhHcmV2WGVrc1J0NXh4akF6S3R4NFZZUHVLN2lHcW1LeTVPRWJhV1BITzJrZ3ZhSzQ2VF9BNzdKQW5hUWpDcUpSdlZJWTRVdU1oV09tRVE?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 00:57:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "山下 貴司",
+      "type": "added",
+      "summary": "山下 貴司 を新たに追加しました（女性活躍担当 / 法制度検証・改革担当 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1UN055UnAxejBldEV6a08xVk8yU0dESTBDcUwyT1BrZVlCWHNIRnpCZDdzV3NHVV9YWERjMWFyLXRlcEVGelVHSmJYbjQ4RVcxMFFGdmN1N2txdXFvOWJZRW9fWXdCSDJ0SE1NYzYyNWhCY2RI?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 07:04:22 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "茂木 敏充",
+      "type": "added",
+      "summary": "茂木 敏充 を新たに追加しました（外務大臣 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "Vietnam.vn",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSVNWRVdhVXV2YUl1Qm9odVNHZFNOQjFIZWdVZkRXOEZJYjFtWDNla3pqMU5aVm9ZRjJEYVZDcmFVR0lNZFJ2bThTVHRoT1MwQjQxcE9yNFpTb1p1M2I2U0hPM2YzR1R6UWZ0dVZxUDBJVk1ZVDRob3dPbkQweDE5N0c4MGs1NjFyNzRIbGJxdW1pYzdaaUV3cGQ2cVB5aWh4RGJwODFXYw?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 11:26:35 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "片山 さつき",
+      "type": "added",
+      "summary": "片山 さつき を新たに追加しました（租税特別措置・補助金見直し担当 / 消費税・支援金法案担当 / 参議院）",
+      "reason": {
+        "label": "補欠選挙報道あり",
+        "confidence": "candidate",
+        "sourceTitle": "選挙ドットコム",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5QWU9Wb1dtU2haNUhSSnl6dHFtdXB1OHA0YWpiMUphUWtMbnFVMTR6WFViZkZ1bzk5TFdhZjkwYUg1QXVWbGxXYVQwZk9rTnZuTU9IbkdnaFlyYnczMW9N?oc=5",
+        "publishedAt": "Sun, 31 May 2026 07:00:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "関 芳弘",
+      "type": "added",
+      "summary": "関 芳弘 を新たに追加しました（文部科学大臣 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "Yahoo!ニュース",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5GSFA1a055UC00V2dITldmMTdVbktneWt2MHBiNS1GMmhpQzdiUURERnRTZklZOXo5aHowTFpSVGQzWFBHWDFzdXdiZ3lwZjBuLTE2d1lOVDhJZUs5dFBsOUU2dHZkVGVFQ2d2ckcwNC1fVGZoUktRY2ZVbEpWUXM?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 08:36:17 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "上野 賢一郎",
+      "type": "added",
+      "summary": "上野 賢一郎 を新たに追加しました（厚生労働大臣 / 衆議院）",
+      "reason": {
+        "label": "当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "京都新聞デジタル",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBQOUlQVXB2YUF6MU1GZS1GYWNHZzdxQTRoRzRqRFZab3ZnbUozWVJVd2FCUEpaa1laZEhMcnJrV1liMW5rQk1ESHpWVkJxZjRObHNxM2FXMWw?oc=5",
+        "publishedAt": "Sun, 08 Feb 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "簗 和生",
+      "type": "added",
+      "summary": "簗 和生 を新たに追加しました（農林水産大臣 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "日本農業新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBVVnI2RVhHSGxKNU92cEMtcUlBUnFpRGFmaWJXMjdfaVo4Q3ZBaldMNUQ1S0ZPRVNETjBkVU9uSVMtX3haRWpmZWs2M0dia0RvcVV5R2VOUQ?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 10:15:37 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "赤澤 亮正",
+      "type": "added",
+      "summary": "赤澤 亮正 を新たに追加しました（衆議院）",
+      "reason": {
+        "label": "当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "yomiuri.co.jp",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5yQW1fZUhsOV94aW5VWk1tUHNfQUZaZDF3bS1NcWw2LURCME5wd1U0cDFPV2wyU2JIelVERmVDUzVmektrRE1YdFUwcmNSLUZqYjVxZWx2MG5PYUNleEh3VHZrTHhtZmJLNmVPV2pMdzA?oc=5",
+        "publishedAt": "Sun, 08 Feb 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "井林 辰憲",
+      "type": "added",
+      "summary": "井林 辰憲 を新たに追加しました（国土交通大臣 / 水循環政策担当 / 国際園芸博覧会担当 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "中日新聞Web",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1aTmNmUGJybXE4VlZWU3JXSTR3SmpxejFnbWV5dWkwbnpjTXpwc2dFby1nc3d5cjljRFVRWjVnRGQwbEhXcDh6RVVpT0tQVU9LZTlKbg?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 12:47:25 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "笹川 博義",
+      "type": "added",
+      "summary": "笹川 博義 を新たに追加しました（クマ被害対策担当 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "NHKニュース",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5pVVM4UHJETml5ZWtOZHl5RkhmSDVzSjJPUG1yQU9GZUVNUmt5bjhMQ2lFcU0zU0VZSnB1eTFmLXR4djRmNFRKc2lHazJ3NDZoUGVrUDg2dlBZNG5HTndF?oc=5",
+        "publishedAt": "Thu, 17 Sep 2026 03:44:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "小泉 進次郎",
+      "type": "added",
+      "summary": "小泉 進次郎 を新たに追加しました（防衛大臣 / 衆議院）",
+      "reason": {
+        "label": "当選報道あり",
+        "confidence": "candidate",
+        "sourceTitle": "選挙ドットコム",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9aNXpLcEo4RUFpNk9QRnZxeXljdWNzbVEtUWowRkFtNEFfSUQzcmd5YklHdlpEVTJ1NW5abW5LNmZDbnk2RFpCamJXY05CZy1DeldjT1BkRERuczRMYndB?oc=5",
+        "publishedAt": "Tue, 23 Jun 2026 07:00:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "木原 稔",
+      "type": "added",
+      "summary": "木原 稔 を新たに追加しました（内閣官房長官 / 沖縄基地負担軽減担当 / 拉致問題担当 / 衆議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "古川 俊治",
+      "type": "added",
+      "summary": "古川 俊治 を新たに追加しました（参議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "細野 豪志",
+      "type": "added",
+      "summary": "細野 豪志 を新たに追加しました（福島原子力発電所事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 国際防災協力担当 / 衆議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "中司 宏",
+      "type": "added",
+      "summary": "中司 宏 を新たに追加しました（行政改革担当 / 国家公務員制度担当 / 衆議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "城内 実",
+      "type": "added",
+      "summary": "城内 実 を新たに追加しました（衆議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "小野田 紀美",
+      "type": "added",
+      "summary": "小野田 紀美 を新たに追加しました（参議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "中西 祐介",
+      "type": "added",
+      "summary": "中西 祐介 を新たに追加しました（内閣官房副長官 / 参議院）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "露木 康浩",
+      "type": "added",
+      "summary": "露木 康浩 を新たに追加しました（内閣官房副長官）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "岩尾 信行",
+      "type": "added",
+      "summary": "岩尾 信行 を新たに追加しました（内閣法制局長官）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "高市 早苗",
+      "type": "removed",
+      "summary": "高市 早苗（内閣総理大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "藤井 比早之",
+      "type": "removed",
+      "summary": "藤井 比早之（総務大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "山下 貴司",
+      "type": "removed",
+      "summary": "山下 貴司（法務大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "茂木 敏充",
+      "type": "removed",
+      "summary": "茂木 敏充（外務大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "片山 さつき",
+      "type": "removed",
+      "summary": "片山 さつき（財務大臣 / 参議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "関 芳弘",
+      "type": "removed",
+      "summary": "関 芳弘（文部科学大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "上野 賢一郎",
+      "type": "removed",
+      "summary": "上野 賢一郎（厚生労働大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "簗 和生",
+      "type": "removed",
+      "summary": "簗 和生（農林水産大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "赤澤 亮正",
+      "type": "removed",
+      "summary": "赤澤 亮正（経済産業大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "井林 辰憲",
+      "type": "removed",
+      "summary": "井林 辰憲（国土交通大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "笹川 博義",
+      "type": "removed",
+      "summary": "笹川 博義（環境大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "小泉 進次郎",
+      "type": "removed",
+      "summary": "小泉 進次郎（防衛大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "木原 稔",
+      "type": "removed",
+      "summary": "木原 稔（内閣官房長官 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "葉梨 康弘",
+      "type": "removed",
+      "summary": "葉梨 康弘（国家公安委員会委員長 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "古川 俊治",
+      "type": "removed",
+      "summary": "古川 俊治（デジタル大臣 / 参議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "細野 豪志",
+      "type": "removed",
+      "summary": "細野 豪志（復興大臣 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "中司 宏",
+      "type": "removed",
+      "summary": "中司 宏（内閣府特命担当大臣（こども政策 少子化対策） / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "城内 実",
+      "type": "removed",
+      "summary": "城内 実（日本成長戦略担当 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "小野田 紀美",
+      "type": "removed",
+      "summary": "小野田 紀美（経済安全保障担当 / 参議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "尾﨑 正直",
+      "type": "removed",
+      "summary": "尾﨑 正直（内閣官房副長官 / 衆議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "中西 祐介",
+      "type": "removed",
+      "summary": "中西 祐介（内閣官房副長官 / 参議院） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "露木 康浩",
+      "type": "removed",
+      "summary": "露木 康浩（内閣官房副長官） を一覧から除外しました"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "岩尾 信行",
+      "type": "removed",
+      "summary": "岩尾 信行（内閣法制局長官） を一覧から除外しました"
     }
   ]
 }
