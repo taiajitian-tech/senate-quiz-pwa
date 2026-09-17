@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-09-17T05:35:36.245Z",
-  "totalChanges": 2,
+  "generatedAt": "2026-09-17T08:35:40.757Z",
+  "totalChanges": 5,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "councilorsOfficersList",
-      "label": "参議院役員",
-      "added": 0,
-      "removed": 2,
+      "target": "houseOfficersList",
+      "label": "衆議院役員一覧",
+      "added": 5,
+      "removed": 0,
       "changed": 0,
-      "total": 2
+      "total": 5
     }
   ],
   "items": [
@@ -28,18 +28,74 @@
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
     },
     {
-      "target": "councilorsOfficersList",
-      "targetLabel": "参議院役員",
-      "name": "大家 敏志",
-      "type": "removed",
-      "summary": "大家 敏志（議院運営委員会 庶務関係小委員長） を一覧から除外しました"
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "山口壯",
+      "type": "added",
+      "summary": "山口壯 を新たに追加しました（決算行政監視委員長）",
+      "reason": {
+        "label": "繰上げ当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBlcGY3XzBid0lma1FyYlFpdWY4NVg2alN5eTJEdkoyQml0OThSRW1oWGFYTllYb2tiUm45c01hTlJIY0dic1NIX3ZaVkw4YzN1Nmh0ZnlMdjVGMi1mSkZXRkFfUHZKMVdoOFR6V0d5YmE5WnZC?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 07:00:11 GMT"
+      }
     },
     {
-      "target": "councilorsOfficersList",
-      "targetLabel": "参議院役員",
-      "name": "鬼木 誠",
-      "type": "removed",
-      "summary": "鬼木 誠（議院運営委員会 図書館運営小委員長） を一覧から除外しました"
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "柴山昌彦",
+      "type": "added",
+      "summary": "柴山昌彦 を新たに追加しました（国家基本政策委員長）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "読売新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5udVcteEFBWXVtbXZHb0JUNEQxTnpQbnY5SG9zRWlJa0VRVlM2WENGdWh0LXFHNl9ib2lUM0g3SmVRTk5QMnpraWdKNzl4Z05kTDVRRlk3NllELTE2aWx5bzZNR3lqTXJuVnA5dzE2T1VnNFlpNGJVag?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "船田元",
+      "type": "added",
+      "summary": "船田元 を新たに追加しました（情報監視審査会会長）",
+      "reason": {
+        "label": "繰上げ当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "読売新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE50WllwT0ZWRTYyYzlOWm1VdnFuYVp0dkZOanZJcEkxaHlhTG1mSG9sT2hzZkhJbUhscVJUM1MyelNWTjVhN1NyeG9IaE0tVlp4aHdEZENBOUJ0M2VETFZHemlaTHFXcXJQUmIyVVNaX3Q?oc=5",
+        "publishedAt": "Thu, 29 Jan 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "斉藤鉄夫",
+      "type": "added",
+      "summary": "斉藤鉄夫 を新たに追加しました（懲罰委員長）",
+      "reason": {
+        "label": "当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "毎日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBvVmNFMWZOR3A4Uy0zZi1Ba1FZOEZEUnJxS2xXZG5qWFd4SlZqTkgzT2pGOVhnTlBMcHVDWDZTMTBhdXhZejJxTGZSSlMzSzRpaDAwZy1CSVpSLTFwN29qWUR5cUlLV3Vu?oc=5",
+        "publishedAt": "Sun, 08 Feb 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "houseOfficersList",
+      "targetLabel": "衆議院役員一覧",
+      "name": "西銘恒三郎",
+      "type": "added",
+      "summary": "西銘恒三郎 を新たに追加しました（東日本大震災復興及び原子力問題調査特別委員長）",
+      "reason": {
+        "label": "当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBSZ0Q0VkUxQ3o1SUk4dHJSUjhiVzk5VXN5UWU3LUwwd1RZZ1lGUTZ1T24wV0VSd3dkNDNlUkZPRW84ZjFEdjJ4N1ZFOFJ4dVVMZ2JGWTg3UUx1R1daN09sNl9xOFM?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 04:11:56 GMT"
+      }
     }
   ]
 }

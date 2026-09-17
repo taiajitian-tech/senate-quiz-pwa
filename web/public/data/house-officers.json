@@ -105,6 +105,21 @@
     "sourceMode": "fallback"
   },
   {
+    "id": 79523108,
+    "name": "山口壯",
+    "kana": "やまぐちつよし",
+    "group": "決算行政監視委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "決算行政監視委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/430.jpg/$File/430.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
     "id": 69653684,
     "name": "古屋圭司",
     "kana": "ふるやけいじ",
@@ -135,6 +150,21 @@
     "sourceMode": "fallback"
   },
   {
+    "id": 73380611,
+    "name": "柴山昌彦",
+    "kana": "しばやままさひこ",
+    "group": "国家基本政策委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "国家基本政策委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/201.jpg/$File/201.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
     "id": 33806202,
     "name": "冨樫博之",
     "kana": "とがしひろゆき",
@@ -160,6 +190,21 @@
     "party": "自由民主党・無所属の会",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/243.jpg/$File/243.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 10519394,
+    "name": "船田元",
+    "kana": "ふなだはじめ",
+    "group": "情報監視審査会会長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "情報監視審査会会長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/367.jpg/$File/367.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
@@ -220,6 +265,36 @@
     "party": "自由民主党・無所属の会",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/318.jpg/$File/318.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 65243742,
+    "name": "斉藤鉄夫",
+    "kana": "さいとうてつお",
+    "group": "懲罰委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "懲罰委員長",
+    "chamber": "衆議院",
+    "party": "中道改革連合・無所属",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/185.jpg/$File/185.jpg"
+    ],
+    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
+    "sourceMode": "fallback"
+  },
+  {
+    "id": 33048446,
+    "name": "西銘恒三郎",
+    "kana": "にしめこうさぶろう",
+    "group": "東日本大震災復興及び原子力問題調査特別委員長 / 衆議院",
+    "role": "衆議院役員",
+    "subRole": "東日本大震災復興及び原子力問題調査特別委員長",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/315.jpg/$File/315.jpg"
     ],
     "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm",
     "sourceMode": "fallback"
