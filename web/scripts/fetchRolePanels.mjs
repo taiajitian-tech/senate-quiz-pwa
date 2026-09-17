@@ -538,7 +538,10 @@ function mergeByNameAndRole(parsed, existing, category) {
   }
 
   for (const leftover of existingMap.values()) {
-    merged.push({ ...leftover, sourceMode: leftover.sourceMode || 'seed' });
+    // 手動追加（seed）のみ引き継ぐ。スクレイピング由来（live/fallback）は削除扱い
+    if ((leftover.sourceMode || 'seed') === 'seed') {
+      merged.push({ ...leftover, sourceMode: 'seed' });
+    }
   }
 
   return uniqueBy(merged, (item) => `${normalizeWhitespace(item.subRole)}:${normalizeCompact(item.name)}:${normalizeWhitespace(item.chamber)}`)
