@@ -143,6 +143,17 @@
     "house": "衆議院"
   },
   {
+    "name": "葉梨 康弘",
+    "kana": "はなし やすひろ",
+    "group": "国家公安委員会委員長 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/335.jpg/$File/335.jpg"
+    ],
+    "district": "茨城3",
+    "terms": 8
+  },
+  {
     "id": 41473656,
     "name": "古川 俊治",
     "group": "デジタル大臣 / 参議院",
