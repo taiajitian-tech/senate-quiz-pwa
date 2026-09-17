@@ -75,36 +75,6 @@
     "sourceMode": "seed"
   },
   {
-    "id": 80078031,
-    "name": "大家 敏志",
-    "kana": "おおいえさとし",
-    "group": "議院運営委員会 庶務関係小委員長 / 参議院",
-    "role": "参議院役員",
-    "subRole": "議院運営委員会 庶務関係小委員長",
-    "chamber": "参議院",
-    "party": "自由民主党・無所属の会",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010018.jpg"
-    ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/kon_kokkaijyoho/iinkai/giun-shomusho.html",
-    "sourceMode": "live"
-  },
-  {
-    "id": 83793955,
-    "name": "鬼木 誠",
-    "kana": "おにきまこと",
-    "group": "議院運営委員会 図書館運営小委員長 / 参議院",
-    "role": "参議院役員",
-    "subRole": "議院運営委員会 図書館運営小委員長",
-    "chamber": "参議院",
-    "party": "立憲民主・無所属",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022009.jpg"
-    ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/kon_kokkaijyoho/iinkai/giun-toshosho.html",
-    "sourceMode": "live"
-  },
-  {
     "id": 49491326,
     "name": "関口 昌一",
     "kana": "せきぐちまさかず",

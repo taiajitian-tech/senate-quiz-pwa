@@ -1,15 +1,45 @@
 {
-  "generatedAt": "2026-09-16T19:03:26.302Z",
-  "totalChanges": 0,
+  "generatedAt": "2026-09-17T05:35:36.245Z",
+  "totalChanges": 2,
   "hasUpdates": true,
-  "summaries": [],
+  "summaries": [
+    {
+      "target": "councilorsOfficersList",
+      "label": "参議院役員",
+      "added": 0,
+      "removed": 2,
+      "changed": 0,
+      "total": 2
+    }
+  ],
   "items": [
+    {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "参議院役員の更新",
+      "type": "changed",
+      "summary": "議院運営委員長が欠員となりました。また皇室典範等特別委員長（松山政司）は第221回国会終了に伴い一覧から削除しました。"
+    },
     {
       "target": "notice",
       "targetLabel": "お知らせ",
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
+    },
+    {
+      "target": "councilorsOfficersList",
+      "targetLabel": "参議院役員",
+      "name": "大家 敏志",
+      "type": "removed",
+      "summary": "大家 敏志（議院運営委員会 庶務関係小委員長） を一覧から除外しました"
+    },
+    {
+      "target": "councilorsOfficersList",
+      "targetLabel": "参議院役員",
+      "name": "鬼木 誠",
+      "type": "removed",
+      "summary": "鬼木 誠（議院運営委員会 図書館運営小委員長） を一覧から除外しました"
     }
   ]
 }
