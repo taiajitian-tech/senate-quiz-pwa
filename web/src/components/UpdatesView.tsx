@@ -188,11 +188,19 @@ export default function UpdatesView(props: Props) {
     return `変更 ${payload.totalChanges} 件`;
   }, [payload.generatedAt, payload.hasUpdates, payload.totalChanges]);
 
+  const [showDismissed, setShowDismissed] = useState(false);
+
+  const allItemsWithKey = useMemo(
+    () => payload.items.map((item, index) => ({ ...item, _key: `${item.target}-${item.name}-${index}` })),
+    [payload.items]
+  );
   const visibleItems = useMemo(
-    () => payload.items
-      .map((item, index) => ({ ...item, _key: `${item.target}-${item.name}-${index}` }))
-      .filter(item => !dismissed.has(item._key)),
-    [payload.items, dismissed]
+    () => allItemsWithKey.filter(item => !dismissed.has(item._key)),
+    [allItemsWithKey, dismissed]
+  );
+  const dismissedItems = useMemo(
+    () => allItemsWithKey.filter(item => dismissed.has(item._key)),
+    [allItemsWithKey, dismissed]
   );
   const hasRealChanges = payload.hasUpdates && payload.totalChanges > 0;
 
@@ -368,6 +376,34 @@ export default function UpdatesView(props: Props) {
         </div>
       ) : null}
 
+        {dismissedItems.length > 0 && (
+          <div style={styles.dismissedSection}>
+            <button
+              type="button"
+              style={styles.sectionTitleBtn}
+              onClick={() => setShowDismissed(v => !v)}
+            >
+              <span style={{ fontSize: 14, color: '#888' }}>確認済み {dismissedItems.length} 件</span>
+              <span style={styles.toggleIcon}>{showDismissed ? '▲' : '▼'}</span>
+            </button>
+            {showDismissed && (
+              <div style={styles.list}>
+                {dismissedItems.map(item => (
+                  <div key={item._key} style={styles.itemCardDisabled}>
+                    <div style={styles.itemMetaRow}>
+                      <div style={styles.itemTarget}>{item.targetLabel}</div>
+                      <div style={{ fontSize: 12, color: '#aaa' }}>確認済み</div>
+                    </div>
+                    <div style={{ ...styles.itemName, color: '#aaa' }}>{item.name}</div>
+                    <div style={{ ...styles.itemSummary, color: '#bbb' }}>{item.summary}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
       {/* 区分ごとの変更 */}
       <div style={styles.card}>
         <div style={styles.sectionTitle}>区分ごとの変更</div>
@@ -428,6 +464,7 @@ const styles: Record<string, React.CSSProperties> = {
   statusText: { fontSize: 14, color: '#333' },
   itemWrap: { display: 'flex', flexDirection: 'column', gap: 4 },
   dismissBtn: { alignSelf: 'flex-end', padding: '4px 10px', fontSize: 12, color: '#888', background: 'transparent', border: '1px solid #ddd', borderRadius: 8, cursor: 'pointer' },
+  dismissedSection: { borderTop: '1px solid #eee', paddingTop: 8, display: 'flex', flexDirection: 'column', gap: 8 },
   dismissAllBtn: { padding: '4px 12px', fontSize: 12, color: '#0969da', background: 'transparent', border: '1px solid #0969da', borderRadius: 8, cursor: 'pointer' },
   sectionTitleRow: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
   restoreBtn: { alignSelf: 'flex-start', padding: '4px 10px', fontSize: 12, color: '#555', background: 'transparent', border: '1px solid #ccc', borderRadius: 8, cursor: 'pointer' },
