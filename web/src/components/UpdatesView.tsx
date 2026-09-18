@@ -137,6 +137,7 @@ export default function UpdatesView(props: Props) {
   const [history, setHistory] = useState<HistoryEntry[]>(() => readHistory());
   const [error, setError] = useState<string | null>(null);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [dismissedOpen, setDismissedOpen] = useState(false);
   const [dismissed, setDismissed] = useState<Set<string>>(() => {
     try {
       const raw = window.localStorage.getItem('updates_dismissed_v1');
@@ -263,7 +264,18 @@ export default function UpdatesView(props: Props) {
 
       {/* 変更一覧 */}
       <div style={styles.card}>
-        <div style={styles.sectionTitle}>変更一覧</div>
+        <div style={styles.sectionTitleRow}>
+          <div style={styles.sectionTitle}>変更一覧</div>
+          {visibleItems.length > 0 ? (
+            <button
+              type="button"
+              style={styles.dismissAllBtn}
+              onClick={() => {
+                visibleItems.forEach(item => dismissItem(item._key));
+              }}
+            >全て確認済み</button>
+          ) : null}
+        </div>
         {visibleItems.length === 0 ? (
           <div style={styles.empty}>表示する変更はありません。</div>
         ) : (
@@ -312,6 +324,49 @@ export default function UpdatesView(props: Props) {
           </div>
         )}
       </div>
+
+      {/* 確認済み一覧 */}
+      {dismissed.size > 0 ? (
+        <div style={styles.card}>
+          <button
+            type="button"
+            style={styles.sectionTitleBtn}
+            onClick={() => setDismissedOpen(v => !v)}
+          >
+            <span style={styles.sectionTitle}>確認済み（{dismissed.size}件）</span>
+            <span style={styles.toggleIcon}>{dismissedOpen ? '▲' : '▼'}</span>
+          </button>
+          {dismissedOpen ? (
+            <div style={styles.list}>
+              {payload.items
+                .map((item, index) => ({ ...item, _key: `${item.target}-${item.name}-${index}` }))
+                .filter(item => dismissed.has(item._key))
+                .map(item => (
+                  <div key={item._key} style={styles.itemCardDisabled}>
+                    <div style={styles.itemMetaRow}>
+                      <div style={styles.itemTarget}>{item.targetLabel}</div>
+                      <div style={{ ...styles.itemType, color: '#888' }}>{getTypeLabel(item.type)}</div>
+                    </div>
+                    <div style={styles.itemName}>{item.name}</div>
+                    <div style={styles.itemSummary}>{item.summary}</div>
+                    <button
+                      type="button"
+                      style={styles.restoreBtn}
+                      onClick={() => {
+                        setDismissed(prev => {
+                          const next = new Set(prev);
+                          next.delete(item._key);
+                          window.localStorage.setItem('updates_dismissed_v1', JSON.stringify([...next]));
+                          return next;
+                        });
+                      }}
+                    >未確認に戻す</button>
+                  </div>
+                ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
 
       {/* 区分ごとの変更 */}
       <div style={styles.card}>
@@ -373,6 +428,9 @@ const styles: Record<string, React.CSSProperties> = {
   statusText: { fontSize: 14, color: '#333' },
   itemWrap: { display: 'flex', flexDirection: 'column', gap: 4 },
   dismissBtn: { alignSelf: 'flex-end', padding: '4px 10px', fontSize: 12, color: '#888', background: 'transparent', border: '1px solid #ddd', borderRadius: 8, cursor: 'pointer' },
+  dismissAllBtn: { padding: '4px 12px', fontSize: 12, color: '#0969da', background: 'transparent', border: '1px solid #0969da', borderRadius: 8, cursor: 'pointer' },
+  sectionTitleRow: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
+  restoreBtn: { alignSelf: 'flex-start', padding: '4px 10px', fontSize: 12, color: '#555', background: 'transparent', border: '1px solid #ccc', borderRadius: 8, cursor: 'pointer' },
   sectionTitleBtn: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'transparent', border: 'none', padding: 0, cursor: 'pointer', width: '100%' },
   toggleIcon: { fontSize: 14, color: '#888' },
 };
