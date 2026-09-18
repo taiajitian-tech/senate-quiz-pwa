@@ -213,7 +213,11 @@
     "kana": "おざき まさなお",
     "group": "内閣官房副長官 / 衆議院",
     "house": "衆議院",
-    "images": []
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/097.jpg/$File/097.jpg"
+    ],
+    "district": "高知2",
+    "terms": 3
   },
   {
     "name": "中西 祐介",
