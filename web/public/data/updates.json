@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T22:17:50.323Z",
+  "generatedAt": "2026-09-18T03:49:33.478Z",
   "totalChanges": 44,
   "hasUpdates": true,
   "summaries": [
@@ -18,7 +18,7 @@
       "targetLabel": "お知らせ",
       "name": "第2次高市改造内閣が発足",
       "type": "changed",
-      "summary": "2026年9月17日、第2次高市改造内閣が発足しました。閣僚23人を更新しました。国家公安委員会委員長に葉梨康弘が就任しています。"
+      "summary": "2026年9月17日、第2次高市改造内閣が発足しました。23人の閣僚データ（読み仮名・画像・役職名）を更新しました。"
     },
     {
       "target": "notice",
@@ -56,7 +56,7 @@
       "summary": "藤井 比早之 を新たに追加しました（地域未来戦略担当 / 副首都整備等推進担当 / 衆議院）",
       "reason": {
         "label": "就任報道あり",
-        "confidence": "candidate",
+        "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
         "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqS2czYTdpb1V4TWw2OW94ckhHcmV2WGVrc1J0NXh4akF6S3R4NFZZUHVLN2lHcW1LeTVPRWJhV1BITzJrZ3ZhSzQ2VF9BNzdKQW5hUWpDcUpSdlZJWTRVdU1oV09tRVE?oc=5",
         "publishedAt": "Thu, 17 Sep 2026 00:57:00 GMT"
@@ -99,7 +99,7 @@
       "reason": {
         "label": "補欠選挙報道あり",
         "confidence": "candidate",
-        "sourceTitle": "選挙ドットコム",
+        "sourceTitle": "go2senkyo.com",
         "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5QWU9Wb1dtU2haNUhSSnl6dHFtdXB1OHA0YWpiMUphUWtMbnFVMTR6WFViZkZ1bzk5TFdhZjkwYUg1QXVWbGxXYVQwZk9rTnZuTU9IbkdnaFlyYnczMW9N?oc=5",
         "publishedAt": "Sun, 31 May 2026 07:00:00 GMT"
       }
@@ -155,7 +155,7 @@
       "reason": {
         "label": "当選報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "yomiuri.co.jp",
+        "sourceTitle": "読売新聞",
         "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5yQW1fZUhsOV94aW5VWk1tUHNfQUZaZDF3bS1NcWw2LURCME5wd1U0cDFPV2wyU2JIelVERmVDUzVmektrRE1YdFUwcmNSLUZqYjVxZWx2MG5PYUNleEh3VHZrTHhtZmJLNmVPV2pMdzA?oc=5",
         "publishedAt": "Sun, 08 Feb 2026 08:00:00 GMT"
       }
@@ -183,9 +183,9 @@
       "reason": {
         "label": "就任報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "NHKニュース",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5pVVM4UHJETml5ZWtOZHl5RkhmSDVzSjJPUG1yQU9GZUVNUmt5bjhMQ2lFcU0zU0VZSnB1eTFmLXR4djRmNFRKc2lHazJ3NDZoUGVrUDg2dlBZNG5HTndF?oc=5",
-        "publishedAt": "Thu, 17 Sep 2026 03:44:00 GMT"
+        "sourceTitle": "読売新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMieEFVX3lxTE53bVAwT21kb1JoMm5mY0pYQWdXQnNURVRtTFR6WnhpZmFmWXpwWWNWUG5xVG0ycTk0eWc0ekJxWk5wRGJlRHdGVlVBR1RCZDVnaHoxX0VUNHpLOHBjbS1wRGx4dUM3SW1ncE85cktXOWNtQnVPY1VScQ?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 08:00:00 GMT"
       }
     },
     {
@@ -197,7 +197,7 @@
       "reason": {
         "label": "当選報道あり",
         "confidence": "candidate",
-        "sourceTitle": "選挙ドットコム",
+        "sourceTitle": "go2senkyo.com",
         "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9aNXpLcEo4RUFpNk9QRnZxeXljdWNzbVEtUWowRkFtNEFfSUQzcmd5YklHdlpEVTJ1NW5abW5LNmZDbnk2RFpCamJXY05CZy1DeldjT1BkRERuczRMYndB?oc=5",
         "publishedAt": "Tue, 23 Jun 2026 07:00:00 GMT"
       }
@@ -389,14 +389,14 @@
       "targetLabel": "大臣",
       "name": "城内 実",
       "type": "removed",
-      "summary": "城内 実（日本成長戦略担当 / 衆議院） を一覧から除外しました"
+      "summary": "城内 実（日本成長戦略担当大臣 / 衆議院） を一覧から除外しました"
     },
     {
       "target": "ministers",
       "targetLabel": "大臣",
       "name": "小野田 紀美",
       "type": "removed",
-      "summary": "小野田 紀美（経済安全保障担当 / 参議院） を一覧から除外しました"
+      "summary": "小野田 紀美（経済安全保障担当大臣 / 参議院） を一覧から除外しました"
     },
     {
       "target": "ministers",
