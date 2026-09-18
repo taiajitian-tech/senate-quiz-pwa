@@ -188,7 +188,9 @@ export default function UpdatesView(props: Props) {
   }, [payload.generatedAt, payload.hasUpdates, payload.totalChanges]);
 
   const visibleItems = useMemo(
-    () => payload.items.filter((item, index) => !dismissed.has(`${item.target}-${item.name}-${index}`)),
+    () => payload.items
+      .map((item, index) => ({ ...item, _key: `${item.target}-${item.name}-${index}` }))
+      .filter(item => !dismissed.has(item._key)),
     [payload.items, dismissed]
   );
   const hasRealChanges = payload.hasUpdates && payload.totalChanges > 0;
@@ -266,8 +268,8 @@ export default function UpdatesView(props: Props) {
           <div style={styles.empty}>表示する変更はありません。</div>
         ) : (
           <div style={styles.list}>
-            {visibleItems.map((item, index) => {
-              const itemKey = `${item.target}-${item.name}-${index}`;
+            {visibleItems.map((item) => {
+              const itemKey = item._key;
               const nextTarget = toTarget(item.target);
               const canOpen = item.type !== 'removed' && nextTarget !== null;
               return (
