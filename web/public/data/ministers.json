@@ -1,146 +1,146 @@
 [
   {
-    "id": 91965580,
     "name": "高市 早苗",
+    "kana": "たかいち さなえ",
     "group": "内閣総理大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
     ],
     "district": "奈良2",
-    "terms": 11,
-    "house": "衆議院"
+    "terms": 11
   },
   {
-    "id": 99863759,
     "name": "藤井 比早之",
+    "kana": "ふじい ひさゆき",
     "group": "総務大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/358.jpg/$File/358.jpg"
     ],
     "district": "兵庫4",
-    "terms": 6,
-    "house": "衆議院"
+    "terms": 6
   },
   {
-    "id": 19068650,
     "name": "山下 貴司",
+    "kana": "やました たかし",
     "group": "法務大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/433.jpg/$File/433.jpg"
     ],
     "district": "岡山2",
-    "terms": 6,
-    "house": "衆議院"
+    "terms": 6
   },
   {
-    "id": 38443896,
     "name": "茂木 敏充",
+    "kana": "もてぎ としみつ",
     "group": "外務大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/motegi_toshimitsu_r.jpg"
     ],
     "district": "栃木5",
-    "terms": 12,
-    "house": "衆議院"
+    "terms": 12
   },
   {
-    "id": 14864096,
     "name": "片山 さつき",
+    "kana": "かたやま さつき",
     "group": "財務大臣 / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
     ],
     "district": "比例",
-    "terms": 3,
-    "house": "参議院"
+    "terms": 3
   },
   {
-    "id": 56578859,
     "name": "関 芳弘",
+    "kana": "せき よしひろ",
     "group": "文部科学大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/224.jpg/$File/224.jpg"
     ],
     "district": "兵庫3",
-    "terms": 7,
-    "house": "衆議院"
+    "terms": 7
   },
   {
-    "id": 40405808,
     "name": "上野 賢一郎",
+    "kana": "うえの けんいちろう",
     "group": "厚生労働大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/ueno_kenichirou.jpg"
     ],
     "district": "滋賀2",
-    "terms": 7,
-    "house": "衆議院"
+    "terms": 7
   },
   {
-    "id": 24769684,
     "name": "簗 和生",
+    "kana": "やな かずお",
     "group": "農林水産大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/425.jpg/$File/425.jpg"
     ],
     "district": "（比）北関東",
-    "terms": 6,
-    "house": "衆議院"
+    "terms": 6
   },
   {
-    "id": 21335369,
     "name": "赤澤 亮正",
+    "kana": "あかざわ りょうせい",
     "group": "経済産業大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
     ],
     "district": "鳥取2",
-    "terms": 8,
-    "house": "衆議院"
+    "terms": 8
   },
   {
-    "id": 65967680,
     "name": "井林 辰憲",
+    "kana": "いばやし たつのり",
     "group": "国土交通大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/056.jpg/$File/056.jpg"
     ],
     "district": "静岡2",
-    "terms": 6,
-    "house": "衆議院"
+    "terms": 6
   },
   {
-    "id": 41302523,
     "name": "笹川 博義",
+    "kana": "ささがわ ひろよし",
     "group": "環境大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/191.jpg/$File/191.jpg"
     ],
     "district": "群馬3",
-    "terms": 6,
-    "house": "衆議院"
+    "terms": 6
   },
   {
-    "id": 98541325,
     "name": "小泉 進次郎",
+    "kana": "こいずみ しんじろう",
     "group": "防衛大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/koizumi_shinjirou.jpg"
     ],
     "district": "神奈川11",
-    "terms": 7,
-    "house": "衆議院"
+    "terms": 7
   },
   {
-    "id": 41236487,
     "name": "木原 稔",
+    "kana": "きはら みのる",
     "group": "内閣官房長官 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
     ],
     "district": "熊本1",
-    "terms": 7,
-    "house": "衆議院"
+    "terms": 7
   },
   {
     "name": "葉梨 康弘",
@@ -154,87 +154,94 @@
     "terms": 8
   },
   {
-    "id": 41473656,
     "name": "古川 俊治",
+    "kana": "ふるかわ としはる",
     "group": "デジタル大臣 / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
     ],
     "district": "選挙区（埼玉県）",
-    "terms": 4,
-    "house": "参議院"
+    "terms": 4
   },
   {
-    "id": 49534315,
     "name": "細野 豪志",
+    "kana": "ほその ごうし",
     "group": "復興大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/378.jpg/$File/378.jpg"
     ],
     "district": "静岡5",
-    "terms": 10,
-    "house": "衆議院"
+    "terms": 10
   },
   {
-    "id": 66214058,
     "name": "中司 宏",
+    "kana": "なかつか ひろし",
     "group": "内閣府特命担当大臣（こども政策 少子化対策） / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/291.jpg/$File/291.jpg"
     ],
     "district": "大阪11",
-    "terms": 3,
-    "house": "衆議院"
+    "terms": 3
   },
   {
-    "id": 16998442,
     "name": "城内 実",
+    "kana": "きうち みのる",
     "group": "日本成長戦略担当大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
     ],
     "district": "静岡7",
-    "terms": 8,
-    "house": "衆議院"
+    "terms": 8
   },
   {
-    "id": 42746637,
     "name": "小野田 紀美",
+    "kana": "おのだ きみ",
     "group": "経済安全保障担当大臣 / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
     ],
     "district": "選挙区（岡山県）",
-    "terms": 2,
-    "house": "参議院"
+    "terms": 2
   },
   {
-    "id": 20650569,
+    "name": "尾﨑 正直",
+    "kana": "おざき まさなお",
+    "group": "内閣官房副長官 / 衆議院",
+    "house": "衆議院",
+    "images": []
+  },
+  {
     "name": "中西 祐介",
+    "kana": "なかにし ゆうすけ",
     "group": "内閣官房副長官 / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010038.jpg"
     ],
     "district": "選挙区（徳島県・高知県）",
-    "terms": 3,
-    "house": "参議院"
+    "terms": 3
   },
   {
-    "id": 23821700,
     "name": "露木 康浩",
+    "kana": "つゆき やすひろ",
     "group": "内閣官房副長官",
+    "house": "",
     "images": [
       "https://www.kantei.go.jp/jp/content/tsuyuki_yasuhiro.jpg"
-    ],
-    "house": ""
+    ]
   },
   {
-    "id": 20848606,
     "name": "岩尾 信行",
+    "kana": "いわお のぶゆき",
     "group": "内閣法制局長官",
+    "house": "",
     "images": [
       "https://www.kantei.go.jp/jp/content/iwao_nobuyuki.jpg"
-    ],
-    "house": ""
+    ]
   }
 ]
