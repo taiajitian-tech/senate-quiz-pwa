@@ -29,6 +29,13 @@ type UpdateItem = {
   reason?: UpdateReason;
 };
 
+type DismissedEntry = {
+  key: string;
+  name: string;
+  summary: string;
+  dismissedAt: string;
+};
+
 type UpdatesPayload = {
   generatedAt: string;
   totalChanges: number;
@@ -145,10 +152,10 @@ export default function UpdatesView(props: Props) {
     } catch { return new Set(); }
   });
 
-  const [dismissedHistory, setDismissedHistory] = useState<Array<{key: string; name: string; summary: string; dismissedAt: string}>>(() => {
+  const [dismissedHistory, setDismissedHistory] = useState<DismissedEntry[]>(() => {
     try {
       const raw = window.localStorage.getItem('updates_dismissed_history_v1');
-      return raw ? JSON.parse(raw) as Array<{key: string; name: string; summary: string; dismissedAt: string}> : [];
+      return raw ? JSON.parse(raw) as DismissedEntry[] : [];
     } catch { return []; }
   });
   const [dismissedHistoryOpen, setDismissedHistoryOpen] = useState(false);
