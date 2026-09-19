@@ -2,7 +2,7 @@
   {
     "id": 91965580,
     "name": "高市 早苗",
-    "group": "第２次高市改造内閣 閣僚名簿 / 第２次高市改造内閣 内閣総理大臣補佐官名簿 / 内閣総理大臣 / 衆議院",
+    "group": "内閣総理大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
     ],
@@ -12,7 +12,7 @@
   {
     "id": 99863759,
     "name": "藤井 比早之",
-    "group": "地域未来戦略担当 / 副首都整備等推進担当 / 衆議院",
+    "group": "総務大臣 / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/358.jpg/$File/358.jpg"
     ],
@@ -22,7 +22,7 @@
   {
     "id": 19068650,
     "name": "山下 貴司",
-    "group": "女性活躍担当 / 法制度検証・改革担当 / 衆議院",
+    "group": "法務大臣 / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/433.jpg/$File/433.jpg"
     ],
@@ -42,7 +42,7 @@
   {
     "id": 14864096,
     "name": "片山 さつき",
-    "group": "租税特別措置・補助金見直し担当 / 消費税・支援金法案担当 / 参議院",
+    "group": "財務大臣 / 参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
     ],
@@ -82,7 +82,7 @@
   {
     "id": 21335369,
     "name": "赤澤 亮正",
-    "group": "衆議院",
+    "group": "経済産業大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
     ],
@@ -92,7 +92,7 @@
   {
     "id": 65967680,
     "name": "井林 辰憲",
-    "group": "国土交通大臣 / 水循環政策担当 / 国際園芸博覧会担当 / 衆議院",
+    "group": "国土交通大臣 / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/056.jpg/$File/056.jpg"
     ],
@@ -102,7 +102,7 @@
   {
     "id": 41302523,
     "name": "笹川 博義",
-    "group": "クマ被害対策担当 / 衆議院",
+    "group": "環境大臣 / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/191.jpg/$File/191.jpg"
     ],
@@ -122,7 +122,7 @@
   {
     "id": 41236487,
     "name": "木原 稔",
-    "group": "内閣官房長官 / 沖縄基地負担軽減担当 / 拉致問題担当 / 衆議院",
+    "group": "内閣官房長官 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
     ],
@@ -132,7 +132,7 @@
   {
     "id": 41473656,
     "name": "古川 俊治",
-    "group": "参議院",
+    "group": "デジタル大臣 / 参議院",
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
     ],
@@ -142,7 +142,7 @@
   {
     "id": 49534315,
     "name": "細野 豪志",
-    "group": "福島原子力発電所事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 国際防災協力担当 / 衆議院",
+    "group": "復興大臣 / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/378.jpg/$File/378.jpg"
     ],
@@ -152,7 +152,7 @@
   {
     "id": 66214058,
     "name": "中司 宏",
-    "group": "行政改革担当 / 国家公務員制度担当 / 衆議院",
+    "group": "内閣府特命担当大臣（こども政策 少子化対策） / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/291.jpg/$File/291.jpg"
     ],
@@ -162,7 +162,7 @@
   {
     "id": 16998442,
     "name": "城内 実",
-    "group": "衆議院",
+    "group": "日本成長戦略担当大臣 / 衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
     ],
@@ -172,7 +172,7 @@
   {
     "id": 42746637,
     "name": "小野田 紀美",
-    "group": "参議院",
+    "group": "経済安全保障担当大臣 / 参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
     ],
