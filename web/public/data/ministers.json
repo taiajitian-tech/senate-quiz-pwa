@@ -7,7 +7,8 @@
       "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
     ],
     "district": "奈良2",
-    "terms": 11
+    "terms": 11,
+    "kana": "たかいちさなえ"
   },
   {
     "id": 99863759,
@@ -17,7 +18,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/358.jpg/$File/358.jpg"
     ],
     "district": "兵庫4",
-    "terms": 6
+    "terms": 6,
+    "kana": "ふじいひさゆき"
   },
   {
     "id": 19068650,
@@ -27,7 +29,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/433.jpg/$File/433.jpg"
     ],
     "district": "岡山2",
-    "terms": 6
+    "terms": 6,
+    "kana": "やましたたかし"
   },
   {
     "id": 38443896,
@@ -37,7 +40,8 @@
       "https://www.kantei.go.jp/jp/content/motegi_toshimitsu_r.jpg"
     ],
     "district": "栃木5",
-    "terms": 12
+    "terms": 12,
+    "kana": "もてぎとしみつ"
   },
   {
     "id": 14864096,
@@ -47,7 +51,8 @@
       "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
     ],
     "district": "比例",
-    "terms": 3
+    "terms": 3,
+    "kana": "かたやまさつき"
   },
   {
     "id": 56578859,
@@ -57,7 +62,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/224.jpg/$File/224.jpg"
     ],
     "district": "兵庫3",
-    "terms": 7
+    "terms": 7,
+    "kana": "せきよしひろ"
   },
   {
     "id": 40405808,
@@ -67,7 +73,8 @@
       "https://www.kantei.go.jp/jp/content/ueno_kenichirou.jpg"
     ],
     "district": "滋賀2",
-    "terms": 7
+    "terms": 7,
+    "kana": "うえのけんいちろう"
   },
   {
     "id": 24769684,
@@ -77,7 +84,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/425.jpg/$File/425.jpg"
     ],
     "district": "（比）北関東",
-    "terms": 6
+    "terms": 6,
+    "kana": "やなかずお"
   },
   {
     "id": 21335369,
@@ -87,7 +95,8 @@
       "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
     ],
     "district": "鳥取2",
-    "terms": 8
+    "terms": 8,
+    "kana": "あかざわりょうせい"
   },
   {
     "id": 65967680,
@@ -97,7 +106,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/056.jpg/$File/056.jpg"
     ],
     "district": "静岡2",
-    "terms": 6
+    "terms": 6,
+    "kana": "いばやしたつのり"
   },
   {
     "id": 41302523,
@@ -107,7 +117,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/191.jpg/$File/191.jpg"
     ],
     "district": "群馬3",
-    "terms": 6
+    "terms": 6,
+    "kana": "ささがわひろよし"
   },
   {
     "id": 98541325,
@@ -117,7 +128,8 @@
       "https://www.kantei.go.jp/jp/content/koizumi_shinjirou.jpg"
     ],
     "district": "神奈川11",
-    "terms": 7
+    "terms": 7,
+    "kana": "こいずみしんじろう"
   },
   {
     "id": 41236487,
@@ -127,7 +139,8 @@
       "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
     ],
     "district": "熊本1",
-    "terms": 7
+    "terms": 7,
+    "kana": "きはらみのる"
   },
   {
     "id": 41473656,
@@ -137,7 +150,8 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
     ],
     "district": "選挙区（埼玉県）",
-    "terms": 4
+    "terms": 4,
+    "kana": "ふるかわとしはる"
   },
   {
     "id": 49534315,
@@ -147,7 +161,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/378.jpg/$File/378.jpg"
     ],
     "district": "静岡5",
-    "terms": 10
+    "terms": 10,
+    "kana": "ほそのごうし"
   },
   {
     "id": 66214058,
@@ -157,7 +172,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/291.jpg/$File/291.jpg"
     ],
     "district": "大阪11",
-    "terms": 3
+    "terms": 3,
+    "kana": "なかつかひろし"
   },
   {
     "id": 16998442,
@@ -167,7 +183,8 @@
       "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
     ],
     "district": "静岡7",
-    "terms": 8
+    "terms": 8,
+    "kana": "きうちみのる"
   },
   {
     "id": 42746637,
@@ -177,7 +194,8 @@
       "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
     ],
     "district": "選挙区（岡山県）",
-    "terms": 2
+    "terms": 2,
+    "kana": "おのだきみ"
   },
   {
     "id": 20650569,
@@ -187,7 +205,8 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010038.jpg"
     ],
     "district": "選挙区（徳島県・高知県）",
-    "terms": 3
+    "terms": 3,
+    "kana": "なかにしゆうすけ"
   },
   {
     "id": 23821700,
@@ -195,7 +214,8 @@
     "group": "内閣官房副長官",
     "images": [
       "https://www.kantei.go.jp/jp/content/tsuyuki_yasuhiro.jpg"
-    ]
+    ],
+    "kana": "つゆきやすひろ"
   },
   {
     "id": 20848606,
@@ -203,6 +223,7 @@
     "group": "内閣法制局長官",
     "images": [
       "https://www.kantei.go.jp/jp/content/iwao_nobuyuki.jpg"
-    ]
+    ],
+    "kana": "いわおのぶゆき"
   }
 ]
