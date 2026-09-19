@@ -221,9 +221,11 @@ function mergeEntry(indexEntry, detailEntry, previous) {
       ? previous.images.filter((img) => typeof img === "string" && img.trim())
       : [];
 
+  const kana = detailEntry.kana || indexEntry.kana || previous?.kana || '';
   return {
     id: Number(previous?.id) || stableId(name),
     name,
+    kana,
     group,
     images,
   };
