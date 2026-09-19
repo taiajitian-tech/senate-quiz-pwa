@@ -186,17 +186,35 @@ function parseDetailPage(html, url) {
   };
 }
 
+// 正式な大臣職名を判定する
+const OFFICIAL_MINISTER_TITLES = [
+  '内閣総理大臣','総務大臣','法務大臣','外務大臣','財務大臣','文部科学大臣',
+  '厚生労働大臣','農林水産大臣','経済産業大臣','国土交通大臣','環境大臣',
+  '防衛大臣','内閣官房長官','国家公安委員会委員長','デジタル大臣','復興大臣',
+  '内閣官房副長官','内閣法制局長官',
+];
+function extractOfficialTitle(group) {
+  if (!group) return '';
+  const parts = group.split(' / ');
+  return parts.find(p => OFFICIAL_MINISTER_TITLES.some(t => p.includes(t))) || '';
+}
+
 function mergeEntry(indexEntry, detailEntry, previous) {
   const name = detailEntry.name || indexEntry.name || previous?.name || "";
-  const roles = uniqueStrings([
-    ...String(indexEntry.group || "").split(" / ").map(normalizeWhitespace).filter(Boolean),
-    ...String(detailEntry.group || "").split(" / ").map(normalizeWhitespace).filter(Boolean),
-  ]);
+  // 既存データに正式役職名があれば優先して引き継ぐ
+  const prevOfficialTitle = extractOfficialTitle(previous?.group || '');
   const house =
     indexEntry.house ||
     detailEntry.house ||
     (previous?.group?.includes("参議院") ? "参議院" : previous?.group?.includes("衆議院") ? "衆議院" : "");
-  const group = uniqueStrings([...roles, house]).join(" / ");
+  // 正式役職名がある場合はそれだけを使う（担当名の羅列は出さない）
+  const group = prevOfficialTitle
+    ? uniqueStrings([prevOfficialTitle, house]).filter(Boolean).join(' / ')
+    : uniqueStrings([
+        ...String(indexEntry.group || '').split(' / ').map(normalizeWhitespace).filter(Boolean),
+        ...String(detailEntry.group || '').split(' / ').map(normalizeWhitespace).filter(Boolean),
+        house,
+      ]).join(' / ');
   const images = detailEntry.image
     ? [detailEntry.image]
     : Array.isArray(previous?.images)
