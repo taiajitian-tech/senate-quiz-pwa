@@ -145,13 +145,29 @@ export default function UpdatesView(props: Props) {
     } catch { return new Set(); }
   });
 
-  const dismissItem = (key: string) => {
+  const [dismissedHistory, setDismissedHistory] = useState<Array<{key: string; name: string; summary: string; dismissedAt: string}>>(() => {
+    try {
+      const raw = window.localStorage.getItem('updates_dismissed_history_v1');
+      return raw ? JSON.parse(raw) as Array<{key: string; name: string; summary: string; dismissedAt: string}> : [];
+    } catch { return []; }
+  });
+  const [dismissedHistoryOpen, setDismissedHistoryOpen] = useState(false);
+
+  const dismissItem = (key: string, name = '', summary = '') => {
+    const entry = { key, name, summary, dismissedAt: new Date().toISOString() };
     setDismissed(prev => {
       const next = new Set(prev);
       next.add(key);
       window.localStorage.setItem('updates_dismissed_v1', JSON.stringify([...next]));
       return next;
     });
+    if (name) {
+      setDismissedHistory(prev => {
+        const next = [entry, ...prev].slice(0, 100);
+        window.localStorage.setItem('updates_dismissed_history_v1', JSON.stringify(next));
+        return next;
+      });
+    }
   };
 
   const baseUrl = import.meta.env.BASE_URL ?? '/';
@@ -279,7 +295,7 @@ export default function UpdatesView(props: Props) {
               type="button"
               style={styles.dismissAllBtn}
               onClick={() => {
-                visibleItems.forEach(item => dismissItem(item._key));
+                visibleItems.forEach(item => dismissItem(item._key, item.name, item.summary));
               }}
             >全て確認済み</button>
           ) : null}
@@ -323,7 +339,7 @@ export default function UpdatesView(props: Props) {
                   <button
                     type="button"
                     style={styles.dismissBtn}
-                    onClick={() => dismissItem(itemKey)}
+                    onClick={() => dismissItem(itemKey, item.name, item.summary)}
                     aria-label="この通知を消す"
                   >✕ 確認済み</button>
                 </div>
@@ -403,6 +419,27 @@ export default function UpdatesView(props: Props) {
           </div>
         )}
       </div>
+
+      {/* 確認済み履歴 */}
+      {dismissedHistory.length > 0 ? (
+        <div style={styles.card}>
+          <button type="button" style={styles.sectionTitleBtn} onClick={() => setDismissedHistoryOpen(v => !v)}>
+            <span style={styles.sectionTitle}>確認済み履歴</span>
+            <span style={styles.toggleIcon}>{dismissedHistoryOpen ? '▲' : '▼'}</span>
+          </button>
+          {dismissedHistoryOpen && (
+            <div style={styles.historyList}>
+              {dismissedHistory.map((entry, i) => (
+                <div key={`${entry.key}-${i}`} style={styles.historyCard}>
+                  <div style={styles.historyTitle}>{entry.name}</div>
+                  <div style={styles.itemSummary}>{entry.summary}</div>
+                  <div style={styles.historyLine}>確認：{formatDateTime(entry.dismissedAt)}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : null}
 
       {/* 区分ごとの変更 */}
       <div style={styles.card}>
