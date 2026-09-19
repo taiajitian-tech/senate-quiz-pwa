@@ -4,7 +4,7 @@
     "name": "中曽根 弘文（なかそね ひろふみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（群馬県）",
+    "district": "通常選挙",
     "terms": 7,
     "nextElectionYear": 2028,
     "images": [
@@ -16,7 +16,7 @@
     "name": "山崎 正昭（やまざき まさあき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福井県）",
+    "district": "通常選挙",
     "terms": 6,
     "nextElectionYear": 2028,
     "images": [
@@ -28,7 +28,7 @@
     "name": "橋本 聖子（はしもと せいこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 6,
     "nextElectionYear": 2031,
     "images": [
@@ -40,7 +40,7 @@
     "name": "浅尾 慶一郎（あさお けいいちろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -52,7 +52,7 @@
     "name": "小池 晃（こいけ あきら）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2031,
     "images": [
@@ -64,7 +64,7 @@
     "name": "櫻井 充（さくらい みつる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（宮城県）",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2028,
     "images": [
@@ -76,7 +76,7 @@
     "name": "鶴保 庸介（つるほ ようすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（和歌山県）",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2028,
     "images": [
@@ -88,7 +88,7 @@
     "name": "福島 みずほ（ふくしま みずほ）",
     "group": "社会民主党",
     "party": "社会民主党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2028,
     "images": [
@@ -100,7 +100,7 @@
     "name": "福山 哲郎（ふくやま てつろう）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（京都府）",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2028,
     "images": [
@@ -112,7 +112,7 @@
     "name": "大門 実紀史（だいもん みきし）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 5,
     "nextElectionYear": 2028,
     "images": [
@@ -124,7 +124,7 @@
     "name": "有村 治子（ありむら はるこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2031,
     "images": [
@@ -136,7 +136,7 @@
     "name": "榛葉 賀津也（しんば かづや）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（静岡県）",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2031,
     "images": [
@@ -148,7 +148,7 @@
     "name": "野上 浩太郎（のがみ こうたろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（富山県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -160,7 +160,7 @@
     "name": "松山 政司（まつやま まさじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福岡県）",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2031,
     "images": [
@@ -172,7 +172,7 @@
     "name": "森 ゆうこ（もり ゆうこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -184,7 +184,7 @@
     "name": "関口 昌一（せきぐち まさかず）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2028,
     "images": [
@@ -196,7 +196,7 @@
     "name": "岡田 直樹（おかだ なおき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（石川県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -208,7 +208,7 @@
     "name": "山谷 えり子（やまたに えりこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -220,7 +220,7 @@
     "name": "末松 信介（すえまつ しんすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（兵庫県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -232,7 +232,7 @@
     "name": "谷合 正明（たにあい まさあき）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -244,7 +244,7 @@
     "name": "西田 実仁（にしだ まこと）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -256,7 +256,7 @@
     "name": "仁比 聡平（にひ そうへい）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -268,7 +268,7 @@
     "name": "野村 哲郎（のむら てつろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（鹿児島県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -280,7 +280,7 @@
     "name": "広田 一（ひろた はじめ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（徳島県・高知県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -292,7 +292,7 @@
     "name": "松下 新平（まつした しんぺい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（宮崎県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -304,7 +304,7 @@
     "name": "松村 祥史（まつむら よしふみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（熊本県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -316,7 +316,7 @@
     "name": "水岡 俊一（みずおか しゅんいち）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -328,7 +328,7 @@
     "name": "蓮舫（れんほう）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 5,
     "nextElectionYear": 2031,
     "images": [
@@ -340,7 +340,7 @@
     "name": "山本 順三（やまもと じゅんぞう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（愛媛県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2028,
     "images": [
@@ -352,7 +352,7 @@
     "name": "青木 愛（あおき あい）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -364,7 +364,7 @@
     "name": "石井 準一（いしい じゅんいち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（千葉県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -376,7 +376,7 @@
     "name": "大島 九州男（おおしま くすお）",
     "group": "いのちの党",
     "party": "いのちの党",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -388,7 +388,7 @@
     "name": "川合 孝典（かわい たかのり）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -400,7 +400,7 @@
     "name": "長浜 博行（ながはま ひろゆき）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（千葉県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -412,7 +412,7 @@
     "name": "西田 昌司（にしだ しょうじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（京都府）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -424,7 +424,7 @@
     "name": "舟山 康江（ふなやま やすえ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（山形県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -436,7 +436,7 @@
     "name": "古川 俊治（ふるかわ としはる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -448,7 +448,7 @@
     "name": "牧野 たかお（まきの たかお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（静岡県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -460,7 +460,7 @@
     "name": "牧山 ひろえ（まきやま ひろえ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -472,7 +472,7 @@
     "name": "森 まさこ（もり まさこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福島県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -484,7 +484,7 @@
     "name": "吉川 沙織（よしかわ さおり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -496,7 +496,7 @@
     "name": "青木 一彦（あおき かずひこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（鳥取県・島根県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -508,7 +508,7 @@
     "name": "秋野 公造（あきの こうぞう）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（福岡県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -520,7 +520,7 @@
     "name": "石井 浩郎（いしい ひろお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（秋田県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -532,7 +532,7 @@
     "name": "石川 博崇（いしかわ ひろたか）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -544,7 +544,7 @@
     "name": "石橋 通宏（いしばし みちひろ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -556,7 +556,7 @@
     "name": "磯崎 仁彦（いそざき よしひこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（香川県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -568,7 +568,7 @@
     "name": "猪口 邦子（いのぐち くにこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（千葉県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -580,7 +580,7 @@
     "name": "上野 通子（うえの みちこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（栃木県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -592,7 +592,7 @@
     "name": "大家 敏志（おおいえ さとし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福岡県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -604,7 +604,7 @@
     "name": "片山 さつき（かたやま さつき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -616,7 +616,7 @@
     "name": "小西 洋之（こにし ひろゆき）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（千葉県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -628,7 +628,7 @@
     "name": "斎藤 嘉隆（さいとう よしたか）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -640,7 +640,7 @@
     "name": "柴田 巧（しばた たくみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -652,7 +652,7 @@
     "name": "竹谷 とし子（たけや としこ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -664,7 +664,7 @@
     "name": "徳永 エリ（とくなが えり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（北海道）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -676,7 +676,7 @@
     "name": "中西 祐介（なかにし ゆうすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（徳島県・高知県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -688,7 +688,7 @@
     "name": "長谷川 岳（はせがわ がく）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -700,7 +700,7 @@
     "name": "福岡 資麿（ふくおか たかまろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（佐賀県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -712,7 +712,7 @@
     "name": "藤川 政人（ふじかわ まさひと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -724,7 +724,7 @@
     "name": "三原 じゅん子（みはら じゅんこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -736,7 +736,7 @@
     "name": "宮沢 洋一（みやざわ よういち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（広島県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -748,7 +748,7 @@
     "name": "横山 信一（よこやま しんいち）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -760,7 +760,7 @@
     "name": "吉田 忠智（よしだ ただとも）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（大分県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -772,7 +772,7 @@
     "name": "渡辺 猛之（わたなべ たけゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岐阜県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -784,7 +784,7 @@
     "name": "山田 太郎（やまだ たろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -796,7 +796,7 @@
     "name": "江島 潔（えじま きよし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（山口県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -808,7 +808,7 @@
     "name": "井上 義行（いのうえ よしゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -820,7 +820,7 @@
     "name": "石田 昌宏（いしだ まさひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -832,7 +832,7 @@
     "name": "礒崎 哲史（いそざき てつじ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -844,7 +844,7 @@
     "name": "木村 義雄（きむら よしお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -856,7 +856,7 @@
     "name": "吉良 よし子（きら よしこ）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -868,7 +868,7 @@
     "name": "北村 経夫（きたむら つねお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（山口県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -880,7 +880,7 @@
     "name": "古賀 友一郎（こが ゆういちろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（長崎県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -892,7 +892,7 @@
     "name": "上月 良祐（こうづき りょうすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（茨城県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -904,7 +904,7 @@
     "name": "酒井 庸行（さかい やすゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -916,7 +916,7 @@
     "name": "杉 久武（すぎ ひさたけ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -928,7 +928,7 @@
     "name": "高橋 克法（たかはし かつのり）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（栃木県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -940,7 +940,7 @@
     "name": "滝波 宏文（たきなみ ひろふみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福井県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -952,7 +952,7 @@
     "name": "馬場 成志（ばば せいし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（熊本県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -964,7 +964,7 @@
     "name": "浜野 喜史（はまの よしふみ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -976,7 +976,7 @@
     "name": "平木 大作（ひらき だいさく）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -988,7 +988,7 @@
     "name": "堀井 巌（ほりい いわお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（奈良県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -1000,7 +1000,7 @@
     "name": "舞立 昇治（まいたち しょうじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -1012,7 +1012,7 @@
     "name": "松沢 成文（まつざわ しげふみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -1024,7 +1024,7 @@
     "name": "宮本 周司（みやもと しゅうじ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（石川県）",
+    "district": "通常選挙",
     "terms": 4,
     "nextElectionYear": 2031,
     "images": [
@@ -1036,7 +1036,7 @@
     "name": "森本 真治（もりもと しんじ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（広島県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -1048,7 +1048,7 @@
     "name": "山下 雄平（やました ゆうへい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（佐賀県）",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2031,
     "images": [
@@ -1060,7 +1060,7 @@
     "name": "阿達 雅志（あだち まさし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3,
     "nextElectionYear": 2028,
     "images": [
@@ -1072,7 +1072,7 @@
     "name": "浅田 均（あさだ ひとし）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1084,7 +1084,7 @@
     "name": "朝日 健太郎（あさひ けんたろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1096,7 +1096,7 @@
     "name": "伊藤 孝江（いとう たかえ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（兵庫県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1108,7 +1108,7 @@
     "name": "伊藤 孝恵（いとう たかえ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1120,7 +1120,7 @@
     "name": "伊波 洋一（いは よういち）",
     "group": "沖縄の風",
     "party": "沖縄の風",
-    "district": "選挙区（沖縄県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1132,7 +1132,7 @@
     "name": "石井 苗子（いしい みつこ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1144,7 +1144,7 @@
     "name": "今井 絵理子（いまい えりこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1156,7 +1156,7 @@
     "name": "岩渕 友（いわぶち とも）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1168,7 +1168,7 @@
     "name": "小川 克巳（おがわ かつみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1180,7 +1180,7 @@
     "name": "小野田 紀美（おのだ きみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岡山県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1192,7 +1192,7 @@
     "name": "片山 大介（かたやま だいすけ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（兵庫県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1204,7 +1204,7 @@
     "name": "木戸口 英司（きどぐち えいじ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（岩手県）",
+    "district": "補欠選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1216,7 +1216,7 @@
     "name": "こやり 隆史（こやり たかし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（滋賀県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1228,7 +1228,7 @@
     "name": "古賀 之士（こが ゆきひと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（福岡県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1240,7 +1240,7 @@
     "name": "佐藤 啓（さとう けい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（奈良県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1252,7 +1252,7 @@
     "name": "里見 隆治（さとみ りゅうじ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1264,7 +1264,7 @@
     "name": "自見 はなこ（じみ はなこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1276,7 +1276,7 @@
     "name": "進藤 金日子（しんどう かねひこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1288,7 +1288,7 @@
     "name": "杉尾 秀哉（すぎお ひでや）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（長野県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1300,7 +1300,7 @@
     "name": "田名部 匡代（たなぶ まさよ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（青森県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1312,7 +1312,7 @@
     "name": "高木 かおり（たかぎ かおり）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1324,7 +1324,7 @@
     "name": "浜口 誠（はまぐち まこと）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1336,7 +1336,7 @@
     "name": "平山 佐知子（ひらやま さちこ）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（静岡県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1348,7 +1348,7 @@
     "name": "藤木 眞也（ふじき しんや）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1360,7 +1360,7 @@
     "name": "松川 るい（まつかわ るい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1372,7 +1372,7 @@
     "name": "三浦 信祐（みうら のぶひろ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1384,7 +1384,7 @@
     "name": "宮崎 勝（みやざき まさる）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1396,7 +1396,7 @@
     "name": "山添 拓（やまぞえ たく）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1408,7 +1408,7 @@
     "name": "山田 宏（やまだ ひろし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1420,7 +1420,7 @@
     "name": "竹内 真二（たけうち しんじ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1432,7 +1432,7 @@
     "name": "石垣 のりこ（いしがき のりこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（宮城県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1444,7 +1444,7 @@
     "name": "岩本 剛人（いわもと つよひと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1456,7 +1456,7 @@
     "name": "打越 さく良（うちこし さくら）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（新潟県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1468,7 +1468,7 @@
     "name": "梅村 みずほ（うめむら みずほ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1480,7 +1480,7 @@
     "name": "小沢 雅仁（おざわ まさひと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1492,7 +1492,7 @@
     "name": "加田 裕之（かだ ひろゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（兵庫県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1504,7 +1504,7 @@
     "name": "嘉田 由紀子（かだ ゆきこ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1516,7 +1516,7 @@
     "name": "勝部 賢志（かつべ けんじ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（北海道）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1528,7 +1528,7 @@
     "name": "木村 英子（きむら えいこ）",
     "group": "いのちの党",
     "party": "いのちの党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1540,7 +1540,7 @@
     "name": "岸 真紀子（きし まきこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1552,7 +1552,7 @@
     "name": "熊谷 裕人（くまがい ひろと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1564,7 +1564,7 @@
     "name": "清水 真人（しみず まさと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（群馬県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1576,7 +1576,7 @@
     "name": "塩村 あやか（しおむら あやか）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（東京都）",
+    "district": "補欠選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1588,7 +1588,7 @@
     "name": "下野 六太（しもの ろくた）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（福岡県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1600,7 +1600,7 @@
     "name": "鈴木 宗男（すずき むねお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1612,7 +1612,7 @@
     "name": "田島 麻衣子（たじま まいこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1624,7 +1624,7 @@
     "name": "田村 まみ（たむら まみ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1636,7 +1636,7 @@
     "name": "高橋 はるみ（たかはし はるみ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1648,7 +1648,7 @@
     "name": "高橋 光男（たかはし みつお）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（兵庫県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1660,7 +1660,7 @@
     "name": "寺田 静（てらた しずか）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（秋田県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1672,7 +1672,7 @@
     "name": "ながえ 孝子（ながえ たかこ）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（愛媛県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1684,7 +1684,7 @@
     "name": "芳賀 道也（はが みちや）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（山形県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1696,7 +1696,7 @@
     "name": "本田 顕子（ほんだ あきこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1708,7 +1708,7 @@
     "name": "横沢 高徳（よこさわ たかのり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（岩手県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1720,7 +1720,7 @@
     "name": "上田 清司（うえだ きよし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2028,
     "images": [
@@ -1732,7 +1732,7 @@
     "name": "羽田 次郎（はた じろう）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（長野県）",
+    "district": "通常選挙",
     "terms": 2,
     "nextElectionYear": 2031,
     "images": [
@@ -1744,7 +1744,7 @@
     "name": "青島 健太（あおしま けんた）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1756,7 +1756,7 @@
     "name": "赤松 健（あかまつ けん）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1768,7 +1768,7 @@
     "name": "生稲 晃子（いくいな あきこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1780,7 +1780,7 @@
     "name": "猪瀬 直樹（いのせ なおき）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1792,7 +1792,7 @@
     "name": "上田 勇（うえだ いさむ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1804,7 +1804,7 @@
     "name": "臼井 正一（うすい しょういち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（千葉県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1816,7 +1816,7 @@
     "name": "越智 俊之（おち としゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1828,7 +1828,7 @@
     "name": "鬼木 誠（おにき まこと）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1840,7 +1840,7 @@
     "name": "加藤 明良（かとう あきよし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（茨城県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1852,7 +1852,7 @@
     "name": "梶原 大介（かじはら だいすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1864,7 +1864,7 @@
     "name": "金子 道仁（かねこ みちひと）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1876,7 +1876,7 @@
     "name": "神谷 宗幣（かみや そうへい）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1888,7 +1888,7 @@
     "name": "神谷 政幸（かみや まさゆき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1900,7 +1900,7 @@
     "name": "串田 誠一（くしだ せいいち）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1912,7 +1912,7 @@
     "name": "窪田 哲也（くぼた てつや）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1924,7 +1924,7 @@
     "name": "小林 一大（こばやし かずひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（新潟県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1936,7 +1936,7 @@
     "name": "古賀 千景（こが ちかげ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1948,7 +1948,7 @@
     "name": "古庄 玄知（こしょう はるとも）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（大分県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1960,7 +1960,7 @@
     "name": "柴 愼一（しば しんいち）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1972,7 +1972,7 @@
     "name": "高木 真理（たかぎ まり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1984,7 +1984,7 @@
     "name": "竹詰 仁（たけづめ ひとし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -1996,7 +1996,7 @@
     "name": "辻元 清美（つじもと きよみ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2008,7 +2008,7 @@
     "name": "天畠 大輔（てんばた だいすけ）",
     "group": "いのちの党",
     "party": "いのちの党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2020,7 +2020,7 @@
     "name": "堂込 麻紀子（どうごみ まきこ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（茨城県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2032,7 +2032,7 @@
     "name": "友納 理緒（とものう りお）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2044,7 +2044,7 @@
     "name": "中条 きよし（なかじょう きよし）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2056,7 +2056,7 @@
     "name": "永井 学（ながい まなぶ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（山梨県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2068,7 +2068,7 @@
     "name": "長谷川 英晴（はせがわ ひではる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2080,7 +2080,7 @@
     "name": "藤井 一博（ふじい かずひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2092,7 +2092,7 @@
     "name": "船橋 利実（ふなはし としみつ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（北海道）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2104,7 +2104,7 @@
     "name": "星 北斗（ほし ほくと）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（福島県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2116,7 +2116,7 @@
     "name": "松野 明美（まつの あけみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2128,7 +2128,7 @@
     "name": "三上 えり（みかみ えり）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（広島県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2140,7 +2140,7 @@
     "name": "村田 享子（むらた きょうこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2152,7 +2152,7 @@
     "name": "山本 啓介（やまもと けいすけ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（長崎県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2164,7 +2164,7 @@
     "name": "山本 佐知子（やまもと さちこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（三重県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2176,7 +2176,7 @@
     "name": "吉井 章（よしい あきら）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（京都府）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2188,7 +2188,7 @@
     "name": "若林 洋平（わかばやし ようへい）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（静岡県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2200,7 +2200,7 @@
     "name": "齊藤 健一郎（さいとう けんいちろう）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [
@@ -2212,7 +2212,7 @@
     "name": "足立 康史（あだち やすし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2224,7 +2224,7 @@
     "name": "安達 悠司（あだち ゆうじ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2236,7 +2236,7 @@
     "name": "安藤 裕（あんどう ひろし）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2248,7 +2248,7 @@
     "name": "安野 貴博（あんの たかひろ）",
     "group": "チームみらい・無所属の会",
     "party": "チームみらい・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2260,7 +2260,7 @@
     "name": "ラサール石井（らさーるいしい）",
     "group": "社会民主党",
     "party": "社会民主党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2272,7 +2272,7 @@
     "name": "泉 房穂（いずみ ふさほ）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（兵庫県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2284,7 +2284,7 @@
     "name": "伊勢崎 賢治（いせざき けんじ）",
     "group": "いのちの党",
     "party": "いのちの党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2296,7 +2296,7 @@
     "name": "伊藤 辰夫（いとう たつお）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2308,7 +2308,7 @@
     "name": "いんどう 周作（いんどう しゅうさく）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2320,7 +2320,7 @@
     "name": "江原 くみ子（えはら くみこ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2332,7 +2332,7 @@
     "name": "奥田 ふみよ（おくだ ふみよ）",
     "group": "いのちの党",
     "party": "いのちの党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2344,7 +2344,7 @@
     "name": "大津 力（おおつ つとむ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（埼玉県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2356,7 +2356,7 @@
     "name": "岡崎 太（おかざき ふとし）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2368,7 +2368,7 @@
     "name": "奥村 祥大（おくむら よしひろ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2380,7 +2380,7 @@
     "name": "かごしま 彰宏（かごしま あきひろ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2392,7 +2392,7 @@
     "name": "かまやち 敏（かまやち さとし）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2404,7 +2404,7 @@
     "name": "川村 雄大（かわむら ゆうだい）",
     "group": "公明党",
     "party": "公明党",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2416,7 +2416,7 @@
     "name": "石 平（せき へい）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2428,7 +2428,7 @@
     "name": "北村 晴男（きたむら はるお）",
     "group": "日本保守党",
     "party": "日本保守党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2440,7 +2440,7 @@
     "name": "見坂 茂範（けんざか しげのり）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2452,7 +2452,7 @@
     "name": "郡山 りょう（こおりやま りょう）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2464,7 +2464,7 @@
     "name": "小島 とも子（こじま ともこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（三重県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2476,7 +2476,7 @@
     "name": "後藤 翔太（ごとう しょうた）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2488,7 +2488,7 @@
     "name": "後藤 斎（ごとう ひとし）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（山梨県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2500,7 +2500,7 @@
     "name": "小林 孝一郎（こばやし こういちろう）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岡山県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2512,7 +2512,7 @@
     "name": "高良 沙哉（たから さちか）",
     "group": "沖縄の風",
     "party": "沖縄の風",
-    "district": "選挙区（沖縄県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2524,7 +2524,7 @@
     "name": "櫻井 祥子（さくらい しょうこ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（茨城県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2536,7 +2536,7 @@
     "name": "佐々木 雅文（ささき まさふみ）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2548,7 +2548,7 @@
     "name": "塩入 清香（しおいり さやか）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2560,7 +2560,7 @@
     "name": "白川 容子（しらかわ ようこ）",
     "group": "日本共産党",
     "party": "日本共産党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2572,7 +2572,7 @@
     "name": "尾辻 朋実（おつじ ともみ）",
     "group": "チームみらい・無所属の会",
     "party": "チームみらい・無所属の会",
-    "district": "選挙区（鹿児島県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2584,7 +2584,7 @@
     "name": "杉本 純子（すぎもと じゅんこ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2596,7 +2596,7 @@
     "name": "鈴木 大地（すずき だいち）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2608,7 +2608,7 @@
     "name": "牛田 茉友（うしだ まゆ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（東京都）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2620,7 +2620,7 @@
     "name": "司 隆史（つかさ たかし）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2632,7 +2632,7 @@
     "name": "出川 桃子（でがわ ももこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（鳥取県・島根県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2644,7 +2644,7 @@
     "name": "岩本 麻奈（いわもと まな）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2656,7 +2656,7 @@
     "name": "中田 優子（なかだ ゆうこ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（福岡県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2668,7 +2668,7 @@
     "name": "佐々木 りえ（ささき りえ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2680,7 +2680,7 @@
     "name": "小林 さやか（こばやし さやか）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（千葉県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2692,7 +2692,7 @@
     "name": "新実 彰平（にいみ しょうへい）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "選挙区（京都府）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2704,7 +2704,7 @@
     "name": "西田 英範（にした ひでのり）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（広島県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2716,7 +2716,7 @@
     "name": "庭田 幸恵（にわた ゆきえ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（富山県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2728,7 +2728,7 @@
     "name": "石井 めぐみ（いしい めぐみ）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2740,7 +2740,7 @@
     "name": "初鹿野 裕樹（はじかの ひろき）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2752,7 +2752,7 @@
     "name": "原田 大二郎（はらだ だいじろう）",
     "group": "公明党",
     "party": "公明党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2764,7 +2764,7 @@
     "name": "原田 秀一（はらだ ひでかず）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（香川県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2776,7 +2776,7 @@
     "name": "東野 秀樹（ひがしの ひでき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2788,7 +2788,7 @@
     "name": "百田 尚樹（ひゃくた なおき）",
     "group": "日本保守党",
     "party": "日本保守党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2800,7 +2800,7 @@
     "name": "平戸 航太（ひらど こうた）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2812,7 +2812,7 @@
     "name": "福士 珠美（ふくし ますみ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（青森県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2824,7 +2824,7 @@
     "name": "福山 守（ふくやま まもる）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2836,7 +2836,7 @@
     "name": "松田 学（まつだ まなぶ）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2848,7 +2848,7 @@
     "name": "水野 孝一（みずの こういち）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2860,7 +2860,7 @@
     "name": "宮出 千慧（みやで ちさと）",
     "group": "参政党",
     "party": "参政党",
-    "district": "選挙区（大阪府）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2872,7 +2872,7 @@
     "name": "宮本 和宏（みやもと かずひろ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（滋賀県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2884,7 +2884,7 @@
     "name": "望月 良男（もちづき よしお）",
     "group": "各派に属しない議員",
     "party": "各派に属しない議員",
-    "district": "選挙区（和歌山県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2896,7 +2896,7 @@
     "name": "山内 佳菜子（やまうち かなこ）",
     "group": "立憲民主・無所属",
     "party": "立憲民主・無所属",
-    "district": "選挙区（宮崎県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2908,7 +2908,7 @@
     "name": "山田 吉彦（やまだ よしひこ）",
     "group": "国民民主党・新緑風会",
     "party": "国民民主党・新緑風会",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2920,7 +2920,7 @@
     "name": "山中 泉（やまなか せん）",
     "group": "参政党",
     "party": "参政党",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2932,7 +2932,7 @@
     "name": "若井 敦子（わかい あつこ）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（岐阜県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2944,7 +2944,7 @@
     "name": "脇 雅昭（わき まさあき）",
     "group": "自由民主党・無所属の会",
     "party": "自由民主党・無所属の会",
-    "district": "選挙区（神奈川県）",
+    "district": "通常選挙",
     "terms": 1,
     "nextElectionYear": 2031,
     "images": [
@@ -2956,7 +2956,7 @@
     "name": "上野 ほたる（うえの ほたる）",
     "group": "日本維新の会",
     "party": "日本維新の会",
-    "district": "比例",
+    "district": "繰上補充",
     "terms": 1,
     "nextElectionYear": 2028,
     "images": [

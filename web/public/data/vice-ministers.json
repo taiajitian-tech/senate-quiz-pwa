@@ -132,7 +132,7 @@
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
     "sourceMode": "seed",
-    "district": "選挙区（栃木県）",
+    "district": "通常選挙",
     "terms": 3
   },
   {
@@ -183,7 +183,7 @@
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
     "sourceMode": "seed",
-    "district": "選挙区（奈良県）",
+    "district": "通常選挙",
     "terms": 3
   },
   {
@@ -217,7 +217,7 @@
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
     "sourceMode": "seed",
-    "district": "比例",
+    "district": "通常選挙",
     "terms": 3
   },
   {
@@ -319,7 +319,7 @@
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
     "sourceMode": "seed",
-    "district": "選挙区（佐賀県）",
+    "district": "通常選挙",
     "terms": 3
   },
   {
@@ -387,7 +387,7 @@
     ],
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
     "sourceMode": "seed",
-    "district": "選挙区（愛知県）",
+    "district": "通常選挙",
     "terms": 3
   },
   {
