@@ -277,6 +277,7 @@ function extractProfileElectionInfo($) {
   const combined = scanByLabel($, ["選挙区・比例区／当選年／当選回数", "選挙区・比例区/当選年/当選回数"]);
   if (combined) {
     const parts = combined.split(/[／/]/u).map((v) => normText(v)).filter(Boolean);
+    console.log("DEBUG combined:", JSON.stringify(combined), "parts:", JSON.stringify(parts));
     const district = normalizeDistrict(parts[0] ?? "");
     const termsMatch = combined.match(/当選\s*(\d+)\s*回/u);
     const terms = termsMatch ? Number(termsMatch[1]) : undefined;
