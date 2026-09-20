@@ -59,6 +59,14 @@ function normalizeDistrict(text) {
   const value = normText(text);
   if (!value) return "";
   if (value.includes("比例")) return "比例";
+  // 「通常選挙（東京都）」のように選出方法＋括弧内の都道府県名の形式に対応
+  const parenMatch = value.match(/[（(]([^）)]+)[）)]/u);
+  if (parenMatch) {
+    const inner = parenMatch[1].trim();
+    if (/[都道府県]$/.test(inner) || inner === '比例') return inner.replace(/選挙区$/, '').trim();
+  }
+  // 「通常選挙」「補欠選挙」「繰上補充」だけの場合は空にする
+  if (/^(通常選挙|補欠選挙|繰上補充|再選挙)$/.test(value)) return "";
   return value.replace(/選出$/u, "").replace(/選挙区$/u, "").trim();
 }
 
