@@ -202,7 +202,9 @@
     "kana": "ふじき しんや",
     "group": "農林水産副大臣 / 参議院",
     "house": "参議院",
-    "images": []
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016034.jpg"
+    ]
   },
   {
     "name": "高木 啓",
@@ -286,6 +288,8 @@
     "kana": "こやり たかし",
     "group": "防衛副大臣 / 兼内閣府副大臣 / 参議院",
     "house": "参議院",
-    "images": []
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016017.jpg"
+    ]
   }
 ]
