@@ -1,229 +1,247 @@
 [
   {
-    "id": 91965580,
     "name": "高市 早苗",
+    "kana": "たかいちさなえ",
     "group": "内閣総理大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
     ],
     "district": "奈良2",
-    "terms": 11,
-    "kana": "たかいちさなえ"
+    "terms": 11
   },
   {
-    "id": 99863759,
     "name": "藤井 比早之",
-    "group": "総務大臣 / 衆議院",
+    "kana": "ふじいひさゆき",
+    "group": "総務大臣 / 内閣府特命担当大臣（地方創生）/ 地域未来戦略担当 / 副首都整備等推進担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/358.jpg/$File/358.jpg"
     ],
     "district": "兵庫4",
-    "terms": 6,
-    "kana": "ふじいひさゆき"
+    "terms": 6
   },
   {
-    "id": 19068650,
     "name": "山下 貴司",
-    "group": "法務大臣 / 衆議院",
+    "kana": "やましたたかし",
+    "group": "法務大臣 / 内閣府特命担当大臣（男女共同参画）/ 女性活躍担当 / 法制度検証・改革担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/433.jpg/$File/433.jpg"
     ],
     "district": "岡山2",
-    "terms": 6,
-    "kana": "やましたたかし"
+    "terms": 6
   },
   {
-    "id": 38443896,
     "name": "茂木 敏充",
+    "kana": "もてぎとしみつ",
     "group": "外務大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/motegi_toshimitsu_r.jpg"
     ],
     "district": "栃木5",
-    "terms": 12,
-    "kana": "もてぎとしみつ"
+    "terms": 12
   },
   {
-    "id": 14864096,
     "name": "片山 さつき",
-    "group": "財務大臣 / 参議院",
+    "kana": "かたやまさつき",
+    "group": "財務大臣 / 内閣府特命担当大臣（金融）/ 租税特別措置・補助金見直し担当 / 消費税・支援金法案担当 / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
     ],
     "district": "比例",
-    "terms": 3,
-    "kana": "かたやまさつき"
+    "terms": 3
   },
   {
-    "id": 56578859,
     "name": "関 芳弘",
+    "kana": "せきよしひろ",
     "group": "文部科学大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/224.jpg/$File/224.jpg"
     ],
     "district": "兵庫3",
-    "terms": 7,
-    "kana": "せきよしひろ"
+    "terms": 7
   },
   {
-    "id": 40405808,
     "name": "上野 賢一郎",
+    "kana": "うえのけんいちろう",
     "group": "厚生労働大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/ueno_kenichirou.jpg"
     ],
     "district": "滋賀2",
-    "terms": 7,
-    "kana": "うえのけんいちろう"
+    "terms": 7
   },
   {
-    "id": 24769684,
     "name": "簗 和生",
+    "kana": "やなかずお",
     "group": "農林水産大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/425.jpg/$File/425.jpg"
     ],
     "district": "（比）北関東",
-    "terms": 6,
-    "kana": "やなかずお"
+    "terms": 6
   },
   {
-    "id": 21335369,
     "name": "赤澤 亮正",
-    "group": "経済産業大臣 / 衆議院",
+    "kana": "あかざわりょうせい",
+    "group": "経済産業大臣 / 原子力経済被害担当 / GX実行推進担当 / 産業競争力担当 / AX社会実装担当 / 内閣府特命担当大臣（原子力損害賠償・廃炉等支援機構） / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
     ],
     "district": "鳥取2",
-    "terms": 8,
-    "kana": "あかざわりょうせい"
+    "terms": 8
   },
   {
-    "id": 65967680,
     "name": "井林 辰憲",
-    "group": "国土交通大臣 / 衆議院",
+    "kana": "いばやしたつのり",
+    "group": "国土交通大臣 / 水循環政策担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/056.jpg/$File/056.jpg"
     ],
     "district": "静岡2",
-    "terms": 6,
-    "kana": "いばやしたつのり"
+    "terms": 6
   },
   {
-    "id": 41302523,
     "name": "笹川 博義",
-    "group": "環境大臣 / 衆議院",
+    "kana": "ささがわひろよし",
+    "group": "環境大臣 / 内閣府特命担当大臣（原子力防災）/ クマ被害対策担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/191.jpg/$File/191.jpg"
     ],
     "district": "群馬3",
-    "terms": 6,
-    "kana": "ささがわひろよし"
+    "terms": 6
   },
   {
-    "id": 98541325,
     "name": "小泉 進次郎",
+    "kana": "こいずみしんじろう",
     "group": "防衛大臣 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/koizumi_shinjirou.jpg"
     ],
     "district": "神奈川11",
-    "terms": 7,
-    "kana": "こいずみしんじろう"
+    "terms": 7
   },
   {
-    "id": 41236487,
     "name": "木原 稔",
-    "group": "内閣官房長官 / 衆議院",
+    "kana": "きはらみのる",
+    "group": "内閣官房長官 / 沖縄基地負担軽減担当 / 拉致問題担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
     ],
     "district": "熊本1",
-    "terms": 7,
-    "kana": "きはらみのる"
+    "terms": 7
   },
   {
-    "id": 41473656,
+    "name": "葉梨 康弘",
+    "kana": "はなしやすひろ",
+    "group": "国家公安委員会委員長 / 内閣府特命担当大臣（防災 海洋政策）/ 領土問題担当 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/335.jpg/$File/335.jpg"
+    ],
+    "district": "茨城3",
+    "terms": 8
+  },
+  {
     "name": "古川 俊治",
-    "group": "デジタル大臣 / 参議院",
+    "kana": "ふるかわとしはる",
+    "group": "デジタル大臣 / AI・デジタル改革推進担当 / サイバー安全保障担当 / 内閣府特命担当大臣（知的財産戦略 科学技術政策 宇宙政策） / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
     ],
-    "district": "選挙区（埼玉県）",
-    "terms": 4,
-    "kana": "ふるかわとしはる"
+    "district": "埼玉県",
+    "terms": 4
   },
   {
-    "id": 49534315,
     "name": "細野 豪志",
-    "group": "復興大臣 / 衆議院",
+    "kana": "ほそのごうし",
+    "group": "復興大臣 / 福島原子力発電所事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/378.jpg/$File/378.jpg"
     ],
     "district": "静岡5",
-    "terms": 10,
-    "kana": "ほそのごうし"
+    "terms": 10
   },
   {
-    "id": 66214058,
     "name": "中司 宏",
-    "group": "内閣府特命担当大臣（こども政策 少子化対策） / 衆議院",
+    "kana": "なかつかひろし",
+    "group": "内閣府特命担当大臣（規制改革 行政改革 国家公務員制度 こども政策 少子化対策） / 規制改革担当 / 行政改革担当 / 国家公務員制度担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/291.jpg/$File/291.jpg"
     ],
     "district": "大阪11",
-    "terms": 3,
-    "kana": "なかつかひろし"
+    "terms": 3
   },
   {
-    "id": 16998442,
     "name": "城内 実",
-    "group": "日本成長戦略担当大臣 / 衆議院",
+    "kana": "きうちみのる",
+    "group": "日本成長戦略担当大臣 / 賃上げ環境整備担当 / スタートアップ担当 / 新しい資本主義担当 / 衆議院",
+    "house": "衆議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
     ],
     "district": "静岡7",
-    "terms": 8,
-    "kana": "きうちみのる"
+    "terms": 8
   },
   {
-    "id": 42746637,
     "name": "小野田 紀美",
-    "group": "経済安全保障担当大臣 / 参議院",
+    "kana": "おのだきみ",
+    "group": "経済安全保障担当大臣 / 外国人との秩序ある共生社会の実現に向けた担当 / 内閣府特命担当大臣（経済安全保障） / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
     ],
-    "district": "選挙区（岡山県）",
-    "terms": 2,
-    "kana": "おのだきみ"
+    "district": "岡山県",
+    "terms": 2
   },
   {
-    "id": 20650569,
+    "name": "尾﨑 正直",
+    "kana": "おざきまさなお",
+    "group": "内閣官房副長官 / 衆議院",
+    "house": "衆議院",
+    "images": []
+  },
+  {
     "name": "中西 祐介",
+    "kana": "なかにしゆうすけ",
     "group": "内閣官房副長官 / 参議院",
+    "house": "参議院",
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010038.jpg"
     ],
-    "district": "選挙区（徳島県・高知県）",
-    "terms": 3,
-    "kana": "なかにしゆうすけ"
+    "district": "徳島県・高知県",
+    "terms": 3
   },
   {
-    "id": 23821700,
     "name": "露木 康浩",
+    "kana": "つゆきやすひろ",
     "group": "内閣官房副長官",
+    "house": "",
     "images": [
       "https://www.kantei.go.jp/jp/content/tsuyuki_yasuhiro.jpg"
-    ],
-    "kana": "つゆきやすひろ"
+    ]
   },
   {
-    "id": 20848606,
     "name": "岩尾 信行",
+    "kana": "いわおのぶゆき",
     "group": "内閣法制局長官",
+    "house": "",
     "images": [
       "https://www.kantei.go.jp/jp/content/iwao_nobuyuki.jpg"
-    ],
-    "kana": "いわおのぶゆき"
+    ]
   }
 ]
