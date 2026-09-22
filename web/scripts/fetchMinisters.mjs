@@ -201,27 +201,37 @@ function extractOfficialTitle(group) {
 
 function mergeEntry(indexEntry, detailEntry, previous) {
   const name = detailEntry.name || indexEntry.name || previous?.name || "";
-  // 既存データに正式役職名があれば優先して引き継ぐ
-  const prevOfficialTitle = extractOfficialTitle(previous?.group || '');
+
+  // kana: 既存データを最優先（スクレイピングで消えないようにする）
+  const kana = previous?.kana || detailEntry.kana || indexEntry.kana || '';
+
+  // house: 既存データから判定
   const house =
     indexEntry.house ||
     detailEntry.house ||
     (previous?.group?.includes("参議院") ? "参議院" : previous?.group?.includes("衆議院") ? "衆議院" : "");
-  // 正式役職名がある場合はそれだけを使う（担当名の羅列は出さない）
-  const group = prevOfficialTitle
-    ? uniqueStrings([prevOfficialTitle, house]).filter(Boolean).join(' / ')
+
+  // group: 既存データに正式役職名があれば完全に引き継ぐ（兼務情報も保持）
+  // 既存データがない場合のみスクレイピング結果を使う
+  const prevOfficialTitle = extractOfficialTitle(previous?.group || '');
+  const group = prevOfficialTitle && previous?.group
+    ? previous.group  // 既存の完全なgroup（兼務含む）を丸ごと引き継ぐ
     : uniqueStrings([
         ...String(indexEntry.group || '').split(' / ').map(normalizeWhitespace).filter(Boolean),
         ...String(detailEntry.group || '').split(' / ').map(normalizeWhitespace).filter(Boolean),
         house,
       ]).join(' / ');
-  const images = detailEntry.image
-    ? [detailEntry.image]
-    : Array.isArray(previous?.images)
-      ? previous.images.filter((img) => typeof img === "string" && img.trim())
+
+  // images: 既存データを最優先（官邸ページの画像は補助的に使う）
+  const prevImages = Array.isArray(previous?.images)
+    ? previous.images.filter((img) => typeof img === "string" && img.trim())
+    : [];
+  const images = prevImages.length > 0
+    ? prevImages
+    : detailEntry.image
+      ? [detailEntry.image]
       : [];
 
-  const kana = detailEntry.kana || indexEntry.kana || previous?.kana || '';
   return {
     id: Number(previous?.id) || stableId(name),
     name,
