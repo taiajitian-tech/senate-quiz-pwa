@@ -585,7 +585,7 @@ export default function SenatorList(props: Props) {
                         {wrongSet.has(s.id) ? <span style={styles.badgeNg}>復習</span> : null}
                       </div>
                     </div>
-                    {props.appMode !== "entrance" && s.kana ? <div style={styles.kana}>{s.kana}</div> : null}
+                    {s.kana && (props.appMode !== "entrance" || ["ministers","viceMinisters","parliamentarySecretaries","councilorsOfficersList","houseOfficersList"].includes(props.target)) ? <div style={styles.kana}>{s.kana}</div> : null}
                     {props.appMode === "entrance"
                       ? entranceDetailLines.map((line) => (
                           <div key={line} style={styles.group}>{line}</div>
