@@ -6840,26 +6840,11 @@
     "aiGuess": false
   },
   {
-    "id": 459,
-    "name": "石井啓一",
-    "kana": "いしいけいいち",
-    "house": "衆議院",
-    "party": "無所属",
-    "district": "（比）北関東",
-    "terms": 11,
-    "role": "",
-    "image": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/027.jpg/$File/027.jpg",
-    "imageSource": "official",
-    "imageSourceUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/027.html",
-    "profileUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/027.html",
-    "aiGuess": false
-  },
-  {
     "id": 320,
     "name": "泉健太",
     "kana": "いずみけんた",
     "house": "衆議院",
-    "party": "無所属",
+    "party": "志士の会",
     "district": "京都3",
     "terms": 10,
     "role": "",
@@ -6874,7 +6859,7 @@
     "name": "緒方林太郎",
     "kana": "おがたりんたろう",
     "house": "衆議院",
-    "party": "無所属",
+    "party": "志士の会",
     "district": "福岡9",
     "terms": 5,
     "role": "",
@@ -6882,6 +6867,21 @@
     "imageSource": "official",
     "imageSourceUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/091.html",
     "profileUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/091.html",
+    "aiGuess": false
+  },
+  {
+    "id": 459,
+    "name": "石井啓一",
+    "kana": "いしいけいいち",
+    "house": "衆議院",
+    "party": "無所属",
+    "district": "（比）北関東",
+    "terms": 11,
+    "role": "",
+    "image": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/027.jpg/$File/027.jpg",
+    "imageSource": "official",
+    "imageSourceUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/027.html",
+    "profileUrl": "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/027.html",
     "aiGuess": false
   },
   {
