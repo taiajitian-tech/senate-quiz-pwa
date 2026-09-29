@@ -494,6 +494,36 @@ export default function Learn(props: Props) {
       setRevealed(false);
     }
   }, [askedIds.length, current, loading, sessionDone, sessionLimit, sessionStarted]);
+  // キーボード操作
+  // スペース: 答えを見る / 覚えていた(revealed時) / 進む(sessionDone時)
+  // M: うろ覚え、N: 覚えていない
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      // 入力フィールドにフォーカスがある場合は無視
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.target instanceof HTMLSelectElement) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        if (sessionDone) return;
+        if (!current) return;
+        if (!revealed) {
+          setRevealed(true);
+        } else {
+          onGrade('good');
+        }
+      } else if (e.code === 'KeyM') {
+        if (sessionDone || !current || !revealed) return;
+        onGrade('hard');
+      } else if (e.code === 'KeyN') {
+        if (sessionDone || !current || !revealed) return;
+        onGrade('again');
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [sessionDone, current, revealed, onGrade]);
+
 
   const resetSession = () => {
     if (props.mode !== "review" && practiceItems.length > 0 && (useOneRoundSelection || !hasAnyProgressForItems(progress, practiceItems))) {
