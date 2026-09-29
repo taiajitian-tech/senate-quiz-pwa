@@ -1,17 +1,8 @@
 {
-  "generatedAt": "2026-09-29T10:06:41.479Z",
-  "totalChanges": 2,
+  "generatedAt": "2026-09-29T20:12:03.409Z",
+  "totalChanges": 0,
   "hasUpdates": true,
-  "summaries": [
-    {
-      "target": "representatives",
-      "label": "衆議院議員",
-      "added": 0,
-      "removed": 0,
-      "changed": 2,
-      "total": 2
-    }
-  ],
+  "summaries": [],
   "items": [
     {
       "target": "notice",
@@ -40,20 +31,6 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "泉健太",
-      "type": "changed",
-      "summary": "泉健太：所属変更（無所属 → 志士の会）"
-    },
-    {
-      "target": "representatives",
-      "targetLabel": "衆議院議員",
-      "name": "緒方林太郎",
-      "type": "changed",
-      "summary": "緒方林太郎：所属変更（無所属 → 志士の会）"
     }
   ]
 }
