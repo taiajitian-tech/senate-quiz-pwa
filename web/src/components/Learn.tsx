@@ -495,34 +495,28 @@ export default function Learn(props: Props) {
     }
   }, [askedIds.length, current, loading, sessionDone, sessionLimit, sessionStarted]);
   // キーボード操作
-  // スペース: 答えを見る / 覚えていた(revealed時) / 進む(sessionDone時)
+  // スペース: 答えを見る / 覚えていた(revealed時)
   // M: うろ覚え、N: 覚えていない
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      // 入力フィールドにフォーカスがある場合は無視
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.target instanceof HTMLSelectElement) return;
-
       if (e.code === 'Space') {
         e.preventDefault();
-        if (sessionDone) return;
-        if (!current) return;
-        if (!revealed) {
-          setRevealed(true);
-        } else {
-          onGrade('good');
-        }
+        if (sessionDone || !current) return;
+        if (!revealed) { setRevealed(true); }
+        else { document.getElementById('grade-good')?.click(); }
       } else if (e.code === 'KeyM') {
         if (sessionDone || !current || !revealed) return;
-        onGrade('hard');
+        document.getElementById('grade-hard')?.click();
       } else if (e.code === 'KeyN') {
         if (sessionDone || !current || !revealed) return;
-        onGrade('again');
+        document.getElementById('grade-again')?.click();
       }
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [sessionDone, current, revealed, onGrade]);
+  }, [sessionDone, current, revealed]);
 
 
   const resetSession = () => {
@@ -936,9 +930,9 @@ export default function Learn(props: Props) {
               <div style={styles.actionZone}>
                 {revealed ? (
                   <div style={compactLayout ? styles.gradeBtnsCompact : styles.gradeBtns}>
-                    <button type="button" style={styles.btnRemembered} onClick={() => onGrade("good")}>覚えていた</button>
-                    <button type="button" style={styles.btnHazy} onClick={() => onGrade("hard")}>うろ覚え</button>
-                    <button type="button" style={styles.btnForgot} onClick={() => onGrade("again")}>覚えていない</button>
+                    <button id="grade-good" type="button" style={styles.btnRemembered} onClick={() => onGrade("good")}>覚えていた</button>
+                    <button id="grade-hard" type="button" style={styles.btnHazy} onClick={() => onGrade("hard")}>うろ覚え</button>
+                    <button id="grade-again" type="button" style={styles.btnForgot} onClick={() => onGrade("again")}>覚えていない</button>
                   </div>
                 ) : <div style={styles.actionSpacer} />}
               </div>
@@ -967,9 +961,9 @@ export default function Learn(props: Props) {
               <div style={styles.actionZone}>
                 {revealed ? (
                   <div style={compactLayout ? styles.gradeBtnsCompact : styles.gradeBtns}>
-                    <button type="button" style={styles.btnRemembered} onClick={() => onGrade("good")}>覚えていた</button>
-                    <button type="button" style={styles.btnHazy} onClick={() => onGrade("hard")}>うろ覚え</button>
-                    <button type="button" style={styles.btnForgot} onClick={() => onGrade("again")}>覚えていない</button>
+                    <button id="grade-good" type="button" style={styles.btnRemembered} onClick={() => onGrade("good")}>覚えていた</button>
+                    <button id="grade-hard" type="button" style={styles.btnHazy} onClick={() => onGrade("hard")}>うろ覚え</button>
+                    <button id="grade-again" type="button" style={styles.btnForgot} onClick={() => onGrade("again")}>覚えていない</button>
                   </div>
                 ) : <div style={styles.actionSpacer} />}
               </div>
