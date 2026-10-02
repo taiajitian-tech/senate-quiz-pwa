@@ -692,7 +692,7 @@ export default function Learn(props: Props) {
     .filter((person): person is Person => person !== undefined);
 
   return (
-    <div style={styles.wrap}>
+    <div className="learn-screen" style={styles.wrap}>
       <div style={styles.shell}>
         <div style={styles.header}>
           <div style={styles.topRow}>
@@ -912,7 +912,7 @@ export default function Learn(props: Props) {
           ) : !current ? (
             <div style={styles.center}>{props.mode === "review" ? "今は忘れそうな議員・苦手な議員がありません。" : "出題できるデータがありません。"}</div>
           ) : props.mode === "reverse" ? (
-            <div style={compactLayout ? styles.quizLayoutCompact : styles.quizLayout}>
+            <div style={{ ...(compactLayout ? styles.quizLayoutCompact : styles.quizLayout), gridTemplateRows: "auto minmax(0, 1fr) auto" }}>
               <div style={styles.infoZone}>
                 {renderAnswerHeading(current)}
                 {renderAnswerSubline(current)}
@@ -997,8 +997,8 @@ export default function Learn(props: Props) {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  wrap: { minHeight: "100dvh", background: "#f7f8fa", padding: 6, overflow: "hidden" },
-  shell: { width: "min(720px, 100%)", margin: "0 auto", minHeight: "calc(100dvh - 12px)", display: "flex", flexDirection: "column", gap: 6 },
+  wrap: { height: "100dvh", background: "#f7f8fa", padding: 6, overflow: "hidden" },
+  shell: { width: "min(720px, 100%)", margin: "0 auto", height: "100%", minHeight: 0, display: "flex", flexDirection: "column", gap: 6 },
   header: { display: "flex", flexDirection: "column", gap: 4, background: "#fff", border: "1px solid #ddd", borderRadius: 14, padding: 8, flex: "0 0 auto" },
   topRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   backBtn: { padding: "8px 11px", borderRadius: 10, border: "1px solid #999", background: "#fff", fontSize: 12 },
@@ -1028,11 +1028,11 @@ const styles: Record<string, React.CSSProperties> = {
   setupMeta: { display: "grid", gap: 4, padding: 10, borderRadius: 12, background: "#f8fafc", border: "1px solid #e5e7eb", fontSize: 12, color: "#444" },
   quizLayout: { display: "grid", gridTemplateRows: "minmax(0, 1fr) auto auto", gap: 8, width: "100%", minHeight: 0 },
   quizLayoutCompact: { display: "grid", gridTemplateRows: "minmax(0, 1fr) auto auto", gap: 6, width: "100%", minHeight: 0 },
-  imageZone: { minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center" },
-  imgBox: { width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
-  img: { width: "100%", height: "100%", maxHeight: "min(40dvh, 340px)", objectFit: "contain", borderRadius: 12, background: "#f3f3f3" },
-  noImg: { width: "100%", height: "100%", maxHeight: "min(40dvh, 340px)", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
-  placeholderBox: { width: "100%", height: "100%", maxHeight: "min(40dvh, 340px)", borderRadius: 12, background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", color: "#666", fontWeight: 700 },
+  imageZone: { minHeight: 0, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" },
+  imgBox: { width: "100%", height: "100%", minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center" },
+  img: { width: "100%", height: "100%", objectFit: "contain", borderRadius: 12, background: "#f3f3f3" },
+  noImg: { width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "#777", background: "#f3f3f3", borderRadius: 12 },
+  placeholderBox: { width: "100%", height: "100%", borderRadius: 12, background: "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", color: "#666", fontWeight: 700 },
   infoZone: { display: "flex", flexDirection: "column", gap: 6, minHeight: 0 },
   promptBox: { display: "flex", flexDirection: "column", gap: 8 },
   msg: { fontSize: 13, lineHeight: 1.5, color: "#333" },
