@@ -11,7 +11,7 @@ const DATA_DIR = path.resolve(__dirname, '../public/data');
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36';
 
 const URLS = {
-  councilorsOfficers: 'https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/yakuin.htm',
+  councilorsOfficers: 'https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm',
   houseOfficers: 'https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/officer.htm',
 };
 
