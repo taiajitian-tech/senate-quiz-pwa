@@ -311,7 +311,9 @@ function isOfficerRoleRedundant(person: Person): boolean {
 
 export function shouldShowLearningHeadingKana(person: Person, target: Target, mode: AppMode, items: Person[] = []): boolean {
   if (mode !== "entrance") return true;
-  if (target === "councilorsOfficersList" || target === "houseOfficersList") return false;
+  if (target === "councilorsOfficersList" || target === "houseOfficersList") {
+    return formatLearningHeading(person, target, mode, items) === person.name;
+  }
   if (target === "viceMinisters") return false;
   const heading = formatLearningHeading(person, target, mode, items);
   return heading === person.name;
@@ -360,7 +362,7 @@ export function getLearningAnswerLines(person: Person, target: Target, mode: App
       return [detail].filter(Boolean);
     case "councilorsOfficersList":
     case "houseOfficersList":
-      if (detail === "懲罰委員長") return [detail];
+      if (formatLearningHeading(person, target, mode) === person.name) return [detail].filter(Boolean);
       if (isOfficerRoleRedundant(person)) return [formatNameWithKana(person)].filter(Boolean);
       return [formatNameWithKana(person), detail].filter(Boolean);
     default:
