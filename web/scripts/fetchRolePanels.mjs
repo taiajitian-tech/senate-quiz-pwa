@@ -418,7 +418,10 @@ function parseKanteiRolePage(html, label) {
     const kana = normalizeKana(nameNode.find('.list-profile__name--ruby').text().replace(/[（）()]/gu, ''));
     const nameOnly = nameNode.clone();
     nameOnly.find('.list-profile__name--ruby').remove();
-    const name = toPlainName(nameOnly.text() || nameOnly.find('img').attr('alt') || '');
+    nameOnly.find('img[alt]').each((_, image) => {
+      $(image).replaceWith($(image).attr('alt') || '');
+    });
+    const name = toPlainName(nameOnly.text());
     const roleNode = row.find('.list-profile__title').clone();
     roleNode.find('br').replaceWith(' / ');
     const subRole = normalizeWhitespace(roleNode.text());

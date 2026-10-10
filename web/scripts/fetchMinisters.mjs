@@ -119,7 +119,10 @@ function parseIndexEntries(html) {
     const kana = normalizeWhitespace(nameNode.find('.list-profile__name--ruby').text()).replace(/[（）()\s]/gu, '');
     const nameOnly = nameNode.clone();
     nameOnly.find('.list-profile__name--ruby').remove();
-    const name = toPlainName(nameOnly.text() || nameOnly.find('img').attr('alt') || '');
+    nameOnly.find('img[alt]').each((_, image) => {
+      $(image).replaceWith($(image).attr('alt') || '');
+    });
+    const name = toPlainName(nameOnly.text());
     const group = textLinesFromHtml(row.find('.list-profile__title').html() || '').join(' / ');
     const house = normalizeWhitespace(row.find('.label').first().text());
     const href = row.find('a[href*="/meibo/daijin/"]').attr('href');
