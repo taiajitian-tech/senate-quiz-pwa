@@ -1,31 +1,23 @@
 {
-  "generatedAt": "2026-10-10T07:00:21.502Z",
-  "totalChanges": 70,
+  "generatedAt": "2026-10-10T07:05:11.207Z",
+  "totalChanges": 2,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "ministers",
-      "label": "大臣",
-      "added": 0,
-      "removed": 2,
-      "changed": 11,
-      "total": 13
-    },
-    {
       "target": "viceMinisters",
       "label": "副大臣",
-      "added": 2,
-      "removed": 3,
-      "changed": 24,
-      "total": 29
+      "added": 1,
+      "removed": 0,
+      "changed": 0,
+      "total": 1
     },
     {
       "target": "parliamentarySecretaries",
       "label": "大臣政務官",
-      "added": 0,
-      "removed": 1,
-      "changed": 27,
-      "total": 28
+      "added": 1,
+      "removed": 0,
+      "changed": 0,
+      "total": 1
     }
   ],
   "items": [
@@ -79,501 +71,32 @@
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
     },
     {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "藤井 比早之",
-      "type": "changed",
-      "summary": "藤井 比早之：役職変更（総務大臣 / 内閣府特命担当大臣（地方創生）/ 地域未来戦略担当 / 副首都整備等推進担当 / 衆議院 → 総務大臣 / 内閣府特命担当大臣（地方創生） / 地域未来戦略担当 / 副首都整備等推進担当 / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "山下 貴司",
-      "type": "changed",
-      "summary": "山下 貴司：役職変更（法務大臣 / 内閣府特命担当大臣（男女共同参画）/ 女性活躍担当 / 法制度検証・改革担当 / 衆議院 → 法務大臣 / 内閣府特命担当大臣（男女共同参画） / 女性活躍担当 / 法制度検証・改革担当 / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "片山 さつき",
-      "type": "changed",
-      "summary": "片山 さつき：役職変更（財務大臣 / 内閣府特命担当大臣（金融）/ 租税特別措置・補助金見直し担当 / 消費税・支援金法案担当 / 参議院 → 財務大臣 / 内閣府特命担当大臣（金融） / 租税特別措置・補助金見直し担当 / 消費税・支援金法案担当 / 参議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "赤澤 亮正",
-      "type": "changed",
-      "summary": "赤澤 亮正：役職変更（経済産業大臣 / 原子力経済被害担当 / GX実行推進担当 / 産業競争力担当 / AX社会実装担当 / 内閣府特命担当大臣（原子力損害賠償・廃炉等支援機構） / 衆議院 → 経済産業大臣 / 原子力経済被害担当 / ＧＸ実行推進担当 / 産業競争力担当 / 中東情勢に伴う重要物資安定確保担当 / ＡＸ社会実装担当 / 内閣府特命担当大臣（原子力損害賠償・廃炉等支援機構） / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "井林 辰憲",
-      "type": "changed",
-      "summary": "井林 辰憲：役職変更（国土交通大臣 / 水循環政策担当 / 衆議院 → 国土交通大臣 / 水循環政策担当 / 国際園芸博覧会担当 / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "笹川 博義",
-      "type": "changed",
-      "summary": "笹川 博義：役職変更（環境大臣 / 内閣府特命担当大臣（原子力防災）/ クマ被害対策担当 / 衆議院 → 環境大臣 / 内閣府特命担当大臣（原子力防災） / クマ被害対策担当 / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "古川 俊治",
-      "type": "changed",
-      "summary": "古川 俊治：役職変更（デジタル大臣 / AI・デジタル改革推進担当 / サイバー安全保障担当 / 内閣府特命担当大臣（知的財産戦略 科学技術政策 宇宙政策） / 参議院 → デジタル大臣 / ＡＩ・デジタル改革推進担当 / サイバー安全保障担当 / コンテンツ戦略担当 / 内閣府特命担当大臣（知的財産戦略 科学技術政策 宇宙政策 人工知能戦略 海洋政策 サイバー安全保障） / 参議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "細野 豪志",
-      "type": "changed",
-      "summary": "細野 豪志：役職変更（復興大臣 / 福島原子力発電所事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 衆議院 → 復興大臣 / 内閣府特命担当大臣（防災） / 福島原子力発電所事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 国際防災協力担当 / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "中司 宏",
-      "type": "changed",
-      "summary": "中司 宏：役職変更（内閣府特命担当大臣（規制改革 行政改革 国家公務員制度 こども政策 少子化対策） / 規制改革担当 / 行政改革担当 / 国家公務員制度担当 / 衆議院 → 内閣府特命担当大臣（こども政策 少子化対策 若者活躍 規制改革 共生・共助） / 行政改革担当 / 国家公務員制度担当 / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "城内 実",
-      "type": "changed",
-      "summary": "城内 実：役職変更（日本成長戦略担当大臣 / 賃上げ環境整備担当 / スタートアップ担当 / 新しい資本主義担当 / 衆議院 → 日本成長戦略担当 / 賃上げ環境整備担当 / スタートアップ担当 / 全世代型社会保障改革担当 / 内閣府特命担当大臣（経済財政政策） / 衆議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "小野田 紀美",
-      "type": "changed",
-      "summary": "小野田 紀美：役職変更（経済安全保障担当大臣 / 外国人との秩序ある共生社会の実現に向けた担当 / 内閣府特命担当大臣（経済安全保障） / 参議院 → 経済安全保障担当 / 感染症危機管理担当 / 外国人との秩序ある共生社会推進担当 / 内閣府特命担当大臣（経済安全保障） / 参議院）"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "葉梨 康弘",
-      "type": "removed",
-      "summary": "葉梨 康弘（国家公安委員会委員長 / 内閣府特命担当大臣（防災 海洋政策）/ 領土問題担当 / 衆議院） を一覧から除外しました",
+      "target": "viceMinisters",
+      "targetLabel": "副大臣",
+      "name": "高木啓",
+      "type": "added",
+      "summary": "高木啓 を新たに追加しました（経済産業副大臣）",
       "reason": {
-        "label": "更迭報道あり",
+        "label": "繰上げ当選報道あり",
         "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9EdmR3b3RjSnpEVWhvUmktN0ZLWFprTUx3NTZMSG5HdVZlZ3RBVWZpdU1fakh3RTNTbENyOTdqOHFYckk0VEpnYVdLNm9ZV3R2SmpYVm93ZEVBS0RBN2d5UUpqdzhfQQ?oc=5",
-        "publishedAt": "Fri, 11 Nov 2022 08:00:00 GMT"
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9lQXVxWDBaOFM0TEYyYUJ1UFpYTzE3RnVEVy1FbWVOY1BNNzl2OVdZb3FCVW41ZXFKVXNIcGN4MGFUTGU0RjM3THBJTEZrMnlIVXhWMk5wQ0ZTS3dOQktfWWlUVzFvc1k5R3ljTkdXWU1hUkRv?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 06:03:30 GMT"
       }
     },
     {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "尾﨑 正直",
-      "type": "removed",
-      "summary": "尾﨑 正直（内閣官房副長官 / 衆議院） を一覧から除外しました"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "塩崎彰久",
-      "type": "changed",
-      "summary": "塩崎彰久：氏名変更（塩崎 彰久 → 塩崎彰久）・役職変更（デジタル副大臣 / 兼内閣府副大臣 / 衆議院 → デジタル副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "中曽根康隆",
-      "type": "changed",
-      "summary": "中曽根康隆：氏名変更（中曽根 康隆 → 中曽根康隆）・役職変更（外務副大臣 / 衆議院 → 外務副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "堀井 巌",
-      "type": "changed",
-      "summary": "堀井 巌：役職変更（外務副大臣 / 参議院 → 外務副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "畦元将吾",
-      "type": "changed",
-      "summary": "畦元将吾：氏名変更（畦元 将吾 → 畦元将吾）・役職変更（環境副大臣 / 衆議院 → 環境副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "三ッ林裕巳",
-      "type": "changed",
-      "summary": "三ッ林裕巳：氏名変更（三ッ林 裕巳 → 三ッ林裕巳）・役職変更（環境副大臣 / 兼内閣府副大臣 / 衆議院 → 環境副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "宮本 周司",
-      "type": "changed",
-      "summary": "宮本 周司：役職変更（経済産業副大臣 / 兼内閣府副大臣 / 参議院 → 経済産業副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "浦野靖人",
-      "type": "changed",
-      "summary": "浦野靖人：氏名変更（浦野 靖人 → 浦野靖人）・役職変更（厚生労働副大臣 / 衆議院 → 厚生労働副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "藤原崇",
-      "type": "changed",
-      "summary": "藤原崇：氏名変更（藤原 崇 → 藤原崇）・役職変更（厚生労働副大臣 / 衆議院 → 厚生労働副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "加藤鮎子",
-      "type": "changed",
-      "summary": "加藤鮎子：氏名変更（加藤 鮎子 → 加藤鮎子）・役職変更（国土交通副大臣 / 衆議院 → 国土交通副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "朝日 健太郎",
-      "type": "changed",
-      "summary": "朝日 健太郎：役職変更（国土交通副大臣 / 参議院 → 国土交通副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "進藤 金日子",
-      "type": "changed",
-      "summary": "進藤 金日子：役職変更（財務副大臣 / 参議院 → 財務副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "若林健太",
-      "type": "changed",
-      "summary": "若林健太：氏名変更（若林 健太 → 若林健太）・役職変更（財務副大臣 / 兼内閣府副大臣 / 参議院 → 財務副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "斎藤アレックス",
-      "type": "changed",
-      "summary": "斎藤アレックス：氏名変更（斎藤 アレックス → 斎藤アレックス）・役職変更（総務副大臣 / 衆議院 → 総務副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "鈴木英敬",
-      "type": "changed",
-      "summary": "鈴木英敬：氏名変更（鈴木 英敬 → 鈴木英敬）・役職変更（総務副大臣 / 兼内閣府副大臣 / 衆議院 → 総務副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "今井 絵理子",
-      "type": "changed",
-      "summary": "今井 絵理子：役職変更（内閣府副大臣 / 参議院 → 内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "谷川とむ",
-      "type": "changed",
-      "summary": "谷川とむ：氏名変更（谷川 とむ → 谷川とむ）・役職変更（内閣府副大臣 / 衆議院 → 内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "平沼正二郎",
-      "type": "changed",
-      "summary": "平沼正二郎：氏名変更（平沼 正二郎 → 平沼正二郎）・役職変更（内閣府副大臣 / 衆議院 → 内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "小寺裕雄",
-      "type": "changed",
-      "summary": "小寺裕雄：氏名変更（小寺 裕雄 → 小寺裕雄）・役職変更（農林水産副大臣 / 衆議院 → 農林水産副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "藤木 眞也",
+      "target": "parliamentarySecretaries",
+      "targetLabel": "大臣政務官",
+      "name": "高橋祐介",
       "type": "added",
-      "summary": "藤木 眞也 を新たに追加しました（農林水産副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "中野英幸",
-      "type": "changed",
-      "summary": "中野英幸：氏名変更（中野 英幸 → 中野英幸）・役職変更（復興副大臣 / 衆議院 → 復興副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "西田昭二",
-      "type": "changed",
-      "summary": "西田昭二：氏名変更（西田 昭二 → 西田昭二）・役職変更（復興副大臣 / 兼内閣府副大臣 / 衆議院 → 復興副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "青山周平",
-      "type": "changed",
-      "summary": "青山周平：氏名変更（青山 周平 → 青山周平）・役職変更（文部科学副大臣 / 衆議院 → 文部科学副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "中田宏",
-      "type": "changed",
-      "summary": "中田宏：氏名変更（中田 宏 → 中田宏）・役職変更（文部科学副大臣 / 衆議院 → 文部科学副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "武村展英",
-      "type": "changed",
-      "summary": "武村展英：氏名変更（武村 展英 → 武村展英）・役職変更（法務副大臣 / 兼内閣府副大臣 / 衆議院 → 法務副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "小田原潔",
-      "type": "changed",
-      "summary": "小田原潔：氏名変更（小田原 潔 → 小田原潔）・役職変更（防衛副大臣 / 衆議院 → 防衛副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "こやり 隆史",
-      "type": "added",
-      "summary": "こやり 隆史 を新たに追加しました（防衛副大臣 / 兼内閣府副大臣）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "藤木 真也",
-      "type": "removed",
-      "summary": "藤木 真也（農林水産副大臣 / 参議院） を一覧から除外しました"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "高木 啓",
-      "type": "removed",
-      "summary": "高木 啓（経済産業副大臣 / 衆議院） を一覧から除外しました"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "小鑓 隆史",
-      "type": "removed",
-      "summary": "小鑓 隆史（防衛副大臣 / 兼内閣府副大臣 / 参議院） を一覧から除外しました"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "赤松 健",
-      "type": "changed",
-      "summary": "赤松 健：役職変更（デジタル大臣政務官 / 兼内閣府大臣政務官 / 参議院 → デジタル大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "生稲 晃子",
-      "type": "changed",
-      "summary": "生稲 晃子：役職変更（外務大臣政務官 / 参議院 → 外務大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "大空幸星",
-      "type": "changed",
-      "summary": "大空幸星：氏名変更（大空 幸星 → 大空幸星）・役職変更（外務大臣政務官 / 衆議院 → 外務大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "藤井 一博",
-      "type": "changed",
-      "summary": "藤井 一博：役職変更（外務大臣政務官 / 衆議院 → 外務大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "石井拓",
-      "type": "changed",
-      "summary": "石井拓：氏名変更（石井 拓 → 石井拓）・役職変更（環境大臣政務官 / 衆議院 → 環境大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "石原正敬",
-      "type": "changed",
-      "summary": "石原正敬：氏名変更（石原 正敬 → 石原正敬）・役職変更（環境大臣政務官 / 兼内閣府大臣政務官 / 衆議院 → 環境大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "石井 苗子",
-      "type": "changed",
-      "summary": "石井 苗子：役職変更（経済産業大臣政務官 / 参議院 → 経済産業大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "若山慎司",
-      "type": "changed",
-      "summary": "若山慎司：氏名変更（若山 慎司 → 若山慎司）・役職変更（経済産業大臣政務官 / 兼内閣府大臣政務官 / 衆議院 → 経済産業大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "長谷川 英晴",
-      "type": "changed",
-      "summary": "長谷川 英晴：ふりがな変更（はせがわえいじ → はせがわひではる）・役職変更（厚生労働大臣政務官 / 参議院 → 厚生労働大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "田中昌史",
-      "type": "changed",
-      "summary": "田中昌史：氏名変更（田中 昌史 → 田中昌史）・役職変更（厚生労働大臣政務官 / 衆議院 → 厚生労働大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "青島 健太",
-      "type": "changed",
-      "summary": "青島 健太：役職変更（国土交通大臣政務官 / 衆議院 → 国土交通大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "草間剛",
-      "type": "changed",
-      "summary": "草間剛：氏名変更（草間 剛 → 草間剛）・役職変更（国土交通大臣政務官 / 衆議院 → 国土交通大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "白坂亜紀",
-      "type": "changed",
-      "summary": "白坂亜紀：氏名変更（白坂 亜紀 → 白坂亜紀）・役職変更（財務大臣政務官 / 衆議院 → 財務大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "山口晋",
-      "type": "changed",
-      "summary": "山口晋：氏名変更（山口 晋 → 山口晋）・役職変更（財務大臣政務官 / 兼内閣府大臣政務官 / 衆議院 → 財務大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "小池正昭",
-      "type": "changed",
-      "summary": "小池正昭：氏名変更（小池 正昭 → 小池正昭）・役職変更（総務大臣政務官 / 衆議院 → 総務大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "島田智明",
-      "type": "changed",
-      "summary": "島田智明：氏名変更（島田 智明 → 島田智明）・役職変更（総務大臣政務官 / 衆議院 → 総務大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "福原淳嗣",
-      "type": "changed",
-      "summary": "福原淳嗣：氏名変更（福原 淳嗣 → 福原淳嗣）・役職変更（総務大臣政務官 / 兼内閣府大臣政務官 / 参議院 → 総務大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "根本拓",
-      "type": "changed",
-      "summary": "根本拓：氏名変更（根本 拓 → 根本拓）・役職変更（内閣府大臣政務官 / 衆議院 → 内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "繁本護",
-      "type": "changed",
-      "summary": "繁本護：氏名変更（繁本 護 → 繁本護）・役職変更（内閣府大臣政務官 / 衆議院 → 内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "坂本竜太郎",
-      "type": "changed",
-      "summary": "坂本竜太郎：氏名変更（坂本 竜太郎 → 坂本竜太郎）・役職変更（内閣府大臣政務官 / 兼復興大臣政務官 / 衆議院 → 内閣府大臣政務官 / 兼復興大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "森下千里",
-      "type": "changed",
-      "summary": "森下千里：氏名変更（森下 千里 → 森下千里）・役職変更（農林水産大臣政務官 / 衆議院 → 農林水産大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "保岡宏武",
-      "type": "changed",
-      "summary": "保岡宏武：氏名変更（保岡 宏武 → 保岡宏武）・役職変更（農林水産大臣政務官 / 衆議院 → 農林水産大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "山本大地",
-      "type": "changed",
-      "summary": "山本大地：氏名変更（山本 大地 → 山本大地）・役職変更（文部科学大臣政務官 / 衆議院 → 文部科学大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "美延映夫",
-      "type": "changed",
-      "summary": "美延映夫：氏名変更（美延 映夫 → 美延映夫）・役職変更（文部科学大臣政務官 / 衆議院 → 文部科学大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "阿部弘樹",
-      "type": "changed",
-      "summary": "阿部弘樹：氏名変更（阿部 弘樹 → 阿部弘樹）・役職変更（法務大臣政務官 / 兼内閣府大臣政務官 / 衆議院 → 法務大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "吉井 章",
-      "type": "changed",
-      "summary": "吉井 章：役職変更（防衛大臣政務官 / 衆議院 → 防衛大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "上杉謙太郎",
-      "type": "changed",
-      "summary": "上杉謙太郎：氏名変更（上杉 謙太郎 → 上杉謙太郎）・役職変更（防衛大臣政務官 / 兼内閣府大臣政務官 / 衆議院 → 防衛大臣政務官 / 兼内閣府大臣政務官）"
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "高橋 祐介",
-      "type": "removed",
-      "summary": "高橋 祐介（国土交通大臣政務官 / 参議院） を一覧から除外しました"
+      "summary": "高橋祐介 を新たに追加しました（国土交通大臣政務官）",
+      "reason": {
+        "label": "繰上げ当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5TM244cVV5eEN2ZW1tUm9TVVl3NEp5RHM2czRoUFp3TDM1ZnlPZFlPUzY5SVVVQ0F4MXhoSWF0Sk5ZN1gxVk9ITXJZM1FOckFxSUQ4cUFFY0xQNkM2Y2dfUy1xWlhSZ1hVZHV0b3NkQjUzQnVa?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 07:56:49 GMT"
+      }
     }
   ]
 }

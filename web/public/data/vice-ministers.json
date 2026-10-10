@@ -90,6 +90,23 @@
     "sourceMode": "live"
   },
   {
+    "id": 43237011,
+    "name": "高木啓",
+    "kana": "たかぎけい",
+    "group": "経済産業副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "経済産業副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/232.jpg/$File/232.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live",
+    "district": "東京12",
+    "terms": 4
+  },
+  {
     "name": "宮本 周司",
     "kana": "みやもとしゅうじ",
     "group": "経済産業副大臣 / 兼内閣府副大臣 / 参議院",
