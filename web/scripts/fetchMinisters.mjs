@@ -122,7 +122,7 @@ function parseIndexEntries(html) {
     nameOnly.find('img[alt]').each((_, image) => {
       $(image).replaceWith($(image).attr('alt') || '');
     });
-    const name = toPlainName(nameOnly.text());
+    const name = toPlainName(nameOnly.text()) || toPlainName(kana);
     const group = textLinesFromHtml(row.find('.list-profile__title').html() || '').join(' / ');
     const house = normalizeWhitespace(row.find('.label').first().text());
     const href = row.find('a[href*="/meibo/daijin/"]').attr('href');
@@ -261,6 +261,12 @@ function mergeEntry(indexEntry, detailEntry, previous) {
 async function main() {
   const existing = readExisting();
   const existingByName = buildExistingMap(existing);
+  const dataDir = path.resolve(__dirname, "../public/data");
+  const members = [];
+  for (const fname of ["representatives.json", "senators.json"]) {
+    const roster = JSON.parse(fs.readFileSync(path.join(dataDir, fname), "utf8"));
+    members.push(...roster);
+  }
 
   let indexHtml = "";
   let indexUrl = "";
@@ -276,8 +282,8 @@ async function main() {
   }
 
   const indexEntries = parseIndexEntries(indexHtml);
-  console.log("minister name markup:", cheerio.load(indexHtml)(".list-profile__name").map((_, node) => cheerio.load(indexHtml)(node).toString()).get().join("\n"));
-  if (indexEntries.length < 20) {
+  const officialCount = cheerio.load(indexHtml)(".list-profile__name").length;
+  if (indexEntries.length < 20 || (officialCount > 0 && indexEntries.length !== officialCount)) {
     console.warn(`ministers parse suspicious (${indexEntries.length}), keep existing`);
     console.warn(`ministers source title: ${cheerio.load(indexHtml)("title").text()}`);
     console.log(`ministers kept: ${existing.length}`);
@@ -299,7 +305,12 @@ async function main() {
     const nameKey = normalizeCompact(detailEntry.name || indexEntry.name);
     const previous = existingByName.get(nameKey)
       ?? [...existingByName.values()].find((item) => indexEntry.kana && normalizeCompact(item.kana) === normalizeCompact(indexEntry.kana));
-    if (previous && (!indexEntry.name || /^[ぁ-ん\s]+$/u.test(indexEntry.name))) indexEntry.name = previous.name;
+    const member = members.find((item) => normalizeCompact(item.name) === nameKey
+      || (indexEntry.kana && normalizeCompact(item.kana) === normalizeCompact(indexEntry.kana)));
+    if (!indexEntry.name || /^[ぁ-ん\s]+$/u.test(indexEntry.name)) {
+      indexEntry.name = previous?.name || member?.name || indexEntry.name;
+    }
+    if (!previous && !detailEntry.image && member?.image) detailEntry.image = member.image;
     const item = mergeEntry(indexEntry, detailEntry, previous);
     if (!item.name || !item.group || !Array.isArray(item.images) || item.images.length === 0) {
       console.warn(`minister item suspicious (${item.name || "unknown"}), keep previous if available`);
@@ -310,7 +321,6 @@ async function main() {
   }
 
   // representatives.json / senators.json から district/terms をマージ
-  const dataDir = path.resolve(__dirname, "../public/data");
   const memberMap = new Map();
   for (const fname of ["representatives.json", "senators.json"]) {
     try {
@@ -334,7 +344,7 @@ async function main() {
     });
   }
 
-  if (merged.length < 20) {
+  if (merged.length < 20 || merged.length !== indexEntries.length) {
     console.warn(`ministers merged suspicious (${merged.length}), keep existing`);
     console.log(`ministers kept: ${existing.length}`);
     fs.writeFileSync(DATA_FILE, `${JSON.stringify(enrichList(existing), null, 2)}\n`, "utf8");

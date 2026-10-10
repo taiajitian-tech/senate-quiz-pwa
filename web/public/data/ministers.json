@@ -143,6 +143,17 @@
     "terms": 7
   },
   {
+    "name": "葉梨 康弘",
+    "kana": "はなしやすひろ",
+    "group": "国家公安委員会委員長 / 内閣府特命担当大臣（防災 海洋政策）/ 領土問題担当 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/335.jpg/$File/335.jpg"
+    ],
+    "district": "茨城3",
+    "terms": 8
+  },
+  {
     "id": 15,
     "name": "古川 俊治",
     "kana": "ふるかわとしはる",
@@ -196,6 +207,15 @@
     ],
     "district": "岡山県",
     "terms": 2
+  },
+  {
+    "name": "尾﨑 正直",
+    "kana": "おざきまさなお",
+    "group": "内閣官房副長官 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/097.jpg/$File/097.jpg"
+    ]
   },
   {
     "id": 21,
