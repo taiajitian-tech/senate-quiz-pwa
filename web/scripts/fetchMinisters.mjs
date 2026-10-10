@@ -49,10 +49,10 @@ function readExisting() {
 
 function buildExistingMap(items) {
   const byName = new Map();
-  for (const item of items) {
+  for (const [index, item] of items.entries()) {
     const key = normalizeCompact(item?.name);
     if (!key) continue;
-    byName.set(key, item);
+    byName.set(key, { ...item, id: item.id === undefined ? index + 1 : item.id });
   }
   return byName;
 }
@@ -112,6 +112,20 @@ function looksLikeNameLine(line) {
 
 function parseIndexEntries(html) {
   const $ = cheerio.load(html);
+  const cards = [];
+  $('.list-profile__item').each((_, node) => {
+    const row = $(node);
+    const nameNode = row.find('.list-profile__name').first();
+    const kana = normalizeWhitespace(nameNode.find('.list-profile__name--ruby').text()).replace(/[（）()\s]/gu, '');
+    const nameOnly = nameNode.clone();
+    nameOnly.find('.list-profile__name--ruby').remove();
+    const name = toPlainName(nameOnly.text() || nameOnly.find('img').attr('alt') || '');
+    const group = textLinesFromHtml(row.find('.list-profile__title').html() || '').join(' / ');
+    const house = normalizeWhitespace(row.find('.label').first().text());
+    const href = row.find('a[href*="/meibo/daijin/"]').attr('href');
+    if (name && group) cards.push({ name, kana, group, house, detailUrl: href ? absoluteUrl(href, 'https://www.kantei.go.jp') : '' });
+  });
+  if (cards.length > 0) return cards;
   const detailLinks = [];
   $("a[href]").each((_, el) => {
     const href = $(el).attr("href") || "";
@@ -211,16 +225,16 @@ function mergeEntry(indexEntry, detailEntry, previous) {
     detailEntry.house ||
     (previous?.group?.includes("参議院") ? "参議院" : previous?.group?.includes("衆議院") ? "衆議院" : "");
 
-  // group: 既存データに正式役職名があれば完全に引き継ぐ（兼務情報も保持）
-  // 既存データがない場合のみスクレイピング結果を使う
+  // 取得できた公式の役職を優先し、兼務と院の表記も保持する。
   const prevOfficialTitle = extractOfficialTitle(previous?.group || '');
-  const group = prevOfficialTitle && previous?.group
-    ? previous.group  // 既存の完全なgroup（兼務含む）を丸ごと引き継ぐ
-    : uniqueStrings([
-        ...String(indexEntry.group || '').split(' / ').map(normalizeWhitespace).filter(Boolean),
-        ...String(detailEntry.group || '').split(' / ').map(normalizeWhitespace).filter(Boolean),
+  const group = indexEntry.group
+    ? uniqueStrings([
+        ...String(indexEntry.group).split(' / ').map(normalizeWhitespace).filter(Boolean),
         house,
-      ]).join(' / ');
+      ]).join(' / ')
+    : prevOfficialTitle && previous?.group
+      ? previous.group
+      : uniqueStrings([detailEntry.group, house]).join(' / ');
 
   // images: 既存データを最優先（官邸ページの画像は補助的に使う）
   const prevImages = Array.isArray(previous?.images)
@@ -261,7 +275,7 @@ async function main() {
   const indexEntries = parseIndexEntries(indexHtml);
   if (indexEntries.length < 20) {
     console.warn(`ministers parse suspicious (${indexEntries.length}), keep existing`);
-    console.warn(`ministers source structure: ${cheerio.load(indexHtml)("main").html()?.slice(0, 6000) ?? cheerio.load(indexHtml)("title").text()}`);
+    console.warn(`ministers source title: ${cheerio.load(indexHtml)("title").text()}`);
     console.log(`ministers kept: ${existing.length}`);
     return;
   }
@@ -279,7 +293,9 @@ async function main() {
     }
 
     const nameKey = normalizeCompact(detailEntry.name || indexEntry.name);
-    const previous = existingByName.get(nameKey);
+    const previous = existingByName.get(nameKey)
+      ?? [...existingByName.values()].find((item) => indexEntry.kana && normalizeCompact(item.kana) === normalizeCompact(indexEntry.kana));
+    if (previous && (!indexEntry.name || /^[ぁ-ん\s]+$/u.test(indexEntry.name))) indexEntry.name = previous.name;
     const item = mergeEntry(indexEntry, detailEntry, previous);
     if (!item.name || !item.group || !Array.isArray(item.images) || item.images.length === 0) {
       console.warn(`minister item suspicious (${item.name || "unknown"}), keep previous if available`);

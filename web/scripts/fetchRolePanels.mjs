@@ -410,6 +410,24 @@ function extractKanteiDomCandidates(html, label) {
 }
 
 function parseKanteiRolePage(html, label) {
+  const $ = cheerio.load(html);
+  const cards = [];
+  $('.list-profile__item').each((_, node) => {
+    const row = $(node);
+    const nameNode = row.find('.list-profile__name').first();
+    const kana = normalizeKana(nameNode.find('.list-profile__name--ruby').text().replace(/[（）()]/gu, ''));
+    const nameOnly = nameNode.clone();
+    nameOnly.find('.list-profile__name--ruby').remove();
+    const name = toPlainName(nameOnly.text() || nameOnly.find('img').attr('alt') || '');
+    const roleNode = row.find('.list-profile__title').clone();
+    roleNode.find('br').replaceWith(' / ');
+    const subRole = normalizeWhitespace(roleNode.text());
+    const chamber = normalizeWhitespace(row.find('.label').first().text());
+    if (name && ROLE_KEYWORDS[label].some((keyword) => subRole.includes(keyword)) && /^(衆議院|参議院)$/u.test(chamber)) {
+      cards.push({ name, kana, subRole, chamber, sourceMode: 'live' });
+    }
+  });
+  if (cards.length > 0) return uniqueBy(cards, (item) => `${item.subRole}:${normalizeCompact(item.name)}:${item.chamber}`);
   const lines = linesFromBodyText(html);
   const startIndexes = lines
     .map((line, index) => ({ line, index }))
@@ -478,7 +496,7 @@ function withImages(entries, category, imageMap, sourceUrl) {
 }
 
 function mergeByNameAndRole(parsed, existing, category) {
-  const existingMap = new Map(existing.map((item) => [`${normalizeCompact(item.name)}:${normalizeWhitespace(item.subRole)}`, item]));
+  const existingMap = new Map(existing.map((item, index) => [`${normalizeCompact(item.name)}:${normalizeWhitespace(item.subRole || String(item.group || '').replace(/\s*\/\s*(参議院|衆議院)$/u, ''))}`, { ...item, id: item.id === undefined ? index + 1 : item.id }]));
   const merged = [];
 
   for (const item of parsed) {
@@ -500,15 +518,14 @@ function mergeByNameAndRole(parsed, existing, category) {
       sourceMode: item.sourceMode || prev.sourceMode || 'seed',
       sourceUrl: item.sourceUrl || prev.sourceUrl || '',
     };
-    better.id = stableId(category, better.subRole, better.name);
+    better.id = prev.id;
     merged.push(better);
   }
 
   for (const leftover of existingMap.values()) {
     // 公式役員一覧は旧seedも除外。別ページの小委員長は取得失敗時にも保持する。
-    const isOfficer = category === '参議院役員' || category === '衆議院役員';
     const isSubcommittee = COUNCILORS_SUBCOMMITTEE_URLS.some((item) => item.subRole === leftover.subRole);
-    if (isSubcommittee || (!isOfficer && (leftover.sourceMode || 'seed') === 'seed')) {
+    if (isSubcommittee) {
       merged.push({ ...leftover });
     }
   }
@@ -537,7 +554,7 @@ async function safeGenerate({ label, parser, url, category, imageMap, sourceUrl,
     const validation = validateEntries(label, parsedEntries);
     if (!validation.ok) {
       console.warn(`${label}: parsed but rejected (${validation.reason}) → keep existing (${existing.length})`);
-      console.warn(`${label}: source structure ${cheerio.load(html)('main').html()?.slice(0, 6000) ?? cheerio.load(html)('title').text()}`);
+      console.warn(`${label}: source title ${cheerio.load(html)('title').text()}`);
       return existing;
     }
     const parsed = withImages(parsedEntries, category, imageMap, sourceUrl);
