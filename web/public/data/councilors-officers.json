@@ -1,63 +1,63 @@
 [
   {
-    "id": 23615087,
-    "name": "舟山 康江",
-    "kana": "ふなやまやすえ",
+    "id": 57394509,
+    "name": "浜野 喜史",
+    "kana": "はまのよしふみ",
     "group": "こども・子育て・若者活躍に関する特別委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "こども・子育て・若者活躍に関する特別委員長",
     "chamber": "参議院",
     "party": "国民民主党・新緑風会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007052.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013045.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 63271346,
-    "name": "松下 新平",
-    "kana": "まつしたしんぺい",
+    "id": 19017011,
+    "name": "櫻井 充",
+    "kana": "さくらいみつる",
     "group": "デジタル社会の形成及び人工知能の活用等に関する特別委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "デジタル社会の形成及び人工知能の活用等に関する特別委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004056.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998030.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 15839038,
-    "name": "横沢 高徳",
-    "kana": "よこさわたかのり",
+    "id": 87034037,
+    "name": "打越 さく良",
+    "kana": "うちこしさくら",
     "group": "沖縄・北方問題及び地方に関する特別委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "沖縄・北方問題及び地方に関する特別委員長",
     "chamber": "参議院",
     "party": "立憲民主・無所属",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019040.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019006.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 80268161,
-    "name": "里見 隆治",
-    "kana": "さとみりゅうじ",
+    "id": 60277005,
+    "name": "三浦 信祐",
+    "kana": "みうらのぶひろ",
     "group": "外交防衛委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "外交防衛委員長",
     "chamber": "参議院",
     "party": "公明党",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016020.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016036.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 16655536,
@@ -71,8 +71,23 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010009.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
+  },
+  {
+    "id": 13501855,
+    "name": "藤川 政人",
+    "kana": "ふじかわまさひと",
+    "group": "議院運営委員長 / 参議院",
+    "role": "参議院役員",
+    "subRole": "議院運営委員長",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010046.jpg"
+    ],
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 49491326,
@@ -86,38 +101,38 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7003005.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 50059551,
-    "name": "浜口 誠",
-    "kana": "はまぐちまこと",
+    "id": 38229828,
+    "name": "川合 孝典",
+    "kana": "かわいたかのり",
     "group": "経済産業委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "経済産業委員長",
     "chamber": "参議院",
     "party": "国民民主党・新緑風会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016032.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007022.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 32050980,
-    "name": "西田 昌司",
-    "kana": "にしだしょうじ",
+    "id": 60785004,
+    "name": "石井 浩郎",
+    "kana": "いしいひろお",
     "group": "決算委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "決算委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007044.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010005.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 32786115,
@@ -131,38 +146,38 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007041.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 28446502,
-    "name": "小川 克巳",
-    "kana": "おがわかつみ",
+    "id": 92943197,
+    "name": "自見 はなこ",
+    "kana": "じみはなこ",
     "group": "厚生労働委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "厚生労働委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016012.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016021.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 19303731,
-    "name": "芳賀 道也",
-    "kana": "はがみちや",
+    "id": 17399468,
+    "name": "田村 まみ",
+    "kana": "たむらまみ",
     "group": "行政監視委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "行政監視委員長",
     "chamber": "参議院",
     "party": "国民民主党・新緑風会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019032.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019025.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 60359542,
@@ -176,8 +191,8 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016003.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 22699041,
@@ -191,23 +206,23 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019023.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 96982023,
-    "name": "辻元 清美",
-    "kana": "つじもときよみ",
+    "id": 27796190,
+    "name": "古賀 之士",
+    "kana": "こがゆきひと",
     "group": "国土交通委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "国土交通委員長",
     "chamber": "参議院",
     "party": "立憲民主・無所属",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022025.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016018.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 33879092,
@@ -221,53 +236,53 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001037.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 55523889,
-    "name": "下野 六太",
-    "kana": "しものろくた",
+    "id": 18722074,
+    "name": "窪田 哲也",
+    "kana": "くぼたてつや",
     "group": "災害対策及び東日本大震災復興特別委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "災害対策及び東日本大震災復興特別委員長",
     "chamber": "参議院",
     "party": "公明党",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019021.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022017.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 56530818,
-    "name": "宮本 周司",
-    "kana": "みやもとしゅうじ",
+    "id": 21961745,
+    "name": "阿達 雅志",
+    "kana": "あだちまさし",
     "group": "財政金融委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "財政金融委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013053.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7014002.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 53913055,
-    "name": "木戸口 英司",
-    "kana": "きどぐちえいじ",
+    "id": 13340052,
+    "name": "吉田 忠智",
+    "kana": "よしだただとも",
     "group": "資源エネルギー・持続可能社会に関する調査会長 / 参議院",
     "role": "参議院役員",
     "subRole": "資源エネルギー・持続可能社会に関する調査会長",
     "chamber": "参議院",
     "party": "立憲民主・無所属",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016015.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010053.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 82883337,
@@ -281,8 +296,8 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013050.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 72734495,
@@ -296,68 +311,68 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010050.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 15473038,
-    "name": "櫻井 充",
-    "kana": "さくらいみつる",
+    "id": 55858950,
+    "name": "大家 敏志",
+    "kana": "おおいえさとし",
     "group": "政治改革に関する特別委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "政治改革に関する特別委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998030.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010018.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 37194084,
-    "name": "松村 祥史",
-    "kana": "まつむらよしふみ",
+    "id": 71387108,
+    "name": "松下 新平",
+    "kana": "まつしたしんぺい",
     "group": "政治倫理審査会会長 / 参議院",
     "role": "参議院役員",
     "subRole": "政治倫理審査会会長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004057.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004056.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 23288786,
-    "name": "古川 俊治",
-    "kana": "ふるかわとしはる",
+    "id": 59904071,
+    "name": "牧野 たかお",
+    "kana": "まきのたかお",
     "group": "政府開発援助及び国際協力・人道支援等に関する特別委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "政府開発援助及び国際協力・人道支援等に関する特別委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007054.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 29436851,
-    "name": "吉川 沙織",
-    "kana": "よしかわさおり",
+    "id": 42520216,
+    "name": "杉尾 秀哉",
+    "kana": "すぎおひでや",
     "group": "総務委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "総務委員長",
     "chamber": "参議院",
     "party": "立憲民主・無所属",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007071.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016023.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 13509252,
@@ -371,38 +386,38 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7025054.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 99995921,
-    "name": "北村 経夫",
-    "kana": "きたむらつねお",
+    "id": 74605915,
+    "name": "渡辺 猛之",
+    "kana": "わたなべたけゆき",
     "group": "内閣委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "内閣委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013019.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010055.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 42598875,
-    "name": "藤木 眞也",
-    "kana": "ふじきしんや",
+    "id": 81154130,
+    "name": "船橋 利実",
+    "kana": "ふなはしとしみつ",
     "group": "農林水産委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "農林水産委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016034.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022034.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 61869016,
@@ -416,38 +431,38 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g5998050.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 64076735,
-    "name": "熊谷 裕人",
-    "kana": "くまがいひろと",
+    "id": 80747170,
+    "name": "塩村 あやか",
+    "kana": "しおむらあやか",
     "group": "文教科学委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "文教科学委員長",
     "chamber": "参議院",
     "party": "立憲民主・無所属",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019017.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7019020.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 91216654,
-    "name": "伊藤 孝江",
-    "kana": "いとうたかえ",
+    "id": 72595355,
+    "name": "竹内 真二",
+    "kana": "たけうちしんじ",
     "group": "法務委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "法務委員長",
     "chamber": "参議院",
     "party": "公明党",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016005.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7017001.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
     "id": 93262004,
@@ -461,22 +476,22 @@
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010045.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   },
   {
-    "id": 28837873,
-    "name": "藤川 政人",
-    "kana": "ふじかわまさひと",
+    "id": 44596332,
+    "name": "有村 治子",
+    "kana": "ありむらはるこ",
     "group": "予算委員長 / 参議院",
     "role": "参議院役員",
     "subRole": "予算委員長",
     "chamber": "参議院",
     "party": "自由民主党・無所属の会",
     "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010046.jpg"
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7001006.jpg"
     ],
-    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/221/yakuin.htm",
-    "sourceMode": "seed"
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
   }
 ]

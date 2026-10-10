@@ -40,35 +40,6 @@ const ROLE_KEYWORDS = {
   '衆議院役員': ['議長', '副議長', '委員長', '会長'],
 };
 
-const FALLBACK_HOUSE_OFFICERS = [
-  ['議長', '森 英介', 'もり えいすけ'],
-  ['副議長', '石井 啓一', 'いしい けいいち'],
-  ['憲法審査会会長', '古屋 圭司', 'ふるや けいじ'],
-  ['情報監視審査会会長', '船田 元', 'ふなだ はじめ'],
-  ['政治倫理審査会会長', '田中 和徳', 'たなか かずのり'],
-  ['内閣委員長', '山下 貴司', 'やました たかし'],
-  ['総務委員長', '古川 康', 'ふるかわ やすし'],
-  ['法務委員長', '井上 英孝', 'いのうえ ひでたか'],
-  ['外務委員長', '國場 幸之助', 'こくば こうのすけ'],
-  ['財務金融委員長', '武村 展英', 'たけむら のぶひで'],
-  ['文部科学委員長', '斎藤 洋明', 'さいとう ひろあき'],
-  ['厚生労働委員長', '大串 正樹', 'おおぐし まさき'],
-  ['農林水産委員長', '藤井 比早之', 'ふじい ひさゆき'],
-  ['経済産業委員長', '工藤 彰三', 'くどう しょうぞう'],
-  ['国土交通委員長', '冨樫 博之', 'とがし ひろゆき'],
-  ['環境委員長', '宮路 拓馬', 'みやじ たくま'],
-  ['安全保障委員長', '西村 明宏', 'にしむら あきひろ'],
-  ['国家基本政策委員長', '柴山 昌彦', 'しばやま まさひこ'],
-  ['予算委員長', '坂本 哲志', 'さかもと てつし'],
-  ['決算行政監視委員長', '山口 壯', 'やまぐち つよし'],
-  ['議院運営委員長', '山口 俊一', 'やまぐち しゅんいち'],
-  ['懲罰委員長', '斉藤 鉄夫', 'さいとう てつお'],
-  ['沖縄及び北方問題に関する特別委員長', '島尻 安伊子', 'しまじり あいこ'],
-  ['政治改革に関する特別委員長', '美延 映夫', 'みのべ てるお'],
-  ['東日本大震災復興及び原子力問題調査特別委員長', '西銘 恒三郎', 'にしめ こうさぶろう'],
-  ['地域活性化・こども政策・デジタル社会形成に関する特別委員長', '丹羽 秀樹', 'にわ ひでき'],
-].map(([subRole, name, kana]) => ({ subRole, name, kana }));
-
 function readJson(fileName) {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, fileName), 'utf8'));
 }
@@ -206,7 +177,13 @@ async function fetchText(url) {
     redirect: 'follow',
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return await res.text();
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  const header = res.headers.get('content-type') ?? '';
+  const prefix = new TextDecoder().decode(bytes.slice(0, 2048));
+  const charset = header.match(/charset=[\"']?([\w-]+)/i)?.[1]
+    ?? prefix.match(/charset=[\"']?([\w-]+)/i)?.[1]
+    ?? 'utf-8';
+  return new TextDecoder(charset).decode(bytes);
 }
 
 function scoreEntries(label, entries) {
@@ -315,24 +292,15 @@ function parseCouncilorsOfficersFromText(html) {
 function parseCouncilorsOfficersFromDom(html) {
   const $ = cheerio.load(html);
   const out = [];
-
-  $('a, td, th, li, p').each((_, node) => {
-    const text = normalizeWhitespace($(node).text()).replace(/＜正字＞/g, '');
-    if (!text) return;
-    let m = text.match(/^(議長|副議長)\s+(.+)$/u);
-    if (m) {
-      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '', chamber: '参議院', sourceMode: 'live' });
-      return;
-    }
-    m = text.match(/^(.+?(?:委員長|会長))\s+(.+)$/u);
-    if (m) {
-      out.push({ subRole: m[1], name: toPlainName(m[2]), kana: '', chamber: '参議院', sourceMode: 'live' });
-    }
+  $('tr').each((_, tr) => {
+    const row = $(tr);
+    const subRole = row.find('th').map((__, cell) => normalizeWhitespace($(cell).text())).get()
+      .filter((text) => /^(議長|副議長|.+委員長|.+会長)$/u.test(text)).at(-1);
+    const name = toPlainName(row.find('a[href*="profile/"]').first().text());
+    if (subRole && name) out.push({ subRole, name, kana: '', chamber: '参議院', sourceMode: 'live' });
   });
-
   return uniqueBy(out, (item) => `${item.subRole}:${normalizeCompact(item.name)}`);
 }
-
 
 function parseCouncilorsSubcommitteeChair(html, subRole, sourceUrl) {
   const $ = cheerio.load(html);
@@ -461,35 +429,28 @@ function parseKanteiRolePage(html, label) {
 }
 
 function parseHouseOfficers(html) {
-  if (/ただいまメンテナンス中/.test(html)) {
-    return FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
-  }
-
-  const lines = linesFromBodyText(html);
-  const start = lines.findIndex((line) => line.includes('役員等一覧'));
-  if (start === -1) {
-    return FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
-  }
-
+  const $ = cheerio.load(html);
   const out = [];
-  for (let i = start + 1; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (/事務総長/.test(line)) break;
-    if (/^(議長|副議長|.+委員長|.+会長)\s+/.test(line)) {
-      const lastSpace = line.lastIndexOf(' ');
-      if (lastSpace === -1) continue;
+  $('table').each((_, table) => {
+    const caption = normalizeWhitespace($(table).find('caption').first().text());
+    if (caption === '事務総長') return;
+    $(table).find('tr').each((__, tr) => {
+      const cells = $(tr).find('td');
+      const person = cells.find('a[href*="profile/"]').first();
+      if (!person.length) return;
+      const nameIndex = cells.index(person.closest('td'));
+      const subRole = nameIndex === 0 ? caption : normalizeWhitespace(cells.eq(0).text());
+      if (!/^(議長|副議長|.+委員長|.+会長)$/u.test(subRole)) return;
       out.push({
-        subRole: line.slice(0, lastSpace).trim(),
-        name: toPlainName(line.slice(lastSpace + 1)),
-        kana: '',
+        subRole,
+        name: toPlainName(person.text()),
+        kana: normalizeKana(cells.eq(nameIndex + 1).text()),
         chamber: '衆議院',
         sourceMode: 'live',
       });
-    }
-  }
-
-  const unique = uniqueBy(out, (item) => `${item.subRole}:${normalizeCompact(item.name)}`);
-  return unique.length > 0 ? unique : FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
+    });
+  });
+  return uniqueBy(out, (item) => `${item.subRole}:${normalizeCompact(item.name)}`);
 }
 
 function withImages(entries, category, imageMap, sourceUrl) {
@@ -543,9 +504,11 @@ function mergeByNameAndRole(parsed, existing, category) {
   }
 
   for (const leftover of existingMap.values()) {
-    // 手動追加（seed）のみ引き継ぐ。スクレイピング由来（live/fallback）は削除扱い
-    if ((leftover.sourceMode || 'seed') === 'seed') {
-      merged.push({ ...leftover, sourceMode: 'seed' });
+    // 公式役員一覧は旧seedも除外。別ページの小委員長は取得失敗時にも保持する。
+    const isOfficer = category === '参議院役員' || category === '衆議院役員';
+    const isSubcommittee = COUNCILORS_SUBCOMMITTEE_URLS.some((item) => item.subRole === leftover.subRole);
+    if (isSubcommittee || (!isOfficer && (leftover.sourceMode || 'seed') === 'seed')) {
+      merged.push({ ...leftover });
     }
   }
 
@@ -601,10 +564,10 @@ async function main() {
 
   const baseCouncilorsOfficers = await safeGenerate({
     label: '参議院役員',
-    parser: (html) => chooseBestCandidates('参議院役員', [
-      { tag: 'text:body', entries: parseCouncilorsOfficersFromText(html) },
-      { tag: 'dom:nodes', entries: parseCouncilorsOfficersFromDom(html) },
-    ]),
+    parser: (html) => {
+      const entries = parseCouncilorsOfficersFromDom(html);
+      return entries.length > 0 ? entries : parseCouncilorsOfficersFromText(html);
+    },
     url: URLS.councilorsOfficers,
     category: '参議院役員',
     imageMap,
@@ -614,8 +577,11 @@ async function main() {
 
   const councilorsSubcommitteeChairs = await fetchCouncilorsSubcommitteeChairs();
   const councilorsOfficers = mergeByNameAndRole(
-    withImages(councilorsSubcommitteeChairs, '参議院役員', imageMap, ''),
-    baseCouncilorsOfficers,
+    [
+      ...baseCouncilorsOfficers.filter((item) => !councilorsSubcommitteeChairs.some((chair) => chair.subRole === item.subRole)),
+      ...withImages(councilorsSubcommitteeChairs, '参議院役員', imageMap, ''),
+    ],
+    [],
     '参議院役員',
   );
   console.log(`参議院役員: subcommittee chairs=${councilorsSubcommitteeChairs.length}, merged=${councilorsOfficers.length}`);
@@ -640,18 +606,15 @@ async function main() {
     fileName: 'parliamentary-secretaries.json',
   });
 
-  let houseOfficersEntries;
-  try {
-    houseOfficersEntries = parseHouseOfficers(await fetchText(URLS.houseOfficers));
-  } catch (error) {
-    console.warn(`衆議院役員: failed → fallback because ${error.message}`);
-    houseOfficersEntries = FALLBACK_HOUSE_OFFICERS.map((item) => ({ ...item, chamber: '衆議院', sourceMode: 'fallback' }));
-  }
-  const houseOfficers = mergeByNameAndRole(
-    withImages(houseOfficersEntries, '衆議院役員', imageMap, URLS.houseOfficers),
-    readExistingArray('house-officers.json'),
-    '衆議院役員',
-  );
+  const houseOfficers = await safeGenerate({
+    label: '衆議院役員',
+    parser: parseHouseOfficers,
+    url: URLS.houseOfficers,
+    category: '衆議院役員',
+    imageMap,
+    sourceUrl: URLS.houseOfficers,
+    fileName: 'house-officers.json',
+  });
 
   // representatives.json / senators.json から district/terms をマージ
   const memberMap = new Map();
