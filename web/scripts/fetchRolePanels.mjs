@@ -537,6 +537,7 @@ async function safeGenerate({ label, parser, url, category, imageMap, sourceUrl,
     const validation = validateEntries(label, parsedEntries);
     if (!validation.ok) {
       console.warn(`${label}: parsed but rejected (${validation.reason}) → keep existing (${existing.length})`);
+      console.warn(`${label}: source structure ${cheerio.load(html)('main').html()?.slice(0, 6000) ?? cheerio.load(html)('title').text()}`);
       return existing;
     }
     const parsed = withImages(parsedEntries, category, imageMap, sourceUrl);
@@ -557,6 +558,19 @@ async function safeGenerate({ label, parser, url, category, imageMap, sourceUrl,
   }
 }
 
+async function resolveCouncilorsOfficersUrl() {
+  const currentUrl = 'https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/yakuin.htm';
+  try {
+    const html = await fetchText(currentUrl);
+    const $ = cheerio.load(html);
+    const href = $('a[href]').map((_, node) => $(node).attr('href')).get()
+      .find((value) => /^\/japanese\/joho1\/kousei\/giin\/\d+\/yakuin\.htm$/u.test(value));
+    return href ? new URL(href, currentUrl).href : currentUrl;
+  } catch (error) {
+    throw new Error(`current councilors officers discovery failed: ${error.message}`);
+  }
+}
+
 async function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   const imageMap = buildImageMap();
@@ -568,6 +582,10 @@ async function main() {
     console.warn(`官邸名簿: source unavailable → keep existing vice ministers and secretaries because ${error.message}`);
   }
 
+  URLS.councilorsOfficers = await resolveCouncilorsOfficersUrl().catch((error) => {
+    console.warn(error.message);
+    return URLS.councilorsOfficers;
+  });
   const baseCouncilorsOfficers = await safeGenerate({
     label: '参議院役員',
     parser: (html) => {

@@ -261,6 +261,7 @@ async function main() {
   const indexEntries = parseIndexEntries(indexHtml);
   if (indexEntries.length < 20) {
     console.warn(`ministers parse suspicious (${indexEntries.length}), keep existing`);
+    console.warn(`ministers source structure: ${cheerio.load(indexHtml)("main").html()?.slice(0, 6000) ?? cheerio.load(indexHtml)("title").text()}`);
     console.log(`ministers kept: ${existing.length}`);
     return;
   }
