@@ -18,8 +18,8 @@ for (const fileName of files) {
   if (!Array.isArray(parsed) || parsed.length === 0) throw new Error(`${fileName} is empty or invalid`);
   const seen = new Set();
   for (const [index, item] of parsed.entries()) {
-    const id = Number(item?.id);
-    if (!Number.isFinite(id)) throw new Error(`${fileName}: invalid id at ${index}`);
+    const id = item?.id === undefined ? index + 1 : Number(item.id);
+    if (!Number.isInteger(id) || id <= 0) throw new Error(`${fileName}: invalid id at ${index}`);
     if (seen.has(id)) throw new Error(`${fileName}: duplicate id ${id}`);
     seen.add(id);
     if (typeof item?.name !== 'string' || !item.name.trim()) throw new Error(`${fileName}: invalid name at ${index}`);

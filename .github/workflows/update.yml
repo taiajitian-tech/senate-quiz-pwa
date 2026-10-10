@@ -1,6 +1,9 @@
 name: update-data
 
 on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/update.yml"]
   workflow_dispatch:
   schedule:
     - cron: "7 3,15 * * *"
@@ -9,9 +12,14 @@ permissions:
   contents: write
   actions: write
 
+concurrency:
+  group: update-generated-data
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: web
@@ -49,7 +57,6 @@ jobs:
         run: npm run gen:ministers
 
       - name: Generate role panel data
-        continue-on-error: true
         run: npm run gen:role-panels
 
       - name: Generate updates data

@@ -16,8 +16,8 @@ if (!Array.isArray(parsed) || parsed.length === 0) {
 const seen = new Set();
 for (const [index, item] of parsed.entries()) {
   if (!item || typeof item !== "object") throw new Error(`Invalid item at ${index}`);
-  const id = Number(item.id);
-  if (!Number.isFinite(id)) throw new Error(`Invalid id at ${index}`);
+  const id = item.id === undefined ? index + 1 : Number(item.id);
+  if (!Number.isInteger(id) || id <= 0) throw new Error(`Invalid id at ${index}`);
   if (seen.has(id)) throw new Error(`Duplicate id: ${id}`);
   seen.add(id);
   if (typeof item.name !== "string" || !item.name.trim()) throw new Error(`Invalid name for id ${id}`);

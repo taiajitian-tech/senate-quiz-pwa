@@ -3,22 +3,23 @@ import fetch from 'node-fetch';
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36';
 
-const KANTEI_HISTORY_URL = 'https://www.kantei.go.jp/jp/rekidainaikaku/index.html';
-const KANTEI_FALLBACK_INDEX_URLS = [
-  'https://www.kantei.go.jp/jp/105/meibo/index.html',
-  'https://www.kantei.go.jp/jp/104/meibo/index.html',
-  'https://www.kantei.go.jp/jp/103/meibo/index.html',
-  'https://www.kantei.go.jp/jp/102/meibo/index.html',
-  'https://www.kantei.go.jp/jp/101_kishida/meibo/index.html',
+const KANTEI_CURRENT_URLS = [
+  'https://www.kantei.go.jp/',
+  'https://www.kantei.go.jp/jp/rekidainaikaku/index.html',
 ];
 
 async function fetchText(url) {
   const res = await fetch(url, {
     headers: { 'user-agent': USER_AGENT },
     redirect: 'follow',
+    signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return await res.text();
+  const html = await res.text();
+  if (/<title[^>]*>[^<]*(Page Not Found|お探しのページ)/iu.test(html)) {
+    throw new Error(`source page unavailable for ${url}`);
+  }
+  return html;
 }
 
 function unique(items) {
@@ -46,28 +47,20 @@ function findMeiboIndexUrls(html) {
   };
 
   collect(currentSlice);
-  collect(html);
+  if (currentStart < 0) collect(html);
   return unique(out);
 }
 
 async function resolveCurrentCabinetIndexUrl() {
-  try {
-    const html = await fetchText(KANTEI_HISTORY_URL);
-    const candidates = findMeiboIndexUrls(html);
-    if (candidates.length > 0) return candidates[0];
-  } catch (error) {
-    console.warn(`kantei current cabinet discovery failed: ${error.message}`);
-  }
-
-  for (const url of KANTEI_FALLBACK_INDEX_URLS) {
+  for (const url of KANTEI_CURRENT_URLS) {
     try {
-      await fetchText(url);
-      return url;
-    } catch {
-      // try next fallback
+      const html = await fetchText(url);
+      const candidates = findMeiboIndexUrls(html);
+      if (candidates.length > 0) return candidates[0];
+    } catch (error) {
+      console.warn(`kantei current cabinet discovery failed (${url}): ${error.message}`);
     }
   }
-
   throw new Error('unable to resolve current kantei meibo index url');
 }
 

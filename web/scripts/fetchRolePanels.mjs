@@ -175,6 +175,7 @@ async function fetchText(url) {
   const res = await fetch(url, {
     headers: { 'user-agent': USER_AGENT },
     redirect: 'follow',
+    signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   const bytes = new Uint8Array(await res.arrayBuffer());
@@ -559,8 +560,13 @@ async function safeGenerate({ label, parser, url, category, imageMap, sourceUrl,
 async function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   const imageMap = buildImageMap();
-  const kanteiUrls = await resolveKanteiMeiboUrls();
-  console.log(`role panels sources: vice=${kanteiUrls.viceMinistersUrl} seimukan=${kanteiUrls.parliamentarySecretariesUrl}`);
+  let kanteiUrls = null;
+  try {
+    kanteiUrls = await resolveKanteiMeiboUrls();
+    console.log(`role panels sources: vice=${kanteiUrls.viceMinistersUrl} seimukan=${kanteiUrls.parliamentarySecretariesUrl}`);
+  } catch (error) {
+    console.warn(`官邸名簿: source unavailable → keep existing vice ministers and secretaries because ${error.message}`);
+  }
 
   const baseCouncilorsOfficers = await safeGenerate({
     label: '参議院役員',
@@ -586,7 +592,7 @@ async function main() {
   );
   console.log(`参議院役員: subcommittee chairs=${councilorsSubcommitteeChairs.length}, merged=${councilorsOfficers.length}`);
 
-  const viceMinisters = await safeGenerate({
+  const viceMinisters = kanteiUrls ? await safeGenerate({
     label: '副大臣',
     parser: (html) => parseKanteiRolePage(html, '副大臣'),
     url: kanteiUrls.viceMinistersUrl,
@@ -594,9 +600,9 @@ async function main() {
     imageMap,
     sourceUrl: kanteiUrls.viceMinistersUrl,
     fileName: 'vice-ministers.json',
-  });
+  }) : readExistingArray('vice-ministers.json');
 
-  const parliamentarySecretaries = await safeGenerate({
+  const parliamentarySecretaries = kanteiUrls ? await safeGenerate({
     label: '大臣政務官',
     parser: (html) => parseKanteiRolePage(html, '大臣政務官'),
     url: kanteiUrls.parliamentarySecretariesUrl,
@@ -604,7 +610,7 @@ async function main() {
     imageMap,
     sourceUrl: kanteiUrls.parliamentarySecretariesUrl,
     fileName: 'parliamentary-secretaries.json',
-  });
+  }) : readExistingArray('parliamentary-secretaries.json');
 
   const houseOfficers = await safeGenerate({
     label: '衆議院役員',

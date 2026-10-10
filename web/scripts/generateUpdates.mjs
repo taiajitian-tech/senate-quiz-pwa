@@ -131,8 +131,10 @@ function readArray(filePath) {
 
 function compareTarget(target) {
   const gitRelPath = `web/public/data/${target.path}`;
-  const gitPrev = readArrayFromGit(gitRelPath);
-  const previousRaw = gitPrev ?? readArray(path.resolve(PREV_DIR, target.path));
+  const snapshotPath = path.resolve(PREV_DIR, target.path);
+  const previousRaw = fs.existsSync(snapshotPath)
+    ? readArray(snapshotPath)
+    : readArrayFromGit(gitRelPath) ?? [];
   const currentRaw = readArray(path.resolve(DATA_DIR, target.path));
 
   const previous = previousRaw.map(normalizeRecord).filter(Boolean);

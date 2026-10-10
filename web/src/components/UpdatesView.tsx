@@ -115,7 +115,7 @@ function loadLS<T>(key: string, fallback: T): T {
 }
 
 function saveLS(key: string, value: unknown): void {
-  try { window.localStorage.setItem(key, JSON.stringify(value)); } catch {}
+  try { window.localStorage.setItem(key, JSON.stringify(value)); } catch { /* 保存できない場合も画面の操作は継続する。 */ }
 }
 
 // ── コンポーネント ───────────────────────────────────────

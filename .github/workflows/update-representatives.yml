@@ -9,6 +9,10 @@ permissions:
   contents: write
   actions: write
 
+concurrency:
+  group: update-generated-data
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
