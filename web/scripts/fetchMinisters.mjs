@@ -276,6 +276,7 @@ async function main() {
   }
 
   const indexEntries = parseIndexEntries(indexHtml);
+  console.log("minister name markup:", cheerio.load(indexHtml)(".list-profile__name").map((_, node) => cheerio.load(indexHtml)(node).toString()).get().join("\n"));
   if (indexEntries.length < 20) {
     console.warn(`ministers parse suspicious (${indexEntries.length}), keep existing`);
     console.warn(`ministers source title: ${cheerio.load(indexHtml)("title").text()}`);
