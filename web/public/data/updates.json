@@ -1,25 +1,8 @@
 {
-  "generatedAt": "2026-10-10T07:05:11.207Z",
-  "totalChanges": 2,
+  "generatedAt": "2026-10-10T07:07:31.965Z",
+  "totalChanges": 0,
   "hasUpdates": true,
-  "summaries": [
-    {
-      "target": "viceMinisters",
-      "label": "副大臣",
-      "added": 1,
-      "removed": 0,
-      "changed": 0,
-      "total": 1
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "label": "大臣政務官",
-      "added": 1,
-      "removed": 0,
-      "changed": 0,
-      "total": 1
-    }
-  ],
+  "summaries": [],
   "items": [
     {
       "target": "notice",
@@ -69,34 +52,6 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "高木啓",
-      "type": "added",
-      "summary": "高木啓 を新たに追加しました（経済産業副大臣）",
-      "reason": {
-        "label": "繰上げ当選報道あり",
-        "confidence": "confirmed",
-        "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9lQXVxWDBaOFM0TEYyYUJ1UFpYTzE3RnVEVy1FbWVOY1BNNzl2OVdZb3FCVW41ZXFKVXNIcGN4MGFUTGU0RjM3THBJTEZrMnlIVXhWMk5wQ0ZTS3dOQktfWWlUVzFvc1k5R3ljTkdXWU1hUkRv?oc=5",
-        "publishedAt": "Tue, 27 Jan 2026 06:03:30 GMT"
-      }
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "高橋祐介",
-      "type": "added",
-      "summary": "高橋祐介 を新たに追加しました（国土交通大臣政務官）",
-      "reason": {
-        "label": "繰上げ当選報道あり",
-        "confidence": "confirmed",
-        "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5TM244cVV5eEN2ZW1tUm9TVVl3NEp5RHM2czRoUFp3TDM1ZnlPZFlPUzY5SVVVQ0F4MXhoSWF0Sk5ZN1gxVk9ITXJZM1FOckFxSUQ4cUFFY0xQNkM2Y2dfUy1xWlhSZ1hVZHV0b3NkQjUzQnVa?oc=5",
-        "publishedAt": "Tue, 27 Jan 2026 07:56:49 GMT"
-      }
     }
   ]
 }
