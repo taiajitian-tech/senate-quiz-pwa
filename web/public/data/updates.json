@@ -1,17 +1,8 @@
 {
-  "generatedAt": "2026-10-10T07:10:16.318Z",
-  "totalChanges": 1,
+  "generatedAt": "2026-10-10T09:44:36.754Z",
+  "totalChanges": 0,
   "hasUpdates": true,
-  "summaries": [
-    {
-      "target": "ministers",
-      "label": "大臣",
-      "added": 0,
-      "removed": 0,
-      "changed": 1,
-      "total": 1
-    }
-  ],
+  "summaries": [],
   "items": [
     {
       "target": "notice",
@@ -61,13 +52,6 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
-    },
-    {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "葉梨 康弘",
-      "type": "changed",
-      "summary": "葉梨 康弘：役職変更（国家公安委員会委員長 / 内閣府特命担当大臣（防災 海洋政策）/ 領土問題担当 / 衆議院 → 国家公安委員会委員長 / 領土問題担当 / ＣＢＲＮＥテロ対策担当 / 内閣府特命担当大臣（沖縄及び北方対策 消費者及び食品安全 アイヌ施策） / 衆議院）"
     }
   ]
 }
