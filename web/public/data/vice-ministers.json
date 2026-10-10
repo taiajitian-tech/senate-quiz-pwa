@@ -1,7 +1,7 @@
 [
   {
-    "name": "塩崎 彰久",
-    "kana": "しおざき あきひさ",
+    "name": "塩崎彰久",
+    "kana": "しおざきあきひさ",
     "group": "デジタル副大臣 / 兼内閣府副大臣 / 衆議院",
     "house": "衆議院",
     "images": [
@@ -9,107 +9,17 @@
     ],
     "district": "愛媛1",
     "terms": 3,
-    "party": "自由民主党・無所属の会"
+    "party": "自由民主党・無所属の会",
+    "id": 1,
+    "role": "副大臣",
+    "subRole": "デジタル副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
   },
   {
-    "name": "中野 英幸",
-    "kana": "なかの ひでゆき",
-    "group": "復興副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/296.jpg/$File/296.jpg"
-    ],
-    "district": "埼玉7",
-    "terms": 3,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "西田 昭二",
-    "kana": "にしだ しょうじ",
-    "group": "復興副大臣 / 兼内閣府副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/310.jpg/$File/310.jpg"
-    ],
-    "district": "石川3",
-    "terms": 4,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "谷川 とむ",
-    "kana": "たにがわ とむ",
-    "group": "内閣府副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/255.jpg/$File/255.jpg"
-    ],
-    "district": "大阪19",
-    "terms": 4,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "平沼 正二郎",
-    "kana": "ひらぬま しょうじろう",
-    "group": "内閣府副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/348.jpg/$File/348.jpg"
-    ],
-    "district": "（比）中国",
-    "terms": 3,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "今井 絵理子",
-    "kana": "いまい えりこ",
-    "group": "内閣府副大臣 / 参議院",
-    "house": "参議院",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016010.jpg"
-    ],
-    "district": "比例",
-    "terms": 2,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "斎藤 アレックス",
-    "kana": "さいとう あれっくす",
-    "group": "総務副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/183.jpg/$File/183.jpg"
-    ],
-    "district": "（比）近畿",
-    "terms": 3,
-    "party": "日本維新の会"
-  },
-  {
-    "name": "鈴木 英敬",
-    "kana": "すずき えいけい",
-    "group": "総務副大臣 / 兼内閣府副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/211.jpg/$File/211.jpg"
-    ],
-    "district": "三重4",
-    "terms": 3,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "武村 展英",
-    "kana": "たけむら のぶひで",
-    "group": "法務副大臣 / 兼内閣府副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/243.jpg/$File/243.jpg"
-    ],
-    "district": "滋賀3",
-    "terms": 6,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "中曽根 康隆",
-    "kana": "なかそね やすたか",
+    "name": "中曽根康隆",
+    "kana": "なかそねやすたか",
     "group": "外務副大臣 / 衆議院",
     "house": "衆議院",
     "images": [
@@ -117,11 +27,17 @@
     ],
     "district": "群馬1",
     "terms": 4,
-    "party": "自由民主党・無所属の会"
+    "party": "自由民主党・無所属の会",
+    "id": 10,
+    "role": "副大臣",
+    "subRole": "外務副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
   },
   {
     "name": "堀井 巌",
-    "kana": "ほりい いわお",
+    "kana": "ほりいいわお",
     "group": "外務副大臣 / 参議院",
     "house": "参議院",
     "images": [
@@ -129,152 +45,17 @@
     ],
     "district": "奈良県",
     "terms": 3,
-    "party": "自由民主党・無所属の会"
+    "party": "自由民主党・無所属の会",
+    "id": 11,
+    "role": "副大臣",
+    "subRole": "外務副大臣",
+    "chamber": "参議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
   },
   {
-    "name": "進藤 金日子",
-    "kana": "しんどう かねひこ",
-    "group": "財務副大臣 / 参議院",
-    "house": "参議院",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016022.jpg"
-    ],
-    "district": "比例",
-    "terms": 2,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "若林 健太",
-    "kana": "わかばやし けんた",
-    "group": "財務副大臣 / 兼内閣府副大臣 / 参議院",
-    "house": "参議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/453.jpg/$File/453.jpg"
-    ],
-    "district": "長野1",
-    "terms": 2,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "青山 周平",
-    "kana": "あおやま しゅうへい",
-    "group": "文部科学副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/005.jpg/$File/005.jpg"
-    ],
-    "district": "愛知12",
-    "terms": 5,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "中田 宏",
-    "kana": "なかだ ひろし",
-    "group": "文部科学副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/287.jpg/$File/287.jpg"
-    ],
-    "district": "富山1",
-    "terms": 5,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "浦野 靖人",
-    "kana": "うらの やすと",
-    "group": "厚生労働副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/075.jpg/$File/075.jpg"
-    ],
-    "district": "大阪15",
-    "terms": 6,
-    "party": "日本維新の会"
-  },
-  {
-    "name": "藤原 崇",
-    "kana": "ふじわら たかし",
-    "group": "厚生労働副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/365.jpg/$File/365.jpg"
-    ],
-    "district": "岩手3",
-    "terms": 5,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "小寺 裕雄",
-    "kana": "こてら ひろお",
-    "group": "農林水産副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/169.jpg/$File/169.jpg"
-    ],
-    "district": "（比）近畿",
-    "terms": 4,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "藤木 真也",
-    "kana": "ふじき しんや",
-    "group": "農林水産副大臣 / 参議院",
-    "house": "参議院",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016034.jpg"
-    ]
-  },
-  {
-    "name": "高木 啓",
-    "kana": "たかぎ けい",
-    "group": "経済産業副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/232.jpg/$File/232.jpg"
-    ],
-    "district": "東京12",
-    "terms": 4,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "宮本 周司",
-    "kana": "みやもと しゅうじ",
-    "group": "経済産業副大臣 / 兼内閣府副大臣 / 参議院",
-    "house": "参議院",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013053.jpg"
-    ],
-    "district": "石川県",
-    "terms": 4,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "加藤 鮎子",
-    "kana": "かとう あゆこ",
-    "group": "国土交通副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/115.jpg/$File/115.jpg"
-    ],
-    "district": "山形3",
-    "terms": 5,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "朝日 健太郎",
-    "kana": "あさひ けんたろう",
-    "group": "国土交通副大臣 / 参議院",
-    "house": "参議院",
-    "images": [
-      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016004.jpg"
-    ],
-    "district": "東京都",
-    "terms": 2,
-    "party": "自由民主党・無所属の会"
-  },
-  {
-    "name": "畦元 将吾",
-    "kana": "あぜもと しょうご",
+    "name": "畦元将吾",
+    "kana": "あぜもとしょうご",
     "group": "環境副大臣 / 衆議院",
     "house": "衆議院",
     "images": [
@@ -282,11 +63,17 @@
     ],
     "district": "東京6",
     "terms": 3,
-    "party": "自由民主党・無所属の会"
+    "party": "自由民主党・無所属の会",
+    "id": 24,
+    "role": "副大臣",
+    "subRole": "環境副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
   },
   {
-    "name": "三ッ林 裕巳",
-    "kana": "みつばやし ひろみ",
+    "name": "三ッ林裕巳",
+    "kana": "みつばやしひろみ",
     "group": "環境副大臣 / 兼内閣府副大臣 / 衆議院",
     "house": "衆議院",
     "images": [
@@ -294,11 +81,358 @@
     ],
     "district": "埼玉13",
     "terms": 5,
-    "party": "自由民主党・無所属の会"
+    "party": "自由民主党・無所属の会",
+    "id": 25,
+    "role": "副大臣",
+    "subRole": "環境副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
   },
   {
-    "name": "小田原 潔",
-    "kana": "おだわら きよし",
+    "name": "宮本 周司",
+    "kana": "みやもとしゅうじ",
+    "group": "経済産業副大臣 / 兼内閣府副大臣 / 参議院",
+    "house": "参議院",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7013053.jpg"
+    ],
+    "district": "石川県",
+    "terms": 4,
+    "party": "自由民主党・無所属の会",
+    "id": 21,
+    "role": "副大臣",
+    "subRole": "経済産業副大臣 / 兼内閣府副大臣",
+    "chamber": "参議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "浦野靖人",
+    "kana": "うらのやすと",
+    "group": "厚生労働副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/075.jpg/$File/075.jpg"
+    ],
+    "district": "大阪15",
+    "terms": 6,
+    "party": "日本維新の会",
+    "id": 16,
+    "role": "副大臣",
+    "subRole": "厚生労働副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "藤原崇",
+    "kana": "ふじわらたかし",
+    "group": "厚生労働副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/365.jpg/$File/365.jpg"
+    ],
+    "district": "岩手3",
+    "terms": 5,
+    "party": "自由民主党・無所属の会",
+    "id": 17,
+    "role": "副大臣",
+    "subRole": "厚生労働副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "加藤鮎子",
+    "kana": "かとうあゆこ",
+    "group": "国土交通副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/115.jpg/$File/115.jpg"
+    ],
+    "district": "山形3",
+    "terms": 5,
+    "party": "自由民主党・無所属の会",
+    "id": 22,
+    "role": "副大臣",
+    "subRole": "国土交通副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "朝日 健太郎",
+    "kana": "あさひけんたろう",
+    "group": "国土交通副大臣 / 参議院",
+    "house": "参議院",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016004.jpg"
+    ],
+    "district": "東京都",
+    "terms": 2,
+    "party": "自由民主党・無所属の会",
+    "id": 23,
+    "role": "副大臣",
+    "subRole": "国土交通副大臣",
+    "chamber": "参議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "進藤 金日子",
+    "kana": "しんどうかねひこ",
+    "group": "財務副大臣 / 参議院",
+    "house": "参議院",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016022.jpg"
+    ],
+    "district": "比例",
+    "terms": 2,
+    "party": "自由民主党・無所属の会",
+    "id": 12,
+    "role": "副大臣",
+    "subRole": "財務副大臣",
+    "chamber": "参議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "若林健太",
+    "kana": "わかばやしけんた",
+    "group": "財務副大臣 / 兼内閣府副大臣 / 衆議院",
+    "house": "参議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/453.jpg/$File/453.jpg"
+    ],
+    "district": "長野1",
+    "terms": 2,
+    "party": "自由民主党・無所属の会",
+    "id": 13,
+    "role": "副大臣",
+    "subRole": "財務副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "斎藤アレックス",
+    "kana": "さいとうあれっくす",
+    "group": "総務副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/183.jpg/$File/183.jpg"
+    ],
+    "district": "（比）近畿",
+    "terms": 3,
+    "party": "日本維新の会",
+    "id": 7,
+    "role": "副大臣",
+    "subRole": "総務副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "鈴木英敬",
+    "kana": "すずきえいけい",
+    "group": "総務副大臣 / 兼内閣府副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/211.jpg/$File/211.jpg"
+    ],
+    "district": "三重4",
+    "terms": 3,
+    "party": "自由民主党・無所属の会",
+    "id": 8,
+    "role": "副大臣",
+    "subRole": "総務副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "今井 絵理子",
+    "kana": "いまいえりこ",
+    "group": "内閣府副大臣 / 参議院",
+    "house": "参議院",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016010.jpg"
+    ],
+    "district": "比例",
+    "terms": 2,
+    "party": "自由民主党・無所属の会",
+    "id": 6,
+    "role": "副大臣",
+    "subRole": "内閣府副大臣",
+    "chamber": "参議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "谷川とむ",
+    "kana": "たにがわとむ",
+    "group": "内閣府副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/255.jpg/$File/255.jpg"
+    ],
+    "district": "大阪19",
+    "terms": 4,
+    "party": "自由民主党・無所属の会",
+    "id": 4,
+    "role": "副大臣",
+    "subRole": "内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "平沼正二郎",
+    "kana": "ひらぬましょうじろう",
+    "group": "内閣府副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/348.jpg/$File/348.jpg"
+    ],
+    "district": "（比）中国",
+    "terms": 3,
+    "party": "自由民主党・無所属の会",
+    "id": 5,
+    "role": "副大臣",
+    "subRole": "内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "小寺裕雄",
+    "kana": "こてらひろお",
+    "group": "農林水産副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/169.jpg/$File/169.jpg"
+    ],
+    "district": "（比）近畿",
+    "terms": 4,
+    "party": "自由民主党・無所属の会",
+    "id": 18,
+    "role": "副大臣",
+    "subRole": "農林水産副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "id": 58580795,
+    "name": "藤木 眞也",
+    "kana": "ふじきしんや",
+    "group": "農林水産副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "農林水産副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016034.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live",
+    "district": "比例",
+    "terms": 2
+  },
+  {
+    "name": "中野英幸",
+    "kana": "なかのひでゆき",
+    "group": "復興副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/296.jpg/$File/296.jpg"
+    ],
+    "district": "埼玉7",
+    "terms": 3,
+    "party": "自由民主党・無所属の会",
+    "id": 2,
+    "role": "副大臣",
+    "subRole": "復興副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "西田昭二",
+    "kana": "にしだしょうじ",
+    "group": "復興副大臣 / 兼内閣府副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/310.jpg/$File/310.jpg"
+    ],
+    "district": "石川3",
+    "terms": 4,
+    "party": "自由民主党・無所属の会",
+    "id": 3,
+    "role": "副大臣",
+    "subRole": "復興副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "青山周平",
+    "kana": "あおやましゅうへい",
+    "group": "文部科学副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/005.jpg/$File/005.jpg"
+    ],
+    "district": "愛知12",
+    "terms": 5,
+    "party": "自由民主党・無所属の会",
+    "id": 14,
+    "role": "副大臣",
+    "subRole": "文部科学副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "中田宏",
+    "kana": "なかだひろし",
+    "group": "文部科学副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/287.jpg/$File/287.jpg"
+    ],
+    "district": "富山1",
+    "terms": 5,
+    "party": "自由民主党・無所属の会",
+    "id": 15,
+    "role": "副大臣",
+    "subRole": "文部科学副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "武村展英",
+    "kana": "たけむらのぶひで",
+    "group": "法務副大臣 / 兼内閣府副大臣 / 衆議院",
+    "house": "衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/243.jpg/$File/243.jpg"
+    ],
+    "district": "滋賀3",
+    "terms": 6,
+    "party": "自由民主党・無所属の会",
+    "id": 9,
+    "role": "副大臣",
+    "subRole": "法務副大臣 / 兼内閣府副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
+  },
+  {
+    "name": "小田原潔",
+    "kana": "おだわらきよし",
     "group": "防衛副大臣 / 衆議院",
     "house": "衆議院",
     "images": [
@@ -306,15 +440,29 @@
     ],
     "district": "東京21",
     "terms": 5,
-    "party": "自由民主党・無所属の会"
+    "party": "自由民主党・無所属の会",
+    "id": 26,
+    "role": "副大臣",
+    "subRole": "防衛副大臣",
+    "chamber": "衆議院",
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live"
   },
   {
-    "name": "小鑓 隆史",
-    "kana": "こやり たかし",
+    "id": 39823574,
+    "name": "こやり 隆史",
+    "kana": "こやりたかし",
     "group": "防衛副大臣 / 兼内閣府副大臣 / 参議院",
-    "house": "参議院",
+    "role": "副大臣",
+    "subRole": "防衛副大臣 / 兼内閣府副大臣",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
     "images": [
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7016017.jpg"
-    ]
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live",
+    "district": "滋賀県",
+    "terms": 2
   }
 ]
