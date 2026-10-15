@@ -1,8 +1,17 @@
 {
-  "generatedAt": "2026-10-15T08:34:15.801Z",
-  "totalChanges": 0,
+  "generatedAt": "2026-10-15T19:05:04.325Z",
+  "totalChanges": 2,
   "hasUpdates": true,
-  "summaries": [],
+  "summaries": [
+    {
+      "target": "ministers",
+      "label": "大臣",
+      "added": 1,
+      "removed": 0,
+      "changed": 1,
+      "total": 2
+    }
+  ],
   "items": [
     {
       "target": "notice",
@@ -52,6 +61,27 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "武部 新",
+      "type": "added",
+      "summary": "武部 新 を新たに追加しました（農林水産大臣 / 衆議院）",
+      "reason": {
+        "label": "就任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "HTB 北海道テレビ",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE02ZkFOcWtkYkZ5c2lYYnB1WVA5cFNmLXQtc2FFNEpDcXVQODA5cm15YnFFQW5jQmdXQllobFBqTTZEOFBmQzlUWHFDREJKRnJhMUk0M1M1Y0xSZw?oc=5",
+        "publishedAt": "Thu, 15 Oct 2026 07:02:00 GMT"
+      }
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "簗 和生",
+      "type": "changed",
+      "summary": "簗 和生：役職変更（農林水産大臣 / 衆議院 → 農林水産大臣 / 令和８年９月１７日～令和８年１０月１５日 / 衆議院）"
     }
   ]
 }

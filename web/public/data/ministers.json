@@ -77,14 +77,14 @@
     "terms": 7
   },
   {
-    "id": 8,
-    "name": "簗 和生",
-    "kana": "やなかずお",
+    "id": 51897022,
+    "name": "武部 新",
+    "kana": "たけべあらた",
     "group": "農林水産大臣 / 衆議院",
     "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/425.jpg/$File/425.jpg"
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/242.jpg/$File/242.jpg"
     ],
-    "district": "（比）北関東",
+    "district": "北海道12",
     "terms": 6
   },
   {
@@ -207,6 +207,17 @@
     ],
     "district": "岡山県",
     "terms": 2
+  },
+  {
+    "id": 8,
+    "name": "簗 和生",
+    "kana": "やなかずお",
+    "group": "農林水産大臣 / 令和８年９月１７日～令和８年１０月１５日 / 衆議院",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/425.jpg/$File/425.jpg"
+    ],
+    "district": "（比）北関東",
+    "terms": 6
   },
   {
     "id": 20,
