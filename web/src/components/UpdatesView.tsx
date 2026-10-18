@@ -33,6 +33,7 @@ type TaggedItem = UpdateItem & { _key: string };
 
 type UpdatesPayload = {
   generatedAt: string;
+  checkedAt: string;
   totalChanges: number;
   hasUpdates: boolean;
   summaries: UpdateSummary[];
@@ -62,6 +63,7 @@ type Props = {
 
 const EMPTY_PAYLOAD: UpdatesPayload = {
   generatedAt: '',
+  checkedAt: '',
   totalChanges: 0,
   hasUpdates: false,
   summaries: [],
@@ -146,6 +148,7 @@ export default function UpdatesView(props: Props) {
         if (cancelled) return;
         const next: UpdatesPayload = {
           generatedAt: typeof json.generatedAt === 'string' ? json.generatedAt : '',
+          checkedAt: typeof json.checkedAt === 'string' ? json.checkedAt : typeof json.generatedAt === 'string' ? json.generatedAt : '',
           totalChanges: typeof json.totalChanges === 'number' ? json.totalChanges : 0,
           hasUpdates: json.hasUpdates === true,
           summaries: Array.isArray(json.summaries) ? (json.summaries as UpdateSummary[]) : [],
@@ -183,9 +186,9 @@ export default function UpdatesView(props: Props) {
   );
   const hasRealChanges = payload.hasUpdates && payload.totalChanges > 0;
   const totalsText = useMemo(() => {
-    if (!hasRealChanges) return `変更なし（${formatDateTime(payload.generatedAt)} 確認）`;
+    if (!hasRealChanges) return `変更なし（${formatDateTime(payload.checkedAt)} 確認）`;
     return `変更 ${payload.totalChanges} 件`;
-  }, [hasRealChanges, payload.generatedAt, payload.totalChanges]);
+  }, [hasRealChanges, payload.checkedAt, payload.totalChanges]);
 
   const dismissItem = (key: string, name: string, summary: string) => {
     const entry: DismissedEntry = { key, name, summary, dismissedAt: new Date().toISOString() };
@@ -228,7 +231,7 @@ export default function UpdatesView(props: Props) {
       <div style={styles.header}>
         <button type="button" style={styles.backBtn} onClick={props.onBack}>タイトルへ戻る</button>
         <div style={styles.h1}>お知らせ</div>
-        <div style={styles.sub}>最終生成：{formatDateTime(payload.generatedAt)}</div>
+        <div style={styles.sub}>最終確認：{formatDateTime(payload.checkedAt)}</div>
         <div style={styles.desc}>{totalsText}</div>
         {error ? <div style={{ ...styles.sub, color: '#cf222e' }}>{error}</div> : null}
       </div>
@@ -240,8 +243,8 @@ export default function UpdatesView(props: Props) {
           <div style={styles.statusTitle}>{hasRealChanges ? '更新あり' : '変更なし'}</div>
           <div style={styles.statusText}>
             {hasRealChanges
-              ? `今回の自動更新で ${payload.totalChanges} 件の変更を検出しました。`
-              : `最終確認 ${formatDateTime(payload.generatedAt)} の時点では変更を検出していません。`}
+              ? `直近の更新で ${payload.totalChanges} 件の変更を検出しました。変更がない定期確認の後も表示を保持します。`
+              : `最終確認 ${formatDateTime(payload.checkedAt)} の時点では変更を検出していません。`}
           </div>
         </div>
       </div>

@@ -21,7 +21,9 @@ type Props = {
 
 type UpdatesMeta = {
   totalChanges: number;
+  notificationCount: number;
   generatedAt: string;
+  checkedAt: string;
 };
 
 const UPDATES_LAST_SEEN_KEY = "updates_last_seen_generated_at_v1";
@@ -67,7 +69,7 @@ function MenuButton(props: MenuButtonProps) {
 
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
-  const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, generatedAt: "" });
+  const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, notificationCount: 0, generatedAt: "", checkedAt: "" });
   const [lastSeenGeneratedAt, setLastSeenGeneratedAt] = useState<string>(() => readLastSeenGeneratedAt());
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
@@ -81,11 +83,13 @@ export default function TitleView(props: Props) {
       try {
         const response = await fetch(`${baseUrl}data/updates.json`, { cache: "no-store" });
         if (!response.ok) return;
-        const json = await response.json() as Partial<UpdatesMeta>;
+        const json = await response.json() as Partial<UpdatesMeta> & { items?: unknown };
         if (cancelled) return;
         setUpdatesMeta({
           totalChanges: typeof json.totalChanges === "number" ? json.totalChanges : 0,
           generatedAt: typeof json.generatedAt === "string" ? json.generatedAt : "",
+          checkedAt: typeof json.checkedAt === "string" ? json.checkedAt : typeof json.generatedAt === "string" ? json.generatedAt : "",
+          notificationCount: Array.isArray(json.items) ? json.items.length : 0,
         });
       } catch (error) {
         console.error(error);
@@ -97,7 +101,7 @@ export default function TitleView(props: Props) {
     };
   }, []);
 
-  const hasUnreadUpdates = updatesMeta.totalChanges > 0 && !!updatesMeta.generatedAt && lastSeenGeneratedAt !== updatesMeta.generatedAt;
+  const hasUnreadUpdates = updatesMeta.notificationCount > 0 && !!updatesMeta.generatedAt && lastSeenGeneratedAt !== updatesMeta.generatedAt;
 
   const handleOpenUpdates = () => {
     if (updatesMeta.generatedAt && typeof window !== "undefined") {
@@ -115,11 +119,11 @@ export default function TitleView(props: Props) {
             type="button"
             style={styles.noticeIconBtn}
             onClick={handleOpenUpdates}
-            aria-label={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
-            title={updatesMeta.totalChanges > 0 ? `お知らせ ${updatesMeta.totalChanges} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}
+            aria-label={updatesMeta.notificationCount > 0 ? `お知らせ ${updatesMeta.notificationCount} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.checkedAt)} 確認`}
+            title={updatesMeta.notificationCount > 0 ? `お知らせ ${updatesMeta.notificationCount} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.checkedAt)} 確認`}
           >
             <span style={styles.noticeIconText}>🔔</span>
-            {hasUnreadUpdates ? <span style={styles.noticeBadge}>{updatesMeta.totalChanges > 9 ? "9+" : String(updatesMeta.totalChanges)}</span> : null}
+            {hasUnreadUpdates ? <span style={styles.noticeBadge}>{updatesMeta.notificationCount > 9 ? "9+" : String(updatesMeta.notificationCount)}</span> : null}
           </button>
           <button type="button" style={styles.helpBtn} onClick={() => setHelpOpen(true)} aria-label="ヘルプ" title="ヘルプ">？</button>
         </div>
@@ -127,7 +131,7 @@ export default function TitleView(props: Props) {
         <div style={styles.titleBlock}>
           <div style={styles.title}>議員集</div>
           <div style={styles.titleSub}>まず見て、次に思い出す。開始前に条件を決めて覚える学習アプリ</div>
-          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `更新あり ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.generatedAt)} 確認`}</div>
+          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `直近の変更 ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.checkedAt)} 確認`}</div>
         </div>
 
         <div style={styles.modeSwitchWrap}>

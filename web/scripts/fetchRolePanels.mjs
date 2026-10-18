@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
-import { resolveKanteiMeiboUrls } from './kanteiMeibo.mjs';
+import { hasEndedTerm, resolveKanteiMeiboUrls } from './kanteiMeibo.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -421,10 +421,11 @@ function parseKanteiRolePage(html, label) {
     nameOnly.find('img[alt]').each((_, image) => {
       $(image).replaceWith($(image).attr('alt') || '');
     });
-    const name = toPlainName(nameOnly.text());
+    const name = toPlainName(nameOnly.text()) || toPlainName(kana);
     const roleNode = row.find('.list-profile__title').clone();
     roleNode.find('br').replaceWith(' / ');
     const subRole = normalizeWhitespace(roleNode.text());
+    if (hasEndedTerm(subRole)) return;
     const chamber = normalizeWhitespace(row.find('.label').first().text());
     if (name && ROLE_KEYWORDS[label].some((keyword) => subRole.includes(keyword)) && /^(衆議院|参議院)$/u.test(chamber)) {
       cards.push({ name, kana, subRole, chamber, sourceMode: 'live' });

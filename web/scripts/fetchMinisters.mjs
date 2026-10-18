@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
-import { resolveKanteiMeiboUrls } from "./kanteiMeibo.mjs";
+import { hasEndedTerm, resolveKanteiMeiboUrls } from "./kanteiMeibo.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -108,11 +108,6 @@ function looksLikeNameLine(line) {
   if (!line.includes("（") || !line.includes("）")) return false;
   if (/(第２次高市内閣|閣僚名簿|副大臣名簿|大臣政務官名簿|内閣ページに戻る|プロフィール)/u.test(line)) return false;
   return true;
-}
-
-// 終了日まで記載された在任期間は、官邸に残る退任者の履歴。
-function hasEndedTerm(title) {
-  return /[0-9元]+年[0-9]+月[0-9]+日\s*[~〜～–—－-]\s*(?:(?:令和|平成|昭和)\s*)?[0-9元]+年[0-9]+月[0-9]+日/u.test(String(title).normalize('NFKC'));
 }
 
 function currentMinisterCards($) {

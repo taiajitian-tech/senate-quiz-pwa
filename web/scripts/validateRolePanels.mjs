@@ -1,3 +1,4 @@
+import { hasEndedTerm } from './kanteiMeibo.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,6 +24,7 @@ for (const fileName of files) {
     if (seen.has(id)) throw new Error(`${fileName}: duplicate id ${id}`);
     seen.add(id);
     if (typeof item?.name !== 'string' || !item.name.trim()) throw new Error(`${fileName}: invalid name at ${index}`);
+    if (hasEndedTerm(item.group || item.subRole || '')) throw new Error('Ended term in current roster: ' + item.name);
     if (!Array.isArray(item?.images)) throw new Error(`${fileName}: invalid images at ${index}`);
   }
   console.log(`${fileName} OK (${parsed.length})`);

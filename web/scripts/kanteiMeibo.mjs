@@ -74,3 +74,8 @@ export async function resolveKanteiMeiboUrls() {
     parliamentarySecretariesUrl: new URL('seimukan.html', base).href,
   };
 }
+
+// 終了日まで記載された在任期間は、現職ではなく退任者の履歴。
+export function hasEndedTerm(title) {
+  return /[0-9元]+年[0-9]+月[0-9]+日\s*[~〜～–—－-]\s*(?:(?:令和|平成|昭和)\s*)?[0-9元]+年[0-9]+月[0-9]+日/u.test(String(title).normalize('NFKC'));
+}

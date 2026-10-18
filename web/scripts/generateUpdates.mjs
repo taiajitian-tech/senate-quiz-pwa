@@ -369,13 +369,25 @@ async function main() {
       return [];
     }
   })();
-  const finalItems = [...manualNotices, ...itemsWithReasons];
+  let previous = {};
+  try {
+    previous = JSON.parse(fs.readFileSync(OUT_PATH, 'utf8'));
+  } catch {
+    // 初回生成時は保持するお知らせがない。
+  }
+  const previousItems = Array.isArray(previous.items) ? previous.items : [];
+  const automaticItems = itemsWithReasons.length > 0
+    ? itemsWithReasons
+    : previousItems.filter((item) => item.target !== 'notice');
+  const noticeChanged = JSON.stringify(manualNotices) !== JSON.stringify(previousItems.filter((item) => item.target === 'notice'));
+  const finalItems = [...manualNotices, ...automaticItems];
 
   const payload = {
-    generatedAt,
-    totalChanges: itemsWithReasons.length,
-    hasUpdates: itemsWithReasons.length > 0 || manualNotices.length > 0,
-    summaries,
+    generatedAt: itemsWithReasons.length > 0 || noticeChanged ? generatedAt : previous.generatedAt || generatedAt,
+    checkedAt: generatedAt,
+    totalChanges: automaticItems.length,
+    hasUpdates: finalItems.length > 0,
+    summaries: itemsWithReasons.length > 0 ? summaries : (Array.isArray(previous.summaries) ? previous.summaries : []),
     items: finalItems,
   };
 
