@@ -1,9 +1,25 @@
 {
-  "generatedAt": "2026-10-18T18:16:03.200Z",
-  "totalChanges": 0,
+  "generatedAt": "2026-10-18T21:54:52.097Z",
+  "totalChanges": 1,
   "hasUpdates": true,
-  "summaries": [],
+  "summaries": [
+    {
+      "target": "ministers",
+      "label": "大臣",
+      "added": 0,
+      "removed": 1,
+      "changed": 0,
+      "total": 1
+    }
+  ],
   "items": [
+    {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "2026年10月19日：農林水産大臣の重複を修正",
+      "type": "changed",
+      "summary": "農林水産大臣は10月15日就任の武部新氏です。官邸の名簿に残る簗和生氏の在任履歴を現職として取り込んでいたため、現職大臣一覧から除外しました。自動更新でも在任期間の終了した記録を除外します。簗氏の衆議院議員としての掲載は継続します。"
+    },
     {
       "target": "notice",
       "targetLabel": "お知らせ",
@@ -52,6 +68,13 @@
       "name": "れいわ新選組がいのちの党に改名",
       "type": "changed",
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "簗 和生",
+      "type": "removed",
+      "summary": "簗 和生（農林水産大臣 / 令和８年９月１７日～令和８年１０月１５日 / 衆議院） を一覧から除外しました"
     }
   ]
 }

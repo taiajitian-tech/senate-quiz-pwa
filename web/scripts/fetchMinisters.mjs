@@ -110,10 +110,19 @@ function looksLikeNameLine(line) {
   return true;
 }
 
+// 終了日まで記載された在任期間は、官邸に残る退任者の履歴。
+function hasEndedTerm(title) {
+  return /[0-9元]+年[0-9]+月[0-9]+日\s*[~〜～–—－-]\s*(?:(?:令和|平成|昭和)\s*)?[0-9元]+年[0-9]+月[0-9]+日/u.test(String(title).normalize('NFKC'));
+}
+
+function currentMinisterCards($) {
+  return $('.list-profile__item').filter((_, node) => !hasEndedTerm($(node).find('.list-profile__title').text()));
+}
+
 function parseIndexEntries(html) {
   const $ = cheerio.load(html);
   const cards = [];
-  $('.list-profile__item').each((_, node) => {
+  currentMinisterCards($).each((_, node) => {
     const row = $(node);
     const nameNode = row.find('.list-profile__name').first();
     const kana = normalizeWhitespace(nameNode.find('.list-profile__name--ruby').text()).replace(/[（）()\s]/gu, '');
@@ -282,7 +291,7 @@ async function main() {
   }
 
   const indexEntries = parseIndexEntries(indexHtml);
-  const officialCount = cheerio.load(indexHtml)(".list-profile__name").length;
+  const officialCount = currentMinisterCards(cheerio.load(indexHtml)).find(".list-profile__name").length;
   if (indexEntries.length < 20 || (officialCount > 0 && indexEntries.length !== officialCount)) {
     console.warn(`ministers parse suspicious (${indexEntries.length}), keep existing`);
     console.warn(`ministers source title: ${cheerio.load(indexHtml)("title").text()}`);
