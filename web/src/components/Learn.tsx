@@ -113,7 +113,7 @@ function sortByRisk(items: Person[], progress: Record<number, ProgressItem>, now
 }
 
 function getPartyLabel(person: Person): string {
-  return (person.party ?? person.group ?? "無所属").trim() || "無所属";
+  return (person.party ?? "不明").trim() || "不明";
 }
 
 function buildPartySummaries(items: Person[]): PartySummary[] {

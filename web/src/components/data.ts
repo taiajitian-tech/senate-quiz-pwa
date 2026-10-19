@@ -282,7 +282,7 @@ function stripChamberSuffix(value: string): string {
 }
 
 function getPartyOrGroupText(person: Person): string {
-  return stripChamberSuffix(person.party || person.group || "");
+  return stripChamberSuffix(person.party || "");
 }
 
 function getRoleDetailText(person: Person, target: Target): string {
@@ -477,7 +477,7 @@ function normalizePerson(value: unknown, index: number): Person | null {
   const cleanName = split.name;
   const kana = deriveKana(v, cleanName, split.kana);
   const group = toText(v.group) || toText(v.party) || toText(v.role);
-  const party = toText(v.party) || toText(v.group) || toText(v.role);
+  const party = toText(v.party);
   const district = toText(v.district) || toText(v.electoralDistrict) || toText(v.constituency);
   const role = toText(v.role) || toText(v.title) || toText(v.post) || toText(v.position);
   const subRole = toText(v.subRole) || toText(v.subrole) || toText(v.detailRole);

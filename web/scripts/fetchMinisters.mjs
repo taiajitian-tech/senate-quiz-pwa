@@ -324,24 +324,26 @@ async function main() {
     merged.push(item);
   }
 
-  // representatives.json / senators.json から district/terms をマージ
+  // 議員名簿から所属会派・選挙区・当選回数をマージ（役職を政党に流用しない）。
   const memberMap = new Map();
   for (const fname of ["representatives.json", "senators.json"]) {
     try {
       const members = JSON.parse(fs.readFileSync(path.join(dataDir, fname), "utf8"));
       for (const m of members) {
         const key = normalizeCompact(m.name);
-        if (key) memberMap.set(key, { district: m.district || "", terms: m.terms ?? null });
+        if (key) memberMap.set(key, { district: m.district || "", terms: m.terms ?? null, party: m.party || "" });
       }
     } catch {}
   }
   function enrichList(list) {
     return list.map(item => {
       const key = normalizeCompact(item.name);
-      const info = memberMap.get(key);
+      const sameKana = members.filter((member) => item.kana && normalizeCompact(member.kana) === normalizeCompact(item.kana));
+      const info = memberMap.get(key) || (sameKana.length === 1 ? sameKana[0] : undefined);
       if (!info) return item;
       return {
         ...item,
+        party: info.party || "",
         ...(info.district ? { district: info.district } : {}),
         ...(typeof info.terms === "number" ? { terms: info.terms } : {}),
       };

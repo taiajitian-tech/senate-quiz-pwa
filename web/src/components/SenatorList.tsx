@@ -133,7 +133,7 @@ function normalizeCompactMetaText(value: string | undefined): string {
 }
 
 function getPartyFilterLabel(person: Person): string {
-  return (person.party ?? person.group ?? "無所属").trim() || "無所属";
+  return (person.party ?? "不明").trim() || "不明";
 }
 
 function buildPartySummaries(items: Person[]): PartySummary[] {
@@ -180,7 +180,7 @@ function getCompactRole(person: Person): string {
 }
 
 function getCompactParty(person: Person): string {
-  return person.party ?? person.group ?? "不明";
+  return person.party?.trim() || "不明";
 }
 
 function getCompactBadge(person: Person): string {
@@ -613,7 +613,7 @@ export default function SenatorList(props: Props) {
 
                 {(isSenators || props.target === "representatives") && props.appMode !== "entrance" ? (
                   <div style={styles.infoGrid}>
-                    <div style={styles.infoLine}>政党：{s.party ?? s.group ?? "不明"}</div>
+                    <div style={styles.infoLine}>政党：{s.party?.trim() || "不明"}</div>
                     <div style={styles.infoLine}>選挙区：{s.district ?? "不明"}</div>
                     <div style={styles.infoLine}>当選回数：{typeof s.terms === "number" ? `${s.terms}回` : "不明"}</div>
                     {isSenators ? (
@@ -661,7 +661,7 @@ export default function SenatorList(props: Props) {
             {selectedPerson.kana ? <div style={styles.detailKana}>{selectedPerson.kana}</div> : null}
             <div style={styles.detailGrid}>
               <div style={styles.detailLine}>役職・所属：{selectedPerson.group ?? selectedPerson.party ?? "不明"}</div>
-              <div style={styles.detailLine}>政党：{selectedPerson.party ?? selectedPerson.group ?? "不明"}</div>
+              <div style={styles.detailLine}>政党：{selectedPerson.party?.trim() || "不明"}</div>
               <div style={styles.detailLine}>選挙区：{selectedPerson.district ?? "不明"}</div>
               <div style={styles.detailLine}>当選回数：{typeof selectedPerson.terms === "number" ? `${selectedPerson.terms}回` : "不明"}</div>
               {isSenators ? (

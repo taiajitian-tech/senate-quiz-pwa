@@ -8,7 +8,8 @@
       "https://www.kantei.go.jp/jp/content/takaichi_sanae_001.jpeg"
     ],
     "district": "奈良2",
-    "terms": 11
+    "terms": 11,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/358.jpg/$File/358.jpg"
     ],
     "district": "兵庫4",
-    "terms": 6
+    "terms": 6,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/433.jpg/$File/433.jpg"
     ],
     "district": "岡山2",
-    "terms": 6
+    "terms": 6,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
       "https://www.kantei.go.jp/jp/content/motegi_toshimitsu_r.jpg"
     ],
     "district": "栃木5",
-    "terms": 12
+    "terms": 12,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
       "https://www.kantei.go.jp/jp/content/katayama_satsuki.jpg"
     ],
     "district": "比例",
-    "terms": 3
+    "terms": 3,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/224.jpg/$File/224.jpg"
     ],
     "district": "兵庫3",
-    "terms": 7
+    "terms": 7,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 7,
@@ -74,7 +80,8 @@
       "https://www.kantei.go.jp/jp/content/ueno_kenichirou.jpg"
     ],
     "district": "滋賀2",
-    "terms": 7
+    "terms": 7,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 51897022,
@@ -85,7 +92,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/242.jpg/$File/242.jpg"
     ],
     "district": "北海道12",
-    "terms": 6
+    "terms": 6,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 9,
@@ -96,7 +104,8 @@
       "https://www.kantei.go.jp/jp/content/akazawa_ryousei.jpg"
     ],
     "district": "鳥取2",
-    "terms": 8
+    "terms": 8,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 10,
@@ -107,7 +116,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/056.jpg/$File/056.jpg"
     ],
     "district": "静岡2",
-    "terms": 6
+    "terms": 6,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 11,
@@ -118,7 +128,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/191.jpg/$File/191.jpg"
     ],
     "district": "群馬3",
-    "terms": 6
+    "terms": 6,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 12,
@@ -129,7 +140,8 @@
       "https://www.kantei.go.jp/jp/content/koizumi_shinjirou.jpg"
     ],
     "district": "神奈川11",
-    "terms": 7
+    "terms": 7,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 13,
@@ -140,7 +152,8 @@
       "https://www.kantei.go.jp/jp/content/kihara_minoru.jpg"
     ],
     "district": "熊本1",
-    "terms": 7
+    "terms": 7,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 15,
@@ -151,7 +164,8 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7007053.jpg"
     ],
     "district": "埼玉県",
-    "terms": 4
+    "terms": 4,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 16,
@@ -162,7 +176,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/378.jpg/$File/378.jpg"
     ],
     "district": "静岡5",
-    "terms": 10
+    "terms": 10,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 14,
@@ -173,7 +188,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/335.jpg/$File/335.jpg"
     ],
     "district": "茨城3",
-    "terms": 8
+    "terms": 8,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 17,
@@ -184,7 +200,8 @@
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/291.jpg/$File/291.jpg"
     ],
     "district": "大阪11",
-    "terms": 3
+    "terms": 3,
+    "party": "日本維新の会"
   },
   {
     "id": 18,
@@ -195,7 +212,8 @@
       "https://www.kantei.go.jp/jp/content/kiuchi_minoru.jpg"
     ],
     "district": "静岡7",
-    "terms": 8
+    "terms": 8,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 19,
@@ -206,7 +224,8 @@
       "https://www.kantei.go.jp/jp/content/onoda_kimi.jpg"
     ],
     "district": "岡山県",
-    "terms": 2
+    "terms": 2,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 20,
@@ -215,7 +234,8 @@
     "group": "内閣官房副長官 / 衆議院",
     "images": [
       "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/097.jpg/$File/097.jpg"
-    ]
+    ],
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 21,
@@ -226,7 +246,8 @@
       "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7010038.jpg"
     ],
     "district": "徳島県・高知県",
-    "terms": 3
+    "terms": 3,
+    "party": "自由民主党・無所属の会"
   },
   {
     "id": 22,

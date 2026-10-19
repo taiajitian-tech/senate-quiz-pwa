@@ -1,19 +1,26 @@
 {
-  "generatedAt": "2026-10-18T22:04:58.262Z",
-  "checkedAt": "2026-10-18T22:06:50.141Z",
-  "totalChanges": 1,
+  "generatedAt": "2026-10-19T00:55:26.680Z",
+  "checkedAt": "2026-10-19T00:55:26.680Z",
+  "totalChanges": 21,
   "hasUpdates": true,
   "summaries": [
     {
       "target": "ministers",
       "label": "大臣",
       "added": 0,
-      "removed": 1,
-      "changed": 0,
-      "total": 1
+      "removed": 0,
+      "changed": 21,
+      "total": 21
     }
   ],
   "items": [
+    {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "2026年10月19日：大臣詳細の政党表示を修正",
+      "type": "changed",
+      "summary": "政党欄に役職が表示される問題を修正しました。大臣の所属会派は衆参の議員名簿から補完し、一覧・詳細・学習で役職を政党に流用しないようにしました。所属が確認できない場合は不明と表示します。"
+    },
     {
       "target": "notice",
       "targetLabel": "お知らせ",
@@ -80,9 +87,149 @@
     {
       "target": "ministers",
       "targetLabel": "大臣",
-      "name": "簗 和生",
-      "type": "removed",
-      "summary": "簗 和生（農林水産大臣 / 令和８年９月１７日～令和８年１０月１５日 / 衆議院） を一覧から除外しました"
+      "name": "高市 早苗",
+      "type": "changed",
+      "summary": "高市 早苗：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "藤井 比早之",
+      "type": "changed",
+      "summary": "藤井 比早之：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "山下 貴司",
+      "type": "changed",
+      "summary": "山下 貴司：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "茂木 敏充",
+      "type": "changed",
+      "summary": "茂木 敏充：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "片山 さつき",
+      "type": "changed",
+      "summary": "片山 さつき：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "関 芳弘",
+      "type": "changed",
+      "summary": "関 芳弘：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "上野 賢一郎",
+      "type": "changed",
+      "summary": "上野 賢一郎：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "武部 新",
+      "type": "changed",
+      "summary": "武部 新：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "赤澤 亮正",
+      "type": "changed",
+      "summary": "赤澤 亮正：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "井林 辰憲",
+      "type": "changed",
+      "summary": "井林 辰憲：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "笹川 博義",
+      "type": "changed",
+      "summary": "笹川 博義：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "小泉 進次郎",
+      "type": "changed",
+      "summary": "小泉 進次郎：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "木原 稔",
+      "type": "changed",
+      "summary": "木原 稔：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "古川 俊治",
+      "type": "changed",
+      "summary": "古川 俊治：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "細野 豪志",
+      "type": "changed",
+      "summary": "細野 豪志：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "葉梨 康弘",
+      "type": "changed",
+      "summary": "葉梨 康弘：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "中司 宏",
+      "type": "changed",
+      "summary": "中司 宏：所属変更（なし → 日本維新の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "城内 実",
+      "type": "changed",
+      "summary": "城内 実：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "小野田 紀美",
+      "type": "changed",
+      "summary": "小野田 紀美：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "尾﨑 正直",
+      "type": "changed",
+      "summary": "尾﨑 正直：所属変更（なし → 自由民主党・無所属の会）"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "中西 祐介",
+      "type": "changed",
+      "summary": "中西 祐介：所属変更（なし → 自由民主党・無所属の会）"
     }
   ]
 }
