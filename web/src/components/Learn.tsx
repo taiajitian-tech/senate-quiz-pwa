@@ -16,7 +16,7 @@ import {
 } from "./learnStorage";
 import { bumpStats } from "./stats";
 import { loadMasteredIds, loadWrongIds, saveMasteredIds, saveWrongIds } from "./progress";
-import { formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
+import { formatEntranceViceMinisterName, formatLearningHeading, getLearningAnswerLines, getTargetLabels, loadPersonsForTarget, shouldShowLearningHeadingKana, type AppMode, type Person, type Target } from "./data";
 import SafeImage from "./SafeImage";
 
 type Mode = "learn" | "review" | "reverse";
@@ -675,14 +675,17 @@ export default function Learn(props: Props) {
     ? `忘れそう ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`
     : `要復習 ${focusSummary.due} / 苦手 ${focusSummary.leech} / 完全習得 ${focusSummary.mastered}`;
 
+  const simpleViceMinister = props.appMode === "entrance" && props.target === "viceMinisters";
+
   const renderAnswerHeading = (person: Person) => (
     <div style={styles.answerNameLine}>
-      <span style={styles.answerName}>{formatLearningHeading(person, props.target, props.appMode, items)}</span>
+      <span style={styles.answerName}>{simpleViceMinister ? formatEntranceViceMinisterName(person) : formatLearningHeading(person, props.target, props.appMode, items)}</span>
       {person.kana && shouldShowLearningHeadingKana(person, props.target, props.appMode, items) ? <span style={styles.answerKana}>{person.kana}</span> : null}
     </div>
   );
 
   const renderAnswerSubline = (person: Person) => {
+    if (simpleViceMinister) return null;
     const lines = getLearningAnswerLines(person, props.target, props.appMode);
     return <div style={styles.answerGroup}>{lines.map((line) => <div key={line}>{line}</div>)}</div>;
   };

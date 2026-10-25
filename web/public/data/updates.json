@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-19T00:57:33.791Z",
-  "checkedAt": "2026-10-25T18:32:18.734Z",
+  "generatedAt": "2026-10-25T23:33:48.678Z",
+  "checkedAt": "2026-10-25T23:33:48.678Z",
   "totalChanges": 1,
   "hasUpdates": true,
   "summaries": [
@@ -14,6 +14,13 @@
     }
   ],
   "items": [
+    {
+      "target": "notice",
+      "targetLabel": "お知らせ",
+      "name": "2026年10月26日：玄関モードの副大臣表示を簡略化",
+      "type": "changed",
+      "summary": "玄関モードの学習・一覧では「塩崎副大臣」のように苗字＋副大臣だけを表示します。フルネーム・ふりがな・兼務役職の補足表示を外しました。"
+    },
     {
       "target": "notice",
       "targetLabel": "お知らせ",

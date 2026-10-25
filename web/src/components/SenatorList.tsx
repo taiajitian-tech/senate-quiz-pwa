@@ -5,6 +5,7 @@ import {
   clearAllPersonNameKanaOverrides,
   clearPersonNameKanaOverride,
   formatDisplayName,
+  formatEntranceViceMinisterName,
   shouldShowLearningHeadingKana,
   getLearningAnswerLines,
   getPersonNameKanaOverrides,
@@ -253,6 +254,7 @@ export default function SenatorList(props: Props) {
   const isHouseMembersTarget = props.target === "senators" || props.target === "representatives";
   const supportsPartyFilter = props.target === "senators" || props.target === "representatives";
   const isMinisterTarget = props.target === "ministers";
+  const simpleViceMinister = props.appMode === "entrance" && props.target === "viceMinisters";
   const isMixedTarget =
     props.target === "viceMinisters" ||
     props.target === "parliamentarySecretaries";
@@ -513,7 +515,8 @@ export default function SenatorList(props: Props) {
         {sorted.map((s) => {
           const isEditing = editMode && editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
-          const entranceDetailLines = props.appMode === "entrance" ? getLearningAnswerLines(s, props.target, props.appMode) : [];
+          const displayName = simpleViceMinister ? formatEntranceViceMinisterName(s) : formatDisplayName(s, props.target, props.appMode, sorted);
+          const entranceDetailLines = props.appMode === "entrance" && !simpleViceMinister ? getLearningAnswerLines(s, props.target, props.appMode) : [];
           return viewMode === "compact" && !editMode ? (
             <button
               key={s.id}
@@ -527,18 +530,18 @@ export default function SenatorList(props: Props) {
               }}
               onClick={() => setSelectedPerson(s)}
             >
-              {(isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={getCompactBadgeStyle(getCompactBadge(s))}>{getCompactBadge(s)}</div> : null}
+              {!simpleViceMinister && (isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={getCompactBadgeStyle(getCompactBadge(s))}>{getCompactBadge(s)}</div> : null}
               <div style={styles.compactAvatarBox}>
                 <SafeImage
                   src={s.images?.[0] ?? ""}
-                  alt={formatDisplayName(s, props.target, props.appMode, sorted)}
+                  alt={displayName}
                   style={styles.compactAvatar}
                   fallbackStyle={styles.compactNoAvatar}
                   fallbackText="画像なし"
                 />
               </div>
-              <div style={styles.compactName}>{formatDisplayName(s, props.target, props.appMode, sorted)}</div>
-              <div style={styles.compactMeta}>
+              <div style={styles.compactName}>{displayName}</div>
+              {!simpleViceMinister ? <div style={styles.compactMeta}>
                 {isHouseMembersTarget
                   ? getCompactParty(s)
                   : isMinisterTarget
@@ -546,7 +549,7 @@ export default function SenatorList(props: Props) {
                     : isMixedTarget
                       ? (compactInfoMode === "role" ? getCompactRole(s) : getCompactParty(s))
                       : getCompactRole(s)}
-              </div>
+              </div> : null}
               <div style={styles.compactBadges}>
                 {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
                 {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
@@ -567,7 +570,7 @@ export default function SenatorList(props: Props) {
               }}
             >
               <div style={styles.avatarBox}>
-                <SafeImage src={s.images?.[0] ?? ""} alt={formatDisplayName(s, props.target, props.appMode, sorted)} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
+                <SafeImage src={s.images?.[0] ?? ""} alt={displayName} style={styles.avatar} fallbackStyle={styles.noAvatar} fallbackText="画像なし" />
               </div>
               <div style={styles.meta}>
                 {isEditing ? (
@@ -578,7 +581,7 @@ export default function SenatorList(props: Props) {
                 ) : (
                   <>
                     <div style={styles.nameRow}>
-                      <div style={styles.name}>{formatDisplayName(s, props.target, props.appMode, sorted)}</div>
+                      <div style={styles.name}>{displayName}</div>
                       <div style={styles.badges}>
                         {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
                         {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}

@@ -230,6 +230,20 @@ function getFamilyName(name: string): string {
   return "";
 }
 
+const VICE_MINISTER_FAMILY_NAMES: Record<string, string> = {
+  "塩崎彰久": "塩崎", "中曽根康隆": "中曽根", "畦元将吾": "畦元",
+  "三ッ林裕巳": "三ッ林", "高木啓": "高木", "浦野靖人": "浦野",
+  "藤原崇": "藤原", "加藤鮎子": "加藤", "若林健太": "若林",
+  "斎藤アレックス": "斎藤", "鈴木英敬": "鈴木", "谷川とむ": "谷川",
+  "平沼正二郎": "平沼", "小寺裕雄": "小寺", "中野英幸": "中野",
+  "西田昭二": "西田", "青山周平": "青山", "中田宏": "中田", "小田原潔": "小田原",
+};
+
+export function formatEntranceViceMinisterName(person: Person): string {
+  const familyName = getFamilyName(person.name) || VICE_MINISTER_FAMILY_NAMES[normalizeCompact(person.name)];
+  return `${familyName || person.name}副大臣`;
+}
+
 function buildFamilyNameCount(items: Person[]): Map<string, number> {
   const counts = new Map<string, number>();
   for (const item of items) {
