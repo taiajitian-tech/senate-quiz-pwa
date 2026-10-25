@@ -685,7 +685,6 @@ export default function Learn(props: Props) {
   );
 
   const renderAnswerSubline = (person: Person) => {
-    if (simpleViceMinister) return null;
     const lines = getLearningAnswerLines(person, props.target, props.appMode);
     return <div style={styles.answerGroup}>{lines.map((line) => <div key={line}>{line}</div>)}</div>;
   };

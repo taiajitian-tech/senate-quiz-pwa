@@ -516,7 +516,7 @@ export default function SenatorList(props: Props) {
           const isEditing = editMode && editingId === s.id;
           const hasOverride = Boolean(overrideMap[s.id]?.name || overrideMap[s.id]?.kana);
           const displayName = simpleViceMinister ? formatEntranceViceMinisterName(s) : formatDisplayName(s, props.target, props.appMode, sorted);
-          const entranceDetailLines = props.appMode === "entrance" && !simpleViceMinister ? getLearningAnswerLines(s, props.target, props.appMode) : [];
+          const entranceDetailLines = props.appMode === "entrance" ? getLearningAnswerLines(s, props.target, props.appMode) : [];
           return viewMode === "compact" && !editMode ? (
             <button
               key={s.id}
@@ -530,7 +530,7 @@ export default function SenatorList(props: Props) {
               }}
               onClick={() => setSelectedPerson(s)}
             >
-              {!simpleViceMinister && (isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={getCompactBadgeStyle(getCompactBadge(s))}>{getCompactBadge(s)}</div> : null}
+              {(isMixedTarget || props.target === "ministers") && getCompactBadge(s) ? <div style={getCompactBadgeStyle(getCompactBadge(s))}>{getCompactBadge(s)}</div> : null}
               <div style={styles.compactAvatarBox}>
                 <SafeImage
                   src={s.images?.[0] ?? ""}
@@ -541,7 +541,7 @@ export default function SenatorList(props: Props) {
                 />
               </div>
               <div style={styles.compactName}>{displayName}</div>
-              {!simpleViceMinister ? <div style={styles.compactMeta}>
+              <div style={styles.compactMeta}>
                 {isHouseMembersTarget
                   ? getCompactParty(s)
                   : isMinisterTarget
@@ -549,7 +549,7 @@ export default function SenatorList(props: Props) {
                     : isMixedTarget
                       ? (compactInfoMode === "role" ? getCompactRole(s) : getCompactParty(s))
                       : getCompactRole(s)}
-              </div> : null}
+              </div>
               <div style={styles.compactBadges}>
                 {hasOverride ? <span style={styles.badgeEdit}>編集済み</span> : null}
                 {s.aiGuess ? <span style={styles.badgeGuess}>推定</span> : null}
