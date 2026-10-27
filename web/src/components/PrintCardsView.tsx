@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { loadPersonsForTarget, type Target } from './data';
-import { buildCardGroups, getCardBodyLines, paginateCards, PRINT_OPTIONS, type CardRoster, type PrintTarget } from './printCards';
+import { buildCardGroups, getCardBodyLines, paginateCards, preparePrintSheets, PRINT_OPTIONS, type CardRoster, type PrintTarget } from './printCards';
 import './PrintCardsView.css';
 
 type Props = { onBack: () => void };
@@ -13,6 +13,7 @@ export default function PrintCardsView({ onBack }: Props) {
   const [reload, setReload] = useState(0);
   const [selected, setSelected] = useState<PrintTarget[]>(PRINT_OPTIONS.map(option => option.target));
   const [allCouncilors, setAllCouncilors] = useState(true);
+  const [duplex, setDuplex] = useState(true);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
   const [imageAttempt, setImageAttempt] = useState(0);
@@ -27,6 +28,7 @@ export default function PrintCardsView({ onBack }: Props) {
   }, [reload]);
   const groups = useMemo(() => buildCardGroups(rosters, selected, allCouncilors), [rosters, selected, allCouncilors]);
   const pages = useMemo(() => paginateCards(groups), [groups]);
+  const sheets = useMemo(() => preparePrintSheets(pages, duplex), [pages, duplex]);
   const cards = useMemo(() => groups.flatMap(group => group.cards), [groups]);
   const images = useMemo(() => new Set(cards.map(card => card.image).filter(Boolean)), [cards]);
   const ready = [...images].filter(image => loadedImages.has(image)).length;
@@ -41,12 +43,13 @@ export default function PrintCardsView({ onBack }: Props) {
       <div className="print-cards-controls">
         <button type="button" onClick={onBack}>タイトルへ戻る</button>
         <h1>暗記カードを印刷</h1>
-        <p>写真大きめ・A4縦に20人（4列×5段）。名前・ふりがな・役職の補足も印刷します。</p>
+        <p>A4縦に20人（4列×5段）。両面用は表が顔写真、裏が名前・ふりがな・役職などの情報です。</p>
+        <label className="print-cards-duplex"><input type="checkbox" checked={duplex} onChange={event => setDuplex(event.target.checked)} />両面印刷用（表：写真／裏：名前・情報）</label>
         <fieldset><legend>印刷する区分</legend>{PRINT_OPTIONS.map(option => (
           <label key={option.target}><input type="checkbox" checked={selected.includes(option.target)} onChange={() => toggle(option.target)} />{option.label}</label>
         ))}</fieldset>
         <label className="print-cards-complete"><input type="checkbox" checked={allCouncilors} disabled={!selected.includes('senators')} onChange={event => setAllCouncilors(event.target.checked)} />参議院の現職全員を含める（大臣等も追加）</label>
-        {loading ? <p role="status">最新の名簿を読み込み中…</p> : <p role="status">{cards.length}人・{pages.length}ページ{selected.includes('senators') ? ` ／ 参院 ${coveredCouncilors}/${councilors.size}人を収録` : ''}</p>}
+        {loading ? <p role="status">最新の名簿を読み込み中…</p> : <p role="status">{cards.length}人・{pages.length}枚{duplex ? `（両面${sheets.length}ページ）` : "（片面）"}{selected.includes('senators') ? ` ／ 参院 ${coveredCouncilors}/${councilors.size}人を収録` : ''}</p>}
         {!loading && cards.length > 0 && <p role="status">写真 {ready}/{images.size}枚 読込済み{failed > 0 ? `（取得できない写真 ${failed}件）` : ''}</p>}
         {error && <p role="alert">{error}</p>}
         <div className="print-cards-actions">
@@ -54,23 +57,26 @@ export default function PrintCardsView({ onBack }: Props) {
           {error && <button type="button" onClick={() => { setLoading(true); setError(''); setReload(value => value + 1); }}>名簿を再読込</button>}
           {failed > 0 && <button type="button" onClick={() => { setFailedImages(new Set()); setImageAttempt(value => value + 1); }}>写真を再読込</button>}
         </div>
-        <p className="print-cards-hint">印刷設定：用紙A4・倍率100%・ヘッダーとフッターはオフ。PDF保存も印刷画面から行えます。</p>
+        <p className="print-cards-hint">印刷設定：用紙A4・{duplex ? "両面／長辺とじ・" : "片面・"}倍率100%・ヘッダーとフッターはオフ。PDF保存も印刷画面から行えます。</p>
         {!loading && selected.length === 0 && <p>印刷する区分を選んでください。</p>}
       </div>
       <div className="print-cards-preview">
-        {pages.map((page, pageIndex) => (
-          <section key={page.key} className="print-cards-sheet" aria-label={`${page.label} ${page.sectionPage}ページ目`}>
-            <header><strong>玄関モード｜{page.label}</strong><span>{page.total}人・{page.sectionPage}/{page.sectionPages}</span></header>
-            <div className="print-cards-grid">{page.cards.map(card => {
-              const lines = getCardBodyLines(card);
+        {sheets.map((page, pageIndex) => (
+          <section key={page.key} className={`print-cards-sheet print-sheet-${page.side}`} aria-label={`${page.label} ${page.sectionPage}枚目 ${page.side === "back" ? "裏" : "表"}`}>
+            <header><strong>{page.side === "front" ? "暗記カード｜表（写真）" : `玄関モード｜${page.label}${page.side === "back" ? "（裏）" : ""}`}</strong><span>{page.total}人・{page.sectionPage}/{page.sectionPages}</span></header>
+            <div className="print-cards-grid">{page.cards.map((card, slot) => {
+              if (!card) return <div key={`empty:${slot}`} className="print-card-empty" aria-hidden="true" />;
+              const lines = getCardBodyLines(card, page.side === 'back' ? 12 : 17);
               const dense = lines.reduce((total, line) => total + Math.ceil([...line].length / 17), 0) > 5;
-              return <article key={card.key} className={`print-card${dense ? ' print-card-dense' : ''}`}>
-                <div className="print-card-photo">{card.image ? <img key={`${card.image}:${imageAttempt}`} src={card.image} alt={card.name} loading="eager" onLoad={() => setLoadedImages(previous => new Set(previous).add(card.image))} onError={() => setFailedImages(previous => new Set(previous).add(card.image))} /> : <span>写真なし</span>}</div>
-                <h2 style={{ fontSize: `${Math.max(7, Math.min(10.2, 115 / [...card.heading].length))}pt` }}>{card.heading}</h2>
-                <div className="print-card-details">{lines.map((line, lineIndex) => <div key={lineIndex}>{line}</div>)}</div>
+              return <article key={card.key} className={`print-card${dense ? ' print-card-dense' : ''}${page.side === 'back' ? ' print-card-answer' : ''}`}>
+                {page.side !== 'back' && <div className="print-card-photo">{card.image ? <img key={`${card.image}:${imageAttempt}`} src={card.image} alt={card.name} loading="eager" onLoad={() => setLoadedImages(previous => new Set(previous).add(card.image))} onError={() => setFailedImages(previous => new Set(previous).add(card.image))} /> : <span>写真なし</span>}</div>}
+                {page.side !== 'front' && <>
+                  <h2 style={{ fontSize: `${Math.max(7, Math.min(page.side === 'back' ? 13.5 : 10.2, 115 / [...card.heading].length))}pt` }}>{card.heading}</h2>
+                  <div className="print-card-details">{lines.map((line, lineIndex) => <div key={lineIndex}>{line}</div>)}</div>
+                </>}
               </article>;
             })}</div>
-            <footer><span>A4・20人／原寸100%{selected.includes('senators') ? `・参院${coveredCouncilors}人収録` : ''}・{date}</span><span>{pageIndex + 1}</span></footer>
+            <footer><span>A4・20人／原寸100%{selected.includes('senators') ? `・参院${coveredCouncilors}人収録` : ''}・{date}</span><span>{page.sheetNumber}枚目{page.side === "single" ? "" : page.side === "front" ? " 表" : " 裏"}・{pageIndex + 1}/{sheets.length}</span></footer>
           </section>
         ))}
       </div>

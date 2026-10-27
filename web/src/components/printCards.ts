@@ -61,9 +61,29 @@ export function paginateCards(groups: CardGroup[]): CardPage[] {
   })));
 }
 
-export function getCardBodyLines(card: PrintCard): string[] {
+export function getCardBodyLines(card: PrintCard, maxCharacters = 17): string[] {
   return card.lines.flatMap(line => {
     const match = line.match(/^(.*?)（([^）]+)）$/u);
-    return match && [...line].length > 17 ? [match[1], `（${match[2]}）`] : [line];
+    return match && [...line].length > maxCharacters ? [match[1], `（${match[2]}）`] : [line];
+  });
+}
+
+export type PrintSheet = Omit<CardPage, 'cards'> & {
+  side: 'single' | 'front' | 'back';
+  sheetNumber: number;
+  cards: (PrintCard | null)[];
+};
+
+export function preparePrintSheets(pages: CardPage[], duplex: boolean): PrintSheet[] {
+  return pages.flatMap((page, index): PrintSheet[] => {
+    const slots = Array.from({ length: 20 }, (_, slot) => page.cards[slot] || null);
+    const common = { ...page, sheetNumber: index + 1 };
+    if (!duplex) return [{ ...common, key: `${page.key}:single`, side: 'single', cards: slots }];
+    // A4縦・長辺とじ：同じ行の左右を反転し、切ったカードの表裏を合わせる。
+    const back = slots.map((_, slot) => slots[Math.floor(slot / 4) * 4 + 3 - slot % 4]);
+    return [
+      { ...common, key: `${page.key}:front`, side: 'front', cards: slots },
+      { ...common, key: `${page.key}:back`, side: 'back', cards: back },
+    ];
   });
 }
