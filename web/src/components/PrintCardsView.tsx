@@ -43,7 +43,7 @@ export default function PrintCardsView({ onBack }: Props) {
       <div className="print-cards-controls">
         <button type="button" onClick={onBack}>タイトルへ戻る</button>
         <h1>暗記カードを印刷</h1>
-        <p>A4縦に20人（4列×5段）。両面用は表が顔写真、裏が名前・ふりがな・役職などの情報です。</p>
+        <p>A4縦に20人（4列×5段）。カード間の余白なしで、境界線に沿って切れます。両面用は表が顔写真、裏が名前・ふりがな・役職などの情報です。</p>
         <label className="print-cards-duplex"><input type="checkbox" checked={duplex} onChange={event => setDuplex(event.target.checked)} />両面印刷用（表：写真／裏：名前・情報）</label>
         <fieldset><legend>印刷する区分</legend>{PRINT_OPTIONS.map(option => (
           <label key={option.target}><input type="checkbox" checked={selected.includes(option.target)} onChange={() => toggle(option.target)} />{option.label}</label>
@@ -76,7 +76,7 @@ export default function PrintCardsView({ onBack }: Props) {
                   <div className="print-card-details">{lines.map((line, lineIndex) => <div key={lineIndex}>{line}</div>)}</div>
                 </>}
               </article>;
-            })}</div>
+            })}<svg className="print-cards-cut-lines" viewBox="0 0 192 260" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H192V260H0Z M48 0V260 M96 0V260 M144 0V260 M0 52H192 M0 104H192 M0 156H192 M0 208H192" /></svg></div>
             <footer><span>A4・20人／原寸100%{selected.includes('senators') ? `・参院${coveredCouncilors}人収録` : ''}・{date}</span><span>{page.sheetNumber}枚目{page.side === "single" ? "" : page.side === "front" ? " 表" : " 裏"}・{pageIndex + 1}/{sheets.length}</span></footer>
           </section>
         ))}

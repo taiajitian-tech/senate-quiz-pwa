@@ -17,8 +17,10 @@
 .print-cards-sheet > header { height: 9mm; display: flex; justify-content: space-between; align-items: center; gap: 3mm; font-size: 12pt; }
 .print-cards-sheet > header span { font-size: 7pt; flex-shrink: 0; }
 .print-cards-sheet > header small { display: block; font-size: 6.5pt; line-height: 1.3; font-weight: 400; }
-.print-cards-grid { display: grid; grid-template-columns: repeat(4, 46.5mm); grid-template-rows: repeat(5, 50.5mm); gap: 2mm; }
-.print-card { position: relative; border: .4pt solid #b5bdc2; width: 46.5mm; height: 50.5mm; padding: 1.8mm 2mm 2.3mm; display: flex; flex-direction: column; align-items: stretch; box-sizing: border-box; overflow: hidden; }
+.print-cards-grid { position: relative; width: 100%; height: 260mm; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(5, minmax(0, 1fr)); gap: 0; }
+.print-cards-cut-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: visible; }
+.print-cards-cut-lines path { fill: none; stroke: #8b969d; stroke-width: .12; }
+.print-card { position: relative; border: 0; width: 100%; height: 100%; padding: 1.8mm 2mm 2.3mm; display: flex; flex-direction: column; align-items: stretch; box-sizing: border-box; overflow: hidden; }
 .print-card-photo { flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; margin-bottom: 1mm; }
 .print-card-photo img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
 .print-card h2 { flex: 0 0 auto; margin: 0 0 1mm; line-height: 1.2; font-weight: 700; text-align: center; overflow-wrap: anywhere; }
@@ -26,18 +28,18 @@
 .print-card-dense .print-card-details { font-size: 6.2pt; }
 .print-cards-sheet > footer { height: 6mm; display: flex; justify-content: space-between; align-items: end; font-size: 6pt; }
 @media print {
-  @page { size: A4 portrait; margin: 9mm; }
+  @page { size: A4 portrait; margin: 9mm 0; }
   html, body { height: auto !important; margin: 0 !important; background: white !important; }
   #root { width: auto !important; max-width: none !important; padding: 0 !important; margin: 0 !important; min-height: 0 !important; }
   #root > :not(.print-cards-view) { display: none !important; }
   .print-cards-controls { display: none !important; }
   .print-cards-preview { overflow: visible; padding: 0; background: white; }
-  .print-cards-sheet { margin: 0; break-inside: avoid; page-break-inside: avoid; break-after: page; page-break-after: always; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .print-cards-sheet { width: 100%; margin: 0; padding-inline: 9mm; break-inside: avoid; page-break-inside: avoid; break-after: page; page-break-after: always; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .print-cards-sheet:last-child { break-after: auto; page-break-after: auto; }
 }
 
 .print-cards-duplex { margin-bottom: 18px; padding: 12px; border: 1px solid #93b2c5; border-radius: 10px; background: #f0f7fb; font-weight: 700; }
-.print-card-empty { width: 46.5mm; height: 50.5mm; }
+.print-card-empty { width: 100%; height: 100%; }
 .print-sheet-front .print-card-photo { margin: 0; }
 .print-card-answer { justify-content: center; }
 .print-card-answer h2 { margin-bottom: 3mm; }
