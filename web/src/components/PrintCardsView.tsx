@@ -68,11 +68,11 @@ export default function PrintCardsView({ onBack }: Props) {
             <div className="print-cards-grid">{page.cards.map((card, slot) => {
               if (!card) return <div key={`empty:${slot}`} className="print-card-empty" aria-hidden="true" />;
               const lines = getCardBodyLines(card, page.side === 'back' ? 12 : 17);
-              const dense = lines.reduce((total, line) => total + Math.ceil([...line].length / 17), 0) > 5;
+              const dense = lines.reduce((total, line) => total + Math.ceil([...line].length / (page.side === 'back' ? 13 : 17)), 0) > 5;
               return <article key={card.key} className={`print-card${dense ? ' print-card-dense' : ''}${page.side === 'back' ? ' print-card-answer' : ''}`}>
                 {page.side !== 'back' && <div className="print-card-photo">{card.image ? <img key={`${card.image}:${imageAttempt}`} src={card.image} alt={card.name} loading="eager" onLoad={() => setLoadedImages(previous => new Set(previous).add(card.image))} onError={() => setFailedImages(previous => new Set(previous).add(card.image))} /> : <span>写真なし</span>}</div>}
                 {page.side !== 'front' && <>
-                  <h2 style={{ fontSize: `${Math.max(7, Math.min(page.side === 'back' ? 13.5 : 10.2, 115 / [...card.heading].length))}pt` }}>{card.heading}</h2>
+                  <h2 style={{ fontSize: `${Math.max(7, Math.min(page.side === 'back' ? 12 : 10.2, (page.side === 'back' ? 95 : 115) / [...card.heading].length))}pt` }}>{card.heading}</h2>
                   <div className="print-card-details">{lines.map((line, lineIndex) => <div key={lineIndex}>{line}</div>)}</div>
                 </>}
               </article>;
