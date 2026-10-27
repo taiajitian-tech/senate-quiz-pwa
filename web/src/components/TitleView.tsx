@@ -17,6 +17,7 @@ type Props = {
   onOpenList: () => void;
   onOpenBackup: () => void;
   onOpenUpdates: () => void;
+  onOpenPrint: () => void;
 };
 
 type UpdatesMeta = {
@@ -175,6 +176,7 @@ export default function TitleView(props: Props) {
           <MenuButton label="自動再生" sub="最初の大量インプットに使う" onClick={props.onOpenAutoplay} />
           <MenuButton label="一覧" sub="全体を見渡して確認する" onClick={props.onOpenList} />
           <MenuButton label="成績確認" sub="覚えた・うろ覚え・未確認を確認する" onClick={props.onOpenStats} />
+          {props.appMode === "entrance" ? <MenuButton label="暗記カードを印刷" sub="写真大きめ・A4に20人。PDF保存もできます" onClick={props.onOpenPrint} /> : null}
           <MenuButton label="バックアップ" sub="学習記録の保存と復元" onClick={props.onOpenBackup} />
         </div>
 

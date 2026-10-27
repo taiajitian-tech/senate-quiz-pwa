@@ -8,9 +8,10 @@ import TitleView from "./components/TitleView";
 import ErrorBoundary from "./components/ErrorBoundary";
 import FirstGuide, { FIRST_GUIDE_SEEN_KEY } from "./components/FirstGuide";
 import UpdatesView from "./components/UpdatesView";
+import PrintCardsView from "./components/PrintCardsView";
 import { getAvailableTargets, type AppMode, type Target } from "./components/data";
 
-type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "list" | "backup" | "updates";
+type Screen = "title" | "learn" | "reverse" | "review" | "autoplay" | "stats" | "list" | "backup" | "updates" | "print";
 
 type ListJump = {
   target: Target;
@@ -62,6 +63,7 @@ export default function App() {
         onOpenList={() => setScreen("list")}
         onOpenBackup={() => setScreen("backup")}
         onOpenUpdates={() => setScreen("updates")}
+        onOpenPrint={() => setScreen("print")}
       />
     );
   } else if (screen === "stats") {
@@ -87,6 +89,8 @@ export default function App() {
     content = <AutoPlayView appMode={appMode} target={target} onBack={() => setScreen("title")} />;
   } else if (screen === "backup") {
     content = <BackupView onBack={() => setScreen("title")} />;
+  } else if (screen === "print") {
+    content = <PrintCardsView onBack={() => setScreen("title")} />;
   } else if (screen === "updates") {
     content = <UpdatesView onBack={() => setScreen("title")} onOpenPerson={openPersonFromUpdates} />;
   }
