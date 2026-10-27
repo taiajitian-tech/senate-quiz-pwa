@@ -48,6 +48,7 @@ export default function PrintCardsView({ onBack }: Props) {
         <fieldset><legend>印刷する区分</legend>{PRINT_OPTIONS.map(option => (
           <label key={option.target}><input type="checkbox" checked={selected.includes(option.target)} onChange={() => toggle(option.target)} />{option.label}</label>
         ))}</fieldset>
+        <p className="print-cards-hint">参議院一般議員は、大臣・副大臣・政務官・参院役員を除いた区分です。</p>
         <label className="print-cards-complete"><input type="checkbox" checked={allCouncilors} disabled={!selected.includes('senators')} onChange={event => setAllCouncilors(event.target.checked)} />参議院の現職全員を含める（大臣等も追加）</label>
         {loading ? <p role="status">最新の名簿を読み込み中…</p> : <p role="status">{cards.length}人・{pages.length}枚{duplex ? `（両面${sheets.length}ページ）` : "（片面）"}{selected.includes('senators') ? ` ／ 参院 ${coveredCouncilors}/${councilors.size}人を収録` : ''}</p>}
         {!loading && cards.length > 0 && <p role="status">写真 {ready}/{images.size}枚 読込済み{failed > 0 ? `（取得できない写真 ${failed}件）` : ''}</p>}
@@ -63,7 +64,7 @@ export default function PrintCardsView({ onBack }: Props) {
       <div className="print-cards-preview">
         {sheets.map((page, pageIndex) => (
           <section key={page.key} className={`print-cards-sheet print-sheet-${page.side}`} aria-label={`${page.label} ${page.sectionPage}枚目 ${page.side === "back" ? "裏" : "表"}`}>
-            <header><strong>{page.side === "front" ? "暗記カード｜表（写真）" : `玄関モード｜${page.label}${page.side === "back" ? "（裏）" : ""}`}</strong><span>{page.total}人・{page.sectionPage}/{page.sectionPages}</span></header>
+            <header><div><strong>{`${page.label}${page.side === 'front' ? '｜表（写真）' : page.side === 'back' ? '｜裏（情報）' : ''}`}</strong>{page.key.startsWith('senators:') && <small>大臣・副大臣・政務官・参院役員を除く</small>}</div><span>{page.total}人・{page.sectionPage}/{page.sectionPages}</span></header>
             <div className="print-cards-grid">{page.cards.map((card, slot) => {
               if (!card) return <div key={`empty:${slot}`} className="print-card-empty" aria-hidden="true" />;
               const lines = getCardBodyLines(card, page.side === 'back' ? 12 : 17);
