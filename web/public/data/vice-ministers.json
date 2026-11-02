@@ -358,6 +358,23 @@
     "terms": 2
   },
   {
+    "id": 50651841,
+    "name": "西田昭二",
+    "kana": "にしだしょうじ",
+    "group": "復興副大臣 / 衆議院",
+    "role": "副大臣",
+    "subRole": "復興副大臣",
+    "chamber": "衆議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/310.jpg/$File/310.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live",
+    "district": "石川3",
+    "terms": 4
+  },
+  {
     "name": "中野英幸",
     "kana": "なかのひでゆき",
     "group": "復興副大臣 / 衆議院",
@@ -371,24 +388,6 @@
     "id": 2,
     "role": "副大臣",
     "subRole": "復興副大臣",
-    "chamber": "衆議院",
-    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
-    "sourceMode": "live"
-  },
-  {
-    "name": "西田昭二",
-    "kana": "にしだしょうじ",
-    "group": "復興副大臣 / 兼内閣府副大臣 / 衆議院",
-    "house": "衆議院",
-    "images": [
-      "https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/310.jpg/$File/310.jpg"
-    ],
-    "district": "石川3",
-    "terms": 4,
-    "party": "自由民主党・無所属の会",
-    "id": 3,
-    "role": "副大臣",
-    "subRole": "復興副大臣 / 兼内閣府副大臣",
     "chamber": "衆議院",
     "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
     "sourceMode": "live"
@@ -481,5 +480,22 @@
     "sourceMode": "live",
     "district": "滋賀県",
     "terms": 2
+  },
+  {
+    "id": 97263326,
+    "name": "金子 道仁",
+    "kana": "かねこみちひと",
+    "group": "防災副大臣 / 兼内閣府副大臣 / 参議院",
+    "role": "副大臣",
+    "subRole": "防災副大臣 / 兼内閣府副大臣",
+    "chamber": "参議院",
+    "party": "日本維新の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7022013.jpg"
+    ],
+    "sourceUrl": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html",
+    "sourceMode": "live",
+    "district": "比例",
+    "terms": 1
   }
 ]
