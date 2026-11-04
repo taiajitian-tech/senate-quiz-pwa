@@ -1,28 +1,12 @@
 {
-  "generatedAt": "2026-11-02T10:55:05.035Z",
-  "checkedAt": "2026-11-04T11:31:04.971Z",
-  "totalChanges": 5,
+  "generatedAt": "2026-11-04T21:16:35.422Z",
+  "checkedAt": "2026-11-04T21:16:35.422Z",
+  "totalChanges": 1,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "ministers",
-      "label": "大臣",
-      "added": 0,
-      "removed": 0,
-      "changed": 1,
-      "total": 1
-    },
-    {
-      "target": "viceMinisters",
-      "label": "副大臣",
-      "added": 2,
-      "removed": 1,
-      "changed": 0,
-      "total": 3
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "label": "大臣政務官",
+      "target": "councilorsOfficersList",
+      "label": "参議院役員",
       "added": 1,
       "removed": 0,
       "changed": 0,
@@ -115,66 +99,17 @@
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
     },
     {
-      "target": "ministers",
-      "targetLabel": "大臣",
-      "name": "細野 豪志",
-      "type": "changed",
-      "summary": "細野 豪志：役職変更（復興大臣 / 内閣府特命担当大臣（防災） / 福島原子力発電所事故再生総括担当 / 防災庁設置準備担当 / 国土強靱化担当 / 国際防災協力担当 / 衆議院 → 防災大臣 / 復興大臣 / 福島原子力発電所事故再生総括担当 / 国土強靱化担当 / 国際防災協力担当 / 衆議院）"
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "西田昭二",
+      "target": "councilorsOfficersList",
+      "targetLabel": "参議院役員",
+      "name": "松村 祥史",
       "type": "added",
-      "summary": "西田昭二 を新たに追加しました（復興副大臣）",
+      "summary": "松村 祥史 を新たに追加しました（消費税・支援金法案に関する特別委員長）",
       "reason": {
         "label": "就任報道あり",
-        "confidence": "confirmed",
-        "sourceTitle": "TBS NEWS DIG",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9HREJmeGc5U0p3U25Sb21JSEVMN0IxMWYtQUhpWkRDQjN1dE9YUEljS01YNFk1SlVJVGhjSGdUZXhVN0dGZjVWc05CNVF1enl6ZXdJb21FQUJQSEpLLVBGSlFqNU1LZ2c?oc=5",
-        "publishedAt": "Sat, 10 Oct 2026 07:00:00 GMT"
-      }
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "金子 道仁",
-      "type": "added",
-      "summary": "金子 道仁 を新たに追加しました（防災副大臣 / 兼内閣府副大臣）",
-      "reason": {
-        "label": "補欠選挙報道あり",
-        "confidence": "confirmed",
-        "sourceTitle": "ｄメニューニュース",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPYlEyWllNZXlhcHNuRXc3VG93UEJZTjZJLXB2STMzSnpQb25aNWg1dTRSX2ZkYmJEZHZEdTZUaTJRTHFENGl2amoxUFIyX2xEemMzNGpsYjlsSy1QcDlQSEY2NEpGUWxfWGdJU2VzM3NzcThGYUVBOHMtbDU4a3FqbnE5Z2xma28zVDg0LdIBjAFBVV95cUxPYlEyWllNZXlhcHNuRXc3VG93UEJZTjZJLXB2STMzSnpQb25aNWg1dTRSX2ZkYmJEZHZEdTZUaTJRTHFENGl2amoxUFIyX2xEemMzNGpsYjlsSy1QcDlQSEY2NEpGUWxfWGdJU2VzM3NzcThGYUVBOHMtbDU4a3FqbnE5Z2xma28zVDg0LQ?oc=5",
-        "publishedAt": "Mon, 02 Nov 2026 02:19:00 GMT"
-      }
-    },
-    {
-      "target": "viceMinisters",
-      "targetLabel": "副大臣",
-      "name": "西田昭二",
-      "type": "removed",
-      "summary": "西田昭二（復興副大臣 / 兼内閣府副大臣） を一覧から除外しました",
-      "reason": {
-        "label": "死去報道あり",
         "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5IOWV5a0FBa2tWOU95SDJnR1NSaDBuUi1qblItWjZRYUQwNHdTeUltT0pIX0dTa1NWa2Q0Z25EYVl0WnlWWllpSHBVQmFoU1hkY1FIYTdvUkx4M3lqelFaek5tY0l6TnM?oc=5",
-        "publishedAt": "Tue, 14 Apr 2026 07:00:00 GMT"
-      }
-    },
-    {
-      "target": "parliamentarySecretaries",
-      "targetLabel": "大臣政務官",
-      "name": "大西洋平",
-      "type": "added",
-      "summary": "大西洋平 を新たに追加しました（防災大臣政務官 / 兼内閣府大臣政務官）",
-      "reason": {
-        "label": "就任報道あり",
-        "confidence": "confirmed",
-        "sourceTitle": "アラブニュース",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMi4gJBVV95cUxOMzdmNGFQMWFLRFk3QWl0ejVJLWxfdkM4SXlJYTA4N0h3MlBhcVE2TUNvdTZKU2E5Slc1bFFFc2dDbU96Vm1NSFFHRkgzQU85dF80SjVQRjZ6aU9PVW14eG1jYV9CT2VzM0NuVHp4RHF0Tl9MU3RXaDl0Vjl6S0hwdGRBUmo1X1lRZFE2b3ZxaGtobTdtSVRMY1NnSEs0bnEyanYwcnZ4eW9nWE1RVXlEODhrMV8xWDFRZGtmelNYOGY5aFZiVnA5M0Vod3ZIQTdDZTBYd0d3NTdYRUpWc28xX0psa1dNZW1UQzM2T2otSVhkaEEyYjdkdnRhYjFnNGhkV3VPME5rVVkyaGJaeE8tZFhHRnFBME5QM0xoU01xRTdnUW5EUHFtUEx3R2pQaE93T0FXX0h4T1RCaW9ReEZxVkZwT2JVMXFtNmI2czMydHRJekw2SkJ5YWtYbmdBaWNSSlE?oc=5",
-        "publishedAt": "Sun, 17 May 2026 07:00:00 GMT"
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9CdDg2R3M0UWQycmJqRW9iVzRyM1BSTkNXUDVibDQ4MWc4NmhkR0hxcWNVSGI0U1BTSVBrVXFqVEFxejVrajVpZHdGNXc2UnFlQjBNZzlJQnNBVVJsOVk1Xw?oc=5",
+        "publishedAt": "Thu, 17 Apr 2025 10:41:14 GMT"
       }
     }
   ]

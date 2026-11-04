@@ -300,6 +300,21 @@
     "sourceMode": "live"
   },
   {
+    "id": 57260660,
+    "name": "松村 祥史",
+    "kana": "まつむらよしふみ",
+    "group": "消費税・支援金法案に関する特別委員長 / 参議院",
+    "role": "参議院役員",
+    "subRole": "消費税・支援金法案に関する特別委員長",
+    "chamber": "参議院",
+    "party": "自由民主党・無所属の会",
+    "images": [
+      "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/photo/g7004057.jpg"
+    ],
+    "sourceUrl": "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/222/yakuin.htm",
+    "sourceMode": "live"
+  },
+  {
     "id": 72734495,
     "name": "宮沢 洋一",
     "kana": "みやざわよういち",
