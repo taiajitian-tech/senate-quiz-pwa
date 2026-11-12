@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-11-04T21:16:35.422Z",
-  "checkedAt": "2026-11-12T21:50:18.347Z",
-  "totalChanges": 1,
+  "generatedAt": "2026-11-12T21:54:48.070Z",
+  "checkedAt": "2026-11-12T21:54:48.070Z",
+  "totalChanges": 28,
   "hasUpdates": true,
   "summaries": [
     {
-      "target": "councilorsOfficersList",
-      "label": "参議院役員",
-      "added": 1,
-      "removed": 0,
+      "target": "representatives",
+      "label": "衆議院議員",
+      "added": 0,
+      "removed": 28,
       "changed": 0,
-      "total": 1
+      "total": 28
     }
   ],
   "items": [
@@ -99,18 +99,284 @@
       "summary": "れいわ新選組がいのちの党に党名変更しました。各議員の所属表記を更新しました。"
     },
     {
-      "target": "councilorsOfficersList",
-      "targetLabel": "参議院役員",
-      "name": "松村 祥史",
-      "type": "added",
-      "summary": "松村 祥史 を新たに追加しました（消費税・支援金法案に関する特別委員長）",
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "浅野哲",
+      "type": "removed",
+      "summary": "浅野哲 を一覧から除外しました",
       "reason": {
-        "label": "就任報道あり",
+        "label": "死去報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "毎日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5aUE81MFA1cjhaaU1KWEdJVlpvdHQ2Yy1yN0tpejMwM1MxbjdtdGUzcmFvMlFQNEJ4R2JXTHRJUWhsSlQ0RU5kclRlNUkzYXpCU1ItMTJ4cnA1a1ptSjdvMWU3aEJzR0tV?oc=5",
+        "publishedAt": "Sat, 14 Feb 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "飯泉嘉門",
+      "type": "removed",
+      "summary": "飯泉嘉門 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
         "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9CdDg2R3M0UWQycmJqRW9iVzRyM1BSTkNXUDVibDQ4MWc4NmhkR0hxcWNVSGI0U1BTSVBrVXFqVEFxejVrajVpZHdGNXc2UnFlQjBNZzlJQnNBVVJsOVk1Xw?oc=5",
-        "publishedAt": "Thu, 17 Apr 2025 10:41:14 GMT"
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBXUFdTRjFhOFdJZFl4WTZUVy1fQTNxSW9Hc3FsRWtxMENYQzlCR0h4Vll5MmdVOFJnQ2NZU1JVdlNSSUhPYmZ0dFpWQXVHeXFuUmRmVkNELUc0VF9zcWZUOTJqeTJadw?oc=5",
+        "publishedAt": "Wed, 17 May 2023 07:00:00 GMT"
       }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "井戸まさえ",
+      "type": "removed",
+      "summary": "井戸まさえ を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB1YXJtRWttZEVPMEdRUUQ1SDJ3WkRNRzJyWHU1Z2pKemtIZG5qNnlIYzlxb2Zaak03SjRHVkN2SzB4NHphU2VEaVZiTFpack4zYW5LdTlNRTU0aDZfby1oMUx4TjU?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 05:10:01 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "臼木秀剛",
+      "type": "removed",
+      "summary": "臼木秀剛 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "読売新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9TekQzNzFJOGZFajNrVGxNODliNURWM0xHZi1FUGNaaTM2S1VLZC01RU15YTBiTTZIOXFZZGVvRDd6ZC1PeXJuVmoxMnduZ3FkVlpIY0trSFY5VEVjR19wQ2dGS3Z1YVdGWlpkWmJIbTM?oc=5",
+        "publishedAt": "Thu, 05 Feb 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "岡野純子",
+      "type": "removed",
+      "summary": "岡野純子 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBZTHVraTJyZDMyV1BxOERVWHB1N0p4QkZnM18ybW95dm1FWUdzZ3BFMFlnaFVDam9wcTZabmpkcVZlTTJ6ZldaOFBiTm5yT3ZkUWlxTXlocU1UanZlZTVpeExoSXdPejQ?oc=5",
+        "publishedAt": "Tue, 23 Dec 2025 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "小竹凱",
+      "type": "removed",
+      "summary": "小竹凱 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "candidate",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5FcC1lVUtXNkZoSkx1LUdraURPdWhlWFRURFhKTV9tamFjQTdoWW43eVptcUFiSERNZHl0Yjg1ZDdSTjJybGpMMEZBRGlzN2hjc1ZFWks2NFY1bzhKakIxWQ?oc=5",
+        "publishedAt": "Thu, 29 Jun 2023 07:38:19 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "河井昭成",
+      "type": "removed",
+      "summary": "河井昭成 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "candidate",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5ZMHRLUXhOUGd3RVdidnkyaGZFWDhfZTVZVl94YVlnNzRsS0VvQVltSGtqaVEwNzI2ZU8wVUJwOFB5RnM2bXN3VU9VdzBMQk9MRjNtVWVRcFlLam9mREFTcGV2TEZPZzJZb2llT0RHM1VXRFpk?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 07:39:40 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "許斐亮太郎",
+      "type": "removed",
+      "summary": "許斐亮太郎 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "Yahoo!ニュース",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02OU9LeEVsT1IwWE1OWHdSLWlBckFLN2phU3lDSDd0OWpZMElZQlM5bHFHZGVHdnl0VkVpUDU1ZlU5TXA0Qk1aSGhWNC1vMzNnOHY4ZDhMd2tCQ0ZmTkRaY1ZheTYxa01PVFFZa3k1dllSRl8tWWVjMjFLMmlnQnc?oc=5",
+        "publishedAt": "Mon, 12 Oct 2026 07:00:00 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "近藤雅彦",
+      "type": "removed",
+      "summary": "近藤雅彦 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBWd1kzZzZCY21KYjAweC0xZ0t4VGs1RWhFN2FQZFZqZm11WkthM0tTX3Z2aWpBQndhNjJkWUxTSW82TVBhYzRERmZQWk1UOTBFTGpOWUFtVDU3LVAwa1ZZQkVva3JZS0FqV19CNUdXNmZ6bWxn?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 04:12:04 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "佐々木真琴",
+      "type": "removed",
+      "summary": "佐々木真琴 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1pazdsbEIwM1I2VG4tc3BGQkhvUUUza2M3ZjhyRWE0czM5dVNYZkFobktMTE4wbUkyVFBqRTVZcDJLQWhfMEZTR0MwTU95S0NlM1pMLS1DNG1pYjNSSGhLam8wc1F0clk?oc=5",
+        "publishedAt": "Mon, 09 Feb 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "鈴木義弘",
+      "type": "removed",
+      "summary": "鈴木義弘 を一覧から除外しました",
+      "reason": {
+        "label": "辞任報道あり",
+        "confidence": "candidate",
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ma2FnZXA4ZS0xUHk5UWZTQlBZQjRod3dTSENCTmZmbGxFUkJQRldoakVmZTRpVXJOMXBxcVNDZjhQTTZmZEJmU0RHaEpELXQ2VndPM0pSU19jcENVZzhPaDFpWDM?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 05:17:42 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "高沢一基",
+      "type": "removed",
+      "summary": "高沢一基 を一覧から除外しました",
+      "reason": {
+        "label": "落選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "東京新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE8ydUdMQ3Mxa2lYSC1KYk1vTWJhT2JENkdDaWU0MnBxRmFCb3ZaNm4yV1BOTHNGRV84SG0zTzJkR0p5Z1Fqa1k4N2Y0VUU4ZjdIWGRJ?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 08:00:00 GMT"
+      }
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "田中健",
+      "type": "removed",
+      "summary": "田中健 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "玉木雄一郎",
+      "type": "removed",
+      "summary": "玉木雄一郎 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "丹野みどり",
+      "type": "removed",
+      "summary": "丹野みどり を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "長友慎治",
+      "type": "removed",
+      "summary": "長友慎治 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "鍋島勢理",
+      "type": "removed",
+      "summary": "鍋島勢理 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "西岡秀子",
+      "type": "removed",
+      "summary": "西岡秀子 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "西岡義高",
+      "type": "removed",
+      "summary": "西岡義高 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "野村美穂",
+      "type": "removed",
+      "summary": "野村美穂 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "橋本幹彦",
+      "type": "removed",
+      "summary": "橋本幹彦 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "日野紗里亜",
+      "type": "removed",
+      "summary": "日野紗里亜 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "深作ヘスス",
+      "type": "removed",
+      "summary": "深作ヘスス を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "福田徹",
+      "type": "removed",
+      "summary": "福田徹 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "古川元久",
+      "type": "removed",
+      "summary": "古川元久 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "向山好一",
+      "type": "removed",
+      "summary": "向山好一 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "村岡敏英",
+      "type": "removed",
+      "summary": "村岡敏英 を一覧から除外しました"
+    },
+    {
+      "target": "representatives",
+      "targetLabel": "衆議院議員",
+      "name": "森ようすけ",
+      "type": "removed",
+      "summary": "森ようすけ を一覧から除外しました"
     }
   ]
 }
