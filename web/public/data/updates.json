@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-12T21:54:48.070Z",
-  "checkedAt": "2026-11-13T10:51:44.016Z",
+  "generatedAt": "2026-11-13T11:29:19.384Z",
+  "checkedAt": "2026-11-13T11:29:19.384Z",
   "totalChanges": 28,
   "hasUpdates": true,
   "summaries": [
     {
       "target": "representatives",
       "label": "衆議院議員",
-      "added": 0,
-      "removed": 28,
+      "added": 28,
+      "removed": 0,
       "changed": 0,
       "total": 28
     }
@@ -102,122 +102,122 @@
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "浅野哲",
-      "type": "removed",
-      "summary": "浅野哲 を一覧から除外しました",
+      "type": "added",
+      "summary": "浅野哲 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "死去報道あり",
+        "label": "補欠選挙報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "毎日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5aUE81MFA1cjhaaU1KWEdJVlpvdHQ2Yy1yN0tpejMwM1MxbjdtdGUzcmFvMlFQNEJ4R2JXTHRJUWhsSlQ0RU5kclRlNUkzYXpCU1ItMTJ4cnA1a1ptSjdvMWU3aEJzR0tV?oc=5",
-        "publishedAt": "Sat, 14 Feb 2026 08:00:00 GMT"
+        "sourceTitle": "新・国民民主党",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1NeUdPT1lWYWF5WVdfS0lJNS1TSWo2V3huR2RwZE5DazNpS0dmRHlLTzEwQlVPWHlHM3hJOXZWRkxyMUxZSE5HTVlXWmtrbWFRTEtmUnRfREdRUU0?oc=5",
+        "publishedAt": "Thu, 09 Apr 2026 07:00:00 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "飯泉嘉門",
-      "type": "removed",
-      "summary": "飯泉嘉門 を一覧から除外しました",
+      "type": "added",
+      "summary": "飯泉嘉門 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
+        "label": "就任報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBXUFdTRjFhOFdJZFl4WTZUVy1fQTNxSW9Hc3FsRWtxMENYQzlCR0h4Vll5MmdVOFJnQ2NZU1JVdlNSSUhPYmZ0dFpWQXVHeXFuUmRmVkNELUc0VF9zcWZUOTJqeTJadw?oc=5",
-        "publishedAt": "Wed, 17 May 2023 07:00:00 GMT"
+        "sourceTitle": "すずき英敬",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6OGY1and4dmpDUFBVYmJuQmRmek1FSGwwa3FjTWFUb1lOdk9WdjctT1d4WUF1M0J2TkhGTHNDRk1PVXN0MFRiTlgyY3ViZW9iM2x4YzRtVFZOZld2bF9TcQ?oc=5",
+        "publishedAt": "Thu, 22 Oct 2026 07:00:00 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "井戸まさえ",
-      "type": "removed",
-      "summary": "井戸まさえ を一覧から除外しました",
+      "type": "added",
+      "summary": "井戸まさえ を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
-        "confidence": "confirmed",
+        "label": "繰上げ当選報道あり",
+        "confidence": "candidate",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB1YXJtRWttZEVPMEdRUUQ1SDJ3WkRNRzJyWHU1Z2pKemtIZG5qNnlIYzlxb2Zaak03SjRHVkN2SzB4NHphU2VEaVZiTFpack4zYW5LdTlNRTU0aDZfby1oMUx4TjU?oc=5",
-        "publishedAt": "Tue, 27 Jan 2026 05:10:01 GMT"
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE05MjhyY3hTTWh6WHMtVF9vdFpqVDIzMTlLLXh4aS1jSEVqZExZMHNwM2Q3Y0tKdnItLWRDU2s5NndYbU8xcURqQlFVUHNCZHV1cVpHMmVUMnZuVzdfLXJLUjRVZ3JaNWZ3SnRoUmNnUF9nMDNl?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 06:06:48 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "臼木秀剛",
-      "type": "removed",
-      "summary": "臼木秀剛 を一覧から除外しました",
+      "type": "added",
+      "summary": "臼木秀剛 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
+        "label": "当選報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "読売新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9TekQzNzFJOGZFajNrVGxNODliNURWM0xHZi1FUGNaaTM2S1VLZC01RU15YTBiTTZIOXFZZGVvRDd6ZC1PeXJuVmoxMnduZ3FkVlpIY0trSFY5VEVjR19wQ2dGS3Z1YVdGWlpkWmJIbTM?oc=5",
-        "publishedAt": "Thu, 05 Feb 2026 08:00:00 GMT"
+        "sourceTitle": "UHB 北海道文化放送",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBiNm5wSlZQdmhvbmdITmN1MWlCQkQ2UzUxeFoxUzNXSHl0WlhIbXpOSl9sbk91YllmU3RlcC1EY1JHVzNsUG11aDN5VC1hNlRaTU9lUWhNSQ?oc=5",
+        "publishedAt": "Mon, 09 Feb 2026 08:00:00 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "岡野純子",
-      "type": "removed",
-      "summary": "岡野純子 を一覧から除外しました",
+      "type": "added",
+      "summary": "岡野純子 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
+        "label": "補欠選挙報道あり",
         "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBZTHVraTJyZDMyV1BxOERVWHB1N0p4QkZnM18ybW95dm1FWUdzZ3BFMFlnaFVDam9wcTZabmpkcVZlTTJ6ZldaOFBiTm5yT3ZkUWlxTXlocU1UanZlZTVpeExoSXdPejQ?oc=5",
-        "publishedAt": "Tue, 23 Dec 2025 08:00:00 GMT"
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1pbTNnd2pNNWoxWlg0dVFMVWNIUC1EaHZpaTg2WTFYVmdKcUdSQXlleFpIeUd1WnpXQlBCcUhKNTNnUnE0THNWWXFDajFDU2h0TklGQkpIaFRUa3ZKbVNUYkZHWjlXTlA5Z2wwZEhzZGZDS0oz?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 05:19:28 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "小竹凱",
-      "type": "removed",
-      "summary": "小竹凱 を一覧から除外しました",
+      "type": "added",
+      "summary": "小竹凱 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
-        "confidence": "candidate",
+        "label": "当選報道あり",
+        "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5FcC1lVUtXNkZoSkx1LUdraURPdWhlWFRURFhKTV9tamFjQTdoWW43eVptcUFiSERNZHl0Yjg1ZDdSTjJybGpMMEZBRGlzN2hjc1ZFWks2NFY1bzhKakIxWQ?oc=5",
-        "publishedAt": "Thu, 29 Jun 2023 07:38:19 GMT"
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBNY1RhU1diMGR0RjRBdFJZeEo4NlFKamhSNlFsaVhSaGl6enZvM0NxNGNTcXJGeENMLXlHczJOWjJOQ2lOMVZQX0RLRVJLbDdtVDV6NTF2SVdMR3dnXzBXWGZPNlVxeTZzMGhJRTJRRmxaYzVv?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 06:04:43 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "河井昭成",
-      "type": "removed",
-      "summary": "河井昭成 を一覧から除外しました",
+      "type": "added",
+      "summary": "河井昭成 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
-        "confidence": "candidate",
-        "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5ZMHRLUXhOUGd3RVdidnkyaGZFWDhfZTVZVl94YVlnNzRsS0VvQVltSGtqaVEwNzI2ZU8wVUJwOFB5RnM2bXN3VU9VdzBMQk9MRjNtVWVRcFlLam9mREFTcGV2TEZPZzJZb2llT0RHM1VXRFpk?oc=5",
-        "publishedAt": "Tue, 27 Jan 2026 07:39:40 GMT"
+        "label": "当選報道あり",
+        "confidence": "confirmed",
+        "sourceTitle": "UAゼンセン",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB4UnU0dWp2ZS1uTkNmNnhwRGFhYUFJck5EQmZ5TWREd3ZKZHo3dTdVNV9WRm9oaHB4anRLZjZFRHNnY3VBVFB2dFFLaHdZUm8?oc=5",
+        "publishedAt": "Wed, 18 Feb 2026 08:00:00 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "許斐亮太郎",
-      "type": "removed",
-      "summary": "許斐亮太郎 を一覧から除外しました",
+      "type": "added",
+      "summary": "許斐亮太郎 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
+        "label": "当選報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "Yahoo!ニュース",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02OU9LeEVsT1IwWE1OWHdSLWlBckFLN2phU3lDSDd0OWpZMElZQlM5bHFHZGVHdnl0VkVpUDU1ZlU5TXA0Qk1aSGhWNC1vMzNnOHY4ZDhMd2tCQ0ZmTkRaY1ZheTYxa01PVFFZa3k1dllSRl8tWWVjMjFLMmlnQnc?oc=5",
-        "publishedAt": "Mon, 12 Oct 2026 07:00:00 GMT"
+        "sourceTitle": "data-max.co.jp",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE4tbWZYNTczaDVqYVRmM2RIaFh2ODN4OEVtMnBtczdXNHJqSDlxVmZpZU14Z0p1dnBBWEdfYktZMzdlRnF3QVZaZzRxODJ6emxtN2c?oc=5",
+        "publishedAt": "Mon, 09 Feb 2026 08:00:00 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "近藤雅彦",
-      "type": "removed",
-      "summary": "近藤雅彦 を一覧から除外しました",
+      "type": "added",
+      "summary": "近藤雅彦 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
+        "label": "当選報道あり",
         "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
         "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBWd1kzZzZCY21KYjAweC0xZ0t4VGs1RWhFN2FQZFZqZm11WkthM0tTX3Z2aWpBQndhNjJkWUxTSW82TVBhYzRERmZQWk1UOTBFTGpOWUFtVDU3LVAwa1ZZQkVva3JZS0FqV19CNUdXNmZ6bWxn?oc=5",
@@ -228,13 +228,13 @@
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "佐々木真琴",
-      "type": "removed",
-      "summary": "佐々木真琴 を一覧から除外しました",
+      "type": "added",
+      "summary": "佐々木真琴 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
+        "label": "当選報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1pazdsbEIwM1I2VG4tc3BGQkhvUUUza2M3ZjhyRWE0czM5dVNYZkFobktMTE4wbUkyVFBqRTVZcDJLQWhfMEZTR0MwTU95S0NlM1pMLS1DNG1pYjNSSGhLam8wc1F0clk?oc=5",
+        "sourceTitle": "岩手日報",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBwWmlmaEMwVHMtVkFuYkprb2xpdUdTMkFMN3NXaWNuTmdhaVVJT0gyOHBDY1MwNHZFRGZFdmlWdVM5YnFyNm5qd2wtbmQ0ajdZVHZkWUxaMTJvQkx0M20w?oc=5",
         "publishedAt": "Mon, 09 Feb 2026 08:00:00 GMT"
       }
     },
@@ -242,13 +242,13 @@
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "鈴木義弘",
-      "type": "removed",
-      "summary": "鈴木義弘 を一覧から除外しました",
+      "type": "added",
+      "summary": "鈴木義弘 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "辞任報道あり",
-        "confidence": "candidate",
+        "label": "当選報道あり",
+        "confidence": "confirmed",
         "sourceTitle": "朝日新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ma2FnZXA4ZS0xUHk5UWZTQlBZQjRod3dTSENCTmZmbGxFUkJQRldoakVmZTRpVXJOMXBxcVNDZjhQTTZmZEJmU0RHaEpELXQ2VndPM0pSU19jcENVZzhPaDFpWDM?oc=5",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9CMWl6Z2lLdFdSTUNrVjNuMU1weVAxU25kY0swZmZJRlZFcDJRalgyYWJubl94RkJwdXVZakc4Rzh4cmFGQ1F5YVhsN3NMQ3NSWnJtR2FidC1saEVOZWRlMWR1OGhBbDd6amJmcVJjbGg2SGxw?oc=5",
         "publishedAt": "Tue, 27 Jan 2026 05:17:42 GMT"
       }
     },
@@ -256,127 +256,127 @@
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "高沢一基",
-      "type": "removed",
-      "summary": "高沢一基 を一覧から除外しました",
+      "type": "added",
+      "summary": "高沢一基 を新たに追加しました（国民民主党・無所属クラブ）",
       "reason": {
-        "label": "落選報道あり",
+        "label": "当選報道あり",
         "confidence": "confirmed",
-        "sourceTitle": "東京新聞",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE8ydUdMQ3Mxa2lYSC1KYk1vTWJhT2JENkdDaWU0MnBxRmFCb3ZaNm4yV1BOTHNGRV84SG0zTzJkR0p5Z1Fqa1k4N2Y0VUU4ZjdIWGRJ?oc=5",
-        "publishedAt": "Tue, 27 Jan 2026 08:00:00 GMT"
+        "sourceTitle": "朝日新聞",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0zTUZtN00zZkZIZHJjS2I5ZDJyTk1oOUJaU1NsaUpBRENzZTlEVk5nWlB1cjNvcUpDT3o1Q0Rmek1aUGpkVHN0dC1YS1l4Y3FLMGI5SGhuOUx5SUZXZ1cxU1labHlaRGNITEc4STUzUDlCeDZO?oc=5",
+        "publishedAt": "Tue, 27 Jan 2026 06:07:31 GMT"
       }
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "田中健",
-      "type": "removed",
-      "summary": "田中健 を一覧から除外しました"
+      "type": "added",
+      "summary": "田中健 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "玉木雄一郎",
-      "type": "removed",
-      "summary": "玉木雄一郎 を一覧から除外しました"
+      "type": "added",
+      "summary": "玉木雄一郎 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "丹野みどり",
-      "type": "removed",
-      "summary": "丹野みどり を一覧から除外しました"
+      "type": "added",
+      "summary": "丹野みどり を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "長友慎治",
-      "type": "removed",
-      "summary": "長友慎治 を一覧から除外しました"
+      "type": "added",
+      "summary": "長友慎治 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "鍋島勢理",
-      "type": "removed",
-      "summary": "鍋島勢理 を一覧から除外しました"
+      "type": "added",
+      "summary": "鍋島勢理 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "西岡秀子",
-      "type": "removed",
-      "summary": "西岡秀子 を一覧から除外しました"
+      "type": "added",
+      "summary": "西岡秀子 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "西岡義高",
-      "type": "removed",
-      "summary": "西岡義高 を一覧から除外しました"
+      "type": "added",
+      "summary": "西岡義高 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "野村美穂",
-      "type": "removed",
-      "summary": "野村美穂 を一覧から除外しました"
+      "type": "added",
+      "summary": "野村美穂 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "橋本幹彦",
-      "type": "removed",
-      "summary": "橋本幹彦 を一覧から除外しました"
+      "type": "added",
+      "summary": "橋本幹彦 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "日野紗里亜",
-      "type": "removed",
-      "summary": "日野紗里亜 を一覧から除外しました"
+      "type": "added",
+      "summary": "日野紗里亜 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "深作ヘスス",
-      "type": "removed",
-      "summary": "深作ヘスス を一覧から除外しました"
+      "type": "added",
+      "summary": "深作ヘスス を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "福田徹",
-      "type": "removed",
-      "summary": "福田徹 を一覧から除外しました"
+      "type": "added",
+      "summary": "福田徹 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "古川元久",
-      "type": "removed",
-      "summary": "古川元久 を一覧から除外しました"
+      "type": "added",
+      "summary": "古川元久 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "向山好一",
-      "type": "removed",
-      "summary": "向山好一 を一覧から除外しました"
+      "type": "added",
+      "summary": "向山好一 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "村岡敏英",
-      "type": "removed",
-      "summary": "村岡敏英 を一覧から除外しました"
+      "type": "added",
+      "summary": "村岡敏英 を新たに追加しました（国民民主党・無所属クラブ）"
     },
     {
       "target": "representatives",
       "targetLabel": "衆議院議員",
       "name": "森ようすけ",
-      "type": "removed",
-      "summary": "森ようすけ を一覧から除外しました"
+      "type": "added",
+      "summary": "森ようすけ を新たに追加しました（国民民主党・無所属クラブ）"
     }
   ]
 }
