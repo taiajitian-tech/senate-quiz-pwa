@@ -1,435 +1,109 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Target } from './data';
-import { getNoticeKey, markNoticesRead, newestNoticesFirst } from './updateNotices';
+import { getNoticeKey, markNoticesRead, newestNoticesFirst, noticePresentation, readNoticeKeys, type NoticeIdentity } from './updateNotices';
+import './UpdatesView.css';
 
-// ── 型定義 ──────────────────────────────────────────────
-
-type UpdateSummary = {
-  target: string;
-  label: string;
-  added: number;
-  removed: number;
-  changed: number;
-  total: number;
-};
-
-type UpdateReason = {
-  label: string;
-  confidence: 'candidate' | 'confirmed';
-  sourceTitle?: string;
-  sourceUrl?: string;
-  publishedAt?: string;
-};
-
-type UpdateItem = {
-  id?: string;
-  detectedAt?: string;
-  target: string;
+type UpdateItem = NoticeIdentity & {
   targetLabel: string;
-  name: string;
-  type: 'added' | 'removed' | 'changed';
-  summary: string;
-  reason?: UpdateReason;
+  reason?: { label: string; confidence: string; sourceTitle?: string; sourceUrl?: string };
 };
+type Payload = { generatedAt: string; checkedAt: string; items: UpdateItem[] };
+type Props = { onBack: () => void; onOpenPerson: (target: Target, name: string) => void };
 
-type TaggedItem = UpdateItem & { _key: string };
-
-type UpdatesPayload = {
-  generatedAt: string;
-  checkedAt: string;
-  totalChanges: number;
-  hasUpdates: boolean;
-  summaries: UpdateSummary[];
-  items: UpdateItem[];
-};
-
-type HistoryEntry = {
-  generatedAt: string;
-  totalChanges: number;
-  hasUpdates: boolean;
-  viewedAt: string;
-};
-
-type DismissedEntry = {
-  key: string;
-  name: string;
-  summary: string;
-  dismissedAt: string;
-};
-
-type Props = {
-  onBack: () => void;
-  onOpenPerson: (target: Target, name: string) => void;
-};
-
-// ── 定数 ────────────────────────────────────────────────
-
-const EMPTY_PAYLOAD: UpdatesPayload = {
-  generatedAt: '',
-  checkedAt: '',
-  totalChanges: 0,
-  hasUpdates: false,
-  summaries: [],
-  items: [],
-};
-
-const HISTORY_KEY = 'updates_history_v1';
-const DISMISSED_KEY = 'updates_dismissed_v1';
-const DISMISSED_HISTORY_KEY = 'updates_dismissed_history_v1';
-
-// ── ユーティリティ ───────────────────────────────────────
-
-function formatDateTime(value: string): string {
-  if (!value) return '未生成';
+function dateText(value: string, withTime = false) {
   const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return value;
+  if (!value || Number.isNaN(date.getTime())) return '未確認';
   return new Intl.DateTimeFormat('ja-JP', {
-    year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit',
+    timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit',
+    ...(withTime ? { hour: '2-digit', minute: '2-digit' } as const : {}),
   }).format(date);
 }
 
-function getTypeLabel(type: UpdateItem['type']): string {
-  if (type === 'added') return '追加';
-  if (type === 'removed') return '除外';
-  return '変更';
+function personTarget(item: UpdateItem): Target | null {
+  const targets: string[] = ['senators', 'representatives', 'ministers', 'viceMinisters', 'parliamentarySecretaries', 'councilorsOfficersList', 'houseOfficersList'];
+  return item.type !== 'removed' && targets.includes(item.target) ? item.target as Target : null;
 }
 
-function getReasonLabel(reason: UpdateReason): string {
-  if (!reason?.label) return '';
-  return reason.confidence === 'confirmed'
-    ? `理由：${reason.label}`
-    : `理由候補：${reason.label}`;
+function safeLink(value = '') {
+  return /^https:\/\//u.test(value) ? value : undefined;
 }
 
-function toTarget(value: string): Target | null {
-  const valid: Target[] = [
-    'senators', 'representatives', 'ministers', 'viceMinisters',
-    'parliamentarySecretaries', 'councilorsOfficersList', 'houseOfficersList',
-  ];
-  return valid.includes(value as Target) ? (value as Target) : null;
+function NoticeCard({ item, onOpenPerson, onConfirm }: { item: UpdateItem; onOpenPerson: Props['onOpenPerson']; onConfirm?: () => void }) {
+  const presentation = noticePresentation(item);
+  const target = personTarget(item);
+  const source = safeLink(item.sourceUrl);
+  return <article className="notice-card">
+    <div className="notice-card-meta"><span>{item.targetLabel}</span><span>{item.type === 'added' ? '追加' : item.type === 'removed' ? '掲載終了' : '変更'}</span></div>
+    <h3>{presentation.headline}</h3>
+    {item.target !== 'notice' && <p className="notice-effective-date">変更日：{dateText(presentation.effectiveAt)}</p>}
+    {presentation.comparison && <dl className="notice-comparison">
+      <div><dt>変更前</dt><dd>{presentation.comparison.before}</dd></div>
+      <div><dt>変更後</dt><dd>{presentation.comparison.after}</dd></div>
+    </dl>}
+    <details className="notice-details"><summary>詳細を見る</summary>
+      <p>{item.summary}</p>
+      {item.changes && item.changes.length > 0 && <dl>{item.changes.map(change => <div key={change.field}>
+        <dt>{change.label}</dt><dd>{change.field === 'image' ? '顔写真が変更されています。' : <>{change.before}<br />↓<br />{change.after}</>}</dd>
+      </div>)}</dl>}
+      {source && <p><a href={source} target="_blank" rel="noreferrer">{item.sourceLabel || '公式発表を見る'}</a></p>}
+      {item.reason && <p className="notice-reason">参考報道：{item.reason.label}{item.reason.sourceTitle ? `（${item.reason.sourceTitle}）` : ''}
+        {safeLink(item.reason.sourceUrl) && <> <a href={item.reason.sourceUrl} target="_blank" rel="noreferrer">記事を見る</a></>}
+      </p>}
+      {item.detectedAt && <p className="notice-small">アプリでの確認：{dateText(item.detectedAt, true)}</p>}
+      {target && <button type="button" onClick={() => onOpenPerson(target, item.name)}>議員の情報を見る</button>}
+    </details>
+    {onConfirm && <button type="button" className="notice-confirm" onClick={onConfirm}>確認済みにする</button>}
+  </article>;
 }
 
-function loadLS<T>(key: string, fallback: T): T {
-  try {
-    const raw = window.localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function saveLS(key: string, value: unknown): void {
-  try { window.localStorage.setItem(key, JSON.stringify(value)); } catch { /* 保存できない場合も画面の操作は継続する。 */ }
-}
-
-// ── コンポーネント ───────────────────────────────────────
-
-export default function UpdatesView(props: Props) {
-  const [payload, setPayload] = useState<UpdatesPayload>(EMPTY_PAYLOAD);
-  const [history, setHistory] = useState<HistoryEntry[]>(() => loadLS(HISTORY_KEY, []));
-  const [error, setError] = useState<string | null>(null);
-  const [historyOpen, setHistoryOpen] = useState(false);
-  const [dismissed, setDismissed] = useState<Set<string>>(
-    () => new Set(loadLS<string[]>(DISMISSED_KEY, []))
-  );
-  const [dismissedHistory, setDismissedHistory] = useState<DismissedEntry[]>(
-    () => loadLS(DISMISSED_HISTORY_KEY, [])
-  );
-  const [dismissedHistoryOpen, setDismissedHistoryOpen] = useState(false);
-
+export default function UpdatesView({ onBack, onOpenPerson }: Props) {
+  const [payload, setPayload] = useState<Payload>({ generatedAt: '', checkedAt: '', items: [] });
+  const [seen, setSeen] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [retry, setRetry] = useState(0);
   const baseUrl = import.meta.env.BASE_URL ?? '/';
-
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        setError(null);
-        const res = await fetch(`${baseUrl}data/updates.json`, { cache: 'no-store' });
-        if (!res.ok) throw new Error(`Failed: ${res.status}`);
-        const json = (await res.json()) as Partial<UpdatesPayload>;
+        const response = await fetch(`${baseUrl}data/updates.json`, { cache: 'no-store' });
+        if (!response.ok) throw new Error('取得失敗');
+        const json = await response.json() as Partial<Payload>;
         if (cancelled) return;
-        const next: UpdatesPayload = {
-          generatedAt: typeof json.generatedAt === 'string' ? json.generatedAt : '',
-          checkedAt: typeof json.checkedAt === 'string' ? json.checkedAt : typeof json.generatedAt === 'string' ? json.generatedAt : '',
-          totalChanges: typeof json.totalChanges === 'number' ? json.totalChanges : 0,
-          hasUpdates: json.hasUpdates === true,
-          summaries: Array.isArray(json.summaries) ? (json.summaries as UpdateSummary[]) : [],
-          items: Array.isArray(json.items) ? (json.items as UpdateItem[]) : [],
-        };
+        const next = { generatedAt: json.generatedAt || '', checkedAt: json.checkedAt || json.generatedAt || '', items: Array.isArray(json.items) ? json.items : [] };
+        setSeen(readNoticeKeys(next.items, next.generatedAt));
         setPayload(next);
+        // 今回表示した分は、次に開くときから既読にする。
         markNoticesRead(next.items, next.generatedAt);
-        if (next.generatedAt) {
-          const entry: HistoryEntry = {
-            generatedAt: next.generatedAt,
-            totalChanges: next.totalChanges,
-            hasUpdates: next.hasUpdates,
-            viewedAt: new Date().toISOString(),
-          };
-          setHistory(prev => {
-            const updated = [entry, ...prev.filter(e => e.generatedAt !== entry.generatedAt)].slice(0, 20);
-            saveLS(HISTORY_KEY, updated);
-            return updated;
-          });
-        }
-      } catch (e) {
-        console.error(e);
-        if (!cancelled) { setPayload(EMPTY_PAYLOAD); setError('お知らせを取得できませんでした。'); }
-      }
+      } catch {
+        if (!cancelled) setError('お知らせを読み込めませんでした。');
+      } finally { if (!cancelled) setLoading(false); }
     })();
     return () => { cancelled = true; };
-  }, [baseUrl]);
-
-  const allTagged = useMemo<TaggedItem[]>(
-    () => newestNoticesFirst(payload.items).map(item => ({ ...item, _key: getNoticeKey(item) })),
-    [payload.items]
-  );
-  const visibleItems = useMemo<TaggedItem[]>(
-    () => allTagged.filter(item => !dismissed.has(item._key)),
-    [allTagged, dismissed]
-  );
-  const hasRealChanges = payload.hasUpdates && payload.totalChanges > 0;
-  const totalsText = useMemo(() => {
-    if (!hasRealChanges) return `変更なし（${formatDateTime(payload.checkedAt)} 確認）`;
-    return `変更 ${payload.totalChanges} 件`;
-  }, [hasRealChanges, payload.checkedAt, payload.totalChanges]);
-
-  const dismissItem = (key: string, name: string, summary: string) => {
-    const entry: DismissedEntry = { key, name, summary, dismissedAt: new Date().toISOString() };
-    setDismissed(prev => {
-      const next = new Set(prev);
-      next.add(key);
-      saveLS(DISMISSED_KEY, [...next]);
-      return next;
-    });
-    if (name) {
-      setDismissedHistory(prev => {
-        const next = [entry, ...prev].slice(0, 100);
-        saveLS(DISMISSED_HISTORY_KEY, next);
-        return next;
-      });
-    }
-  };
-
-  const dismissAll = () => {
-    const now = new Date().toISOString();
-    const entries: DismissedEntry[] = visibleItems.map(item => ({
-      key: item._key, name: item.name, summary: item.summary, dismissedAt: now,
-    }));
-    setDismissed(prev => {
-      const next = new Set(prev);
-      entries.forEach(e => next.add(e.key));
-      saveLS(DISMISSED_KEY, [...next]);
-      return next;
-    });
-    setDismissedHistory(prev => {
-      const next = [...entries, ...prev].slice(0, 100);
-      saveLS(DISMISSED_HISTORY_KEY, next);
-      return next;
-    });
-  };
-
-  return (
-    <div style={styles.wrap}>
-      {/* ヘッダー */}
-      <div style={styles.header}>
-        <button type="button" style={styles.backBtn} onClick={props.onBack}>タイトルへ戻る</button>
-        <div style={styles.h1}>お知らせ</div>
-        <div style={styles.sub}>最終確認：{formatDateTime(payload.checkedAt)}</div>
-        <div style={styles.desc}>{totalsText}</div>
-        {error ? <div style={{ ...styles.sub, color: '#cf222e' }}>{error}</div> : null}
-      </div>
-
-      {/* 更新状態 */}
-      <div style={styles.card}>
-        <div style={styles.sectionTitle}>更新状態</div>
-        <div style={hasRealChanges ? styles.statusChanged : styles.statusNoChanges}>
-          <div style={styles.statusTitle}>{hasRealChanges ? '更新あり' : '変更なし'}</div>
-          <div style={styles.statusText}>
-            {hasRealChanges
-              ? `直近の更新で ${payload.totalChanges} 件の変更を検出しました。以前の変更も日時とともに一覧に残します。`
-              : `最終確認 ${formatDateTime(payload.checkedAt)} の時点では変更を検出していません。`}
-          </div>
+  }, [baseUrl, retry]);
+  const sorted = useMemo(() => newestNoticesFirst(payload.items), [payload.items]);
+  const unread = sorted.filter(item => !seen.has(getNoticeKey(item)));
+  const past = sorted.filter(item => seen.has(getNoticeKey(item)));
+  const confirm = (items: UpdateItem[]) => setSeen(previous => new Set([...previous, ...items.map(getNoticeKey)]));
+  return <div className="updates-view">
+    <header className="updates-header">
+      <button type="button" onClick={onBack}>タイトルへ戻る</button>
+      <h1>お知らせ</h1>
+      <p className="notice-small">最終確認：{dateText(payload.checkedAt, true)}</p>
+    </header>
+    {loading ? <p role="status">お知らせを読み込み中…</p> : error ? <div role="alert"><p>{error}</p><button type="button" onClick={() => { setError(''); setLoading(true); setRetry(value => value + 1); }}>再読込</button></div> : <>
+      <section aria-labelledby="new-notices-heading">
+        <div className="notice-section-title"><h2 id="new-notices-heading">新着のお知らせ <span>{unread.length}件</span></h2>
+          {unread.length > 0 && <button type="button" onClick={() => confirm(unread)}>すべて確認済み</button>}
         </div>
-      </div>
-
-      {/* 履歴 */}
-      <div style={styles.card}>
-        <button type="button" style={styles.sectionTitleBtn} onClick={() => setHistoryOpen(v => !v)}>
-          <span style={styles.sectionTitle}>履歴</span>
-          <span style={styles.toggleIcon}>{historyOpen ? '▲' : '▼'}</span>
-        </button>
-        {history.length === 0 ? (
-          <div style={styles.empty}>まだ履歴がありません。</div>
-        ) : (
-          <>
-            <div style={styles.historyCard}>
-              <div style={styles.historyTitle}>
-                {history[0].hasUpdates && history[0].totalChanges > 0
-                  ? `変更 ${history[0].totalChanges} 件` : '変更なし'}
-              </div>
-              <div style={styles.historyLine}>生成：{formatDateTime(history[0].generatedAt)}</div>
-              <div style={styles.historyLine}>確認：{formatDateTime(history[0].viewedAt)}</div>
-            </div>
-            {historyOpen && history.length > 1 && (
-              <div style={styles.historyList}>
-                {history.slice(1).map(entry => (
-                  <div key={entry.generatedAt} style={styles.historyCard}>
-                    <div style={styles.historyTitle}>
-                      {entry.hasUpdates && entry.totalChanges > 0
-                        ? `変更 ${entry.totalChanges} 件` : '変更なし'}
-                    </div>
-                    <div style={styles.historyLine}>生成：{formatDateTime(entry.generatedAt)}</div>
-                    <div style={styles.historyLine}>確認：{formatDateTime(entry.viewedAt)}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-
-      {/* 変更一覧 */}
-      <div style={styles.card}>
-        <div style={styles.listHeader}>
-          <div style={styles.sectionTitle}>変更一覧</div>
-          {visibleItems.length > 0 ? (
-            <button type="button" style={styles.dismissAllBtn} onClick={dismissAll}>
-              全て確認済み
-            </button>
-          ) : null}
-        </div>
-        {visibleItems.length === 0 ? (
-          <div style={styles.empty}>表示する変更はありません。</div>
-        ) : (
-          <div style={styles.list}>
-            {visibleItems.map(item => {
-              const nextTarget = toTarget(item.target);
-              const canOpen = item.type !== 'removed' && nextTarget !== null;
-              return (
-                <div key={item._key} style={styles.itemWrap}>
-                  <button
-                    type="button"
-                    style={canOpen ? styles.itemCardButton : styles.itemCardDisabled}
-                    onClick={() => { if (canOpen && nextTarget) props.onOpenPerson(nextTarget, item.name); }}
-                    disabled={!canOpen}
-                  >
-                    <div style={styles.itemMetaRow}>
-                      <div style={styles.itemTarget}>{item.targetLabel}</div>
-                      <div style={styles.itemType}>{getTypeLabel(item.type)}</div>
-                    </div>
-                    <div style={styles.itemName}>{item.name}</div>
-                    {item.detectedAt ? <div style={styles.itemReasonMeta}>更新：{formatDateTime(item.detectedAt)}</div> : null}
-                    <div style={styles.itemSummary}>{item.summary}</div>
-                    {item.reason ? (
-                      <div style={item.reason.confidence === 'confirmed' ? styles.itemReasonConfirmed : styles.itemReasonCandidate}>
-                        <div>{getReasonLabel(item.reason)}</div>
-                        {item.reason.sourceTitle
-                          ? <div style={styles.itemReasonMeta}>参照: {item.reason.sourceTitle}</div>
-                          : null}
-                      </div>
-                    ) : null}
-                    {item.target !== 'notice' ? (
-                      <div style={styles.itemHint}>
-                        {canOpen ? '押すと一覧の該当議員へ移動します。' : '除外された項目のため移動できません。'}
-                      </div>
-                    ) : null}
-                  </button>
-                  <button
-                    type="button"
-                    style={styles.dismissBtn}
-                    onClick={() => dismissItem(item._key, item.name, item.summary)}
-                  >✕ 確認済み</button>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-
-      {/* 確認済み履歴 */}
-      {dismissedHistory.length > 0 ? (
-        <div style={styles.card}>
-          <button type="button" style={styles.sectionTitleBtn} onClick={() => setDismissedHistoryOpen(v => !v)}>
-            <span style={styles.sectionTitle}>確認済み履歴</span>
-            <span style={styles.toggleIcon}>{dismissedHistoryOpen ? '▲' : '▼'}</span>
-          </button>
-          {dismissedHistoryOpen && (
-            <div style={styles.historyList}>
-              {dismissedHistory.map((entry, i) => (
-                <div key={`${entry.key}-${i}`} style={styles.historyCard}>
-                  <div style={styles.historyTitle}>{entry.name}</div>
-                  <div style={styles.itemSummary}>{entry.summary}</div>
-                  <div style={styles.historyLine}>確認：{formatDateTime(entry.dismissedAt)}</div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      ) : null}
-
-      {/* 区分ごとの変更 */}
-      <div style={styles.card}>
-        <div style={styles.sectionTitle}>区分ごとの変更</div>
-        {payload.summaries.length === 0 ? (
-          <div style={styles.empty}>現在は変更点がありません。</div>
-        ) : (
-          <div style={styles.summaryGrid}>
-            {payload.summaries.map(summary => (
-              <div key={summary.target} style={styles.summaryCard}>
-                <div style={styles.summaryTitle}>{summary.label}</div>
-                <div style={styles.summaryRow}>追加 {summary.added} 件</div>
-                <div style={styles.summaryRow}>変更 {summary.changed} 件</div>
-                <div style={styles.summaryRow}>除外 {summary.removed} 件</div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+        {unread.length ? <div className="notice-list">{unread.map(item => <NoticeCard key={getNoticeKey(item)} item={item} onOpenPerson={onOpenPerson} onConfirm={() => confirm([item])} />)}</div>
+          : <p className="notice-empty">新しいお知らせはありません。</p>}
+      </section>
+      <details className="notice-past"><summary>過去のお知らせ（確認済み {past.length}件）</summary>
+        {past.length ? <div className="notice-list">{past.map(item => <NoticeCard key={getNoticeKey(item)} item={item} onOpenPerson={onOpenPerson} />)}</div>
+          : <p className="notice-empty">確認済みのお知らせはありません。</p>}
+      </details>
+    </>}
+  </div>;
 }
-
-// ── スタイル ─────────────────────────────────────────────
-
-const styles: Record<string, React.CSSProperties> = {
-  wrap: { minHeight: '100vh', padding: 16, display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center', background: '#f7f8fa' },
-  header: { width: 'min(720px, 100%)', display: 'flex', flexDirection: 'column', gap: 8 },
-  backBtn: { alignSelf: 'flex-start', padding: '10px 12px', borderRadius: 10, border: '1px solid #999', background: '#fff' },
-  h1: { fontSize: 22, fontWeight: 800 },
-  sub: { fontSize: 13, color: '#444' },
-  desc: { fontSize: 13, color: '#555' },
-  card: { width: 'min(720px, 100%)', border: '1px solid #ddd', borderRadius: 12, padding: 14, display: 'flex', flexDirection: 'column', gap: 12, background: '#fff' },
-  sectionTitle: { fontSize: 18, fontWeight: 800 },
-  sectionTitleBtn: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'transparent', border: 'none', padding: 0, cursor: 'pointer', width: '100%' },
-  toggleIcon: { fontSize: 14, color: '#888' },
-  empty: { fontSize: 14, color: '#555' },
-  listHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
-  dismissAllBtn: { padding: '6px 12px', fontSize: 12, color: '#fff', background: '#6b7280', border: 'none', borderRadius: 8, cursor: 'pointer' },
-  list: { display: 'flex', flexDirection: 'column', gap: 10 },
-  itemWrap: { display: 'flex', flexDirection: 'column', gap: 4 },
-  itemCardButton: { border: '1px solid #e5e7eb', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 8, background: '#fff', textAlign: 'left', cursor: 'pointer' },
-  itemCardDisabled: { border: '1px solid #e5e7eb', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 8, background: '#f7f7f7', textAlign: 'left', color: '#666' },
-  itemMetaRow: { display: 'flex', justifyContent: 'space-between', gap: 8 },
-  itemTarget: { fontSize: 12, color: '#555' },
-  itemType: { fontSize: 12, fontWeight: 800, color: '#0969da' },
-  itemName: { fontSize: 18, fontWeight: 800 },
-  itemSummary: { fontSize: 14, color: '#333' },
-  itemHint: { fontSize: 12, color: '#666' },
-  itemReasonConfirmed: { fontSize: 13, color: '#1a7f37', background: '#f0fdf4', borderRadius: 8, padding: '6px 10px' },
-  itemReasonCandidate: { fontSize: 13, color: '#7d4e00', background: '#fffbeb', borderRadius: 8, padding: '6px 10px' },
-  itemReasonMeta: { fontSize: 12, color: '#888', marginTop: 2 },
-  dismissBtn: { alignSelf: 'flex-end', padding: '4px 10px', fontSize: 12, color: '#888', background: 'transparent', border: '1px solid #ddd', borderRadius: 8, cursor: 'pointer' },
-  historyList: { display: 'flex', flexDirection: 'column', gap: 10 },
-  historyCard: { border: '1px solid #e5e7eb', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 6, background: '#fbfcff' },
-  historyTitle: { fontSize: 15, fontWeight: 800 },
-  historyLine: { fontSize: 13, color: '#444' },
-  summaryGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 },
-  summaryCard: { border: '1px solid #e5e7eb', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 6, background: '#fbfcff' },
-  summaryTitle: { fontWeight: 800 },
-  summaryRow: { fontSize: 14, color: '#333' },
-  statusChanged: { border: '1px solid #f59e0b', background: '#fff7e8', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 6 },
-  statusNoChanges: { border: '1px solid #d1d5db', background: '#f9fafb', borderRadius: 12, padding: 12, display: 'flex', flexDirection: 'column', gap: 6 },
-  statusTitle: { fontSize: 16, fontWeight: 800 },
-  statusText: { fontSize: 14, color: '#333' },
-};

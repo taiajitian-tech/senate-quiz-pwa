@@ -13,6 +13,13 @@ test('role changes remain changes when the generated ID changes', () => {
     [{ id: 99, name: 'テスト 太郎', group: '新役職' }]);
   assert.deepEqual(result.counts, { added: 0, removed: 0, changed: 1 });
   assert.match(result.items[0].summary, /旧役職 → 新役職/u);
+  assert.deepEqual(result.items[0].changes, [{ field: 'role', label: '役職', before: '旧役職', after: '新役職' }]);
+});
+
+test('member roster affiliations are not presented as ministerial roles', () => {
+  const result = compareRecords({ key: 'senators', label: '参議院議員' },
+    [{ name: 'テスト 太郎', group: '旧会派' }], [{ name: 'テスト 太郎', group: '新会派' }]);
+  assert.deepEqual(result.items[0].changes, [{ field: 'party', label: '所属会派', before: '旧会派', after: '新会派' }]);
 });
 
 test('history survives new changes and stable IDs distinguish later events', () => {

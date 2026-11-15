@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { getAvailableTargets, getTargetLabels, getTargetTabs, type AppMode, type Target } from "./data";
 import HelpModal from "./HelpModal";
-import { getNoticeKey, markNoticesRead, readNoticeKeys, type NoticeIdentity } from './updateNotices';
+import { getNoticeKey, readNoticeKeys, type NoticeIdentity } from './updateNotices';
 
 type Props = {
   appMode: AppMode;
@@ -65,7 +65,6 @@ function MenuButton(props: MenuButtonProps) {
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, notificationCount: 0, generatedAt: "", checkedAt: "" });
-  const [noticeItems, setNoticeItems] = useState<NoticeIdentity[]>([]);
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
@@ -82,7 +81,6 @@ export default function TitleView(props: Props) {
         if (cancelled) return;
         const items = Array.isArray(json.items) ? json.items as NoticeIdentity[] : [];
         const readKeys = readNoticeKeys(items, json.generatedAt || '');
-        setNoticeItems(items);
         setUpdatesMeta({
           totalChanges: typeof json.totalChanges === "number" ? json.totalChanges : 0,
           generatedAt: typeof json.generatedAt === "string" ? json.generatedAt : "",
@@ -102,7 +100,6 @@ export default function TitleView(props: Props) {
   const hasUnreadUpdates = updatesMeta.notificationCount > 0;
 
   const handleOpenUpdates = () => {
-    markNoticesRead(noticeItems, updatesMeta.generatedAt);
     setUpdatesMeta(previous => ({ ...previous, notificationCount: 0 }));
     props.onOpenUpdates();
   };

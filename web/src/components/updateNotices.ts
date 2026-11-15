@@ -5,6 +5,11 @@ export type NoticeIdentity = {
   name: string;
   type: string;
   summary: string;
+  headline?: string;
+  effectiveAt?: string;
+  sourceUrl?: string;
+  sourceLabel?: string;
+  changes?: { field: string; label: string; before: string; after: string }[];
 };
 
 type NoticeStorage = Pick<Storage, 'getItem' | 'setItem'>;
@@ -23,6 +28,35 @@ function noticeTime(item: NoticeIdentity): number {
   if (item.detectedAt) return Date.parse(item.detectedAt) || 0;
   const date = item.name.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/u);
   return date ? Date.UTC(Number(date[1]), Number(date[2]) - 1, Number(date[3])) : 0;
+}
+
+export function noticePresentation(item: NoticeIdentity) {
+  const name = `${item.name.replace(/\s+/gu, '')}氏`;
+  const changes = item.changes || [];
+  const primary = changes.find(change => change.field === 'role') || changes[0];
+  let headline = item.headline || '';
+  if (!headline) {
+    if (item.target === 'notice') headline = item.name.replace(/^\d{4}年\d{1,2}月\d{1,2}日[：:]\s*/u, '');
+    else if (item.type === 'added') headline = primary?.field === 'role' ? `${name}：${primary.after.split(/\s*\/\s*/u)[0]}として掲載` : `${name}を一覧に追加`;
+    else if (item.type === 'removed') headline = `${name}を一覧から除外`;
+    else if (primary?.field === 'role') {
+      const before = primary.before.split(/\s*\/\s*/u);
+      const added = primary.after.split(/\s*\/\s*/u).filter(role => !before.includes(role) && !/^(参議院|衆議院)$/u.test(role));
+      headline = added.length ? `${name}の役職に「${added[0]}」が追加` : `${name}の担当が変更`;
+    } else headline = `${name}の${primary?.label || '情報'}が変更`;
+  }
+  let comparison = primary ? { ...primary } : undefined;
+  if (comparison?.field === 'role' && item.type === 'added') comparison.after = comparison.after.split(/\s*\/\s*/u)[0];
+  if (comparison?.field === 'role' && item.type === 'removed') comparison.before = comparison.before.split(/\s*\/\s*/u)[0];
+  if (comparison?.field === 'role' && item.type === 'changed') {
+    const before = comparison.before.split(/\s*\/\s*/u);
+    const after = comparison.after.split(/\s*\/\s*/u);
+    comparison = { ...comparison,
+      before: before.filter(role => !after.includes(role)).join('・') || '担当なし',
+      after: after.filter(role => !before.includes(role)).join('・') || '担当なし',
+    };
+  }
+  return { headline, comparison, effectiveAt: item.effectiveAt || '' };
 }
 
 export function newestNoticesFirst<T extends NoticeIdentity>(items: T[]): T[] {

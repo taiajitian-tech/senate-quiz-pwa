@@ -74,7 +74,7 @@ function splitNameAndKana(rawName) {
   return { name: match[1].trim(), kana: normalizeCompact(match[2]) };
 }
 
-function normalizeRecord(value, index) {
+function normalizeRecord(value, index, target) {
   if (!value || typeof value !== 'object') return null;
   const source = value;
   const rawName = toText(source.name);
@@ -83,8 +83,9 @@ function normalizeRecord(value, index) {
   const id = Number.isFinite(Number(source.id)) && Number(source.id) > 0 ? Number(source.id) : index + 1;
   const name = split.name;
   const kana = normalizeCompact(toText(source.kana) || toText(source.nameKana) || toText(source.kanaName) || split.kana);
-  const role = toText(source.subRole) || toText(source.role) || toText(source.group);
-  const party = toText(source.party);
+  const isMemberRoster = target === 'senators' || target === 'representatives';
+  const role = toText(source.subRole) || toText(source.role) || (isMemberRoster ? '' : toText(source.group));
+  const party = toText(source.party) || (isMemberRoster ? toText(source.group) : '');
   const district = toText(source.district) || toText(source.electoralDistrict) || toText(source.constituency);
   const image = toImages(source.images ?? source.image)[0] ?? '';
   const termsNumber = Number(source.terms ?? source.wins);
@@ -138,8 +139,8 @@ function compareTarget(target) {
 }
 
 export function compareRecords(target, previousRaw, currentRaw) {
-  const previous = previousRaw.map(normalizeRecord).filter(Boolean);
-  const current = currentRaw.map(normalizeRecord).filter(Boolean);
+  const previous = previousRaw.map((record, index) => normalizeRecord(record, index, target.key)).filter(Boolean);
+  const current = currentRaw.map((record, index) => normalizeRecord(record, index, target.key)).filter(Boolean);
 
   const previousMap = new Map(previous.map((item) => [item.key, item]));
   const currentMap = new Map(current.map((item) => [item.key, item]));
@@ -158,6 +159,7 @@ export function compareRecords(target, previousRaw, currentRaw) {
         targetLabel: target.label,
         name: nextItem.name,
         type: 'added',
+        changes: [{ field: nextItem.role ? 'role' : 'listing', label: nextItem.role ? '役職' : '掲載', before: '掲載なし', after: nextItem.role || target.label }],
         summary: `${nextItem.name}氏を${target.label}一覧に追加${nextItem.role ? `（${nextItem.role}）` : nextItem.party ? `（${nextItem.party}）` : ''}`,
       });
       continue;
@@ -195,6 +197,12 @@ export function compareRecords(target, previousRaw, currentRaw) {
         targetLabel: target.label,
         name: nextItem.name,
         type: 'changed',
+        changes: [
+          ['name', '氏名'], ['kana', 'ふりがな'], ['role', '役職'], ['party', '所属会派'],
+          ['district', '選挙区'], ['terms', '当選回数'], ['image', '顔写真'],
+        ].filter(([field]) => prevItem[field] !== nextItem[field]).map(([field, label]) => ({
+          field, label, before: String(prevItem[field] ?? '') || 'なし', after: String(nextItem[field] ?? '') || 'なし',
+        })),
         summary: `${nextItem.name}氏：${fieldChanges.join('。')}`,
       });
     }
@@ -208,6 +216,7 @@ export function compareRecords(target, previousRaw, currentRaw) {
       targetLabel: target.label,
       name: prevItem.name,
       type: 'removed',
+      changes: [{ field: prevItem.role ? 'role' : 'listing', label: prevItem.role ? '役職' : '掲載', before: prevItem.role || target.label, after: '掲載なし' }],
       summary: `${prevItem.name}氏を${target.label}一覧から除外${prevItem.role ? `（${prevItem.role}）` : ''}`,
     });
   }

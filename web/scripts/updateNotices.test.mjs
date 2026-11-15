@@ -5,7 +5,7 @@ import ts from 'typescript';
 
 const source = fs.readFileSync(new URL('../src/components/updateNotices.ts', import.meta.url), 'utf8');
 const compiled = ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022 } }).outputText;
-const { getNoticeKey, newestNoticesFirst, readNoticeKeys, markNoticesRead } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+const { getNoticeKey, newestNoticesFirst, readNoticeKeys, markNoticesRead, noticePresentation } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const item = (id, date) => ({ id, detectedAt: date, target: 'ministers', name: 'テスト太郎', type: 'changed', summary: id });
 const memory = () => {
   const data = new Map();
@@ -50,4 +50,23 @@ test('undated announcements keep the same read key when only the file timestamp 
   markNoticesRead([manual], '2026-11-01T00:00:00Z', storage);
   assert.ok(readNoticeKeys([manual], '2026-11-15T00:00:00Z', storage).has(getNoticeKey(manual)));
   assert.ok(!readNoticeKeys([manual], '2026-11-15T00:00:00Z', storage).has(getNoticeKey({ ...manual, summary: '新しい内容' })));
+});
+
+test('comparison shows changed duties while full concurrent roles remain in details', () => {
+  const notice = { ...item('one', '2026-11-15T00:00:00Z'), changes: [{ field: 'role', label: '役職', before: '兼務 / 旧役職', after: '兼務 / 新役職' }] };
+  const view = noticePresentation(notice);
+  assert.match(view.headline, /新役職/u);
+  assert.equal(view.comparison.before, '旧役職');
+  assert.equal(view.comparison.after, '新役職');
+  assert.equal(notice.changes[0].after, '兼務 / 新役職');
+  assert.equal(view.effectiveAt, '');
+  assert.doesNotMatch(view.headline, /就任|退任/u);
+});
+
+test('verified headlines and effective dates do not change the stable read identity', () => {
+  const notice = item('known', '2026-11-15T00:00:00Z');
+  const enriched = { ...notice, headline: 'テスト太郎氏が新役職に就任', effectiveAt: '2026-11-02' };
+  assert.equal(getNoticeKey(enriched), getNoticeKey(notice));
+  assert.equal(noticePresentation(enriched).effectiveAt, '2026-11-02');
+  assert.equal(noticePresentation(enriched).headline, enriched.headline);
 });
