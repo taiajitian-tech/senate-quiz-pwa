@@ -370,6 +370,23 @@ export function mergeUpdateHistory(previousItems, newItems, detectedAt, previous
   });
 }
 
+const manualContent = ({ id: _id, detectedAt: _date, ...item }) => item;
+
+export function prepareManualNotices(items, previousItems, generatedAt) {
+  return items.map(item => {
+    const old = previousItems.find(previous => previous.target === 'notice' && JSON.stringify(manualContent(previous)) === JSON.stringify(manualContent(item)));
+    const date = item.name.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/u);
+    const detectedAt = old?.detectedAt || (old
+      ? date ? new Date(Date.UTC(Number(date[1]), Number(date[2]) - 1, Number(date[3]))).toISOString() : undefined
+      : generatedAt);
+    return {
+      ...item,
+      id: old?.id || JSON.stringify([item.target, item.name, item.type, item.summary]),
+      ...(detectedAt ? { detectedAt } : {}),
+    };
+  });
+}
+
 async function main() {
   const generatedAt = new Date().toISOString();
   const results = TARGETS.map(compareTarget);
@@ -390,7 +407,7 @@ async function main() {
     }))
     .filter((result) => result.total > 0);
 
-  const manualNotices = (() => {
+  const rawManualNotices = (() => {
     try {
       const raw = JSON.parse(fs.readFileSync(path.resolve(DATA_DIR, 'manual-notices.json'), 'utf8'));
       return Array.isArray(raw) ? raw : [];
@@ -405,9 +422,11 @@ async function main() {
     // 初回生成時は保持するお知らせがない。
   }
   const previousItems = Array.isArray(previous.items) ? previous.items : [];
+  const manualNotices = prepareManualNotices(rawManualNotices, previousItems, generatedAt);
   const automaticItems = mergeUpdateHistory(previousItems, itemsWithReasons, generatedAt, previous.generatedAt || generatedAt);
-  const noticeChanged = JSON.stringify(manualNotices) !== JSON.stringify(previousItems.filter((item) => item.target === 'notice'));
-  const finalItems = [...manualNotices, ...automaticItems];
+  const manualSignature = items => items.map(item => JSON.stringify(manualContent(item))).sort().join('\n');
+  const noticeChanged = manualSignature(rawManualNotices) !== manualSignature(previousItems.filter((item) => item.target === 'notice'));
+  const finalItems = [...manualNotices, ...automaticItems].sort((a, b) => (Date.parse(b.detectedAt) || 0) - (Date.parse(a.detectedAt) || 0));
 
   const payload = {
     generatedAt: itemsWithReasons.length > 0 || noticeChanged ? generatedAt : previous.generatedAt || generatedAt,

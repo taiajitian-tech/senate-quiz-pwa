@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { getAvailableTargets, getTargetLabels, getTargetTabs, type AppMode, type Target } from "./data";
 import HelpModal from "./HelpModal";
+import { getNoticeKey, markNoticesRead, readNoticeKeys, type NoticeIdentity } from './updateNotices';
 
 type Props = {
   appMode: AppMode;
@@ -26,13 +27,6 @@ type UpdatesMeta = {
   generatedAt: string;
   checkedAt: string;
 };
-
-const UPDATES_LAST_SEEN_KEY = "updates_last_seen_generated_at_v1";
-
-function readLastSeenGeneratedAt(): string {
-  if (typeof window === "undefined") return "";
-  return window.localStorage.getItem(UPDATES_LAST_SEEN_KEY) ?? "";
-}
 
 function formatGeneratedAt(value: string): string {
   if (!value) return "未生成";
@@ -71,7 +65,7 @@ function MenuButton(props: MenuButtonProps) {
 export default function TitleView(props: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [updatesMeta, setUpdatesMeta] = useState<UpdatesMeta>({ totalChanges: 0, notificationCount: 0, generatedAt: "", checkedAt: "" });
-  const [lastSeenGeneratedAt, setLastSeenGeneratedAt] = useState<string>(() => readLastSeenGeneratedAt());
+  const [noticeItems, setNoticeItems] = useState<NoticeIdentity[]>([]);
   const targetTabs = useMemo(() => getTargetTabs(props.appMode), [props.appMode]);
   const targetLabels = useMemo(() => getTargetLabels(props.appMode), [props.appMode]);
   const availableTargets = useMemo(() => getAvailableTargets(props.appMode), [props.appMode]);
@@ -86,11 +80,14 @@ export default function TitleView(props: Props) {
         if (!response.ok) return;
         const json = await response.json() as Partial<UpdatesMeta> & { items?: unknown };
         if (cancelled) return;
+        const items = Array.isArray(json.items) ? json.items as NoticeIdentity[] : [];
+        const readKeys = readNoticeKeys(items, json.generatedAt || '');
+        setNoticeItems(items);
         setUpdatesMeta({
           totalChanges: typeof json.totalChanges === "number" ? json.totalChanges : 0,
           generatedAt: typeof json.generatedAt === "string" ? json.generatedAt : "",
           checkedAt: typeof json.checkedAt === "string" ? json.checkedAt : typeof json.generatedAt === "string" ? json.generatedAt : "",
-          notificationCount: Array.isArray(json.items) ? json.items.length : 0,
+          notificationCount: items.filter(item => !readKeys.has(getNoticeKey(item))).length,
         });
       } catch (error) {
         console.error(error);
@@ -102,13 +99,11 @@ export default function TitleView(props: Props) {
     };
   }, []);
 
-  const hasUnreadUpdates = updatesMeta.notificationCount > 0 && !!updatesMeta.generatedAt && lastSeenGeneratedAt !== updatesMeta.generatedAt;
+  const hasUnreadUpdates = updatesMeta.notificationCount > 0;
 
   const handleOpenUpdates = () => {
-    if (updatesMeta.generatedAt && typeof window !== "undefined") {
-      window.localStorage.setItem(UPDATES_LAST_SEEN_KEY, updatesMeta.generatedAt);
-      setLastSeenGeneratedAt(updatesMeta.generatedAt);
-    }
+    markNoticesRead(noticeItems, updatesMeta.generatedAt);
+    setUpdatesMeta(previous => ({ ...previous, notificationCount: 0 }));
     props.onOpenUpdates();
   };
 
@@ -120,8 +115,8 @@ export default function TitleView(props: Props) {
             type="button"
             style={styles.noticeIconBtn}
             onClick={handleOpenUpdates}
-            aria-label={updatesMeta.notificationCount > 0 ? `お知らせ ${updatesMeta.notificationCount} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.checkedAt)} 確認`}
-            title={updatesMeta.notificationCount > 0 ? `お知らせ ${updatesMeta.notificationCount} 件` : `お知らせ 変更なし ${formatGeneratedAt(updatesMeta.checkedAt)} 確認`}
+            aria-label={updatesMeta.notificationCount > 0 ? `お知らせ 未読 ${updatesMeta.notificationCount} 件` : 'お知らせ（未読なし）'}
+            title={updatesMeta.notificationCount > 0 ? `お知らせ 未読 ${updatesMeta.notificationCount} 件` : 'お知らせ（未読なし）'}
           >
             <span style={styles.noticeIconText}>🔔</span>
             {hasUnreadUpdates ? <span style={styles.noticeBadge}>{updatesMeta.notificationCount > 9 ? "9+" : String(updatesMeta.notificationCount)}</span> : null}
@@ -132,7 +127,7 @@ export default function TitleView(props: Props) {
         <div style={styles.titleBlock}>
           <div style={styles.title}>議員集</div>
           <div style={styles.titleSub}>まず見て、次に思い出す。開始前に条件を決めて覚える学習アプリ</div>
-          <div style={styles.noticeHint}>{updatesMeta.totalChanges > 0 ? `直近の変更 ${updatesMeta.totalChanges} 件` : `変更なし ${formatGeneratedAt(updatesMeta.checkedAt)} 確認`}</div>
+          <div style={styles.noticeHint}>{hasUnreadUpdates ? `新しいお知らせ ${updatesMeta.notificationCount} 件` : `新しいお知らせはありません（${formatGeneratedAt(updatesMeta.checkedAt)} 確認）`}</div>
         </div>
 
         <div style={styles.modeSwitchWrap}>

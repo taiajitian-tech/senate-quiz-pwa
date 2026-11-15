@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Target } from './data';
+import { getNoticeKey, markNoticesRead, newestNoticesFirst } from './updateNotices';
 
 // ── 型定義 ──────────────────────────────────────────────
 
@@ -157,6 +158,7 @@ export default function UpdatesView(props: Props) {
           items: Array.isArray(json.items) ? (json.items as UpdateItem[]) : [],
         };
         setPayload(next);
+        markNoticesRead(next.items, next.generatedAt);
         if (next.generatedAt) {
           const entry: HistoryEntry = {
             generatedAt: next.generatedAt,
@@ -179,7 +181,7 @@ export default function UpdatesView(props: Props) {
   }, [baseUrl]);
 
   const allTagged = useMemo<TaggedItem[]>(
-    () => payload.items.map(item => ({ ...item, _key: item.id || JSON.stringify([item.target, item.name, item.type, item.summary]) })),
+    () => newestNoticesFirst(payload.items).map(item => ({ ...item, _key: getNoticeKey(item) })),
     [payload.items]
   );
   const visibleItems = useMemo<TaggedItem[]>(

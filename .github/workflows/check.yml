@@ -37,7 +37,7 @@ jobs:
         run: npm run check:data
 
       - name: Test automatic notices
-        run: node --test scripts/generateUpdates.test.mjs
+        run: node --test scripts/generateUpdates.test.mjs scripts/updateNotices.test.mjs
 
       - name: Build
         run: npm run build

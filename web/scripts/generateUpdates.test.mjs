@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { compareRecords, mergeUpdateHistory } from './generateUpdates.mjs';
+import { compareRecords, mergeUpdateHistory, prepareManualNotices } from './generateUpdates.mjs';
 
 test('role changes remain changes when the generated ID changes', () => {
   const target = { key: 'ministers', label: '大臣' };
@@ -24,6 +24,14 @@ test('history survives new changes and stable IDs distinguish later events', () 
   assert.equal(second[1].id, first[0].id);
   assert.deepEqual(mergeUpdateHistory(second, [], '2026-11-03T00:00:00Z'), second);
   assert.deepEqual(mergeUpdateHistory(second, [second[0]], '2026-11-03T00:00:00Z'), second);
+});
+
+test('manual announcements retain their identities and dates across regeneration', () => {
+  const item = { target: 'notice', name: '案内', type: 'changed', summary: '本文' };
+  const first = prepareManualNotices([item], [], '2026-11-01T00:00:00Z');
+  assert.deepEqual(prepareManualNotices([item], first, '2026-11-02T00:00:00Z'), first);
+  const migrated = prepareManualNotices([item], [item], '2026-11-02T00:00:00Z');
+  assert.equal(migrated[0].id, JSON.stringify([item.target, item.name, item.type, item.summary]));
 });
 
 test('direct roster edits publish every change and no-change checks do not repeat notifications', () => {
@@ -59,8 +67,8 @@ test('direct roster edits publish every change and no-change checks do not repea
     write('manual-notices.json', [{ target: 'notice', name: '新しい案内', type: 'changed', summary: '案内本文' }]);
     const third = run();
     assert.equal(third.items.length, 86);
-    assert.equal(third.items[0].name, '新しい案内');
-    assert.deepEqual(third.items.slice(1), first.items);
+    assert.ok(third.items.some(item => item.name === '新しい案内' && item.id && item.detectedAt));
+    assert.deepEqual(third.items.filter(item => item.target !== 'notice'), first.items);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
