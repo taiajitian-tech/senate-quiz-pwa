@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-13T21:24:50.815Z",
-  "checkedAt": "2026-11-14T20:03:31.986Z",
+  "generatedAt": "2026-11-15T03:45:42.037Z",
+  "checkedAt": "2026-11-15T03:45:42.037Z",
   "totalChanges": 1,
   "hasUpdates": true,
   "summaries": [
@@ -103,7 +103,9 @@
       "targetLabel": "参議院一般議員",
       "name": "山崎 正昭",
       "type": "removed",
-      "summary": "山崎 正昭（自由民主党・無所属の会） を一覧から除外しました",
+      "summary": "山崎 正昭氏を参議院一般議員一覧から除外（自由民主党・無所属の会）",
+      "id": "060f1e772a9562de8be727166245dab78995de37e1c062487427c6cf9345a96d",
+      "detectedAt": "2026-11-13T21:24:51Z",
       "reason": {
         "label": "死去報道あり",
         "confidence": "confirmed",
@@ -111,6 +113,51 @@
         "sourceUrl": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE8wMmpBdzBMelJPV2JjVDdyby1YdmRTQVBoSDh2RlBaN092X1ZrQjliTTZDWmFZTDg3T1MzVDJHMWZkalF0WE5XWkNKQkQ1M1ItUkZFM2Rka0ZHXzlFd19OaEJ3?oc=5",
         "publishedAt": "Fri, 13 Nov 2026 20:08:00 GMT"
       }
+    },
+    {
+      "target": "councilorsOfficersList",
+      "targetLabel": "参議院役員",
+      "name": "松村 祥史",
+      "type": "added",
+      "summary": "松村 祥史氏を参議院役員一覧に追加（消費税・支援金法案に関する特別委員長）",
+      "id": "47f670071b882cf99b9a1b8dd649e4a7b8423a8c6d6a71054466429c9b509009",
+      "detectedAt": "2026-11-04T21:16:36Z"
+    },
+    {
+      "target": "ministers",
+      "targetLabel": "大臣",
+      "name": "細野 豪志",
+      "type": "changed",
+      "summary": "細野 豪志氏：役職：内閣府特命担当大臣（防災）・防災庁設置準備担当 → 防災大臣",
+      "id": "8931d196c5e58e8061b0293366b1441bb9adb11653400686afbcf377fe1ab2b5",
+      "detectedAt": "2026-11-02T10:55:05Z"
+    },
+    {
+      "target": "viceMinisters",
+      "targetLabel": "副大臣",
+      "name": "西田昭二",
+      "type": "changed",
+      "summary": "西田昭二氏：役職から「兼内閣府副大臣」が削除",
+      "id": "e741c3b97e89a923bcaa48d59dda435f573688683cd6934ca7e82873897b0f26",
+      "detectedAt": "2026-11-02T10:55:05Z"
+    },
+    {
+      "target": "viceMinisters",
+      "targetLabel": "副大臣",
+      "name": "金子 道仁",
+      "type": "added",
+      "summary": "金子 道仁氏を副大臣一覧に追加（防災副大臣 / 兼内閣府副大臣）",
+      "id": "9b953ef7a651dee4e2e12b420ec3631d69bbd700992b69a021060da7ec856bca",
+      "detectedAt": "2026-11-02T10:55:05Z"
+    },
+    {
+      "target": "parliamentarySecretaries",
+      "targetLabel": "大臣政務官",
+      "name": "大西洋平",
+      "type": "added",
+      "summary": "大西洋平氏を大臣政務官一覧に追加（防災大臣政務官 / 兼内閣府大臣政務官）",
+      "id": "566c90c15b2cf19d7066b88c2dfb22d66e2492eea783926aa89f3e4d4890e6fc",
+      "detectedAt": "2026-11-02T10:55:05Z"
     }
   ]
 }

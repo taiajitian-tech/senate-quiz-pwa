@@ -21,6 +21,8 @@ type UpdateReason = {
 };
 
 type UpdateItem = {
+  id?: string;
+  detectedAt?: string;
   target: string;
   targetLabel: string;
   name: string;
@@ -177,7 +179,7 @@ export default function UpdatesView(props: Props) {
   }, [baseUrl]);
 
   const allTagged = useMemo<TaggedItem[]>(
-    () => payload.items.map((item, index) => ({ ...item, _key: `${item.target}-${item.name}-${index}` })),
+    () => payload.items.map(item => ({ ...item, _key: item.id || JSON.stringify([item.target, item.name, item.type, item.summary]) })),
     [payload.items]
   );
   const visibleItems = useMemo<TaggedItem[]>(
@@ -243,7 +245,7 @@ export default function UpdatesView(props: Props) {
           <div style={styles.statusTitle}>{hasRealChanges ? '更新あり' : '変更なし'}</div>
           <div style={styles.statusText}>
             {hasRealChanges
-              ? `直近の更新で ${payload.totalChanges} 件の変更を検出しました。変更がない定期確認の後も表示を保持します。`
+              ? `直近の更新で ${payload.totalChanges} 件の変更を検出しました。以前の変更も日時とともに一覧に残します。`
               : `最終確認 ${formatDateTime(payload.checkedAt)} の時点では変更を検出していません。`}
           </div>
         </div>
@@ -315,6 +317,7 @@ export default function UpdatesView(props: Props) {
                       <div style={styles.itemType}>{getTypeLabel(item.type)}</div>
                     </div>
                     <div style={styles.itemName}>{item.name}</div>
+                    {item.detectedAt ? <div style={styles.itemReasonMeta}>更新：{formatDateTime(item.detectedAt)}</div> : null}
                     <div style={styles.itemSummary}>{item.summary}</div>
                     {item.reason ? (
                       <div style={item.reason.confidence === 'confirmed' ? styles.itemReasonConfirmed : styles.itemReasonCandidate}>

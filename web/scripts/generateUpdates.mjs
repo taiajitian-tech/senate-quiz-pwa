@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -97,20 +98,20 @@ function normalizeRecord(value, index) {
     district,
     terms,
     image,
-    key: `${id}:${normalizeCompact(name)}`,
+    key: normalizeCompact(name),
   };
 }
 
 function readArrayFromGit(relPath) {
   try {
     const sha = execSync(
-      `git log --skip=1 -1 --format="%H" -- ${relPath}`,
-      { cwd: WEB_DIR, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
+      'git log -1 --format="%H" -- web/public/data/updates.json',
+      { cwd: path.resolve(WEB_DIR, '..'), encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
     ).trim();
     if (!sha) return null;
     const data = execSync(
       `git show ${sha}:${relPath}`,
-      { cwd: WEB_DIR, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
+      { cwd: path.resolve(WEB_DIR, '..'), encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }
     );
     const parsed = JSON.parse(data);
     return Array.isArray(parsed) ? parsed : null;
@@ -120,13 +121,9 @@ function readArrayFromGit(relPath) {
 }
 
 function readArray(filePath) {
-  if (!fs.existsSync(filePath)) return [];
-  try {
-    const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
+  const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  if (!Array.isArray(parsed)) throw new Error(`名簿の形式が不正です: ${filePath}`);
+  return parsed;
 }
 
 function compareTarget(target) {
@@ -137,6 +134,10 @@ function compareTarget(target) {
     : readArrayFromGit(gitRelPath) ?? [];
   const currentRaw = readArray(path.resolve(DATA_DIR, target.path));
 
+  return compareRecords(target, previousRaw, currentRaw);
+}
+
+export function compareRecords(target, previousRaw, currentRaw) {
   const previous = previousRaw.map(normalizeRecord).filter(Boolean);
   const current = currentRaw.map(normalizeRecord).filter(Boolean);
 
@@ -157,7 +158,7 @@ function compareTarget(target) {
         targetLabel: target.label,
         name: nextItem.name,
         type: 'added',
-        summary: `${nextItem.name} を新たに追加しました${nextItem.role ? `（${nextItem.role}）` : nextItem.party ? `（${nextItem.party}）` : ''}`,
+        summary: `${nextItem.name}氏を${target.label}一覧に追加${nextItem.role ? `（${nextItem.role}）` : nextItem.party ? `（${nextItem.party}）` : ''}`,
       });
       continue;
     }
@@ -165,17 +166,27 @@ function compareTarget(target) {
     const describe = (label, before, after) => {
       const b = before || 'なし';
       const a = after || 'なし';
-      return `${label}（${b} → ${a}）`;
+      return `${label}：${b} → ${a}`;
     };
 
     const fieldChanges = [];
-    if (prevItem.name !== nextItem.name) fieldChanges.push(describe('氏名変更', prevItem.name, nextItem.name));
-    if (prevItem.kana !== nextItem.kana) fieldChanges.push(describe('ふりがな変更', prevItem.kana, nextItem.kana));
-    if (prevItem.role !== nextItem.role) fieldChanges.push(describe('役職変更', prevItem.role, nextItem.role));
-    if (prevItem.party !== nextItem.party) fieldChanges.push(describe('所属変更', prevItem.party, nextItem.party));
-    if (prevItem.district !== nextItem.district) fieldChanges.push(describe('選挙区変更', prevItem.district, nextItem.district));
-    if (prevItem.terms !== nextItem.terms) fieldChanges.push(describe('当選回数変更', prevItem.terms ? `${prevItem.terms}回` : '', nextItem.terms ? `${nextItem.terms}回` : ''));
-    if (prevItem.image !== nextItem.image) fieldChanges.push('顔写真を更新');
+    if (prevItem.name !== nextItem.name) fieldChanges.push(describe('氏名', prevItem.name, nextItem.name));
+    if (prevItem.kana !== nextItem.kana) fieldChanges.push(describe('ふりがな', prevItem.kana, nextItem.kana));
+    if (prevItem.role !== nextItem.role) {
+      const roles = value => value.split(/\s*\/\s*/u).filter(Boolean);
+      const before = roles(prevItem.role);
+      const after = roles(nextItem.role);
+      const removedRoles = before.filter(role => !after.includes(role));
+      const addedRoles = after.filter(role => !before.includes(role));
+      if (removedRoles.length && addedRoles.length) fieldChanges.push(describe('役職', removedRoles.join('・'), addedRoles.join('・')));
+      else if (addedRoles.length) fieldChanges.push(`役職に「${addedRoles.join('・')}」が追加`);
+      else if (removedRoles.length) fieldChanges.push(`役職から「${removedRoles.join('・')}」が削除`);
+      else fieldChanges.push(describe('役職', prevItem.role, nextItem.role));
+    }
+    if (prevItem.party !== nextItem.party) fieldChanges.push(describe('所属', prevItem.party, nextItem.party));
+    if (prevItem.district !== nextItem.district) fieldChanges.push(describe('選挙区', prevItem.district, nextItem.district));
+    if (prevItem.terms !== nextItem.terms) fieldChanges.push(describe('当選回数', prevItem.terms ? `${prevItem.terms}回` : '', nextItem.terms ? `${nextItem.terms}回` : ''));
+    if (prevItem.image !== nextItem.image) fieldChanges.push('顔写真が変更');
 
     if (fieldChanges.length > 0) {
       changed += 1;
@@ -184,7 +195,7 @@ function compareTarget(target) {
         targetLabel: target.label,
         name: nextItem.name,
         type: 'changed',
-        summary: `${nextItem.name}：${fieldChanges.join('・')}`,
+        summary: `${nextItem.name}氏：${fieldChanges.join('。')}`,
       });
     }
   }
@@ -197,7 +208,7 @@ function compareTarget(target) {
       targetLabel: target.label,
       name: prevItem.name,
       type: 'removed',
-      summary: `${prevItem.name}${prevItem.role ? `（${prevItem.role}）` : ''} を一覧から除外しました`,
+      summary: `${prevItem.name}氏を${target.label}一覧から除外${prevItem.role ? `（${prevItem.role}）` : ''}`,
     });
   }
 
@@ -340,13 +351,31 @@ async function mapWithConcurrency(items, worker, concurrency) {
   return results;
 }
 
+export function mergeUpdateHistory(previousItems, newItems, detectedAt, previousDate = detectedAt) {
+  const tag = (item, date) => {
+    const eventDate = item.detectedAt || date;
+    const id = item.id || createHash('sha256').update(JSON.stringify([
+      item.target, item.name, item.type, item.summary, eventDate,
+    ])).digest('hex');
+    return { ...item, id, detectedAt: eventDate };
+  };
+  const seen = new Set();
+  return [
+    ...newItems.map(item => tag(item, detectedAt)),
+    ...previousItems.filter(item => item.target !== 'notice').map(item => tag(item, previousDate)),
+  ].filter(item => {
+    if (seen.has(item.id)) return false;
+    seen.add(item.id);
+    return true;
+  });
+}
+
 async function main() {
   const generatedAt = new Date().toISOString();
   const results = TARGETS.map(compareTarget);
   const items = results.flatMap((result) => result.items);
-  const limitedItems = items.slice(0, 80);
   const itemsWithReasons = await mapWithConcurrency(
-    limitedItems,
+    items,
     async (item, index) => (index < NEWS_REASON_LIMIT ? fetchReasonForItem(item) : item),
     NEWS_CONCURRENCY,
   );
@@ -376,16 +405,14 @@ async function main() {
     // 初回生成時は保持するお知らせがない。
   }
   const previousItems = Array.isArray(previous.items) ? previous.items : [];
-  const automaticItems = itemsWithReasons.length > 0
-    ? itemsWithReasons
-    : previousItems.filter((item) => item.target !== 'notice');
+  const automaticItems = mergeUpdateHistory(previousItems, itemsWithReasons, generatedAt, previous.generatedAt || generatedAt);
   const noticeChanged = JSON.stringify(manualNotices) !== JSON.stringify(previousItems.filter((item) => item.target === 'notice'));
   const finalItems = [...manualNotices, ...automaticItems];
 
   const payload = {
     generatedAt: itemsWithReasons.length > 0 || noticeChanged ? generatedAt : previous.generatedAt || generatedAt,
     checkedAt: generatedAt,
-    totalChanges: automaticItems.length,
+    totalChanges: itemsWithReasons.length > 0 ? itemsWithReasons.length : previous.totalChanges || 0,
     hasUpdates: finalItems.length > 0,
     summaries: itemsWithReasons.length > 0 ? summaries : (Array.isArray(previous.summaries) ? previous.summaries : []),
     items: finalItems,
@@ -396,4 +423,4 @@ async function main() {
   console.log(`updates: ${payload.totalChanges}`);
 }
 
-await main();
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) await main();
