@@ -9,6 +9,9 @@ type Props = {
   onChangeAppMode: (mode: AppMode) => void;
   target: Target;
   onChangeTarget: (target: Target) => void;
+  searchQuery: string;
+  onChangeSearchQuery: (query: string) => void;
+  onSearch: () => void;
   onOpenFirstGuide: () => void;
   onStartLearn: () => void;
   onStartReverse: () => void;
@@ -107,6 +110,16 @@ export default function TitleView(props: Props) {
   return (
     <div style={styles.wrap}>
       <div style={styles.card}>
+        <form role="search" style={styles.searchForm} onSubmit={event => { event.preventDefault(); if (props.searchQuery.trim()) props.onSearch(); }}>
+          <label htmlFor="home-person-search" style={styles.searchLabel}>議員を検索</label>
+          <div style={styles.searchRow}>
+            <input id="home-person-search" type="search" enterKeyHint="search" value={props.searchQuery}
+              onChange={event => props.onChangeSearchQuery(event.target.value)}
+              placeholder="名前・ふりがな・役職など" aria-describedby="home-search-target" style={styles.searchInput} />
+            <button type="submit" disabled={!props.searchQuery.trim()} style={{ ...styles.searchButton, opacity: props.searchQuery.trim() ? 1 : .5 }}>検索</button>
+          </div>
+          <div id="home-search-target" style={styles.searchHint}>検索対象：{targetLabels[props.target]}</div>
+        </form>
         <div style={styles.topControlRow}>
           <button
             type="button"
@@ -221,6 +234,12 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
   },
   topControlRow: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 },
+  searchForm: { width: "100%", display: "flex", flexDirection: "column", gap: 6 },
+  searchLabel: { fontSize: 14, fontWeight: 700 },
+  searchRow: { display: "flex", gap: 8 },
+  searchInput: { flex: "1 1 auto", minWidth: 0, width: "100%", padding: "12px", fontSize: 16, border: "1px solid #999", borderRadius: 10, background: "#fff" },
+  searchButton: { flex: "0 0 auto", minHeight: 46, padding: "10px 16px", fontSize: 16, fontWeight: 700, border: "1px solid #172c38", borderRadius: 10, background: "#172c38", color: "#fff", cursor: "pointer" },
+  searchHint: { fontSize: 12, color: "#555" },
   titleBlock: { width: "100%", display: "flex", flexDirection: "column", gap: 4 },
   title: { fontSize: 40, fontWeight: 800, letterSpacing: 1 },
   titleSub: { fontSize: 14, color: "#555", marginTop: 4 },

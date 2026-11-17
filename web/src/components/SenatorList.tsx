@@ -24,6 +24,8 @@ type Props = {
   appMode: AppMode;
   target: Target;
   onChangeTarget?: (target: Target) => void;
+  searchQuery: string;
+  onChangeSearchQuery: (query: string) => void;
   onBack: () => void;
   focusPersonName?: string;
   focusNonce?: number;
@@ -230,7 +232,8 @@ export default function SenatorList(props: Props) {
   const [items, setItems] = useState<Person[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [q, setQ] = useState("");
+  const q = props.searchQuery;
+  const setQ = props.onChangeSearchQuery;
   const [helpOpen, setHelpOpen] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name_asc");
   const [viewMode, setViewMode] = useState<ViewMode>("list");

@@ -23,6 +23,7 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>("title");
   const [appMode, setAppMode] = useState<AppMode>("basic");
   const [target, setTarget] = useState<Target>("senators");
+  const [searchQuery, setSearchQuery] = useState("");
   const [guideOpen, setGuideOpen] = useState(() => {
     const shouldOpen = !localStorage.getItem(FIRST_GUIDE_SEEN_KEY);
     if (shouldOpen) localStorage.setItem(FIRST_GUIDE_SEEN_KEY, "1");
@@ -40,8 +41,15 @@ export default function App() {
   }, [appMode, target]);
 
   const openPersonFromUpdates = (nextTarget: Target, name: string) => {
+    setSearchQuery("");
     setTarget(nextTarget);
     setListJump({ target: nextTarget, name, nonce: Date.now() });
+    setScreen("list");
+  };
+
+  const openList = (query = "") => {
+    setSearchQuery(query);
+    setListJump(null);
     setScreen("list");
   };
 
@@ -54,13 +62,16 @@ export default function App() {
         onChangeAppMode={setAppMode}
         target={target}
         onChangeTarget={setTarget}
+        searchQuery={searchQuery}
+        onChangeSearchQuery={setSearchQuery}
+        onSearch={() => openList(searchQuery.trim())}
         onOpenFirstGuide={() => setGuideOpen(true)}
         onStartLearn={() => setScreen("learn")}
         onStartReverse={() => setScreen("reverse")}
         onStartReview={() => setScreen("review")}
         onOpenAutoplay={() => setScreen("autoplay")}
         onOpenStats={() => setScreen("stats")}
-        onOpenList={() => setScreen("list")}
+        onOpenList={() => openList()}
         onOpenBackup={() => setScreen("backup")}
         onOpenUpdates={() => setScreen("updates")}
         onOpenPrint={() => setScreen("print")}
@@ -74,6 +85,8 @@ export default function App() {
         appMode={appMode}
         target={target}
         onChangeTarget={setTarget}
+        searchQuery={searchQuery}
+        onChangeSearchQuery={setSearchQuery}
         onBack={() => setScreen("title")}
         focusPersonName={listJump && listJump.target === target ? listJump.name : undefined}
         focusNonce={listJump && listJump.target === target ? listJump.nonce : undefined}
