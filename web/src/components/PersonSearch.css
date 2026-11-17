@@ -1,0 +1,28 @@
+.person-search { width: 100%; }
+.person-search form { display: grid; gap: 6px; }
+.person-search label { font-size: 14px; font-weight: 700; }
+.person-search-row { display: flex; gap: 8px; }
+.person-search input { flex: 1 1 auto; min-width: 0; width: 100%; padding: 12px; font-size: 16px; border: 1px solid #999; border-radius: 10px; background: white; }
+.person-search-row button { flex: 0 0 auto; min-height: 46px; padding: 10px 16px; font-size: 16px; font-weight: 700; border: 1px solid #172c38; border-radius: 10px; background: #172c38; color: white; cursor: pointer; }
+.person-search-row button:disabled { opacity: .5; }
+.person-search form p { font-size: 12px; color: #555; margin: 0; }
+.person-search-results { margin-top: 8px; padding: 10px; border: 1px solid #cbd5df; border-radius: 10px; background: white; }
+.person-search-results > p { margin: 0 0 6px; font-size: 13px; color: #526779; }
+.person-search-results ul { list-style: none; padding: 0; margin: 0; max-height: 360px; overflow-y: auto; }
+.person-search-results li + li { border-top: 1px solid #e4e9ee; }
+.person-search-candidate { width: 100%; padding: 11px 5px; text-align: left; border: 0; background: white; cursor: pointer; display: grid; gap: 4px; color: #172c38; overflow-wrap: anywhere; }
+.person-search-candidate:hover { background: #eff6ff; }
+.person-search-name { font-size: 16px; font-weight: 700; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.person-search-name small { font-size: 12px; }
+.person-search-info { font-size: 12px; color: #526779; }
+.person-search-more { width: 100%; min-height: 42px; margin-top: 8px; border: 1px solid #ccd5dc; border-radius: 8px; background: #f3f7fb; color: #1763a6; cursor: pointer; }
+.person-search-error { font-size: 13px; color: #a73320; }
+.person-search-error button { margin-left: 8px; padding: 6px 10px; }
+.person-search-dialog { width: min(440px, calc(100vw - 32px)); max-height: 85vh; padding: 20px; border: 1px solid #b8c4cf; border-radius: 14px; color: #172c38; overflow-y: auto; }
+.person-search-dialog::backdrop { background: #0008; }
+.person-search-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.person-search-dialog h2 { margin: 0; font-size: 22px; }
+.person-search-dialog-heading button { flex-shrink: 0; min-height: 42px; padding: 8px 12px; border: 1px solid #999; background: white; border-radius: 9px; color: #1763a6; cursor: pointer; }
+.person-search-dialog dl > div { margin-top: 14px; }
+.person-search-dialog dt { font-size: 12px; color: #526779; }
+.person-search-dialog dd { margin: 3px 0 0; font-size: 15px; overflow-wrap: anywhere; }

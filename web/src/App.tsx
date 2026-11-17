@@ -64,7 +64,6 @@ export default function App() {
         onChangeTarget={setTarget}
         searchQuery={searchQuery}
         onChangeSearchQuery={setSearchQuery}
-        onSearch={() => openList(searchQuery.trim())}
         onOpenFirstGuide={() => setGuideOpen(true)}
         onStartLearn={() => setScreen("learn")}
         onStartReverse={() => setScreen("reverse")}

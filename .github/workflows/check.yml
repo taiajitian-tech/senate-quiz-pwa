@@ -39,5 +39,8 @@ jobs:
       - name: Test automatic notices
         run: node --test scripts/generateUpdates.test.mjs scripts/updateNotices.test.mjs scripts/noticeCards.test.mjs
 
+      - name: Test global member search
+        run: node --test scripts/personSearch.test.mjs
+
       - name: Build
         run: npm run build
