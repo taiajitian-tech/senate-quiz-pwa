@@ -258,7 +258,11 @@ function pickNext(
   if (masteredPool.length > 0 && Math.random() < 0.05) {
     return masteredPool[Math.floor(Math.random() * masteredPool.length)];
   }
-  return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 3) ?? pickFromTopBand(riskUpcoming, 3) ?? null;
+  // 通常・逆学習では、復習時期前や完全習得でも未出題なら対象に含める。
+  // 苦手がなくなっても、今回の未出題者が残っている限り止めない。
+  const remaining = items.filter((item) => !askedIds.has(item.id));
+  return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 3) ?? pickFromTopBand(riskUpcoming, 3)
+    ?? pickFromTopBand(sortByRisk(remaining, progress, now), 3);
 }
 
 function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
@@ -659,9 +663,9 @@ export default function Learn(props: Props) {
   };
 
   const modeHelp: Record<Mode, string> = {
-    learn: "新規追加の議員を優先しつつ、忘れそうな議員と苦手な議員も先に出します。完全習得に入った議員は通常出題から外れます。",
+    learn: "選択した対象全員から出題します。新規追加・忘れそうな議員・苦手な議員を優先し、覚えている議員も出題します。",
     review: "忘却しそうな議員と苦手な議員だけを集中的に出します。短時間で効率よく定着を維持するモードです。",
-    reverse: "名前から顔を引く練習です。通常学習と同じ記憶状態を使い、忘れそうな議員と苦手な議員を優先します。",
+    reverse: "名前から顔を引く練習です。忘れそうな議員と苦手な議員を優先し、覚えている議員も出題します。",
   };
 
   const compactLayout = typeof window !== "undefined" && (window.innerHeight <= 820 || window.innerWidth <= 480);
@@ -869,7 +873,7 @@ export default function Learn(props: Props) {
           ) : sessionDone ? (
             <div style={styles.doneWrap}>
               <div style={styles.doneTitle}>今回の出題は終了です</div>
-              <div style={styles.doneSub}>{isWrongRetryMode ? "間違えた議員だけを再確認しました。まだ残っていれば続けて繰り返せます。" : "次は、忘れそうな議員と苦手な議員を優先して再構成されます。"}</div>
+              <div style={styles.doneSub}>{isWrongRetryMode ? "間違えた議員だけを再確認しました。まだ残っていれば続けて繰り返せます。" : props.mode === "review" ? "次も、忘れそうな議員と苦手な議員を対象に復習します。" : "次も選択した対象から出題します。苦手がなくても、覚えている議員で練習を続けられます。"}</div>
               <div style={styles.resultGrid}>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>出題数</div><div style={styles.resultValue}>{sessionResult.total}</div></div>
                 <div style={styles.resultCard}><div style={styles.resultLabel}>覚えていた</div><div style={styles.resultValue}>{sessionResult.remembered}</div></div>
@@ -879,7 +883,7 @@ export default function Learn(props: Props) {
               <div style={styles.doneMeta}>
                 <div>次の復習候補：{focusSummary.due}人</div>
                 <div>苦手として追跡中：{focusSummary.leech}人</div>
-                <div>通常出題から外れた完全習得：{focusSummary.mastered}人</div>
+                <div>完全習得：{focusSummary.mastered}人</div>
               </div>
               {sessionWrongPersons.length > 0 ? (
                 <div style={styles.wrongSection}>

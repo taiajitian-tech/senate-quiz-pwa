@@ -42,5 +42,8 @@ jobs:
       - name: Test global member search
         run: node --test scripts/personSearch.test.mjs
 
+      - name: Test learning selection
+        run: node --test scripts/learningSelection.test.mjs
+
       - name: Build
         run: npm run build

@@ -108,7 +108,7 @@ export default function StatsView(props: Props) {
         </button>
         <div style={styles.h1}>成績確認</div>
         <div style={styles.sub}>{getTargetLabels(props.appMode)[props.target]}</div>
-        <div style={styles.desc}>完全習得は通常出題から外れます。要復習と苦手人数も確認できます。</div>
+        <div style={styles.desc}>完全習得の議員も通常出題の対象です。要復習と苦手人数も確認できます。</div>
         {loadError ? <div style={{ ...styles.sub, color: "#cf222e" }}>{loadError}</div> : null}
       </div>
 

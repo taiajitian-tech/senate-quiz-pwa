@@ -35,7 +35,7 @@ export default function FirstGuide(props: Props) {
           <div style={styles.boxTitle}>今回からの出題ロジック</div>
           <div style={styles.step}><b>忘れそうを優先</b><span>前回の成績と経過時間から、忘却しそうな議員を先に出します。</span></div>
           <div style={styles.step}><b>苦手を追跡</b><span>何度も落ちる議員は苦手として記録し、通常より高い頻度で出します。</span></div>
-          <div style={styles.step}><b>完全習得は外す</b><span>十分に定着した議員は通常学習から外し、苦手と要復習へ時間を回します。</span></div>
+          <div style={styles.step}><b>覚えた後も練習できる</b><span>通常出題は完全習得の議員も対象です。苦手がなくても練習を続けられます。</span></div>
         </div>
         <div style={styles.box}>
           <div style={styles.boxTitle}>自動再生のおすすめ時間</div>
