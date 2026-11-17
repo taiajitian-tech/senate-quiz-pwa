@@ -50,6 +50,23 @@ test('learning continues after the final difficult person is answered correctly'
   assert.ok(pickNext(items, progress, now, 'learn', new Set([1]), new Set()));
 }));
 
+test('maintenance questions sample every remaining person uniformly rather than a top-three band', () => {
+  const previous = Math.random;
+  try {
+    const asked = new Set([2, 8]);
+    const remaining = items.filter(item => !asked.has(item.id));
+    const healthy = progressFor('review');
+    const mastered = progressFor('mastered');
+    const mixed = Object.fromEntries(items.map(item => [item.id, item.id % 2 ? healthy[item.id] : mastered[item.id]]));
+    for (const mode of ['learn', 'reverse']) for (const progress of [healthy, mastered, mixed]) {
+      for (let index = 0; index < remaining.length; index++) {
+        Math.random = () => (index + .5) / remaining.length;
+        assert.equal(pickNext(items, progress, now, mode, asked, new Set()).id, remaining[index].id);
+      }
+    }
+  } finally { Math.random = previous; }
+});
+
 test('review remains limited to due or difficult people', () => deterministic(() => {
   assert.equal(pickNext(items, progressFor('review'), now, 'review', new Set(), new Set()), null);
   assert.equal(pickNext(items, progressFor('mastered'), now, 'review', new Set(), new Set()), null);

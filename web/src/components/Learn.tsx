@@ -187,7 +187,6 @@ function pickNext(
   const due: Person[] = [];
   const upcoming: Person[] = [];
   const recentAdded: Person[] = [];
-  const masteredPool: Person[] = [];
 
   for (const item of items) {
     if (askedIds.has(item.id)) continue;
@@ -205,7 +204,6 @@ function pickNext(
     }
 
     if (isMastered(state, now)) {
-      masteredPool.push(item);
       continue;
     }
 
@@ -255,14 +253,11 @@ function pickNext(
   if (riskUpcoming.length > 0 && cycle < 16) return pickFromTopBand(riskUpcoming, 3);
   if (recentAddedSorted.length > 0) return pickFromTopBand(recentAddedSorted, 2);
   if (fresh.length > 0) return fresh[Math.floor(Math.random() * fresh.length)];
-  if (masteredPool.length > 0 && Math.random() < 0.05) {
-    return masteredPool[Math.floor(Math.random() * masteredPool.length)];
-  }
   // 通常・逆学習では、復習時期前や完全習得でも未出題なら対象に含める。
   // 苦手がなくなっても、今回の未出題者が残っている限り止めない。
   const remaining = items.filter((item) => !askedIds.has(item.id));
   return pickFromTopBand(riskLeech, 2) ?? pickFromTopBand(riskDue, 3) ?? pickFromTopBand(riskUpcoming, 3)
-    ?? pickFromTopBand(sortByRisk(remaining, progress, now), 3);
+    ?? remaining[Math.floor(Math.random() * remaining.length)] ?? null;
 }
 
 function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[], now: number) {
