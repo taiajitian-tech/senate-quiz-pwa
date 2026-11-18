@@ -10,11 +10,11 @@ const { sanitizeProgressItem, applyGrade } = await import(srsUrl);
 const learnSource = fs.readFileSync(new URL('../src/components/Learn.tsx', import.meta.url), 'utf8');
 const ast = ts.createSourceFile('Learn.tsx', learnSource, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 // Test the actual selector used by Learn without loading the screen or browser storage.
-const names = new Set(['normalizePersonName', 'sortByRisk', 'pickFromTopBand', 'pickNext']);
+const names = new Set(['normalizePersonName', 'sortByRisk', 'pickFromTopBand', 'pickNext', 'filterMinisterStudyItems']);
 const functions = ast.statements.filter(node => ts.isFunctionDeclaration(node) && names.has(node.name?.text)).map(node => node.getText(ast));
 const day = ast.statements.find(node => ts.isVariableStatement(node) && node.declarationList.declarations.some(declaration => declaration.name.getText(ast) === 'DAY'));
 assert.equal(functions.length, names.size);
-const { pickNext } = await import(uri(compile(`import {getForgettingScore,isMastered} from '${srsUrl}';\n${day.getText(ast)}\n${functions.join('\n')}\nexport {pickNext};`)));
+const { pickNext, filterMinisterStudyItems } = await import(uri(compile(`import {getForgettingScore,isMastered} from '${srsUrl}';\n${day.getText(ast)}\n${functions.join('\n')}\nexport {pickNext,filterMinisterStudyItems};`)));
 const now = Date.parse('2026-11-17T00:00:00Z');
 const items = Array.from({ length: 23 }, (_, index) => ({ id: index + 1, name: `議員${index + 1}`, images: [] }));
 const progressFor = status => Object.fromEntries(items.map(item => [item.id, sanitizeProgressItem(item.id, { status, reps: 10, stability: 60, due: now + 60 * 86400000, lastSeenAt: now }, now)]));
@@ -81,4 +81,34 @@ test('one-round forced order still wins and previously asked IDs are excluded', 
   assert.equal(pickNext(items, progress, now, 'learn', new Set(), new Set(), 9).id, 9);
   assert.notEqual(pickNext(items, progress, now, 'learn', new Set([9]), new Set(), 9).id, 9);
   assert.equal(pickNext([], progress, now, 'learn', new Set(), new Set()), null);
+}));
+
+test('minister exclusion removes deputy chief cabinet secretaries and the legislation bureau director only', () => {
+  const ministers = JSON.parse(fs.readFileSync(new URL('../public/data/ministers.json', import.meta.url), 'utf8'));
+  const original = structuredClone(ministers);
+  const filtered = filterMinisterStudyItems(ministers, 'ministers', true);
+  const excluded = ministers.filter(person => !filtered.includes(person));
+  assert.equal(excluded.length, 4);
+  assert.ok(excluded.every(person => /官房副長官|内閣法制局長官/u.test(person.group)));
+  assert.ok(filtered.some(person => /官房長官/u.test(person.group)));
+  assert.equal(filterMinisterStudyItems(ministers, 'ministers', false).length, ministers.length);
+  assert.equal(filterMinisterStudyItems(ministers, 'viceMinisters', true), ministers);
+  assert.deepEqual(ministers, original);
+  const similarRoles = [{ id: 1, name: '補佐', group: '内閣官房副長官補' }, { id: 2, name: '大臣', role: '法制度検証・改革担当' }, { id: 3, name: '副長官', subRole: '内閣官房副長官（政務担当）' }];
+  assert.deepEqual(filterMinisterStudyItems(similarRoles, 'ministers', true).map(person => person.id), [1, 2]);
+});
+
+test('normal and forced one-round selection cannot reintroduce excluded officials', () => deterministic(() => {
+  const ministers = JSON.parse(fs.readFileSync(new URL('../public/data/ministers.json', import.meta.url), 'utf8'));
+  const filtered = filterMinisterStudyItems(ministers, 'ministers', true);
+  const excludedId = ministers.find(person => !filtered.includes(person)).id;
+  const asked = new Set();
+  while (asked.size < filtered.length) {
+    const person = pickNext(filtered, {}, now, 'learn', asked, new Set(), excludedId);
+    assert.ok(person);
+    assert.notEqual(person.id, excludedId);
+    assert.ok(!asked.has(person.id));
+    asked.add(person.id);
+  }
+  assert.equal(pickNext(filtered, {}, now, 'learn', asked, new Set(), excludedId), null);
 }));

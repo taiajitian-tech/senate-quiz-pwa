@@ -50,6 +50,18 @@ const PARTY_SELECTABLE_TARGETS: Target[] = ["senators", "representatives"];
 const QUIZ_COUNT_CHOICES = [10, 20, 30, 40, 50, 60, 80, 100, 150, 200];
 const JA_COLLATOR = new Intl.Collator("ja");
 const LEARN_QUIZ_COUNT_KEY = "learnQuizCount.v1";
+const MINISTER_EXCLUSION_KEY = "learnMinisterExcludeSupportOfficials.v1";
+
+function loadMinisterExclusion() {
+  try { return localStorage.getItem(MINISTER_EXCLUSION_KEY) === 'true'; } catch { return false; }
+}
+
+function filterMinisterStudyItems(items: Person[], target: Target, exclude: boolean) {
+  if (target !== 'ministers' || !exclude) return items;
+  const excludedRoles = new Set(['内閣官房副長官', '官房副長官', '内閣法制局長官', '内閣法制局長']);
+  return items.filter(person => ![person.role, person.subRole, person.group].some(value =>
+    (value || '').split(/[/／、\n]/u).some(role => excludedRoles.has(normalizePersonName(role.replace(/[（(][^）)]*[）)]/gu, ''))))));
+}
 
 function loadLearnQuizCount() {
   try {
@@ -281,6 +293,7 @@ function getFocusSummary(progress: Record<number, ProgressItem>, items: Person[]
 
 export default function Learn(props: Props) {
   const [quizCount, setQuizCount] = useState(() => loadLearnQuizCount());
+  const [excludeMinisterOfficials, setExcludeMinisterOfficials] = useState(loadMinisterExclusion);
   const supportsPartySelection = PARTY_SELECTABLE_TARGETS.includes(props.target) && props.mode !== "review";
   const supportsOneRoundSelection = props.mode !== "review";
 
@@ -385,21 +398,22 @@ export default function Learn(props: Props) {
     setSelectedParties((prev) => prev.filter((name) => partySummaries.some((summary) => summary.name === name)));
   }, [items, partySummaries, supportsPartySelection]);
 
+  const eligibleItems = useMemo(() => filterMinisterStudyItems(items, props.target, excludeMinisterOfficials), [items, props.target, excludeMinisterOfficials]);
   const practiceItems = useMemo(() => {
-    let next = items;
+    let next = eligibleItems;
     if (isWrongRetryMode) {
-      next = items.filter((item) => retryWrongSet.has(item.id));
+      next = eligibleItems.filter((item) => retryWrongSet.has(item.id));
     } else if (useOneRoundSelection && usePartySelection && selectedPartySet.size > 0) {
-      next = items.filter((item) => selectedPartySet.has(getPartyLabel(item)));
+      next = eligibleItems.filter((item) => selectedPartySet.has(getPartyLabel(item)));
     } else if (useOneRoundSelection) {
-      next = items;
+      next = eligibleItems;
     } else if (useWrongMemorySelection) {
-      next = items.filter((item) => wrongMemoryIdSet.has(item.id));
+      next = eligibleItems.filter((item) => wrongMemoryIdSet.has(item.id));
     } else if (supportsPartySelection && usePartySelection && selectedPartySet.size > 0) {
-      next = items.filter((item) => selectedPartySet.has(getPartyLabel(item)));
+      next = eligibleItems.filter((item) => selectedPartySet.has(getPartyLabel(item)));
     }
     return next;
-  }, [isWrongRetryMode, items, retryWrongSet, selectedPartySet, supportsPartySelection, useOneRoundSelection, usePartySelection, useWrongMemorySelection, wrongMemoryIdSet]);
+  }, [isWrongRetryMode, eligibleItems, retryWrongSet, selectedPartySet, supportsPartySelection, useOneRoundSelection, usePartySelection, useWrongMemorySelection, wrongMemoryIdSet]);
 
   const sessionLimit = useMemo(() => {
     if (practiceItems.length === 0) return quizCount;
@@ -415,8 +429,9 @@ export default function Learn(props: Props) {
     if (useOneRoundSelection) return `oneRound:${practiceItems.map((item) => item.id).sort((a, b) => a - b).join(",")}`;
     if (useWrongMemorySelection) return `wrongMemory:${wrongMemoryItems.map((item) => item.id).sort((a, b) => a - b).join(",")}`;
     if (supportsPartySelection && usePartySelection) return `party:${selectedParties.slice().sort(JA_COLLATOR.compare).join("|")}`;
+    if (props.target === 'ministers' && excludeMinisterOfficials) return `ministerFiltered:${practiceItems.map(item => item.id).join(',')}`;
     return "all";
-  }, [isWrongRetryMode, practiceItems, props.mode, retryWrongIds, selectedParties, supportsPartySelection, useOneRoundSelection, usePartySelection, useWrongMemorySelection, wrongMemoryItems]);
+  }, [isWrongRetryMode, practiceItems, props.mode, props.target, excludeMinisterOfficials, retryWrongIds, selectedParties, supportsPartySelection, useOneRoundSelection, usePartySelection, useWrongMemorySelection, wrongMemoryItems]);
   const useScopedCycle = props.mode !== "review" && sessionStarted && scopedModeKey !== "all";
 
   useEffect(() => {
@@ -579,9 +594,9 @@ export default function Learn(props: Props) {
     return items.filter((item) => selectedPartySet.has(getPartyLabel(item))).length;
   }, [items, selectedPartySet, supportsPartySelection, usePartySelection]);
 
-  const wrongMemoryCount = useMemo(() => items.filter((item) => wrongMemoryIdSet.has(item.id)).length, [items, wrongMemoryIdSet]);
+  const wrongMemoryCount = useMemo(() => eligibleItems.filter((item) => wrongMemoryIdSet.has(item.id)).length, [eligibleItems, wrongMemoryIdSet]);
 
-  const targetCount = useOneRoundSelection ? items.length : useWrongMemorySelection ? wrongMemoryCount : usePartySelection ? selectedPartyCount : items.length;
+  const targetCount = useOneRoundSelection ? eligibleItems.length : useWrongMemorySelection ? wrongMemoryCount : usePartySelection ? selectedPartyCount : eligibleItems.length;
   const canStart =
     !loading &&
     !error &&
@@ -842,6 +857,17 @@ export default function Learn(props: Props) {
                   </div>
                 </div>
               )}
+              {props.target === 'ministers' && <div style={styles.setupSection}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: 10, minHeight: 44, fontSize: 14, cursor: 'pointer' }}>
+                  <input type="checkbox" style={{ width: 20, height: 20, flexShrink: 0 }} checked={excludeMinisterOfficials} onChange={event => {
+                    const checked = event.target.checked;
+                    setExcludeMinisterOfficials(checked);
+                    try { localStorage.setItem(MINISTER_EXCLUSION_KEY, String(checked)); } catch { /* 保存できない場合も今回の選択は使える。 */ }
+                  }} />
+                  官房副長官・内閣法制局長官を除く
+                </label>
+                <div style={styles.partyHint}>チェックを外すと全員を含めます。この選択は次回も引き継ぎます。</div>
+              </div>}
               <div style={styles.setupMeta}>
                 <div>対象人数：{targetCount}人</div>
                 <div>今回の出題数：{sessionLimit}問</div>
